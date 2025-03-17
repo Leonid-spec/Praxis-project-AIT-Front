@@ -3,7 +3,7 @@ function App() {
   return (
     <>
     Hi Dental clinic! 
-    Check pull 
+    Check pull 2.0!
 
     </>
   )
