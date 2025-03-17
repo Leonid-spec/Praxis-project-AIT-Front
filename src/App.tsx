@@ -2,7 +2,7 @@ function App() {
 
   return (
     <>
-    Hi Dental clinic! 
+    Hi Dental clinic! 2.0
     </>
   )
 }
