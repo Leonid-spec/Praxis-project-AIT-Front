@@ -1,0 +1,12 @@
+.about {
+    padding: 20px;
+    background-color: aquamarine;
+}
+.about h1 {
+    font-size: 2rem;
+    color: black;
+}
+.about p {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.384); 
+}
