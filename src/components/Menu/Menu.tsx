@@ -1,43 +1,58 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import './styles.css';
+import { NavLink } from 'react-router-dom';
+import {
+  MenuContainer,
+  Logo,
+  Nav,
+  NavLink as StyledNavLink,
+  LanguagePanel,
+  LanguageLink,
+  Divider,
+  AdminPanel,
+  AdminLink,
+  AdminIcon,
+  SprachUundAdminbereich,
+  NavLinkImg
+} from './styles';
 
 const Menu = () => {
   return (
-    <div className="menu">
+    <MenuContainer aria-label="Menu">
       {/* Логотип */}
-      <div className="menu-logo" aria-label="Logo">
-        <NavLink to="/" title="Zur Startseite">Logo</NavLink>
-      </div>
+      <Logo aria-label="Logo">
+        {/* <NavLink to="/" title="Zur Startseite">Logo</NavLink> */}
+        {/* <NavLinkImg src='https://static.vecteezy.com/system/resources/previews/000/561/579/original/logo-for-a-dental-clinic-vector-illustration.jpg'></NavLinkImg> */}
+        <NavLinkImg src='https://content.wepik.com/statics/27150564/preview-page1.jpg'></NavLinkImg>
+
+      </Logo>
 
       {/* Навигационная панель */}
-      <div className="menu-nav" aria-label="Navigationsleiste">
-        <NavLink to="/service" className="menu-link" title="Unsere Dienstleistungen">Leistungen</NavLink>
-        <NavLink to="/team" className="menu-link" title="Unser Team">Team</NavLink>
-        <NavLink to="/about" className="menu-link" title="Über die Klinik">Über uns</NavLink>
-        <NavLink to="/contact" className="menu-link" title="Unsere Kontaktinformationen">Kontakte</NavLink>
-      </div>
+      <Nav aria-label="Navigationsleiste">
+        <StyledNavLink as={NavLink} to="/service" title="Unsere Dienstleistungen">Leistungen</StyledNavLink>
+        <StyledNavLink as={NavLink} to="/team" title="Unser Team">Team</StyledNavLink>
+        <StyledNavLink as={NavLink} to="/about" title="Über die Klinik">Über uns</StyledNavLink>
+        <StyledNavLink as={NavLink} to="/contact" title="Unsere Kontaktinformationen">Kontakte</StyledNavLink>
+      </Nav>
 
       {/* Языковая панель и администратор */}
-      <div className="menu-actions" aria-label="Sprach- und Adminbereich">
-        {/* Языковая панель */}
-        <div className="menu-languages">
-          <a href="#" className="menu-lang" title="Deutsche Sprache">DE</a>
-          <span>|</span>
-          <a href="#" className="menu-lang" title="English Language">EN</a>
-          <span>|</span>
-          <a href="#" className="menu-lang" title="Russische Sprache">RU</a>
-        </div>
+      <SprachUundAdminbereich aria-label="Sprach- und Adminbereich">
+        <LanguagePanel>
+          <LanguageLink href="#" title="Deutsche Sprache">DE</LanguageLink>
+          <Divider>|</Divider>
+          <LanguageLink href="#" title="English Language">EN</LanguageLink>
+          <Divider>|</Divider>
+          <LanguageLink href="#" title="Russische Sprache">RU</LanguageLink>
+        </LanguagePanel>
 
-        {/* Иконка администратора */}
-        <div className="menu-admin">
-          <NavLink to="/admin" className="menu-admin-link" title="Admin-Bereich">
-            <img src="/path-to-admin-icon.png" alt="Admin Icon" className="menu-admin-icon" />
+        <AdminPanel>
+          <AdminLink as={NavLink} to="/admin" title="Admin-Bereich">
+            <AdminIcon 
+              src="https://th.bing.com/th/id/R.fbf39144bff5c02898fdc8fd583f84b6?rik=qLhp7D3LhK%2fQgA&pid=ImgRaw&r=0" 
+              alt="Admin Icon" />
             Admin
-          </NavLink>
-        </div>
-      </div>
-    </div>
+          </AdminLink>
+        </AdminPanel>
+      </SprachUundAdminbereich>
+    </MenuContainer>
   );
 };
 

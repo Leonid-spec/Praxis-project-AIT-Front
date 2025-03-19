@@ -14,7 +14,7 @@ export const MenuContainer = styled.div`
 export const Logo = styled.div`
   width: 200px;
   height: 80px;
-  background-color: #d3d3d3;
+  /* background-color: #d3d3d3; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,11 +45,31 @@ export const NavLink = styled.a`
   }
 `;
 
+export const NavLinkImg = styled.img`
+    width: 100%;
+  /* height: 24px; */
+  margin-right: 5px;
+
+  &:hover {
+    color: #4a90e2;
+  }
+
+  &:active {
+    color: #9ed5eb;
+  }
+`;
+
+export const SprachUundAdminbereich = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
+`;
+
 // Стили для языковой панели
 export const LanguagePanel = styled.div`
   display: flex;
   align-items: center;
-  gap: 40px;
+  gap: 10px;
 `;
 
 export const LanguageLink = styled.a`
@@ -74,6 +94,7 @@ export const Divider = styled.span`
 // Стили для админа
 export const AdminPanel = styled.div`
   display: flex;
+  /* flex-direction: column; */
   align-items: center;
   gap: 10px;
 `;
@@ -82,8 +103,13 @@ export const AdminLink = styled.a`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: #4a90e2;
+  color: #3d3d3d;
   font-size: 1rem;
+
+  &:hover {
+    color: #4a90e2;
+  }
+
 `;
 
 export const AdminIcon = styled.img`

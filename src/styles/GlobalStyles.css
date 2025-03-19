@@ -14,25 +14,26 @@ body {
 }
 
 /* Стили для кнопок */
-button {
+button, .button {
     padding: 10px 15px;
     font-size: 16px;
     border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    border-radius: 4px; /* Скругление углов */
+    background-color: #9dd7ef; /* Новый цвет */
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
-    background-color: #0056b3;
+button:hover, .button:hover {
+    background-color: #387f99; /* Цвет при наведении */
 }
 
-button:disabled {
+button:disabled, .button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
 
 /* Стили для инпутов */
 input, textarea, select {
