@@ -5,7 +5,7 @@ export const StyledButton = styled.button`
   font-size: 16px;
   border: none;
   border-radius: 4px; /* Скругление углов */
-  background-color: #9dd7ef; /* Цвет кнопки */
+  background-color: #83d2f3; /* Цвет кнопки */
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;

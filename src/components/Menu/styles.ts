@@ -1,32 +1,48 @@
 import styled from 'styled-components';
 
-// Общий стиль меню
+// Общий стиль контейнера меню
 export const MenuContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between; /* Группы элементов распределены горизонтально */
   align-items: center;
   height: 100px;
   width: 100%;
   background-color: #fefefe;
+  padding: 0 20px;
+  position: fixed; /* Закрепляем меню наверху страницы */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Меню всегда будет сверху */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Небольшая тень для визуального разделения */
 `;
 
-// Стили для логотипа
+// Логотип
 export const Logo = styled.div`
-  width: 200px;
-  height: 80px;
-  /* background-color: #d3d3d3; */
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
+  justify-content: center;
+
+  img {
+    width: 150px; /* Стандартная ширина */
+    height: auto;
+    transition: width 0.3s ease;
+
+    @media (max-width: 768px) {
+      width: 20%; /* Уменьшаем до 20% экрана на маленьких устройствах */
+    }
+  }
 `;
 
-// Стили для навигационной панели
+// Навигационная панель
 export const Nav = styled.div`
   display: flex;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Перестраиваем навигацию вертикально */
+    align-items: flex-start;
+    width: 100%; /* Занимаем ширину всей группы */
+  }
 `;
 
 export const NavLink = styled.a`
@@ -45,38 +61,33 @@ export const NavLink = styled.a`
   }
 `;
 
-export const NavLinkImg = styled.img`
-    width: 100%;
-  /* height: 24px; */
-  margin-right: 5px;
-
-  &:hover {
-    color: #4a90e2;
-  }
-
-  &:active {
-    color: #9ed5eb;
-  }
-`;
-
+// Языковая и администраторская панели
 export const SprachUundAdminbereich = styled.div`
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: 30px;
+  gap: 20px;
+
+  @media (max-width: 768px) {
+    flex-direction: column; /* Перестраиваем в вертикальное положение */
+    align-items: flex-end; /* Выравниваем блок справа */
+    gap: 10px;
+  }
 `;
 
-// Стили для языковой панели
 export const LanguagePanel = styled.div`
   display: flex;
-  align-items: center;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    justify-content: flex-end;
+  }
 `;
 
 export const LanguageLink = styled.a`
   text-decoration: none;
   color: #3d3d3d;
   font-size: 1rem;
-  transition: color 0.3s;
 
   &:hover {
     color: #6b6b6b;
@@ -91,12 +102,14 @@ export const Divider = styled.span`
   color: #3d3d3d;
 `;
 
-// Стили для админа
 export const AdminPanel = styled.div`
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    margin-top: 10px;
+  }
 `;
 
 export const AdminLink = styled.a`
@@ -109,11 +122,21 @@ export const AdminLink = styled.a`
   &:hover {
     color: #4a90e2;
   }
-
 `;
 
 export const AdminIcon = styled.img`
   width: 24px;
   height: 24px;
   margin-right: 5px;
+`;
+
+// Стили для изображения NavLinkImg
+export const NavLinkImg = styled.img`
+  width: 150px; /* Стандартный размер */
+  height: auto;
+  transition: width 0.3s ease;
+
+  @media (max-width: 768px) {
+    width: 20%; /* Ограничиваем ширину на узких экранах */
+  }
 `;

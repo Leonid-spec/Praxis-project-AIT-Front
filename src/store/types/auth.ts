@@ -1,12 +1,12 @@
-export enum UserRole {
-    CLIENT = 'CLIENT',
-    SPECIALIST = 'SPECIALIST',
-    ADMINISTRATOR = 'ADMINISTRATOR',
-}
+// export enum UserRole {
+//     CLIENT = 'CLIENT',
+//     SPECIALIST = 'SPECIALIST',
+//     ADMINISTRATOR = 'ADMINISTRATOR',
+// }
 
-export interface User {
-    id: string;
-    email: string;
-    role: UserRole;
-}
+// export interface User {
+//     id: string;
+//     email: string;
+//     role: UserRole;
+// }
 

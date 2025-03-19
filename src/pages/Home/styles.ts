@@ -19,7 +19,12 @@ export const RightContainer = styled.div`
   background-color: #a5a0b9;
   width: 100%;
   height: 100%;
+  /* background-image: url('../../assets/Smile-1.jpg'); Указываем путь до изображения */
+  /* background-size: cover; Масштабируем картинку */
+  /* background-position: center; Центрируем картинку */
+  /* background-repeat: no-repeat;/* Запрещаем повтор*/ 
 `;
+
 
 export const WelcomeText = styled.h1`
   color: #414141;
