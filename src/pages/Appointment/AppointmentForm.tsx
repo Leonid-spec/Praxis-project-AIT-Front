@@ -115,6 +115,19 @@ const AppointmentForm = () => {
           />
         </InputGroup>
         <InputGroup>
+          <label htmlFor="comment">Date:</label>
+          <textarea
+            id="comment"
+            name="comment"
+            value={formData.comment}
+            onChange={handleChange}
+            placeholder="Hinterlassen Sie einen Date (bis zu 1024 Zeichen)"
+            maxLength={1024}
+            rows={5}
+          />
+          <span>{formData.comment.length}/1024</span>
+        </InputGroup>
+        <InputGroup>
           <label htmlFor="comment">Kommentar:</label>
           <textarea
             id="comment"
