@@ -74,7 +74,7 @@ export const InputGroup = styled.div`
 
   span {
     font-size: 0.8rem;
-    color: #888888;
+    color: red;
   }
 
   @media (max-width: 768px) {

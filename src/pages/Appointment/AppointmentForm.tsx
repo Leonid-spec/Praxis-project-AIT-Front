@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { PageContainer, FormContainer, FormTitle, InputGroup, SubmitButton } from './AppointmentForm.styles'; // Импортируем стили
+import { useDispatch } from 'react-redux';
+import { setLanguage, setFormData } from '../../store/slices/formSlice'; // Импортируем Redux действие
 
 const AppointmentForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormDataLocal] = useState({
     firstName: '',
     lastName: '',
     comment: '',
@@ -12,23 +14,45 @@ const AppointmentForm = () => {
     phoneNumber: '',
     backupPhoneNumber: '',
   });
+  const [errors, setErrors] = useState<any>({});
+  const dispatch = useDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormDataLocal({ ...formData, [name]: value });
   };
 
   const handlePhoneNumberChange = (value: string, name: string) => {
-    setFormData({ ...formData, [name]: value });
+    setFormDataLocal({ ...formData, [name]: value });
+  };
+
+  const validateForm = () => {
+    let formErrors: any = {};
+    if (!formData.firstName || formData.firstName.length < 2) {
+      formErrors.firstName = 'Vorname muss mindestens 2 Zeichen haben';
+    }
+    if (!formData.lastName || formData.lastName.length < 2) {
+      formErrors.lastName = 'Nachname muss mindestens 2 Zeichen haben';
+    }
+    if (!formData.phoneNumber) {
+      formErrors.phoneNumber = 'Telefonnummer ist erforderlich';
+    }
+    if (!formData.email || !/\S+@\S+\.\S+/.test(formData.email)) {
+      formErrors.email = 'Bitte geben Sie eine gültige E-Mail-Adresse ein';
+    }
+    return formErrors;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.phoneNumber) {
-      alert('Первый номер телефона обязателен для заполнения.');
-      return;
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length === 0) {
+      console.log('Formular übermittelt:', formData);
+      alert('Formular erfolgreich gesendet!');
+      dispatch(setFormData(formData)); // Пример использования dispatch
+    } else {
+      setErrors(validationErrors);
     }
-    console.log('Formular übermittelt:', formData);
   };
 
   return (
@@ -45,6 +69,7 @@ const AppointmentForm = () => {
             onChange={handleChange}
             placeholder="Geben Sie Ihren Vornamen ein"
           />
+          {errors.firstName && <span>{errors.firstName}</span>}
         </InputGroup>
         <InputGroup>
           <label htmlFor="lastName">Nachname:</label>
@@ -56,6 +81,7 @@ const AppointmentForm = () => {
             onChange={handleChange}
             placeholder="Geben Sie Ihren Nachnamen ein"
           />
+          {errors.lastName && <span>{errors.lastName}</span>}
         </InputGroup>
         <InputGroup>
           <label htmlFor="email">E-Mail:</label>
@@ -67,6 +93,7 @@ const AppointmentForm = () => {
             onChange={handleChange}
             placeholder="Geben Sie Ihre E-Mail-Adresse ein"
           />
+          {errors.email && <span>{errors.email}</span>}
         </InputGroup>
         <InputGroup>
           <label htmlFor="phoneNumber">Telefonnummer (Pflichtfeld):</label>
@@ -76,6 +103,7 @@ const AppointmentForm = () => {
             onChange={(value) => handlePhoneNumberChange(value, 'phoneNumber')}
             inputProps={{ name: 'phoneNumber', required: true }}
           />
+          {errors.phoneNumber && <span>{errors.phoneNumber}</span>}
         </InputGroup>
         <InputGroup>
           <label htmlFor="backupPhoneNumber">Ersatz-Telefonnummer(optional auszufüllen):</label>
@@ -106,3 +134,5 @@ const AppointmentForm = () => {
 };
 
 export default AppointmentForm;
+
+
