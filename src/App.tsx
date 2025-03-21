@@ -1,7 +1,12 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Layout from './components/Layout/Layout'; // Предполагается, что компонент Layout находится в components
-import Home from './pages/Home/Home'; // Импортируем компонент главной страницы
-import AppointmentForm from './pages/Appointment/AppointmentForm'; // Импортируем компонент формы
+import Layout from './components/Layout/Layout'; 
+import Home from './pages/Home/Home'; 
+import AppointmentForm from './pages/Appointment/AppointmentForm'; 
+import Team from './pages/Team/Team';
+import DoctorPage from './pages/Doctor/DoctorPage';
+
+
+
 
 function App() {
     return (
@@ -10,6 +15,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} /> {/* Добавляем маршрут для главной страницы */}
                     <Route path="/appointment" element={<AppointmentForm />} /> {/* Новый маршрут */}
+                    <Route path="/team" element={<Team />} />
+                    <Route path="/doctor/:id" element={<DoctorPage />} />
+
+
+                    
                     {/* Добавляйте другие маршруты по мере необходимости */}
                 </Routes>
             </Layout>

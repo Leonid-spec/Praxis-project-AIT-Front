@@ -1,18 +1,15 @@
-//import React from 'react';
-//import './GlobalStyles.css';
-import ReactDOM from 'react-dom/client'; // Используем 'react-dom/client' вместо 'react-dom'
-import { Provider } from 'react-redux';
-import { store } from './store/store';
-import App from './App';
-import './styles/GlobalStyles.css';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux'; // Импорт Redux Provider
+import { StrictMode } from 'react'; // Строгий режим
+import App from './App'; // Ваш корневой компонент приложения
+import store from './store/store'; // Подключение Redux store
 
-
-const rootElement = document.getElementById('root');
-if (rootElement) {
-    const root = ReactDOM.createRoot(rootElement); // Создаём root
-    root.render(
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
-}
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <StrictMode> {/* Оборачиваем приложение в StrictMode */}
+    <Provider store={store}> {/* Оборачиваем приложение в Provider */}
+      <App />
+    </Provider>
+  </StrictMode>
+);

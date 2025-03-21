@@ -1,0 +1,46 @@
+.doctor-page-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px;
+    gap: 20px; /* Расстояние между контейнерами */
+    margin-top: 100px; /* Добавляем отступ сверху для избежания перекрытия хеддером */
+  }
+  
+  .left-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .info-wrapper {
+    max-width: 100%;
+  }
+  
+  .info-wrapper h1,
+  .info-wrapper h2,
+  .info-wrapper p {
+    margin-bottom: 20px;
+  }
+  
+  .placeholder-button {
+    padding: 10px 20px;
+    background-color: #9dd7ef;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .right-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .doctor-photo {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  

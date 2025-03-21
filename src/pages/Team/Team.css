@@ -1,0 +1,185 @@
+.team-page {
+    padding: 20px;
+    background-color: #f0f8ff;
+}
+
+.team-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.team-header h1 {
+    font-family: 'Mada', sans-serif;
+    font-size: 36px;
+    color: #2e3a59;
+    text-align: center;
+}
+
+.team-header strong {
+    font-weight: bold;
+}
+
+.team-photo-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%; /* Растягиваем блок на всю ширину */
+}
+
+.team-photo {
+    width: 100vw; /* Занимает всю ширину экрана */
+    height: auto; /* Сохраняем пропорции изображения */
+    border-radius: 10px; /* Скругляем углы */
+    filter: blur(5px); /* Лёгкое размытие */
+}
+
+.team-welcome-text {
+    background-color: #9bd7eb;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    height: 60px;
+    width: 100vw; /* Растягиваем текстовый блок на всю ширину экрана */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* Отступ сверху */
+    z-index: 2;
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(312.5px, 1fr)); /* Увеличиваем минимальную ширину карточек на 25% */
+    gap: 25px; /* Увеличиваем расстояние между карточками */
+    margin: 0 auto;
+    max-width: 1500px; /* Увеличиваем максимальную ширину контейнера */
+}
+
+.doctor-card {
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    padding: 25px; /* Увеличиваем отступ внутри карточки */
+    font-size: 1.25em; /* Увеличиваем общий размер текста */
+}
+
+.doctor-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.doctor-card h3 {
+    font-size: 40px; /* Увеличиваем размер заголовка */
+    color: #2e3a59;
+    margin: 15px 0;
+}
+
+.doctor-card p {
+    font-size: 28px; /* Увеличиваем размер описания */
+    color: #2e3a59;
+}
+
+.doctor-card button {
+    background-color: #9bd7eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 15px 25px; /* Увеличиваем размер кнопки */
+    font-size: 18px; /* Увеличиваем размер текста кнопки */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.doctor-card button:hover {
+    background-color: #77bce1;
+}
+
+/* Медиазапросы для мобильных устройств */
+@media (max-width: 768px) {
+    .team-header h1 {
+        font-size: 28px;
+    }
+
+    .team-photo-text-block {
+        margin-top: 80px; /* Уменьшенный отступ сверху */
+    }
+
+    .team-photo {
+        width: 100%; /* Убедимся, что фото адаптируется */
+        height: auto;
+    }
+
+    .team-welcome-text {
+        font-size: 18px; /* Уменьшенный размер текста */
+        height: 50px; /* Уменьшенная высота блока */
+    }
+
+    .team-container {
+        grid-template-columns: 1fr; /* Одна карточка на строку */
+        gap: 20px;
+    }
+
+    .doctor-card {
+        padding: 30px; /* Увеличиваем отступы внутри карточки */
+        font-size: 1.5em; /* Делаем текст ещё крупнее */
+    }
+
+    .doctor-card h3 {
+        font-size: 36px;
+    }
+
+    .doctor-card p {
+        font-size: 24px;
+    }
+
+    .doctor-card button {
+        font-size: 20px; /* Увеличиваем текст кнопки */
+        padding: 15px 30px; /* Увеличиваем размер кнопки */
+    }
+}
+
+@media (max-width: 480px) {
+    .team-photo-text-block {
+        margin-top: 60px; /* Ещё меньший отступ сверху */
+    }
+
+    .team-photo {
+        border-radius: 5px; /* Более скромное скругление углов */
+    }
+
+    .team-welcome-text {
+        font-size: 16px; /* Ещё меньше текст */
+        height: 40px;
+    }
+
+    .team-container {
+        grid-template-columns: 1fr; /* Одна карточка в ряд */
+    }
+
+    .doctor-card {
+        padding: 35px; /* Увеличиваем отступы внутри карточки */
+    }
+
+    .doctor-card h3 {
+        font-size: 32px;
+    }
+
+    .doctor-card p {
+        font-size: 22px;
+    }
+
+    .doctor-card button {
+        font-size: 18px;
+        padding: 15px 35px; /* Максимальная кнопка для мобильных */
+    }
+}
