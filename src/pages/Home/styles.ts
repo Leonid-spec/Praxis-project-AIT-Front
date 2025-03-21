@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+
+
 export const HomeContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,3 +55,26 @@ export const PlaceholderButton = styled.button`
     background-color: #357abf;
   }
 `;
+export const ModalStyles = {
+  content: {
+    position: 'fixed',
+    top: '10%', // Смещение вниз
+    left: '50%',
+    transform: 'translate(-50%, 0)',
+    width: '90%', // Ширина модального окна
+    maxWidth: '600px', // Максимальная ширина
+    height: 'auto', // Высота подстраивается под содержимое
+    padding: '20px',
+    borderRadius: '8px',
+    boxSizing: 'border-box', // Учитываем padding в ширине
+    boxShadow: '1px 1px 4px rgba(0, 0, 0, 0.25)',
+    overflowY: 'auto', // Вертикальная прокрутка, если форма слишком высокая
+    overflowX: 'hidden', // Убираем горизонтальную прокрутку
+    background: '#ffffff', // Прозрачный фон
+  },
+  overlay: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Затемнение фона
+  },
+} as const;
+
+

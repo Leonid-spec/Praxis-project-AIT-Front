@@ -1,27 +1,26 @@
 import styled from 'styled-components';
 
-// Общий контейнер для всей страницы
-export const PageContainer = styled.div`
-  padding-top: 100px; /* Отступ под фиксированное меню */
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  background-color: #f9f9f9; /* Нежный фон для всей страницы */
-`;
-
 // Контейнер формы
 export const FormContainer = styled.form`
   width: 100%;
-  max-width: 600px; /* Ограничиваем ширину формы */
-  background: #ffffff; /* Белый фон для формы */
+  max-width: 100%; /* Уменьшаем максимальную ширину, чтобы поместиться внутри модального окна */
+  background: #ffffff; /* Прозрачный белый фон */
   padding: 20px 30px;
   border-radius: 8px; /* Скруглённые углы */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Лёгкая тень */
+  //box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25); /* Приглушённая тень */
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Пространство между элементами формы */
+  gap: 20px;
+  margin: 0 auto; /* Центрирование формы по горизонтали */
+  box-sizing: border-box; /* Учитываем padding и border в размерах */
+
+  @media (max-width: 768px) {
+    padding: 15px;
+    max-width: 95%; /* Для маленьких экранов уменьшаем ширину */
+    box-shadow: none;
+  }
 `;
+
 
 // Заголовок формы
 export const FormTitle = styled.h2`
@@ -29,46 +28,83 @@ export const FormTitle = styled.h2`
   font-size: 1.5rem;
   color: #333333;
   text-align: center;
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
-// Группа элементов формы (для удобной группировки label, input и т.д.)
+// Группа полей ввода
 export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
 
   label {
-    font-size: 0.9rem;
-    color: #555555;
+    font-size: 16px; /* extraLight 16px */
+    color: #2e3a59;
   }
 
   input,
-  textarea,
-  select {
+  textarea {
     font-size: 1rem;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 8px;
     outline: none;
     width: 100%;
     box-sizing: border-box;
+    background: #ffffff;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 
     &:focus {
       border-color: #4a90e2;
+    }
+
+    &::placeholder {
+      color: #a0a4a8;
     }
   }
 
   textarea {
     resize: vertical;
-  }
-
-  span {
-    font-size: 0.8rem;
-    color: #888888;
+    overflow-y: auto;
   }
 `;
 
-// Кнопка отправки формы
+// Чекбоксы для выбора языков
+export const LanguageOptions = styled.div`
+  display: flex;
+  gap: 10px;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: #2e3a59;
+    background: #ffffff;
+    border: 1px solid #aba9a9;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: #a0a4a8;
+    }
+
+    input {
+      cursor: pointer;
+    }
+
+    input:checked + span {
+      background: #475bce;
+      color: #ffffff;
+    }
+  }
+`;
+
+// Кнопка отправки
 export const SubmitButton = styled.button`
   padding: 10px 20px;
   font-size: 1rem;
@@ -81,5 +117,10 @@ export const SubmitButton = styled.button`
 
   &:hover {
     background-color: #357abf;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
   }
 `;
