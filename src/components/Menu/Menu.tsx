@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import AdminMenu from '../AdminMenu/AdminMenu';
 import { 
   MenuContainer, 
   Logo, 
@@ -7,14 +9,13 @@ import {
   LanguagePanel, 
   LanguageLink, 
   Divider, 
-  AdminPanel, 
-  AdminLink, 
-  AdminIcon, 
+  AdminPanelBox, 
   NavLinkImg, 
   NavLinkText,
  } from './styles';
 
 const Menu = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <MenuContainer>
@@ -28,10 +29,14 @@ const Menu = () => {
       </Logo>
 
       <Nav>
-        <StyledNavLink to="/service">Leistungen</StyledNavLink>
+        {/* <StyledNavLink to="/service">Leistungen</StyledNavLink>
         <StyledNavLink to="/team">Team</StyledNavLink>
         <StyledNavLink to="/about">Über uns</StyledNavLink>
-        <StyledNavLink to="/contact">Kontakte</StyledNavLink>
+        <StyledNavLink to="/contact">Kontakte</StyledNavLink> */}
+        <StyledNavLink to="/">Leistungen</StyledNavLink>
+        <StyledNavLink to="/">Team</StyledNavLink>
+        <StyledNavLink to="/">Über uns</StyledNavLink>
+        <StyledNavLink to="/">Kontakte</StyledNavLink>
       </Nav>
 
       <SprachUundAdminbereich>
@@ -42,14 +47,9 @@ const Menu = () => {
           <Divider>|</Divider>
           <LanguageLink href="#">RU</LanguageLink>
         </LanguagePanel>
-        <AdminPanel>
-          <AdminLink to="/admin">
-            <AdminIcon 
-            src="https://th.bing.com/th/id/R.fbf39144bff5c02898fdc8fd583f84b6?rik=qLhp7D3LhK%2fQgA&pid=ImgRaw&r=0"
-            alt="Admin" />
-            Admin
-          </AdminLink>
-        </AdminPanel>
+        <AdminPanelBox>
+          <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        </AdminPanelBox>
       </SprachUundAdminbereich>
     </MenuContainer>
   );

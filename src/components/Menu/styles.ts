@@ -154,39 +154,8 @@ export const Divider = styled.span`
 color: #3d3d3d; 
 `;
 
-export const AdminPanel = styled.div`
+export const AdminPanelBox = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-`;
-
-export const AdminLink = styled(NavLink)`
-  text-decoration: none;
-  color: #3d3d3d;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-
-  &:hover {
-    color: #4a90e2;
-  }
-
-  &:active {
-    color: #9ceef1;
-  }
-
-  @media (max-width: 480px) { 
-    font-size: 1rem;
-  }
-`;
-
-export const AdminIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  margin-right: 5px;
-
-  @media (max-width: 480px) { 
-    width: 20px;
-    height: 20px;
-  }
 `;
