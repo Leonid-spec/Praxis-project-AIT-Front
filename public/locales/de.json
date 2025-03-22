@@ -20,6 +20,10 @@
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
         "subtitle": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN IHR SCHÖNSTES <HighlightedSpan>LÄCHELN"
+      },
+      "team_page": {
+        "welcome": "Willkommen bei",
+        "noSpecialization": "Keine Spezialisierung verfügbar"
       }
     },
 
@@ -92,7 +96,6 @@
 
           "phoneNumberRequired": "Dieses Feld ist erforderlich.",
           "phoneNumberInvalid": "Bitte geben Sie eine gültige Telefonnummer ein."
-
         },
         "messages": {
           "success": "Die Anmeldung war erfolgreich!",

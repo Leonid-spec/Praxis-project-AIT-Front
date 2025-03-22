@@ -176,12 +176,12 @@ export const LanguagePanel = styled.div`
   }
 `;
 
-export const LanguageLink = styled.a`
-  text-decoration: none;
-  color: #3d3d3d;
-  font-size: 1rem;
-  transition: color 0.3s;
-
+export const LanguageLink = styled.button`
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  
   &:hover {
     color: #4a90e2;
   }

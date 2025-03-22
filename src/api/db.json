@@ -1,0 +1,57 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "title_de": "title de 1",
+      "title_en": "title en 1",
+      "title_ru": "title ru 1",
+      "full_name": " Full Name 1",
+      "biogrphy_de": " Biogrphy de 1",
+      "biogrphy_en": " Biogrphy en 1",
+      "biogrphy_ru": " Biogrphy ru 1",
+      "specialisation_de": "Specialisation de 1",
+      "specialisation_en": "Specialisation en 1",
+      "specialisation_ru": "Specialisation ru 1",
+      "topimage": "https://cdn1.site-media.eu/images/360%2C1407x938%2B279%2B37/8183292/CatharinaBoekker.jpg",
+      "isActive": true,
+      "images": [
+        {
+          "id": 5,
+          "path": "https://via.placeholder.com/150"
+        },
+        {
+          "id": 6,
+          "path": "http:\\cloud.com.doctor1_3.png"
+        }
+      ]
+    },
+
+    {
+      "id": 2,
+      "title_de": "title de 2",
+      "title_en": "title en 2",
+      "title_ru": "title ru 2",
+      "full_name": " Full Name 2",
+      "biogrphy_de": " Biogrphy de 2",
+      "biogrphy_en": " Biogrphy en 2",
+      "biogrphy_ru": " Biogrphy ru 2",
+      "specialisation_de": "Specialisation de 2",
+      "specialisation_en": "Specialisation en 2",
+      "specialisation_ru": "Specialisation ru 2",
+      "topimage": "https://www.zahnaerzte-schwerte.de/wp-content/uploads/evelyn_flender.jpg",
+      "isActive": true,
+      "images": [
+        {
+          "id": 5,
+          "path": "https://www.zahnaerzte-schwerte.de/wp-content/uploads/evelyn_flender.jpg"
+        },
+        {
+          "id": 6,
+          "path": "https://via.placeholder.com/150"
+        }
+      ]
+    }
+  ]
+}
+
+

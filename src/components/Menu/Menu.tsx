@@ -46,11 +46,11 @@ const Menu = () => {
   
         <SprachUundAdminbereich>
           <LanguagePanel>
-            <LanguageLink href="#" onClick={() => changeLanguage('de')}>DE</LanguageLink>
+            <LanguageLink onClick={() => changeLanguage('de')}>DE</LanguageLink>
             <Divider>|</Divider>
-            <LanguageLink href="#" onClick={() => changeLanguage('en')}>EN</LanguageLink>
+            <LanguageLink onClick={() => changeLanguage('en')}>EN</LanguageLink>
             <Divider>|</Divider>
-            <LanguageLink href="#" onClick={() => changeLanguage('ru')}>RU</LanguageLink>
+            <LanguageLink onClick={() => changeLanguage('ru')}>RU</LanguageLink>
           </LanguagePanel>
           <AdminPanelBox>
             <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />

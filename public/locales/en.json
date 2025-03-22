@@ -20,6 +20,10 @@
       "home_page": {
         "title": "Welcome to our caring and professional dental practice",
         "subtitle": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+      },
+      "team_page": {
+        "welcome": "Welcome to",
+        "noSpecialization": "No specialization available"
       }
     },
 

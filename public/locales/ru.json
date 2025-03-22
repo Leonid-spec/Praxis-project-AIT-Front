@@ -19,6 +19,10 @@
       "home_page": {
         "title": "Добро пожаловать в стоматологическую клинику",
         "subtitle": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
+      },
+      "team_page": {
+        "welcome": "Добро пожаловать в",
+        "noSpecialization": "Специализация не указана"
       }
     },
 
