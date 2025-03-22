@@ -12,7 +12,7 @@ interface DoctorCardProps {
   id: number;
   photo: string;
   fullName: string;
-  specialization: string;
+  specialization: string | string[];
   onDetailsClick: (id: number) => void;
 }
 

@@ -27,7 +27,7 @@ export const TeamPhoto = styled.img`
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 `;
 
-export const HeadetTextBox = styled.div`
+export const HeaderTextBox = styled.div`
         display: flex;
     flex-direction: column;
     justify-content: center;

@@ -17,4 +17,8 @@ npm install -g json-server
 5) Для управления: 
 npm install @reduxjs/toolkit react-redux
 
+6) Запустить сервер
+json-server --watch src/db.json --port 5000
+
+
 

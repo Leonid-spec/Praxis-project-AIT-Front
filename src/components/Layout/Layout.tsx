@@ -19,11 +19,13 @@ const Layout = ({ children }: LayoutProps) => {
       <main className={styles.content}>
         {children}
       </main>
-      {!isAdminPanel && (
-        <div className={styles.footer}>
+      {/* {!isAdminPanel && ( */}
+        {/* // <div className={styles.footer}> */}
           <Footer />
-        </div>
-      )}
+        {/* </div> */} 
+        
+      )
+      {/* } */}
     </div>
   );
 };
