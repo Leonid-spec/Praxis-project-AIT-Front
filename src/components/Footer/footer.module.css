@@ -4,7 +4,7 @@
   align-items: stretch; /* Равная высота для всех столбцов */
   width: 100%; /* Footer растягивается на всю ширину */
   background-color: #A0EEF2; /* Цвет фона */
-  padding: 20px; /* Внутренние отступы */
+  padding: 40px 20px; /* Внутренние отступы */
 }
 
 .content {
@@ -50,13 +50,28 @@
   margin-bottom: 10px; /* Отступ под заголовком */
 }
 
-.kontakt p:nth-last-child(2), /* Для телефона */
-.kontakt p:last-child { /* Для email */
-  font-size: 20px; /* Размер текста */
-  font-weight: bold; /* Делаем текст жирным */
-  margin: 5px 10; /* Отступы между строками */
+.adresse {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Отступ между строками */
+
 }
 
+.daysOfWeek {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.kontaktInfo { /* Для email */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 20px; /* Размер текста */
+  font-weight: bold; /* Делаем текст жирным */
+  margin: 5px 10px; /* Отступы между строками */
+}
 
 .button {
   margin-top: auto; /* Кнопка располагается строго внизу столбца */

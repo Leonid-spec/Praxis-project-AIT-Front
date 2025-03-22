@@ -1,0 +1,108 @@
+{
+  "message": {
+    "header": {
+      "menu": {
+        "services": "Услуги",
+        "team": "Команда",
+        "about_us": "О нас",
+        "contact": "Контакты",
+        "home": "Главная",
+        "logo_alt": "Логотип"
+      }
+    },
+    "main": {
+      "use_oft": {
+        "button": {
+          "title": "Записаться на прием"
+        }
+      },
+      "home_page": {
+        "title": "Добро пожаловать в стоматологическую клинику",
+        "subtitle": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
+      }
+    },
+
+    "footer": {
+      "titles": {
+        "contact": "КОНТАКТЫ",
+        "time": "ЧАСЫ РАБОТЫ"
+      },
+      "daysOfWeek": {
+        "monday": "Понедельник",
+        "tuesday": "Вторник",
+        "wednesday": "Среда",
+        "thursday": "Четверг",
+        "friday": "Пятница"
+      }
+    },
+    "other": {
+      "loginAdmin": {
+        "title": "Вход",
+        "subtitle": "ВОЙДИТЕ В СВОЙ АККАУНТ",
+        "button": "Войти",
+        "labelUsername": "Имя пользователя:",
+        "labelPassword": "Пароль:",
+        "forgotPassword": {
+          "text": "Забыли пароль?",
+          "subtitle": "Введите свой email, чтобы сбросить пароль",
+          "button": "Отправить",
+          "back": "Вернуться к входу"
+        },
+        "errors": {
+          "missingCredentials": "Введите логин и пароль.",
+          "usernameLength": "Имя пользователя должно содержать от 2 до 16 символов.",
+          "passwordLength": "Пароль должен содержать хотя бы 1 символ.",
+          "missingEmail": "Введите email.",
+          "usernameStartsWithSpace": "Имя пользователя не должно начинаться с пробела.",
+          "passwordContainsSpaces": "Пароль не должен содержать пробелы."
+        },
+        "messages": {
+          "forgotPasswordTitle": "Сброс пароля",
+          "loginSuccess": "Вход выполнен успешно!",
+          "passwordResetSent": "Ссылка для сброса пароля отправлена!"
+        },
+        "placeholders": {
+          "username": "Ваше имя пользователя",
+          "password": "Ваш пароль",
+          "email": "Введите ваш email"
+        }
+      },
+      "makeAppointment": {
+        "formTitle": "Записаться на приём",
+        "labelService": "Услуга:",
+        "labelFirstName": "Имя:",
+        "labelSecondName": "Фамилия:",
+        "labelPhoneNumber1": "Номер телефона:",
+        "labelPhoneNumber2": "Дополнительный номер (по желанию):",
+        "labelComment": "Комментарий:",
+        "language": "Язык:",
+        "textAreaDate": "Ваши пожелания по записи на приём:",
+        "buttonText": "Отправить",
+        "errors": {
+          "firstNameRequired": "Имя обязательно.",
+          "firstNameInvalid": "Имя должно содержать только буквы.",
+          "secondNameRequired": "Фамилия обязательна.",
+          "secondNameInvalid": "Фамилия должна содержать только буквы.",
+          "phoneNumberRequired": "Номер телефона обязателен.",
+          "phoneNumberInvalid": "Пожалуйста, укажите корректный номер телефона.",
+          "emailRequired": "Электронная почта обязательна.",
+          "emailInvalid": "Пожалуйста, укажите корректный адрес электронной почты.",
+          "serviceRequired": "Пожалуйста, выберите услугу.",
+          "languageRequired": "Необходимо выбрать язык.",
+          "textAreaDateRequired": "Пожалуйста, укажите ваши пожелания по записи на приём."
+        },
+        "messages": {
+          "appointmentScheduled": "Ваш приём успешно записан.",
+          "appointmentFailed": "Возникла ошибка при записи на приём. Пожалуйста, попробуйте позже."
+        },
+        "placeholders": {
+          "service": "Выберите нужную вам услугу",
+          "firstName": "Введите свое имя",
+          "lastName": "Введите вашу фамилию",
+          "textAreaDate": "Здесь вы можете указать свои пожелания по дате и времени приёма (до 1024 символов)",
+          "textAreaComment": "Оставьте комментарий (до 1024 символов)"
+        }
+      }
+    }
+  }
+}

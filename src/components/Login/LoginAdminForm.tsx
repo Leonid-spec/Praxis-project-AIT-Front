@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FaUser, FaLock, FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa"; // Добавляем иконки глаза
+import { useTranslation } from "react-i18next";
+import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 import {
   Overlay,
   FormContainer,
@@ -7,6 +8,7 @@ import {
   Title,
   Subtitle,
   ForgotPasswordText,
+  ButtonCloseContainer,
 } from "./styles";
 import ButtonClose from "../Button/ButtonClose/ButtonClose";
 import SubmitButton from "../Button/SubmitButton/SubmitButton";
@@ -22,56 +24,96 @@ const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLo
   const [notification, setNotification] = useState<{ message: string; type: "error" | "success" } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (username[0] === ' ') {
+      setNotification({ message: t("message.other.loginAdmin.errors.usernameStartsWithSpace"), type: "error" });
+      return;
+    }
+    if (/\s/.test(password)) {
+      setNotification({ message: t("message.other.loginAdmin.errors.passwordContainsSpaces"), type: "error" });
+      return;
+    }
+
     if (!username.trim() || !password.trim()) {
-        setNotification({ message: "Both Username and Password are required.", type: "error" });
-        return;
+      setNotification({ message: t("message.other.loginAdmin.errors.missingCredentials"), type: "error" });
+      return;
     }
     if (username.length < 2 || username.length > 16) {
-      setNotification({ message: "Username must be between 2 and 16 characters.", type: "error" });
+      setNotification({ message: t("message.other.loginAdmin.errors.usernameLength"), type: "error" });
       return;
     }
     if (password.length < 1) {
-      setNotification({ message: "Password must al least 1 character", type: "error" });
+      setNotification({ message: t("message.other.loginAdmin.errors.passwordLength"), type: "error" });
       return;
     }
+    
+    // Формуємо об'єкт JSON
+  const loginData = {
+    username,
+    password,
+  };
 
-    console.log({ username, password });
-    setNotification({ message: "Login successful!", type: "success" });
+  console.log("Login Data:", JSON.stringify(loginData, null, 2));
 
-    setTimeout(() => {
-      onLoginSuccess();
-      onClose();
-      navigate("/admin-panel");
-    }, 1000);
+  fetch("https://your-backend.com/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Server Response:", data);
+      if (data.success) {
+        setNotification({ message: t("message.other.loginAdmin.messages.loginSuccess"), type: "success" });
+        setTimeout(() => {
+          onLoginSuccess();
+          onClose();
+          navigate("/admin-panel");
+        }, 1000);
+      } else {
+        setNotification({ message: data.message || "Login failed", type: "error" });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      setNotification({ message: "Something went wrong", type: "error" });
+    });
+
+    // console.log({ username, password });
+    setNotification({ message: t("message.other.loginAdmin.messages.loginSuccess"), type: "success" });
+
+    // setTimeout(() => {
+    //   onLoginSuccess();
+    //   onClose();
+    //   navigate("/admin-panel");
+    // }, 1000);
   };
 
   const handleForgotPassword = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) {
-      setNotification({ message: "Please enter an email address.", type: "error" });
+      setNotification({ message: t("message.other.loginAdmin.errors.missingEmail"), type: "error" });
       return;
     }
 
     console.log({ email });
-    setNotification({ message: "Password reset link has been sent!", type: "success" });
-    setShowForgotPassword(false); 
+    setNotification({ message: t("message.other.loginAdmin.messages.passwordResetSent"), type: "success" });
+    setShowForgotPassword(false);
   };
 
   return (
     <Overlay>
       <FormContainer onSubmit={showForgotPassword ? handleForgotPassword : handleLogin} as="form">
-        <ButtonClose onClick={onClose} />
+        <ButtonCloseContainer><ButtonClose onClick={onClose} /></ButtonCloseContainer>
         <TitleAndSub>
-          <Title>{showForgotPassword ? "Forgot Password" : "Login"}</Title>
-          <Subtitle>
-            {showForgotPassword
-              ? "Enter your email to reset your password"
-              : "SIGN IN TO YOUR ACCOUNT"}
-          </Subtitle>
+          <Title>{t(showForgotPassword ? "message.other.loginAdmin.messages.forgotPasswordTitle" : "message.other.loginAdmin.title")}</Title>
+          <Subtitle>{t(showForgotPassword ? "message.other.loginAdmin.forgotPassword.subtitle" : "message.other.loginAdmin.subtitle")}</Subtitle>
         </TitleAndSub>
 
         {notification && (
@@ -85,36 +127,42 @@ const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLo
         {showForgotPassword ? (
           <>
             <TextInput
+            label="Email"
+              name="envelopeIcon"
               icon={<FaEnvelope />}
               type="email"
-              placeholder="Enter your email"
+              placeholder={t("message.other.loginAdmin.placeholders.email")}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            <SubmitButton type="submit">Send</SubmitButton>
+            <SubmitButton type="submit">{t("message.other.loginAdmin.forgotPassword.button")}</SubmitButton>
             <ForgotPasswordText onClick={() => setShowForgotPassword(false)}>
-              Back to Login
+              {t("message.other.loginAdmin.forgotPassword.back")}
             </ForgotPasswordText>
           </>
         ) : (
           <>
             <TextInput
+              label={t("message.other.loginAdmin.labelUsername")}
+              name="username"
               icon={<FaUser />}
               type="text"
-              placeholder="Your username"
+              placeholder={t("message.other.loginAdmin.placeholders.username")}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: "relative" }}>
               <TextInput
+                label={t("message.other.loginAdmin.labelPassword")}
+                name="password"
                 icon={<FaLock />}
-                type={showPassword ? "text" : "password"} 
-                placeholder="Your password"
+                type={showPassword ? "text" : "password"}
+                placeholder={t("message.other.loginAdmin.placeholders.password")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <div 
-                onClick={() => setShowPassword(!showPassword)} 
+              <div
+                onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: "absolute",
                   right: "10px",
@@ -123,12 +171,11 @@ const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLo
                   cursor: "pointer",
                 }}
               >
-                {showPassword ? <FaEyeSlash /> : <FaEye />} 
               </div>
             </div>
-            <SubmitButton type="submit">Login</SubmitButton>
+            <SubmitButton type="submit">{t("message.other.loginAdmin.button")}</SubmitButton>
             <ForgotPasswordText onClick={() => setShowForgotPassword(true)}>
-              Forgot password?
+              {t("message.other.loginAdmin.forgotPassword.text")}
             </ForgotPasswordText>
           </>
         )}
@@ -138,4 +185,3 @@ const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLo
 };
 
 export default LoginAdminForm;
-

@@ -1,9 +1,11 @@
 import Menu from "../Menu/Menu";
 
 const Header = () => {
-  
+
   return (
-    <Menu />
+    <>
+      <Menu />
+    </>
     );
 };
 
