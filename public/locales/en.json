@@ -1,0 +1,110 @@
+{
+  "message": {
+    "header": {
+      "menu": {
+        "services": "Services",
+        "team": "Team",
+        "about_us": "About Us",
+        "contact": "Contact",
+        "home": "Home",
+        "logo_alt": "Logo"
+      }
+    },
+
+    "main": {
+      "use_oft": {
+        "button": {
+          "title": "Book Appointment"
+        }
+      },
+      "home_page": {
+        "title": "Welcome to our caring and professional dental practice",
+        "subtitle": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+      }
+    },
+
+    "footer": {
+      "titles": {
+        "contact": "CONTACTS",
+        "time": "OPENING HOURS"
+      },
+      "daysOfWeek": {
+        "monday": "Monday",
+        "tuesday": "Tuesday",
+        "wednesday": "Wednesday",
+        "thursday": "Thursday",
+        "friday": "Friday"
+      }
+    },
+
+    "other": {
+      "loginAdmin": {
+        "title": "Login",
+        "subtitle": "SIGN IN TO YOUR ACCOUNT",
+        "button": "Sign In",
+        "labelUsername": "Username:",
+        "labelPassword": "Password:",
+        "forgotPassword": {
+          "text": "Forgot password?",
+          "subtitle": "Enter your email to reset your password",
+          "button": "Send",
+          "back": "Back to login"
+        },
+        "errors": {
+          "missingCredentials": "Please enter username and password.",
+          "usernameLength": "Username must be between 2 and 16 characters.",
+          "passwordLength": "Password must have at least 1 character.",
+          "missingEmail": "Please enter your email.",
+          "usernameStartsWithSpace": "Username should not start with a space.",
+          "passwordContainsSpaces": "Password should not contain spaces."
+        },
+        "messages": {
+          "forgotPasswordTitle": "Reset Password",
+          "loginSuccess": "Login successful!",
+          "passwordResetSent": "Password reset link has been sent!"
+        },
+        "placeholders": {
+          "username": "Your username",
+          "password": "Your password",
+          "email": "Enter your email"
+        }
+      },
+      "makeAppointment": {
+        "formTitle": "Make an appointment",
+        "labelService": "Service:",
+        "labelFirstName": "First name:",
+        "labelSecondName": "Last name:",
+        "labelPhoneNumber1": "Phone number:",
+        "labelPhoneNumber2": "Additional phone number (optional):",
+        "labelComment": "Comment:",
+        "language": "Language:",
+        "textAreaDate": "Your preferences for the appointment:",
+        "buttonText": "Submit",
+        "errors": {
+          "firstNameRequired": "First name is required.",
+          "firstNameInvalid": "First name can only contain letters.",
+          "secondNameRequired": "Last name is required.",
+          "secondNameInvalid": "Last name can only contain letters.",
+          "phoneNumberRequired": "Phone number is required.",
+          "phoneNumberInvalid": "Please provide a valid phone number.",
+          "emailRequired": "Email address is required.",
+          "emailInvalid": "Please provide a valid email address.",
+          "serviceRequired": "Please select a service.",
+          "languageRequired": "Language must be selected.",
+          "textAreaDateRequired": "Please provide your preferences for the appointment."
+        },
+        "messages": {
+          "appointmentScheduled": "Your appointment has been successfully scheduled.",
+          "appointmentFailed": "There was a problem scheduling your appointment. Please try again later."
+        },
+        "placeholders": {
+          "service": "Select the preferred service",
+          "firstName": "Enter your first name",
+          "lastName": "Enter your surname",
+          "textAreaDate": "Here you can enter your preferences for the date and time of your appointment (up to 1024 characters)",
+          "textAreaComment": "Leave a comment (up to 1024 characters)"
+        }
+      }
+    }
+  }
+}

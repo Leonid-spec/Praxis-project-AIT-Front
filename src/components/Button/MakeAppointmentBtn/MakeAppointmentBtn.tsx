@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyledButton } from './styles';
+import { ModalContext } from '../../Modal/ModalContext';
 
 interface MakeAppointmentBtnProps {
   text: string; 
@@ -8,8 +9,18 @@ interface MakeAppointmentBtnProps {
 }
 
 const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, disabled }) => {
+  const { openModal } = useContext(ModalContext);
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      openModal();
+    }
+  };
+
   return (
-    <StyledButton onClick={onClick} disabled={disabled}>
+    <StyledButton onClick={handleClick} disabled={disabled}>
       {text}
     </StyledButton>
   );

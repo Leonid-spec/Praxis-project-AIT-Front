@@ -7,7 +7,7 @@ export const Overlay = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: rgba(171, 169, 169, 0.65);
-  z-index: 1;
+  z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,21 +16,26 @@ export const Overlay = styled.div`
 export const FormContainer = styled.div`
   position: relative;
   width: 350px;
-  padding: 30px;
+  padding: 40px 30px 20px;
   background-color: #fff;
   border-radius: 6px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
   z-index: 2;
+  /* align-items: center; */
+  /* text-align: center; */
 `;
 
 export const TitleAndSub = styled.div`
+display: flex;
+flex-direction: column;
+gap: 10px;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  margin: 0;
+  margin-bottom: 14px;
 `;
 
 
@@ -53,3 +58,10 @@ export const ForgotPasswordText = styled.span`
   text-decoration: underline;
 `;
 
+export const ButtonCloseContainer = styled.div`
+position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: flex-end;
+`;
