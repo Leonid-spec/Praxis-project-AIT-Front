@@ -1,32 +1,22 @@
-
-import './utils/i18n';
-import React from 'react';
+import * as React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import { Provider } from 'react-redux';
-// import store from './store';
+import store from './store/store'; 
+import App from './App';
+import { ModalProvider } from './components/Modal/ModalContext';
 
-const root = ReactDOM.createRoot(document.getElementById('root')!);
+console.log('Store passed to Provider:', store);
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  console.error('Root element not found in HTML.');
+}
+
+const root = ReactDOM.createRoot(rootElement!);
 root.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>
-  <>
-    <App />
-  </>
+  <Provider store={store}>
+     <ModalProvider>
+      <App />
+    </ModalProvider>
+  </Provider>
 );
-
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import { Provider } from 'react-redux';
-// import { store } from './store/store'; // Імпортуємо ваше сховище
-// import App from './App';
-
-// ReactDOM.render(
-//   <Provider store={store}> {/* Обгортаємо в Provider */}
-//     <App />
-//   </Provider>,
-//   document.getElementById('root')
-// );
-
-

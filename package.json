@@ -25,6 +25,7 @@
     "react-phone-input-2": "^2.15.1",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.4.0",
+    "redux": "^5.0.1",
     "shadcn-ui": "^0.9.5",
     "styled-components": "^6.1.16"
   },

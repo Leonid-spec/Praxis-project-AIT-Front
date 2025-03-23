@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
   gap: 30px;
-  padding: 40px 20px;
+  padding: 50px 20px;
   max-width: 1200px;
   margin: 50px auto; // !important 50 => 0
   align-items: center;

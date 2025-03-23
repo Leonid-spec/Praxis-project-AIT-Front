@@ -12,6 +12,7 @@ import Team from './pages/Team/Team';
 Modal.setAppElement('#root');
 
 function App() {
+  console.log('App rendered');
   return (
     <ModalProvider>
       <AppointmentModal />
