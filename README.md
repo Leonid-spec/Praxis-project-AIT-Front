@@ -15,12 +15,10 @@ npm install react-modal
 npm install -g json-server
 
 5) Для управления: 
-npm install @reduxjs/toolkit react-redux
-npm install redux react-redux
-
+npm install @reduxjs/toolkit react-redux  redux
 
 6) Запустить сервер
-json-server --watch src/db.json --port 5000
+ json-server --watch src/api/doctors.json --port 5000
 
 7) 
 

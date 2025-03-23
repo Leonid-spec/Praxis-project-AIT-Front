@@ -23,6 +23,7 @@
       },
       "team_page": {
         "welcome": "Welcome to",
+        "moreInfoBtn": "Learn more",
         "noSpecialization": "No specialization available"
       }
     },

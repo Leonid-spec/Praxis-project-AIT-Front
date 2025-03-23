@@ -15,7 +15,9 @@ export const Card = styled.div`
 
 export const Photo = styled.img`
   width: 100%;
-  max-height: 400px;
+  /* max-height: 400px; */
+  max-height: 200px;
+  object-fit: cover;
 `;
 
 export const Info = styled.div`

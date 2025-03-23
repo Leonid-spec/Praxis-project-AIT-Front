@@ -50,7 +50,7 @@ export const HighlightText = styled.span`
 
 export const DoctorsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   margin-top: 40px;
 `;
