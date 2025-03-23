@@ -9,25 +9,22 @@ import AppointmentModal from './components/Modal/AppointmentModal';
 import GlobalStyles from './styles/GlobalStyles';
 import Team from './pages/Team/Team';
 import DoctorDetails from './pages/PageDetails/DoctorDetails/DoctorDetails';
-import TestJson from './components/TestJson';
 
 Modal.setAppElement('#root');
 
 function App() {
-  console.log('App rendered');
   return (
     <ModalProvider>
       <AppointmentModal />
       <Router>
         <GlobalStyles />
-        {/* <TestJson/> */}
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/appointment" element={<AppointmentForm />} />
 
             <Route path="/team" element={<Team />} /> 
-            {/* <Route path="/doctor/:id" element={<DoctorDetails />} /> */}
+            <Route path="/doctor/:id" element={<DoctorDetails />} />
             
             <Route path="/admin-panel" element={<AdminPanel />} />
           </Routes>
