@@ -1,51 +1,70 @@
 import React from "react";
-import styled from "styled-components";
+import { Wrapper, Label, RequiredMarker, InputContainer, InputIcon, StyledInput, ErrorText, StyledTextarea } from "./styles";
+
 
 interface TextInputProps {
-  type?: string; 
+  label: string;
+  type?: string;
+  id?: string;
+  name: string;
   placeholder?: string; 
-  value: string; 
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; 
-  icon?: React.ReactNode; 
+  value?: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  icon?: React.ReactNode;
+  required?: boolean;
+  error?: string;
+  maxLength?: number;
+  rows?: number;
 }
 
-const TextInput: React.FC<TextInputProps> = ({ type = "text", placeholder, value, onChange, icon }) => {
+const TextInput: React.FC<TextInputProps> = ({
+  label,
+  type = "text",
+  id,
+  name,
+  placeholder,
+  value,
+  onChange,
+  icon,
+  required = false,
+  error,
+  maxLength,
+  rows = 5
+}) => {
   return (
-    <InputContainer>
-      {icon && <InputIcon>{icon}</InputIcon>}
-      <StyledInput
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </InputContainer>
+    <Wrapper>
+      {placeholder && (
+        <Label>
+          {label}
+          {required && <RequiredMarker>*</RequiredMarker>}
+        </Label>
+      )}
+      <InputContainer $hasError={!!error}>
+        {icon && <InputIcon>{icon}</InputIcon>}
+        {type === "textarea" ? (
+          <StyledTextarea
+            id={id}
+            name={name}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+            maxLength={maxLength}
+            rows={rows}
+          />
+        ) : (
+          <StyledInput
+            id={id}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onChange={onChange}
+          />
+        )}
+      </InputContainer>
+      {error && <ErrorText>{error}</ErrorText>}
+    </Wrapper>
   );
 };
 
 export default TextInput;
-
-const InputContainer = styled.div`
-  display: flex;
-  align-items: center;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 8px;
-  background: #f9f9f9;
-`;
-
-const InputIcon = styled.div`
-  width: 15px;
-  height: 15px;
-  color: #a0a4a8;
-  margin-right: 8px;
-`;
-
-const StyledInput = styled.input`
-  border: none;
-  outline: none;
-  background: transparent;
-  flex: 1;
-  font-size: 16px;
-  font-weight: 200;
-`;

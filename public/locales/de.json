@@ -1,0 +1,115 @@
+{
+  "message": {
+    "header": {
+      "menu": {
+        "services": "Leistungen",
+        "team": "Team",
+        "about_us": "Über uns",
+        "contact": "Kontakte",
+        "home": "Startseite",
+        "logo_alt": "Logo"
+      }
+    },
+
+    "main": {
+      "use_oft": {
+        "button": {
+          "title": "Termin Buchen"
+        }
+      },
+      "home_page": {
+        "title": "Willkommen in unserer professionellen Zahnarztpraxis",
+        "subtitle": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN IHR SCHÖNSTES <HighlightedSpan>LÄCHELN"
+      },
+      "team_page": {
+        "welcome": "Willkommen bei",
+        "moreInfoBtn": "Mehr erfahren",
+        "noSpecialization": "Keine Spezialisierung verfügbar"
+      }
+    },
+
+    "footer": {
+      "titles": {
+        "contact": "KONTAKTE",
+        "time": "SPRECHZEITEN"
+      },
+      "daysOfWeek": {
+        "monday": "Montag",
+        "tuesday": "Dienstag",
+        "wednesday": "Mittwoch",
+        "thursday": "Donnerstag",
+        "friday": "Freitag"
+      }
+    },
+
+    "other": {
+      "loginAdmin": {
+        "title": "Anmeldung",
+        "subtitle": "MELDEN SIE SICH AN IHREM KONTO AN",
+        "button": "Anmelden",
+        "labelUsername": "Benutzername:",
+        "labelPassword": "Password:",
+        "forgotPassword": {
+          "text": "Passwort vergessen?",
+          "subtitle": "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen",
+          "button": "Senden",
+          "back": "Zurück zur Anmeldung"
+        },
+        "errors": {
+          "missingCredentials": "Bitte geben Sie Benutzername und Passwort ein.",
+          "usernameLength": "Der Benutzername muss zwischen 2 und 16 Zeichen lang sein.",
+          "passwordLength": "Das Passwort muss mindestens 1 Zeichen enthalten.",
+          "missingEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+          "usernameStartsWithSpace": "Der Benutzername sollte nicht mit einem Leerzeichen beginnen.",
+          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten."
+        },
+        "messages": {
+          "forgotPasswordTitle": "Passwort zurücksetzen",
+          "loginSuccess": "Anmeldung erfolgreich!",
+          "passwordResetSent": "Passwort-Zurücksetzungslink wurde gesendet!"
+        },
+        "placeholders": {
+          "username": "Ihr Benutzername",
+          "password": "Ihr Passwort",
+          "email": "Geben Sie Ihre E-Mail ein"
+        }
+      },
+      "makeAppointment": {
+        "formTitle": "Termin vereinbaren",
+        "labelService": "Leistung:",
+        "labelFirstName": "Vorname:",
+        "labelSecondName": "Nachname:",
+        "labelPhoneNumber1": "Telefonnummer:",
+        "labelPhoneNumber2": "Zusätzliche Telefonnummer (optional):",
+        "labelComment": "Komentar:",
+        "language": "Sprache:",
+        "textAreaDate": "Ihre Wünsche für den Termin:",
+        "buttonText": "Absenden",
+        "errors": {
+          "nameRequired": "Dieses Feld darf nicht leer sein.",
+          "nameLength": "Der Name muss mindestens 2 Zeichen lang sein.",
+          "nameNotChar": "Ungültige Zeichen im Namen.",
+
+          "emailRequired": "Dieses Feld darf nicht leer sein.",
+          "emailWithoutDot": "Die E-Mail-Adresse muss ein @ enthalten.",
+          "emailDomain": "Die E-Mail-Adresse muss einen gültigen Domainnamen mit einer Punktstruktur enthalten.",
+          "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+
+          "phoneNumberRequired": "Dieses Feld ist erforderlich.",
+          "phoneNumberInvalid": "Bitte geben Sie eine gültige Telefonnummer ein."
+        },
+        "messages": {
+          "success": "Die Anmeldung war erfolgreich!",
+          "error": "Bitte beheben Sie die Fehler, bevor Sie das Formular absenden."
+        },
+        "placeholders": {
+          "service": "Wählen Sie die gewünschte Dienstleistung",
+          "firstName": "Geben Sie Ihren Vornamen ein",
+          "lastName": "Geben Sie Ihren Nachnamen ein",
+          "textAreaDate": "Hier können Sie Ihre Wünsche zum Datum und zur Uhrzeit Ihres Termins eingeben (bis zu 1024 Zeichen)",
+          "textAreaComment": "Hinterlassen Sie einen Kommentar (bis zu 1024 Zeichen)"
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,8 @@
   
   .content {
     flex: 1; 
+    background-color: #f6f9fc;
+
   }
   
   .footer {
