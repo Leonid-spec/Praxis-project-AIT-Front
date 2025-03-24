@@ -20,6 +20,7 @@ import {
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { Service } from "../../store/slices/serviceSlice";
+import servicesData from "../../api/service.json"; // Локальный JSON для тестовых данных
 
 type Language = "en" | "de" | "ru";
 
@@ -27,7 +28,7 @@ const ServicePage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const { services, loading, error } = useSelector(
-    (state: RootState) => state.service // Убедитесь, что поле "service" определено в store
+    (state: RootState) => state.service
   );
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as Language;
@@ -36,11 +37,10 @@ const ServicePage: React.FC = () => {
     const fetchServices = async () => {
       dispatch(fetchServicesStart());
       try {
-        const response = await fetch("http://localhost:5000/services");
-        const data = await response.json();
-        dispatch(fetchServicesSuccess(data));
+        // Используем локальные данные вместо API-запроса
+        dispatch(fetchServicesSuccess(servicesData.services));
       } catch (err: any) {
-        dispatch(fetchServicesFailure(err.message || t("errorFetchingServices")));
+        dispatch(fetchServicesFailure("Failed to load services"));
       }
     };
 
@@ -77,20 +77,27 @@ const ServicePage: React.FC = () => {
         ) : error ? (
           <p>{t("errorFetchingServices")}</p>
         ) : services.length > 0 ? (
-          services.map((service: Service) => (
-            <ServiceCard
-              key={service.id}
-              id={service.id}
-              photo={
-                service.topimage
-                  ? service.topimage.replace(/\\/g, "/")
-                  : "https://via.placeholder.com/150"
-              }
-              name={service.name}
-              description={service.description_en || ""}
-              onDetailsClick={() => handleDetailsClick(service.id)}
-            />
-          ))
+          services.map((service: Service) => {
+            const descriptionKey = `description_${currentLanguage}` as keyof Service;
+            const description = service[descriptionKey] || t("noDescription");
+            const validDescription =
+              typeof description === "string" ? description : t("noDescription"); // Проверка типа данных
+
+            return (
+              <ServiceCard
+                key={service.id}
+                id={service.id}
+                photo={
+                  service.topimage
+                    ? service.topimage.replace(/\\/g, "/")
+                    : "https://via.placeholder.com/150"
+                }
+                name={service.name}
+                description={validDescription} // Безопасно передаём только строку
+                onDetailsClick={() => handleDetailsClick(service.id)}
+              />
+            );
+          })
         ) : (
           <p>{t("noServicesAvailable")}</p>
         )}
