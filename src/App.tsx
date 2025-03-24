@@ -8,7 +8,9 @@ import Modal from 'react-modal';
 import AppointmentModal from './components/Modal/AppointmentModal';
 import GlobalStyles from './styles/GlobalStyles';
 import Team from './pages/Team/Team';
+import Service from './pages/Service/Service';
 import DoctorDetails from './pages/PageDetails/DoctorDetails/DoctorDetails';
+import ServiceDetails from './pages/PageDetails/ServiceDetails/ServiceDetails';
 
 Modal.setAppElement('#root');
 
@@ -25,6 +27,11 @@ function App() {
 
             <Route path="/team" element={<Team />} /> 
             <Route path="/doctor/:id" element={<DoctorDetails />} />
+
+            <Route path="/service" element={<Service />} /> 
+            <Route path="/service/:id" element={<ServiceDetails />} />
+
+
             
             <Route path="/admin-panel" element={<AdminPanel />} />
           </Routes>

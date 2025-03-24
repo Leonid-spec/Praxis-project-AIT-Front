@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface Service {
+
+export interface Service {
   id: number;
   name: string;
   topimage?: string;
@@ -9,6 +10,7 @@ interface Service {
   description_en?: string;
   description_ru?: string;
 }
+
 
 interface ServiceState {
   services: Service[];
@@ -53,6 +55,7 @@ const serviceSlice = createSlice({
   },
 });
 
+
 export const {
   fetchServicesStart,
   fetchServicesSuccess,
@@ -61,5 +64,6 @@ export const {
   updateService,
   deleteService,
 } = serviceSlice.actions;
+
 
 export default serviceSlice.reducer;
