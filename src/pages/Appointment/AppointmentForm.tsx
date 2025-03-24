@@ -75,6 +75,15 @@ const AppointmentForm = () => {
     return "";
   };
 
+  const capitalizeWords = (text: string): string => {
+    return text
+      .split(/\s+/) 
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
+      .join(" "); 
+  };
+  
+  
+
   const validateEmail = (email: string): string => {
     if (!email) return t("message.other.makeAppointment.errors.emailRequired");
 
@@ -108,10 +117,11 @@ const AppointmentForm = () => {
     const { name, value } = e.target;
     let updatedValue = value;
     if (name === "first_name" || name === "last_name") {
-      updatedValue = value.charAt(0).toUpperCase() + value.slice(1);
+      updatedValue = capitalizeWords(value); 
     }
     setFormData({ ...formData, [name]: updatedValue });
   };
+  
 
   const handlePhoneChange = (value: string, name: string) => {
     setFormData({ ...formData, [name]: value });
