@@ -1,6 +1,6 @@
 // const API_URL = "http://localhost:5000/doctors"; 
-
 import { Doctor } from "../store/types/doctorTypes";
+
 
 // export const getDoctors = async () => {
 //     const response = await fetch(API_URL);
