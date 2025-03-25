@@ -11,6 +11,7 @@ import Team from './pages/Team/Team';
 import Service from './pages/Service/Service';
 import DoctorDetails from './pages/PageDetails/DoctorDetails/DoctorDetails';
 import ServiceDetails from './pages/PageDetails/ServiceDetails/ServiceDetails';
+import About from './pages/About/About';
 
 Modal.setAppElement('#root');
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/appointment" element={<AppointmentForm />} />
 
             <Route path="/team" element={<Team />} /> 
+            <Route path="/about" element={<About />} /> 
             <Route path="/doctor/:id" element={<DoctorDetails />} />
 
             <Route path="/service" element={<Service />} /> 
