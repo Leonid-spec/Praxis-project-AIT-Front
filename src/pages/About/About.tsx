@@ -4,12 +4,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./about.module.css";
 
-// Типизация для изображений
+
 interface ImageData {
     src: string;
 }
 
-// Кастомные стрелки
+
 const ArrowLeft: React.FC<{ onClick?: () => void }> = ({ onClick }) => (
     <div className={`${styles.arrow} ${styles.arrowLeft}`} onClick={onClick}>
         ‹
@@ -33,8 +33,8 @@ const About: React.FC = () => {
         slidesToScroll: 1,
         centerMode: true,
         centerPadding: "0px",
-        prevArrow: <ArrowLeft />, // Левая стрелка
-        nextArrow: <ArrowRight />, // Правая стрелка
+        prevArrow: <ArrowLeft />, 
+        nextArrow: <ArrowRight />, 
     };
 
     const images: ImageData[] = [
@@ -45,7 +45,8 @@ const About: React.FC = () => {
     ];
 
     const handleClick = (index: number) => {
-        setSelectedIndex(index === selectedIndex ? null : index); // Увеличиваем или сбрасываем выбранное фото
+        setSelectedIndex(index === selectedIndex ? null : index); // 
+        
     };
 
     return (
