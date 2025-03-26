@@ -29,8 +29,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <Name>{name}</Name>
         <Description>{description}</Description>
         <DetailsButton onClick={() => onDetailsClick(id)}>
-          {t("message.main.services_page.moreInfoBtn")}
-        </DetailsButton>
+                  {t("message.main.team_page.moreInfoBtn")} 
+                </DetailsButton>
       </Info>
     </Card>
   );

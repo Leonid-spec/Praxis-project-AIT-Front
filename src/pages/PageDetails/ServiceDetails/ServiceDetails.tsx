@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import servicesData from "../../../api/service.json";
+import doctorsData from "../../../api/doctors.json";
 import {
   Container,
   ContentWrapper,
@@ -9,7 +9,8 @@ import {
   MainImage,
   InfoWrapper,
   Title,
-  Description,
+  Specialization,
+  Biography,
   GalleryWrapper,
   GalleryTitle,
   ImagesGrid,
@@ -18,48 +19,55 @@ import {
 
 type Language = "en" | "de" | "ru";
 
-const ServiceDetails: React.FC = () => {
+const DoctorDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as Language;
 
-  const service = servicesData.services.find((srv) => srv.id === Number(id));
+  const doctor = doctorsData.doctors.find((doc) => doc.id === Number(id));
 
-  if (!service) {
+  if (!doctor) {
     return (
       <Container>
-        <p>{t("serviceNotFound")}</p>
+        <p>{t("doctorNotFound")}</p>
       </Container>
     );
   }
 
-  const descriptionKey = `description_${currentLanguage}` as keyof typeof service;
-  const description =
-    typeof service[descriptionKey] === "string"
-      ? service[descriptionKey]
-      : t("noDescription");
+  const specializationKey = `specialisation_${currentLanguage}` as keyof typeof doctor;
+  const specialization =
+    typeof doctor[specializationKey] === "string"
+      ? doctor[specializationKey]
+      : t("noSpecialization");
+
+  const biographyKey = `biogrphy_${currentLanguage}` as keyof typeof doctor;
+  const biography =
+    typeof doctor[biographyKey] === "string"
+      ? doctor[biographyKey]
+      : t("noBiography");
 
   return (
     <Container>
       <ContentWrapper>
         <ImageWrapper>
           <MainImage
-            src={service.topimage || "https://via.placeholder.com/400"}
-            alt={service.name}
+            src={doctor.topimage || "https://via.placeholder.com/400"}
+            alt={doctor.full_name}
           />
         </ImageWrapper>
         <InfoWrapper>
-          <Title>{service.name}</Title>
-          <Description>{description}</Description>
+          <Title>{doctor.full_name}</Title>
+          <Specialization>{specialization}</Specialization>
+          <Biography>{biography}</Biography>
         </InfoWrapper>
       </ContentWrapper>
 
       <GalleryWrapper>
         <GalleryTitle>{t("gallery")}</GalleryTitle>
         <ImagesGrid>
-          {service.images && service.images.length > 0 ? (
-            service.images.map((img) => (
-              <GalleryImage key={img.id} src={img.path} alt="Service gallery" />
+          {doctor.images && doctor.images.length > 0 ? (
+            doctor.images.map((img) => (
+              <GalleryImage key={img.id} src={img.path} alt="Doctor's work" />
             ))
           ) : (
             <p>{t("noImages")}</p>
@@ -70,5 +78,4 @@ const ServiceDetails: React.FC = () => {
   );
 };
 
-export default ServiceDetails;
-
+export default DoctorDetails;

@@ -40,7 +40,8 @@ const ServicePage: React.FC = () => {
         // Используем локальные данные вместо API-запроса
         dispatch(fetchServicesSuccess(servicesData.services));
       } catch (err: any) {
-        dispatch(fetchServicesFailure("Failed to load services"));
+        dispatch(fetchServicesFailure(t("message.main.service_page.errorFetchingServices") || "Ошибка при загрузке услуг"));
+
       }
     };
 
@@ -79,7 +80,7 @@ const ServicePage: React.FC = () => {
         ) : services.length > 0 ? (
           services.map((service: Service) => {
             const descriptionKey = `description_${currentLanguage}` as keyof Service;
-            const description = service[descriptionKey] || t("noDescription");
+            const description = service[descriptionKey] || t("message.main.service_page.noDescription");
             const validDescription =
               typeof description === "string" ? description : t("noDescription"); // Проверка типа данных
 

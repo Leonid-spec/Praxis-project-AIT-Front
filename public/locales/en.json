@@ -10,7 +10,6 @@
         "logo_alt": "Logo"
       }
     },
-
     "main": {
       "use_oft": {
         "button": {
@@ -25,9 +24,20 @@
         "welcome": "Welcome to",
         "moreInfoBtn": "Learn more",
         "noSpecialization": "No specialization available"
+      },
+      "service_page": {
+        "welcome": "Welcome to ",
+        "loadingServices": "Loading services...",
+        "errorFetchingServices": "An error occurred while loading services.",
+        "moreInfoBtn": "Learn more",
+        "gallery": "Gallery",
+        "serviceNotFound": "Service not found.",
+        "servicesIntro": "Our services",
+        "highlight": "Abramian Dental",
+        "noDescription": "No description available.",
+        "noServicesAvailable": "No services available at the moment."
       }
     },
-
     "footer": {
       "titles": {
         "contact": "CONTACTS",
@@ -41,7 +51,6 @@
         "friday": "Friday"
       }
     },
-
     "other": {
       "loginAdmin": {
         "title": "Login",
@@ -109,6 +118,20 @@
           "textAreaDate": "Here you can enter your preferences for the date and time of your appointment (up to 1024 characters)",
           "textAreaComment": "Leave a comment (up to 1024 characters)"
         }
+      }
+    },
+    "contacts": {
+      "title": "Contacts",
+      "titleInf": "Contact Information",
+      "subtitle": "Our contact details",
+      "address": "MusterStrasse 10, 12345 München",
+      "phone": "Phone: +49 017 223 334",
+      "email": "Email: info@dentalclinic.de",
+      "copy": "Copy",
+      "coordinates": "GPS: ",
+      "coordinatesCopied": "Coordinates successfully copied!",
+      "map": {
+        "title": "Find us on the map"
       }
     }
   }

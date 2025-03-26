@@ -27,7 +27,7 @@ const Contacts: React.FC = () => {
           }}
         />
         <span>
-          {t("message.header.contacts")} <strong>{t("message.header.strong")}</strong> |
+          {t("message.contacts.titleInf")} 
         </span>
       </h1>
 
@@ -43,24 +43,25 @@ const Contacts: React.FC = () => {
                 rel="noopener noreferrer"
                 style={styles.link}
               >
-                {t("message.leftContainer.title")}
+                {t("message.contacts.title")}
               </a>
             </h2>
-            <p>{t("message.leftContainer.address")}</p>
-            <p>{t("message.leftContainer.coordinates")}</p>
+            <p>{t("message.contacts.address")}</p>
+            <p> GPS </p>
 
             {/* Кнопка перенесена на отдельную строку */}
             <button onClick={handleCopyCoordinates} style={styles.copyButton}>
-              {t("message.copy")}
+              {t("message.copy")} 
+              //TODO
             </button>
 
             <div style={styles.contactIcons}>
               <div style={styles.iconCircle}>📞</div>
-              <span>{t("message.phone")}</span>
+              <span>{t("message.contacts.phone")}</span>
             </div>
             <div style={styles.contactIcons}>
               <div style={styles.iconCircle}>📧</div>
-              <span>{t("message.email")}</span>
+              <span>{t("message.contacts.email")}</span>
             </div>
           </div>
         </div>
@@ -83,9 +84,9 @@ const Contacts: React.FC = () => {
 
       {/* Контейнер для карты */}
       <div style={styles.mapContainer}>
-        <h2>{t("message.map.title")}</h2>
+        <h2>{t("message.contacts.map.title")}</h2>
         <iframe
-          title={t("message.map.title")}
+          
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.577930682343!2d11.587207676366516!3d48.1093323792194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf31d5b7085f%3A0xd3a9396049ec4d54!2sAlbrecht-D%C3%BCrer-Stra%C3%9Fe%2010%2C%2081543%20M%C3%BCnchen%2C%20Germany!5e0!3m2!1sen!2sus!4v1688561234567!5m2!1sen!2sus"
           width="100%"
           height="300"
