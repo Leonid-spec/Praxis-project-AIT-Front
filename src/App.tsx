@@ -13,6 +13,7 @@ import DoctorDetails from "./pages/PageDetails/DoctorDetails/DoctorDetails";
 import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import ContactsPage from "./pages/Contacts/ContactsPage";
+import Contacts from "./pages/Contacts/Contacts";
 
 Modal.setAppElement("#root");
 
@@ -29,7 +30,7 @@ function App() {
             <Route path="/appointment" element={<AppointmentForm />} />
             <Route path="/team" element={<Team />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="/contacts" element={<Contacts />} />
             <Route path="/doctor/:id" element={<DoctorDetails />} />
             <Route path="/service" element={<Service />} />
             <Route path="/service/:id" element={<ServiceDetails />} />
