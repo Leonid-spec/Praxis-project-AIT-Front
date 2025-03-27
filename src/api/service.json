@@ -2,7 +2,9 @@
     "services": [
       {
         "id": 1,
-        "name": "Service 1",
+        "title_de": "title de 1",
+        "title_en": "title en 1",
+        "title_ru": "title ru 1",
         "description_de": "Beschreibung für Service 1",
         "description_en": "Description for Service 1",
         "description_ru": "Описание для Услуги 1",

@@ -13,9 +13,9 @@ export interface Doctor {
   title_en: string;
   title_ru: string;
   full_name: string;
-  biogrphy_de: string;
-  biogrphy_en: string;
-  biogrphy_ru: string;
+  biography_de: string;
+  biography_en: string;
+  biography_ru: string;
   specialisation_de: string;
   specialisation_en: string;
   specialisation_ru: string;

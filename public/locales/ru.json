@@ -98,6 +98,7 @@
         "errors": {
           "firstNameRequired": "Имя обязательно.",
           "firstNameInvalid": "Имя должно содержать только буквы.",
+          "firstNameLetterCount": "Имя должно содержать не мение 2 букв.",
           "secondNameRequired": "Фамилия обязательна.",
           "secondNameInvalid": "Фамилия должна содержать только буквы.",
           "phoneNumberRequired": "Номер телефона обязателен.",

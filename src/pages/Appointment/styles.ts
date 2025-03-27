@@ -38,7 +38,6 @@ export const Label = styled.label`
   font-size: 14px;
   color: #2e3a59;
   margin: 10px 0 0;
-  
 `;
 
 export const LanguageOptions = styled.div`
