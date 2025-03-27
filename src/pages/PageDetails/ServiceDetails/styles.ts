@@ -40,13 +40,20 @@ export const InfoWrapper = styled.div`
 
 export const Title = styled.h1`
   font-size: 28px;
-  color: #2e3a59; /* Используем цвет, подходящий для стиля услуги */
+  color: #333;
   margin-bottom: 10px;
 `;
 
-export const Description = styled.p`
+export const Specialization = styled.p`
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 15px;
+`;
+
+export const Biography = styled.p`
   font-size: 16px;
-  color: #4a4a4a; /* Спокойный серый цвет */
+  color: #666;
   line-height: 1.6;
 `;
 
@@ -80,4 +87,3 @@ export const GalleryImage = styled.img`
     transform: scale(1.1);
   }
 `;
-

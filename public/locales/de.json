@@ -10,7 +10,6 @@
         "logo_alt": "Logo"
       }
     },
-
     "main": {
       "use_oft": {
         "button": {
@@ -25,9 +24,20 @@
         "welcome": "Willkommen bei",
         "moreInfoBtn": "Mehr erfahren",
         "noSpecialization": "Keine Spezialisierung verfügbar"
+      },
+      "service_page": {
+        "welcome": "Willkommen bei",
+        "loadingServices": "Lade Leistungen...",
+        "errorFetchingServices": "Fehler beim Laden der Leistungen.",
+        "moreInfoBtn": "Mehr erfahren",
+        "gallery": "Galerie",
+        "serviceNotFound": "Leistung nicht gefunden.",
+        "servicesIntro": "Unsere Leistungen",
+        "highlight": "Abramian Dental",
+        "noDescription": "Keine Beschreibung verfügbar.",
+        "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar."
       }
     },
-
     "footer": {
       "titles": {
         "contact": "KONTAKTE",
@@ -41,14 +51,13 @@
         "friday": "Freitag"
       }
     },
-
     "other": {
       "loginAdmin": {
         "title": "Anmeldung",
         "subtitle": "MELDEN SIE SICH AN IHREM KONTO AN",
         "button": "Anmelden",
         "labelUsername": "Benutzername:",
-        "labelPassword": "Password:",
+        "labelPassword": "Passwort:",
         "forgotPassword": {
           "text": "Passwort vergessen?",
           "subtitle": "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen",
@@ -81,26 +90,26 @@
         "labelSecondName": "Nachname:",
         "labelPhoneNumber1": "Telefonnummer:",
         "labelPhoneNumber2": "Zusätzliche Telefonnummer (optional):",
-        "labelComment": "Komentar:",
+        "labelComment": "Kommentar:",
         "language": "Sprache:",
         "textAreaDate": "Ihre Wünsche für den Termin:",
         "buttonText": "Absenden",
         "errors": {
-          "nameRequired": "Dieses Feld darf nicht leer sein.",
-          "nameLength": "Der Name muss mindestens 2 Zeichen lang sein.",
-          "nameNotChar": "Ungültige Zeichen im Namen.",
-
-          "emailRequired": "Dieses Feld darf nicht leer sein.",
-          "emailWithoutDot": "Die E-Mail-Adresse muss ein @ enthalten.",
-          "emailDomain": "Die E-Mail-Adresse muss einen gültigen Domainnamen mit einer Punktstruktur enthalten.",
+          "firstNameRequired": "Vorname ist erforderlich.",
+          "firstNameInvalid": "Der Vorname darf nur Buchstaben enthalten.",
+          "secondNameRequired": "Nachname ist erforderlich.",
+          "secondNameInvalid": "Der Nachname darf nur Buchstaben enthalten.",
+          "phoneNumberRequired": "Telefonnummer ist erforderlich.",
+          "phoneNumberInvalid": "Bitte geben Sie eine gültige Telefonnummer ein.",
+          "emailRequired": "E-Mail-Adresse ist erforderlich.",
           "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-
-          "phoneNumberRequired": "Dieses Feld ist erforderlich.",
-          "phoneNumberInvalid": "Bitte geben Sie eine gültige Telefonnummer ein."
+          "serviceRequired": "Bitte wählen Sie eine Leistung aus.",
+          "languageRequired": "Sprache muss ausgewählt werden.",
+          "textAreaDateRequired": "Bitte geben Sie Ihre Terminwünsche an."
         },
         "messages": {
-          "success": "Die Anmeldung war erfolgreich!",
-          "error": "Bitte beheben Sie die Fehler, bevor Sie das Formular absenden."
+          "appointmentScheduled": "Ihr Termin wurde erfolgreich vereinbart.",
+          "appointmentFailed": "Es gab ein Problem bei der Terminvereinbarung. Bitte versuchen Sie es später erneut."
         },
         "placeholders": {
           "service": "Wählen Sie die gewünschte Dienstleistung",
@@ -109,6 +118,20 @@
           "textAreaDate": "Hier können Sie Ihre Wünsche zum Datum und zur Uhrzeit Ihres Termins eingeben (bis zu 1024 Zeichen)",
           "textAreaComment": "Hinterlassen Sie einen Kommentar (bis zu 1024 Zeichen)"
         }
+      }
+    },
+    "contacts": {
+      "title": "Kontakte",
+      "titleInf": "Kontaktinformationen",
+      "subtitle": "Unsere Kontaktdaten",
+      "address": "MusterStrasse 10, 12345 München",
+      "phone": "Telefon: +49 017 223 334",
+      "email": "E-Mail: info@dentalclinic.de",
+      "copy": "Kopieren",
+      "coordinates": "GPS: ",
+      "coordinatesCopied": "Koordinaten erfolgreich kopiert!",
+      "map": {
+        "title": "Finden Sie uns auf der Karte"
       }
     }
   }

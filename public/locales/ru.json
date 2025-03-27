@@ -9,6 +9,7 @@
         "home": "Главная",
         "logo_alt": "Логотип"
       }
+      
     },
     "main": {
       "use_oft": {
@@ -24,9 +25,20 @@
         "welcome": "Добро пожаловать в",
         "moreInfoBtn": "Узнать больше",
         "noSpecialization": "Специализация не указана"
+      },
+      "service_page": {
+        "welcome": "Добро пожаловать в ",
+        "loadingServices": "Загрузка услуг...",
+        "errorFetchingServices": "Ошибка при загрузке услуг.",
+        "moreInfoBtn": "Узнать больше",
+        "gallery": "Галерея",
+        "serviceNotFound": "Услуга не найдена.",
+        "servicesIntro": "Наши услуги",
+        "highlight": "Abramian Dental",
+        "noDescription": "Описание отсутствует.",
+        "noServicesAvailable": "Услуги пока недоступны."
       }
     },
-
     "footer": {
       "titles": {
         "contact": "КОНТАКТЫ",
@@ -107,6 +119,21 @@
           "textAreaDate": "Здесь вы можете указать свои пожелания по дате и времени приёма (до 1024 символов)",
           "textAreaComment": "Оставьте комментарий (до 1024 символов)"
         }
+      }
+    },
+    "contacts": {
+      "title": "Контакты",
+      "titleInf": "Контактная информация",
+      "subtitle": "Наша информация для связи",
+      "address": "MusterStrasse 10, 12345 Мюнхен",
+      "phone": "Телефон: +49 017 223 334",
+      "email": "Электронная почта: info@dentalclinic.de",
+      "copy": "Скопировать",
+      "coordinates": "GPS: ",
+
+      "coordinatesCopied": "Координаты успешно скопированы!",
+      "map": {
+        "title": "Мы на карте"
       }
     }
   }
