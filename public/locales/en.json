@@ -22,11 +22,13 @@
       },
       "team_page": {
         "welcome": "Welcome to",
+        "subtitle": "Welcome to our team’s page! We are dedicated professionals passionate about providing you with top-notch dental care. Our mission is to bring you a smile full of health and confidence. Thank you for trusting us!",
         "moreInfoBtn": "Learn more",
         "noSpecialization": "No specialization available"
       },
       "service_page": {
         "welcome": "Welcome to ",
+        "subtitle": "We offer a comprehensive range of dental services to keep your smile healthy and beautiful. Our specialists use the latest technologies and provide personalized care for every patient. Trust your smile to the experts!",
         "loadingServices": "Loading services...",
         "errorFetchingServices": "An error occurred while loading services.",
         "moreInfoBtn": "Learn more",
@@ -36,6 +38,22 @@
         "highlight": "Abramian Dental",
         "noDescription": "No description available.",
         "noServicesAvailable": "No services available at the moment."
+      },
+      "contacts_page": {
+        "welcome_text": "We’re always happy to assist you! Here you can find our contact information, feel free to reach out.",
+        "titleContacts": "Contacts",
+        "titleTime": "Opening hours",
+        "titleInf": "Contact Information",
+        "subtitle": "Our contact details",
+        "address": "MusterStrasse 10, 12345 München",
+        "phone": "Phone: +49 017 223 334",
+        "email": "Email: info@dentalclinic.de",
+        "copy": "Copy",
+        "coordinates": "GPS: ",
+        "coordinatesCopied": "Coordinates successfully copied!",
+        "map": {
+          "title": "Find us on the map"
+        }
       }
     },
     "footer": {
@@ -94,6 +112,7 @@
         "language": "Language:",
         "textAreaDate": "Your preferences for the appointment:",
         "buttonText": "Submit",
+        "buttonDisabledText": "Please fill in all required fields",
         "errors": {
           "firstNameRequired": "First name is required.",
           "firstCharCannotBeSpace": "First name cannot start with a space.",
@@ -127,20 +146,6 @@
           "textAreaDate": "Here you can enter your preferences for the date and time of your appointment (up to 1024 characters)",
           "textAreaComment": "Leave a comment (up to 1024 characters)"
         }
-      }
-    },
-    "contacts": {
-      "title": "Contacts",
-      "titleInf": "Contact Information",
-      "subtitle": "Our contact details",
-      "address": "MusterStrasse 10, 12345 München",
-      "phone": "Phone: +49 017 223 334",
-      "email": "Email: info@dentalclinic.de",
-      "copy": "Copy",
-      "coordinates": "GPS: ",
-      "coordinatesCopied": "Coordinates successfully copied!",
-      "map": {
-        "title": "Find us on the map"
       }
     }
   }

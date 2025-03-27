@@ -22,11 +22,13 @@
       },
       "team_page": {
         "welcome": "Willkommen bei",
+        "subtitle": "Willkommen auf der Seite unseres Teams! Wir sind engagierte Fachleute, die sich leidenschaftlich dafür einsetzen, Ihnen erstklassige Zahnpflege zu bieten. Unsere Mission ist es, Ihnen ein gesundes und selbstbewusstes Lächeln zu schenken. Vielen Dank für Ihr Vertrauen!",
         "moreInfoBtn": "Mehr erfahren",
         "noSpecialization": "Keine Spezialisierung verfügbar"
       },
       "service_page": {
         "welcome": "Willkommen bei",
+        "subtitle": "Wir bieten ein umfassendes Spektrum an zahnmedizinischen Dienstleistungen, um Ihr Lächeln gesund und schön zu erhalten. Unsere Spezialisten nutzen modernste Technologien und eine individuelle Betreuung. Vertrauen Sie Ihr Lächeln den Profis an!",
         "loadingServices": "Lade Leistungen...",
         "errorFetchingServices": "Fehler beim Laden der Leistungen.",
         "moreInfoBtn": "Mehr erfahren",
@@ -36,6 +38,22 @@
         "highlight": "Abramian Dental",
         "noDescription": "Keine Beschreibung verfügbar.",
         "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar."
+      },
+      "contacts_page": {
+        "welcome_text": "Wir sind immer für Sie da! Hier finden Sie unsere Kontaktinformationen, melden Sie sich gerne bei uns.",
+        "titleContacts": "Contacts",
+        "titleTime": "Sprechzeiten",
+        "titleInf": "Kontaktinformationen",
+        "subtitle": "Unsere Kontaktdaten",
+        "address": "MusterStrasse 10, 12345 München",
+        "phone": "Telefon: +49 017 223 334",
+        "email": "E-Mail: info@dentalclinic.de",
+        "copy": "Kopieren",
+        "coordinates": "GPS: ",
+        "coordinatesCopied": "Koordinaten erfolgreich kopiert!",
+        "map": {
+          "title": "Finden Sie uns auf der Karte"
+        }
       }
     },
     "footer": {
@@ -94,6 +112,7 @@
         "language": "Sprache:",
         "textAreaDate": "Ihre Terminwünsche:",
         "buttonText": "Einreichen",
+        "buttonDisabledText": "Bitte füllen Sie alle erforderlichen Felder aus",
         "errors": {
           "firstNameRequired": "Der Vorname ist erforderlich.",
           "firstCharCannotBeSpace": "Der Vorname darf nicht mit einem Leerzeichen beginnen.",
@@ -127,20 +146,6 @@
           "textAreaDate": "Hier können Sie Ihre Wünsche zum Datum und zur Uhrzeit Ihres Termins eingeben (bis zu 1024 Zeichen)",
           "textAreaComment": "Hinterlassen Sie einen Kommentar (bis zu 1024 Zeichen)"
         }
-      }
-    },
-    "contacts": {
-      "title": "Kontakte",
-      "titleInf": "Kontaktinformationen",
-      "subtitle": "Unsere Kontaktdaten",
-      "address": "MusterStrasse 10, 12345 München",
-      "phone": "Telefon: +49 017 223 334",
-      "email": "E-Mail: info@dentalclinic.de",
-      "copy": "Kopieren",
-      "coordinates": "GPS: ",
-      "coordinatesCopied": "Koordinaten erfolgreich kopiert!",
-      "map": {
-        "title": "Finden Sie uns auf der Karte"
       }
     }
   }

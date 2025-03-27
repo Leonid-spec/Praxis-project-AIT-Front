@@ -187,6 +187,17 @@ const AppointmentForm = () => {
     setErrors((prev) => ({ ...prev, [name]: validatePhone(value) }));
   };
 
+  const isFormValid = (): boolean => {
+    return (
+      formData.first_name.trim().length > 0 &&
+      formData.last_name.trim().length > 0 &&
+      validateFirstName(formData.first_name) === "" &&
+      validateLastName(formData.last_name) === "" &&
+      validateEmail(formData.email) === "" &&
+      validatePhone(formData.phone1) === ""
+    );
+  };
+
   const validateField = (fieldName: string, value: string): string => {
     switch (fieldName) {
       case "first_name":
@@ -238,12 +249,12 @@ const AppointmentForm = () => {
       };
       console.log("Form submitted:", JSON.stringify(formattedData, null, 2));
       setNotification({
-        message: t("message.other.makeAppointment.messages.success"),
+        message: t("message.other.makeAppointment.messages.appointmentScheduled"),
         type: "success",
       });
     } else {
       setNotification({
-        message: t("message.other.makeAppointment.messages.error"),
+        message: t("message.other.makeAppointment.messages.appointmentFailed"),
         type: "error",
       });
     }
@@ -370,7 +381,7 @@ const AppointmentForm = () => {
           rows={5}
         />
         <CharacterCounter>
-          {formData.available_time.length}/1024
+          {formData.comment ? formData.comment.length : 0}/1024
         </CharacterCounter>
 
         <TextInput
@@ -387,10 +398,21 @@ const AppointmentForm = () => {
           error={errors.comment}
           rows={5}
         />
-        <CharacterCounter>{formData.comment.length}/1024</CharacterCounter>
+        <CharacterCounter>
+          {(formData.comment ?? "").length}/1024
+        </CharacterCounter>
 
-        <SubmitButton type="submit">
-          {t("message.other.makeAppointment.buttonText")}
+        <SubmitButton
+          type="submit"
+          disabled={!isFormValid()}
+          style={{
+            backgroundColor: !isFormValid() ? "#ccc" : "#007bff",
+            cursor: !isFormValid() ? "not-allowed" : "pointer",
+          }}
+        >
+          {!isFormValid()
+            ? t("message.other.makeAppointment.buttonDisabledText") 
+            : t("message.other.makeAppointment.buttonText")}
         </SubmitButton>
       </FormContainer>
 
