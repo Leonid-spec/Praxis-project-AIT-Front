@@ -1,20 +1,11 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-  }
-  
-  .header {
-    margin-bottom: 20px; 
-  }
-  
-  .content {
-    flex: 1; 
-    background-color: #f6f9fc;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
-  }
-  
-  .footer {
-    margin-top: 20px; 
-  }
-  
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}

@@ -88,11 +88,11 @@ const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLo
     // console.log({ username, password });
     setNotification({ message: t("message.other.loginAdmin.messages.loginSuccess"), type: "success" });
 
-    // setTimeout(() => {
-    //   onLoginSuccess();
-    //   onClose();
-    //   navigate("/admin-panel");
-    // }, 1000);
+    setTimeout(() => {
+      onLoginSuccess();
+      onClose();
+      navigate("/admin-panel");
+    }, 1000);
   };
 
   const handleForgotPassword = (e: React.FormEvent) => {
