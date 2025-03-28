@@ -5,6 +5,7 @@
   width: 100%; /* Footer растягивается на всю ширину */
   background-color: #A0EEF2; /* Цвет фона */
   padding: 40px 20px; /* Внутренние отступы */
+  margin-top: 30px;
 }
 
 .content {

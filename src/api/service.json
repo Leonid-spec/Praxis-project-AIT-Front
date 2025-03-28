@@ -3,19 +3,22 @@
       {
         "id": 1,
         "name": "Service 1",
+        "title_de": "title de 1",
+        "title_en": "title en 1",
+        "title_ru": "title ru 1",
         "description_de": "Beschreibung für Service 1",
         "description_en": "Description for Service 1",
         "description_ru": "Описание для Услуги 1",
-        "topimage": "https://via.placeholder.com/400",
+        "topimage": "https://th.bing.com/th/id/R.b759ff61e4b081088e6b1d286c000814?rik=CVsjWvP2v73o0g&pid=ImgRaw&r=0",
         "isActive": true,
         "images": [
           {
             "id": 1,
-            "path": "https://via.placeholder.com/300"
+            "path": "https://www.zahnarzt-stuttgart-zuffenhausen.de/wp-content/uploads/l6.jpg"
           },
           {
             "id": 2,
-            "path": "https://via.placeholder.com/300"
+            "path": "https://www.zahnarzt-holweide.de/wp-content/uploads/zahnarzt-holweide-cmd-haas-v26.jpg"
           }
         ]
       },
@@ -25,16 +28,15 @@
         "description_de": "Beschreibung für Service 2",
         "description_en": "Description for Service 2",
         "description_ru": "Описание для Услуги 2",
-        "topimage": "https://via.placeholder.com/400",
+        "topimage": "https://th.bing.com/th/id/OIP.zsi1nZw4QPqx_FoszyrAZgHaE8?w=1000&h=667&rs=1&pid=ImgDetMain",
         "isActive": true,
         "images": [
           {
             "id": 3,
-            "path": "https://via.placeholder.com/300"
-          },
-          {
+            "path": "https://www.up2dent-bedburg.de/wp-content/uploads/kinderzahnheilkunde-9310.jpg"
+         }, {
             "id": 4,
-            "path": "https://via.placeholder.com/300"
+            "path": "https://www.zahnarzt-holweide.de/wp-content/uploads/zahnarzt-holweide-cmd-haas-v26.jpg"
           }
         ]
       },
@@ -44,16 +46,16 @@
         "description_de": "Beschreibung für Service 3",
         "description_en": "Description for Service 3",
         "description_ru": "Описание для Услуги 3",
-        "topimage": "https://via.placeholder.com/400",
+        "topimage": "https://th.bing.com/th/id/R.f673590288d7a908a66c56d21d52f70b?rik=wFw17gF2DwiVBQ&pid=ImgRaw&r=0",
         "isActive": true,
         "images": [
           {
             "id": 5,
-            "path": "https://via.placeholder.com/300"
+            "path": "https://th.bing.com/th/id/R.f673590288d7a908a66c56d21d52f70b?rik=wFw17gF2DwiVBQ&pid=ImgRaw&r=0"
           },
           {
             "id": 6,
-            "path": "https://via.placeholder.com/300"
+            "path": "https://www.zahnarzt-holweide.de/wp-content/uploads/zahnarzt-holweide-cmd-haas-v26.jpg"
           }
         ]
       }

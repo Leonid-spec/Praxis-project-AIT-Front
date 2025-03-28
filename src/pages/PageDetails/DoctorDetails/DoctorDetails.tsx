@@ -40,7 +40,7 @@ const DoctorDetails: React.FC = () => {
       ? doctor[specializationKey]
       : t("noSpecialization");
 
-  const biographyKey = `biogrphy_${currentLanguage}` as keyof typeof doctor;
+  const biographyKey = `biography_${currentLanguage}` as keyof typeof doctor;
   const biography =
     typeof doctor[biographyKey] === "string"
       ? doctor[biographyKey]

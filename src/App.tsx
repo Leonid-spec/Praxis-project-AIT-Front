@@ -12,7 +12,6 @@ import Service from "./pages/Service/Service";
 import DoctorDetails from "./pages/PageDetails/DoctorDetails/DoctorDetails";
 import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
-import ContactsPage from "./pages/Contacts/ContactsPage";
 import Contacts from "./pages/Contacts/Contacts";
 
 Modal.setAppElement("#root");
@@ -20,7 +19,6 @@ Modal.setAppElement("#root");
 function App() {
   return (
     <ModalProvider>
-      {/* Модальное окно для записи на прием */}
       <AppointmentModal />
       <Router>
         <GlobalStyles />

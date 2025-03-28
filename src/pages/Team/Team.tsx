@@ -10,16 +10,20 @@ import {
 import DoctorCard from "../../components/Cards/Doctor/DoctorCard";
 import {
   TeamContainer,
-  WelcomeSection,
-  TeamHeaderText,
   HighlightText,
-  TeamPhoto,
-  HeaderTextBox,
+  TeamTextBox,
   TeamText,
   DoctorsGrid,
+  LeftContainer,
+  WelcomeTextSubtitle,
+  HighlightedSpan,
+  RightContainer,
+  RightContainerPhoto,
+  TeamContainerMainPhoto,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { Doctor } from "../../store/types/doctorTypes";
+import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 type Language = "en" | "de" | "ru";
 
@@ -51,25 +55,44 @@ const Team: React.FC = () => {
     navigate(`/doctor/${id}`);
   };
 
+  const parseSubtitle = (text: string) => {
+    return text
+      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+      .map((part, index) =>
+        index % 2 === 1 ? (
+          <HighlightedSpan key={index}>{part}</HighlightedSpan>
+        ) : (
+          part
+        )
+      );
+  };
+
   return (
     <TeamContainer>
-      <WelcomeSection>
-        <TeamHeaderText>
-          {t("message.main.team_page.welcome")}{" "}
-          <HighlightText>Abramian Dental</HighlightText>
-        </TeamHeaderText>
-      </WelcomeSection>
 
-      <TeamPhoto
-        src="https://www.zahnaerzte-siermann.de/wp-content/uploads/2022/12/Fotowand_Team.jpg"
-        alt="Team"
-      />
+      <TeamContainerMainPhoto>
 
-      <HeaderTextBox>
+        <LeftContainer>
+          <WelcomeTextSubtitle>
+            {parseSubtitle(t("message.main.team_page.subtitle"))}
+          </WelcomeTextSubtitle>
+          <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+        </LeftContainer>
+
+        <RightContainer>
+          <RightContainerPhoto
+            src="https://www.zahnaerzte-siermann.de/wp-content/uploads/2022/12/Fotowand_Team.jpg"
+            alt="Team"
+          />
+        </RightContainer>
+
+      </TeamContainerMainPhoto>
+
+      <TeamTextBox>
         <TeamText>
           Unser <HighlightText>Ärzteteam</HighlightText> |
         </TeamText>
-      </HeaderTextBox>
+      </TeamTextBox>
 
       <DoctorsGrid>
         {loading ? (

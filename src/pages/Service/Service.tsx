@@ -10,17 +10,21 @@ import {
 import ServiceCard from "../../components/Cards/Service/ServiceCard";
 import {
   ServiceContainer,
-  WelcomeSection,
-  ServiceHeaderText,
   HighlightText,
-  ServicePhoto,
   HeaderTextBox,
   ServiceText,
   ServicesGrid,
+  LeftContainer,
+  RightContainer,
+  RightContainerPhoto,
+  ServiceContainerMainPhoto,
+  WelcomeTextSubtitle,
+  HighlightedSpan,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { Service } from "../../store/slices/serviceSlice";
-import servicesData from "../../api/service.json"; // Локальный JSON для тестовых данных
+import servicesData from "../../api/service.json"; 
+import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 type Language = "en" | "de" | "ru";
 
@@ -52,19 +56,39 @@ const ServicePage: React.FC = () => {
     navigate(`/service/${id}`);
   };
 
+  const parseSubtitle = (text: string) => {
+      return text
+        .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+        .map((part, index) =>
+          index % 2 === 1 ? (
+            <HighlightedSpan key={index}>{part}</HighlightedSpan>
+          ) : (
+            part
+          )
+        );
+    };
+  
+
   return (
     <ServiceContainer>
-      <WelcomeSection>
-        <ServiceHeaderText>
-          {t("message.main.service_page.welcome")}{" "}
-          <HighlightText>Abramian Dental</HighlightText>
-        </ServiceHeaderText>
-      </WelcomeSection>
 
-      <ServicePhoto
-        src="https://example.com/service-photo.jpg"
-        alt="Service"
-      />
+      <ServiceContainerMainPhoto>
+      
+              <LeftContainer>
+                <WelcomeTextSubtitle>
+                  {parseSubtitle(t("message.main.service_page.subtitle"))}
+                </WelcomeTextSubtitle>
+                <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+              </LeftContainer>
+      
+              <RightContainer>
+                <RightContainerPhoto
+                  src="https://denticus-lb.de/wp-content/uploads/2017/10/MG_3734.jpg"
+                  alt="Service"
+                />
+              </RightContainer>
+      
+            </ServiceContainerMainPhoto>
 
       <HeaderTextBox>
         <ServiceText>
@@ -82,7 +106,7 @@ const ServicePage: React.FC = () => {
             const descriptionKey = `description_${currentLanguage}` as keyof Service;
             const description = service[descriptionKey] || t("message.main.service_page.noDescription");
             const validDescription =
-              typeof description === "string" ? description : t("noDescription"); // Проверка типа данных
+              typeof description === "string" ? description : t("noDescription"); 
 
             return (
               <ServiceCard
@@ -94,7 +118,7 @@ const ServicePage: React.FC = () => {
                     : "https://via.placeholder.com/150"
                 }
                 name={service.name}
-                description={validDescription} // Безопасно передаём только строку
+                description={validDescription} 
                 onDetailsClick={() => handleDetailsClick(service.id)}
               />
             );

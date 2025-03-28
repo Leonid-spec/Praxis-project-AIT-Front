@@ -24,8 +24,8 @@ interface FormData {
   phone1: string;
   phone2?: string;
   language?: string | null;
-  comment: string;
-  available_time: string;
+  comment?: string;
+  available_time?: string;
 }
 
 const AppointmentForm = () => {
@@ -59,45 +59,89 @@ const AppointmentForm = () => {
     email: "",
     phone1: "",
     phone2: "",
-    language: "",
     comment: "",
     available_time: "",
   });
+  const capitalizeWords = (text: string): string => {
+    return text
+      .split(/\s+/)
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(" ");
+  };
 
-  const validateName = (name: string): string => {
-    const regex = /^[A-Z][a-zäöüßÄÖÜ.'\-_]{1,63}$/;
-    if (name.length === 0)
-      return t("message.other.makeAppointment.errors.nameRequired");
-    if (name.length < 2)
-      return t("message.other.makeAppointment.errors.nameLength");
-    if (!regex.test(name))
-      return t("message.other.makeAppointment.errors.nameNotChar");
+  const validateFirstName = (name: string): string => {
+    const regex = /^[A-Za-zäöüßÄÖÜ.'`\-_]*(\s[A-Za-zäöüßÄÖÜ.'`\-_]*)?$/;
+
+    if (name.trim().length === 0) {
+      return t("message.other.makeAppointment.errors.firstNameRequired");
+    }
+
+    if (name[0] === " ") {
+      return t("message.other.makeAppointment.errors.firstCharCannotBeSpace");
+    }
+
+    if (name.length < 2) {
+      return t("message.other.makeAppointment.errors.firstNameLetterCount");
+    }
+
+    if (name.includes("  ")) {
+      return t("message.other.makeAppointment.errors.firstNameExtraSpaces");
+    }
+
+    if (!regex.test(name)) {
+      return t("message.other.makeAppointment.errors.firstNameInvalid");
+    }
+
     return "";
   };
 
-  const capitalizeWords = (text: string): string => {
-    return text
-      .split(/\s+/) 
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) 
-      .join(" "); 
-  };
-  
-  
+  const validateLastName = (name: string): string => {
+    const regex = /^[A-Za-zäöüßÄÖÜ.'`\-_]*(\s[A-Za-zäöüßÄÖÜ.'`\-_]*)?$/;
 
-  const validateEmail = (email: string): string => {
-    if (!email) return t("message.other.makeAppointment.errors.emailRequired");
-
-    if (!email.includes("@"))
-      return t("message.other.makeAppointment.errors.emailWithoutDot");
-
-    const parts = email.split("@");
-    if (parts.length > 2 || parts[1].indexOf(".") === -1) {
-      return t("message.other.makeAppointment.errors.emailWithoutDot");
+    if (name.trim().length === 0) {
+      return t("message.other.makeAppointment.errors.lastNameRequired");
     }
 
+    if (name[0] === " ") {
+      return t("message.other.makeAppointment.errors.lastCharCannotBeSpace");
+    }
+
+    if (name.length < 2) {
+      return t("message.other.makeAppointment.errors.lastNameLetterCount");
+    }
+
+    if (name.includes("  ")) {
+      return t("message.other.makeAppointment.errors.lastNameExtraSpaces");
+    }
+
+    if (!regex.test(name)) {
+      return t("message.other.makeAppointment.errors.lastNameInvalid");
+    }
+
+    return "";
+  };
+
+  const validateEmail = (email: string): string => {
+    if (!email.trim()) {
+      return t("message.other.makeAppointment.errors.emailRequired");
+    }
+
+    if (email.includes(" ")) {
+      return t("message.other.makeAppointment.errors.emailWithoutSpaces");
+    }
+
+    if (!email.includes("@")) {
+      return t("message.other.makeAppointment.errors.emailWithoutAtSymbol");
+    }
+
+    const parts = email.split("@");
+    if (parts.length !== 2 || parts[1].indexOf(".") === -1) {
+      return t("message.other.makeAppointment.errors.emailWithoutDot");
+    }
     const regex = /^[a-zA-Z0-9._,-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!regex.test(email))
+    if (!regex.test(email)) {
       return t("message.other.makeAppointment.errors.emailInvalid");
+    }
 
     return "";
   };
@@ -111,26 +155,6 @@ const AppointmentForm = () => {
     return "";
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    let updatedValue = value;
-    if (name === "first_name" || name === "last_name") {
-      updatedValue = capitalizeWords(value); 
-    }
-    setFormData({ ...formData, [name]: updatedValue });
-  };
-  
-
-  const handlePhoneChange = (value: string, name: string) => {
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleServiceSelect = (service: Service) => {
-    setFormData({ ...formData, service });
-  };
-
   const handleLanguageChange = (lang: string) => {
     setFormData({
       ...formData,
@@ -138,16 +162,64 @@ const AppointmentForm = () => {
     });
   };
 
-  const formatPhone = (phone: string) => {
-    const cleaned = phone.replace(/\s+/g, "");
-    return cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    const formattedValue =
+      name === "first_name" || name === "last_name"
+        ? capitalizeWords(value)
+        : value;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: formattedValue,
+    }));
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, formattedValue),
+    }));
+  };
+
+  const handlePhoneChange = (value: string, name: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: validatePhone(value) }));
+  };
+
+  const isFormValid = (): boolean => {
+    return (
+      formData.first_name.trim().length > 0 &&
+      formData.last_name.trim().length > 0 &&
+      validateFirstName(formData.first_name) === "" &&
+      validateLastName(formData.last_name) === "" &&
+      validateEmail(formData.email) === "" &&
+      validatePhone(formData.phone1) === ""
+    );
+  };
+
+  const validateField = (fieldName: string, value: string): string => {
+    switch (fieldName) {
+      case "first_name":
+        return validateFirstName(value);
+      case "last_name":
+        return validateLastName(value);
+      case "email":
+        return validateEmail(value);
+      case "phone1":
+      case "phone2":
+        return validatePhone(value);
+      default:
+        return "";
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     const newErrors = {
-      first_name: validateName(formData.first_name),
-      last_name: validateName(formData.last_name),
+      first_name: validateFirstName(formData.first_name),
+      last_name: validateLastName(formData.last_name),
       email: validateEmail(formData.email),
       phone1: validatePhone(formData.phone1),
       phone2: "",
@@ -156,6 +228,11 @@ const AppointmentForm = () => {
       available_time: "",
     };
     setErrors(newErrors);
+
+    const formatPhone = (phone: string) => {
+      const cleaned = phone.replace(/\s+/g, "");
+      return cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
+    };
 
     const hasErrors = Object.values(newErrors).some((error) => error !== "");
     if (!hasErrors) {
@@ -170,16 +247,14 @@ const AppointmentForm = () => {
         comment: formData.comment,
         language: formData.language?.toLowerCase() || "de",
       };
-
       console.log("Form submitted:", JSON.stringify(formattedData, null, 2));
-
       setNotification({
-        message: t("message.other.makeAppointment.messages.success"),
+        message: t("message.other.makeAppointment.messages.appointmentScheduled"),
         type: "success",
       });
     } else {
       setNotification({
-        message: t("message.other.makeAppointment.messages.error"),
+        message: t("message.other.makeAppointment.messages.appointmentFailed"),
         type: "error",
       });
     }
@@ -195,7 +270,7 @@ const AppointmentForm = () => {
           <ServiceDropdown
             services={serviceList}
             selectedService={formData.service}
-            onSelect={handleServiceSelect}
+            onSelect={(service) => setFormData({ ...formData, service })}
           />
         </FieldContainer>
 
@@ -204,7 +279,9 @@ const AppointmentForm = () => {
           type="text"
           id="first_name"
           name="first_name"
-          placeholder={t("message.other.makeAppointment.placeholders.")}
+          placeholder={t(
+            "message.other.makeAppointment.placeholders.firstName"
+          )}
           value={formData.first_name}
           onChange={handleChange}
           required
@@ -212,11 +289,11 @@ const AppointmentForm = () => {
         />
 
         <TextInput
-          label={t("message.other.makeAppointment.labelSecondName")}
+          label={t("message.other.makeAppointment.labelLastName")}
           type="text"
           id="last_name"
           name="last_name"
-          placeholder={t("message.other.makeAppointment.placeholders.")}
+          placeholder={t("message.other.makeAppointment.placeholders.lastName")}
           value={formData.last_name}
           onChange={handleChange}
           required
@@ -236,7 +313,7 @@ const AppointmentForm = () => {
         />
 
         <FieldContainer>
-          <Label htmlFor="phone1">
+          <Label>
             {t("message.other.makeAppointment.labelPhoneNumber1")}
             <RequiredMarker>*</RequiredMarker>
           </Label>
@@ -244,10 +321,7 @@ const AppointmentForm = () => {
             country={"de"}
             value={formData.phone1}
             onChange={(value) => handlePhoneChange(value, "phone1")}
-            inputProps={{
-              name: "phone1",
-              required: true,
-            }}
+            inputProps={{ name: "phone1", required: true }}
             placeholder="Geben Sie Ihre Telefonnummer ein"
           />
           {errors.phone1 && (
@@ -273,7 +347,6 @@ const AppointmentForm = () => {
             value={formData.phone2 || ""}
             onChange={(value) => handlePhoneChange(value, "phone2")}
             inputProps={{ name: "phone2" }}
-            placeholder="Geben Sie eine zusätzliche Telefonnummer ein"
           />
         </FieldContainer>
 
@@ -308,7 +381,7 @@ const AppointmentForm = () => {
           rows={5}
         />
         <CharacterCounter>
-          {formData.available_time.length}/1024
+          {formData.comment ? formData.comment.length : 0}/1024
         </CharacterCounter>
 
         <TextInput
@@ -325,10 +398,21 @@ const AppointmentForm = () => {
           error={errors.comment}
           rows={5}
         />
-        <CharacterCounter>{formData.comment.length}/1024</CharacterCounter>
+        <CharacterCounter>
+          {(formData.comment ?? "").length}/1024
+        </CharacterCounter>
 
-        <SubmitButton type="submit">
-          {t("message.other.makeAppointment.buttonText")}
+        <SubmitButton
+          type="submit"
+          disabled={!isFormValid()}
+          style={{
+            backgroundColor: !isFormValid() ? "#ccc" : "#007bff",
+            cursor: !isFormValid() ? "not-allowed" : "pointer",
+          }}
+        >
+          {!isFormValid()
+            ? t("message.other.makeAppointment.buttonDisabledText") 
+            : t("message.other.makeAppointment.buttonText")}
         </SubmitButton>
       </FormContainer>
 

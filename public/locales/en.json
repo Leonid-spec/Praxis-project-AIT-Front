@@ -22,11 +22,13 @@
       },
       "team_page": {
         "welcome": "Welcome to",
+        "subtitle": "Welcome to our team’s page! We are dedicated professionals passionate about providing you with top-notch dental care. Our mission is to bring you a smile full of health and confidence. Thank you for trusting us!",
         "moreInfoBtn": "Learn more",
         "noSpecialization": "No specialization available"
       },
       "service_page": {
         "welcome": "Welcome to ",
+        "subtitle": "We offer a comprehensive range of dental services to keep your smile healthy and beautiful. Our specialists use the latest technologies and provide personalized care for every patient. Trust your smile to the experts!",
         "loadingServices": "Loading services...",
         "errorFetchingServices": "An error occurred while loading services.",
         "moreInfoBtn": "Learn more",
@@ -36,6 +38,22 @@
         "highlight": "Abramian Dental",
         "noDescription": "No description available.",
         "noServicesAvailable": "No services available at the moment."
+      },
+      "contacts_page": {
+        "welcome_text": "We’re always happy to assist you! Here you can find our contact information, feel free to reach out.",
+        "titleContacts": "Contacts",
+        "titleTime": "Opening hours",
+        "titleInf": "Contact Information",
+        "subtitle": "Our contact details",
+        "address": "MusterStrasse 10, 12345 München",
+        "phone": "Phone: +49 017 223 334",
+        "email": "Email: info@dentalclinic.de",
+        "copy": "Copy",
+        "coordinates": "GPS: ",
+        "coordinatesCopied": "Coordinates successfully copied!",
+        "map": {
+          "title": "Find us on the map"
+        }
       }
     },
     "footer": {
@@ -87,22 +105,32 @@
         "formTitle": "Make an appointment",
         "labelService": "Service:",
         "labelFirstName": "First name:",
-        "labelSecondName": "Last name:",
+        "labelLastName": "Last name:",
         "labelPhoneNumber1": "Phone number:",
         "labelPhoneNumber2": "Additional phone number (optional):",
         "labelComment": "Comment:",
         "language": "Language:",
         "textAreaDate": "Your preferences for the appointment:",
         "buttonText": "Submit",
+        "buttonDisabledText": "Please fill in all required fields",
         "errors": {
           "firstNameRequired": "First name is required.",
-          "firstNameInvalid": "First name can only contain letters.",
-          "secondNameRequired": "Last name is required.",
-          "secondNameInvalid": "Last name can only contain letters.",
+          "firstCharCannotBeSpace": "First name cannot start with a space.",
+          "firstNameLetterCount": "First name must be at least 2 characters (en, de)",
+          "firstNameExtraSpaces": "First name cannot have consecutive spaces.",
+          "firstNameInvalid": "First name can only contain letters (en, de) and one space",
+          "lastNameRequired": "Last name is required.",
+          "lastCharCannotBeSpace": "Last name cannot start with a space.",
+          "lastNameLetterCount": "Last name must be at least 2 characters (en, de) and one space",
+          "lastNameExtraSpaces": "Last name cannot have consecutive spaces.",
+          "lastNameInvalid": "Last name can only contain letters (en, de) and one space",
           "phoneNumberRequired": "Phone number is required.",
           "phoneNumberInvalid": "Please provide a valid phone number.",
           "emailRequired": "Email address is required.",
           "emailInvalid": "Please provide a valid email address.",
+          "emailWithoutSpaces": "Email cannot contain spaces.",
+          "emailWithoutAtSymbol": "Email must contain '@'.",
+          "emailWithoutDot": "Email must contain a domain.",
           "serviceRequired": "Please select a service.",
           "languageRequired": "Language must be selected.",
           "textAreaDateRequired": "Please provide your preferences for the appointment."
@@ -118,20 +146,6 @@
           "textAreaDate": "Here you can enter your preferences for the date and time of your appointment (up to 1024 characters)",
           "textAreaComment": "Leave a comment (up to 1024 characters)"
         }
-      }
-    },
-    "contacts": {
-      "title": "Contacts",
-      "titleInf": "Contact Information",
-      "subtitle": "Our contact details",
-      "address": "MusterStrasse 10, 12345 München",
-      "phone": "Phone: +49 017 223 334",
-      "email": "Email: info@dentalclinic.de",
-      "copy": "Copy",
-      "coordinates": "GPS: ",
-      "coordinatesCopied": "Coordinates successfully copied!",
-      "map": {
-        "title": "Find us on the map"
       }
     }
   }
