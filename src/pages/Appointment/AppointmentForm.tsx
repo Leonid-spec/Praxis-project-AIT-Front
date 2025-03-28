@@ -84,6 +84,10 @@ const AppointmentForm = () => {
       return t("message.other.makeAppointment.errors.firstNameLetterCount");
     }
 
+    if (name.length > 64) {
+      return t("message.other.makeAppointment.errors.firstNameLetterCountMax");
+    }
+
     if (name.includes("  ")) {
       return t("message.other.makeAppointment.errors.firstNameExtraSpaces");
     }
@@ -108,6 +112,10 @@ const AppointmentForm = () => {
 
     if (name.length < 2) {
       return t("message.other.makeAppointment.errors.lastNameLetterCount");
+    }
+
+    if (name.length > 64) {
+      return t("message.other.makeAppointment.errors.lastNameLetterCountMax");
     }
 
     if (name.includes("  ")) {
