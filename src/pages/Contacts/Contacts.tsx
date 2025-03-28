@@ -80,9 +80,13 @@ const Contacts: React.FC = () => {
               {/* Кнопка перенесена на отдельную строку */}
               <button onClick={handleCopyCoordinates} style={styles.copyButton}>
                 {t("message.copy")}
-                //TODO
+                //TODO что-то сделать с кнопкой, не понимаю, что она должна и куда копировать
               </button>
 
+              <div style={styles.contactIcons}>
+                <div style={styles.iconCircle}>📍</div>
+                <span>{t("message.main.contacts_page.coordinates")}</span>
+              </div>
               <div style={styles.contactIcons}>
                 <div style={styles.iconCircle}>📞</div>
                 <span>{t("message.main.contacts_page.phone")}</span>

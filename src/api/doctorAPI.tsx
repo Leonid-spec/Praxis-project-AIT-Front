@@ -1,6 +1,6 @@
 import { Doctor } from "../store/types/doctorTypes";  
 
-const API_URL = "http://localhost:5000/doctors";
+const API_URL = "/api/doctors";
 
 const handleFetchError = (response: Response) => {
   if (!response.ok) {

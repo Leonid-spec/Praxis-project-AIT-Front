@@ -1,7 +1,7 @@
 //import { Service } from "../store/types/";
 
 
-const API_URL = "http://localhost:5000/services";
+const API_URL = "/api/services";
 
 interface Service {
   id: number;

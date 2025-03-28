@@ -1,0 +1,8 @@
+<button onClick={handleCopyCoordinates} style={styles.copyButton}>
+  {t("message.copy")}
+</button>
+
+<div style={styles.contactIcons}>
+  <div style={styles.iconCircle}>📍</div>
+  <span>{t("message.main.contacts_page.coordinates")}</span>
+</div>
