@@ -17,7 +17,7 @@ import {
   GalleryImage,
 } from "./styles";
 
-type Language = "en" | "de" | "ru";
+type Language = "De" | "En" | "Ru";
 
 const DoctorDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -34,13 +34,13 @@ const DoctorDetails: React.FC = () => {
     );
   }
 
-  const specializationKey = `specialisation_${currentLanguage}` as keyof typeof doctor;
+  const specializationKey = `specialisation${currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)}}` as keyof typeof doctor;
   const specialization =
     typeof doctor[specializationKey] === "string"
       ? doctor[specializationKey]
       : t("noSpecialization");
 
-  const biographyKey = `biography_${currentLanguage}` as keyof typeof doctor;
+  const biographyKey = `biography${currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)}}` as keyof typeof doctor;
   const biography =
     typeof doctor[biographyKey] === "string"
       ? doctor[biographyKey]

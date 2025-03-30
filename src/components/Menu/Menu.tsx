@@ -40,7 +40,7 @@ const Menu = () => {
         <Nav>
           <StyledNavLinkMenu to="/service">{t('message.header.menu.services')}</StyledNavLinkMenu>
           <StyledNavLinkMenu to="/about">{t('message.header.menu.about_us')}</StyledNavLinkMenu>
-          <StyledNavLinkMenu to="/team">{t('message.header.menu.team')}</StyledNavLinkMenu>
+          <StyledNavLinkMenu to="/doctors">{t('message.header.menu.team')}</StyledNavLinkMenu>
           <StyledNavLinkMenu to="/contacts">{t('message.header.menu.contact')}</StyledNavLinkMenu>
         </Nav>
   

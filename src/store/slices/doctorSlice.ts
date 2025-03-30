@@ -2,18 +2,19 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Doctor {
   id: number;
-  full_name: string;
-  topimage?: string;
+  fullName: string;
+  topImage?: string;
   images?: { id: number; path: string }[];
-  specialisation_de?: string;
-  specialisation_en?: string;
-  specialisation_ru?: string;
-  description_de?: string;
-  description_en?: string;
-  description_ru?: string;
+  specialisationDe?: string;
+  specialisationEn?: string;
+  specialisationRu?: string;
+  descriptionDe?: string;
+  descriptionEn?: string;
+  descriptionRu?: string;
 }
 
 interface DoctorState {
+  [x: string]: any;
   doctors: Doctor[];
   loading: boolean;  
   error: string | null; 
@@ -29,6 +30,18 @@ const doctorSlice = createSlice({
   name: 'doctor',
   initialState,
   reducers: {
+    fetchActiveDoctorsStart(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchActiveDoctorsSuccess(state, action: PayloadAction<Doctor[]>) {
+      state.loading = false;
+      state.doctors = action.payload;
+    },
+    fetchActiveDoctorsFailure(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+    },
     fetchDoctorsStart(state) {
       state.loading = true;
       state.error = null;
@@ -53,6 +66,18 @@ const doctorSlice = createSlice({
     deleteDoctor(state, action: PayloadAction<number>) {
       state.doctors = state.doctors.filter((d) => d.id !== action.payload);
     },
+    fetchDoctorByIdStart: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchDoctorByIdSuccess: (state, action: PayloadAction<Doctor>) => {
+      state.loading = false;
+      state.selectedDoctor = action.payload;
+    },
+    fetchDoctorByIdFailure: (state, action: PayloadAction<string>) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -60,9 +85,16 @@ export const {
   fetchDoctorsStart,
   fetchDoctorsSuccess,
   fetchDoctorsFailure,
+  fetchActiveDoctorsStart,
+  fetchActiveDoctorsSuccess,
+  fetchActiveDoctorsFailure,
+  fetchDoctorByIdStart,
+  fetchDoctorByIdSuccess,
+  fetchDoctorByIdFailure,
   addDoctor,
   updateDoctor,
   deleteDoctor,
 } = doctorSlice.actions;
+
 
 export default doctorSlice.reducer;

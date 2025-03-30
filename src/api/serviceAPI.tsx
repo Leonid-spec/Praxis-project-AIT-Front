@@ -12,10 +12,12 @@ interface Service {
   description_ru?: string;
 }
 
-const handleFetchError = (response: Response) => {
+const handleFetchError = async (response: Response) => {
   if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
+    const errorText = await response.text();
+    throw new Error(`HTTP error! Status: ${response.status}, Details: ${errorText}`);
   }
+  return response.json();
 };
 
 export const getServices = async (): Promise<Service[]> => {

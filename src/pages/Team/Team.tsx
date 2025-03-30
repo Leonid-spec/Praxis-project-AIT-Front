@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState, AppDispatch } from "../../store/store";
 import {
-  fetchDoctorsStart,
-  fetchDoctorsSuccess,
-  fetchDoctorsFailure,
+  fetchActiveDoctorsFailure,
+  fetchActiveDoctorsStart,
+  fetchActiveDoctorsSuccess,
 } from "../../store/slices/doctorSlice";
 import DoctorCard from "../../components/Cards/Doctor/DoctorCard";
 import {
@@ -25,7 +25,7 @@ import { useTranslation } from "react-i18next";
 import { Doctor } from "../../store/types/doctorTypes";
 import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
-type Language = "en" | "de" | "ru";
+type Language = "En" | "De" | "Ru";
 
 const Team: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -37,19 +37,38 @@ const Team: React.FC = () => {
   const currentLanguage = i18n.language as Language;
 
   useEffect(() => {
-    const fetchDoctors = async () => {
-      dispatch(fetchDoctorsStart());
+    const fetchActiveDoctors = async () => {
+      dispatch(fetchActiveDoctorsStart());
       try {
-        const response = await fetch("http://localhost:5000/doctors");
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8100/api/doctors/active", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+    
+        if (!response.ok) {
+          const errorText = await response.text(); 
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+    
         const data = await response.json();
-        dispatch(fetchDoctorsSuccess(data));
+        console.log("Doctors data:", data);
+        dispatch(fetchActiveDoctorsSuccess(data));
       } catch (err: any) {
-        dispatch(fetchDoctorsFailure(err.message || t("errorFetchingDoctors")));
+        console.error("Failed to fetch active doctors:", err);
+        dispatch(fetchActiveDoctorsFailure(err.message || t("errorFetchingActiveDoctors")));
       }
     };
-
-    fetchDoctors();
+  
+    fetchActiveDoctors();
   }, [dispatch]);
+  
+  
+  // useEffect(() => {
+  //   dispatch(getActiveDoctors()); 
+  // }, [dispatch]);
 
   const handleDetailsClick = (id: number) => {
     navigate(`/doctor/${id}`);
@@ -98,14 +117,18 @@ const Team: React.FC = () => {
         {loading ? (
           <p>{t("loadingDoctors")}</p>
         ) : error ? (
-          <p>{t("errorFetchingDoctors")}</p>
+          <p>{t("errorFetchingActiveDoctors")}</p>
         ) : doctors.length > 0 ? (
           doctors.map((doctor) => {
+            console.log("Doctor object:", doctor);
             const specializationKey =
-              `specialisation_${currentLanguage}` as keyof Pick<
+              `specialisation${currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)}` as keyof Pick<
                 Doctor,
-                "specialisation_de" | "specialisation_en" | "specialisation_ru"
+                "specialisationDe" | "specialisationEn" | "specialisationRu"
               >;
+
+              console.log("Specialization key:", specializationKey);
+              console.log("Specialization value:", doctor[specializationKey]);
 
             const specialization =
               (doctor[specializationKey] as string) || t("noSpecialization");
@@ -115,11 +138,11 @@ const Team: React.FC = () => {
                 key={doctor.id}
                 id={doctor.id}
                 photo={
-                  doctor.topimage
-                    ? doctor.topimage.replace(/\\/g, "/")
+                  doctor.topImage
+                    ? doctor.topImage.replace(/\\/g, "/")
                     : "https://via.placeholder.com/150"
                 }
-                fullName={doctor.full_name}
+                fullName={doctor.fullName}
                 specialization={specialization || t("noSpecialization")}
                 onDetailsClick={() => handleDetailsClick(doctor.id)}
               />

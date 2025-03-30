@@ -1,25 +1,51 @@
-import { Doctor } from "../store/types/doctorTypes";  
+import { Doctor } from "../store/types/doctorTypes";
 
-const API_URL = "http://localhost:5000/doctors";
+const API_URL = "/api/team";
 
-const handleFetchError = (response: Response) => {
+const handleFetchError = async (response: Response) => {
   if (!response.ok) {
-    throw new Error(`HTTP error! Status: ${response.status}`);
+    const errorText = await response.text();
+    throw new Error(`HTTP error! Status: ${response.status}, Details: ${errorText}`);
+  }
+  return response.json();
+};
+
+// Get active doctors
+// export const getActiveDoctors = async (): Promise<Doctor[]> => {
+//   try {
+//     const response = await fetch(`${API_URL}/active`);
+//     handleFetchError(response);
+//     return await response.json();
+//   } catch (error) {
+//     console.error("Failed to fetch active doctors:", error);
+//     throw error;
+//   }
+// };
+export const getActiveDoctors = async (): Promise<Doctor[]> => {
+  try {
+    const response = await fetch(`${API_URL}/active`);
+    return await handleFetchError(response);
+  } catch (error) {
+    console.error("Failed to fetch active doctors:", error);
+    throw error;
   }
 };
 
-  export const getDoctors = async (): Promise<Doctor[]> => {
+
+// Get all doctors
+export const getAllDoctors = async (): Promise<Doctor[]> => {
   try {
     const response = await fetch(API_URL);
     handleFetchError(response);
     return await response.json();
   } catch (error) {
-    console.error("Failed to fetch doctors:", error);
+    console.error("Failed to fetch all doctors:", error);
     throw error;
   }
 };
 
-export const getDoctorById = async (id: number): Promise<any> => {
+// Get doctor by id
+export const getDoctorById = async (id: number): Promise<Doctor> => {
   try {
     const response = await fetch(`${API_URL}/${id}`);
     handleFetchError(response);
@@ -30,7 +56,8 @@ export const getDoctorById = async (id: number): Promise<any> => {
   }
 };
 
-export const createDoctor = async (doctor: any): Promise<any> => {
+// Create doctor
+export const createDoctor = async (doctor: Doctor): Promise<Doctor> => {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
@@ -45,10 +72,8 @@ export const createDoctor = async (doctor: any): Promise<any> => {
   }
 };
 
-export const updateDoctor = async (
-  id: number,
-  doctor: any
-): Promise<any> => {
+// Update doctor
+export const updateDoctor = async (id: number, doctor: Doctor): Promise<Doctor> => {
   try {
     const response = await fetch(`${API_URL}/${id}`, {
       method: "PUT",
@@ -63,15 +88,16 @@ export const updateDoctor = async (
   }
 };
 
-export const deleteDoctor = async (id: number): Promise<any> => {
-  try {
-    const response = await fetch(`${API_URL}/${id}`, {
-      method: "DELETE",
-    });
-    handleFetchError(response);
-    return await response.json();
-  } catch (error) {
-    console.error(`Failed to delete doctor with ID ${id}:`, error);
-    throw error;
-  }
-};
+// Delete doctor
+// export const deleteDoctor = async (id: number): Promise<any> => {
+//   try {
+//     const response = await fetch(`${API_URL}/${id}`, {
+//       method: "DELETE",
+//     });
+//     handleFetchError(response);
+//     return await response.json();
+//   } catch (error) {
+//     console.error(`Failed to delete doctor with ID ${id}:`, error);
+//     throw error;
+//   }
+// };
