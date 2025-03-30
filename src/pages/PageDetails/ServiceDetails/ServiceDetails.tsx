@@ -36,24 +36,23 @@ const ServiceDetails: React.FC = () => {
   const service = services.find((srv) => srv.id === Number(id));
 
   useEffect(() => {
-      if (services.length === 0) {
-        dispatch(fetchActiveServicesStart());
-        const fetchDoctors = async () => {
-          try {
-            const response = await fetch("http://localhost:8100/api/services/active");
-            if (!response.ok) {
-              throw new Error("Failed to fetch services");
-            }
-            const data = await response.json();
-            dispatch(fetchServicesSuccess(data));
-          } catch (err: any) {
-            dispatch(fetchServicesFailure(err.message || t("errorFetchingervices")));
+    if (services.length === 0) {
+      dispatch(fetchActiveServicesStart());
+      const fetchDoctors = async () => {
+        try {
+          const response = await fetch("http://localhost:8100/api/services/active");
+          if (!response.ok) {
+            throw new Error("Failed to fetch services");
           }
-        };
-  
-        fetchDoctors();
-      }
-    }, [dispatch, services.length, t]); 
+          const data = await response.json();
+          dispatch(fetchServicesSuccess(data));
+        } catch (err: any) {
+          dispatch(fetchServicesFailure(err.message || t("errorFetchingServices")));
+        }
+      };
+      fetchDoctors();
+    }
+  }, [dispatch, services.length, t]);
 
   if (loading) return <p>{t("loadingServices")}</p>;
   if (error) return <p>{t("errorFetchingServices")}</p>;
@@ -92,14 +91,12 @@ const ServiceDetails: React.FC = () => {
         <InfoWrapper>
           <TitleWrapper>
             <LabelWrapper>
-              {t("message.main.team_page.doctorDetails.title")}{" "}
-            </LabelWrapper>
+              {t("message.main.team_page.servicerDetails.title")}</LabelWrapper>
             <Title>{title}</Title>
           </TitleWrapper>
           <DescriptionWrapper>
             <LabelWrapper>
-              {t("message.main.team_page.doctorDetails.specialization")}
-            </LabelWrapper>
+              {t("message.main.team_page.serviceDetails.specialization")}</LabelWrapper>
             <Description>{description}</Description>
           </DescriptionWrapper>
         </InfoWrapper>

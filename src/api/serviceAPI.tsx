@@ -25,7 +25,7 @@ export const getActiveDoctors = async (): Promise<Service[]> => {
 export const getServices = async (): Promise<Service[]> => {
   try {
     const response = await fetch(`${API_URL}/services`);
-    handleFetchError(response);
+    await handleFetchError(response);
     return await response.json();
   } catch (error) {
     console.error("Failed to fetch services:", error);
@@ -36,7 +36,7 @@ export const getServices = async (): Promise<Service[]> => {
 export const getServiceById = async (id: number): Promise<Service> => {
   try {
     const response = await fetch(`${API_URL}/services/${id}`);
-    handleFetchError(response);
+    await handleFetchError(response);
     return await response.json();
   } catch (error) {
     console.error(`Failed to fetch service with ID ${id}:`, error);
@@ -51,7 +51,7 @@ export const createService = async (service: Partial<Service>): Promise<Service>
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(service),
     });
-    handleFetchError(response);
+    await handleFetchError(response);
     return await response.json();
   } catch (error) {
     console.error("Failed to create service:", error);
@@ -69,7 +69,7 @@ export const updateService = async (
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(service),
     });
-    handleFetchError(response);
+    await handleFetchError(response);
     return await response.json();
   } catch (error) {
     console.error(`Failed to update service with ID ${id}:`, error);

@@ -57,7 +57,7 @@ const ServicePage: React.FC = () => {
         }
 
         const data = await response.json();
-        console.log("Services data:", data);
+        // console.log("Services data:", data);
         dispatch(fetchActiveServicesSuccess(data));
       } catch (err: any) {
         console.error("Failed to fetch active services:", err);
@@ -73,7 +73,7 @@ const ServicePage: React.FC = () => {
   }, [dispatch]);
 
   const handleDetailsClick = (id: number) => {
-    navigate(`/service/${id}`);
+    navigate(`/services/${id}`);
   };
 
   const parseSubtitle = (text: string) => {

@@ -24,7 +24,7 @@ const serviceSlice = createSlice({
     },
     fetchActiveServicesSuccess(state, action: PayloadAction<Service[]>) {
       state.loading = false;
-      state.doctors = action.payload;
+      state.services = action.payload;
     },
     fetchActiveServicesFailure(state, action: PayloadAction<string>) {
       state.loading = false;

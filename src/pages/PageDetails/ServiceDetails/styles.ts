@@ -19,6 +19,7 @@ export const ContentWrapper = styled.div`
 
 export const ImageWrapper = styled.div`
   flex: 1;
+  height: 300px;
   display: flex;
   justify-content: center;
 `;
@@ -42,6 +43,7 @@ export const TitleWrapper = styled.div`
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;
+  
 `;
 
 export const LabelWrapper = styled.div`
@@ -51,9 +53,9 @@ export const LabelWrapper = styled.div`
   margin-bottom: 10px;
 `;
 
-export const Title = styled.h1`
-  font-size: 28px;
-  color: #333;
+export const Title = styled.p`
+  font-size: 24px;
+  color: #555;
   margin-bottom: 10px;
 `;
 
@@ -64,8 +66,7 @@ export const DescriptionWrapper = styled.div`
 `;
 
 export const Description = styled.p`
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 24px;
   color: #555;
   margin-bottom: 15px;
 `;
@@ -77,7 +78,7 @@ export const Biography = styled.p`
 `;
 
 export const GalleryWrapper = styled.div`
-  margin-top: 30px;
+  margin-top: 50px;
   width: 100%;
   text-align: center;
 `;

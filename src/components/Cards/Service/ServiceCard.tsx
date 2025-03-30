@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Photo, Info, Title, Description, DetailsButton } from "./styles";
+import { Card, Photo, Info, Title, Description, DetailsButton, PhotoContainer } from "./styles";
 import { useTranslation } from "react-i18next";
 
 interface ServiceCardProps {
@@ -21,10 +21,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <Card>
-      <Photo
-        src={photo || "https://via.placeholder.com/150"}
-        alt={`Photo of ${title}`}
-      />
+     <PhotoContainer>
+        <Photo
+          src={photo || "https://via.placeholder.com/150"}
+          alt={`Photo of ${title}`}
+        />
+     </PhotoContainer>
       <Info>
         <Title>{title}</Title>
         <Description>{description}</Description>
