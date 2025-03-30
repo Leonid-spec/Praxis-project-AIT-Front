@@ -38,13 +38,32 @@ export const InfoWrapper = styled.div`
   text-align: left;
 `;
 
+export const TitleWrapper = styled.div`
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+`;
+
+export const LabelWrapper = styled.div`
+  font-size: 24px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 10px;
+`;
+
 export const Title = styled.h1`
   font-size: 28px;
   color: #333;
   margin-bottom: 10px;
 `;
 
-export const Specialization = styled.p`
+export const DescriptionWrapper = styled.div`
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 10px;
+`;
+
+export const Description = styled.p`
   font-size: 20px;
   font-weight: bold;
   color: #555;

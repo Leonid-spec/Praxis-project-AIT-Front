@@ -1,6 +1,6 @@
 import { Doctor } from "../store/types/doctorTypes";
 
-const API_URL = "/api/team";
+const API_URL = "/api";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {
@@ -11,19 +11,9 @@ const handleFetchError = async (response: Response) => {
 };
 
 // Get active doctors
-// export const getActiveDoctors = async (): Promise<Doctor[]> => {
-//   try {
-//     const response = await fetch(`${API_URL}/active`);
-//     handleFetchError(response);
-//     return await response.json();
-//   } catch (error) {
-//     console.error("Failed to fetch active doctors:", error);
-//     throw error;
-//   }
-// };
 export const getActiveDoctors = async (): Promise<Doctor[]> => {
   try {
-    const response = await fetch(`${API_URL}/active`);
+    const response = await fetch(`${API_URL}/doctors/active`);
     return await handleFetchError(response);
   } catch (error) {
     console.error("Failed to fetch active doctors:", error);
@@ -35,7 +25,7 @@ export const getActiveDoctors = async (): Promise<Doctor[]> => {
 // Get all doctors
 export const getAllDoctors = async (): Promise<Doctor[]> => {
   try {
-    const response = await fetch(API_URL);
+    const response = await fetch(`{API_URL}/doctors`);
     handleFetchError(response);
     return await response.json();
   } catch (error) {
@@ -47,7 +37,7 @@ export const getAllDoctors = async (): Promise<Doctor[]> => {
 // Get doctor by id
 export const getDoctorById = async (id: number): Promise<Doctor> => {
   try {
-    const response = await fetch(`${API_URL}/${id}`);
+    const response = await fetch(`${API_URL}/doctors/${id}`);
     handleFetchError(response);
     return await response.json();
   } catch (error) {
@@ -75,7 +65,7 @@ export const createDoctor = async (doctor: Doctor): Promise<Doctor> => {
 // Update doctor
 export const updateDoctor = async (id: number, doctor: Doctor): Promise<Doctor> => {
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}/doctors/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(doctor),

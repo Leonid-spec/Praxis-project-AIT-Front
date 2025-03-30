@@ -38,7 +38,7 @@ const Menu = () => {
         </Logo>
   
         <Nav>
-          <StyledNavLinkMenu to="/service">{t('message.header.menu.services')}</StyledNavLinkMenu>
+          <StyledNavLinkMenu to="/services">{t('message.header.menu.services')}</StyledNavLinkMenu>
           <StyledNavLinkMenu to="/about">{t('message.header.menu.about_us')}</StyledNavLinkMenu>
           <StyledNavLinkMenu to="/doctors">{t('message.header.menu.team')}</StyledNavLinkMenu>
           <StyledNavLinkMenu to="/contacts">{t('message.header.menu.contact')}</StyledNavLinkMenu>

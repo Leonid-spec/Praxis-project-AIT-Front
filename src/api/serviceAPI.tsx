@@ -1,16 +1,6 @@
-//import { Service } from "../store/types/";
+import { Service } from "../store/types/serviceTypes";
 
-
-const API_URL = "http://localhost:5000/services";
-
-interface Service {
-  id: number;
-  name: string;
-  topimage?: string;
-  description_de?: string;
-  description_en?: string;
-  description_ru?: string;
-}
+const API_URL = "/api";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {
@@ -20,9 +10,21 @@ const handleFetchError = async (response: Response) => {
   return response.json();
 };
 
+// Get active services
+export const getActiveDoctors = async (): Promise<Service[]> => {
+  try {
+    const response = await fetch(`${API_URL}/services/active`);
+    return await handleFetchError(response);
+  } catch (error) {
+    console.error("Failed to fetch active services:", error);
+    throw error;
+  }
+};
+
+// Get all services
 export const getServices = async (): Promise<Service[]> => {
   try {
-    const response = await fetch(API_URL);
+    const response = await fetch(`${API_URL}/services`);
     handleFetchError(response);
     return await response.json();
   } catch (error) {
@@ -33,7 +35,7 @@ export const getServices = async (): Promise<Service[]> => {
 
 export const getServiceById = async (id: number): Promise<Service> => {
   try {
-    const response = await fetch(`${API_URL}/${id}`);
+    const response = await fetch(`${API_URL}/services/${id}`);
     handleFetchError(response);
     return await response.json();
   } catch (error) {
@@ -62,7 +64,7 @@ export const updateService = async (
   service: Partial<Service>
 ): Promise<Service> => {
   try {
-    const response = await fetch(`${API_URL}/${id}`, {
+    const response = await fetch(`${API_URL}/services/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(service),
@@ -75,15 +77,15 @@ export const updateService = async (
   }
 };
 
-export const deleteService = async (id: number): Promise<void> => {
-  try {
-    const response = await fetch(`${API_URL}/${id}`, {
-      method: "DELETE",
-    });
-    handleFetchError(response);
-  } catch (error) {
-    console.error(`Failed to delete service with ID ${id}:`, error);
-    throw error;
-  }
-};
+// export const deleteService = async (id: number): Promise<void> => {
+//   try {
+//     const response = await fetch(`${API_URL}/${id}`, {
+//       method: "DELETE",
+//     });
+//     handleFetchError(response);
+//   } catch (error) {
+//     console.error(`Failed to delete service with ID ${id}:`, error);
+//     throw error;
+//   }
+// };
 

@@ -1,17 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface Doctor {
-  id: number;
-  fullName: string;
-  topImage?: string;
-  images?: { id: number; path: string }[];
-  specialisationDe?: string;
-  specialisationEn?: string;
-  specialisationRu?: string;
-  descriptionDe?: string;
-  descriptionEn?: string;
-  descriptionRu?: string;
-}
+import { Doctor } from '../types/doctorTypes';
 
 interface DoctorState {
   [x: string]: any;

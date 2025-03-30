@@ -1,11 +1,11 @@
 import React from "react";
-import { Card, Photo, Info, Name, Description, DetailsButton } from "./styles";
+import { Card, Photo, Info, Title, Description, DetailsButton } from "./styles";
 import { useTranslation } from "react-i18next";
 
 interface ServiceCardProps {
   id: number;
   photo?: string;
-  name: string;
+  title: string;
   description: string;
   onDetailsClick: (id: number) => void;
 }
@@ -13,7 +13,7 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({
   id,
   photo,
-  name,
+  title,
   description,
   onDetailsClick,
 }) => {
@@ -23,10 +23,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     <Card>
       <Photo
         src={photo || "https://via.placeholder.com/150"}
-        alt={`Photo of ${name}`}
+        alt={`Photo of ${title}`}
       />
       <Info>
-        <Name>{name}</Name>
+        <Title>{title}</Title>
         <Description>{description}</Description>
         <DetailsButton onClick={() => onDetailsClick(id)}>
                   {t("message.main.team_page.moreInfoBtn")} 

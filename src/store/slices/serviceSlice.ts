@@ -1,18 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-
-export interface Service {
-  id: number;
-  name: string;
-  topimage?: string;
-  images?: { id: number; path: string }[];
-  description_de?: string;
-  description_en?: string;
-  description_ru?: string;
-}
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Service } from "../types/serviceTypes";
 
 interface ServiceState {
+  [x: string]: any;
   services: Service[];
   loading: boolean;
   error: string | null;
@@ -25,9 +15,21 @@ const initialState: ServiceState = {
 };
 
 const serviceSlice = createSlice({
-  name: 'service',
+  name: "service",
   initialState,
   reducers: {
+    fetchActiveServicesStart(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchActiveServicesSuccess(state, action: PayloadAction<Service[]>) {
+      state.loading = false;
+      state.doctors = action.payload;
+    },
+    fetchActiveServicesFailure(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+    },
     fetchServicesStart(state) {
       state.loading = true;
       state.error = null;
@@ -55,8 +57,10 @@ const serviceSlice = createSlice({
   },
 });
 
-
 export const {
+  fetchActiveServicesStart,
+  fetchActiveServicesSuccess,
+  fetchActiveServicesFailure,
   fetchServicesStart,
   fetchServicesSuccess,
   fetchServicesFailure,
@@ -64,6 +68,5 @@ export const {
   updateService,
   deleteService,
 } = serviceSlice.actions;
-
 
 export default serviceSlice.reducer;

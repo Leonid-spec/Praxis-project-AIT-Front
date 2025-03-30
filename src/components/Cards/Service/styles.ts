@@ -25,7 +25,7 @@ export const Info = styled.div`
   text-align: center;
 `;
 
-export const Name = styled.h3`
+export const Title = styled.h3`
   font-size: 22px;
   color: #2e3a59; /* Цвет текста для заголовков */
   margin-bottom: 8px;
