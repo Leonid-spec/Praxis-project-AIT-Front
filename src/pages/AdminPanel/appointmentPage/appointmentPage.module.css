@@ -1,0 +1,30 @@
+.page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 3fr; /* Колонки: ID, First Name, Last Name, Service */
+  border: 1px solid #ccc;
+}
+
+.headerRow {
+  display: contents;
+  font-weight: bold;
+  background-color: #f4f4f4;
+}
+
+.row {
+  display: contents;
+}
+
+.cell {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
