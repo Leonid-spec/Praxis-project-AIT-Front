@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import doctorsData from "../../../api/doctors.json";
 import {
   Container,
   ContentWrapper,
@@ -9,65 +8,106 @@ import {
   MainImage,
   InfoWrapper,
   Title,
-  Specialization,
-  Biography,
   GalleryWrapper,
   GalleryTitle,
   ImagesGrid,
   GalleryImage,
+  DescriptionWrapper,
+  LabelWrapper,
+  TitleWrapper,
+  Description,
 } from "./styles";
+import { AppDispatch, RootState } from "../../../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { Service } from "../../../store/types/serviceTypes";
+import { fetchActiveServicesStart, fetchServicesFailure, fetchServicesSuccess } from "../../../store/slices/serviceSlice";
 
-type Language = "en" | "de" | "ru";
+type Language = "De" | "En" | "Ru";
 
-const DoctorDetails: React.FC = () => {
+const ServiceDetails: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as Language;
+  const dispatch: AppDispatch = useDispatch();
 
-  const doctor = doctorsData.doctors.find((doc) => doc.id === Number(id));
+  const { services, loading, error } = useSelector(
+    (state: RootState) => state.service
+  );
+  const service = services.find((srv) => srv.id === Number(id));
 
-  if (!doctor) {
+  useEffect(() => {
+    if (services.length === 0) {
+      dispatch(fetchActiveServicesStart());
+      const fetchDoctors = async () => {
+        try {
+          const response = await fetch("http://localhost:8100/api/services/active");
+          if (!response.ok) {
+            throw new Error("Failed to fetch services");
+          }
+          const data = await response.json();
+          dispatch(fetchServicesSuccess(data));
+        } catch (err: any) {
+          dispatch(fetchServicesFailure(err.message || t("errorFetchingServices")));
+        }
+      };
+      fetchDoctors();
+    }
+  }, [dispatch, services.length, t]);
+
+  if (loading) return <p>{t("loadingServices")}</p>;
+  if (error) return <p>{t("errorFetchingServices")}</p>;
+
+  if (!service) {
     return (
       <Container>
-        <p>{t("doctorNotFound")}</p>
+        <p>{t("serviceNotFound")}</p>
       </Container>
     );
   }
 
-  const specializationKey = `specialisation_${currentLanguage}` as keyof typeof doctor;
-  const specialization =
-    typeof doctor[specializationKey] === "string"
-      ? doctor[specializationKey]
-      : t("noSpecialization");
+  const descriptionKey = `description${
+    currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
+  }` as keyof Service;
+  const description =
+    typeof service[descriptionKey] === "string"
+      ? service[descriptionKey]
+      : t("noDescription");
 
-  const biographyKey = `biography_${currentLanguage}` as keyof typeof doctor;
-  const biography =
-    typeof doctor[biographyKey] === "string"
-      ? doctor[biographyKey]
-      : t("noBiography");
+  const titleKey = `title${
+    currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
+  }` as keyof Service;
+  const title =
+    typeof service[titleKey] === "string" ? service[titleKey] : t("noTitle");
 
   return (
     <Container>
       <ContentWrapper>
         <ImageWrapper>
           <MainImage
-            src={doctor.topimage || "https://via.placeholder.com/400"}
-            alt={doctor.full_name}
+            src={service.topImage || "https://via.placeholder.com/400"}
+            alt="Main image of service"
           />
         </ImageWrapper>
         <InfoWrapper>
-          <Title>{doctor.full_name}</Title>
-          <Specialization>{specialization}</Specialization>
-          <Biography>{biography}</Biography>
+          <TitleWrapper>
+            <LabelWrapper>
+              {t("message.main.team_page.servicerDetails.title")}</LabelWrapper>
+            <Title>{title}</Title>
+          </TitleWrapper>
+          <DescriptionWrapper>
+            <LabelWrapper>
+              {t("message.main.team_page.serviceDetails.specialization")}</LabelWrapper>
+            <Description>{description}</Description>
+          </DescriptionWrapper>
         </InfoWrapper>
       </ContentWrapper>
 
       <GalleryWrapper>
         <GalleryTitle>{t("gallery")}</GalleryTitle>
         <ImagesGrid>
-          {doctor.images && doctor.images.length > 0 ? (
-            doctor.images.map((img) => (
-              <GalleryImage key={img.id} src={img.path} alt="Doctor's work" />
+          {service.images && service.images.length > 0 ? (
+            service.images.map((img) => (
+              <GalleryImage key={img.id} src={img.path} alt="Service's work" />
             ))
           ) : (
             <p>{t("noImages")}</p>
@@ -78,4 +118,4 @@ const DoctorDetails: React.FC = () => {
   );
 };
 
-export default DoctorDetails;
+export default ServiceDetails;

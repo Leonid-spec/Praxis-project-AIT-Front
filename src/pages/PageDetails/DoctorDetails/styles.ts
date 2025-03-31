@@ -19,6 +19,7 @@ export const ContentWrapper = styled.div`
 
 export const ImageWrapper = styled.div`
   flex: 1;
+  height: 400px;
   display: flex;
   justify-content: center;
 `;
@@ -38,27 +39,59 @@ export const InfoWrapper = styled.div`
   text-align: left;
 `;
 
-export const Title = styled.h1`
+export const FullName = styled.h1`
   font-size: 28px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+  margin-bottom: 50px;
+`;
+
+export const TitleWrapper = styled.div`
+  font-size: 24px;
   color: #333;
   margin-bottom: 10px;
 `;
 
-export const Specialization = styled.p`
-  font-size: 20px;
+export const LabelWrapper = styled.div`
+  font-size: 24px;
   font-weight: bold;
+  color: #444;
+  margin-bottom: 10px;
+`;
+
+export const Title = styled.p`
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+`;
+
+export const SpecializationWrapper = styled.div`
+  font-size: 24px;
+  color: #555;
+  margin-bottom: 10px;
+`;
+
+export const Specialization = styled.p`
+  font-size: 24px;
   color: #555;
   margin-bottom: 15px;
 `;
 
+export const BiographyWrapper = styled.div`
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+`;
+
 export const Biography = styled.p`
-  font-size: 16px;
-  color: #666;
+  font-size: 24px;
+  color: #555;
   line-height: 1.6;
 `;
 
 export const GalleryWrapper = styled.div`
-  margin-top: 30px;
+  margin-top: 50px;
   width: 100%;
   text-align: center;
 `;

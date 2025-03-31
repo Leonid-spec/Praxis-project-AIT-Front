@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Photo, Info, FullName, Specialization, DetailsButton } from "./styles";
+import { Card, Photo, Info, FullName, Specialization, DetailsButton, PhotoContainer } from "./styles";
 import { useTranslation } from "react-i18next";
 
 interface DoctorCardProps {
@@ -21,10 +21,12 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
 
   return (
     <Card>
-      <Photo 
-        src={photo || "https://via.placeholder.com/150"}
-        alt={`Photo of ${fullName}`} 
-      />
+      <PhotoContainer>
+        <Photo 
+          src={photo || "https://via.placeholder.com/150"}
+          alt={`Photo of ${fullName}`} 
+        />
+      </PhotoContainer>
       <Info>
         <FullName>{fullName}</FullName>
         <Specialization>{specialization}</Specialization>

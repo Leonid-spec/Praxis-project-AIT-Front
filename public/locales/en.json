@@ -24,7 +24,12 @@
         "welcome": "Welcome to",
         "subtitle": "Welcome to our team’s page! We are dedicated professionals passionate about providing you with top-notch dental care. Our mission is to bring you a smile full of health and confidence. Thank you for trusting us!",
         "moreInfoBtn": "Learn more",
-        "noSpecialization": "No specialization available"
+        "noSpecialization": "No specialization available",
+        "doctorDetails": {
+          "title": "Title",
+          "specialization": "Specialization",
+          "biography": "Biography"
+        }
       },
       "service_page": {
         "welcome": "Welcome to ",

@@ -26,12 +26,12 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/appointment" element={<AppointmentForm />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/doctors" element={<Team />} />
             <Route path="/about" element={<About />} />
             <Route path="/contacts" element={<Contacts />} />
-            <Route path="/doctor/:id" element={<DoctorDetails />} />
-            <Route path="/service" element={<Service />} />
-            <Route path="/service/:id" element={<ServiceDetails />} />
+            <Route path="/doctors/:id" element={<DoctorDetails />} />
+            <Route path="/services" element={<Service />} />
+            <Route path="/services/:id" element={<ServiceDetails />} />
             <Route path="/admin-panel" element={<AdminPanel />} />
           </Routes>
         </Layout>
