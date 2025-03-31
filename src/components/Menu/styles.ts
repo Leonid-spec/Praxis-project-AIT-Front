@@ -4,19 +4,22 @@ import styled from 'styled-components';
 export const MenuContainer = styled.div`
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 15px 30px;
   background-color: #ffffff;
-  box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.1); 
-  border-bottom: 1px solid #eaeaea; 
-  
+  box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #eaeaea;
+
+  @media (min-width: 1920px) {
+    padding: 20px 50px;
+  }
 
   @media (max-width: 910px) {
     flex-direction: column;
-    gap: 20px; 
+    gap: 20px;
   }
 
   @media (max-width: 768px) {
@@ -26,20 +29,25 @@ export const MenuContainer = styled.div`
 
   @media (max-width: 480px) {
     padding: 10px;
+    gap: 10px;
   }
 `;
 
 export const Logo = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.6rem; 
+  font-size: 1.6rem;
   font-weight: bold;
   cursor: pointer;
   color: #3d3d3d;
   transition: color 0.3s ease;
 
   &:hover {
-    color: #4a90e2; 
+    color: #4a90e2;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 2rem;
   }
 
   @media (max-width: 768px) {
@@ -57,6 +65,10 @@ export const Nav = styled.nav`
   gap: 25px;
   white-space: nowrap;
 
+  @media (min-width: 1920px) {
+    gap: 40px; 
+  }
+
   @media (max-width: 768px) {
     gap: 20px;
     justify-content: center;
@@ -71,21 +83,25 @@ export const Nav = styled.nav`
 
 export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: #3d3d3d; 
+  color: #3d3d3d;
   font-size: 1.2rem;
   font-weight: 500;
-  text-transform: uppercase; 
-  letter-spacing: 0.05em; 
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   padding: 8px 10px;
   transition: all 0.3s ease-in-out;
 
   &:hover {
     color: #4a90e2;
-    transform: translateY(-2px); 
+    transform: translateY(-2px);
   }
 
   &:active {
     color: #4b51a5;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 1.5rem; 
   }
 
   @media (max-width: 768px) {
@@ -109,12 +125,16 @@ export const StyledNavLinkMenu = styled(NavLink)`
 
   &:hover {
     color: #4a90e2;
-    border-bottom: 2px solid #4a90e2; 
+    border-bottom: 2px solid #4a90e2;
   }
 
   &:active {
     color: #4b51a5;
     border-bottom: 2px solid #4b51a5;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 1.5rem; 
   }
 
   @media (max-width: 768px) {
@@ -134,7 +154,11 @@ export const NavLinkImg = styled.img`
 
   &:hover {
     opacity: 0.8;
-    transform: scale(1.05); 
+    transform: scale(1.05);
+  }
+
+  @media (min-width: 1920px) {
+    height: 70px; 
   }
 
   @media (max-width: 768px) {
@@ -146,15 +170,24 @@ export const NavLinkImg = styled.img`
   }
 `;
 
-export const NavLinkText = styled.span` 
-color: #3d3d3d; 
-font-size: 1rem; 
-font-weight: 500; `;
+export const NavLinkText = styled.span`
+  color: #3d3d3d;
+  font-size: 1rem;
+  font-weight: 500;
+
+  @media (min-width: 1920px) {
+    font-size: 1.4rem; 
+  }
+`;
 
 export const SprachUundAdminbereich = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (min-width: 1920px) {
+    gap: 30px;
+  }
 
   @media (max-width: 768px) {
     justify-content: center;
@@ -171,6 +204,10 @@ export const LanguagePanel = styled.div`
   display: flex;
   gap: 10px;
 
+  @media (min-width: 1920px) {
+    gap: 20px; 
+  }
+
   @media (max-width: 480px) {
     justify-content: center;
   }
@@ -181,7 +218,7 @@ export const LanguageLink = styled.button`
   border: none;
   color: inherit;
   cursor: pointer;
-  
+
   &:hover {
     color: #4a90e2;
   }
@@ -195,9 +232,20 @@ export const LanguageLink = styled.button`
   }
 `;
 
-export const Divider = styled.span` color: #3d3d3d; `;
+export const Divider = styled.span`
+  color: #3d3d3d;
+
+  @media (min-width: 1920px) {
+    font-size: 1.2rem; 
+  }
+`;
 
 export const AdminPanelBox = styled.div`
- display: flex; 
- align-items: center; 
- gap: 10px; `;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media (min-width: 1920px) {
+    gap: 15px;
+  }
+`;

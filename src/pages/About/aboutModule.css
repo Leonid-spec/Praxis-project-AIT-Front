@@ -8,6 +8,15 @@ h2 {
   color: #333;
   text-align: center;
   line-height: 1.4; 
+  margin: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
 }
 
 .modern {
@@ -15,7 +24,7 @@ h2 {
 }
 
 .textKabinet, .modern, .ausgestattet {
-  color: #2196f3; 
+  color: #2eacb8; 
   font-weight: 600; 
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
 }
@@ -25,6 +34,15 @@ h2 {
     width: 80%;
     margin: 0 auto 30px;
     text-align: center;
+
+    @media (max-width: 1024px) {
+      width: 90%;
+    }
+  
+    @media (max-width: 480px) {
+      width: 100%;
+      margin: 0 auto 20px;
+    }
   }
   
   .text-title {
@@ -35,6 +53,14 @@ h2 {
     font-weight: bold;
     color: #3d3f3f;
     margin: 70px 0 20px;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  
+    @media (max-width: 480px) {
+      font-size: 1.8rem;
+    }
   }
 
   .texth3-title {
@@ -45,6 +71,14 @@ h2 {
     font-weight: bold;
     color: #3d3f3f;
     margin: 10px 0 70px;
+
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+    }
+  
+    @media (max-width: 480px) {
+      font-size: 1.4rem;
+    }
   }
   
   .carousel-slide {
@@ -68,14 +102,15 @@ h2 {
     height: auto;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+
   
+  }
   .carousel-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border: none;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.6);
@@ -86,19 +121,45 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.3s ease;
-  }
+    transition: background-color 0.3s ease, transform 0.3s ease;
   
-  .carousel-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.9); 
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+  
+    @media (max-width: 480px) {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+    }
   }
   
   .carousel-arrow-left {
-    left: -100px;
-
+    left: -50px;
+  
+    @media (max-width: 768px) {
+      left: -40px;
+    }
+  
+    @media (max-width: 480px) {
+      left: -30px;
+    }
   }
   
   .carousel-arrow-right {
-    right: -100px; 
+    right: -50px;
+  
+    @media (max-width: 768px) {
+      right: -40px;
+    }
+  
+    @media (max-width: 480px) {
+      right: -30px;
+    }
   }
-
