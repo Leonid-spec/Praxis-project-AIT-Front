@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import styles, {
+  ContactsContainer,
   HighlightedSpan,
   MainPhoto,
   MainPhotoContainer,
   MainPhotosContainer,
+  TeamContainer,
   WelcomeTextContainer,
   WelcomeTextSubtitle,
-} from "./styles"; // Импорт стилей из styles.ts
+} from "./styles";
 import { useTranslation } from "react-i18next";
 import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
-import { TeamContainer, TeamContainerMainPhoto } from "../Team/styles";
+import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
 
 const Contacts: React.FC = () => {
-  const { t } = useTranslation(); // Использование функции перевода
+  const { t } = useTranslation();
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleCopyCoordinates = () => {
     const coordinates = "50.4501° N, 30.5234° E";
-    navigator.clipboard.writeText(coordinates); // Копирование координат в буфер обмена
-    alert(t("message.coordinatesCopied")); // Уведомление пользователя
+    navigator.clipboard.writeText(coordinates);
+    setShowMessage(true);
+    setTimeout(() => setShowMessage(false), 2000);
+  };
+
+  const handleCall = () => {
+    window.location.href = "tel:+1234567890"; 
+  };
+
+  const handleEmail = () => {
+    window.location.href = "mailto:example@example.com"; 
   };
 
   const parseSubtitle = (text: string) => {
@@ -33,14 +45,29 @@ const Contacts: React.FC = () => {
   };
 
   return (
-    <div>
+    <ContactsContainer>
+      {showMessage && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: "30px",
+            right: "10px",
+            backgroundColor: "#4caf50",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: "5px",
+            zIndex: 1,
+          }}
+        >
+          {t("message.main.contacts_page.copy")}
+        </div>
+      )}
       <TeamContainer>
-        
-          <WelcomeTextContainer>
-            <WelcomeTextSubtitle>
-              {parseSubtitle(t("message.main.contacts_page.welcome_text"))}
-            </WelcomeTextSubtitle>
-          </WelcomeTextContainer>
+        <WelcomeTextContainer>
+          <WelcomeTextSubtitle>
+            {parseSubtitle(t("message.main.contacts_page.welcome_text"))}
+          </WelcomeTextSubtitle>
+        </WelcomeTextContainer>
 
         <MainPhotosContainer>
           <MainPhotoContainer>
@@ -59,11 +86,9 @@ const Contacts: React.FC = () => {
       </TeamContainer>
 
       <div style={styles.contactsPage}>
-        {/* Грид-контейнер для карточек */}
         <div style={styles.cardsGrid}>
-          {/* Левый контейнер */}
-          <div style={styles.leftContainer}>
-            <div style={styles.leftInnerContainer}>
+          <div style={styles.contactsWrapper}>
+            <div style={styles.contacts}>
               <h2>
                 <a
                   href="https://www.google.com/maps?q=50.4501,30.5234"
@@ -74,28 +99,40 @@ const Contacts: React.FC = () => {
                   {t("message.main.contacts_page.titleContacts")}
                 </a>
               </h2>
-              <p>{t("message.main.contacts_page.address")}</p>
-              <p> GPS </p>
 
-              {/* Кнопка перенесена на отдельную строку */}
-              <button onClick={handleCopyCoordinates} style={styles.copyButton}>
-                {t("message.copy")}
-                //TODO
-              </button>
+              <p style={styles.contactBox}>{t("message.main.contacts_page.address")}</p>
 
-              <div style={styles.contactIcons}>
-                <div style={styles.iconCircle}>📞</div>
-                <span>{t("message.main.contacts_page.phone")}</span>
-              </div>
-              <div style={styles.contactIcons}>
-                <div style={styles.iconCircle}>📧</div>
-                <span>{t("message.main.contacts_page.email")}</span>
+              <div style={styles.contactBox}>
+                <div style={styles.contactIcons}>
+                  <div style={styles.iconCircle}>
+                    <FaCopy
+                      onClick={handleCopyCoordinates}
+                      style={{ cursor: "pointer"}}
+                    />
+                  </div>
+                  <p>GPS: 50.4501° N, 30.5234° E</p>
+                </div>
+  
+                <div style={styles.contactIcons} onClick={handleCall}>
+                  <div style={styles.iconCircle}>
+                    <FaPhone style={{ cursor: "pointer"}}
+                    />
+                  </div>
+                  <p>{t("message.main.contacts_page.phone")}</p>
+                </div>
+  
+                <div style={styles.contactIcons}>
+                  <div style={styles.iconCircle} onClick={handleEmail}>
+                    <FaEnvelope style={{ cursor: "pointer" }}
+                  />
+                  </div>
+                  <p>{t("message.main.contacts_page.email")}</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Правый контейнер */}
-          <div style={styles.rightContainer1}>
+          <div style={styles.sprechzeitenWrapper}>
             <div style={styles.sprechzeiten}>
               <h2>{t("message.main.contacts_page.titleTime")}</h2>
               <div style={styles.daysOfWeek}>
@@ -129,7 +166,6 @@ const Contacts: React.FC = () => {
           </div>
         </div>
 
-        {/* Контейнер для карты */}
         <div style={styles.mapContainer}>
           <h2>{t("message.main.contacts_page.map.title")}</h2>
           <iframe
@@ -142,7 +178,7 @@ const Contacts: React.FC = () => {
           ></iframe>
         </div>
       </div>
-    </div>
+    </ContactsContainer>
   );
 };
 

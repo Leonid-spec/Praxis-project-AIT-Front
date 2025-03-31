@@ -1,5 +1,25 @@
 import styled from "styled-components";
 
+export const ContactsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #f6f9fc;
+`;
+
+export const TeamContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 30px 5%; */
+  /* padding: 30; */
+  max-width: 1200px;
+  background-color: #f6f9fc;
+`;
+
 export const ContactsContainerMainPhoto = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -14,22 +34,6 @@ export const ContactsContainerMainPhoto = styled.div`
   }
 `;
 
-export const WelcomeTextSubtitle = styled.p`
-  color: #555555;
-  font-size: clamp(1.2rem, 3vw, 1.6rem);
-  line-height: 1.5;
-
-  span {
-    color: #77c0eb;
-    font-weight: bold;
-  }
-  
-
-  @media (max-width: 768px) {
-    font-size: clamp(1.2rem, 4vw, 1.4rem);
-  }
-`;
-
 export const WelcomeTextContainer = styled.div`
   display: flex;
   align-items: center;
@@ -37,11 +41,13 @@ export const WelcomeTextContainer = styled.div`
   background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
+  margin: 20px;
+  width: 100%;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-    &:hover {
+  &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
   }
@@ -51,12 +57,29 @@ export const WelcomeTextContainer = styled.div`
   }
 `;
 
+export const WelcomeTextSubtitle = styled.p`
+  color: #555555;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 1.5;
+
+  span {
+    color: #77c0eb;
+    font-weight: bold;
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(1.2rem, 4vw, 1.4rem);
+  }
+`;
+
 export const MainPhotosContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-radius: 12px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   text-align: center;
   gap: 20px;
@@ -79,8 +102,9 @@ export const MainPhotoContainer = styled.div`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+    /* transform: translateY(-5px); */
+    /* box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); */
+    /* background-color: #f9f9f9; */
   }
 
   @media (max-width: 768px) {
@@ -103,7 +127,7 @@ export const HighlightedSpan = styled.span`
 
 const styles = {
   contactsPage: {
-    backgroundColor: "#f9f9f9",
+    width: "100%",
   },
   heading: {
     fontSize: "32px",
@@ -117,51 +141,54 @@ const styles = {
     margin: "40px auto",
     maxWidth: "1200px",
   },
-  leftContainer: {
+  contactsWrapper: {
+    display: "flex",
+    flexDirection: "column" as "column",
+    flex: "1",
     padding: "30px",
     backgroundColor: "#ffffff",
     borderRadius: "12px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    color: "#333",
-    display: "flex",
-    flexDirection: "column" as const,
-    gap: "15px",
   },
-  leftInnerContainer: {
+  contacts: {
     display: "flex" as "flex",
     fontSize: "20px",
-    flexDirection: "column"  as "column",
+    flexDirection: "column" as "column",
     backgroundColor: "#f9f9f9",
     padding: "20px",
     borderRadius: "10px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
     gap: "10px",
-    flex: "1", // Гибкая высота
+    flex: "1",
   },
-  rightContainer1: {
+  contactBox: {
+    margin: "20px 0 0 20px",
+    cursor: "pointer",
+  },
+  sprechzeitenWrapper: {
+    display: "flex",
+    flexDirection: "column" as "column",
+    flex: "1",
     padding: "30px",
     backgroundColor: "#ffffff",
     borderRadius: "12px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    display: "flex",
-    flexDirection: "column"  as "column",
-    flex: "1", // Гибкая высота, чтобы совпадала с leftInnerContainer
   },
   sprechzeiten: {
     display: "flex" as "flex",
     flexDirection: "column" as "column",
     gap: "20px",
-    padding: "40p20px",
-    backgroundColor:" #f9f9f9",
+    padding: "20px",
+    backgroundColor: " #f9f9f9",
     borderRadius: "10px",
     boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-    flex: "1", // Гибкая высота
+    flex: "1",
   },
   daysOfWeek: {
     padding: "0 0 0 5%",
     color: "#333",
     fontSize: "20px",
-    lineHeight: "1.5",
+    lineHeight: "2",
   },
   mapContainer: {
     display: "flex" as "flex",
@@ -207,22 +234,10 @@ const styles = {
     color: "#ffffff",
     marginRight: "10px",
   },
-  arrowContainer: {
-    marginTop: "20px",
-    display: "flex" as "flex",
-    justifyContent: "center",
-  },
   buttonContainer: {
     marginTop: "20px",
     display: "flex" as "flex",
     justifyContent: "center",
-  },
-  arrow: {
-    width: "30px",
-    height: "30px",
-    backgroundColor: "#A0EEF2",
-    clipPath: "polygon(100% 50%, 0 0, 0 100%)",
-    animation: "float 2s infinite ease-in-out",
   },
   "@keyframes float": {
     "0%, 100%": {
@@ -231,7 +246,7 @@ const styles = {
     "50%": {
       transform: "translateX(-10px)",
     },
-  }
+  },
 };
 
 export default styles;
