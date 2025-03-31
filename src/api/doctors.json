@@ -1,0 +1,130 @@
+{
+  "doctors": [
+    {
+      "id": 1,
+      "title_de": "title de 1",
+      "title_en": "title en 1",
+      "title_ru": "title ru 1",
+      "full_name": "Full Name 1",
+      "biogrphy_de": "Biogrphy de 1",
+      "biogrphy_en": "Biogrphy en 1",
+      "biogrphy_ru": "Biogrphy ru 1",
+      "specialisation_de": "Specialisation de 1",
+      "specialisation_en": "Specialisation en 1",
+      "specialisation_ru": "Specialisation ru 1",
+      "topimage": "https://cdn1.site-media.eu/images/360%2C1407x938%2B279%2B37/8183292/CatharinaBoekker.jpg",
+      "isActive": true,
+      "images": [
+        {
+          "id": 5,
+          "path": "https://physio-handstand.de/wp-content/uploads/2020/12/Foto-7.jpg"
+        },
+        {
+          "id": 6,
+          "path": "https://th.bing.com/th/id/OIP.QD1Men8_xvMNZuVLwDkU4QHaIi?rs=1&pid=ImgDetMain"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title_de": "title de 2",
+      
+      "title_en": "title en 2",
+      "title_ru": "title ru 2",
+      "full_name": "Full Name 2",
+      "biogrphy_de": "Biogrphy de 2",
+      "biogrphy_en": "Biogrphy en 2",
+      "biogrphy_ru": "Biogrphy ru 2",
+      "specialisation_de": "Specialisation de 2",
+      "specialisation_en": "Specialisation en 2",
+      "specialisation_ru": "Specialisation ru 2",
+      "topimage": "https://www.zahnaerzte-schwerte.de/wp-content/uploads/evelyn_flender.jpg",
+      "isActive": true,
+      "images": [
+        {
+          "id": 5,
+          "path": "https://www.zahnaerzte-schwerte.de/wp-content/uploads/evelyn_flender.jpg"
+        },
+        {
+          "id": 6,
+          "path": "https://zahnaerzte-hamburg.de/wp-content/uploads/2020/07/team_kristina_suhk.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title_de": "title de 3",
+      "title_en": "title en 3",
+      "title_ru": "title ru 3",
+      "full_name": "Full Name 3",
+      "biogrphy_de": "Biogrphy de 3",
+      "biogrphy_en": "Biogrphy en 3",
+      "biogrphy_ru": "Biogrphy ru 3",
+      "specialisation_de": "Specialisation de 3",
+      "specialisation_en": "Specialisation en 3",
+      "specialisation_ru": "Specialisation ru 3",
+      "topimage": "https://www.zahnaerzte-in-stetzsch.de/wp-content/media/2022/08/dipl-stomatologe-olaf-schneider.jpg",
+      "isActive": true,
+      "images": [
+        {
+          "id": 5,
+          "path": "https://zahnaerzte-am-stadtgarten.de/wp-content/uploads/2021/03/Zahnersatz-anpassen-1024x683.jpg"
+        },
+        {
+          "id": 6,
+          "path": "https://www.in-berlin-brandenburg.com/Brandenburg/Landkreise/Barnim/Firmen/Aerzte/Bilder/Zahnaerzte-Barnim.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title_de": "title de 4",
+      "title_en": "title en 4",
+      "title_ru": "title ru 4",
+      "full_name": "Full Name 4",
+      "biogrphy_de": "Biogrphy de 4",
+      "biogrphy_en": "Biogrphy en 4",
+      "biogrphy_ru": "Biogrphy ru 4",
+      "specialisation_de": "Specialisation de 4",
+      "specialisation_en": "Specialisation en 4",
+      "specialisation_ru": "Specialisation ru 4",
+      "topimage": "https://cdn3.site-media.eu/images/1024%2C1973x1973%2B0%2B328/5597879/J4A5076_low.jpeg",
+      "isActive": true,
+      "images": [
+        {
+          "id": 5,
+          "path": "https://th.bing.com/th/id/OIP.yqmDkgMB-bbsREXWrNHOmwHaE8?rs=1&pid=ImgDetMain"
+        },
+        {
+          "id": 6,
+          "path": "https://th.bing.com/th/id/OIP.Ado7fHAM_fxwPDuuMl2yfQHaEm?w=947&h=589&rs=1&pid=ImgDetMain"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title_de": "title de 5",
+      "title_en": "title en 5",
+      "title_ru": "title ru 5",
+      "full_name": "Full Name 5",
+      "biogrphy_de": "Biogrphy de 5",
+      "biogrphy_en": "Biogrphy en 5",
+      "biogrphy_ru": "Biogrphy ru 5",
+      "specialisation_de": "Specialisation de 5",
+      "specialisation_en": "Specialisation en 5",
+      "specialisation_ru": "Specialisation ru 5",
+      "topimage": "https://th.bing.com/th/id/OIP.0bzQ-2TsZGGp5RpB7ZvbggHaE8?rs=1&pid=ImgDetMain",
+      "isActive": true,
+      "images": [
+        {
+          "id": 5,
+          "path": "https://www.dr-gregor-heller.de/images/_MG_3587.jpg"
+        },
+        {
+          "id": 6,
+          "path": "https://dailygeekshow.com/wp-content/uploads/2016/07/UNE-Article-dent3.jpg"
+        }
+      ]
+    }
+  ]
+}

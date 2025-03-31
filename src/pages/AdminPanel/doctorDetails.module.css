@@ -1,0 +1,42 @@
+.modal {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modalPhoto {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .modalContent {
+    margin-top: 10px;
+  }
+  
+  .applyButton,
+  .editButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .editButton {
+    background-color: orange;
+  }
+  
+  .applyButton:hover {
+    background-color: #3e8e41;
+  }
+  
+  .editButton:hover {
+    background-color: #ff9800;
+  }
