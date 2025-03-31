@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./adminPanel.module.css";
-import Sidebar from "../AdminPanel/Sidebar";
-import MainContent from "../AdminPanel/MainContent";
-import AdminHeader from "../AdminPanel/AdminHeader";
+import Sidebar from "./Sidebar";
+import MainContent from "./MainContent";
+import AdminHeader from "./AdminHeader";
 
 const AdminPanel: React.FC = () => {
   return (
