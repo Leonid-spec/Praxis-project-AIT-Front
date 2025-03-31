@@ -1,10 +1,18 @@
- const AdminPanel = () => {
+import React from "react";
+import styles from "./adminPanel.module.css";
+import Sidebar from "./Sidebar";
+import MainContent from "./MainContent";
+import AdminHeader from "./AdminHeader";
+
+const AdminPanel: React.FC = () => {
   return (
-    <div>
-      <p>Welcome to the Admin Panel</p>
-      <p>Here you can manage administrators, view logs, and more!</p>
+    <div className={styles.adminPanel}>
+      <AdminHeader />
+      <div className={styles.mainPanel}>
+        <Sidebar />
+        <MainContent />
+      </div>
     </div>
-   
   );
 };
 

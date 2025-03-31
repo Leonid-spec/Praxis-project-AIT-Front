@@ -13,6 +13,7 @@ import DoctorDetails from "./pages/PageDetails/DoctorDetails/DoctorDetails";
 import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
+import { DoctorsProvider } from "./pages/AdminPanel/DoctorsContext";
 
 Modal.setAppElement("#root");
 
@@ -20,22 +21,25 @@ function App() {
   return (
     <ModalProvider>
       <AppointmentModal />
-      <Router>
-        <GlobalStyles />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/appointment" element={<AppointmentForm />} />
-            <Route path="/doctors" element={<Team />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/doctors/:id" element={<DoctorDetails />} />
-            <Route path="/services" element={<Service />} />
-            <Route path="/services/:id" element={<ServiceDetails />} />
-            <Route path="/admin-panel" element={<AdminPanel />} />
-          </Routes>
-        </Layout>
-      </Router>
+       <DoctorsProvider>
+         {" "}
+        <Router>
+          <GlobalStyles />
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/appointment" element={<AppointmentForm />} />
+              <Route path="/doctors" element={<Team />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/doctors/:id" element={<DoctorDetails />} />
+              <Route path="/services" element={<Service />} />
+              <Route path="/services/:id" element={<ServiceDetails />} />
+              <Route path="/admin-panel/*" element={<AdminPanel />} />{" "}
+            </Routes>
+          </Layout>
+        </Router>
+      </DoctorsProvider>
     </ModalProvider>
   );
 }

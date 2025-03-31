@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import MiniFooter from "../../pages/Contacts/MiniFooter"; // Импорт мини-футера
+import MiniFooter from "../../pages/Contacts/MiniFooter"; 
 import styles from "./layout.module.css";
 
 interface LayoutProps {
@@ -15,6 +15,10 @@ const Layout = ({ children }: LayoutProps) => {
   // Список страниц, где нужно отображать мини-футер
   const miniFooterPages = ["/contacts", "/another-page"]; 
   const isMiniFooter = miniFooterPages.includes(location.pathname); // Проверка, нужен ли мини-футер
+
+   // Страницы без футера вообще
+   const noFooterPages = ["/admin-panel", "/admin-panel/doctors", "/admin-panel/appointments", "/admin-panel/services"];
+   const hideFooter = noFooterPages.some((path) => location.pathname.startsWith(path)); 
 
   return (
     <div className={styles.layout}>

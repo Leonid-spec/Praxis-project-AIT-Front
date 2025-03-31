@@ -24,3 +24,4 @@ npm install @reduxjs/toolkit react-redux  redux
 npm install react-slick slick-carousel
 
 
+8) npm install axios

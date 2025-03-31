@@ -22,14 +22,15 @@ const Contacts: React.FC = () => {
     navigator.clipboard.writeText(coordinates);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
+    // alert(t("message.coordinatesCopied"));
   };
 
   const handleCall = () => {
-    window.location.href = "tel:+1234567890"; 
+    window.location.href = "tel:+1234567890";
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:example@example.com"; 
+    window.location.href = "mailto:example@example.com";
   };
 
   const parseSubtitle = (text: string) => {
@@ -100,33 +101,32 @@ const Contacts: React.FC = () => {
                 </a>
               </h2>
 
-              <p style={styles.contactBox}>{t("message.main.contacts_page.address")}</p>
+              <p style={styles.contactBox}>
+                {t("message.main.contacts_page.address")}
+              </p>
 
               <div style={styles.contactBox}>
                 <div style={styles.contactIcons}>
-                  <div style={styles.iconCircle}>
-                    <FaCopy
-                      onClick={handleCopyCoordinates}
-                      style={{ cursor: "pointer"}}
-                    />
+                  <div style={styles.contactIcons}>
+                    <div style={styles.iconCircle}>📍</div>
+                  <span>GPS: 50.4501° N, 30.5234° E</span>
                   </div>
-                  <p>GPS: 50.4501° N, 30.5234° E</p>
+                  {/* <button onClick={handleCopyCoordinates} style={styles.copyButton}>
+                {t("message.copy")}
+                //TODO что-то сделать с кнопкой, не понимаю, что она должна и куда копировать
+              </button> */}
                 </div>
-  
-                <div style={styles.contactIcons} onClick={handleCall}>
-                  <div style={styles.iconCircle}>
-                    <FaPhone style={{ cursor: "pointer"}}
-                    />
-                  </div>
-                  <p>{t("message.main.contacts_page.phone")}</p>
-                </div>
-  
+
                 <div style={styles.contactIcons}>
-                  <div style={styles.iconCircle} onClick={handleEmail}>
-                    <FaEnvelope style={{ cursor: "pointer" }}
-                  />
+                  <div style={styles.iconCircle}>📞</div>
+                  <span>{t("message.main.contacts_page.phone")}</span>
+                </div>
+
+                <div style={styles.contactIcons}>
+                  <div style={styles.contactIcons}>
+                    <div style={styles.iconCircle}>📧</div>
+                    <span>{t("message.main.contacts_page.email")}</span>
                   </div>
-                  <p>{t("message.main.contacts_page.email")}</p>
                 </div>
               </div>
             </div>
