@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import MiniFooter from "../../pages/Contacts/MiniFooter"; // Импорт мини-футера
+import MiniFooter from "../../pages/Contacts/MiniFooter"; 
 import styles from "./layout.module.css";
 
 interface LayoutProps {
