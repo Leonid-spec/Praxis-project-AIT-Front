@@ -54,7 +54,7 @@
         "phone": "Phone: +49 017 223 334",
         "email": "Email: info@dentalclinic.de",
         "copy": "Copy",
-        "coordinates": "GPS: ",
+        "coordinates": "GPS: 50.4501° N, 30.5234° E",
         "coordinatesCopied": "Coordinates successfully copied!",
         "map": {
           "title": "Find us on the map"
