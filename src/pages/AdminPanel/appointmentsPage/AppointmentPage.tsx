@@ -61,7 +61,7 @@ const AppointmentPage: React.FC = () => {
             </div>
           ))
         ) : (
-          <div className={styles.noData}>Нет данных для отображения.</div>
+          <div className={styles.noData}>тут будут данные какието.</div>
         )}
       </div>
     </div>
