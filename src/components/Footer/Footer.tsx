@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
         <footer className={styles.footer}>
             <div className={styles.content}>
                 <div className={styles.logoContainer}>
-                    <img src="/src/public/logo.jpg" alt="Zahn" className={styles.logo} />
+                    <img src="/src/public/logo.png" alt="Zahn" className={styles.logo} />
                 </div>
                 <div className={styles.kontakt}>
                     <h3>{t('message.footer.titles.contact')}</h3>
