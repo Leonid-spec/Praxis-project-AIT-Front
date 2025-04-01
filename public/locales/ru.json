@@ -55,7 +55,6 @@
         "email": "Электронная почта: info@dentalclinic.de",
         "copy": "Скопировано",
         "coordinates": "GPS: ",
-
         "coordinatesCopied": "Координаты успешно скопированы!",
         "map": {
           "title": "Мы на карте"
@@ -74,6 +73,20 @@
         "thursday": "Четверг",
         "friday": "Пятница"
       }
+    },
+    "appointmentDetails": {
+      "title": "Детали заявки",
+      "client": "Клиент",
+      "service": "Услуга",
+      "date": "Дата",
+      "email": "Email",
+      "phone1": "Телефон 1",
+      "phone2": "Телефон 2",
+      "language": "Язык",
+      "comment": "Комментарий",
+      "noPhone": "Не указан",
+      "noComment": "Нет комментария",
+      "noLanguage": "Не указан"
     },
     "other": {
       "loginAdmin": {
@@ -129,7 +142,7 @@
           "lastNameRequired": "Фамилия обязательна для заполнения.",
           "lastCharCannotBeSpace": "Фамилия не может начинаться с пробела.",
           "lastNameLetterCount": "Фамилия должна содержать минимум 2 символа (en, de) и только один пробел.",
-          "lastNameLetterCountMax": "Фамилия должна содержать максимум 64 символа (en, de) и только один пробел.",
+          "lastNameLetterCountMax": "Фамилия должна содержать максимум 64 символа (en, de).",
           "lastNameExtraSpaces": "Фамилия не может содержать подряд идущие пробелы.",
           "lastNameInvalid": "Фамилия может содержать только буквы (en, de) и только один пробел",
           "phoneNumberRequired": "Номер телефона обязателен для заполнения.",
@@ -155,6 +168,31 @@
           "textAreaDate": "Здесь вы можете указать свои пожелания по дате и времени приёма (до 1024 символов)",
           "textAreaComment": "Оставьте комментарий (до 1024 символов)"
         }
+      }
+    },
+    "adminPanel":{
+
+      
+     "appointments": {
+        "title": "Записи",
+        "noAppointments": "Нет записей.",
+        "loadingAppointments": "Загрузка записей...",
+        "errorFetchingAppointments": "Ошибка при загрузке записей.",
+        "appointmentDetails": {
+          "title": "Детали записи",
+          "client": "Клиент",
+          "service": "Услуга",
+          "date": "Дата",
+          "email": "Email",
+          "phone1": "Телефон 1",
+          "phone2": "Телефон 2",
+          "language": "Язык",
+          "comment": "Комментарий",
+          "available_time": "Доступное время" ,
+          "noPhone": "Не указан",
+          "noComment": "Нет комментария",
+          "noLanguage": "Не указан",
+          "noAvailable_time": "Нет доступного времени"        }
       }
     }
   }

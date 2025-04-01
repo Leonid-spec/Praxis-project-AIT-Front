@@ -154,6 +154,32 @@
           "textAreaComment": "Leave a comment (up to 1024 characters)"
         }
       }
-    }
+    },
+    "adminPanel":{
+      
+        "appointments": {
+          "title": "Appointments",
+          "noAppointments": "No appointments.",
+          "loadingAppointments": "Loading appointments...",
+          "errorFetchingAppointments": "Error fetching appointments.",
+          "appointmentDetails": {
+            "title": "Appointment Details",
+            "client": "Client",
+            "service": "Service",
+            "date": "Date",
+            "email": "Email",
+            "phone1": "Phone 1",
+            "phone2": "Phone 2",
+            "language": "Language",
+            "comment": "Comment",
+            "available_time": "Available Time",
+            "noPhone": "Not specified",
+            "noComment": "No comment",
+            "noLanguage": "Not specified",
+            "noAvailable_time": "No available time"
+          }
+        }
+      }
+
   }
 }
