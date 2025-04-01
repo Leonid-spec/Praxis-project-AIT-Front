@@ -41,8 +41,33 @@ const AppointmentsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    /**
+     * Для тестирования страницы с фейковыми данными:
+     * - Закомментируйте строки ниже (fetchAppointments)
+     * - Раскомментируйте блок setAppointment(fakeData)
+     */
+    console.log("Используем фейковые данные...");
     setAppointment(fakeData);
     setIsLoading(false);
+
+    /**
+     * Для работы с реальной базой данных:
+     * - Закомментируйте блок setAppointment(fakeData)
+     * - Раскомментируйте строки ниже
+     */
+    /*
+    fetchAppointments()
+      .then((data) => {
+        console.log("Данные из API:", data);
+        setAppointment(data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Ошибка загрузки заявок:", err);
+        setError("Не удалось загрузить данные заявок.");
+        setIsLoading(false);
+      });
+    */
   }, [id]);
 
   if (isLoading) {
