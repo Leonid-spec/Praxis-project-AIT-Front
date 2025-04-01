@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./mainContent.module.css";
-// import DoctorsPage from "./DoctorsPage";
-import AppointmentPage from "./appointmentPage/AppointmentPage";
+import AdminAppointmentsPage from "./appointmentPage/AdminAppointmentsPage"; // Список заявок
+import AppointmentsPage from "./appointmentPage/AppointmentsPage"; // Детали заявки
 import DoctorsPage from "./DoctorsPage";
 
 const MainContent: React.FC = () => {
@@ -12,8 +12,11 @@ const MainContent: React.FC = () => {
         {/* Маршрут по умолчанию */}
         <Route path="/" element={<Navigate to="appointments" />} />
 
-        {/* Appointment */}
-        <Route path="appointments" element={<AppointmentPage />} />
+        {/* Список заявок (Appointment Page в Sidebar) */}
+        <Route path="appointments" element={<AdminAppointmentsPage />} />
+
+        {/* Детали заявки (More info) */}
+        <Route path="appointments/:id" element={<AppointmentsPage />} />
 
         {/* Services */}
         <Route path="services" element={<div>Services content...</div>} />
