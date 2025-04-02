@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import styles from "./AdminAppstyles";
 
 interface Appointment {
@@ -7,122 +8,119 @@ interface Appointment {
   clientName: string;
   service: string;
   date: string;
-  status: "Новая" | "В обработке" | "Выполнена"; // Статус заявки
+  isNew?: boolean; // isNew вместо статуса "Новая"
+  
 }
 
 const AdminAppointmentsPage: React.FC = () => {
-  // Фейковые данные для тестирования (замените на API-запросы при подключении реальной базы)
+  const { t } = useTranslation(); 
+  const navigate = useNavigate();
+
   const fakeData: Appointment[] = [
-    { id: "1", clientName: "John Doe", service: "Dental Cleaning", date: "2025-04-01T10:00:00Z", status: "Новая" },
-    { id: "2", clientName: "Jane Smith", service: "Consultation", date: "2025-04-02T12:00:00Z", status: "В обработке" },
-    { id: "3", clientName: "Emily Johnson", service: "Orthodontics", date: "2025-04-03T14:00:00Z", status: "Выполнена" },
+    { id: "1", clientName: "John Doe", service: "Dental Cleaning", date: "2025-04-01T10:00:00Z" },
+    { id: "2", clientName: "Jane Smith", service: "Consultation", date: "2025-04-02T12:00:00Z" },
+    { id: "3", clientName: "Emily Johnson", service: "Orthodontics", date: "2025-04-03T14:00:00Z" },
   ];
 
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [filter, setFilter] = useState<"Все" | "Новая" | "В обработке" | "Выполнена">("Все");
-  const navigate = useNavigate();
+  const [filter, setFilter] = useState<"all" | "new" | "completed">("all");
 
   useEffect(() => {
-    console.log("Запуск useEffect в AdminAppointmentsPage...");
-
     /**
-     * Для тестирования страницы с фейковыми данными:
-     * - Закомментируйте строки ниже (fetchAppointments)
-     * - Раскомментируйте блок setAppointments(fakeData)
+     * Инициализация данных
      */
-    console.log("Используем фейковые данные...");
-    setAppointments(fakeData);
-    setIsLoading(false);
+    const initializeAppointments = async () => {
+      try {
+        // Здесь реальный запрос к API
+        /*
+        const response = await fetch("/api/appointments");
+        const data = await response.json();
+        */
+        // (фейковый режим)
+        const data = fakeData;
 
-    /**
-     * Для работы с реальной базой данных:
-     * - Закомментируйте блок setAppointments(fakeData)
-     * - Раскомментируйте строки ниже
-     */
+        // флаг isNew для всех записей
+        const updatedData = data.map((appointment) => ({
+          ...appointment,
+          isNew: appointment.isNew ?? true, // По умолчанию true
+        }));
 
-    /*
-    fetchAppointments()
-      .then((data) => {
-        console.log("Данные из API:", data);
-        setAppointments(data);
+        setAppointments(updatedData);
+      } catch (err) {
+        setError(t("message.adminPanel.appointments.errorFetchingAppointments"));
+      } finally {
         setIsLoading(false);
-      })
-      .catch((err) => {
-        console.error("Ошибка загрузки заявок:", err);
-        setError("Не удалось загрузить данные заявок.");
-        setIsLoading(false);
-      });
-    */
-  }, []);
+      }
+    };
 
-  // Функция обновления состояния заявки (из `AppointmentsPage.tsx`)
-  const handleStatusUpdate = (updatedAppointment: Appointment) => {
-    setAppointments((prev) =>
-      prev.map((appointment) =>
-        appointment.id === updatedAppointment.id ? updatedAppointment : appointment
-      )
-    );
+    initializeAppointments();
+  }, [t]);
+
+  const handleMoreInfoClick = async (appointmentId: string) => {
+    try {
+      // Логика для работы с записью
+      navigate(`/admin-panel/appointments/${appointmentId}`);
+    } catch (error) {
+      alert(t("message.adminPanel.appointments.errorFetchingAppointments"));
+    }
   };
 
-  const filteredAppointments = filter === "Все" ? appointments : appointments.filter((appointment) => appointment.status === filter);
+  const filteredAppointments = appointments.filter((appointment) => {
+    if (filter === "new") return appointment.isNew;
+    if (filter === "completed") return !appointment.isNew;
+    return true; // Возвращаем все записи для фильтра "all"
+  });
 
   if (isLoading) {
-    return <div style={styles.loading}>Загрузка данных...</div>;
+    return <div style={styles.loading}>{t("message.adminPanel.appointments.loadingAppointments")}</div>;
   }
 
   if (error) {
-    return <div style={styles.error}>Ошибка: {error}</div>;
+    return <div style={styles.error}>{error}</div>;
   }
 
   return (
     <div style={styles.container}>
-      <h1 style={styles.heading}>Список заявок</h1>
-
-      {/* Контейнер фильтров */}
+      <h1 style={styles.heading}>{t("message.adminPanel.appointments.title")}</h1>
       <div style={styles.filterContainer}>
-        {["Все", "Новая", "В обработке", "Выполнена"].map((status) => (
+        {["all", "new", "completed"].map((filterKey) => (
           <button
-            key={status}
+            key={filterKey}
             style={{
               ...styles.filterButton,
-              ...(filter === status && styles.filterButtonActive),
+              ...(filter === filterKey && styles.filterButtonActive),
             }}
-            onClick={() => setFilter(status as "Все" | "Новая" | "В обработке" | "Выполнена")}
+            onClick={() => setFilter(filterKey as "all" | "new" | "completed")}
           >
-            {status}
+            {t(`message.adminPanel.appointments.filter.${filterKey}`)}
           </button>
         ))}
       </div>
-
-      {/* Список заявок */}
-      <ul>
-        {filteredAppointments.map((appointment) => (
-          <li
-            key={appointment.id}
-            style={styles.appointmentRow}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = styles.appointmentRowHover.backgroundColor)}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = styles.appointmentRow.backgroundColor)}
-          >
-            <div style={styles.marker}>
-              {/* Цвет маркера соответствует статусу заявки */}
-              {appointment.status === "Новая" && <div style={styles.markerCircleNew}></div>}
-              {appointment.status === "В обработке" && <div style={styles.markerCircleInProgress}></div>}
-              {appointment.status === "Выполнена" && <div style={styles.markerCircleCompleted}></div>}
-            </div>
-            <div style={styles.clientName}>{appointment.clientName}</div>
-            <div style={styles.service}>{appointment.service}</div>
-            <div style={styles.date}>{new Date(appointment.date).toLocaleDateString()}</div>
-            <button
-              style={styles.moreInfoButton}
-              onClick={() => navigate(`/admin-panel/appointments/${appointment.id}`)}
-            >
-              Подробнее
-            </button>
-          </li>
-        ))}
-      </ul>
+      {filteredAppointments.length === 0 ? (
+        <div style={styles.emptyMessage}>{t("message.adminPanel.appointments.noAppointments")}</div>
+      ) : (
+        <ul>
+          {filteredAppointments.map((appointment) => (
+            <li key={appointment.id} style={styles.appointmentRow}>
+              <div style={styles.marker}>
+                {appointment.isNew && <div style={styles.markerCircleNew}></div>}
+                {!appointment.isNew && <div style={styles.markerCircleCompleted}></div>}
+              </div>
+              <div style={styles.clientName}>{appointment.clientName}</div>
+              <div style={styles.service}>{appointment.service}</div>
+              <div style={styles.date}>{new Date(appointment.date).toLocaleDateString()}</div>
+              <button
+                style={styles.moreInfoButton}
+                onClick={() => handleMoreInfoClick(appointment.id)}
+              >
+                {t("message.adminPanel.appointments.buttons.moreInfo")}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
