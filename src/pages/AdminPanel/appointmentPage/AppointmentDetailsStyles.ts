@@ -1,3 +1,20 @@
+
+const buttonCommonStyles = {
+  width: "150px", 
+  padding: "10px", 
+  fontSize: "16px", 
+  borderRadius: "30px", 
+  color: "#fff", 
+  cursor: "pointer",
+  textAlign: "center" as const,
+  transition: "background-color 0.3s ease", 
+  backgroundColor: "#20B1B7", 
+  border: "1px solid #ddd", 
+  ":hover": {
+    backgroundColor: "#c5e785", 
+  },
+};
+
 const commonStyles = {
   backgroundColor: "#FAFAFA",
   borderRadius: "8px",
@@ -50,56 +67,36 @@ const appointmentDetailsStyles = {
     marginBottom: "5px",
     fontWeight: "bold",
   },
-  
   buttonContainer: {
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "space-between",
     gap: "15px",
     marginTop: "20px",
+    width: "100%",
   },
   backButton: {
-    width: "150px", // Устанавливаем ширину
-    padding: "10px", // Одинаковый padding для обеих кнопок
-    fontSize: "16px", // Единый размер шрифта
-    borderRadius: "50px", // Увеличен радиус углов
-    cursor: "pointer",
+    ...buttonCommonStyles, // Используем общие стили для кнопок
+  },
+  completeButton: {
+    ...buttonCommonStyles, // Используем общие стили для кнопок
+  },
+  loading: {
     textAlign: "center" as const,
-    backgroundColor: "#f4f4f4",
-    border: "1px solid #ddd",
-    transition: "background-color 0.3s ease",
-},
-completeButton: {
-    width: "150px", // Устанавливаем ширину, как у backButton
-    padding: "10px", // Одинаковый padding
-    fontSize: "16px", // Единый размер шрифта
-    borderRadius: "50px", // Увеличен радиус углов
-    cursor: "pointer",
+    fontSize: "18px",
+    color: "#888",
+  },
+  error: {
     textAlign: "center" as const,
-    backgroundColor: "#28a745",
-    color: "#fff",
-    border: "none",
-    transition: "background-color 0.3s ease",
-},
-    
-    loading: {
-      textAlign: "center" as const, // Явное указание литерального типа
-      fontSize: "18px",
-      color: "#888",
-    },
-    error: {
-      textAlign: "center" as const, // Явное указание литерального типа
-      fontSize: "18px",
-      color: "red",
-    },
-    heading: {
-      textAlign: "center" as const, // Явное указание литерального типа
-      fontSize: "24px",
-      fontWeight: "bold",
-      marginBottom: "20px",
-      color: "#333",
-    },
-  };
-  
-
+    fontSize: "18px",
+    color: "red",
+  },
+  heading: {
+    textAlign: "center" as const,
+    fontSize: "24px",
+    fontWeight: "bold",
+    marginBottom: "20px",
+    color: "#333",
+  },
+};
 
 export default appointmentDetailsStyles;
