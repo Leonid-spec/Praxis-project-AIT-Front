@@ -5,6 +5,7 @@ import AdminAppointmentsPage from "./appointmentPage/AdminAppointmentsPage"; // 
 import AppointmentsPage from "./appointmentPage/AppointmentsPage"; // Детали заявки
 import DoctorsPage from "./DoctorsPage";
 import { ServicesPageAll } from "./Services/ServicesPageAll/ServicesPageAll";
+import { ServicePageSingle } from "./Services/ServicePageSinge/ServicePageSingle";
 
 const MainContent: React.FC = () => {
   return (
@@ -21,6 +22,7 @@ const MainContent: React.FC = () => {
 
         {/* Services */}
         <Route path="adminServices" element={<ServicesPageAll />} />
+        <Route path="/add-new-service" element={<ServicePageSingle />} />
 
         {/* Doctors */}
         <Route path="doctors" element={<DoctorsPage />} />
