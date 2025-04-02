@@ -155,14 +155,14 @@
         }
       }
     },
-    "adminPanel":{
-      
-      
-        "appointments": {
+      "adminPanel": {
+       "appointments": {
           "title": "Termine",
           "noAppointments": "Keine Termine.",
           "loadingAppointments": "Termine werden geladen...",
           "errorFetchingAppointments": "Fehler beim Laden der Termine.",
+          "statusUpdated": "Der Status des Termins wurde auf '{{status}}' aktualisiert.",
+          "statusUpdateError": "Der Status des Termins konnte nicht auf '{{status}}' aktualisiert werden.",
           "appointmentDetails": {
             "title": "Termindetails",
             "client": "Kunde",
@@ -178,11 +178,27 @@
             "noComment": "Kein Kommentar",
             "noLanguage": "Nicht angegeben",
             "noAvailable_time": "Keine verfügbare Zeit"
-          }
+          },
+        "filter": {
+            "all": "Alle",
+            "new": "Neu",
+            "completed": "Abgeschlossen"
+         },
+        "buttons": {
+           "back": "Zurückgehen",
+           "complete": "Termin abschließen",
+           "moreInfo": "Mehr Infos"
+         }
         }
+       }
       }
-    }  
-  }
+    }
+  
+
+    
+      
+     
+
         
    
 

@@ -50,22 +50,37 @@ const appointmentDetailsStyles = {
     marginBottom: "5px",
     fontWeight: "bold",
   },
+  
   buttonContainer: {
     display: "flex",
     justifyContent: "center",
     gap: "15px",
     marginTop: "20px",
   },
-    backButton: {
-      backgroundColor: "#f4f4f4",
-      padding: "10px",
-      borderRadius: "5px",
-      cursor: "pointer",
-      transition: "background-color 0.3s ease",
-      textAlign: "center" as const, // Явное указание литерального типа
-      border: "1px solid #ddd",
-      maxWidth: "150px",
-    },
+  backButton: {
+    width: "150px", // Устанавливаем ширину
+    padding: "10px", // Одинаковый padding для обеих кнопок
+    fontSize: "16px", // Единый размер шрифта
+    borderRadius: "50px", // Увеличен радиус углов
+    cursor: "pointer",
+    textAlign: "center" as const,
+    backgroundColor: "#f4f4f4",
+    border: "1px solid #ddd",
+    transition: "background-color 0.3s ease",
+},
+completeButton: {
+    width: "150px", // Устанавливаем ширину, как у backButton
+    padding: "10px", // Одинаковый padding
+    fontSize: "16px", // Единый размер шрифта
+    borderRadius: "50px", // Увеличен радиус углов
+    cursor: "pointer",
+    textAlign: "center" as const,
+    backgroundColor: "#28a745",
+    color: "#fff",
+    border: "none",
+    transition: "background-color 0.3s ease",
+},
+    
     loading: {
       textAlign: "center" as const, // Явное указание литерального типа
       fontSize: "18px",
