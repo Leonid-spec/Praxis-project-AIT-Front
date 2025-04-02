@@ -1,6 +1,6 @@
 .sidebar {
-  width: 200px;
-  background-color: #FAFAFA;
+  /* width: 200px; */
+  /* background-color: #FAFAFA; */
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -17,27 +17,40 @@
   font-size: 16px;
   font-weight: bold;
   color: #272626;
+  color: #B5ABAB;
   margin-bottom: 5px;
 }
 
 .box {
-  width: 80px;
-  height: 80px;
-  background-color: #ebe7e7;
-  border-radius: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+  width: 180px;
+  height: 140px;
+  background-color: #D9D9D9;
+  background-color: #fff;
+  border-radius: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .box:hover {
   background-color: #ccc;
+  background-color: #D9D9D9;
+
 }
 
 .icon {
   width: 75%; /* Explicitly set the width of the images */
   height: 75%; /* Explicitly set the height of the images */
   object-fit: contain; /* Ensure the images maintain their aspect ratio */
+}
+
+/*  New start */
+.icon {
+  width: 70px; 
+  height: 70px; 
+  object-fit: contain; 
 }

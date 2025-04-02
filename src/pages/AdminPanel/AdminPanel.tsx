@@ -6,13 +6,17 @@ import AdminHeader from "./AdminHeader";
 
 const AdminPanel: React.FC = () => {
   return (
-    <div className={styles.adminPanel}>
-      <AdminHeader />
+    // <div className={styles.adminPanel}>
+    //   <AdminHeader />
+    //   <div className={styles.mainPanel}>
+    //     <Sidebar />
+    //     <MainContent />
+    //   </div>
+    // </div>
       <div className={styles.mainPanel}>
         <Sidebar />
         <MainContent />
       </div>
-    </div>
   );
 };
 

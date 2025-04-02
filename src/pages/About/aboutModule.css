@@ -1,30 +1,54 @@
 .aboutPageContainer {
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* padding: 30px; */
+  margin-top: 40px;
 }
 
 h2 {
   font-size: 2.5rem; 
-  font-weight: 700; 
+  font-weight: 400; 
   color: #333;
   text-align: center;
   line-height: 1.4; 
+  /* margin: 10px; */
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.8rem;
+  }
 }
 
-.modern {
+/* .modern {
   text-transform: uppercase; 
-}
+} */
 
 .textKabinet, .modern, .ausgestattet {
-  color: #2196f3; 
-  font-weight: 600; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+  color: #2eacb8; 
+  color: #77c0eb;
+  color: #5FC9D3; 
+  /* font-weight: 600;  */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
 }
  
  .carousel-container {
     position: relative;
     width: 80%;
-    margin: 0 auto 30px;
+    margin: 0 auto 100px; /*  ! 0 auto 30px; */
     text-align: center;
+
+    @media (max-width: 1024px) {
+      width: 90%;
+    }
+  
+    @media (max-width: 480px) {
+      width: 100%;
+      margin: 0 auto 20px;
+    }
   }
   
   .text-title {
@@ -35,6 +59,14 @@ h2 {
     font-weight: bold;
     color: #3d3f3f;
     margin: 70px 0 20px;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+  
+    @media (max-width: 480px) {
+      font-size: 1.8rem;
+    }
   }
 
   .texth3-title {
@@ -45,6 +77,14 @@ h2 {
     font-weight: bold;
     color: #3d3f3f;
     margin: 10px 0 70px;
+
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+    }
+  
+    @media (max-width: 480px) {
+      font-size: 1.4rem;
+    }
   }
   
   .carousel-slide {
@@ -54,7 +94,8 @@ h2 {
     gap: 30px;
     opacity: 0.8; 
     opacity: 1; 
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    /* transition: transform 0.5s ease, opacity 0.5s ease; */
+    transition: transform 1s ease, opacity 1s ease;
   }
   
   .slick-center .carousel-slide {
@@ -66,10 +107,11 @@ h2 {
     width: 100%;
     margin: 100px 0 ;
     height: auto;
-    border-radius: 15px;
+    border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
+
   
+  }
   .carousel-arrow {
     position: absolute;
     top: 50%;
@@ -83,22 +125,48 @@ h2 {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-  }
+    justify-content: center; */
+    transition: background-color 0.3s ease, transform 0.3s ease;
   
-  .carousel-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.9); 
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+  
+    @media (max-width: 768px) {
+      width: 40px;
+      height: 40px;
+      font-size: 20px;
+    }
+  
+    @media (max-width: 480px) {
+      width: 35px;
+      height: 35px;
+      font-size: 18px;
+    }
   }
   
   .carousel-arrow-left {
-    left: -100px;
-
+    left: -60px;
+  
+    @media (max-width: 768px) {
+      left: -40px;
+    }
+  
+    @media (max-width: 480px) {
+      left: -30px;
+    }
   }
   
   .carousel-arrow-right {
-    right: -100px; 
+    right: -60px;
+  
+    @media (max-width: 768px) {
+      right: -40px;
+    }
+  
+    @media (max-width: 480px) {
+      right: -30px;
+    }
   }
-

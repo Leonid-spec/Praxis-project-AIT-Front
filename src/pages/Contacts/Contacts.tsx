@@ -70,7 +70,7 @@ const Contacts: React.FC = () => {
           </WelcomeTextSubtitle>
         </WelcomeTextContainer>
 
-        <MainPhotosContainer>
+        {/* <MainPhotosContainer>
           <MainPhotoContainer>
             <MainPhoto
               src="https://th.bing.com/th/id/R.8a5ad11f92e2ee33d7c2ec9de4e89acf?rik=SILS5o4EwnukrA&riu=http%3a%2f%2fwww.reiseberichte.bplaced.net%2fthailand%2fbangkok-thailand-fass-dental-clinc-zahnarzt-01.jpg&ehk=o4IzXCzI1NmV6ZRPxlSh15cjCQnrX2AOQOHDEOURlIo%3d&risl=&pid=ImgRaw&r=0"
@@ -83,7 +83,7 @@ const Contacts: React.FC = () => {
               alt="Team"
             />
           </MainPhotoContainer>
-        </MainPhotosContainer>
+        </MainPhotosContainer> */}
       </TeamContainer>
 
       <div style={styles.contactsPage}>
@@ -102,7 +102,15 @@ const Contacts: React.FC = () => {
               </h2>
 
               <p style={styles.contactBox}>
-                {t("message.main.contacts_page.address")}
+              <a
+                  href="https://www.google.com/maps?q=50.4501,30.5234"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={styles.link}
+                >
+                  {t("message.main.contacts_page.address")}
+                </a>
+                {/* {t("message.main.contacts_page.address")} */}
               </p>
 
               <div style={styles.contactBox}>
