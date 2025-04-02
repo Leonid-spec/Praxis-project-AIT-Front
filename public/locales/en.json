@@ -155,13 +155,14 @@
         }
       }
     },
-    "adminPanel":{
-      
+      "adminPanel": {
         "appointments": {
           "title": "Appointments",
           "noAppointments": "No appointments.",
           "loadingAppointments": "Loading appointments...",
           "errorFetchingAppointments": "Error fetching appointments.",
+          "statusUpdated": "Appointment status updated to '{{status}}'.",
+          "statusUpdateError": "Failed to update appointment status to '{{status}}'.",
           "appointmentDetails": {
             "title": "Appointment Details",
             "client": "Client",
@@ -177,9 +178,19 @@
             "noComment": "No comment",
             "noLanguage": "Not specified",
             "noAvailable_time": "No available time"
+          },
+          "filter": {
+            "all": "All",
+            "new": "New",
+            "completed": "Completed"
+          },
+          "buttons": {
+            "back": "Go back",
+            "complete": "Complete appointment",
+            "moreInfo": "More info"
           }
         }
       }
-
+    }
   }
-}
+
