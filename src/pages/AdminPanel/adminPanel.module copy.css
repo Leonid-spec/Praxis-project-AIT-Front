@@ -1,22 +1,72 @@
+.adminPanel {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fdfdfd; /* Фоновый цвет для всего Admin Panel */
+  }
+  
+  /* Заголовок "Admin Panel", сдвиг левее на 3 см */
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 106px; /* Уменьшено с 220px на 114px для сдвига левее */
+    text-align: center;
+    color: #333; /* Цвет текста */
+  }
+  
+  /* Основная панель с боковым меню и контентом */
+  .mainPanel {
+    display: flex;
+    flex: 1;
+    overflow: hidden; /* Для предотвращения переполнения */
+  }
+  
+  /* Статичная боковая панель */
+  .sidebar {
+    position: fixed; /* Закрепляет боковую панель */
+    height: 100%; /* Заполняет всю высоту экрана */
+    top: 0;
+    left: 0;
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Расстояние между квадратами */
+    width: 200px; /* Фиксированная ширина панели */
+    background-color: #f9f9f9; /* Фон панели */
+    padding: 20px; /* Внутренний отступ для всей панели */
+    border-right: 1px solid #ddd; /* Граница справа */
+    align-items: center; /* Центрирование содержимого */
+    box-sizing: border-box; /* Учёт отступов в размерах */
+  }
+  
+  /* Контент справа */
+  .content {
+    flex: 1;
+    margin-left: 220px; /* Учитывает ширину боковой панели */
+    padding: 20px;
+    background-color: #fff; /* Белый фон */
+    overflow-y: auto; /* Прокрутка, если контента слишком много */
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05); /* Внутренняя тень для выделения */
+  }
+
+  /* New start*/
   .adminPanel {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 100vw;
     background-color: #fdfdfd;
-    overflow: hidden;
 }
 
 .mainPanel {
     display: grid;
     grid-template-columns: 20% 80%; 
     height: 100%;
-    padding: 20px;
     overflow: hidden; 
 }
 
 .sidebar {
-    /* height: 100vh; */
+    height: 100vh;
     background-color: #f9f9f9;
     padding: 20px;
     border-right: 1px solid #ddd;
@@ -29,9 +79,9 @@
 
 .content {
     padding: 20px;
-    /* background-color: #fff; */
+    background-color: #fff;
     overflow-y: auto;
-    border-radius: 8px;
+    overflow-x: hidden;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 /* New end */

@@ -29,7 +29,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main className={styles.content}>{children}</main>
       
       {/* Условное отображение футера */}
-      {isMiniFooter ? <MiniFooter /> : <Footer />}
+      {!hideFooter && (isMiniFooter ? <MiniFooter /> : <Footer />)}
     </div>
   );
 };

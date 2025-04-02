@@ -170,9 +170,7 @@
         }
       }
     },
-    "adminPanel":{
-
-      
+    "adminPanel":{      
      "appointments": {
         "title": "Записи",
         "noAppointments": "Нет записей.",

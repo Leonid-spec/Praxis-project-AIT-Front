@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
 
 export const MenuContainer = styled.div`
   position: sticky;
@@ -66,7 +66,7 @@ export const Nav = styled.nav`
   white-space: nowrap;
 
   @media (min-width: 1920px) {
-    gap: 40px; 
+    gap: 40px;
   }
 
   @media (max-width: 768px) {
@@ -93,15 +93,19 @@ export const StyledNavLink = styled(NavLink)`
 
   &:hover {
     color: #4a90e2;
+
+    color: #a0eef2;
+
     transform: translateY(-2px);
   }
 
   &:active {
     color: #4b51a5;
+    color: #4a90e2;
   }
 
   @media (min-width: 1920px) {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 
   @media (max-width: 768px) {
@@ -124,17 +128,27 @@ export const StyledNavLinkMenu = styled(NavLink)`
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    color: #4a90e2;
-    border-bottom: 2px solid #4a90e2;
+    /* color: #4a90e2;
+    color: #31bcc3;
+    color: #46c4ca; */
+    color: #4ba0a5;
+
+
+    /* border-bottom: 2px solid #4a90e2;
+    border-bottom: 2px solid #49bfc5; */
+    border-bottom: 2px solid #4b9aa5;
+
   }
 
   &:active {
-    color: #4b51a5;
-    border-bottom: 2px solid #4b51a5;
+    /* color: #4b51a5; */
+    color: #3b7f83;
+    /* border-bottom: 2px solid #4b51a5; */
+    border-bottom: 2px solid #346b72;
   }
 
   @media (min-width: 1920px) {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 
   @media (max-width: 768px) {
@@ -158,7 +172,7 @@ export const NavLinkImg = styled.img`
   }
 
   @media (min-width: 1920px) {
-    height: 70px; 
+    height: 70px;
   }
 
   @media (max-width: 768px) {
@@ -176,7 +190,7 @@ export const NavLinkText = styled.span`
   font-weight: 500;
 
   @media (min-width: 1920px) {
-    font-size: 1.4rem; 
+    font-size: 1.4rem;
   }
 `;
 
@@ -205,7 +219,7 @@ export const LanguagePanel = styled.div`
   gap: 10px;
 
   @media (min-width: 1920px) {
-    gap: 20px; 
+    gap: 20px;
   }
 
   @media (max-width: 480px) {
@@ -221,6 +235,7 @@ export const LanguageLink = styled.button`
 
   &:hover {
     color: #4a90e2;
+    color: #4ba0a5;
   }
 
   &:active {
@@ -236,7 +251,7 @@ export const Divider = styled.span`
   color: #3d3d3d;
 
   @media (min-width: 1920px) {
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
   }
 `;
 

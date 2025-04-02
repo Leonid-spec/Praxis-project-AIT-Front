@@ -4,6 +4,7 @@ import styles from "./mainContent.module.css";
 import AdminAppointmentsPage from "./appointmentPage/AdminAppointmentsPage"; // Список заявок
 import AppointmentsPage from "./appointmentPage/AppointmentsPage"; // Детали заявки
 import DoctorsPage from "./DoctorsPage";
+import { ServicesPageAll } from "./Services/ServicesPageAll/ServicesPageAll";
 
 const MainContent: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ const MainContent: React.FC = () => {
         <Route path="appointments/:id" element={<AppointmentsPage />} />
 
         {/* Services */}
-        <Route path="services" element={<div>Services content...</div>} />
+        <Route path="adminServices" element={<ServicesPageAll />} />
 
         {/* Doctors */}
         <Route path="doctors" element={<DoctorsPage />} />

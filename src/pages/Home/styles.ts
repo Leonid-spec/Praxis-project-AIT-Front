@@ -90,7 +90,6 @@ export const RightContainer = styled.div`
   align-items: center;
   border-radius: 12px;
   overflow: hidden;
-  padding: 20px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 

@@ -7,6 +7,7 @@ export const ContactsContainer = styled.div`
   align-items: center;
   width: 100%;
   background-color: #f6f9fc;
+  margin: 0 auto;
 `;
 
 export const TeamContainer = styled.div`
@@ -41,16 +42,16 @@ export const WelcomeTextContainer = styled.div`
   background-color: #ffffff;
   border-radius: 12px;
   padding: 20px;
-  margin: 20px;
+  margin: 20px 70px 0;
   width: 100%;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover {
+  /* &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
-  }
+  } */
 
   @media (max-width: 768px) {
     padding: 20px;
@@ -138,7 +139,7 @@ const styles = {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", // Адаптивное распределение колонок
     gap: "20px",
-    margin: "40px auto",
+    margin: "20px auto",
     maxWidth: "1200px",
   },
   contactsWrapper: {
@@ -206,7 +207,7 @@ const styles = {
   link: {
     color: "#333",
     textDecoration: "none",
-    fontWeight: "bold",
+    // fontWeight: "bold",
   },
   copyButton: {
     marginLeft: "10px",

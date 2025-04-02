@@ -1,14 +1,18 @@
 .aboutPageContainer {
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* padding: 30px; */
+  margin-top: 40px;
 }
 
 h2 {
   font-size: 2.5rem; 
-  font-weight: 700; 
+  font-weight: 400; 
   color: #333;
   text-align: center;
   line-height: 1.4; 
-  margin: 20px;
+  /* margin: 10px; */
 
   @media (max-width: 768px) {
     font-size: 2rem;
@@ -19,20 +23,22 @@ h2 {
   }
 }
 
-.modern {
+/* .modern {
   text-transform: uppercase; 
-}
+} */
 
 .textKabinet, .modern, .ausgestattet {
   color: #2eacb8; 
-  font-weight: 600; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+  color: #77c0eb;
+  color: #5FC9D3; 
+  /* font-weight: 600;  */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
 }
  
  .carousel-container {
     position: relative;
     width: 80%;
-    margin: 0 auto 30px;
+    margin: 0 auto 100px; /*  ! 0 auto 30px; */
     text-align: center;
 
     @media (max-width: 1024px) {
@@ -88,7 +94,8 @@ h2 {
     gap: 30px;
     opacity: 0.8; 
     opacity: 1; 
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    /* transition: transform 0.5s ease, opacity 0.5s ease; */
+    transition: transform 1s ease, opacity 1s ease;
   }
   
   .slick-center .carousel-slide {
@@ -100,7 +107,7 @@ h2 {
     width: 100%;
     margin: 100px 0 ;
     height: auto;
-    border-radius: 15px;
+    border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
   
@@ -109,8 +116,8 @@ h2 {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     border: none;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.6);
@@ -118,9 +125,9 @@ h2 {
     font-size: 24px;
     font-weight: bold;
     cursor: pointer;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     transition: background-color 0.3s ease, transform 0.3s ease;
   
     &:hover {
@@ -141,7 +148,7 @@ h2 {
   }
   
   .carousel-arrow-left {
-    left: -50px;
+    left: -60px;
   
     @media (max-width: 768px) {
       left: -40px;
@@ -153,7 +160,7 @@ h2 {
   }
   
   .carousel-arrow-right {
-    right: -50px;
+    right: -60px;
   
     @media (max-width: 768px) {
       right: -40px;
