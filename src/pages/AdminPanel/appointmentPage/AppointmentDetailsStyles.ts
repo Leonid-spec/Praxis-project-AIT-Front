@@ -1,16 +1,16 @@
 const buttonCommonStyles = {
-  width: "150px", // Единая ширина для всех кнопок
-  padding: "10px", // Единый отступ
-  fontSize: "16px", // Единый размер шрифта
-  borderRadius: "30px", // Единый радиус углов
-  color: "#fff", // Цвет текста
+  width: "150px", 
+  padding: "10px", 
+  fontSize: "16px", 
+  borderRadius: "30px", 
+  color: "#fff", 
   cursor: "pointer",
   textAlign: "center" as const,
-  transition: "background-color 0.3s ease", // Единый переход
-  backgroundColor: "#20B1B7", // Общий цвет кнопок
-  border: "1px solid #ddd", // Общая граница кнопок
+  transition: "background-color 0.3s ease", 
+  backgroundColor: "#20B1B7", 
+  border: "1px solid #ddd", 
   ":hover": {
-    backgroundColor: "#c5e785", // Цвет при наведении
+    backgroundColor: "#c5e785", 
   },
 };
 

@@ -3,26 +3,24 @@ const commonStyles = {
   borderRadius: "18px",
   padding: "10px",
   transition: "background-color 0.3s ease",
-};
-
-const buttonStyles = {
-  ...commonStyles,
-  border: "1px solid #ccc",
-  cursor: "pointer",
-  backgroundColor: "#f9f9f9",
-};
-
-const activeButtonStyles = {
-  ...commonStyles,
-  backgroundColor: "#20B1B7",
-  color: "#fff",
-  opacity: "0.9",
+  buttonCommonStyles: {
+    border: "1px solid #ccc",
+    cursor: "pointer",
+    padding: "10px 15px",
+    borderRadius: "18px",
+    backgroundColor: "#20B1B7", // Общий цвет кнопок
+    color: "#fff",
+    transition: "background-color 0.3s ease",
+    ":hover": {
+      backgroundColor: "#9CEEF1", // Цвет на ховере
+    },
+  },
 };
 
 const circleStyles = {
   width: "15px",
   height: "15px",
-  borderRadius: commonStyles.borderRadius, // Используем общие стили
+  borderRadius: commonStyles.borderRadius,
   marginRight: "15px",
 };
 
@@ -63,20 +61,21 @@ const styles = {
     marginBottom: "20px",
   },
   filterButton: {
-    ...buttonStyles, // Унификация кнопок
+    ...commonStyles.buttonCommonStyles, // Унификация кнопок
   },
   filterButtonActive: {
-    ...activeButtonStyles, // Унификация активных кнопок
+    ...commonStyles.buttonCommonStyles,
+    opacity: "0.9", // Активная кнопка
   },
   marker: {
     flex: "0 0 50px",
   },
   markerCircleNew: {
-    ...circleStyles, // Унифицированные круги
+    ...circleStyles,
     backgroundColor: "#ff4d4d",
   },
   markerCircleCompleted: {
-    ...circleStyles, // Унифицированные круги
+    ...circleStyles,
     backgroundColor: "#28a745",
   },
   appointmentRow: {
@@ -85,11 +84,11 @@ const styles = {
     justifyContent: "space-between",
     padding: "15px",
     border: "1px solid #ddd",
-    borderRadius: commonStyles.borderRadius, // Используем общие стили
+    borderRadius: commonStyles.borderRadius,
     marginBottom: "10px",
     backgroundColor: "#fff",
     boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)",
-    transition: commonStyles.transition, // Используем общие стили
+    transition: commonStyles.transition,
   },
   clientName: {
     flex: "1",
@@ -103,11 +102,8 @@ const styles = {
     textAlign: "right" as const,
   },
   moreInfoButton: {
-    ...buttonStyles, // Унификация кнопок
+    ...commonStyles.buttonCommonStyles, // Унификация кнопок
     marginLeft: "20px",
-    backgroundColor: "#20B1B7",
-    color: "#fff",
-    border: "none",
   },
 };
 
