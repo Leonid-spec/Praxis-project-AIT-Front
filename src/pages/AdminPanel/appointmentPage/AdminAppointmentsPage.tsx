@@ -8,11 +8,11 @@ interface Appointment {
   clientName: string;
   service: string;
   date: string;
-  isNew?: boolean; // Добавили флаг isNew вместо статуса
+  isNew?: boolean; // isNew вместо статуса
 }
 
 const AdminAppointmentsPage: React.FC = () => {
-  const { t } = useTranslation(); // Подключаем локализацию
+  const { t } = useTranslation(); 
   const navigate = useNavigate();
 
   const fakeData: Appointment[] = [
@@ -37,13 +37,13 @@ const AdminAppointmentsPage: React.FC = () => {
         const response = await fetch("/api/appointments");
         const data = await response.json();
         */
-        // Тестовые данные (фейковый режим)
+        // (фейковый режим)
         const data = fakeData;
 
-        // Устанавливаем флаг isNew для всех записей
+        // флаг isNew для всех записей
         const updatedData = data.map((appointment) => ({
           ...appointment,
-          isNew: appointment.isNew ?? true, // По умолчанию true, если isNew отсутствует
+          isNew: appointment.isNew ?? true, // По умолчанию true
         }));
 
         setAppointments(updatedData);
