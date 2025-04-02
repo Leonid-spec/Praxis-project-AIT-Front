@@ -9,7 +9,7 @@ interface Appointment {
   service: string;
   date: string;
   isNew?: boolean; // isNew вместо статуса "Новая"
-  isCompleted?: boolean; // isCompleted вместо статуса "Выполнена"
+  
 }
 
 const AdminAppointmentsPage: React.FC = () => {
