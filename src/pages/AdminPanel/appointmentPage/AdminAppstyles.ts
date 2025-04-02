@@ -24,6 +24,13 @@ const styles = {
     color: "red",
     padding: "20px",
   },
+  emptyMessage: {
+    textAlign: "center" as const,
+    fontSize: "18px",
+    color: "#777",
+    marginTop: "20px",
+  },
+  
   filterContainer: {
     display: "flex",
     gap: "10px",

@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./mainContent.module.css";
 import AdminAppointmentsPage from "./appointmentPage/AdminAppointmentsPage"; // Список заявок
-import AppointmentsPage from "./appointmentPage/AppointmentsPage"; // Детали заявки
+import AppointmentsPage from "./appointmentPage/AppointmentDetailsPage"; // Детали заявки
 import DoctorsPage from "./DoctorsPage";
 
 const MainContent: React.FC = () => {

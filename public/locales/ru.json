@@ -74,20 +74,6 @@
         "friday": "Пятница"
       }
     },
-    "appointmentDetails": {
-      "title": "Детали заявки",
-      "client": "Клиент",
-      "service": "Услуга",
-      "date": "Дата",
-      "email": "Email",
-      "phone1": "Телефон 1",
-      "phone2": "Телефон 2",
-      "language": "Язык",
-      "comment": "Комментарий",
-      "noPhone": "Не указан",
-      "noComment": "Нет комментария",
-      "noLanguage": "Не указан"
-    },
     "other": {
       "loginAdmin": {
         "title": "Вход",
@@ -171,13 +157,13 @@
       }
     },
     "adminPanel":{
-
-      
-     "appointments": {
+      "appointments": {
         "title": "Записи",
         "noAppointments": "Нет записей.",
         "loadingAppointments": "Загрузка записей...",
         "errorFetchingAppointments": "Ошибка при загрузке записей.",
+        "statusUpdated": "Статус заявки обновлён на '{{status}}'.",
+        "statusUpdateError": "Не удалось обновить статус заявки на '{{status}}'.",
         "appointmentDetails": {
           "title": "Детали записи",
           "client": "Клиент",
@@ -188,12 +174,25 @@
           "phone2": "Телефон 2",
           "language": "Язык",
           "comment": "Комментарий",
-          "available_time": "Доступное время" ,
+          "available_time": "Доступное время",
           "noPhone": "Не указан",
           "noComment": "Нет комментария",
           "noLanguage": "Не указан",
-          "noAvailable_time": "Нет доступного времени"        }
+          "noAvailable_time": "Нет доступного времени"
+        },
+        "filter": {
+          "all": "Все",
+          "new": "Новая",
+          "completed": "Выполнена"
+        },
+        "buttons": {
+          "back": "Вернуться назад",
+          "complete": "Завершить заявку",
+          "moreInfo": "Подробнее"
+        }
       }
     }
-  }
-}
+   }
+ }
+  
+
