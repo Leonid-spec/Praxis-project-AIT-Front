@@ -10,8 +10,8 @@ const buttonCommonStyles = {
   transition: "background-color 0.3s ease", 
   backgroundColor: "#20B1B7", 
   border: "1px solid #ddd", 
-  ":hover": {
-    backgroundColor: "#c5e785", 
+    ":hover": {
+      backgroundColor: "#c5e785", 
   },
 };
 
