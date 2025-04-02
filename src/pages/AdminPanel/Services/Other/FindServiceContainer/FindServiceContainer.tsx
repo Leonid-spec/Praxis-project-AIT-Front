@@ -5,7 +5,6 @@ import {
 } from "./styles";
 
 export const FindServiceContainer = () => {
-  const handleClick = () => {};
 
   return (
     <StyledButton>
