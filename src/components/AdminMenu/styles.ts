@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const AdminMenuWrapper = styled.div`
+  
   position: relative;
 `;
 
@@ -23,11 +24,13 @@ export const Dropdown = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 10;
 `;
 
 export const DropdownItem = styled.div`
+
   display: grid;
+  width: 200px;
   grid-template-columns: 30% 70%;
   padding: 10px 15px;
   justify-content: center;

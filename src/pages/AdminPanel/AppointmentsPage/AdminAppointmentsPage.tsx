@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import styles from "./AdminAppstyles";
+import styles from "./AdminAppointmentsPageStyles";
+
 
 interface Appointment {
   id: string;
@@ -9,11 +10,10 @@ interface Appointment {
   service: string;
   date: string;
   isNew?: boolean; // isNew вместо статуса "Новая"
-  
 }
 
 const AdminAppointmentsPage: React.FC = () => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const fakeData: Appointment[] = [
@@ -28,23 +28,13 @@ const AdminAppointmentsPage: React.FC = () => {
   const [filter, setFilter] = useState<"all" | "new" | "completed">("all");
 
   useEffect(() => {
-    /**
-     * Инициализация данных
-     */
     const initializeAppointments = async () => {
       try {
-        // Здесь реальный запрос к API
-        /*
-        const response = await fetch("/api/appointments");
-        const data = await response.json();
-        */
-        // (фейковый режим)
         const data = fakeData;
 
-        // флаг isNew для всех записей
         const updatedData = data.map((appointment) => ({
           ...appointment,
-          isNew: appointment.isNew ?? true, // По умолчанию true
+          isNew: appointment.isNew ?? true,
         }));
 
         setAppointments(updatedData);
@@ -60,7 +50,6 @@ const AdminAppointmentsPage: React.FC = () => {
 
   const handleMoreInfoClick = async (appointmentId: string) => {
     try {
-      // Логика для работы с записью
       navigate(`/admin-panel/appointments/${appointmentId}`);
     } catch (error) {
       alert(t("message.adminPanel.appointments.errorFetchingAppointments"));
@@ -70,11 +59,15 @@ const AdminAppointmentsPage: React.FC = () => {
   const filteredAppointments = appointments.filter((appointment) => {
     if (filter === "new") return appointment.isNew;
     if (filter === "completed") return !appointment.isNew;
-    return true; // Возвращаем все записи для фильтра "all"
+    return true;
   });
 
   if (isLoading) {
-    return <div style={styles.loading}>{t("message.adminPanel.appointments.loadingAppointments")}</div>;
+    return (
+      <div style={styles.loading}>
+        {t("message.adminPanel.appointments.loadingAppointments")}
+      </div>
+    );
   }
 
   if (error) {
@@ -99,27 +92,45 @@ const AdminAppointmentsPage: React.FC = () => {
         ))}
       </div>
       {filteredAppointments.length === 0 ? (
-        <div style={styles.emptyMessage}>{t("message.adminPanel.appointments.noAppointments")}</div>
+        <div style={styles.emptyMessage}>
+          {t("message.adminPanel.appointments.noAppointments")}
+        </div>
       ) : (
-        <ul>
-          {filteredAppointments.map((appointment) => (
-            <li key={appointment.id} style={styles.appointmentRow}>
-              <div style={styles.marker}>
-                {appointment.isNew && <div style={styles.markerCircleNew}></div>}
-                {!appointment.isNew && <div style={styles.markerCircleCompleted}></div>}
-              </div>
-              <div style={styles.clientName}>{appointment.clientName}</div>
-              <div style={styles.service}>{appointment.service}</div>
-              <div style={styles.date}>{new Date(appointment.date).toLocaleDateString()}</div>
-              <button
-                style={styles.moreInfoButton}
-                onClick={() => handleMoreInfoClick(appointment.id)}
-              >
-                {t("message.adminPanel.appointments.buttons.moreInfo")}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <ul style={styles.appointmentList}>
+  {filteredAppointments.map((appointment) => (
+    <li
+      key={appointment.id}
+      style={styles.appointmentRow(window.innerWidth <= 768)} // Условные стили для адаптации
+    >
+      {/* Маркер состояния */}
+      <div style={styles.marker}>
+        {appointment.isNew && <div style={styles.markerCircleNew}></div>}
+        {!appointment.isNew && (
+          <div style={styles.markerCircleCompleted}></div>
+        )}
+      </div>
+
+      {/* Контейнер для основных полей */}
+      <div style={styles.mainInfoContainer(window.innerWidth <= 768)}>
+          <div style={styles.clientName}>{appointment.clientName}</div>
+          <div style={styles.service}>{appointment.service}</div>
+          <div style={styles.date}>
+              {new Date(appointment.date).toLocaleDateString()}
+      </div>
+    </div>
+
+
+      {/* Кнопка */}
+      <button
+        style={styles.moreInfoButton}
+        onClick={() => handleMoreInfoClick(appointment.id)}
+      >
+        {t("message.adminPanel.appointments.buttons.moreInfo")}
+      </button>
+    </li>
+  ))}
+</ul>
+
       )}
     </div>
   );

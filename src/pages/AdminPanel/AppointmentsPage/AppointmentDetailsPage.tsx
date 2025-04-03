@@ -32,6 +32,7 @@ const AppointmentsPage: React.FC = () => {
     email: "john.doe@example.com",
     phone1: "+1234567890",
     phone2: "+0987654321",
+
     comment: t("message.adminPanel.appointments.appointmentDetails.comment"),
     language: "en",
     available_time: "10:00 - 11:00",

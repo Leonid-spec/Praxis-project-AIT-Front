@@ -48,9 +48,10 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
       {isLoggedIn && showDropdown && (
         <Dropdown>
-          {/* <DropdownItem onClick={() => navigate("/admin-panel")}>
-      <FaTools style={{ marginRight: "8px" }} /> Admin Menu
-    </DropdownItem> */}
+           <DropdownItem onClick={() => navigate("/admin-panel/add-admin")}>
+           <FaTools style={{ marginRight: "8px" }} /> Greate new Admin
+        </DropdownItem>
+ 
         <DropdownItem onClick={handleChangePassword}>
           <FaKey style={{ marginRight: "8px" }} />
           Change password
