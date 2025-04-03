@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { AddNewServiceBtn } from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceContainer";
 import { ServicePageSingle } from "../ServicePageSinge/ServicePageSingle";
 import { 
@@ -7,24 +6,35 @@ import {
   HeaderMainBtnsContainer, 
   ServicesPageAllContainer 
 } from "./styles";
+import { Outlet } from "react-router-dom";
+import AddNewServiceBtn from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 
 export const ServicesPageAll = () => {
   const [isAddingNewService, setIsAddingNewService] = useState(false);
 
+  const handleAddServiceClick = () => {
+    setIsAddingNewService(true); 
+  };
+
+  const handleBackToMainClick = () => {
+    setIsAddingNewService(false); 
+  };
+
   return (
     <ServicesPageAllContainer>
-
-      <HeaderMainBtnsContainer>
-
-        <AddNewServiceBtn />
-        <FindServiceContainer/>
-
-      </HeaderMainBtnsContainer>
-      
+    {isAddingNewService ? (
       <CardsMainContainer>
-        {/* <ServicePageSingle /> */}
+        <ServicePageSingle onReturnBack={handleBackToMainClick}/>
+        <Outlet />
       </CardsMainContainer>
-
-    </ServicesPageAllContainer>
+    ) : (
+      <>
+        <HeaderMainBtnsContainer>
+          <AddNewServiceBtn onAddService={handleAddServiceClick}/>
+          <FindServiceContainer />
+        </HeaderMainBtnsContainer>
+      </>
+    )}
+  </ServicesPageAllContainer>
   );
 };

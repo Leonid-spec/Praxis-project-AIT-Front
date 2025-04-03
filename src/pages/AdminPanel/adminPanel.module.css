@@ -1,6 +1,5 @@
   .adminPanel {
     display: flex;
-    flex-direction: column;
     height: 100vh;
     width: 100vw;
     background-color: #fdfdfd;
@@ -11,29 +10,9 @@
     display: grid;
     grid-template-columns: 20% 80%; 
     height: 100%;
-    padding: 20px;
     overflow: hidden; 
 }
 
-.sidebar {
-    /* height: 100vh; */
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-right: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-.content {
-    padding: 20px;
-    /* background-color: #fff; */
-    overflow-y: auto;
-    border-radius: 8px;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
-}
 /* New end */
   
   /* Квадраты в боковой панели */
@@ -48,8 +27,8 @@
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s;
-    width: 80px; /* Ширина квадрата */
-    height: 80px; /* Высота квадрата */
+    width: 100px; /* Ширина квадрата */
+    height: 100px; /* Высота квадрата */
     margin-top: 30px;
   }
   
