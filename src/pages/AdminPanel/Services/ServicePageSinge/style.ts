@@ -3,15 +3,8 @@ import styled from "styled-components";
 export const ServicePageSingleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 20px;
-  /* background-color: #f7f7f7; */
-  border-radius: 10px;
-  `;
-
-export const AddNewServicePageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  gap: 10px;
+  padding: 20px 50px;
 `;
 
 export const HeaderBox = styled.div`
@@ -19,54 +12,52 @@ export const HeaderBox = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  background-color: #ffffff;
-  padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  button {
-    background-color: #edf2f7;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 14px;
-
-    &:hover {
-      background-color: #dce7ee;
-    }
-  }
+  background-color: #ffffff;
+  margin-bottom: 40px;
+  padding: 0 40px;
 `;
 
 export const MainBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
+  gap: 20px;
+`;
+
+export const MainBoxText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
+
+export const ImageBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  width: 100%;
+  height: 500px;
 `;
 
 export const EditTopImage = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+`;
 
-  input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f8f8;
+export const UploadInput = styled.input`
+  padding: 10px;
+  border-radius: 5px;
+`;
 
-    &:focus {
-      border-color: #68a4f8;
-      outline: none;
-    }
-  }
+export const ImagePreview = styled.img`
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 `;
 
 export const TitleSection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 
   input {
     width: 100%;
@@ -82,29 +73,40 @@ export const TitleSection = styled.div`
   }
 `;
 
+export const StyledCheckbox = styled.input`
+  width: 20px;
+  height: 20px;
+  accent-color: #20b1b7;
+  cursor: pointer;
+
+  &:checked {
+    background-color: #20b1b7;
+  }
+`;
+
+export const MakeCardVisibleBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const TitlesBox = styled.div`
   font-size: 18px;
   font-weight: bold;
-  color: #B5ABAB;
-  margin-top: 40px;
+  color: #b5abab;
+  margin: 20px 0 10px;
 `;
 
-export const TitleBoxText = styled.div`
+export const TitleBoxText = styled.label`
   font-size: 16px;
-  /* font-weight: bold; */
-  color: #B5ABAB;
+  color: #b5abab;
+  padding: 0 0 0 20px;
 `;
 
 export const InputContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
-
-  span {
-    font-weight: bold;
-    color: #4a4a4a;
-    flex-shrink: 0;
-  }
+  gap: 20px;
 
   textarea {
     width: 100%;
@@ -120,34 +122,54 @@ export const InputContainer = styled.div`
   }
 `;
 
+export const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+
+  &:focus {
+    border-color: #68a4f8;
+    outline: none;
+  }
+`;
+
 export const DescriptionSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
 `;
 
-export const StyledInvisibleButton = styled.button`
-  background-color: #ffa07a;
+export const StyledReturnButton = styled.button`
+  background-color: #20b1b7;
   color: #fff;
-  padding: 10px 20px;
+  padding: 18px 40px;
+  /* margin: 20px 66px 0; */
+  /* margin: 20px; */
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
 
   &:hover {
-    background-color: #ff7f50;
+    background-color: #0c989c;
   }
 `;
 
 export const StyledSaveButton = styled.button`
-  background-color: #90ee90;
+  background-color: #20b1b7;
   color: #fff;
-  padding: 10px 20px;
+  padding: 20px 40px;
   border: none;
-  border-radius: 5px;
+  font-weight: bold;
+
+  border-radius: 30px;
   cursor: pointer;
+  font-size: 18px;
 
   &:hover {
-    background-color: #76c76b;
+    background-color: #0c989c;
   }
 `;

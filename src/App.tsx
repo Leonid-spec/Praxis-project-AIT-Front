@@ -14,7 +14,6 @@ import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
 import { DoctorsProvider } from "./pages/AdminPanel/Doctors/DoctorsContext";
-import AddAdminForm from "./pages/AdminPanel/AddAdmin/AddAdminForm";
 
 Modal.setAppElement("#root");
 
@@ -36,9 +35,7 @@ function App() {
               <Route path="/doctors/:id" element={<DoctorDetails />} />
               <Route path="/services" element={<Service />} />
               <Route path="/services/:id" element={<ServiceDetails />} />
-              <Route path="/admin-panel/*" element={<AdminPanel />} />{" "}
-              <Route path="/admin-panel/add-admin" element={<AddAdminForm />} />
-              
+              <Route path="/admin-panel/*" element={<AdminPanel />} />{" "}              
             </Routes>
           </Layout>
         </Router>

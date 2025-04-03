@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./mainContent.module.css";
-import AdminAppointmentsPage from "../AppointmentsPage/AdminAppointmentsPage"; // Список заявок
-import AppointmentsPage from "../AppointmentsPage/AppointmentDetailsPage"; // Детали заявки
+import AdminAppointmentsPage from "../AppointmentsPage/AdminAppointmentsPage"; 
+import AppointmentsPage from "../AppointmentsPage/AppointmentDetailsPage"; 
 import DoctorsPage from "../Doctors/DoctorsPage";
 import { ServicesPageAll } from "../Services/ServicesPageAll/ServicesPageAll";
 import { ServicePageSingle } from "../Services/ServicePageSinge/ServicePageSingle";

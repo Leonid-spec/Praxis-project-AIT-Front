@@ -1,79 +1,8 @@
-  .adminPanel {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    background-color: #fdfdfd;
-    overflow: hidden;
-}
-
 .mainPanel {
-    display: grid;
-    grid-template-columns: 20% 80%; 
-    height: 100%;
-    overflow: hidden; 
+  display: grid;
+  grid-template-columns: 15% 85%;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  overflow: hidden;
 }
-
-/* New end */
-  
-  /* Квадраты в боковой панели */
-  .box {
-    background-color: #e9ecef; /* Фоновый цвет квадрата */
-    padding: 15px; /* Отступ внутри квадрата */
-    border-radius: 8px; /* Скругленные края */
-    cursor: pointer; /* Указатель при наведении */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s;
-    width: 100px; /* Ширина квадрата */
-    height: 100px; /* Высота квадрата */
-    margin-top: 30px;
-  }
-  
-  .box:hover {
-    background-color: #d1d1d1; /* Цвет квадрата при наведении */
-  }
-  
-  /* Названия меню */
-  .label {
-    font-size: 14px;
-    font-weight: 500; /* Полужирный шрифт */
-    position: absolute; /* Абсолютное позиционирование для текстовых меток */
-    top: -20px; /* Смещение вверх */
-    text-align: center;
-    width: 100%; /* Ширина совпадает с шириной квадрата */
-    color: #555; /* Цвет текста */
-  }
-  
-  /* Иконки */
-  .icon {
-    font-size: 36px; /* Размер иконок */
-    color: #666; /* Цвет иконок */
-  }
-  
-  /* Центрирование содержимого DoctorsPage */
-  .doctorsPage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* Заполняет всю высоту экрана */
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  /* Карточки врачей */
-  .item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .labelTop {
-    margin-bottom: 2px;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-  }
