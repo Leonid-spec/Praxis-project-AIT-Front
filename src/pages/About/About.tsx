@@ -3,8 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./aboutModule.css";
+import { useTranslation } from "react-i18next";
+
 
 const About: React.FC = () => {
+  const { t } = useTranslation(); // 💡 Вот эта строка была нужна!
   const sliderRef = React.useRef<Slider>(null);
 
   const settings = {
@@ -57,12 +60,21 @@ const About: React.FC = () => {
     <div className="aboutPageContainer">
 
       <h2>
-        {" "}
-        Unsere <span className="textKabinet">Kabinette</span> sind mit{" "}
-        <span className="modern">modernen</span> Geräten{" "}
-        <span className="ausgestattet">ausgestattet</span>
+        {t("message.main.about_us_page.ours")}{" "}
+        <span className="textKabinet">{t("message.header.menu.cabinets")}</span>{" "}
+        {t("message.main.about_us_page.are")}{" "}
+       
+        <span className="ausgestattet">{t("message.header.menu.devices")}</span>{" "}
+        {t("message.main.about_us_page.ausgestattet")}
       </h2>
-      
+      {/* 
+          Наши   кабинеты    оснащены           современными   приборами   !
+          Unsere Kabinette   sind mit           modernen       Geräten     ausgestattet
+          Our    cabinets    are equipped with  modern         devices     !
+      */}
+
+
+
       <div className="carousel-container">
         <button
           className="carousel-arrow carousel-arrow-left"

@@ -21,6 +21,7 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
     setShowDropdown(false);
     navigate("/"); 
@@ -54,7 +55,7 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
  
         <DropdownItem onClick={handleChangePassword}>
           <FaKey style={{ marginRight: "8px" }} />
-          Change password
+          Change passworda
         </DropdownItem>
         <DropdownItem onClick={handleLogout}>
           <FaSignOutAlt style={{ marginRight: "8px" }} /> 

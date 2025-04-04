@@ -19,27 +19,29 @@ const AddAdminForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <label>
-        Login:
-        <input type="text" value={login} onChange={(e) => setLogin(e.target.value)} />
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <label>
-        Admin Rights:
-        <input
-          type="checkbox"
-          checked={adminRights}
-          onChange={(e) => setAdminRights(e.target.checked)}
-        />
-      </label>
-      <button type="button" onClick={handleSubmit}>
-        Create Admin
-      </button>
-    </form>
+    <p>
+      {/* <form onSubmit={(e) => e.preventDefault()}>
+        <label>
+          Login:
+          <input type="text" value={login} onChange={(e) => setLogin(e.target.value)} />
+        </label>
+        <label>
+          Password:
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </label>
+        <label>
+          Admin Rights:
+          <input
+            type="checkbox"
+            checked={adminRights}
+            onChange={(e) => setAdminRights(e.target.checked)}
+          />
+        </label>
+        <button type="button" onClick={handleSubmit}>
+          Create Admin
+        </button>
+      </form> */}
+    </p>
   );
 };
 

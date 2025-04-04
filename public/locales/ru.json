@@ -7,7 +7,10 @@
         "about_us": "О нас",
         "contact": "Контакты",
         "home": "Главная",
-        "logo_alt": "Логотип"
+        "logo_alt": "Логотип",
+        "cabinets": "кабинеты",
+        "devices": "приборами"
+
       }
     },
     "main": {
@@ -20,7 +23,13 @@
         "title": "Добро пожаловать в стоматологическую клинику",
         "subtitle": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
       },
+      "about_us_page": {
+        "ours": "Наши",
+        "are": "оснащены современными",
+        "ausgestattet": "!"
+      },
       "team_page": {
+        "servicesIntrot": "Наша     ",
         "welcome": "Добро пожаловать в",
         "subtitle": "Добро пожаловать на страницу нашей команды! Мы - команда профессионалов, стремящихся обеспечить вам качественную заботу о зубах. Наша миссия - подарить вам улыбку, полную здоровья и уверенности. Благодарим за доверие!",
         "moreInfoBtn": "Узнать больше",
@@ -39,10 +48,15 @@
         "moreInfoBtn": "Узнать больше",
         "gallery": "Галерея",
         "serviceNotFound": "Услуга не найдена.",
-        "servicesIntro": "Наши услуги",
+        "servicesIntro": "Наши     ",
         "highlight": "Abramian Dental",
         "noDescription": "Описание отсутствует.",
-        "noServicesAvailable": "Услуги пока недоступны."
+        "noServicesAvailable": "Услуги пока недоступны.",
+        "servicerDetails":
+        {
+          "title": "Название процедуры",
+          "specialization": "Подробности"
+        }
       },
       "contacts_page": {
         "welcome_text": "Мы всегда рады вам помочь! Здесь вы найдете нашу контактную информацию, обращайтесь.",
