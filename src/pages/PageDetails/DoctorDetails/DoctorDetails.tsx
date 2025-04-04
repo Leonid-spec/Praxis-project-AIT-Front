@@ -66,13 +66,17 @@ const DoctorDetails: React.FC = () => {
     );
   }
 
-  const titleKey = `title${currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)}` as keyof typeof doctor;
+  const titleKey = `title${
+    currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
+  }` as keyof typeof doctor;
   const title =
     typeof doctor[titleKey] === "string"
       ? doctor[titleKey]
       : t("noTitle");
 
-  const specializationKey = `specialisation${currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)}` as keyof typeof doctor;
+  const specializationKey = `specialisation${
+    currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
+  }` as keyof typeof doctor;
   const specialization =
     typeof doctor[specializationKey] === "string"
       ? doctor[specializationKey]

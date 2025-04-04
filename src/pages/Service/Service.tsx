@@ -108,7 +108,8 @@ const ServicePage: React.FC = () => {
 
       <HeaderTextBox>
         <ServiceText>
-          Unsere <HighlightText>Leistungen</HighlightText> |
+        {parseSubtitle(t("message.main.service_page.servicesIntro"))}{" "}
+    <HighlightText>{parseSubtitle(t("message.header.menu.services"))}</HighlightText> |
         </ServiceText>
       </HeaderTextBox>
 

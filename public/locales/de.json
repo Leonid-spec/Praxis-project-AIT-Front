@@ -21,6 +21,7 @@
         "subtitle": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN IHR SCHÖNSTES <HighlightedSpan>LÄCHELN"
       },
       "team_page": {
+        "servicesIntrot": "Unsere ",
         "welcome": "Willkommen bei",
         "subtitle": "Willkommen auf der Seite unseres Teams! Wir sind engagierte Fachleute, die sich leidenschaftlich dafür einsetzen, Ihnen erstklassige Zahnpflege zu bieten. Unsere Mission ist es, Ihnen ein gesundes und selbstbewusstes Lächeln zu schenken. Vielen Dank für Ihr Vertrauen!",
         "moreInfoBtn": "Mehr erfahren",
@@ -39,10 +40,15 @@
         "moreInfoBtn": "Mehr erfahren",
         "gallery": "Galerie",
         "serviceNotFound": "Leistung nicht gefunden.",
-        "servicesIntro": "Unsere Leistungen",
+        "servicesIntro": "Unsere ",
         "highlight": "Abramian Dental",
         "noDescription": "Keine Beschreibung verfügbar.",
-        "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar."
+        "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar.",
+        "servicerDetails":
+        {
+          "title": "НАЗВАНИЕ",
+          "specialization": "ПРОЦЕДУРА"
+        }
       },
       "contacts_page": {
         "welcome_text": "Wir sind immer für Sie da! Hier finden Sie unsere Kontaktinformationen, melden Sie sich gerne bei uns.",
