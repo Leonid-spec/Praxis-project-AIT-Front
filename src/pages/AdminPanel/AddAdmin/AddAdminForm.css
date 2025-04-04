@@ -1,5 +1,4 @@
-/* Контейнер формы */
-form {
+/* form {
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -8,10 +7,8 @@ form {
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  /* Поля ввода */
   input[type="text"],
   input[type="password"] {
     width: 100%;
@@ -22,12 +19,10 @@ form {
     font-size: 14px;
   }
   
-  /* Чекбокс */
   input[type="checkbox"] {
     margin-right: 10px;
   }
   
-  /* Метка для чекбокса */
   label {
     font-size: 14px;
     margin-bottom: 10px;
@@ -35,7 +30,6 @@ form {
     align-items: center;
   }
   
-  /* Кнопка отправки */
   button {
     padding: 10px;
     background-color: #007bff;
@@ -50,4 +44,4 @@ form {
   button:hover {
     background-color: #0056b3;
   }
-  
+   */

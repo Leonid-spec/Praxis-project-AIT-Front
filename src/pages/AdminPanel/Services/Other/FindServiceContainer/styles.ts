@@ -5,6 +5,7 @@ export const StyledButton = styled.div`
   align-items: center;
   gap: 15px;
   padding: 12px 20px;
+  margin: 20px;
   width: 350px;
   border-radius: 30px;
   background-color: #20b1b7;
@@ -12,8 +13,8 @@ export const StyledButton = styled.div`
   transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: #1a8e92;
-    transform: scale(1.02);
+    /* background-color: #1a8e92; */
+    /* transform: scale(1.02); */
   }
 `;
 
