@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
 export interface Service {
+  [x: string]: any;
+  titleEn: any;
+  topImage: string;
   id: number;
   name: string;
 }

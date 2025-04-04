@@ -1,6 +1,6 @@
 import { Service } from "../store/types/serviceTypes";
 
-const API_URL = "/api";
+const API_URL = "http://localhost:8100/api";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {
@@ -10,7 +10,6 @@ const handleFetchError = async (response: Response) => {
   return response.json();
 };
 
-// Get active services
 export const getActiveDoctors = async (): Promise<Service[]> => {
   try {
     const response = await fetch(`${API_URL}/services/active`);
@@ -21,11 +20,14 @@ export const getActiveDoctors = async (): Promise<Service[]> => {
   }
 };
 
-// Get all services
-export const getServices = async (): Promise<Service[]> => {
+export const getServices = async (token: string): Promise<Service[]> => {
   try {
-    const response = await fetch(`${API_URL}/services`);
-    await handleFetchError(response);
+    const response = await fetch(`${API_URL}/services`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return await response.json();
   } catch (error) {
     console.error("Failed to fetch services:", error);
@@ -33,10 +35,14 @@ export const getServices = async (): Promise<Service[]> => {
   }
 };
 
-export const getServiceById = async (id: number): Promise<Service> => {
+export const getServiceById = async (id: number, token: string): Promise<Service> => {
   try {
-    const response = await fetch(`${API_URL}/services/${id}`);
-    await handleFetchError(response);
+    const response = await fetch(`${API_URL}/service/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return await response.json();
   } catch (error) {
     console.error(`Failed to fetch service with ID ${id}:`, error);
@@ -44,15 +50,17 @@ export const getServiceById = async (id: number): Promise<Service> => {
   }
 };
 
-export const createService = async (service: Partial<Service>): Promise<Service> => {
+export const createService = async (service: Partial<Service>, token: string): Promise<Service> => {
   try {
-    const response = await fetch(API_URL, {
+    const response = await fetch(`${API_URL}/service`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify(service),
     });
-    await handleFetchError(response);
-    return await response.json();
+    return await handleFetchError(response);
   } catch (error) {
     console.error("Failed to create service:", error);
     throw error;
@@ -60,29 +68,36 @@ export const createService = async (service: Partial<Service>): Promise<Service>
 };
 
 export const updateService = async (
-  id: number,
-  service: Partial<Service>
+  service: Partial<Service>,
+  token: string
 ): Promise<Service> => {
   try {
-    const response = await fetch(`${API_URL}/services/${id}`, {
+    const response = await fetch(`${API_URL}/service`, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, 
+      },
       body: JSON.stringify(service),
     });
-    await handleFetchError(response);
-    return await response.json();
+    return await handleFetchError(response);
   } catch (error) {
-    console.error(`Failed to update service with ID ${id}:`, error);
+    console.error(`Failed to update service:`, error);
     throw error;
   }
 };
 
-// export const deleteService = async (id: number): Promise<void> => {
+
+// export const deleteService = async (id: number, token: string): Promise<void> => {
 //   try {
-//     const response = await fetch(`${API_URL}/${id}`, {
+//     const response = await fetch(`${API_URL}/services/${id}`, {
 //       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: `Bearer ${token}`, 
+//       },
 //     });
-//     handleFetchError(response);
+//     await handleFetchError(response);
 //   } catch (error) {
 //     console.error(`Failed to delete service with ID ${id}:`, error);
 //     throw error;

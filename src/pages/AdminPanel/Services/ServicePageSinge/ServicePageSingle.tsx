@@ -19,10 +19,12 @@ import {
   MakeCardVisibleBox,
   TitleSection,
 } from "./style";
-import CustomNotification from "./CustomNotification/CustomNotification"; 
+import CustomNotification from "./CustomNotification/CustomNotification";
+import { createService } from "../../../../api/serviceAPI";
+import EditServicePage from "../EditServicePage/EditServicePage";
 
 interface ServiceData {
-  id?: number;
+  id?: number | null;
   titleDe: string;
   titleEn: string;
   titleRu: string;
@@ -57,6 +59,9 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
     message: string;
     type: "error" | "success";
   } | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+
+  const token = localStorage.getItem("token"); 
 
   const handleChange = (field: keyof ServiceData, value: string | boolean) => {
     setServiceData((prev) => ({
@@ -77,39 +82,46 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
   };
 
   const handleSave = async () => {
-    try {
-      const response = await fetch("http://localhost:8100/api/service", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(serviceData),
-      });
+    if (isSaving) {
+      return; 
+    }
 
-      if (!response.ok) {
-        throw new Error(`Failed to save: ${response.statusText}`);
-      }
-
-      const data = await response.json();
-      console.log("Data successfully sent:", data);
+    if (!token) {
       setNotification({
-        message: "Service saved successfully!",
+        message: "Authorization token is missing. Please log in again.",
+        type: "error",
+      });
+      return;
+    }
+
+    if (!serviceData.titleEn.trim()) {
+      setNotification({
+        message: "Title (En) is required.",
+        type: "error",
+      });
+      return;
+    }
+
+    setIsSaving(true); 
+
+    try {
+      const newService = await createService(serviceData, token); 
+      setNotification({
+        message: `Service "${newService.titleEn}" created successfully!`,
         type: "success",
       });
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error("Error saving:", error.message);
-        setNotification({
-          message: "Error saving service: " + error.message,
-          type: "error",
-        });
-      } else {
-        console.error("An unexpected error occurred:", error);
-        setNotification({
-          message: "An unexpected error occurred.",
-          type: "error",
-        });
-      }
+
+      setTimeout(() => {
+        setIsSaving(false);
+        onReturnBack(); 
+      }, 1500);
+    } catch (error: any) {
+      console.error("Error creating service:", error.message);
+      setNotification({
+        message: `Error creating service: ${error.message}`,
+        type: "error",
+      });
+      setIsSaving(false);
     }
   };
 
@@ -119,7 +131,9 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
         <StyledReturnButton onClick={onReturnBack}>
           ← Return back
         </StyledReturnButton>
-        <StyledSaveButton onClick={handleSave}>Save all</StyledSaveButton>
+        <StyledSaveButton onClick={handleSave} disabled={isSaving}>
+          {isSaving ? "Saving..." : "Save all"}
+        </StyledSaveButton>
       </HeaderBox>
 
       {notification && (
@@ -132,7 +146,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
       <MainBox>
         <MainBoxText>
           <MakeCardVisibleBox>
-            <TitlesBox>Make card visible for user:</TitlesBox>
+            <TitlesBox>Make card visible for users:</TitlesBox>
             <StyledCheckbox
               type="checkbox"
               checked={serviceData.isActive}
@@ -185,10 +199,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
           {serviceData.topImage ? (
             <ImagePreview src={serviceData.topImage} alt="Uploaded preview" />
           ) : (
-            <ImagePreview
-              src="https://via.placeholder.com/300"
-              alt="Placeholder image"
-            />
+            <ImagePreview src="https://via.placeholder.com/300" alt="Image" />
           )}
         </ImageBox>
       </MainBox>
@@ -223,6 +234,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
           />
         </InputContainer>
       </DescriptionSection>
+      
     </ServicePageSingleContainer>
   );
 };

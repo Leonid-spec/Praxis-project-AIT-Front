@@ -48,7 +48,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* Service */}
-      <Link to="/admin-panel/adminServices">
+      {/* <Link to="/admin-panel/adminServices"> */}
         <div
           className={`${styles.item} ${
             location.pathname === "/admin-panel/adminServices"
@@ -68,7 +68,7 @@ const Sidebar: React.FC = () => {
             <div className={styles.labelTop}>Service</div>
           </div>
         </div>
-      </Link>
+      {/* </Link> */}
 
       {/* Doctors */}
       <div

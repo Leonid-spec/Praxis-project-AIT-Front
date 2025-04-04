@@ -32,9 +32,9 @@ function App() {
               <Route path="/doctors" element={<Team />} />
               <Route path="/about" element={<About />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/doctors/:id" element={<DoctorDetails />} />
+              <Route path="/doctor/:id" element={<DoctorDetails />} />
               <Route path="/services" element={<Service />} />
-              <Route path="/services/:id" element={<ServiceDetails />} />
+              <Route path="/service/:id" element={<ServiceDetails />} />
               <Route path="/admin-panel/*" element={<AdminPanel />} />{" "}              
             </Routes>
           </Layout>

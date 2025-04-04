@@ -21,17 +21,6 @@ export const HeaderMainBtnsContainer = styled.div`
   gap: 30px;
 `;
 
-export const RefreshIconBox = styled.div`
-  width: 30px;
-  height: 30px;
-`;
-
-export const RefreshIconImage = styled.image`
-  width: 100%;
-  height: 100%;
-`;
-
-
 export const CardsMainContainer = styled.div`
   flex: 1; 
   overflow-y: auto; 

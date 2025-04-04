@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ServicePageSingleContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
   padding: 20px 50px;
 `;
 
@@ -21,7 +21,7 @@ export const HeaderBox = styled.div`
 export const MainBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 30px;
 `;
 
 export const MainBoxText = styled.div`
@@ -52,6 +52,7 @@ export const ImagePreview = styled.img`
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
+  background-color: #f8f8f8;
 `;
 
 export const TitleSection = styled.div`
@@ -145,8 +146,6 @@ export const StyledReturnButton = styled.button`
   background-color: #20b1b7;
   color: #fff;
   padding: 18px 40px;
-  /* margin: 20px 66px 0; */
-  /* margin: 20px; */
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -158,18 +157,16 @@ export const StyledReturnButton = styled.button`
   }
 `;
 
-export const StyledSaveButton = styled.button`
-  background-color: #20b1b7;
-  color: #fff;
-  padding: 20px 40px;
+export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
+  background-color: ${({ disabled }) => (disabled ? "#ccc" : "#20B1B7")};
+  color: ${({ disabled }) => (disabled ? "#888" : "#fff")};
+  padding: 10px 20px;
   border: none;
-  font-weight: bold;
-
   border-radius: 30px;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   font-size: 18px;
 
   &:hover {
-    background-color: #0c989c;
+    background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
   }
 `;
