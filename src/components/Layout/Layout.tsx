@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
   const isMiniFooter = miniFooterPages.includes(location.pathname); // Проверка, нужен ли мини-футер
 
    // Страницы без футера вообще
-   const noFooterPages = ["/admin-panel", "/admin-panel/doctors", "/admin-panel/appointments", "/admin-panel/services"];
+   const noFooterPages = ["/admin-panel", "/admin-panel/doctors", "/panel/appointments", "/admin-panel/services"];
    const hideFooter = noFooterPages.some((path) => location.pathname.startsWith(path)); 
 
   return (

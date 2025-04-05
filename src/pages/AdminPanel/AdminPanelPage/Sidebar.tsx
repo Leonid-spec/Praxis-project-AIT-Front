@@ -48,16 +48,16 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* Service */}
-      {/* <Link to="/admin-panel/adminServices"> */}
+      {/* <Link to="/admin-panel/admin-services"> */}
         <div
           className={`${styles.item} ${
-            location.pathname === "/admin-panel/adminServices"
+            location.pathname === "/admin-panel/admin-services"
               ? styles.active
               : ""
           }`}
         >
           <div
-            onClick={() => navigate("/admin-panel/adminServices")}
+            onClick={() => navigate("/admin-panel/admin-services")}
             className={styles.box}
           >
             <img

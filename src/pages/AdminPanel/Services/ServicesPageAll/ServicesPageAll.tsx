@@ -17,6 +17,7 @@ import {
 } from "./styles";
 import EditServicePage from "../EditServicePage/EditServicePage";
 import { ServiceData } from "../../../../store/types/serviceTypes";
+import { Outlet } from "react-router-dom";
 
 export const ServicesPageAll = () => {
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
@@ -37,7 +38,7 @@ export const ServicesPageAll = () => {
       }
       const data = await getServices(token);
       setServices(data);
-      setFilteredServices(data);
+      setFilteredServices(data? [] : data);
       setError(null);
       console.log("message", data);
     } catch (err: any) {
@@ -59,7 +60,7 @@ export const ServicesPageAll = () => {
 
   const handleAddServiceClick = () => {
     setIsAddingNewService(true); 
-    navigate("/add-new-service");
+    navigate("add-new-service");
   };
 
   const handleEditClick = (id: number) => {
@@ -97,6 +98,8 @@ export const ServicesPageAll = () => {
               <FindServiceContainer searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
             </HeaderMainBtnsContainer>
+
+            <Outlet />
   
             <ScrollContainer>
               <ServiceCardsMainContainer>

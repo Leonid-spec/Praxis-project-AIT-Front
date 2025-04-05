@@ -18,18 +18,16 @@ import {
   MainBoxText,
   MakeCardVisibleBox,
   TitleSection,
+  ScrollContainer,
 } from "./style";
 import CustomNotification from "./CustomNotification/CustomNotification";
 import { createService } from "../../../../api/serviceAPI";
 import { ServiceData } from "../../../../store/types/serviceTypes";
+import { useNavigate } from "react-router-dom";
 
-interface ServicePageSingleProps {
-  onReturnBack: () => void;
-}
+export const ServicePageSingle: React.FC = () => {
+  const navigate = useNavigate();
 
-export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
-  onReturnBack,
-}) => {
   const [serviceData, setServiceData] = useState<ServiceData>({
     titleDe: "",
     titleEn: "",
@@ -49,6 +47,10 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
   const [isSaving, setIsSaving] = useState(false);
   const token = localStorage.getItem("token");
 
+  const handleReturn = () => {
+    navigate(-1);
+  };
+
   const handleChange = (field: keyof ServiceData, value: string | boolean) => {
     setServiceData((prev) => ({
       ...prev,
@@ -67,20 +69,34 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
     }
   };
 
+  const isFormValid = (): boolean => {
+    const {
+      titleDe,
+      titleEn,
+      titleRu,
+      descriptionDe,
+      descriptionEn,
+      descriptionRu,
+      topImage,
+    } = serviceData;
+
+    return (
+      (titleDe ?? "").trim() !== "" &&
+      (titleEn ?? "").trim() !== "" &&
+      (titleRu ?? "").trim() !== "" &&
+      (descriptionDe ?? "").trim() !== "" &&
+      (descriptionEn ?? "").trim() !== "" &&
+      (descriptionRu ?? "").trim() !== "" &&
+      (topImage ?? "") !== ""
+    );
+  };
+
   const handleSave = async () => {
-    if (isSaving) return;
+    if (!isFormValid()) return;
 
     if (!token) {
       setNotification({
         message: "Authorization token is missing. Please log in again.",
-        type: "error",
-      });
-      return;
-    }
-
-    if (!serviceData.titleEn?.trim()) {
-      setNotification({
-        message: "Title (En) is required.",
         type: "error",
       });
       return;
@@ -97,10 +113,9 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
 
       setTimeout(() => {
         setIsSaving(false);
-        onReturnBack();
+        handleReturn();
       }, 1500);
     } catch (error: any) {
-      console.error("Error creating service:", error.message);
       setNotification({
         message: `Error creating service: ${error.message}`,
         type: "error",
@@ -112,10 +127,11 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
   return (
     <ServicePageSingleContainer>
       <HeaderBox>
-        <StyledReturnButton onClick={onReturnBack}>
+        <StyledReturnButton onClick={handleReturn}>
           ← Return back
         </StyledReturnButton>
-        <StyledSaveButton onClick={handleSave} disabled={isSaving}>
+        <StyledSaveButton onClick={handleSave}
+          disabled={!isFormValid() || isSaving}>
           {isSaving ? "Saving..." : "Save all"}
         </StyledSaveButton>
       </HeaderBox>
@@ -127,97 +143,103 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
         />
       )}
 
-      <MainBox>
-        <MainBoxText>
-          <MakeCardVisibleBox>
-            <TitlesBox>Make card visible for users:</TitlesBox>
-            <StyledCheckbox
-              type="checkbox"
-              checked={serviceData.isActive}
-              onChange={(e) => handleChange("isActive", e.target.checked)}
+      
+     <ScrollContainer>
+
+        <MainBox>
+          <MainBoxText>
+            <MakeCardVisibleBox>
+              <TitlesBox>Make card visible for users:</TitlesBox>
+              <StyledCheckbox
+                type="checkbox"
+                checked={serviceData.isActive}
+                onChange={(e) => handleChange("isActive", e.target.checked)}
+              />
+            </MakeCardVisibleBox>
+  
+            <EditTopImage>
+              <TitlesBox>Edit top image</TitlesBox>
+              <UploadInput
+                type="file"
+                accept="topImage/*"
+                onChange={handleImageUpload}
+              />
+            </EditTopImage>
+  
+            <TitleSection>
+              <TitlesBox>Titles:</TitlesBox>
+              <InputContainer>
+                <TitleBoxText>De</TitleBoxText>
+                <Input
+                  type="text"
+                  placeholder="Enter title (De)"
+                  value={serviceData.titleDe}
+                  onChange={(e) => handleChange("titleDe", e.target.value)}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>En</TitleBoxText>
+                <Input
+                  type="text"
+                  placeholder="Enter title (En)"
+                  value={serviceData.titleEn}
+                  onChange={(e) => handleChange("titleEn", e.target.value)}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>Ru</TitleBoxText>
+                <Input
+                  type="text"
+                  placeholder="Enter title (Ru)"
+                  value={serviceData.titleRu}
+                  onChange={(e) => handleChange("titleRu", e.target.value)}
+                />
+              </InputContainer>
+            </TitleSection>
+          </MainBoxText>
+  
+          <ImageBox>
+            {serviceData.topImage ? (
+              <ImagePreview src={serviceData.topImage} alt="Uploaded preview" />
+            ) : (
+              <ImagePreview src="https://via.placeholder.com/300" alt="Image" />
+            )}
+          </ImageBox>
+        </MainBox>
+  
+        <DescriptionSection>
+          <TitlesBox>Descriptions:</TitlesBox>
+          <InputContainer>
+            <TitleBoxText>De</TitleBoxText>
+            <textarea
+              placeholder="Enter description (De)"
+              rows={5}
+              value={serviceData.descriptionDe}
+              onChange={(e) => handleChange("descriptionDe", e.target.value)}
             />
-          </MakeCardVisibleBox>
-
-          <EditTopImage>
-            <TitlesBox>Edit top image</TitlesBox>
-            <UploadInput
-              type="file"
-              accept="topImage/*"
-              onChange={handleImageUpload}
+          </InputContainer>
+          <InputContainer>
+            <TitleBoxText>En</TitleBoxText>
+            <textarea
+              placeholder="Enter description (En)"
+              rows={5}
+              value={serviceData.descriptionEn}
+              onChange={(e) => handleChange("descriptionEn", e.target.value)}
             />
-          </EditTopImage>
+          </InputContainer>
+          <InputContainer>
+            <TitleBoxText>Ru</TitleBoxText>
+            <textarea
+              placeholder="Enter description (Ru)"
+              rows={5}
+              value={serviceData.descriptionRu}
+              onChange={(e) => handleChange("descriptionRu", e.target.value)}
+            />
+          </InputContainer>
+        </DescriptionSection>
+  
+     </ScrollContainer>
 
-          <TitleSection>
-            <TitlesBox>Titles:</TitlesBox>
-            <InputContainer>
-              <TitleBoxText>De</TitleBoxText>
-              <Input
-                type="text"
-                placeholder="Enter title (De)"
-                value={serviceData.titleDe}
-                onChange={(e) => handleChange("titleDe", e.target.value)}
-              />
-            </InputContainer>
-            <InputContainer>
-              <TitleBoxText>En</TitleBoxText>
-              <Input
-                type="text"
-                placeholder="Enter title (En)"
-                value={serviceData.titleEn}
-                onChange={(e) => handleChange("titleEn", e.target.value)}
-              />
-            </InputContainer>
-            <InputContainer>
-              <TitleBoxText>Ru</TitleBoxText>
-              <Input
-                type="text"
-                placeholder="Enter title (Ru)"
-                value={serviceData.titleRu}
-                onChange={(e) => handleChange("titleRu", e.target.value)}
-              />
-            </InputContainer>
-          </TitleSection>
-        </MainBoxText>
-
-        <ImageBox>
-          {serviceData.topImage ? (
-            <ImagePreview src={serviceData.topImage} alt="Uploaded preview" />
-          ) : (
-            <ImagePreview src="https://via.placeholder.com/300" alt="Image" />
-          )}
-        </ImageBox>
-      </MainBox>
-
-      <DescriptionSection>
-        <TitlesBox>Descriptions:</TitlesBox>
-        <InputContainer>
-          <TitleBoxText>De</TitleBoxText>
-          <textarea
-            placeholder="Enter description (De)"
-            rows={5}
-            value={serviceData.descriptionDe}
-            onChange={(e) => handleChange("descriptionDe", e.target.value)}
-          />
-        </InputContainer>
-        <InputContainer>
-          <TitleBoxText>En</TitleBoxText>
-          <textarea
-            placeholder="Enter description (En)"
-            rows={5}
-            value={serviceData.descriptionEn}
-            onChange={(e) => handleChange("descriptionEn", e.target.value)}
-          />
-        </InputContainer>
-        <InputContainer>
-          <TitleBoxText>Ru</TitleBoxText>
-          <textarea
-            placeholder="Enter description (Ru)"
-            rows={5}
-            value={serviceData.descriptionRu}
-            onChange={(e) => handleChange("descriptionRu", e.target.value)}
-          />
-        </InputContainer>
-      </DescriptionSection>
     </ServicePageSingleContainer>
   );
 };

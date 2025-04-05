@@ -1,22 +1,25 @@
 import styled from "styled-components";
 
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto; 
+  scroll-behavior: smooth;
+  padding: 0 30px 0 20px;
+`;
+
 export const ServicePageSingleContainer = styled.div`
   display: flex;
+  height: 80vh;
   flex-direction: column;
   gap: 30px;
-  padding: 20px 50px;
+  padding: 50px;
 `;
 
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border-radius: 10px;
-  background-color: #ffffff;
-  margin-bottom: 40px;
-  padding: 0 40px;
-`;
+  padding: 0 100px
+  `;
 
 export const MainBox = styled.div`
   display: grid;
@@ -145,7 +148,7 @@ export const DescriptionSection = styled.div`
 export const StyledReturnButton = styled.button`
   background-color: #20b1b7;
   color: #fff;
-  padding: 18px 40px;
+  padding: 10px 20px;
   border: none;
   border-radius: 30px;
   cursor: pointer;

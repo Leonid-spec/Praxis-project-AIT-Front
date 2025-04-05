@@ -21,19 +21,9 @@ const MainContent: React.FC = () => {
         <Route path="appointments/:id" element={<AppointmentsPage />} />
 
         {/* Services */}
-        <Route path="adminServices" element={<ServicesPageAll />}>
-          <Route
-            path="add-new-service"
-            element={<ServicePageSingle onReturnBack={function (): void {
-              throw new Error("Function not implemented.");
-            } } />}
-          />
-          {/* <Route
-            path="edit-service/:id"
-            element={<EditServicePage onReturnBack={function (): void {}} />}
-          /> */}
-        </Route>
-
+        <Route path="admin-services" element={<ServicesPageAll />} />
+        <Route path="admin-services/add-new-service" element={<ServicePageSingle />} />
+        
         {/* Doctors */}
         <Route path="doctors" element={<DoctorsPage />} />
 
