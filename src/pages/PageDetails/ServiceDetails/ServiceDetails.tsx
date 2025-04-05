@@ -19,7 +19,7 @@ import {
 } from "./styles";
 import { AppDispatch, RootState } from "../../../store/store";
 import { useDispatch, useSelector } from "react-redux";
-import { Service } from "../../../store/types/serviceTypes";
+import { ServiceData } from "../../../store/types/serviceTypes";
 import { fetchActiveServicesStart, fetchServicesFailure, fetchServicesSuccess } from "../../../store/slices/serviceSlice";
 
 type Language = "De" | "En" | "Ru";
@@ -67,7 +67,7 @@ const ServiceDetails: React.FC = () => {
 
   const descriptionKey = `description${
     currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
-  }` as keyof Service;
+  }` as keyof ServiceData;
   const description =
     typeof service[descriptionKey] === "string"
       ? service[descriptionKey]
@@ -75,7 +75,7 @@ const ServiceDetails: React.FC = () => {
 
   const titleKey = `title${
     currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
-  }` as keyof Service;
+  }` as keyof ServiceData;
   const title =
     typeof service[titleKey] === "string" ? service[titleKey] : t("noTitle");
 

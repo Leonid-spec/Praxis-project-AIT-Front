@@ -92,3 +92,16 @@ export const DetailsButton = styled.button`
     background-color: #1a8e92;;
   }
 `;
+
+export const InactiveText = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  z-index: 10;
+`;

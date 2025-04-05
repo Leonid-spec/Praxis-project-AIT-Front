@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Service } from "../../../../store/types/serviceTypes";
 import { getServiceById, updateService } from "../../../../api/serviceAPI";
 import CustomNotification from "../ServicePageSinge/CustomNotification/CustomNotification";
 import { 
@@ -8,6 +7,7 @@ import {
   MainBoxText, MakeCardVisibleBox, StyledCheckbox, TitleBoxText, TitlesBox, 
   TitleSection, UploadInput, DescriptionSection 
 } from "../ServicePageSinge/style";
+import { Service } from "../../../Appointment/ServiceDropdown";
 
 const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }> = ({ onReturnBack, serviceId }) => {
   const [serviceData, setServiceData] = useState<Service | null>(null);
@@ -67,7 +67,6 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
     <ServicePageSingleContainer>
       <HeaderBox>
         <StyledReturnButton onClick={onReturnBack}>← Return back</StyledReturnButton>
-        <h1>Edit Service</h1>
         <StyledSaveButton onClick={handleSave} disabled={isSaving}>
           {isSaving ? "Saving..." : "Save all"}
         </StyledSaveButton>

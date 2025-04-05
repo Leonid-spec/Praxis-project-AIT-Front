@@ -21,20 +21,7 @@ import {
 } from "./style";
 import CustomNotification from "./CustomNotification/CustomNotification";
 import { createService } from "../../../../api/serviceAPI";
-import EditServicePage from "../EditServicePage/EditServicePage";
-
-interface ServiceData {
-  id?: number | null;
-  titleDe: string;
-  titleEn: string;
-  titleRu: string;
-  descriptionDe: string;
-  descriptionEn: string;
-  descriptionRu: string;
-  topImage?: string | null;
-  isActive?: boolean;
-  images?: string[];
-}
+import { ServiceData } from "../../../../store/types/serviceTypes";
 
 interface ServicePageSingleProps {
   onReturnBack: () => void;
@@ -50,7 +37,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
     descriptionDe: "",
     descriptionEn: "",
     descriptionRu: "",
-    topImage: null,
+    topImage: "",
     isActive: true,
     images: [],
   });
@@ -60,8 +47,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
     type: "error" | "success";
   } | null>(null);
   const [isSaving, setIsSaving] = useState(false);
-
-  const token = localStorage.getItem("token"); 
+  const token = localStorage.getItem("token");
 
   const handleChange = (field: keyof ServiceData, value: string | boolean) => {
     setServiceData((prev) => ({
@@ -82,9 +68,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
   };
 
   const handleSave = async () => {
-    if (isSaving) {
-      return; 
-    }
+    if (isSaving) return;
 
     if (!token) {
       setNotification({
@@ -94,7 +78,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
       return;
     }
 
-    if (!serviceData.titleEn.trim()) {
+    if (!serviceData.titleEn?.trim()) {
       setNotification({
         message: "Title (En) is required.",
         type: "error",
@@ -102,10 +86,10 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
       return;
     }
 
-    setIsSaving(true); 
+    setIsSaving(true);
 
     try {
-      const newService = await createService(serviceData, token); 
+      const newService = await createService(serviceData, token);
       setNotification({
         message: `Service "${newService.titleEn}" created successfully!`,
         type: "success",
@@ -113,7 +97,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
 
       setTimeout(() => {
         setIsSaving(false);
-        onReturnBack(); 
+        onReturnBack();
       }, 1500);
     } catch (error: any) {
       console.error("Error creating service:", error.message);
@@ -158,7 +142,7 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
             <TitlesBox>Edit top image</TitlesBox>
             <UploadInput
               type="file"
-              accept="image/*"
+              accept="topImage/*"
               onChange={handleImageUpload}
             />
           </EditTopImage>
@@ -234,7 +218,6 @@ export const ServicePageSingle: React.FC<ServicePageSingleProps> = ({
           />
         </InputContainer>
       </DescriptionSection>
-      
     </ServicePageSingleContainer>
   );
 };

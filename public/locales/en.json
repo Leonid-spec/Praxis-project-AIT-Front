@@ -89,11 +89,12 @@
         },
         "errors": {
           "missingCredentials": "Please enter username and password.",
-          "usernameLength": "Username must be between 2 and 16 characters.",
-          "passwordLength": "Password must have at least 1 character.",
+          "usernameLength": "Username must be between 3 and 16 characters.",
+          "passwordLength": "Password must be between 4 and 32 characters.",
           "missingEmail": "Please enter your email.",
           "usernameStartsWithSpace": "Username should not start with a space.",
-          "passwordContainsSpaces": "Password should not contain spaces."
+          "passwordContainsSpaces": "Password should not contain spaces.",
+          "loginContainsSpaces": "Username should not contain spaces."
         },
         "messages": {
           "forgotPasswordTitle": "Reset Password",

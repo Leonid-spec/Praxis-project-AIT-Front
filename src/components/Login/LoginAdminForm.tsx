@@ -37,7 +37,14 @@ const LoginAdminForm = ({
 
     if (login[0] === " ") {
       setNotification({
-        message: t("message.other.loginAdmin.errors.loginStartsWithSpace"),
+        message: t("message.other.loginAdmin.errors.usernameStartsWithSpace"),
+        type: "error",
+      });
+      return;
+    }
+    if (/\s/.test(login)) {
+      setNotification({
+        message: t("message.other.loginAdmin.errors.loginContainsSpaces"),
         type: "error",
       });
       return;

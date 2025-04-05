@@ -24,7 +24,9 @@ const MainContent: React.FC = () => {
         <Route path="adminServices" element={<ServicesPageAll />}>
           <Route
             path="add-new-service"
-            element={<ServicePageSingle onReturnBack={function (): void {}} />}
+            element={<ServicePageSingle onReturnBack={function (): void {
+              throw new Error("Function not implemented.");
+            } } />}
           />
           {/* <Route
             path="edit-service/:id"

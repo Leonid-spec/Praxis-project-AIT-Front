@@ -1,4 +1,4 @@
-import { Service } from "../store/types/serviceTypes";
+import { ServiceData } from "../store/types/serviceTypes";
 
 const API_URL = "http://localhost:8100/api";
 
@@ -10,7 +10,7 @@ const handleFetchError = async (response: Response) => {
   return response.json();
 };
 
-export const getActiveDoctors = async (): Promise<Service[]> => {
+export const getActiveDoctors = async (): Promise<ServiceData[]> => {
   try {
     const response = await fetch(`${API_URL}/services/active`);
     return await handleFetchError(response);
@@ -20,7 +20,7 @@ export const getActiveDoctors = async (): Promise<Service[]> => {
   }
 };
 
-export const getServices = async (token: string): Promise<Service[]> => {
+export const getServices = async (token: string): Promise<ServiceData[]> => {
   try {
     const response = await fetch(`${API_URL}/services`, {
       headers: {
@@ -35,7 +35,7 @@ export const getServices = async (token: string): Promise<Service[]> => {
   }
 };
 
-export const getServiceById = async (id: number, token: string): Promise<Service> => {
+export const getServiceById = async (id: number, token: string): Promise<ServiceData> => {
   try {
     const response = await fetch(`${API_URL}/service/${id}`, {
       headers: {
@@ -50,7 +50,7 @@ export const getServiceById = async (id: number, token: string): Promise<Service
   }
 };
 
-export const createService = async (service: Partial<Service>, token: string): Promise<Service> => {
+export const createService = async (service: Partial<ServiceData>, token: string): Promise<ServiceData> => {
   try {
     const response = await fetch(`${API_URL}/service`, {
       method: "POST",
@@ -68,9 +68,9 @@ export const createService = async (service: Partial<Service>, token: string): P
 };
 
 export const updateService = async (
-  service: Partial<Service>,
+  service: Partial<ServiceData>,
   token: string
-): Promise<Service> => {
+): Promise<ServiceData> => {
   try {
     const response = await fetch(`${API_URL}/service`, {
       method: "PUT",

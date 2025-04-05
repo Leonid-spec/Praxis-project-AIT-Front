@@ -182,7 +182,7 @@ import {
   HighlightedSpan,
 } from "./styles";
 import { useTranslation } from "react-i18next";
-import { Service } from "../../store/types/serviceTypes";
+import { ServiceData } from "../../store/types/serviceTypes";
 import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 type Language = "En" | "De" | "Ru";
@@ -236,7 +236,11 @@ const ServicePage: React.FC = () => {
   }, [dispatch, t]);
 
   const handleDetailsClick = (id: number) => {
-    navigate(`/service/${id}`); 
+    if (id) {
+      navigate(`/service/${id}`);
+    } else {
+      console.error('Service ID is missing');
+    }
   };
 
   const parseSubtitle = (text: string) => {
@@ -253,7 +257,6 @@ const ServicePage: React.FC = () => {
 
   return (
     <ServiceContainer>
-      {/* Головне фото та кнопка запису */}
       <ServiceContainerMainPhoto>
         <LeftContainer>
           <WelcomeTextSubtitle>
@@ -270,30 +273,28 @@ const ServicePage: React.FC = () => {
         </RightContainer>
       </ServiceContainerMainPhoto>
 
-      {/* Заголовок */}
       <HeaderTextBox>
         <ServiceText>
           Unsere <HighlightText>Leistungen</HighlightText> |
         </ServiceText>
       </HeaderTextBox>
 
-      {/* Список сервісів */}
       <ServicesGrid>
         {loading ? (
           <p>{t("loadingServices")}</p>
         ) : error ? (
           <p>{t("errorFetchingServices")}</p>
         ) : services.length > 0 ? (
-          services.map((service: Service) => {
+          services.map((service: ServiceData) => {
             const titleKey = `title${
               currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
-            }` as keyof Pick<Service, "titleDe" | "titleEn" | "titleRu">;
+            }` as keyof Pick<ServiceData, "titleDe" | "titleEn" | "titleRu">;
             const title = (service[titleKey] as string) || t("noTitle");
 
             const descriptionKey = `description${
               currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
             }` as keyof Pick<
-              Service,
+              ServiceData,
               "descriptionDe" | "descriptionEn" | "descriptionRu"
             >;
             const description =
@@ -302,15 +303,15 @@ const ServicePage: React.FC = () => {
             return (
               <ServiceCard
                 key={service.id}
-                id={service.id}
-                photo={
+                id={service.id!}
+                topImage={
                   service.topImage
                     ? service.topImage.replace(/\\/g, "/")
                     : "https://via.placeholder.com/150"
                 }
                 title={title}
                 description={description}
-                onDetailsClick={() => handleDetailsClick(service.id)}
+                onDetailsClick={() => handleDetailsClick(service.id!)}
               />
             );
           })

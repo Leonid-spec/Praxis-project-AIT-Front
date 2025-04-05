@@ -89,11 +89,12 @@
         },
         "errors": {
           "missingCredentials": "Bitte geben Sie Benutzername und Passwort ein.",
-          "usernameLength": "Der Benutzername muss zwischen 2 und 16 Zeichen lang sein.",
-          "passwordLength": "Das Passwort muss mindestens 1 Zeichen enthalten.",
+          "usernameLength": "Der Benutzername muss zwischen 3 und 16 Zeichen lang sein.",
+          "passwordLength": "Das Passwort muss zwischen 4 und 32 Zeichen lang sein.",
           "missingEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
           "usernameStartsWithSpace": "Der Benutzername sollte nicht mit einem Leerzeichen beginnen.",
-          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten."
+          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten.",
+          "loginContainsSpaces": "Der Benutzername sollte keine Leerzeichen enthalten."
         },
         "messages": {
           "forgotPasswordTitle": "Passwort zurücksetzen",
