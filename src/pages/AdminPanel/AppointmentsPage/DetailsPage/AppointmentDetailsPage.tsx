@@ -25,6 +25,7 @@ import { getAppointmentById } from "../../../../api/appointmentAPI";
 import { AppointmentData } from "../../../../store/types/appointmentTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { FaCopy } from "react-icons/fa";
+import { updateAppointment } from "../../../../api/appointmentAPI"; // Ensure to import your updateAppointment method
 
 const AppointmentDetailsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -58,23 +59,28 @@ const AppointmentDetailsPage: React.FC = () => {
     };
 
     fetchAppointment();
-  }, [id, t]);
+  }, [id, t, token]);
 
   const handleCompleteClick = async () => {
     if (appointment) {
-
       try {
         const updatedAppointment = {
           ...appointment,
-          isNew: false,
+          isNew: !appointment.isNew, 
         };
-        setAppointment(updatedAppointment);
+
+        if (token) {
+          await updateAppointment(Number(id), updatedAppointment, token);
+        }
+
+        setAppointment(updatedAppointment); 
         setNotification({
           message: t("message.adminPanel.appointments.statusUpdated", {
-            status: "Completed",
+            status: updatedAppointment.isNew ? "Active" : "Completed",
           }),
           type: "success",
         });
+
         setTimeout(() => {
           setNotification(null);
           navigate(-1);
@@ -84,7 +90,7 @@ const AppointmentDetailsPage: React.FC = () => {
           message: t("message.adminPanel.appointments.statusUpdateError", {
             status: "Completed",
           }),
-          type: "success",
+          type: "error",
         });
       }
     }
@@ -111,7 +117,7 @@ const AppointmentDetailsPage: React.FC = () => {
       }),
       type: "success",
     });
-    setTimeout(() => notification, 2000);
+    setTimeout(() => setNotification(null), 2000);
   };
 
   const handleCopyPhone2 = () => {
@@ -123,7 +129,7 @@ const AppointmentDetailsPage: React.FC = () => {
       }),
       type: "success",
     });
-    setTimeout(() => notification, 2000);
+    setTimeout(() => setNotification(null), 2000);
   };
 
   return (
@@ -242,7 +248,6 @@ const AppointmentDetailsPage: React.FC = () => {
                     style={{ cursor: "pointer", width: "20px", height: "20px" }}
                   />
                 </PhoneBox>
-                
               </RightContainer>
             </TopContainer>
 

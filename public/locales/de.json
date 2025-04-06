@@ -180,6 +180,7 @@
           "noLanguage": "Nicht angegeben",
           "noAvailable_time": "Keine verfügbare Zeit"
         },
+        "confirmDelete": "Möchten Sie wirklich löschen?",
         "phoneCopied": "Telefonnummer erfolgreich kopiert!",
         "filter": {
           "all": "Alle",

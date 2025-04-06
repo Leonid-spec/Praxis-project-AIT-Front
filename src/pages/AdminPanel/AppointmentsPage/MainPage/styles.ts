@@ -175,3 +175,64 @@ export const MarkerCircleCompleted = styled.div`
   ${circleStyles}
   background-color: #ff4d4d;
 `;
+
+export const TrashIconBox = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding-left: 30px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;
+
+// styles.js
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Modal = styled.div`
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+`;
+
+export const ModalContent = styled.div`
+  font-size: 24px;
+`;
+
+export const ModalActions = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+`;
+
+export const ModalActionsBtn = styled.button`
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #20b1b7;
+  border-radius: 30px;
+  color: white;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #18a8a0;
+  }
+`;

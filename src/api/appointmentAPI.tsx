@@ -61,26 +61,26 @@ export const getAppointmentById = async (
   }
 };
 
-// export const updateAppointment = async (
-//   id: number,
-//   appointment: AppointmentData,
-//   token: string
-// ): Promise<AppointmentData> => {
-//   try {
-//     const response = await fetch(`${API_URL}/appointment/${id}`, {
-//       method: "PUT",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${token}`,
-//       },
-//       body: JSON.stringify(appointment),
-//     });
-//     return await handleFetchError(response);
-//   } catch (error) {
-//     console.error(`Failed to update appointment with ID ${id}:`, error);
-//     throw error;
-//   }
-// };
+export const updateAppointment = async (
+  id: number,
+  appointment: AppointmentData,
+  token: string
+): Promise<AppointmentData> => {
+  try {
+    const response = await fetch(`${API_URL}/appointment/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(appointment),
+    });
+    return await handleFetchError(response);
+  } catch (error) {
+    console.error(`Failed to update appointment with ID ${id}:`, error);
+    throw error;
+  }
+};
 
 export const deleteAppointment = async (
   id: number,
@@ -94,7 +94,18 @@ export const deleteAppointment = async (
         Authorization: `Bearer ${token}`,
       },
     });
-    await handleFetchError(response);
+    if (!response.ok) {
+      const errorMessage = await response.text();  
+      throw new Error(errorMessage || 'Failed to delete appointment');
+    }
+
+    if (response.status === 204) {
+      return;
+    }
+
+    const data = await response.json(); 
+    console.log('Deleted appointment data:', data);
+
   } catch (error) {
     console.error(`Failed to delete appointment with ID ${id}:`, error);
     throw error;
