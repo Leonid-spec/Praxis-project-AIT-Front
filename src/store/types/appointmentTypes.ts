@@ -10,6 +10,5 @@ export interface AppointmentData {
     comment?: string; 
     language?: string;
     isNew?: boolean;
-    // createdAt?: string;
   }
   
