@@ -25,3 +25,5 @@ npm install react-slick slick-carousel
 
 
 8) npm install axios
+
+9) npm i --save-dev @types/jquery

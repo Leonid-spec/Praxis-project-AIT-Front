@@ -15,21 +15,9 @@ import {
   CharacterCounter,
   SubmitButton,
 } from "../styles";
-import ServiceDropdown from "./ServiceDropdown";
+// import ServiceDropdown from "./ServiceDropdown";
 import { AppointmentData } from "../../../store/types/appointmentTypes";
-
-// interface FormData {
-//   id: null;
-//   dentalServiceSectionId: ServiceData | null;
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   phone1: string;
-//   phone2?: string;
-//   language?: string | null;
-//   comment?: string;
-//   availableTime?: string;
-// }
+import ServiceDropdown from "./ServiceDropdown";
 
 const AppointmentForm = () => {
   const { t } = useTranslation();
