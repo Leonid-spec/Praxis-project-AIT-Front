@@ -165,7 +165,7 @@
           "statusUpdated": "Appointment status updated to '{{status}}'.",
           "statusUpdateError": "Failed to update appointment status to '{{status}}'.",
           "appointmentDetails": {
-            "title": "Appointment Details",
+            "title": "Appointment details",
             "client": "Client",
             "service": "Service",
             "date": "Date",
@@ -180,6 +180,7 @@
             "noLanguage": "Not specified",
             "noAvailable_time": "No available time"
           },
+          "phoneCopied": "Phone number copied successfully!",
           "filter": {
             "all": "All",
             "new": "New",

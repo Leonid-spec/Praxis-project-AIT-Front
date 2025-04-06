@@ -11,7 +11,7 @@ import {
 interface ServiceCardProps {
   id: number;
   title: string;
-  topImage?: string;
+  topImage: string;
   onEditClick: () => void;
 }
 

@@ -10,7 +10,7 @@ export const ScrollContainer = styled.div`
 export const ServicesPageAllContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 100vh;
   overflow: hidden;
   padding: 30px; 
 `;
@@ -80,4 +80,13 @@ export const ServiceCardsMainContainer = styled.div`
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+`;
+
+export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number }>`
+opacity: ${(props) => (props.isActive ? "1" : "0.5")};
+transition: all 0.3s ease-in-out;
+&:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
 `;

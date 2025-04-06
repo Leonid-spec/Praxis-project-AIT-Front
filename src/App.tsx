@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import AdminPanel from "./pages/AdminPanel/AdminPanelPage/AdminPanel";
-import AppointmentForm from "./pages/Appointment/AppointmentForm";
 import { ModalProvider } from "./components/Modal/ModalContext";
 import Modal from "react-modal";
 import AppointmentModal from "./components/Modal/AppointmentModal";
@@ -14,6 +13,7 @@ import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
 import { DoctorsProvider } from "./pages/AdminPanel/Doctors/DoctorsContext";
+import AppointmentForm from "./components/Appointment/AppointmentForm0";
 
 Modal.setAppElement("#root");
 

@@ -10,7 +10,7 @@ const handleFetchError = async (response: Response) => {
   return response.json();
 };
 
-export const getActiveDoctors = async (): Promise<ServiceData[]> => {
+export const getActiveServices = async (): Promise<ServiceData[]> => {
   try {
     const response = await fetch(`${API_URL}/services/active`);
     return await handleFetchError(response);

@@ -1,15 +1,12 @@
-import { useNavigate } from "react-router-dom";
 import { StyledAddButton } from "./styles";
 
-function AddNewServiceBtn() {
-  const navigate = useNavigate();
+interface AddNewServiceBtnProps {
+  onAddService: () => void;  
+}
 
-  const handleClick = () => {
-    navigate("add-new-service");
-  };
-
+function AddNewServiceBtn({ onAddService }: AddNewServiceBtnProps) {
   return (
-    <StyledAddButton onClick={handleClick}>
+    <StyledAddButton onClick={onAddService}>
       + Add new service
     </StyledAddButton>
   );

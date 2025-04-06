@@ -1,156 +1,126 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import { createAppointment } from "../../../api/appointmentAPI";
+import { getActiveServices } from "../../../api/serviceAPI";
+import { ServiceData } from "../../../store/types/serviceTypes";
+import TextInput from "../../Input/TextInput";
 import {
   FormContainer,
   FormTitle,
-  SubmitButton,
-  LanguageOptions,
-  Label,
   FieldContainer,
-  CharacterCounter,
+  Label,
   RequiredMarker,
-} from "./styles";
-import TextInput from "../../components/Input/TextInput";
-import Notification from "../../components/Notification/Notification";
-import ServiceDropdown, { Service } from "./ServiceDropdown";
-import { useTranslation } from "react-i18next";
+  LanguageOptions,
+  CharacterCounter,
+  SubmitButton,
+} from "../styles";
+import ServiceDropdown from "./ServiceDropdown";
+import { AppointmentData } from "../../../store/types/appointmentTypes";
 
-interface FormData {
-  service: Service | null;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone1: string;
-  phone2?: string;
-  language?: string | null;
-  comment?: string;
-  available_time?: string;
-}
+// interface FormData {
+//   id: null;
+//   dentalServiceId: ServiceData | null;
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   phone1: string;
+//   phone2?: string;
+//   language?: string | null;
+//   comment?: string;
+//   availableTime?: string;
+// }
 
 const AppointmentForm = () => {
   const { t } = useTranslation();
 
-  const serviceList: Service[] = [
-    { id: 1, name: "Vorsorge" },
-    { id: 2, name: "Frei lassen" },
-  ];
-
+  const [services, setServices] = useState<ServiceData[]>([]);
   const [notification, setNotification] = useState<{
     message: string;
     type: "error" | "success";
   } | null>(null);
 
-  const [formData, setFormData] = useState<FormData>({
-    service: null,
-    first_name: "",
-    last_name: "",
+  const [formData, setFormData] = useState<AppointmentData>({
+    id: 1,
+    dentalServiceId: 1,
+    firstName: "",
+    lastName: "",
     email: "",
     phone1: "",
     phone2: "",
-    language: "De",
+    language: "de",
     comment: "",
-    available_time: "",
+    availableTime: "",
   });
 
-  const [errors, setErrors] = useState({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone1: "",
-    phone2: "",
-    comment: "",
-    available_time: "",
-  });
-  const capitalizeWords = (text: string): string => {
-    return text
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const data = await getActiveServices();
+        setServices(data);
+      } catch (err: any) {
+        console.error("Error loading services:", err);
+      }
+    };
+
+    fetchServices();
+  }, []);
+
+  const capitalizeWords = (text: string): string =>
+    text
       .split(/\s+/)
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
       .join(" ");
-  };
 
   const validateFirstName = (name: string): string => {
     const regex = /^[A-Za-zäöüßÄÖÜ.'`\-_]*(\s[A-Za-zäöüßÄÖÜ.'`\-_]*)?$/;
-
-    if (name.trim().length === 0) {
+    if (name.trim().length === 0)
       return t("message.other.makeAppointment.errors.firstNameRequired");
-    }
-
-    if (name[0] === " ") {
+    if (name[0] === " ")
       return t("message.other.makeAppointment.errors.firstCharCannotBeSpace");
-    }
-
-    if (name.length < 2) {
+    if (name.length < 2)
       return t("message.other.makeAppointment.errors.firstNameLetterCount");
-    }
-
-    if (name.length > 64) {
+    if (name.length > 64)
       return t("message.other.makeAppointment.errors.firstNameLetterCountMax");
-    }
-
-    if (name.includes("  ")) {
+    if (name.includes("  "))
       return t("message.other.makeAppointment.errors.firstNameExtraSpaces");
-    }
-
-    if (!regex.test(name)) {
+    if (!regex.test(name))
       return t("message.other.makeAppointment.errors.firstNameInvalid");
-    }
-
     return "";
   };
 
   const validateLastName = (name: string): string => {
     const regex = /^[A-Za-zäöüßÄÖÜ.'`\-_]*(\s[A-Za-zäöüßÄÖÜ.'`\-_]*)?$/;
-
-    if (name.trim().length === 0) {
+    if (name.trim().length === 0)
       return t("message.other.makeAppointment.errors.lastNameRequired");
-    }
-
-    if (name[0] === " ") {
+    if (name[0] === " ")
       return t("message.other.makeAppointment.errors.lastCharCannotBeSpace");
-    }
-
-    if (name.length < 2) {
+    if (name.length < 2)
       return t("message.other.makeAppointment.errors.lastNameLetterCount");
-    }
-
-    if (name.length > 64) {
+    if (name.length > 64)
       return t("message.other.makeAppointment.errors.lastNameLetterCountMax");
-    }
-
-    if (name.includes("  ")) {
+    if (name.includes("  "))
       return t("message.other.makeAppointment.errors.lastNameExtraSpaces");
-    }
-
-    if (!regex.test(name)) {
+    if (!regex.test(name))
       return t("message.other.makeAppointment.errors.lastNameInvalid");
-    }
-
     return "";
   };
 
   const validateEmail = (email: string): string => {
-    if (!email.trim()) {
+    if (!email.trim())
       return t("message.other.makeAppointment.errors.emailRequired");
-    }
-
-    if (email.includes(" ")) {
+    if (email.includes(" "))
       return t("message.other.makeAppointment.errors.emailWithoutSpaces");
-    }
-
-    if (!email.includes("@")) {
+    if (!email.includes("@"))
       return t("message.other.makeAppointment.errors.emailWithoutAtSymbol");
-    }
-
     const parts = email.split("@");
-    if (parts.length !== 2 || parts[1].indexOf(".") === -1) {
+    if (parts.length !== 2 || parts[1].indexOf(".") === -1)
       return t("message.other.makeAppointment.errors.emailWithoutDot");
-    }
     const regex = /^[a-zA-Z0-9._,-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!regex.test(email)) {
+    if (!regex.test(email))
       return t("message.other.makeAppointment.errors.emailInvalid");
-    }
-
     return "";
   };
 
@@ -163,54 +133,11 @@ const AppointmentForm = () => {
     return "";
   };
 
-  const handleLanguageChange = (lang: string) => {
-    setFormData({
-      ...formData,
-      language: formData.language === lang ? null : lang,
-    });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    const formattedValue =
-      name === "first_name" || name === "last_name"
-        ? capitalizeWords(value)
-        : value;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: formattedValue,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      [name]: validateField(name, formattedValue),
-    }));
-  };
-
-  const handlePhoneChange = (value: string, name: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: validatePhone(value) }));
-  };
-
-  const isFormValid = (): boolean => {
-    return (
-      formData.first_name.trim().length > 0 &&
-      formData.last_name.trim().length > 0 &&
-      validateFirstName(formData.first_name) === "" &&
-      validateLastName(formData.last_name) === "" &&
-      validateEmail(formData.email) === "" &&
-      validatePhone(formData.phone1) === ""
-    );
-  };
-
   const validateField = (fieldName: string, value: string): string => {
     switch (fieldName) {
-      case "first_name":
+      case "firstName":
         return validateFirstName(value);
-      case "last_name":
+      case "lastName":
         return validateLastName(value);
       case "email":
         return validateEmail(value);
@@ -222,45 +149,104 @@ const AppointmentForm = () => {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    const formattedValue = ["firstName", "lastName"].includes(name)
+      ? capitalizeWords(value)
+      : value;
+
+    setFormData((prev) => ({ ...prev, [name]: formattedValue }));
+    setErrors((prev) => ({
+      ...prev,
+      [name]: validateField(name, formattedValue),
+    }));
+  };
+
+  const handlePhoneChange = (value: string, name: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: validatePhone(value) }));
+  };
+
+  const handleLanguageChange = (lang: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      language:
+        prev.language === lang.toLowerCase() ? null : lang.toLowerCase(),
+    }));
+  };
+
+  const isFormValid = (): boolean => {
+    return (
+      validateFirstName(formData.firstName) === "" &&
+      validateLastName(formData.lastName) === "" &&
+      validateEmail(formData.email) === "" &&
+      validatePhone(formData.phone1) === ""
+    );
+  };
+
+  const formatPhone = (phone: string) => {
+    const cleaned = phone.replace(/\s+/g, "");
+    return cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newErrors = {
-      first_name: validateFirstName(formData.first_name),
-      last_name: validateLastName(formData.last_name),
+      firstName: validateFirstName(formData.firstName),
+      lastName: validateLastName(formData.lastName),
       email: validateEmail(formData.email),
       phone1: validatePhone(formData.phone1),
-      phone2: "",
-      language: "",
-      comment: "",
-      available_time: "",
+      phone2: formData.phone2 ? validatePhone(formData.phone2) : "",
     };
     setErrors(newErrors);
 
-    const formatPhone = (phone: string) => {
-      const cleaned = phone.replace(/\s+/g, "");
-      return cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
+    const hasErrors = Object.values(newErrors).some((error) => error !== "");
+    if (hasErrors) {
+      setNotification({
+        message: t("message.other.makeAppointment.messages.appointmentFailed"),
+        type: "error",
+      });
+      return;
+    }
+
+    const formattedData = {
+      id: 1,
+      dentalServiceId: formData.dentalServiceId,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      phone1: formatPhone(formData.phone1),
+      phone2: formData.phone2 ? formatPhone(formData.phone2) : "",
+      email: formData.email,
+      availableTime: formData.availableTime ?? "",
+      comment: formData.comment,
+      language: formData.language || "de",
     };
 
-    const hasErrors = Object.values(newErrors).some((error) => error !== "");
-    if (!hasErrors) {
-      const formattedData = {
-        service: formData.service,
-        first_name: formData.first_name,
-        last_name: formData.last_name,
-        phone1: formatPhone(formData.phone1),
-        phone2: formData.phone2 ? formatPhone(formData.phone2) : "",
-        email: formData.email,
-        available_time: formData.available_time,
-        comment: formData.comment,
-        language: formData.language?.toLowerCase() || "de",
-      };
-      console.log("Form submitted:", JSON.stringify(formattedData, null, 2));
+    try {
+      await createAppointment(formattedData);
       setNotification({
-        message: t("message.other.makeAppointment.messages.appointmentScheduled"),
+        message: t(
+          "message.other.makeAppointment.messages.appointmentScheduled"
+        ),
         type: "success",
       });
-    } else {
+
+      setFormData({
+        id: 1,
+        dentalServiceId: 1,
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone1: "",
+        phone2: "",
+        language: "de",
+        comment: "",
+        availableTime: "",
+      });
+    } catch (err) {
       setNotification({
         message: t("message.other.makeAppointment.messages.appointmentFailed"),
         type: "error",
@@ -276,36 +262,38 @@ const AppointmentForm = () => {
         <FieldContainer>
           <Label>{t("message.other.makeAppointment.labelService")}</Label>
           <ServiceDropdown
-            services={serviceList}
-            selectedService={formData.service}
-            onSelect={(service) => setFormData({ ...formData, service })}
+            services={services}
+            selectedService={formData.dentalServiceId}
+            onSelect={(dentalServiceId) =>
+              setFormData({ ...formData, dentalServiceId })
+            }
           />
         </FieldContainer>
 
         <TextInput
           label={t("message.other.makeAppointment.labelFirstName")}
           type="text"
-          id="first_name"
-          name="first_name"
+          id="firstName"
+          name="firstName"
           placeholder={t(
             "message.other.makeAppointment.placeholders.firstName"
           )}
-          value={formData.first_name}
+          value={formData.firstName}
           onChange={handleChange}
           required
-          error={errors.first_name}
+          error={errors.firstName}
         />
 
         <TextInput
           label={t("message.other.makeAppointment.labelLastName")}
           type="text"
-          id="last_name"
-          name="last_name"
+          id="lastName"
+          name="lastName"
           placeholder={t("message.other.makeAppointment.placeholders.lastName")}
-          value={formData.last_name}
+          value={formData.lastName}
           onChange={handleChange}
           required
-          error={errors.last_name}
+          error={errors.lastName}
         />
 
         <TextInput
@@ -377,15 +365,15 @@ const AppointmentForm = () => {
         <TextInput
           label={t("message.other.makeAppointment.textAreaDate")}
           type="textarea"
-          id="available_time"
-          name="available_time"
+          id="availableTime"
+          name="availableTime"
           placeholder={t(
             "message.other.makeAppointment.placeholders.textAreaDate"
           )}
-          value={formData.available_time}
+          value={formData.availableTime}
           onChange={handleChange}
           maxLength={1024}
-          error={errors.available_time}
+          error={errors.availableTime}
           rows={5}
         />
         <CharacterCounter>
@@ -419,18 +407,18 @@ const AppointmentForm = () => {
           }}
         >
           {!isFormValid()
-            ? t("message.other.makeAppointment.buttonDisabledText") 
+            ? t("message.other.makeAppointment.buttonDisabledText")
             : t("message.other.makeAppointment.buttonText")}
         </SubmitButton>
       </FormContainer>
 
-      {notification && (
-        <Notification
-          message={notification.message}
-          type={notification.type}
-          onClose={() => setNotification(null)}
-        />
-      )}
+      {/* {notification && (
+            <Notification
+              message={notification.message}
+              type={notification.type}
+              onClose={() => setNotification(null)}
+            />
+          )} */}
     </>
   );
 };

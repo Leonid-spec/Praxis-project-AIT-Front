@@ -3,7 +3,6 @@ import {
   getServiceById,
   updateService,
 } from "../../../../api/serviceAPI";
-import CustomNotification from "../ServicePageSinge/CustomNotification/CustomNotification";
 import {
   ServicePageSingleContainer,
   HeaderBox,
@@ -24,8 +23,9 @@ import {
   UploadInput,
   DescriptionSection,
 } from "../ServicePageSinge/style";
-import { Service } from "../../../Appointment/ServiceDropdown";
+import { Service } from "../../../../components/Appointment/ServiceDropdown";
 import { ServiceData } from "../../../../store/types/serviceTypes";
+import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 
 const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }> = ({
   onReturnBack,

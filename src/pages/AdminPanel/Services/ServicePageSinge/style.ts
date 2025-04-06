@@ -68,10 +68,9 @@ export const TitleSection = styled.div`
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f8f8f8;
 
     &:focus {
-      border-color: #68a4f8;
+      border-color: #20b1b7;
       outline: none;
     }
   }
@@ -97,13 +96,14 @@ export const MakeCardVisibleBox = styled.div`
 export const TitlesBox = styled.div`
   font-size: 18px;
   font-weight: bold;
-  color: #b5abab;
+  color: #292828;
   margin: 20px 0 10px;
 `;
 
 export const TitleBoxText = styled.label`
   font-size: 16px;
   color: #b5abab;
+  color:  #292828;
   padding: 0 0 0 20px;
 `;
 
@@ -117,10 +117,9 @@ export const InputContainer = styled.div`
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f8f8f8;
 
     &:focus {
-      border-color: #68a4f8;
+      border-color: #20b1b7;
       outline: none;
     }
   }
@@ -131,7 +130,6 @@ export const Input = styled.input`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f8f8f8;
 
   &:focus {
     border-color: #68a4f8;

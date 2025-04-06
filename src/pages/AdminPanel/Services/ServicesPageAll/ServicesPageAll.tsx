@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getServices } from "../../../../api/serviceAPI";
-import { Service } from "../../../Appointment/ServiceDropdown";
+import { Service } from "../../../../components/Appointment/ServiceDropdown";
 import AddNewServiceBtn from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceContainer";
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
@@ -14,6 +14,7 @@ import {
   HeaderMainBtnsContainer,
   ServiceCardsMainContainer,
   RefreshIconBox,
+  ServiceCardStyled,
 } from "./styles";
 import EditServicePage from "../EditServicePage/EditServicePage";
 import { ServiceData } from "../../../../store/types/serviceTypes";
@@ -21,7 +22,7 @@ import { Outlet } from "react-router-dom";
 
 export const ServicesPageAll = () => {
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
-  const [isAddingNewService, setIsAddingNewService] = useState(false); 
+  const [isAddingNewService, setIsAddingNewService] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
   const [filteredServices, setFilteredServices] = useState<Service[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -38,9 +39,9 @@ export const ServicesPageAll = () => {
       }
       const data = await getServices(token);
       setServices(data);
-      setFilteredServices(data? [] : data);
+      setFilteredServices(data ? [] : data);
       setError(null);
-      console.log("message", data);
+      // console.log("message", data);
     } catch (err: any) {
       setError(err.message || "Dental service loading error");
     }
@@ -48,7 +49,7 @@ export const ServicesPageAll = () => {
 
   useEffect(() => {
     fetchServices();
-  } , [token]);
+  }, [token]);
 
   useEffect(() => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
@@ -56,10 +57,10 @@ export const ServicesPageAll = () => {
       service.titleEn?.toLowerCase().includes(lowerCaseSearchTerm)
     );
     setFilteredServices(filtered);
-  }, [searchTerm, services]); 
+  }, [searchTerm, services]);
 
   const handleAddServiceClick = () => {
-    setIsAddingNewService(true); 
+    setIsAddingNewService(true);
     navigate("add-new-service");
   };
 
@@ -69,7 +70,7 @@ export const ServicesPageAll = () => {
 
   const handleBackToMainClick = () => {
     setIsEditingService(null);
-    setIsAddingNewService(false); 
+    setIsAddingNewService(false);
   };
 
   const handleRefreshBtn = () => {
@@ -87,25 +88,31 @@ export const ServicesPageAll = () => {
         </CardsMainContainer>
       ) : (
         <>
-            <HeaderMainBtnsContainer>
+          <HeaderMainBtnsContainer>
+            <AddNewServiceBtn onAddService={handleAddServiceClick} />
 
-              <AddNewServiceBtn onAddService={handleAddServiceClick} />
+            <RefreshIconBox onClick={handleRefreshBtn}>
+              <FaSyncAlt size={24} color="#20b1b7" />
+            </RefreshIconBox>
 
-              <RefreshIconBox onClick={handleRefreshBtn}>
-                <FaSyncAlt size={24} color="#20b1b7" />
-              </RefreshIconBox>
+            <FindServiceContainer searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          </HeaderMainBtnsContainer>
 
-              <FindServiceContainer searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <Outlet />
 
-            </HeaderMainBtnsContainer>
-
-            <Outlet />
-  
-            <ScrollContainer>
-              <ServiceCardsMainContainer>
-                {error && <p style={{ color: "red" }}>{error}</p>}
-                {!error &&
-                  filteredServices.map((service) => (
+          <ScrollContainer>
+            <ServiceCardsMainContainer>
+              {error && <p style={{ color: "red" }}>{error}</p>}
+              {!error &&
+                filteredServices.map((service) => (
+                  <ServiceCardStyled
+                    key={service.id}
+                    id={service.id}
+                    title={service.titleEn}
+                    topImage={service.topImage}
+                    onClick={() => handleEditClick(service.id)}
+                    isActive={service.isActive} 
+                  >
                     <ServiceCard
                       key={service.id}
                       id={service.id}
@@ -113,9 +120,10 @@ export const ServicesPageAll = () => {
                       topImage={service.topImage}
                       onEditClick={handleEditClick.bind(null, service.id)}
                     />
-                  ))}
-              </ServiceCardsMainContainer>
-            </ScrollContainer>
+                  </ServiceCardStyled>
+                ))}
+            </ServiceCardsMainContainer>
+          </ScrollContainer>
         </>
       )}
     </ServicesPageAllContainer>

@@ -20,10 +20,10 @@ import {
   TitleSection,
   ScrollContainer,
 } from "./style";
-import CustomNotification from "./CustomNotification/CustomNotification";
 import { createService } from "../../../../api/serviceAPI";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { useNavigate } from "react-router-dom";
+import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 
 export const ServicePageSingle: React.FC = () => {
   const navigate = useNavigate();

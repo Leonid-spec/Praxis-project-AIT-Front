@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./sidebar.module.css";
-import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
@@ -48,7 +47,6 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* Service */}
-      {/* <Link to="/admin-panel/admin-services"> */}
         <div
           className={`${styles.item} ${
             location.pathname === "/admin-panel/admin-services"
@@ -68,7 +66,6 @@ const Sidebar: React.FC = () => {
             <div className={styles.labelTop}>Service</div>
           </div>
         </div>
-      {/* </Link> */}
 
       {/* Doctors */}
       <div
