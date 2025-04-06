@@ -6,7 +6,7 @@ import styles from "./mainContent.module.css";
 // import AdminAppointmentsPage from "../AppointmentsPage/AdminAppointmentsPage";
 import AdminAppointmentsPage from "../AppointmentsPage/MainPage/AdminAppointmentsPage";
 
-import AppointmentsPage from "../AppointmentsPage/AppointmentDetailsPage";
+// import AppointmentsPage from "../AppointmentsPage/AppointmentDetailsPage";
 import AppointmentDetailsPage from "../AppointmentsPage/DetailsPage/AppointmentDetailsPage";
 
 

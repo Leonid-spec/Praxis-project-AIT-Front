@@ -20,7 +20,7 @@ import { AppointmentData } from "../../../store/types/appointmentTypes";
 
 // interface FormData {
 //   id: null;
-//   dentalServiceId: ServiceData | null;
+//   dentalServiceSectionId: ServiceData | null;
 //   firstName: string;
 //   lastName: string;
 //   email: string;
@@ -42,7 +42,7 @@ const AppointmentForm = () => {
 
   const [formData, setFormData] = useState<AppointmentData>({
     id: 1,
-    dentalServiceId: 1,
+    dentalServiceSectionId: 1,
     firstName: "",
     lastName: "",
     email: "",
@@ -214,7 +214,7 @@ const AppointmentForm = () => {
 
     const formattedData = {
       id: 1,
-      dentalServiceId: formData.dentalServiceId,
+      dentalServiceSectionId: formData.dentalServiceSectionId,
       firstName: formData.firstName,
       lastName: formData.lastName,
       phone1: formatPhone(formData.phone1),
@@ -236,7 +236,7 @@ const AppointmentForm = () => {
 
       setFormData({
         id: 1,
-        dentalServiceId: 1,
+        dentalServiceSectionId: 1,
         firstName: "",
         lastName: "",
         email: "",
@@ -263,9 +263,9 @@ const AppointmentForm = () => {
           <Label>{t("message.other.makeAppointment.labelService")}</Label>
           <ServiceDropdown
             services={services}
-            selectedService={formData.dentalServiceId}
-            onSelect={(dentalServiceId) =>
-              setFormData({ ...formData, dentalServiceId })
+            selectedService={formData.dentalServiceSectionId}
+            onSelect={(dentalServiceSectionId) =>
+              setFormData({ ...formData, dentalServiceSectionId })
             }
           />
         </FieldContainer>

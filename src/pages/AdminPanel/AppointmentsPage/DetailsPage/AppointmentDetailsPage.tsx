@@ -47,7 +47,6 @@ const AppointmentDetailsPage: React.FC = () => {
         if (token && id) {
           const appointmentData = await getAppointmentById(Number(id), token);
           setAppointment(appointmentData);
-          console.log("Fetched appointment data:", appointmentData);
         }
       } catch (err) {
         setError(
@@ -63,7 +62,6 @@ const AppointmentDetailsPage: React.FC = () => {
 
   const handleCompleteClick = async () => {
     if (appointment) {
-      // console.log("message start", appointment);
 
       try {
         const updatedAppointment = {
@@ -71,7 +69,6 @@ const AppointmentDetailsPage: React.FC = () => {
           isNew: false,
         };
         setAppointment(updatedAppointment);
-        // console.log("message new", updatedAppointment);
         setNotification({
           message: t("message.adminPanel.appointments.statusUpdated", {
             status: "Completed",
@@ -157,7 +154,7 @@ const AppointmentDetailsPage: React.FC = () => {
                   </Label>
                   <Field
                     type="text"
-                    value={t(`service.${appointment.dentalServiceId}`)}
+                    value={t(`service.${appointment.dentalServiceSectionId}`)}
                     readOnly
                   />
                 </div>

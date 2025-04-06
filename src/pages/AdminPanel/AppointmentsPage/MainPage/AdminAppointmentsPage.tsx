@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AppointmentData } from "../../../../store/types/appointmentTypes";
 import { getAppointments } from "../../../../api/appointmentAPI";
+import { FaSyncAlt } from "react-icons/fa";
 import {
   Container,
   Heading,
@@ -23,7 +24,24 @@ import {
   MoreInfoButton,
   ScrollContainer,
   HeaderBox,
+  RefreshIconBox,
 } from "./styles";
+import { getActiveServices } from "../../../../api/serviceAPI";
+import i18n from "../../../../utils/i18n";
+import { ServiceData } from "../../../../store/types/serviceTypes";
+
+interface Appointment {
+  dentalServiceSectionId?: number;
+  firstName: string;
+  lastName: string;
+  phone1: string;
+  phone2?: string;
+  email: string;
+  availableTime?: string;
+  comment?: string;
+  language?: string;
+  isNew: boolean;
+}
 
 const AdminAppointmentsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -33,20 +51,24 @@ const AdminAppointmentsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<"all" | "new" | "completed">("all");
+  const [services, setServices] = useState<ServiceData[]>([]);
+  const [serviceName, setServiceName] = useState<string[]>([]);
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
     const initializeAppointments = async () => {
       try {
-        const data = await getAppointments(token);
-
+        const data = await getAppointments(token!);
         const updatedData = data.map((appointment) => ({
           ...appointment,
           isNew: appointment.isNew ?? true,
         }));
-
         setAppointments(updatedData);
+
+        const servicesData = await getActiveServices();
+        setServices(servicesData);
+
       } catch (err) {
         setError(
           t("message.adminPanel.appointments.errorFetchingAppointments")
@@ -85,6 +107,43 @@ const AdminAppointmentsPage: React.FC = () => {
     return <Error>{error}</Error>;
   }
 
+  const fetchAppointments = async () => {
+    try {
+      if (!token) {
+        setError("Access token is missing");
+        return;
+      }
+      const data = await getAppointments(token);
+      setAppointments(data);
+      setError(null);
+      console.log("message", data);
+    } catch (err: any) {
+      setError(err.message || "Appointments loading error");
+    }
+  };
+
+  const handleRefreshBtn = () => {
+    fetchAppointments();
+  };
+
+  const getServiceNameById = (id?: number): string => {
+    if (!id) return t("message.adminPanel.appointments.serviceNotFound");
+    const service = services.find((s) => s.id === id);
+    if (!service) return t("message.adminPanel.appointments.serviceNotFound");
+  
+    const lang = i18n.language;
+    switch (lang) {
+      case "de":
+        return service.titleDe || "Unbenannter Service";
+      case "en":
+        return service.titleEn || "Unnamed service";
+      case "ru":
+        return service.titleRu || "Без названия";
+      default:
+        return service.titleEn || "Unnamed service";
+    }
+  };
+  
   return (
     <Container>
       <HeaderBox>
@@ -94,11 +153,17 @@ const AdminAppointmentsPage: React.FC = () => {
             <FilterButton
               key={filterKey}
               isActive={filter === filterKey}
-              onClick={() => setFilter(filterKey as "all" | "new" | "completed")}
+              onClick={() =>
+                setFilter(filterKey as "all" | "new" | "completed")
+              }
             >
               {t(`message.adminPanel.appointments.filter.${filterKey}`)}
             </FilterButton>
           ))}
+
+          <RefreshIconBox onClick={handleRefreshBtn}>
+            <FaSyncAlt size={24} color="#20b1b7" />
+          </RefreshIconBox>
         </FilterContainer>
       </HeaderBox>
 
@@ -124,8 +189,9 @@ const AdminAppointmentsPage: React.FC = () => {
                     {appointment.firstName} {appointment.lastName}
                   </ClientName>
                   <Service>
-                    {appointment.comment || "No service specified"}
+                    {getServiceNameById(appointment.dentalServiceSectionId)}
                   </Service>
+
                   <Date>
                     {/* {new Date(appointment.createdAt).toLocaleDateString()} */}
                     {/* Created at:  */}
@@ -133,7 +199,7 @@ const AdminAppointmentsPage: React.FC = () => {
                 </MainInfoContainer>
 
                 <MoreInfoButton
-                  onClick={() => handleMoreInfoClick(appointment.id)}
+                  onClick={() => handleMoreInfoClick(appointment?.id || 1)}
                 >
                   {t("message.adminPanel.appointments.buttons.moreInfo")}
                 </MoreInfoButton>

@@ -44,6 +44,20 @@ export const HeaderBox = styled.ul`
   padding: 20px;
 `;
 
+export const RefreshIconBox = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;
+
 export const Heading = styled.h1`
   ${commonStyles}
   font-size: 28px;

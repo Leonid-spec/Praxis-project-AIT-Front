@@ -13,7 +13,7 @@ import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
 import { DoctorsProvider } from "./pages/AdminPanel/Doctors/DoctorsContext";
-import AppointmentForm from "./components/Appointment/AppointmentForm0";
+import AppointmentForm from "./components/Appointment/AppointmentForm";
 
 Modal.setAppElement("#root");
 
