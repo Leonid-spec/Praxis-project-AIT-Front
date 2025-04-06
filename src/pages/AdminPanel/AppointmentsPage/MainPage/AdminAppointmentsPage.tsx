@@ -30,19 +30,6 @@ import { getActiveServices } from "../../../../api/serviceAPI";
 import i18n from "../../../../utils/i18n";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 
-interface Appointment {
-  dentalServiceSectionId?: number;
-  firstName: string;
-  lastName: string;
-  phone1: string;
-  phone2?: string;
-  email: string;
-  availableTime?: string;
-  comment?: string;
-  language?: string;
-  isNew: boolean;
-}
-
 const AdminAppointmentsPage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -52,7 +39,6 @@ const AdminAppointmentsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<"all" | "new" | "completed">("all");
   const [services, setServices] = useState<ServiceData[]>([]);
-  const [serviceName, setServiceName] = useState<string[]>([]);
 
   const token = localStorage.getItem("token");
 
@@ -134,7 +120,7 @@ const AdminAppointmentsPage: React.FC = () => {
     const lang = i18n.language;
     switch (lang) {
       case "de":
-        return service.titleDe || "Unbenannter Service";
+        return service!.titleDe || "Unbenannter Service";
       case "en":
         return service.titleEn || "Unnamed service";
       case "ru":
