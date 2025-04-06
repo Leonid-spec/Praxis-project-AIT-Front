@@ -28,33 +28,6 @@ export const createAppointment = async (
   }
 };
 
-// export const createAppointment = async (
-//   appointment: AppointmentData,
-// ): Promise<AppointmentData> => {
-//   const updatedAppointment = {
-//     ...appointment,
-//     id: 1,  
-//   };
-
-//   try {
-//     const response = await fetch(`${API_URL}/appointment`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "Authorization": `Bearer ${localStorage.getItem("token")}`,  
-//       },
-//       body: JSON.stringify(updatedAppointment), 
-//     });
-
-//     return await handleFetchError(response);
-//   } catch (error) {
-//     console.log("message app", updatedAppointment);
-//     console.error("Failed to create appointment:", error);
-//     throw error;
-//   }
-// };
-
-
 export const getAppointments = async (token: string): Promise<AppointmentData[]> => {
   try {
     const response = await fetch(`${API_URL}/appointments`, {

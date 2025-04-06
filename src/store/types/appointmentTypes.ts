@@ -1,6 +1,6 @@
 export interface AppointmentData {
     id?: number | null;
-    dentalServiceSectionId?: number;
+    dentalServiceSectionId?: number | null;
     firstName: string;
     lastName: string;
     phone1: string;

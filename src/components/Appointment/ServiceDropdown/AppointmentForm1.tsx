@@ -15,7 +15,7 @@ import {
   CharacterCounter,
   SubmitButton,
 } from "../styles";
-// import ServiceDropdown from "./ServiceDropdown";
+import ServiceDropdown from "./ServiceDropdown";
 import { AppointmentData } from "../../../store/types/appointmentTypes";
 import ServiceDropdown from "./ServiceDropdown";
 

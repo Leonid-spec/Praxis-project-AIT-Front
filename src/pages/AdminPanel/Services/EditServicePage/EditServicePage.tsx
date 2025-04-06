@@ -23,7 +23,7 @@ import {
   UploadInput,
   DescriptionSection,
 } from "../ServicePageSinge/style";
-import { Service } from "../../../../components/Appointment/ServiceDropdown";
+// import { Service } from "../../../../components/Appointment/ServiceDropdown";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 
@@ -51,7 +51,7 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
     fetchServiceData();
   }, [serviceId, token]);
 
-  const handleChange = (field: keyof Service, value: any) => {
+  const handleChange = (field: keyof ServiceData, value: any) => {
     setServiceData((prev) => prev ? { ...prev, [field]: value } : prev);
     setFieldErrors((prev) => ({ ...prev, [field]: "" })); 
   };
@@ -149,7 +149,7 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
                   type="text"
                   placeholder={`Enter title (${lang.slice(-2).toUpperCase()})`}
                   value={serviceData?.[lang as keyof ServiceData] || ""}
-                  onChange={(e) => handleChange(lang as keyof Service, e.target.value)}
+                  onChange={(e) => handleChange(lang as keyof ServiceData, e.target.value)}
                 />
                 {fieldErrors[lang] && (
                   <span style={{ color: "red", fontSize: "0.8rem" }}>{fieldErrors[lang]}</span>
@@ -177,7 +177,7 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
               placeholder={`Enter description (${lang.slice(-2).toUpperCase()})`}
               rows={5}
               value={serviceData?.[lang as keyof ServiceData] || ""}
-              onChange={(e) => handleChange(lang as keyof Service, e.target.value)}
+              onChange={(e) => handleChange(lang as keyof ServiceData, e.target.value)}
             />
             {fieldErrors[lang] && (
               <span style={{ color: "red", fontSize: "0.8rem" }}>{fieldErrors[lang]}</span>
