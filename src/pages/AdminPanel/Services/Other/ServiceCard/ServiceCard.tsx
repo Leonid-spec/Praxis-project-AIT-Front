@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   Card,
   PhotoContainer,
@@ -16,6 +17,7 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ title, topImage, onEditClick }) => {
+  const { t } = useTranslation(); 
   return (
     <Card>
       <PhotoContainer>
@@ -26,7 +28,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, topImage, onEditClick 
       </PhotoContainer>
       <Info>
         <Title>{title}</Title>
-        <DetailsButton onClick={onEditClick}>Edit</DetailsButton>
+        <DetailsButton onClick={onEditClick}> {t("message.adminPanel.appointments.buttons.edit")} </DetailsButton>
       </Info>
     </Card>
   );

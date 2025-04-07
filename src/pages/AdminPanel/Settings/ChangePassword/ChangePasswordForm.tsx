@@ -8,7 +8,7 @@ import {
   Wrapper,
 } from "./styles";
 
-const ChangePasswordForm: React.FC<{ onBack: () => void }> = () => {
+const ChangePasswordForm: React.FC = () => {
   const { t } = useTranslation();
 
   const [currentPassword, setCurrentPassword] = useState("");
@@ -28,7 +28,7 @@ const ChangePasswordForm: React.FC<{ onBack: () => void }> = () => {
     });
 
     const result = await response.json();
-    alert(result.message); // при необходимости — локализовать через ключ
+    alert(result.message);
   };
 
   return (

@@ -202,7 +202,8 @@
         "buttons": {
           "back": "Go back",
           "complete": "Complete appointment",
-          "moreInfo": "More info"
+          "moreInfo": "More info",
+          "edit": "Edit"
         },
         "settings": {
           "admin": {
@@ -241,6 +242,8 @@
             "settingsPage": {
               "title": "Administrator Settings",
               "back": "Back",
+              "greeting": "Welcome to the admin panel!",
+              "capabilities": "Here you can manage access rights and change the administrator's password.",
               "buttons": {
                 "create": "Create New Administrator",
                 "changePassword": "Change Password",

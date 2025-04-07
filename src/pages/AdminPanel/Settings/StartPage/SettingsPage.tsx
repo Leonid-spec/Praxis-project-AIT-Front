@@ -8,79 +8,91 @@ import DeleteAdminForm from "../DeleteAdminForm/DeleteAdminForm";
 import {
   ContentContainer,
   Section,
-  BackButton,
   ButtonGroup,
   StyledButton,
 } from "./styles";
 
-const SettingsPage: React.FC = () => {
+// Интерфейс пропсов для передачи логина администратора
+interface SettingsPageProps {
+  adminLogin: string; // Логин администратора
+}
+
+const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => { // Получаем adminLogin через пропсы
   const { t } = useTranslation();
 
+  // Состояние для отслеживания активной секции
   const [activeSection, setActiveSection] = useState<
-    null | "createAdmin" | "changePassword" | "viewAdmins" | "deleteAdmin"
+    "createAdmin" | "changePassword" | "viewAdmins" | "deleteAdmin" | null
   >(null);
-
-  const handleButtonClick = (
-    section: "createAdmin" | "changePassword" | "viewAdmins" | "deleteAdmin"
-  ) => {
-    setActiveSection(section);
-  };
 
   return (
     <ContentContainer>
-      {activeSection && (
-        <BackButton onClick={() => setActiveSection(null)}>
-          ← {t("message.adminPanel.appointments.settings.admin.settingsPage.back")}
-        </BackButton>
-      )}
+      {/* Заголовок страницы */}
+      <h1 style={{ textAlign: "center" }}>
+        {t("message.adminPanel.appointments.settings.admin.settingsPage.title")}
+      </h1>
 
-      {!activeSection && (
-        <>
-          <h1>{t("message.adminPanel.appointments.settings.admin.settingsPage.title")}</h1>
-          <ButtonGroup>
-            <StyledButton onClick={() => handleButtonClick("createAdmin")}>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.create")}
-            </StyledButton>
-            <StyledButton onClick={() => handleButtonClick("changePassword")}>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword")}
-            </StyledButton>
-            <StyledButton onClick={() => handleButtonClick("viewAdmins")}>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll")}
-            </StyledButton>
-            <StyledButton onClick={() => handleButtonClick("deleteAdmin")}>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete")}
-            </StyledButton>
-          </ButtonGroup>
-        </>
-      )}
+      {/* Контейнер с текстом на разных языках */}
+      <div style={{ textAlign: "center", margin: "20px 0" }}>
+        {/* Приветствие */}
+        <p>{t("message.adminPanel.appointments.settings.admin.settingsPage.greeting")}</p>
 
-      {activeSection === "createAdmin" && (
-        <Section>
-          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}</h2>
-          <AddAdminForm onBack={() => setActiveSection(null)} />
-        </Section>
-      )}
+        {/* Имя администратора */}
+        <p>
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.loggedInAs")}{" "}
+          <strong>{adminLogin}</strong> {/* Имя администратора отображается в тексте */}
+        </p>
 
-      {activeSection === "changePassword" && (
-        <Section>
-          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}</h2>
-          <ChangePasswordForm onBack={() => setActiveSection(null)} />
-        </Section>
-      )}
+        {/* Текст возможностей */}
+        <p>{t("message.adminPanel.appointments.settings.admin.settingsPage.capabilities")}</p>
+      </div>
 
-      {activeSection === "viewAdmins" && (
-        <Section>
-          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}</h2>
-          <AdminList />
-        </Section>
-      )}
+      {/* Группа кнопок */}
+      <ButtonGroup>
+        <StyledButton onClick={() => setActiveSection("createAdmin")}>
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.create")}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveSection("changePassword")}>
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword")}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveSection("viewAdmins")}>
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll")}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveSection("deleteAdmin")}>
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete")}
+        </StyledButton>
+      </ButtonGroup>
 
-      {activeSection === "deleteAdmin" && (
-        <Section>
-          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}</h2>
-          <DeleteAdminForm />
-        </Section>
-      )}
+      {/* Секции с контентом */}
+      <Section>
+        {activeSection === "createAdmin" && (
+          <>
+            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}</h2>
+            <AddAdminForm />
+          </>
+        )}
+
+        {activeSection === "changePassword" && (
+          <>
+            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}</h2>
+            <ChangePasswordForm />
+          </>
+        )}
+
+        {activeSection === "viewAdmins" && (
+          <>
+            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}</h2>
+            <AdminList />
+          </>
+        )}
+
+        {activeSection === "deleteAdmin" && (
+          <>
+            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}</h2>
+            <DeleteAdminForm />
+          </>
+        )}
+      </Section>
     </ContentContainer>
   );
 };

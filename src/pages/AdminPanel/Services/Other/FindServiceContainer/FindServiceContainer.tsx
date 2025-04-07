@@ -25,7 +25,7 @@ export const FindServiceContainer: React.FC<FindServiceContainerProps> = ({ sear
       />
       <InputBox 
         type="text" 
-        placeholder={t("message.adminPanel.appointments.services.placeholder")}  // Перевод placeholder
+        placeholder={t("message.adminPanel.appointments.services.placeholder")} 
         value={searchTerm}
         onChange={handleInputChange}
       />
