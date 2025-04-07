@@ -7,7 +7,9 @@
         "about_us": "About Us",
         "contact": "Contact",
         "home": "Home",
-        "logo_alt": "Logo"
+        "logo_alt": "Logo",
+        "cabinets": "cabinets",
+        "devices": "devices"
       }
     },
     "main": {
@@ -20,7 +22,13 @@
         "title": "Welcome to our caring and professional dental practice",
         "subtitle": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
       },
+      "about_us_page": {
+        "ours": "Our",
+        "are": "are equipped with modern",
+        "ausgestattet": "!"
+      },
       "team_page": {
+        "servicesIntrot": "Our ",
         "welcome": "Welcome to",
         "subtitle": "Welcome to our team’s page! We are dedicated professionals passionate about providing you with top-notch dental care. Our mission is to bring you a smile full of health and confidence. Thank you for trusting us!",
         "moreInfoBtn": "Learn more",
@@ -39,10 +47,15 @@
         "moreInfoBtn": "Learn more",
         "gallery": "Gallery",
         "serviceNotFound": "Service not found.",
-        "servicesIntro": "Our services",
+        "servicesIntro": "Our ",
         "highlight": "Abramian Dental",
         "noDescription": "No description available.",
-        "noServicesAvailable": "No services available at the moment."
+        "noServicesAvailable": "No services available at the moment.",
+        "servicerDetails":
+        {
+          "title": "Procedure Name",
+          "specialization": "Learn More"
+        }
       },
       "contacts_page": {
         "welcome_text": "We’re always happy to assist you! Here you can find our contact information, feel free to reach out.",

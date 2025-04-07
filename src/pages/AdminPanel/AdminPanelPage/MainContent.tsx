@@ -14,6 +14,7 @@ import DoctorsPage from "../Doctors/DoctorsPage";
 
 import { ServicesPageAll } from "../Services/ServicesPageAll/ServicesPageAll";
 import { ServicePageSingle } from "../Services/ServicePageSinge/ServicePageSingle";
+import SettingsPage from "../Settings/StartPage/SettingsPage";
 
 const MainContent: React.FC = () => {
   return (
@@ -32,6 +33,9 @@ const MainContent: React.FC = () => {
         {/* Services */}
         <Route path="admin-services" element={<ServicesPageAll />} />
         <Route path="admin-services/add-new-service" element={<ServicePageSingle />} />
+        
+        {/* Settings */}
+        <Route path="settings" element={<SettingsPage />} /> 
         
         {/* Doctors */}
         <Route path="doctors" element={<DoctorsPage />} />

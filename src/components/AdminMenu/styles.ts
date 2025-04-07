@@ -30,14 +30,15 @@ export const Dropdown = styled.div`
 export const DropdownItem = styled.div`
 
   display: grid;
-  width: 200px;
+  min-width: 250px;
   grid-template-columns: 30% 70%;
-  padding: 10px 15px;
+  /* grid-template-rows: 300px; */
+  padding: 10px 20px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   &:hover {
-    background-color: #f4f4f4;
+    background-color: #e6dcdc;
   }
   &:not(:last-child) {
     border-bottom: 1px solid #ddd;
