@@ -49,14 +49,14 @@ const AddAdminForm: React.FC<AddAdminFormProps> = () => {
             placeholder="Enter password"
           />
         </Label>
-        <Label>
+        {/* <Label>
           <Checkbox
             type="checkbox"
             checked={adminRights}
             onChange={(e) => setAdminRights(e.target.checked)}
           />
           Grant Admin Rights
-        </Label>
+        </Label> */}
         <SubmitButton type="button" onClick={handleSubmit}>
           Create Admin
         </SubmitButton>
