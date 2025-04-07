@@ -7,7 +7,9 @@
         "about_us": "Über uns",
         "contact": "Kontakte",
         "home": "Startseite",
-        "logo_alt": "Logo"
+        "logo_alt": "Logo",
+        "cabinets": "Kabinette",
+        "devices": "Geräten"
       }
     },
     "main": {
@@ -19,6 +21,11 @@
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
         "subtitle": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN IHR SCHÖNSTES <HighlightedSpan>LÄCHELN"
+      },
+      "about_us_page": {
+        "ours": "Unsere",
+        "are": "sind mit modernen",
+        "ausgestattet": "ausgestattet!"
       },
       "team_page": {
         "welcome": "Willkommen bei",
@@ -32,6 +39,7 @@
         }
       },
       "service_page": {
+        "servicesIntrot": "Unsere ",
         "welcome": "Willkommen bei",
         "subtitle": "Wir bieten ein umfassendes Spektrum an zahnmedizinischen Dienstleistungen, um Ihr Lächeln gesund und schön zu erhalten. Unsere Spezialisten nutzen modernste Technologien und eine individuelle Betreuung. Vertrauen Sie Ihr Lächeln den Profis an!",
         "loadingServices": "Lade Leistungen...",
@@ -39,10 +47,15 @@
         "moreInfoBtn": "Mehr erfahren",
         "gallery": "Galerie",
         "serviceNotFound": "Leistung nicht gefunden.",
-        "servicesIntro": "Unsere Leistungen",
+        "servicesIntro": "Unsere ",
         "highlight": "Abramian Dental",
         "noDescription": "Keine Beschreibung verfügbar.",
-        "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar."
+        "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar.",
+        "servicerDetails":
+        {
+          "title": "Verfahrensname",
+          "specialization": "Mehr erfahren"
+        }
       },
       "contacts_page": {
         "welcome_text": "Wir sind immer für Sie da! Hier finden Sie unsere Kontaktinformationen, melden Sie sich gerne bei uns.",
