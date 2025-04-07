@@ -1,4 +1,12 @@
 import { CSSProperties } from "react";
+import styled from "styled-components";
+
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto; 
+  scroll-behavior: smooth;
+  padding: 0 30px 0 20px;
+`;
 
 // Стили кнопок
 const buttonCommonStyles: CSSProperties = {
@@ -135,11 +143,13 @@ const styles = {
   } as CSSProperties,
   markerCircleNew: {
     ...circleStyles,
-    backgroundColor: "#ff4d4d", // Красный для новых
+    // backgroundColor: "#ff4d4d", // Красный для новых
+    backgroundColor: "#28a745", 
   } as CSSProperties,
   markerCircleCompleted: {
     ...circleStyles,
-    backgroundColor: "#28a745", // Зелёный для завершённых
+    // backgroundColor: "#28a745", // Зелёный для завершённых
+    backgroundColor: "#ff4d4d",
   } as CSSProperties,
 };
 

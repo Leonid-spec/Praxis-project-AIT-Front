@@ -1,27 +1,30 @@
 import styled from "styled-components";
 
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto; 
+  scroll-behavior: smooth;
+  padding: 0 30px 0 20px;
+`;
+
 export const ServicePageSingleContainer = styled.div`
   display: flex;
+  height: 80vh;
   flex-direction: column;
-  gap: 10px;
-  padding: 20px 50px;
+  gap: 30px;
+  padding: 50px;
 `;
 
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  border-radius: 10px;
-  background-color: #ffffff;
-  margin-bottom: 40px;
-  padding: 0 40px;
-`;
+  padding: 0 100px
+  `;
 
 export const MainBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 30px;
 `;
 
 export const MainBoxText = styled.div`
@@ -52,6 +55,7 @@ export const ImagePreview = styled.img`
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
+  background-color: #f8f8f8;
 `;
 
 export const TitleSection = styled.div`
@@ -64,10 +68,9 @@ export const TitleSection = styled.div`
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f8f8f8;
 
     &:focus {
-      border-color: #68a4f8;
+      border-color: #20b1b7;
       outline: none;
     }
   }
@@ -93,13 +96,14 @@ export const MakeCardVisibleBox = styled.div`
 export const TitlesBox = styled.div`
   font-size: 18px;
   font-weight: bold;
-  color: #b5abab;
+  color: #292828;
   margin: 20px 0 10px;
 `;
 
 export const TitleBoxText = styled.label`
   font-size: 16px;
   color: #b5abab;
+  color:  #292828;
   padding: 0 0 0 20px;
 `;
 
@@ -113,10 +117,9 @@ export const InputContainer = styled.div`
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f8f8f8;
 
     &:focus {
-      border-color: #68a4f8;
+      border-color: #20b1b7;
       outline: none;
     }
   }
@@ -127,7 +130,6 @@ export const Input = styled.input`
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f8f8f8;
 
   &:focus {
     border-color: #68a4f8;
@@ -144,9 +146,7 @@ export const DescriptionSection = styled.div`
 export const StyledReturnButton = styled.button`
   background-color: #20b1b7;
   color: #fff;
-  padding: 18px 40px;
-  /* margin: 20px 66px 0; */
-  /* margin: 20px; */
+  padding: 10px 20px;
   border: none;
   border-radius: 30px;
   cursor: pointer;
@@ -158,18 +158,16 @@ export const StyledReturnButton = styled.button`
   }
 `;
 
-export const StyledSaveButton = styled.button`
-  background-color: #20b1b7;
-  color: #fff;
-  padding: 20px 40px;
+export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
+  background-color: ${({ disabled }) => (disabled ? "#ccc" : "#20B1B7")};
+  color: ${({ disabled }) => (disabled ? "#888" : "#fff")};
+  padding: 10px 20px;
   border: none;
-  font-weight: bold;
-
   border-radius: 30px;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   font-size: 18px;
 
   &:hover {
-    background-color: #0c989c;
+    background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
   }
 `;

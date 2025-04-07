@@ -89,11 +89,12 @@
         },
         "errors": {
           "missingCredentials": "Введите логин и пароль.",
-          "usernameLength": "Имя пользователя должно содержать от 2 до 16 символов.",
-          "passwordLength": "Пароль должен содержать хотя бы 1 символ.",
+          "usernameLength": "Имя пользователя должно содержать от 3 до 16 символов.",
+          "passwordLength": "Пароль должен содержать от 4 до 32 символов.",
           "missingEmail": "Введите email.",
           "usernameStartsWithSpace": "Имя пользователя не должно начинаться с пробела.",
-          "passwordContainsSpaces": "Пароль не должен содержать пробелы."
+          "passwordContainsSpaces": "Пароль не должен содержать пробелы.",
+          "loginContainsSpaces": "Имя пользователя не должно содержать пробелы."
         },
         "messages": {
           "forgotPasswordTitle": "Сброс пароля",
@@ -180,6 +181,9 @@
           "noLanguage": "Не указан",
           "noAvailable_time": "Нет доступного времени"
         },
+        "confirmDelete": "Вы уверены, что хотите удалить?",
+        "cancel": "Отмена",
+        "phoneCopied": "Номер телефона успешно скопирован!",
         "filter": {
           "all": "Все",
           "new": "Новая",

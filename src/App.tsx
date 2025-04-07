@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import AdminPanel from "./pages/AdminPanel/AdminPanelPage/AdminPanel";
-import AppointmentForm from "./pages/Appointment/AppointmentForm";
 import { ModalProvider } from "./components/Modal/ModalContext";
 import Modal from "react-modal";
 import AppointmentModal from "./components/Modal/AppointmentModal";
@@ -14,6 +13,7 @@ import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
 import { DoctorsProvider } from "./pages/AdminPanel/Doctors/DoctorsContext";
+import AppointmentForm from "./components/Appointment/AppointmentForm";
 
 Modal.setAppElement("#root");
 
@@ -28,13 +28,14 @@ function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/appointment" element={<AppointmentForm />} />
+              {/* <Route path="/api/appointment" element={<AppointmentForm />} /> */}
+              {/* <Route path="/appointment" element={<AppointmentForm />} /> */}
               <Route path="/doctors" element={<Team />} />
               <Route path="/about" element={<About />} />
               <Route path="/contacts" element={<Contacts />} />
-              <Route path="/doctors/:id" element={<DoctorDetails />} />
+              <Route path="/doctor/:id" element={<DoctorDetails />} />
               <Route path="/services" element={<Service />} />
-              <Route path="/services/:id" element={<ServiceDetails />} />
+              <Route path="/service/:id" element={<ServiceDetails />} />
               <Route path="/admin-panel/*" element={<AdminPanel />} />{" "}              
             </Routes>
           </Layout>

@@ -1,9 +1,17 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./mainContent.module.css";
-import AdminAppointmentsPage from "../AppointmentsPage/AdminAppointmentsPage"; 
-import AppointmentsPage from "../AppointmentsPage/AppointmentDetailsPage"; 
+
+
+// import AdminAppointmentsPage from "../AppointmentsPage/AdminAppointmentsPage";
+import AdminAppointmentsPage from "../AppointmentsPage/MainPage/AdminAppointmentsPage";
+
+// import AppointmentsPage from "../AppointmentsPage/AppointmentDetailsPage";
+import AppointmentDetailsPage from "../AppointmentsPage/DetailsPage/AppointmentDetailsPage";
+
+
 import DoctorsPage from "../Doctors/DoctorsPage";
+
 import { ServicesPageAll } from "../Services/ServicesPageAll/ServicesPageAll";
 import { ServicePageSingle } from "../Services/ServicePageSinge/ServicePageSingle";
 
@@ -15,20 +23,16 @@ const MainContent: React.FC = () => {
         <Route path="/" element={<Navigate to="appointments" />} />
 
         {/* Список заявок (Appointment Page в Sidebar) */}
+        {/* <Route path="appointments" element={<AdminAppointmentsPage />} /> */}
         <Route path="appointments" element={<AdminAppointmentsPage />} />
-
         {/* Детали заявки (More info) */}
-        <Route path="appointments/:id" element={<AppointmentsPage />} />
+        {/* <Route path="appointments/:id" element={<AppointmentsPage />} /> */}
+        <Route path="appointment/:id" element={<AppointmentDetailsPage />} />
 
         {/* Services */}
-        <Route path="adminServices" element={<ServicesPageAll />} >
-          <Route path="add-new-service" element={
-            <ServicePageSingle onReturnBack={function (): void {
-            throw new Error("Function not implemented.");
-          } } />
-          } />
-        </Route>
-
+        <Route path="admin-services" element={<ServicesPageAll />} />
+        <Route path="admin-services/add-new-service" element={<ServicePageSingle />} />
+        
         {/* Doctors */}
         <Route path="doctors" element={<DoctorsPage />} />
 

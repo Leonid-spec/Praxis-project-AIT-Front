@@ -37,7 +37,14 @@ const LoginAdminForm = ({
 
     if (login[0] === " ") {
       setNotification({
-        message: t("message.other.loginAdmin.errors.loginStartsWithSpace"),
+        message: t("message.other.loginAdmin.errors.usernameStartsWithSpace"),
+        type: "error",
+      });
+      return;
+    }
+    if (/\s/.test(login)) {
+      setNotification({
+        message: t("message.other.loginAdmin.errors.loginContainsSpaces"),
         type: "error",
       });
       return;
@@ -94,7 +101,7 @@ const LoginAdminForm = ({
       // console.log("Parsed Data:", data);
 
       if (data.token) {
-        localStorage.setItem("authToken", data.token);
+        localStorage.setItem("token", data.token);
         setNotification({
           message: t("message.other.loginAdmin.messages.loginSuccess"),
           type: "success",

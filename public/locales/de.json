@@ -89,11 +89,12 @@
         },
         "errors": {
           "missingCredentials": "Bitte geben Sie Benutzername und Passwort ein.",
-          "usernameLength": "Der Benutzername muss zwischen 2 und 16 Zeichen lang sein.",
-          "passwordLength": "Das Passwort muss mindestens 1 Zeichen enthalten.",
+          "usernameLength": "Der Benutzername muss zwischen 3 und 16 Zeichen lang sein.",
+          "passwordLength": "Das Passwort muss zwischen 4 und 32 Zeichen lang sein.",
           "missingEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
           "usernameStartsWithSpace": "Der Benutzername sollte nicht mit einem Leerzeichen beginnen.",
-          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten."
+          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten.",
+          "loginContainsSpaces": "Der Benutzername sollte keine Leerzeichen enthalten."
         },
         "messages": {
           "forgotPasswordTitle": "Passwort zurücksetzen",
@@ -155,51 +156,43 @@
         }
       }
     },
-      "adminPanel": {
-       "appointments": {
-          "title": "Termine",
-          "noAppointments": "Keine Termine.",
-          "loadingAppointments": "Termine werden geladen...",
-          "errorFetchingAppointments": "Fehler beim Laden der Termine.",
-          "statusUpdated": "Der Status des Termins wurde auf '{{status}}' aktualisiert.",
-          "statusUpdateError": "Der Status des Termins konnte nicht auf '{{status}}' aktualisiert werden.",
-          "appointmentDetails": {
-            "title": "Termindetails",
-            "client": "Kunde",
-            "service": "Dienstleistung",
-            "date": "Datum",
-            "email": "E-Mail",
-            "phone1": "Telefon 1",
-            "phone2": "Telefon 2",
-            "language": "Sprache",
-            "comment": "Kommentar",
-            "available_time": "Verfügbare Zeit",
-            "noPhone": "Nicht angegeben",
-            "noComment": "Kein Kommentar",
-            "noLanguage": "Nicht angegeben",
-            "noAvailable_time": "Keine verfügbare Zeit"
-          },
+    "adminPanel": {
+      "appointments": {
+        "title": "Termine",
+        "noAppointments": "Keine Termine.",
+        "loadingAppointments": "Termine werden geladen...",
+        "errorFetchingAppointments": "Fehler beim Laden der Termine.",
+        "statusUpdated": "Der Status des Termins wurde auf '{{status}}' aktualisiert.",
+        "statusUpdateError": "Der Status des Termins konnte nicht auf '{{status}}' aktualisiert werden.",
+        "appointmentDetails": {
+          "title": "Termindetails",
+          "client": "Kunde",
+          "service": "Dienstleistung",
+          "date": "Datum",
+          "email": "E-Mail",
+          "phone1": "Telefon 1",
+          "phone2": "Telefon 2",
+          "language": "Sprache",
+          "comment": "Kommentar",
+          "available_time": "Verfügbare Zeit",
+          "noPhone": "Nicht angegeben",
+          "noComment": "Kein Kommentar",
+          "noLanguage": "Nicht angegeben",
+          "noAvailable_time": "Keine verfügbare Zeit"
+        },
+        "confirmDelete": "Möchten Sie wirklich löschen?",
+        "phoneCopied": "Telefonnummer erfolgreich kopiert!",
         "filter": {
-            "all": "Alle",
-            "new": "Neu",
-            "completed": "Abgeschlossen"
-         },
+          "all": "Alle",
+          "new": "Neu",
+          "completed": "Abgeschlossen"
+        },
         "buttons": {
-           "back": "Zurückgehen",
-           "complete": "Termin abschließen",
-           "moreInfo": "Mehr Infos"
-         }
+          "back": "Zurückgehen",
+          "complete": "Termin abschließen",
+          "moreInfo": "Mehr Infos"
         }
-       }
       }
     }
-  
-
-    
-      
-     
-
-        
-   
-
-
+  }
+}

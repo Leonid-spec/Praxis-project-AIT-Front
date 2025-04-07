@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Service } from "../types/serviceTypes";
+import { ServiceData } from "../types/serviceTypes";
 
 interface ServiceState {
   [x: string]: any;
-  services: Service[];
+  services: ServiceData[];
   loading: boolean;
   error: string | null;
 }
@@ -22,7 +22,7 @@ const serviceSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
-    fetchActiveServicesSuccess(state, action: PayloadAction<Service[]>) {
+    fetchActiveServicesSuccess(state, action: PayloadAction<ServiceData[]>) {
       state.loading = false;
       state.services = action.payload;
     },
@@ -34,7 +34,7 @@ const serviceSlice = createSlice({
       state.loading = true;
       state.error = null;
     },
-    fetchServicesSuccess(state, action: PayloadAction<Service[]>) {
+    fetchServicesSuccess(state, action: PayloadAction<ServiceData[]>) {
       state.loading = false;
       state.services = action.payload;
     },
@@ -42,10 +42,10 @@ const serviceSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-    addService(state, action: PayloadAction<Service>) {
+    addService(state, action: PayloadAction<ServiceData>) {
       state.services.push(action.payload);
     },
-    updateService(state, action: PayloadAction<Service>) {
+    updateService(state, action: PayloadAction<ServiceData>) {
       const index = state.services.findIndex((s) => s.id === action.payload.id);
       if (index !== -1) {
         state.services[index] = action.payload;
