@@ -1,94 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./doctorCard.module.css";
 
-// Интерфейс для компонента DoctorCardProps
-interface Doctor {
-  id: number;
-  name: string;
-  surname: string;
-  fullname?: string; // Полное имя врача
-  photo: string;
-  active: boolean;
-  specialisation?: string;
-}
+const DoctorCard: React.FC<{ doctorData: any; openDetails: (doctorData: any) => void }> = ({ doctorData, openDetails }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState(doctorData);
 
-interface DoctorCardProps {
-  doctor: Doctor; // Типизация врача
-  onMoreInfo: () => void;
-  onToggleActive: () => void;
-  onDelete: () => void;
-  onShowConfirmation: (id: number | null) => void;
-  confirmationVisible: boolean;
-}
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-const DoctorCard: React.FC<DoctorCardProps> = ({
-  doctor,
-  onMoreInfo,
-  onToggleActive,
-  onDelete,
-  onShowConfirmation,
-  confirmationVisible,
-}) => {
   return (
-    <div className={`${styles.card} ${!doctor.active ? styles.inactive : ""}`}>
-      {/* Содержимое карточки */}
-      <div
-        className={`${styles.cardContent} ${
-          !doctor.active ? styles.blurredContent : ""
-        }`}
-      >
-        <div className={styles.photoContainer}>
-          {doctor.photo ? (
-            <img
-              src={doctor.photo}
-              alt={`Doctor: ${doctor.fullname || `${doctor.name} ${doctor.surname}`}`}
-              className={styles.photo}
-            />
-          ) : (
-            <div className={styles.placeholder}>No Photo</div> // Заполнитель, если фото отсутствует
-          )}
-        </div>
-        <div className={styles.infoColumn}>
-          <p>
-            <strong>Full Name:</strong> {doctor.fullname || `${doctor.name} ${doctor.surname}`}
-          </p>
-          <p>
-            <strong>Specialisation:</strong> {doctor.specialisation || "Not specified"}
-          </p>
-        </div>
-      </div>
+    <div className={`${styles.doctorCard} ${formData.isActive ? styles.activeCard : styles.inactiveCard}`}>
+      {/* Блюр только на фото, если карточка неактивна */}
+      <img src={formData.photo} alt="Doctor's Photo" className={formData.isActive ? styles.cardPhoto : styles.cardPhotoBlur} />
 
-      {/* Кнопки действий */}
-      <div className={styles.cardButtonRow}>
-        <button
-          onClick={() => onShowConfirmation(doctor.id)}
-          className={styles.delete}
-        >
-          🗑 Delete
-        </button>
-        <button onClick={() => onToggleActive()} className={styles.toggle}>
-          🔄 Toggle Active
-        </button>
-        <button onClick={() => onMoreInfo()} className={styles.moreInfo}>
-          📄 More Info
-        </button>
-      </div>
-
-      {/* Окно подтверждения */}
-      {confirmationVisible && (
-        <div className={styles.confirmation}>
-          <p>Are you sure you want to delete this doctor?</p>
-          <button onClick={() => onDelete()} className={styles.yesButton}>
-            Yes
-          </button>
-          <button
-            onClick={() => onShowConfirmation(null)}
-            className={styles.noButton}
-          >
-            No
-          </button>
-        </div>
+      {/* Имя без рамки, но при "Edit" рамка появляется */}
+      {isEditing ? (
+        <input type="text" name="name" className={styles.cardName} value={formData.name} onChange={handleInputChange} />
+      ) : (
+        <div className={styles.cardName}>{formData.name}</div>
       )}
+
+      {/* Передача данных врача в "More Info" */}
+      <button className={styles.moreInfoButton} onClick={() => openDetails(doctorData)}>More Info</button>
+
+      {isEditing && <button className={styles.saveButton} onClick={() => setIsEditing(false)}>Save</button>}
     </div>
   );
 };
