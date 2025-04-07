@@ -95,10 +95,10 @@ const LoginAdminForm = ({
       }
 
       const textResponse = await response.text(); 
-      // console.log("Text Response:", textResponse);
+      console.log("Text Response:", textResponse);
 
       const data = textResponse ? JSON.parse(textResponse) : {};
-      // console.log("Parsed Data:", data);
+      console.log("Parsed Data:", data);
 
       if (data.token) {
         localStorage.setItem("token", data.token);
@@ -119,7 +119,7 @@ const LoginAdminForm = ({
         });
       }
     } catch (error: any) {
-      // console.error("Error:", error);
+      console.error("Error:", error);
       setNotification({
         message: error.message || "Something went wrong",
         type: "error",

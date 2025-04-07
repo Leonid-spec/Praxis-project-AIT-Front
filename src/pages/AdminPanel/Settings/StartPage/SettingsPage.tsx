@@ -10,6 +10,11 @@ import {
   Section,
   ButtonGroup,
   StyledButton,
+  HighlightedSpan,
+  WelcomeTextBox,
+  MainFunctionsText,
+  MainWelcomeText,
+  SectionTitle,
 } from "./styles";
 
 // Интерфейс пропсов для передачи логина администратора
@@ -25,27 +30,33 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => { // По�
     "createAdmin" | "changePassword" | "viewAdmins" | "deleteAdmin" | null
   >(null);
 
+ const parseSubtitle = (text: string) => {
+    return text
+      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+      .map((part, index) =>
+        index % 2 === 1 ? (
+          <HighlightedSpan key={index}>{part}</HighlightedSpan>
+        ) : (
+          part
+        )
+      );
+  };
+
   return (
     <ContentContainer>
       {/* Заголовок страницы */}
-      <h1 style={{ textAlign: "center" }}>
+      {/* <h1 style={{ textAlign: "center" }}>
         {t("message.adminPanel.appointments.settings.admin.settingsPage.title")}
-      </h1>
+      </h1> */}
 
       {/* Контейнер с текстом на разных языках */}
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
+      <WelcomeTextBox>
         {/* Приветствие */}
-        <p>{t("message.adminPanel.appointments.settings.admin.settingsPage.greeting")}</p>
-
-        {/* Имя администратора */}
-        <p>
-          {t("message.adminPanel.appointments.settings.admin.settingsPage.loggedInAs")}{" "}
-          <strong>{adminLogin}</strong> {/* Имя администратора отображается в тексте */}
-        </p>
+        <MainWelcomeText>{parseSubtitle(t("message.adminPanel.appointments.settings.admin.settingsPage.greeting"))}</MainWelcomeText>
 
         {/* Текст возможностей */}
-        <p>{t("message.adminPanel.appointments.settings.admin.settingsPage.capabilities")}</p>
-      </div>
+        <MainFunctionsText>{t("message.adminPanel.appointments.settings.admin.settingsPage.capabilities")}</MainFunctionsText>
+      </WelcomeTextBox>
 
       {/* Группа кнопок */}
       <ButtonGroup>
@@ -67,28 +78,28 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => { // По�
       <Section>
         {activeSection === "createAdmin" && (
           <>
-            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}</h2>
+            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}</SectionTitle>
             <AddAdminForm />
           </>
         )}
 
         {activeSection === "changePassword" && (
           <>
-            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}</h2>
+            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}</SectionTitle>
             <ChangePasswordForm />
           </>
         )}
 
         {activeSection === "viewAdmins" && (
           <>
-            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}</h2>
+            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}</SectionTitle>
             <AdminList />
           </>
         )}
 
         {activeSection === "deleteAdmin" && (
           <>
-            <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}</h2>
+            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}</SectionTitle>
             <DeleteAdminForm />
           </>
         )}

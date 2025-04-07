@@ -20,12 +20,12 @@
       },
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
-        "subtitle": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN IHR SCHÖNSTES <HighlightedSpan>LÄCHELN"
+        "subtitle": "Wir <HighlightedSpan>schenken</HighlightedSpan> Ihnen Ihr schönstes <HighlightedSpan>lächeln"
       },
       "about_us_page": {
         "ours": "Unsere",
         "are": "sind mit modernen",
-        "ausgestattet": "ausgestattet!"
+        "ausgestattet": "ausgestattet !"
       },
       "team_page": {
         "servicesIntrot": "Unsere ",
@@ -59,7 +59,7 @@
         }
       },
       "contacts_page": {
-        "welcome_text": "Wir sind immer für Sie da! Hier finden Sie unsere Kontaktinformationen, melden Sie sich gerne bei uns.",
+        "welcome_text": "Wir sind <HighlightedSpan>immer</HighlightedSpan> für Sie da! Hier finden Sie unsere <HighlightedSpan>Kontaktinformationen</HighlightedSpan>, melden Sie sich gerne bei uns.",
         "titleContacts": "Contacts",
         "titleTime": "Sprechzeiten",
         "titleInf": "Kontaktinformationen",
@@ -219,8 +219,8 @@
                 "grantAdminRights": "Administratorrechte gewähren"
               },
               "change": {
-                "currentPasswordLabel": "Aktuelles Passwort:",
-                "currentPasswordPlaceholder": "Aktuelles Passwort eingeben",
+                "currentLoginLabel": "Aktuelles Login:",
+                "currentPasswordPlaceholder": "Aktuelles Login eingeben",
                 "newPasswordLabel": "Neues Passwort:",
                 "newPasswordPlaceholder": "Neues Passwort eingeben",
                 "confirmPasswordLabel": "Passwort bestätigen:",
@@ -245,7 +245,7 @@
               "settingsPage": {
                 "title": "Administrator-Einstellungen",
                 "back": "Zurück",
-              "greeting": "Willkommen im Admin-Panel!",
+              "greeting": "Willkommen, <HighlightedSpan>Administrator</HighlightedSpan>!",
               "capabilities": "Hier können Sie Zugriffsrechte verwalten und das Passwort des Administrators ändern.",
                 "buttons": {
                   "create": "Neuen Administrator erstellen",

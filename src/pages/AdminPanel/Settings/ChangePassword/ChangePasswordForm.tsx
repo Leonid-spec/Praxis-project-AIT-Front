@@ -35,7 +35,7 @@ const ChangePasswordForm: React.FC = () => {
     <Wrapper>
       <FormContainer onSubmit={(e) => e.preventDefault()}>
         <Label>
-          {t("message.adminPanel.appointments.settings.admin.change.currentPasswordLabel")}
+          {t("message.adminPanel.appointments.settings.admin.change.currentLoginLabel")}
           <Input
             type="password"
             value={currentPassword}
@@ -52,7 +52,7 @@ const ChangePasswordForm: React.FC = () => {
             placeholder={t("message.adminPanel.appointments.settings.admin.change.newPasswordPlaceholder")}
           />
         </Label>
-        <Label>
+        {/* <Label>
           {t("message.adminPanel.appointments.settings.admin.change.confirmPasswordLabel")}
           <Input
             type="password"
@@ -60,7 +60,7 @@ const ChangePasswordForm: React.FC = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             placeholder={t("message.adminPanel.appointments.settings.admin.change.confirmPasswordPlaceholder")}
           />
-        </Label>
+        </Label> */}
         <SubmitButton type="button" onClick={handleSubmit}>
           {t("message.adminPanel.appointments.settings.admin.change.submitButton")}
         </SubmitButton>

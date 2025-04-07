@@ -18,8 +18,34 @@ export const ContentContainer = styled.div`
   }
 `;
 
+export const WelcomeTextBox = styled.div`
+    display: flex;
+    flex-direction: column;
+  gap: 30px;
+  text-align:center;
+  margin: 20px 0;
+  padding: 10px 0 20px;
+`;
+
+export const MainWelcomeText = styled.p`
+    font-size: 28px;
+  font-weight: bold;
+`;
+
+
+export const MainFunctionsText = styled.p`
+      font-size: 24px;
+
+`;
+
+
 export const Section = styled.div`
   margin-top: 50px;
+`;
+
+export const SectionTitle = styled.h2`
+  text-align:center;
+
 `;
 
 export const ButtonGroup = styled.div`
@@ -93,4 +119,10 @@ export const Label = styled.label`
   input[type="checkbox"] {
     margin-right: 10px;
   }
+`;
+
+export const HighlightedSpan = styled.span`
+  color: #5fc9d3;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;

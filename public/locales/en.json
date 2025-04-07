@@ -20,7 +20,7 @@
       },
       "home_page": {
         "title": "Welcome to our caring and professional dental practice",
-        "subtitle": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+        "subtitle": "We <HighlightedSpan>give</HighlightedSpan> you your most beautiful <HighlightedSpan>smile</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Our",
@@ -57,7 +57,7 @@
         }
       },
       "contacts_page": {
-        "welcome_text": "We’re always happy to assist you! Here you can find our contact information, feel free to reach out.",
+        "welcome_text": "We’re <HighlightedSpan>always</HighlightedSpan> happy to assist you! Here you can find our <HighlightedSpan>contact information</HighlightedSpan>, feel free to reach out.",
         "titleContacts": "Contacts",
         "titleTime": "Opening hours",
         "titleInf": "Contact Information",
@@ -216,8 +216,8 @@
               "grantAdminRights": "Grant Admin Rights"
             },
             "change": {
-              "currentPasswordLabel": "Current Password:",
-              "currentPasswordPlaceholder": "Enter current password",
+              "currentLoginLabel": "Current login:",
+              "currentPasswordPlaceholder": "Enter current login",
               "newPasswordLabel": "New Password:",
               "newPasswordPlaceholder": "Enter new password",
               "confirmPasswordLabel": "Confirm Password:",
@@ -242,7 +242,7 @@
             "settingsPage": {
               "title": "Administrator Settings",
               "back": "Back",
-              "greeting": "Welcome to the admin panel!",
+              "greeting": "Welcome, <HighlightedSpan>Administrator</HighlightedSpan>!",
               "capabilities": "Here you can manage access rights and change the administrator's password.",
               "buttons": {
                 "create": "Create New Administrator",

@@ -19,17 +19,17 @@
         }
       },
       "home_page": {
-        "title": "Добро пожаловать в стоматологическую клинику",
-        "subtitle": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
+        "title": "Добро пожаловать в нашу стоматологическую клинику",
+        "subtitle": "Мы <HighlightedSpan>дарим</HighlightedSpan> вам вашу самую красивую <HighlightedSpan>улыбку</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Наши",
         "are": "оснащены современными",
-        "ausgestattet": "."
+        "ausgestattet": "!"
       },
       "team_page": {
         "servicesIntrot": "Наша",
-        "welcome": "Добро пожаловать в",
+        "welcome": "Добро пожаловать в ",
         "subtitle": "Добро пожаловать на страницу нашей команды! Мы - команда профессионалов, стремящихся обеспечить вам качественную заботу о зубах. Наша миссия - подарить вам улыбку, полную здоровья и уверенности. Благодарим за доверие!",
         "moreInfoBtn": "Узнать больше",
         "noSpecialization": "Специализация не указана",
@@ -57,7 +57,7 @@
         }
       },
       "contacts_page": {
-        "welcome_text": "Мы всегда рады вам помочь! Здесь вы найдете нашу контактную информацию, обращайтесь.",
+        "welcome_text": "Мы <HighlightedSpan>всегда</HighlightedSpan> рады вам помочь! Здесь вы найдете нашу <HighlightedSpan>контактную информацию</HighlightedSpan>, обращайтесь.",
         "titleContacts": "Контакты",
         "titleTime": "Часы работы",
         "titleInf": "Контактная информация",
@@ -217,8 +217,8 @@
               "grantAdminRights": "Предоставить права администратора"
             },
             "change": {
-              "currentPasswordLabel": "Текущий пароль:",
-              "currentPasswordPlaceholder": "Введите текущий пароль",
+              "currentLoginLabel": "Текущий логин:",
+              "currentPasswordPlaceholder": "Введите текущий логин",
               "newPasswordLabel": "Новый пароль:",
               "newPasswordPlaceholder": "Введите новый пароль",
               "confirmPasswordLabel": "Подтвердите пароль:",
@@ -243,7 +243,7 @@
             "settingsPage": {
               "title": "Настройки администратора",
               "back": "Назад",
-              "greeting": "Добро пожаловать в панель администратора!",
+              "greeting": "Добро пожаловать, <HighlightedSpan>Администратор</HighlightedSpan>!",
               "capabilities": "Здесь вы можете управлять правами доступа и изменять пароль администратора.",
               "buttons": {
                 "create": "Создать нового администратора",

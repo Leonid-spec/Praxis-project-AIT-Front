@@ -1,10 +1,21 @@
 import React, { useState } from "react";
-import styles, {
+import {
+  ButtonContainer,
+  CardsGrid,
+  ContactBox,
+  ContactIcons,
+  ContactLink,
+  ContactsBox,
+  ContactsBoxTitle,
   ContactsContainer,
+  ContactsPageContainer,
+  ContactsWrapper,
+  DaysOfWeek,
   HighlightedSpan,
-  MainPhoto,
-  MainPhotoContainer,
-  MainPhotosContainer,
+  IconCircle,
+  MapContainer,
+  SprechzeitenBox,
+  SprechzeitenWrapper,
   TeamContainer,
   WelcomeTextContainer,
   WelcomeTextSubtitle,
@@ -22,7 +33,6 @@ const Contacts: React.FC = () => {
     navigator.clipboard.writeText(coordinates);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
-    // alert(t("message.coordinatesCopied"));
   };
 
   const handleCall = () => {
@@ -69,81 +79,58 @@ const Contacts: React.FC = () => {
             {parseSubtitle(t("message.main.contacts_page.welcome_text"))}
           </WelcomeTextSubtitle>
         </WelcomeTextContainer>
-
-        {/* <MainPhotosContainer>
-          <MainPhotoContainer>
-            <MainPhoto
-              src="https://th.bing.com/th/id/R.8a5ad11f92e2ee33d7c2ec9de4e89acf?rik=SILS5o4EwnukrA&riu=http%3a%2f%2fwww.reiseberichte.bplaced.net%2fthailand%2fbangkok-thailand-fass-dental-clinc-zahnarzt-01.jpg&ehk=o4IzXCzI1NmV6ZRPxlSh15cjCQnrX2AOQOHDEOURlIo%3d&risl=&pid=ImgRaw&r=0"
-              alt="Team"
-            />
-          </MainPhotoContainer>
-          <MainPhotoContainer>
-            <MainPhoto
-              src="https://www.zahnarzt-krappen.de/wp-content/uploads/UnserTeam_Suedwallpraxis_Rezeption1-705x484.jpg"
-              alt="Team"
-            />
-          </MainPhotoContainer>
-        </MainPhotosContainer> */}
       </TeamContainer>
 
-      <div style={styles.contactsPage}>
-        <div style={styles.cardsGrid}>
-          <div style={styles.contactsWrapper}>
-            <div style={styles.contacts}>
-              <h2>
-                <a
-                  href="https://www.google.com/maps?q=50.4501,30.5234"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={styles.link}
-                >
+      <ContactsPageContainer>
+        <CardsGrid>
+          <ContactsWrapper>
+            <ContactsBox>
+              <ContactsBoxTitle>
                   {t("message.main.contacts_page.titleContacts")}
-                </a>
-              </h2>
+              </ContactsBoxTitle>
 
-              <p style={styles.contactBox}>
-              <a
+              <ContactBox>
+                <ContactLink
                   href="https://www.google.com/maps?q=50.4501,30.5234"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={styles.link}
                 >
                   {t("message.main.contacts_page.address")}
-                </a>
-                {/* {t("message.main.contacts_page.address")} */}
-              </p>
+                </ContactLink>
+              </ContactBox>
 
-              <div style={styles.contactBox}>
-                <div style={styles.contactIcons}>
-                  <div style={styles.contactIcons}>
-                    <div style={styles.iconCircle}>📍</div>
+              <ContactIcons>
+                  <IconCircle><FaCopy
+                      onClick={handleCopyCoordinates}
+                      style={{ cursor: "pointer"}}
+                    /></IconCircle>
                   <span>GPS: 50.4501° N, 30.5234° E</span>
-                  </div>
-                  {/* <button onClick={handleCopyCoordinates} style={styles.copyButton}>
-                {t("message.copy")}
-                //TODO что-то сделать с кнопкой, не понимаю, что она должна и куда копировать
-              </button> */}
-                </div>
+              </ContactIcons>
 
-                <div style={styles.contactIcons}>
-                  <div style={styles.iconCircle}>📞</div>
-                  <span>{t("message.main.contacts_page.phone")}</span>
-                </div>
+              <ContactIcons>
+                <IconCircle> 
+                  <FaPhone 
+                      onClick={handleCall}
+                      style={{ cursor: "pointer" }} />
+                  </IconCircle>
+                <span>{t("message.main.contacts_page.phone")}</span>
+              </ContactIcons>
 
-                <div style={styles.contactIcons}>
-                  <div style={styles.contactIcons}>
-                    <div style={styles.iconCircle}>📧</div>
-                    <span>{t("message.main.contacts_page.email")}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+              <ContactIcons>
+                  <IconCircle>
+                    <FaEnvelope 
+                        onClick={handleEmail}
+                        style={{ cursor: "pointer" }} />
+                    </IconCircle>
+                  <span>{t("message.main.contacts_page.email")}</span>
+              </ContactIcons>
+            </ContactsBox>
+          </ContactsWrapper>
 
-          <div style={styles.sprechzeitenWrapper}>
-            <div style={styles.sprechzeiten}>
-              <h2>{t("message.main.contacts_page.titleTime")}</h2>
-              <div style={styles.daysOfWeek}>
+          <SprechzeitenWrapper>
+            <SprechzeitenBox>
+              <ContactsBoxTitle>{t("message.main.contacts_page.titleTime")}</ContactsBoxTitle>
+              <DaysOfWeek>
                 <p>
                   {t("message.footer.daysOfWeek.monday")}: 08:00 - 12:00, 13:00
                   - 18:00
@@ -164,18 +151,18 @@ const Contacts: React.FC = () => {
                   {t("message.footer.daysOfWeek.friday")}: 08:00 - 12:00, 13:00
                   - 18:00
                 </p>
-              </div>
-              <div style={styles.buttonContainer}>
+              </DaysOfWeek>
+              <ButtonContainer>
                 <MakeAppointmentBtn
                   text={t("message.main.use_oft.button.title")}
                 />
-              </div>
-            </div>
-          </div>
-        </div>
+              </ButtonContainer>
+            </SprechzeitenBox>
+          </SprechzeitenWrapper>
+        </CardsGrid>
 
-        <div style={styles.mapContainer}>
-          <h2>{t("message.main.contacts_page.map.title")}</h2>
+        <MapContainer>
+          <ContactsBoxTitle>{t("message.main.contacts_page.map.title")}</ContactsBoxTitle>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.577930682343!2d11.587207676366516!3d48.1093323792194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf31d5b7085f%3A0xd3a9396049ec4d54!2sAlbrecht-D%C3%BCrer-Stra%C3%9Fe%2010%2C%2081543%20M%C3%BCnchen%2C%20Germany!5e0!3m2!1sen!2sus!4v1688561234567!5m2!1sen!2sus"
             width="100%"
@@ -184,8 +171,8 @@ const Contacts: React.FC = () => {
             allowFullScreen
             loading="lazy"
           ></iframe>
-        </div>
-      </div>
+        </MapContainer>
+      </ContactsPageContainer>
     </ContactsContainer>
   );
 };
