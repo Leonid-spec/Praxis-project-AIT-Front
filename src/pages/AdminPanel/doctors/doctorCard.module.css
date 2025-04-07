@@ -1,0 +1,48 @@
+.doctorCard {
+  width: 300px;
+  height: 150px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: border 0.3s;
+}
+
+/* Если карточка активна, рамка зелёная */
+.activeCard {
+  border: 2px solid #28a745;
+}
+
+/* Если карточка НЕ активна, рамка красная */
+.inactiveCard {
+  border: 2px solid #ff4d4d;
+}
+
+/* Блюр теперь применяется только к фото */
+.cardPhotoBlur {
+  filter: blur(4px);
+}
+
+.cardPhoto {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Имя без рамки по умолчанию */
+.cardName {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5px;
+  border: none;
+}
+
+/* Если редактирование включено, появляется рамка */
+.cardName.editMode {
+  border: 1px solid #ccc;
+  padding: 5px;
+}

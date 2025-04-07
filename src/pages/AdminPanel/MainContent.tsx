@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import styles from "./mainContent.module.css";
-import DoctorsPage from "./DoctorsPage";
+import DoctorsPage from "./doctors/DoctorsPage";
 import AppointmentPage from "./appointmentsPage/AppointmentPage";
 
 const MainContent: React.FC = () => {

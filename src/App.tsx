@@ -8,29 +8,24 @@ import DoctorDetails from "./pages/PageDetails/DoctorDetails/DoctorDetails";
 import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import ContactsPage from "./pages/Contacts/ContactsPage";
-import { DoctorsProvider } from "./pages/AdminPanel/DoctorsContext"; // Подключаем глобальный контекст
 import AppointmentPage from "./pages/AdminPanel/appointmentsPage/AppointmentPage";
+
 
 function App() {
   return (
-    <DoctorsProvider>
-      {" "}
-      {/* Оборачиваем всё приложение в провайдер */}
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/appointment" element={<AppointmentPage />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/doctor/:id" element={<DoctorDetails />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/service/:id" element={<ServiceDetails />} />
-          <Route path="/admin-panel/*" element={<AdminPanel />} />{" "}
-          {/* Звёздочка для вложенных маршрутов */}
-        </Routes>
-      </Layout>
-    </DoctorsProvider>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/appointment" element={<AppointmentPage />} />
+        <Route path="/team" element={<Team />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/doctor/:id" element={<DoctorDetails />} />
+        <Route path="/service" element={<Service />} />
+        <Route path="/service/:id" element={<ServiceDetails />} />
+        <Route path="/admin-panel/*" element={<AdminPanel />} /> {/* Звёздочка для вложенных маршрутов */}
+      </Routes>
+    </Layout>
   );
 }
 
