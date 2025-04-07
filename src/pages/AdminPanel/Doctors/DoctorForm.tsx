@@ -1,88 +1,108 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./doctorForm.module.css";
 
-interface DoctorFormProps {
-  newDoctor: any;
-  setNewDoctor: (doctor: any) => void;
-  handleApplySettings: () => void;
-  onClose: () => void;
-}
+const DoctorForm: React.FC<{ closeForm: () => void; addDoctorCard: (doctorData: any) => void; doctorData?: any }> = ({ closeForm, addDoctorCard, doctorData }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [isActive, setIsActive] = useState(true);
+  const [formData, setFormData] = useState<Record<string, string>>(doctorData || {
+    name: "",
+    titleDe: "",
+    titleEn: "",
+    titleRu: "",
+    specialisationDe: "",
+    specialisationEn: "",
+    specialisationRu: "",
+    biographyDe: "",
+    biographyEn: "",
+    biographyRu: "",
+    photo: "",
+  });
 
-const DoctorForm: React.FC<DoctorFormProps> = ({
-  newDoctor,
-  setNewDoctor,
-  handleApplySettings,
-  onClose,
-}) => {
-  // Функция для обновления Specialisation, убирая пустые значения
-  const handleSpecialisationChange = (value: string) => {
-    const combinedSpecialisation = [
-      newDoctor.SpecialisationDe,
-      newDoctor.SpecialisationEn,
-      newDoctor.SpecialisationRu,
-      value,
-    ]
-      .filter((spec) => spec && spec.trim() !== "")
-      .join(" / ");
+  const handlePhotoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFormData({ ...formData, photo: URL.createObjectURL(file) });
+    }
+  };
 
-    setNewDoctor({ ...newDoctor, specialisation: combinedSpecialisation });
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const isAllFieldsFilled = Object.entries(formData).every(([key, value]) => key === "photo" || value.trim() !== "");
+
+  const handleSave = () => {
+    if (!isAllFieldsFilled) return;
+    setIsEditing(false);
+    addDoctorCard({ ...formData, isActive });
   };
 
   return (
-    <div className={styles.form}>
-      {/* Чёрный крестик для закрытия */}
-      <button onClick={onClose} className={styles.closeButton}>
-        ✖
-      </button>
+    <div className={styles.formContainer}>
+      <div className={styles.header}>
+        <button onClick={closeForm} className={styles.backButton}>← Return Back</button>
 
-      <h2 className={styles.formHeader}>
-        {newDoctor.id ? "Edit Doctor" : "Add Doctor"}
-      </h2>
+        {isEditing && (
+          <button className={`${styles.activeButton} ${isActive ? styles.green : styles.red}`} onClick={() => setIsActive(!isActive)}>
+            {isActive ? "Active" : "No Active"}
+          </button>
+        )}
 
-      {/* Поле Full Name */}
-      <label className={styles.formLabel}>
-        Full Name:
-        <input
-          type="text"
-          className={`${styles.formInput} ${styles.smallInput}`}
-          value={newDoctor.fullname || ""}
-          onChange={(e) =>
-            setNewDoctor({ ...newDoctor, fullname: e.target.value })
-          }
-        />
-      </label>
+        <button onClick={isEditing ? handleSave : () => setIsEditing(true)} className={styles.editButton} disabled={isEditing && !isAllFieldsFilled}>
+          {isEditing ? "✅ Save All" : "✏️ Edit"}
+        </button>
+      </div>
 
-      {/* Поле Specialisation */}
-      <label className={styles.formLabel}>
-        Specialisation:
-        <input
-          type="text"
-          className={`${styles.formInput} ${styles.smallInput}`}
-          value={newDoctor.specialisation || ""}
-          onChange={(e) => handleSpecialisationChange(e.target.value)}
-        />
-      </label>
+      <div className={styles.formContent}>
+        <div className={styles.leftColumn}>
+          {isEditing ? (
+            <input type="text" name="name" placeholder="Doctor's Name" className={`${styles.input} ${styles.editMode}`} onChange={handleInputChange} value={formData.name} />
+          ) : (
+            <p className={styles.nameDisplay}>{formData.name || "Doctor's Name"}</p>
+          )}
 
-      {/* Поле Photo */}
-      <label className={styles.formLabel}>
-        Photo:
-        <input
-          type="file"
-          className={styles.formInput}
-          onChange={(e) =>
-            e.target.files?.[0] &&
-            setNewDoctor({
-              ...newDoctor,
-              photo: URL.createObjectURL(e.target.files[0]),
-            })
-          }
-        />
-      </label>
+          <div className={styles.fieldGroup}>
+            <label className={styles.sectionTitle}>Titles:</label>
+            {["titleDe", "titleEn", "titleRu"].map((field) => (
+              <div key={field} className={styles.inputRow}>
+                <label>{field.slice(-2).toUpperCase()}</label>
+                <input type="text" name={field} className={isEditing && formData[field]?.trim() === "" ? styles.errorBorder : ""} disabled={!isEditing} onChange={handleInputChange} value={formData[field]} />
+              </div>
+            ))}
+          </div>
 
-      {/* Кнопка Apply */}
-      <button onClick={handleApplySettings} className={styles.applyButton}>
-        Apply
-      </button>
+          <div className={styles.fieldGroup}>
+            <label className={styles.sectionTitle}>Specialisation:</label>
+            {["specialisationDe", "specialisationEn", "specialisationRu"].map((field) => (
+              <div key={field} className={styles.inputRow}>
+                <label>{field.slice(-2).toUpperCase()}</label>
+                <input type="text" name={field} className={isEditing && formData[field]?.trim() === "" ? styles.errorBorder : ""} disabled={!isEditing} onChange={handleInputChange} value={formData[field]} />
+              </div>
+            ))}
+          </div>
+
+          {/* Biography */}
+          <label className={styles.sectionTitle}>Biography:</label>
+          <div className={styles.biography}>
+            {["biographyDe", "biographyEn", "biographyRu"].map((field) => (
+              <div key={field} className={styles.bioColumn}>
+                <label>{field.slice(-2).toUpperCase()}</label>
+                <textarea name={field} className={isEditing && formData[field]?.trim() === "" ? styles.errorBorder : ""} disabled={!isEditing} onChange={handleInputChange} value={formData[field]} />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className={styles.photoContainer}>
+          <div className={styles.photoPlaceholder}>
+            {formData.photo ? <img src={formData.photo} alt="Doctor's Photo" className={styles.photoPreview} /> : "Photo"}
+          </div>
+          {isEditing && (
+            <button className={styles.photoButton} onClick={() => document.getElementById("photoUpload")?.click()}>Add Photo 📷</button>
+          )}
+          <input type="file" id="photoUpload" onChange={handlePhotoUpload} accept="image/*" className={styles.hiddenInput} />
+        </div>
+      </div>
     </div>
   );
 };
