@@ -7,7 +7,9 @@
         "about_us": "Über uns",
         "contact": "Kontakte",
         "home": "Startseite",
-        "logo_alt": "Logo"
+        "logo_alt": "Logo",
+        "cabinets": "Kabinette",
+        "devices": "Geräten"
       }
     },
     "main": {
@@ -19,6 +21,11 @@
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
         "subtitle": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN IHR SCHÖNSTES <HighlightedSpan>LÄCHELN"
+      },
+      "about_us_page": {
+        "ours": "Unsere",
+        "are": "sind mit modernen",
+        "ausgestattet": "ausgestattet!"
       },
       "team_page": {
         "servicesIntrot": "Unsere ",
@@ -33,6 +40,7 @@
         }
       },
       "service_page": {
+        "servicesIntrot": "Unsere ",
         "welcome": "Willkommen bei",
         "subtitle": "Wir bieten ein umfassendes Spektrum an zahnmedizinischen Dienstleistungen, um Ihr Lächeln gesund und schön zu erhalten. Unsere Spezialisten nutzen modernste Technologien und eine individuelle Betreuung. Vertrauen Sie Ihr Lächeln den Profis an!",
         "loadingServices": "Lade Leistungen...",
@@ -46,8 +54,8 @@
         "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar.",
         "servicerDetails":
         {
-          "title": "НАЗВАНИЕ",
-          "specialization": "ПРОЦЕДУРА"
+          "title": "Verfahrensname",
+          "specialization": "Mehr erfahren"
         }
       },
       "contacts_page": {
@@ -95,11 +103,12 @@
         },
         "errors": {
           "missingCredentials": "Bitte geben Sie Benutzername und Passwort ein.",
-          "usernameLength": "Der Benutzername muss zwischen 2 und 16 Zeichen lang sein.",
-          "passwordLength": "Das Passwort muss mindestens 1 Zeichen enthalten.",
+          "usernameLength": "Der Benutzername muss zwischen 3 und 16 Zeichen lang sein.",
+          "passwordLength": "Das Passwort muss zwischen 4 und 32 Zeichen lang sein.",
           "missingEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
           "usernameStartsWithSpace": "Der Benutzername sollte nicht mit einem Leerzeichen beginnen.",
-          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten."
+          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten.",
+          "loginContainsSpaces": "Der Benutzername sollte keine Leerzeichen enthalten."
         },
         "messages": {
           "forgotPasswordTitle": "Passwort zurücksetzen",
@@ -161,51 +170,43 @@
         }
       }
     },
-      "adminPanel": {
-       "appointments": {
-          "title": "Termine",
-          "noAppointments": "Keine Termine.",
-          "loadingAppointments": "Termine werden geladen...",
-          "errorFetchingAppointments": "Fehler beim Laden der Termine.",
-          "statusUpdated": "Der Status des Termins wurde auf '{{status}}' aktualisiert.",
-          "statusUpdateError": "Der Status des Termins konnte nicht auf '{{status}}' aktualisiert werden.",
-          "appointmentDetails": {
-            "title": "Termindetails",
-            "client": "Kunde",
-            "service": "Dienstleistung",
-            "date": "Datum",
-            "email": "E-Mail",
-            "phone1": "Telefon 1",
-            "phone2": "Telefon 2",
-            "language": "Sprache",
-            "comment": "Kommentar",
-            "available_time": "Verfügbare Zeit",
-            "noPhone": "Nicht angegeben",
-            "noComment": "Kein Kommentar",
-            "noLanguage": "Nicht angegeben",
-            "noAvailable_time": "Keine verfügbare Zeit"
-          },
+    "adminPanel": {
+      "appointments": {
+        "title": "Termine",
+        "noAppointments": "Keine Termine.",
+        "loadingAppointments": "Termine werden geladen...",
+        "errorFetchingAppointments": "Fehler beim Laden der Termine.",
+        "statusUpdated": "Der Status des Termins wurde auf '{{status}}' aktualisiert.",
+        "statusUpdateError": "Der Status des Termins konnte nicht auf '{{status}}' aktualisiert werden.",
+        "appointmentDetails": {
+          "title": "Termindetails",
+          "client": "Kunde",
+          "service": "Dienstleistung",
+          "date": "Datum",
+          "email": "E-Mail",
+          "phone1": "Telefon 1",
+          "phone2": "Telefon 2",
+          "language": "Sprache",
+          "comment": "Kommentar",
+          "available_time": "Verfügbare Zeit",
+          "noPhone": "Nicht angegeben",
+          "noComment": "Kein Kommentar",
+          "noLanguage": "Nicht angegeben",
+          "noAvailable_time": "Keine verfügbare Zeit"
+        },
+        "confirmDelete": "Möchten Sie wirklich löschen?",
+        "phoneCopied": "Telefonnummer erfolgreich kopiert!",
         "filter": {
-            "all": "Alle",
-            "new": "Neu",
-            "completed": "Abgeschlossen"
-         },
+          "all": "Alle",
+          "new": "Neu",
+          "completed": "Abgeschlossen"
+        },
         "buttons": {
-           "back": "Zurückgehen",
-           "complete": "Termin abschließen",
-           "moreInfo": "Mehr Infos"
-         }
+          "back": "Zurückgehen",
+          "complete": "Termin abschließen",
+          "moreInfo": "Mehr Infos"
         }
-       }
       }
     }
-  
-
-    
-      
-     
-
-        
-   
-
-
+  }
+}

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 
 interface ServiceCardProps {
   id: number;
-  photo?: string;
+  topImage: string;
   title: string;
   description: string;
   onDetailsClick: (id: number) => void;
@@ -12,9 +12,9 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   id,
-  photo,
   title,
   description,
+  topImage,
   onDetailsClick,
 }) => {
   const { t } = useTranslation();
@@ -23,7 +23,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     <Card>
      <PhotoContainer>
         <Photo
-          src={photo || "https://via.placeholder.com/150"}
+          src={topImage || "https://via.placeholder.com/150"}
           alt={`Photo of ${title}`}
         />
      </PhotoContainer>

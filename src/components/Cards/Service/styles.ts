@@ -16,13 +16,12 @@ export const Card = styled.div`
 export const PhotoContainer = styled.div`
   width: 100%;
   height: 250px;
-  background-color: lightblue;
+  /* background-color: lightblue; */
 `;
 
 export const Photo = styled.img`
    width: 100%;
-  /* max-height: 400px; */
-  max-height: 200px;
+   height: 100%;
   object-fit: cover;
 `;
 

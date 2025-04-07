@@ -7,7 +7,9 @@
         "about_us": "About Us",
         "contact": "Contact",
         "home": "Home",
-        "logo_alt": "Logo"
+        "logo_alt": "Logo",
+        "cabinets": "cabinets",
+        "devices": "devices"
       }
     },
     "main": {
@@ -19,6 +21,11 @@
       "home_page": {
         "title": "Welcome to our caring and professional dental practice",
         "subtitle": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+      },
+      "about_us_page": {
+        "ours": "Our",
+        "are": "are equipped with modern",
+        "ausgestattet": "!"
       },
       "team_page": {
         "servicesIntrot": "Our ",
@@ -46,8 +53,8 @@
         "noServicesAvailable": "No services available at the moment.",
         "servicerDetails":
         {
-          "title": "НАЗВАНИЕ",
-          "specialization": "ПРОЦЕДУРА"
+          "title": "Procedure Name",
+          "specialization": "Learn More"
         }
       },
       "contacts_page": {
@@ -95,11 +102,12 @@
         },
         "errors": {
           "missingCredentials": "Please enter username and password.",
-          "usernameLength": "Username must be between 2 and 16 characters.",
-          "passwordLength": "Password must have at least 1 character.",
+          "usernameLength": "Username must be between 3 and 16 characters.",
+          "passwordLength": "Password must be between 4 and 32 characters.",
           "missingEmail": "Please enter your email.",
           "usernameStartsWithSpace": "Username should not start with a space.",
-          "passwordContainsSpaces": "Password should not contain spaces."
+          "passwordContainsSpaces": "Password should not contain spaces.",
+          "loginContainsSpaces": "Username should not contain spaces."
         },
         "messages": {
           "forgotPasswordTitle": "Reset Password",
@@ -170,7 +178,7 @@
           "statusUpdated": "Appointment status updated to '{{status}}'.",
           "statusUpdateError": "Failed to update appointment status to '{{status}}'.",
           "appointmentDetails": {
-            "title": "Appointment Details",
+            "title": "Appointment details",
             "client": "Client",
             "service": "Service",
             "date": "Date",
@@ -185,6 +193,8 @@
             "noLanguage": "Not specified",
             "noAvailable_time": "No available time"
           },
+          "confirmDelete": "Are you sure you want to delete?",
+          "phoneCopied": "Phone number copied successfully!",
           "filter": {
             "all": "All",
             "new": "New",

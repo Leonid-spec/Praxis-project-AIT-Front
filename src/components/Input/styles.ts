@@ -30,7 +30,7 @@ export const InputContainer = styled.div<InputContainerProps>`
   transition: border-color 0.3s ease;
   
   &:focus-within {
-    border-color: #475bce;
+    border-color: #20b1b7;
   }
 `;
 

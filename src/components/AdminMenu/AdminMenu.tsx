@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginAdminForm from "../Login/LoginAdminForm";
 import { FaKey, FaSignOutAlt, FaTools } from "react-icons/fa";
-import { 
-  AdminMenuWrapper, 
-  AdminIconWrapper, 
-  AdminIcon, 
-  Dropdown, 
+import {
+  AdminMenuWrapper,
+  AdminIconWrapper,
+  AdminIcon,
+  Dropdown,
   DropdownItem,
-} from './styles';
+} from "./styles";
 
 interface AdminMenuProps {
   isLoggedIn: boolean;
@@ -21,9 +21,10 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem("token");
     setIsLoggedIn(false);
     setShowDropdown(false);
-    navigate("/"); 
+    navigate("/");
   };
 
   const handleChangePassword = () => {
@@ -33,13 +34,15 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
   return (
     <AdminMenuWrapper>
-      <AdminIconWrapper onClick={() => {
-        if (isLoggedIn) {
-          setShowDropdown(!showDropdown);
-        } else {
-          setShowLoginForm(true);
-        }
-      }}>
+      <AdminIconWrapper
+        onClick={() => {
+          if (isLoggedIn) {
+            setShowDropdown(!showDropdown);
+          } else {
+            setShowLoginForm(true);
+          }
+        }}
+      >
         <AdminIcon
           src="https://th.bing.com/th/id/R.fbf39144bff5c02898fdc8fd583f84b6?rik=qLhp7D3LhK%2fQgA&pid=ImgRaw&r=0"
           alt="Admin"
@@ -48,19 +51,25 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
       {isLoggedIn && showDropdown && (
         <Dropdown>
-           <DropdownItem onClick={() => navigate("/admin-panel/add-admin")}>
-           <FaTools style={{ marginRight: "8px" }} /> Greate new Admin
-        </DropdownItem>
- 
-        <DropdownItem onClick={handleChangePassword}>
+          <DropdownItem onClick={() => navigate("/admin-panel/add-admin")}>
+            <FaTools style={{ marginRight: "8px" }} /> Admin panel
+          </DropdownItem>
+
+          <DropdownItem onClick={handleChangePassword}>
           <FaKey style={{ marginRight: "8px" }} />
-          Change password
+          Change passworda
         </DropdownItem>
-        <DropdownItem onClick={handleLogout}>
-          <FaSignOutAlt style={{ marginRight: "8px" }} /> 
-          Log out
-        </DropdownItem>
-      </Dropdown>
+
+          <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
+            <FaTools style={{ marginRight: "8px" }} />
+            Create New Admin
+          </DropdownItem>
+
+          <DropdownItem onClick={handleLogout}>
+            <FaSignOutAlt style={{ marginRight: "8px" }} />
+            Log out
+          </DropdownItem>
+        </Dropdown>
       )}
 
       {showLoginForm && (
@@ -69,7 +78,7 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
           onLoginSuccess={() => {
             setIsLoggedIn(true);
             setShowLoginForm(false);
-            navigate("/admin-panel"); 
+            navigate("/admin-panel");
           }}
         />
       )}
@@ -78,4 +87,3 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 };
 
 export default AdminMenu;
-

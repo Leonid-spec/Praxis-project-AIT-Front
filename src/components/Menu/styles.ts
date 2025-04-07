@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const MenuContainer = styled.div`
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -96,7 +96,7 @@ export const StyledNavLink = styled(NavLink)`
 
     color: #a0eef2;
 
-    transform: translateY(-2px);
+    /* transform: translateY(-2px); */
   }
 
   &:active {
@@ -137,6 +137,8 @@ export const StyledNavLinkMenu = styled(NavLink)`
     /* border-bottom: 2px solid #4a90e2;
     border-bottom: 2px solid #49bfc5; */
     border-bottom: 2px solid #4b9aa5;
+    border-bottom: 2px solid #6ec1c6;
+
 
   }
 
@@ -168,7 +170,7 @@ export const NavLinkImg = styled.img`
 
   &:hover {
     opacity: 0.8;
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
   }
 
   @media (min-width: 1920px) {

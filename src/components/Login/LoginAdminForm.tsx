@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaLock } from "react-icons/fa";
 import {
   Overlay,
   FormContainer,
@@ -15,80 +15,116 @@ import Notification from "../Notification/Notification";
 import TextInput from "../Input/TextInput";
 import { useNavigate } from "react-router-dom";
 
-const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLoginSuccess: () => void }) => {
-  const [username, setUsername] = useState("");
+const LoginAdminForm = ({
+  onClose,
+  onLoginSuccess,
+}: {
+  onClose: () => void;
+  onLoginSuccess: () => void;
+}) => {
+  const [login, setlogin] = useState("");
   const [password, setPassword] = useState("");
-  const [notification, setNotification] = useState<{ message: string; type: "error" | "success" } | null>(null);
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "error" | "success";
+  } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (username[0] === ' ') {
-      setNotification({ message: t("message.other.loginAdmin.errors.usernameStartsWithSpace"), type: "error" });
+    if (login[0] === " ") {
+      setNotification({
+        message: t("message.other.loginAdmin.errors.usernameStartsWithSpace"),
+        type: "error",
+      });
+      return;
+    }
+    if (/\s/.test(login)) {
+      setNotification({
+        message: t("message.other.loginAdmin.errors.loginContainsSpaces"),
+        type: "error",
+      });
       return;
     }
     if (/\s/.test(password)) {
-      setNotification({ message: t("message.other.loginAdmin.errors.passwordContainsSpaces"), type: "error" });
+      setNotification({
+        message: t("message.other.loginAdmin.errors.passwordContainsSpaces"),
+        type: "error",
+      });
+      return;
+    }
+    if (!login.trim() || !password.trim()) {
+      setNotification({
+        message: t("message.other.loginAdmin.errors.missingCredentials"),
+        type: "error",
+      });
+      return;
+    }
+    if (login.length < 3 || login.length > 16) {
+      setNotification({
+        message: t("message.other.loginAdmin.errors.loginLength"),
+        type: "error",
+      });
+      return;
+    }
+    if (password.length < 4 || login.length > 32) {
+      setNotification({
+        message: t("message.other.loginAdmin.errors.passwordLength"),
+        type: "error",
+      });
       return;
     }
 
-    if (!username.trim() || !password.trim()) {
-      setNotification({ message: t("message.other.loginAdmin.errors.missingCredentials"), type: "error" });
-      return;
-    }
-    if (username.length < 3) {
-      setNotification({ message: t("message.other.loginAdmin.errors.usernameLength"), type: "error" });
-      return;
-    }
-    if (password.length < 1 || username.length > 30) {
-      setNotification({ message: t("message.other.loginAdmin.errors.passwordLength"), type: "error" });
-      return;
-    }
-    
-  const loginData = {
-    username,
-    password,
-  };
+    const loginData = { login, password };
 
-  // console.log("Login Data:", JSON.stringify(loginData, null, 2));
+    try {
+      const response = await fetch("http://localhost:8100/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
 
-  fetch("https://your-backend.com/api/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(loginData),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      // console.log("Server Response:", data);
-      if (data.success) {
-        setNotification({ message: t("message.other.loginAdmin.messages.loginSuccess"), type: "success" });
+      if (!response.ok) {
+        // throw new Error(`HTTP error! status: ${response.status}`);
+        throw new Error(`Invalid data!`);
+      }
+
+      const textResponse = await response.text(); 
+      // console.log("Text Response:", textResponse);
+
+      const data = textResponse ? JSON.parse(textResponse) : {};
+      // console.log("Parsed Data:", data);
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        setNotification({
+          message: t("message.other.loginAdmin.messages.loginSuccess"),
+          type: "success",
+        });
+
         setTimeout(() => {
           onLoginSuccess();
           onClose();
           navigate("/admin-panel");
         }, 1000);
       } else {
-        setNotification({ message: data.message || "Login failed", type: "error" });
+        setNotification({
+          message: data.message || "Login failed",
+          type: "error",
+        });
       }
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      setNotification({ message: "Something went wrong", type: "error" });
-    });
-
-    // console.log({ username, password });
-    setNotification({ message: t("message.other.loginAdmin.messages.loginSuccess"), type: "success" });
-
-    setTimeout(() => {
-      onLoginSuccess();
-      onClose();
-      navigate("/admin-panel");
-    }, 1000);
+    } catch (error: any) {
+      // console.error("Error:", error);
+      setNotification({
+        message: error.message || "Something went wrong",
+        type: "error",
+      });
+    }
   };
 
   return (
@@ -112,12 +148,12 @@ const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLo
 
         <TextInput
           label={t("message.other.loginAdmin.labelUsername")}
-          name="username"
+          name="login"
           icon={<FaUser />}
           type="text"
           placeholder={t("message.other.loginAdmin.placeholders.username")}
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={login}
+          onChange={(e) => setlogin(e.target.value)}
         />
         <div style={{ position: "relative" }}>
           <TextInput
@@ -138,9 +174,12 @@ const LoginAdminForm = ({ onClose, onLoginSuccess }: { onClose: () => void; onLo
               transform: "translateY(-50%)",
               cursor: "pointer",
             }}
-          ></div>
+          >
+          </div>
         </div>
-        <SubmitButton type="submit">{t("message.other.loginAdmin.button")}</SubmitButton>
+        <SubmitButton type="submit">
+          {t("message.other.loginAdmin.button")}
+        </SubmitButton>
       </FormContainer>
     </Overlay>
   );

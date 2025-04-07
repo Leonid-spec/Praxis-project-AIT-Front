@@ -5,14 +5,12 @@
   gap: 15px;
 }
 
-/* Элементы сайдбара */
 .item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Метка */
 .labelTop {
   font-size: 16px;
   font-weight: bold;
@@ -20,17 +18,16 @@
   margin-bottom: 5px;
 }
 
-/* Блок с содержимым */
 .box {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  width: 180px;
-  height: 140px;
+  gap: 20px;
+  width: 100%;
   background-color: #fff;
   border-radius: 30px;
+  padding: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -39,39 +36,37 @@
   background-color: #D9D9D9;
 }
 
-/* Иконки */
 .icon {
-  width: 70px;
-  height: 70px;
+  /* width: 70px; */
+  height: 50px;
   object-fit: contain;
 }
 
-/* Медиазапросы для адаптации на узких экранах */
 @media (max-width: 768px) {
   .sidebar {
-    flex-direction: row; /* Горизонтальное расположение */
-    justify-content: space-around; /* Распределение элементов */
-    gap: 10px; /* Уменьшенный промежуток между элементами */
-    width: 100%; /* Сайдбар занимает всю ширину */
+    flex-direction: row; 
+    justify-content: space-around; 
+    gap: 10px; 
+    width: 100%; 
   }
 
   .item {
-    flex-direction: column; /* Элементы остаются вертикальными */
-    gap: 5px; /* Сокращение промежутков внутри элемента */
+    flex-direction: column;
+    gap: 5px; 
   }
 
   .box {
-    width: 80px; /* Уменьшенный размер блока */
+    width: 80px;
     height: 80px;
-    border-radius: 15px; /* Меньший радиус закругления */
+    border-radius: 15px; 
   }
 
   .icon {
-    width: 50px; /* Уменьшение размеров иконок */
+    width: 50px; 
     height: 50px;
   }
 
   .labelTop {
-    font-size: 12px; /* Уменьшение размера текста */
+    font-size: 12px; 
   }
 }
