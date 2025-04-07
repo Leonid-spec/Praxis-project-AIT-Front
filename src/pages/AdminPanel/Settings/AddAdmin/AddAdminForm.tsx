@@ -4,17 +4,12 @@ import {
   FormContainer,
   Label,
   Input,
-  Checkbox,
   SubmitButton,
   Wrapper,
 } from "./styles";
 
-interface AddAdminFormProps {
-  onBack: () => void;
-}
-
-const AddAdminForm: React.FC<AddAdminFormProps> = () => {
-  const { t } = useTranslation(); // Получаем функцию t для перевода
+const AddAdminForm: React.FC = () => {
+  const { t } = useTranslation();
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [adminRights, setAdminRights] = useState(false);
@@ -34,23 +29,24 @@ const AddAdminForm: React.FC<AddAdminFormProps> = () => {
     <Wrapper>
       <FormContainer onSubmit={(e) => e.preventDefault()}>
         <Label>
-          {t('message.adminPanel.appointments.settings.admin.create.loginLabel')}
+          {t("message.adminPanel.appointments.settings.admin.create.loginLabel")}
           <Input
             type="text"
             value={login}
             onChange={(e) => setLogin(e.target.value)}
-            placeholder={t('message.adminPanel.appointments.settings.admin.create.loginPlaceholder')}
+            placeholder={t("message.adminPanel.appointments.settings.admin.create.loginPlaceholder")}
           />
         </Label>
         <Label>
-          {t('message.adminPanel.appointments.settings.admin.create.passwordLabel')}
+          {t("message.adminPanel.appointments.settings.admin.create.passwordLabel")}
           <Input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder={t('message.adminPanel.appointments.settings.admin.create.passwordPlaceholder')}
+            placeholder={t("message.adminPanel.appointments.settings.admin.create.passwordPlaceholder")}
           />
         </Label>
+      
         {/* <Label>
           <Checkbox
             type="checkbox"
