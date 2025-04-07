@@ -1,0 +1,127 @@
+/* Контейнер страницы */
+.content-container {
+    width: 100%; /* Занимает всю ширину */
+    padding: 0 10px; /* Добавляем отступы по бокам для большей гибкости */
+    margin: 0 auto;
+    padding: 20px; /* Убираем лишние отступы */
+    position: relative; /* Контекст для абсолютных элементов */
+    transition: margin-left 0.3s ease, margin-top 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .content-container {
+      width: 100%;
+      padding: 0 15px; /* Немного больше отступов на мобильных устройствах */
+      margin-top: 60px; /* Для корректного размещения после Sidebar */
+    }
+  
+    /* Убедимся, что контент не перекрывает Sidebar */
+    .content-container {
+      position: relative;
+      z-index: 2; /* Контент должен быть выше Sidebar */
+    }
+  
+    /* Можно добавить дополнительные стили для страницы */
+    .content-container h1, .content-container h2 {
+      text-align: center; /* Центрируем заголовки на мобильных экранах */
+    }
+  }
+  
+  
+  /* Стили для форм */
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Кнопки */
+  button {
+    padding: 10px 20px;
+    background-color: #20b1b7;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #1a8e92;
+  }
+  
+  /* Кнопка Back */
+  .back-btn {
+    padding: 10px 20px;
+    background-color: #20b1b7; /* Цвет кнопки */
+    color: white;
+    border: none;
+    border-radius: 15px; /* Сглаженные углы */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .back-btn:hover {
+    background-color: #1a8e92; /* Цвет кнопки при наведении */
+  }
+  
+  /* Мобильные стили */
+  @media (max-width: 768px) {
+    .back-btn {
+      position: static;
+      margin-bottom: 10px;
+      width: 100%; /* Растягиваем на всю ширину */
+    }
+  }
+  
+  /* Секция настроек */
+  .section {
+    margin-top: 50px;
+  }
+  
+  /* Кнопки действия */
+  .buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .buttons button {
+    width: auto;
+    padding: 12px 20px;
+    border-radius: 15px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .buttons button:hover {
+    background-color: #1a8e92;
+  }
+  

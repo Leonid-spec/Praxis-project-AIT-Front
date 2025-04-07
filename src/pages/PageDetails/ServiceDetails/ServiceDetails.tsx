@@ -103,14 +103,14 @@ const ServiceDetails: React.FC = () => {
       </ContentWrapper>
 
       <GalleryWrapper>
-        <GalleryTitle>{t("gallery")}</GalleryTitle>
+        <GalleryTitle>{t("message.main.service_page.gallery")}</GalleryTitle>
         <ImagesGrid>
           {service.images && service.images.length > 0 ? (
             service.images.map((img) => (
               <GalleryImage key={img.id} src={img.path} alt="Service's work" />
             ))
           ) : (
-            <p>{t("noImages")}</p>
+            <p>{t("message.main.service_page.noImages")}</p>
           )}
         </ImagesGrid>
       </GalleryWrapper>

@@ -6,6 +6,7 @@ import AppointmentsPage from "../AppointmentsPage/AppointmentDetailsPage";
 import DoctorsPage from "../Doctors/DoctorsPage";
 import { ServicesPageAll } from "../Services/ServicesPageAll/ServicesPageAll";
 import { ServicePageSingle } from "../Services/ServicePageSinge/ServicePageSingle";
+import SettingsPage from "../Settings/StartPage/SettingsPage";
 
 const MainContent: React.FC = () => {
   return (
@@ -28,6 +29,9 @@ const MainContent: React.FC = () => {
           } } />
           } />
         </Route>
+
+        {/* Settings */}
+        <Route path="settings" element={<SettingsPage />} /> 
 
         {/* Doctors */}
         <Route path="doctors" element={<DoctorsPage />} />
