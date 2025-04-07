@@ -109,7 +109,9 @@ const Team: React.FC = () => {
 
       <TeamTextBox>
         <TeamText>
-          Unser <HighlightText>Ärzteteam</HighlightText> |
+        {parseSubtitle(t("message.main.team_page.servicesIntrot"))}{" "}
+           <HighlightText>{parseSubtitle(t("message.header.menu.team"))}</HighlightText> |
+         
         </TeamText>
       </TeamTextBox>
 

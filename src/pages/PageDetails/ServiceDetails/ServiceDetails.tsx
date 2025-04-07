@@ -90,13 +90,13 @@ const ServiceDetails: React.FC = () => {
         </ImageWrapper>
         <InfoWrapper>
           <TitleWrapper>
-            <LabelWrapper>
-              {t("message.main.team_page.servicerDetails.title")}</LabelWrapper>
+            <LabelWrapper> 
+              {t("message.main.service_page.servicerDetails.title")}</LabelWrapper>
             <Title>{title}</Title>
           </TitleWrapper>
           <DescriptionWrapper>
             <LabelWrapper>
-              {t("message.main.team_page.serviceDetails.specialization")}</LabelWrapper>
+              {t("message.main.service_page.servicerDetails.specialization")}</LabelWrapper>
             <Description>{description}</Description>
           </DescriptionWrapper>
         </InfoWrapper>
