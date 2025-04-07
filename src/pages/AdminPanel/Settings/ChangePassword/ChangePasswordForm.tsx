@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   FormContainer,
   Label,
@@ -8,13 +9,15 @@ import {
 } from "./styles";
 
 const ChangePasswordForm: React.FC<{ onBack: () => void }> = () => {
+  const { t } = useTranslation();
+
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSubmit = async () => {
     if (newPassword !== confirmPassword) {
-      alert("New password and confirm password do not match.");
+      alert(t("message.adminPanel.appointments.settings.admin.change.passwordsDoNotMatch"));
       return;
     }
 
@@ -25,41 +28,41 @@ const ChangePasswordForm: React.FC<{ onBack: () => void }> = () => {
     });
 
     const result = await response.json();
-    alert(result.message);
+    alert(result.message); // при необходимости — локализовать через ключ
   };
 
   return (
     <Wrapper>
       <FormContainer onSubmit={(e) => e.preventDefault()}>
         <Label>
-          Current Password:
+          {t("message.adminPanel.appointments.settings.admin.change.currentPasswordLabel")}
           <Input
             type="password"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
-            placeholder="Enter current password"
+            placeholder={t("message.adminPanel.appointments.settings.admin.change.currentPasswordPlaceholder")}
           />
         </Label>
         <Label>
-          New Password:
+          {t("message.adminPanel.appointments.settings.admin.change.newPasswordLabel")}
           <Input
             type="password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
-            placeholder="Enter new password"
+            placeholder={t("message.adminPanel.appointments.settings.admin.change.newPasswordPlaceholder")}
           />
         </Label>
         <Label>
-          Confirm New Password:
+          {t("message.adminPanel.appointments.settings.admin.change.confirmPasswordLabel")}
           <Input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirm new password"
+            placeholder={t("message.adminPanel.appointments.settings.admin.change.confirmPasswordPlaceholder")}
           />
         </Label>
         <SubmitButton type="button" onClick={handleSubmit}>
-          Change Password
+          {t("message.adminPanel.appointments.settings.admin.change.submitButton")}
         </SubmitButton>
       </FormContainer>
     </Wrapper>

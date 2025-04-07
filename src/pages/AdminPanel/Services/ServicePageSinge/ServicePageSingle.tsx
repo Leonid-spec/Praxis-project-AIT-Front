@@ -24,8 +24,10 @@ import { createService } from "../../../../api/serviceAPI";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { useNavigate } from "react-router-dom";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
+import { useTranslation } from "react-i18next";
 
 export const ServicePageSingle: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [serviceData, setServiceData] = useState<ServiceData>({
@@ -128,11 +130,11 @@ export const ServicePageSingle: React.FC = () => {
     <ServicePageSingleContainer>
       <HeaderBox>
         <StyledReturnButton onClick={handleReturn}>
-          ← Return back
+          ← {t("message.adminPanel.appointments.services.returnBack")}
         </StyledReturnButton>
-        <StyledSaveButton onClick={handleSave}
-          disabled={!isFormValid() || isSaving}>
-          {isSaving ? "Saving..." : "Save all"}
+        <StyledSaveButton onClick={handleSave} disabled={!isFormValid() || isSaving}>
+          {isSaving ? t("message.adminPanel.appointments.services.savingButton") : 
+          t("message.adminPanel.appointments.services.saveButton")}
         </StyledSaveButton>
       </HeaderBox>
 
@@ -143,36 +145,34 @@ export const ServicePageSingle: React.FC = () => {
         />
       )}
 
-      
-     <ScrollContainer>
-
+      <ScrollContainer>
         <MainBox>
           <MainBoxText>
             <MakeCardVisibleBox>
-              <TitlesBox>Make card visible for users:</TitlesBox>
+              <TitlesBox>{t("message.adminPanel.appointments.services.makeCardVisible")}</TitlesBox>
               <StyledCheckbox
                 type="checkbox"
                 checked={serviceData.isActive}
                 onChange={(e) => handleChange("isActive", e.target.checked)}
               />
             </MakeCardVisibleBox>
-  
+
             <EditTopImage>
-              <TitlesBox>Edit top image</TitlesBox>
+              <TitlesBox>{t("message.adminPanel.appointments.services.editTopImage")}</TitlesBox>
               <UploadInput
                 type="file"
                 accept="topImage/*"
                 onChange={handleImageUpload}
               />
             </EditTopImage>
-  
+
             <TitleSection>
-              <TitlesBox>Titles:</TitlesBox>
+              <TitlesBox>{t("message.adminPanel.appointments.services.titles")}</TitlesBox>
               <InputContainer>
                 <TitleBoxText>De</TitleBoxText>
                 <Input
                   type="text"
-                  placeholder="Enter title (De)"
+                  placeholder={t("message.adminPanel.appointments.services.enterTitleDe")}
                   value={serviceData.titleDe}
                   onChange={(e) => handleChange("titleDe", e.target.value)}
                 />
@@ -181,7 +181,7 @@ export const ServicePageSingle: React.FC = () => {
                 <TitleBoxText>En</TitleBoxText>
                 <Input
                   type="text"
-                  placeholder="Enter title (En)"
+                  placeholder={t("message.adminPanel.appointments.services.enterTitleEn")}
                   value={serviceData.titleEn}
                   onChange={(e) => handleChange("titleEn", e.target.value)}
                 />
@@ -190,14 +190,14 @@ export const ServicePageSingle: React.FC = () => {
                 <TitleBoxText>Ru</TitleBoxText>
                 <Input
                   type="text"
-                  placeholder="Enter title (Ru)"
+                  placeholder={t("message.adminPanel.appointments.services.enterTitleRu")}
                   value={serviceData.titleRu}
                   onChange={(e) => handleChange("titleRu", e.target.value)}
                 />
               </InputContainer>
             </TitleSection>
           </MainBoxText>
-  
+
           <ImageBox>
             {serviceData.topImage ? (
               <ImagePreview src={serviceData.topImage} alt="Uploaded preview" />
@@ -206,13 +206,13 @@ export const ServicePageSingle: React.FC = () => {
             )}
           </ImageBox>
         </MainBox>
-  
+
         <DescriptionSection>
-          <TitlesBox>Descriptions:</TitlesBox>
+          <TitlesBox>{t("message.adminPanel.appointments.services.descriptions")}</TitlesBox>
           <InputContainer>
             <TitleBoxText>De</TitleBoxText>
             <textarea
-              placeholder="Enter description (De)"
+              placeholder={t("message.adminPanel.appointments.services.enterDescriptionDe")}
               rows={5}
               value={serviceData.descriptionDe}
               onChange={(e) => handleChange("descriptionDe", e.target.value)}
@@ -221,7 +221,7 @@ export const ServicePageSingle: React.FC = () => {
           <InputContainer>
             <TitleBoxText>En</TitleBoxText>
             <textarea
-              placeholder="Enter description (En)"
+              placeholder={t("message.adminPanel.appointments.services.enterDescriptionEn")}
               rows={5}
               value={serviceData.descriptionEn}
               onChange={(e) => handleChange("descriptionEn", e.target.value)}
@@ -230,16 +230,14 @@ export const ServicePageSingle: React.FC = () => {
           <InputContainer>
             <TitleBoxText>Ru</TitleBoxText>
             <textarea
-              placeholder="Enter description (Ru)"
+              placeholder={t("message.adminPanel.appointments.services.enterDescriptionRu")}
               rows={5}
               value={serviceData.descriptionRu}
               onChange={(e) => handleChange("descriptionRu", e.target.value)}
             />
           </InputContainer>
         </DescriptionSection>
-  
-     </ScrollContainer>
-
+      </ScrollContainer>
     </ServicePageSingleContainer>
   );
 };
