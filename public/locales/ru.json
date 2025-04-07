@@ -8,7 +8,7 @@
         "contact": "Контакты",
         "home": "Главная",
         "logo_alt": "Логотип",
-         "cabinets": "кабинеты",
+        "cabinets": "кабинеты",
         "devices": "приборами"
       }
     },
@@ -25,10 +25,10 @@
       "about_us_page": {
         "ours": "Наши",
         "are": "оснащены современными",
-        "ausgestattet": "!"
+        "ausgestattet": "."
       },
       "team_page": {
-        "servicesIntrot": "Наша     ",
+        "servicesIntrot": "Наша",
         "welcome": "Добро пожаловать в",
         "subtitle": "Добро пожаловать на страницу нашей команды! Мы - команда профессионалов, стремящихся обеспечить вам качественную заботу о зубах. Наша миссия - подарить вам улыбку, полную здоровья и уверенности. Благодарим за доверие!",
         "moreInfoBtn": "Узнать больше",
@@ -40,19 +40,18 @@
         }
       },
       "service_page": {
-        "welcome": "Добро пожаловать в ",
+        "welcome": "Добро пожаловать в",
         "subtitle": "Мы предлагаем широкий спектр стоматологических услуг, чтобы обеспечить здоровье и красоту вашей улыбки. Наши специалисты используют новейшие технологии и индивидуальный подход к каждому пациенту. Доверьте свою улыбку профессионалам!",
         "loadingServices": "Загрузка услуг...",
         "errorFetchingServices": "Ошибка при загрузке услуг.",
         "moreInfoBtn": "Узнать больше",
         "gallery": "Галерея",
         "serviceNotFound": "Услуга не найдена.",
-        "servicesIntro": "Наши ",
+        "servicesIntro": "Наши",
         "highlight": "Abramian Dental",
         "noDescription": "Описание отсутствует.",
         "noServicesAvailable": "Услуги пока недоступны.",
-        "servicerDetails":
-        {
+        "servicerDetails": {
           "title": "Название процедуры",
           "specialization": "Подробности"
         }
@@ -156,7 +155,6 @@
           "languageRequired": "Необходимо выбрать язык.",
           "textAreaDateRequired": "Пожалуйста, укажите свои предпочтения для записи."
         },
-
         "messages": {
           "appointmentScheduled": "Ваш приём успешно записан.",
           "appointmentFailed": "Возникла ошибка при записи на приём. Пожалуйста, попробуйте позже."
@@ -170,7 +168,7 @@
         }
       }
     },
-    "adminPanel":{
+    "adminPanel": {
       "appointments": {
         "title": "Записи",
         "noAppointments": "Нет записей.",
@@ -206,10 +204,88 @@
           "back": "Вернуться назад",
           "complete": "Завершить заявку",
           "moreInfo": "Подробнее"
+        },
+        "settings": {
+          "admin": {
+            "create": {
+              "loginLabel": "Логин:",
+              "passwordLabel": "Пароль:",
+              "loginPlaceholder": "Введите логин",
+              "passwordPlaceholder": "Введите пароль",
+              "createAdminButton": "Создать администратора",
+              "grantAdminRights": "Предоставить права администратора"
+            },
+            "change": {
+              "currentPasswordLabel": "Текущий пароль:",
+              "currentPasswordPlaceholder": "Введите текущий пароль",
+              "newPasswordLabel": "Новый пароль:",
+              "newPasswordPlaceholder": "Введите новый пароль",
+              "confirmPasswordLabel": "Подтвердите пароль:",
+              "confirmPasswordPlaceholder": "Подтвердите новый пароль",
+              "submitButton": "Изменить пароль",
+              "passwordsDoNotMatch": "Новый пароль и подтверждение не совпадают."
+            },
+            "view": {
+              "title": "Все администраторы"
+            },
+            "delete": {
+              "placeholder": "Введите логин администратора",
+              "button": "Удалить администратора",
+              "success": "Администратор {{login}} удалён (заглушка)."
+            },
+            "navigation": {
+              "createAdmin": "Создать нового администратора",
+              "changePassword": "Изменить пароль",
+              "viewAdmins": "Просмотреть всех администраторов",
+              "deleteAdmin": "Удалить администратора"
+            },
+            "settingsPage": {
+              "title": "Настройки администратора",
+              "back": "Назад",
+              "buttons": {
+                "create": "Создать нового администратора",
+                "changePassword": "Изменить пароль",
+                "viewAll": "Просмотреть всех администраторов",
+                "delete": "Удалить администратора"
+              },
+              "sections": {
+                "create": "Создание нового администратора",
+                "changePassword": "Смена пароля",
+                "viewAll": "Все администраторы",
+                "delete": "Удаление администратора"
+              }
+            }
+          }
+        },
+        "services": {
+          "requiredField": "Это поле обязательно для заполнения",
+          "updated": "Услуга обновлена",
+          "errorUpdating": "Ошибка при обновлении услуги",
+          "returnBack": "Вернуться назад",
+          "saving": "Сохранение...",
+          "saveAll": "Сохранить все",
+          "makeCardVisible": "Сделать карточку видимой для пользователей:",
+          "editTopImage": "Изменить верхнее изображение",
+          "titles": "Заголовки:",
+          "enterTitleDe": "Введите заголовок (DE)",
+          "enterTitleEn": "Введите заголовок (EN)",
+          "enterTitleRu": "Введите заголовок (RU)",
+          "enterDescriptionDe": "Введите описание (DE)",
+          "enterDescriptionEn": "Введите описание (EN)",
+          "enterDescriptionRu": "Введите описание (RU)",
+          "descriptions": "Описание:",
+          "enterDescription": "Введите описание ({{lang}})",
+          "placeholder": "Введите название услуги",
+          "uploadImage": "Загрузите изображение",
+          "makeCardVisibleCheckbox": "Сделать карточку видимой",
+          "saveButton": "Сохранить все",
+          "savingButton": "Сохранение...",
+          "addNewService": "+ Добавить новую услугу",
+          "refresh": "Обновить",
+          "errorLoading": "Ошибка загрузки услуги",
+          "searchPlaceholder": "Поиск по названию услуги"
         }
       }
     }
-   }
- }
-  
-
+  }
+}

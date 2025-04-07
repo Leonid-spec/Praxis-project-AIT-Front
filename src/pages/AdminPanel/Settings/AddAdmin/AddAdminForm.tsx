@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   FormContainer,
   Label,
@@ -13,6 +14,7 @@ interface AddAdminFormProps {
 }
 
 const AddAdminForm: React.FC<AddAdminFormProps> = () => {
+  const { t } = useTranslation(); // Получаем функцию t для перевода
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [adminRights, setAdminRights] = useState(false);
@@ -32,21 +34,21 @@ const AddAdminForm: React.FC<AddAdminFormProps> = () => {
     <Wrapper>
       <FormContainer onSubmit={(e) => e.preventDefault()}>
         <Label>
-          Login:
+          {t('message.adminPanel.appointments.settings.admin.create.loginLabel')}
           <Input
             type="text"
             value={login}
             onChange={(e) => setLogin(e.target.value)}
-            placeholder="Enter login"
+            placeholder={t('message.adminPanel.appointments.settings.admin.create.loginPlaceholder')}
           />
         </Label>
         <Label>
-          Password:
+          {t('message.adminPanel.appointments.settings.admin.create.passwordLabel')}
           <Input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password"
+            placeholder={t('message.adminPanel.appointments.settings.admin.create.passwordPlaceholder')}
           />
         </Label>
         {/* <Label>
@@ -55,10 +57,10 @@ const AddAdminForm: React.FC<AddAdminFormProps> = () => {
             checked={adminRights}
             onChange={(e) => setAdminRights(e.target.checked)}
           />
-          Grant Admin Rights
+          {t('message.adminPanel.settings.admin.create.grantAdminRights')}
         </Label> */}
         <SubmitButton type="button" onClick={handleSubmit}>
-          Create Admin
+          {t('message.adminPanel.appointments.settings.admin.create.createAdminButton')}
         </SubmitButton>
       </FormContainer>
     </Wrapper>

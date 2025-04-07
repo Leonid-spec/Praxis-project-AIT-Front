@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import AddAdminForm from "../AddAdmin/AddAdminForm";
 import ChangePasswordForm from "../ChangePassword/ChangePasswordForm";
+import AdminList from "../AdminList/AdminList";
+import DeleteAdminForm from "../DeleteAdminForm/DeleteAdminForm";
 
 import {
   ContentContainer,
@@ -9,10 +12,10 @@ import {
   ButtonGroup,
   StyledButton,
 } from "./styles";
-import AdminList from "../AdminList/AdminList";
-import DeleteAdminForm from "../DeleteAdminForm/DeleteAdminForm";
 
 const SettingsPage: React.FC = () => {
+  const { t } = useTranslation();
+
   const [activeSection, setActiveSection] = useState<
     null | "createAdmin" | "changePassword" | "viewAdmins" | "deleteAdmin"
   >(null);
@@ -26,24 +29,26 @@ const SettingsPage: React.FC = () => {
   return (
     <ContentContainer>
       {activeSection && (
-        <BackButton onClick={() => setActiveSection(null)}>← Back</BackButton>
+        <BackButton onClick={() => setActiveSection(null)}>
+          ← {t("message.adminPanel.appointments.settings.admin.settingsPage.back")}
+        </BackButton>
       )}
 
       {!activeSection && (
         <>
-          <h1>Settings</h1>
+          <h1>{t("message.adminPanel.appointments.settings.admin.settingsPage.title")}</h1>
           <ButtonGroup>
             <StyledButton onClick={() => handleButtonClick("createAdmin")}>
-              Create New Admin
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.create")}
             </StyledButton>
             <StyledButton onClick={() => handleButtonClick("changePassword")}>
-              Change Password
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword")}
             </StyledButton>
             <StyledButton onClick={() => handleButtonClick("viewAdmins")}>
-              View All Admins
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll")}
             </StyledButton>
             <StyledButton onClick={() => handleButtonClick("deleteAdmin")}>
-              Delete Admin
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete")}
             </StyledButton>
           </ButtonGroup>
         </>
@@ -51,28 +56,28 @@ const SettingsPage: React.FC = () => {
 
       {activeSection === "createAdmin" && (
         <Section>
-          <h2>Create New Admin</h2>
+          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}</h2>
           <AddAdminForm onBack={() => setActiveSection(null)} />
         </Section>
       )}
 
       {activeSection === "changePassword" && (
         <Section>
-          <h2>Change Password</h2>
+          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}</h2>
           <ChangePasswordForm onBack={() => setActiveSection(null)} />
         </Section>
       )}
 
       {activeSection === "viewAdmins" && (
         <Section>
-          <h2>All Admins</h2>
+          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}</h2>
           <AdminList />
         </Section>
       )}
 
       {activeSection === "deleteAdmin" && (
         <Section>
-          <h2>Delete Admin</h2>
+          <h2>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}</h2>
           <DeleteAdminForm />
         </Section>
       )}

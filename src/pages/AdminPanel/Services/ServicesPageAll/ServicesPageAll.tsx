@@ -6,6 +6,7 @@ import AddNewServiceBtn from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceContainer";
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
 import { FaSyncAlt } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 import {
   ServicesPageAllContainer,
@@ -21,6 +22,7 @@ import { ServiceData } from "../../../../store/types/serviceTypes";
 import { Outlet } from "react-router-dom";
 
 export const ServicesPageAll = () => {
+  const { t } = useTranslation(); // Инициализация для использования переводов
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
   const [isAddingNewService, setIsAddingNewService] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
@@ -34,16 +36,15 @@ export const ServicesPageAll = () => {
   const fetchServices = async () => {
     try {
       if (!token) {
-        setError("Access token is missing");
+        setError(t("message.adminPanel.appointments.services.addServices.errorLoading"));
         return;
       }
       const data = await getServices(token);
       setServices(data);
       setFilteredServices(data ? [] : data);
       setError(null);
-      // console.log("message", data);
     } catch (err: any) {
-      setError(err.message || "Dental service loading error");
+      setError(err.message || t("message.adminPanel.appointments.services.addServices.errorLoading"));
     }
   };
 
@@ -90,12 +91,14 @@ export const ServicesPageAll = () => {
         <>
           <HeaderMainBtnsContainer>
             <AddNewServiceBtn onAddService={handleAddServiceClick} />
-
             <RefreshIconBox onClick={handleRefreshBtn}>
               <FaSyncAlt size={24} color="#20b1b7" />
             </RefreshIconBox>
-
-            <FindServiceContainer searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <FindServiceContainer
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              placeholder={t("message.adminPanel.appointments.services.addServices.searchPlaceholder")}
+            />
           </HeaderMainBtnsContainer>
 
           <Outlet />
@@ -111,7 +114,7 @@ export const ServicesPageAll = () => {
                     title={service.titleEn}
                     topImage={service.topImage}
                     onClick={() => handleEditClick(service.id)}
-                    isActive={service.isActive} 
+                    isActive={service.isActive}
                   >
                     <ServiceCard
                       key={service.id}
