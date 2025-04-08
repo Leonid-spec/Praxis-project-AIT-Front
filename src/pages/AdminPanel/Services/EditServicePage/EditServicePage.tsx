@@ -23,14 +23,15 @@ import {
   UploadInput,
   DescriptionSection,
 } from "../ServicePageSinge/style";
-// import { Service } from "../../../../components/Appointment/ServiceDropdown";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
+import { useTranslation } from "react-i18next";
 
 const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }> = ({
   onReturnBack,
   serviceId,
 }) => {
+  const { t } = useTranslation();
   const [serviceData, setServiceData] = useState<ServiceData | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const [notification, setNotification] = useState<{ message: string; type: "error" | "success" } | null>(null);
@@ -53,7 +54,7 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
 
   const handleChange = (field: keyof ServiceData, value: any) => {
     setServiceData((prev) => prev ? { ...prev, [field]: value } : prev);
-    setFieldErrors((prev) => ({ ...prev, [field]: "" })); 
+    setFieldErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -76,7 +77,7 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
     requiredFields.forEach((field) => {
       const value = serviceData[field];
       if (typeof value !== "string" || value.trim() === "") {
-        errors[field] = "This field is required";
+        errors[field] = t("message.adminPanel.appointments.services.requiredField");
       }
     });
 
@@ -104,13 +105,13 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
     setIsSaving(true);
     try {
       await updateService(serviceData, token!);
-      setNotification({ message: `Service "${serviceData.titleEn}" updated successfully!`, type: "success" });
+      setNotification({ message: `${t("message.adminPanel.appointments.services.updated")} "${serviceData.titleEn}"`, type: "success" });
       setTimeout(() => {
         setIsSaving(false);
         onReturnBack();
       }, 1500);
     } catch (error: any) {
-      setNotification({ message: `Error updating service: ${error.message}`, type: "error" });
+      setNotification({ message: `${t("message.adminPanel.appointments.services.errorUpdating")}: ${error.message}`, type: "error" });
       setIsSaving(false);
     }
   };
@@ -118,16 +119,16 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
   return (
     <ServicePageSingleContainer>
       <HeaderBox>
-        <StyledReturnButton onClick={onReturnBack}>← Return back</StyledReturnButton>
+        <StyledReturnButton onClick={onReturnBack}>{t("message.adminPanel.appointments.services.returnBack")}</StyledReturnButton>
         <StyledSaveButton onClick={handleSave} disabled={!isFormValid() || isSaving}>
-          {isSaving ? "Saving..." : "Save all"}
+          {isSaving ? t("message.adminPanel.appointments.services.saving") : t("message.adminPanel.appointments.services.saveAll")}
         </StyledSaveButton>
       </HeaderBox>
 
       <MainBox>
         <MainBoxText>
           <MakeCardVisibleBox>
-            <TitlesBox>Make card visible for users:</TitlesBox>
+            <TitlesBox>{t("message.adminPanel.appointments.services.makeCardVisible")}</TitlesBox>
             <StyledCheckbox
               type="checkbox"
               checked={serviceData?.isActive || false}
@@ -136,18 +137,18 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
           </MakeCardVisibleBox>
 
           <EditTopImage>
-            <TitlesBox>Edit top image</TitlesBox>
+            <TitlesBox>{t("message.adminPanel.appointments.services.editTopImage")}</TitlesBox>
             <UploadInput type="file" accept="image/*" onChange={handleImageUpload} />
           </EditTopImage>
 
           <TitleSection>
-            <TitlesBox>Titles:</TitlesBox>
+            <TitlesBox>{t("message.adminPanel.appointments.services.titles")}</TitlesBox>
             {["titleDe", "titleEn", "titleRu"].map((lang) => (
               <InputContainer key={lang}>
                 <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
                 <Input
                   type="text"
-                  placeholder={`Enter title (${lang.slice(-2).toUpperCase()})`}
+                  placeholder={t("message.adminPanel.appointments.services.enterTitle", { lang: lang.slice(-2).toUpperCase() })}
                   value={serviceData?.[lang as keyof ServiceData] || ""}
                   onChange={(e) => handleChange(lang as keyof ServiceData, e.target.value)}
                 />
@@ -169,12 +170,12 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
       </MainBox>
 
       <DescriptionSection>
-        <TitlesBox>Descriptions:</TitlesBox>
+        <TitlesBox>{t("message.adminPanel.appointments.services.descriptions")}</TitlesBox>
         {["descriptionDe", "descriptionEn", "descriptionRu"].map((lang) => (
           <InputContainer key={lang}>
             <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
             <textarea
-              placeholder={`Enter description (${lang.slice(-2).toUpperCase()})`}
+              placeholder={t("message.adminPanel.appointments.services.enterDescription", { lang: lang.slice(-2).toUpperCase() })}
               rows={5}
               value={serviceData?.[lang as keyof ServiceData] || ""}
               onChange={(e) => handleChange(lang as keyof ServiceData, e.target.value)}

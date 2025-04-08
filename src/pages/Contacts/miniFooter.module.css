@@ -2,10 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center; 
-    padding: 10px 20px;
+    padding: 30px 20px;
     background: linear-gradient(90deg, #A0EEF2, #F9F9F9);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap; 
+    color: #222;
 }
 
 .leftSection {
@@ -19,10 +20,9 @@
     display: flex;
     align-items: center;
     font-size: 1.8rem; 
-    font-weight: bold;
     cursor: pointer;
     transition: color 0.3s ease;
-    width: 50%;
+    width: 80%;
   border-radius: 50%;
 
   &:hover {
@@ -49,8 +49,7 @@
     flex: 2; 
     text-align: center;
     font-size: 18px;
-    font-weight: bold;
-    color: #333;
+    color: #222;
 }
 
 .contactInfo {

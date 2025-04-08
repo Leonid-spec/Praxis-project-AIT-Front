@@ -1,41 +1,3 @@
-// import styled from "styled-components";
-
-// export const MainCardContainer = styled.div`
-// display: flex;
-//   flex-direction: column;
-//   text-align: center;
-//     justify-content: space-between;
-
-//   overflow-y: auto;
-//   padding: 30px 10px;
-//   width: 400px;
-//   height: 400px;
-//   background-color: #6f4a4a;
-// `;
-
-// export const MainContainer = styled.div`
-//   width: 100%;
-
-// `;
-
-// export const TopImage = styled.image`
-//   width: 100%;
-//   height: 80%;
-// `;
-
-// export const ServiceTitle = styled.p`
-//   font-size: 20px;
-//   font-weight: bold;
-//     color: #fff;
-// `;
-
-// export const EditBtn = styled.button`
-//   font-size: 20px;
-//   font-weight: bold;
-//   width: 100%;
-
-// `;
-
 import styled from "styled-components";
 
 export const Card = styled.div`
@@ -50,6 +12,11 @@ export const Card = styled.div`
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
+  }
+
+  @media(max-width: 768px) {
+  margin: 10px;
+    width: 300px;
   }
 `;
 

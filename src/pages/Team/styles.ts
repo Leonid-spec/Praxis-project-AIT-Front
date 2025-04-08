@@ -54,49 +54,72 @@ export const TeamContainerMainPhoto = styled.div`
 export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center; 
-  justify-content: center; 
-  background-color: #ffffff; 
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-  text-align: center; 
-  gap: 20px; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  gap: 20px;
+  height: 100%;  
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
   }
 
+  @media (min-width: 1920px) {
+    padding: 50px;
+    gap: 30px;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 30px;
+  }
+
   @media (max-width: 768px) {
     padding: 20px;
   }
-`;
 
-export const LeftContainerPosition = styled.div`
-  position: relative;
-  padding: 10px;
+  @media (max-width: 480px) {
+    gap: 15px;
+    padding: 15px;
+  }
 `;
 
 export const RightContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
   border-radius: 12px;
   overflow: hidden;
-  padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  height: 100%;  
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
   }
 
+  @media (min-width: 1920px) {
+    padding: 50px;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 20px;
+  }
+
   @media (max-width: 768px) {
     padding: 15px;
   }
+
+  @media (max-width: 480px) {
+    padding: 10px;
+  }
 `;
+
 
 export const RightContainerPhoto = styled.img`
   max-width: 100%;
@@ -111,14 +134,6 @@ export const HighlightedSpan = styled.span`
   font-weight: bold;
 `;
 
-// export const TeamPhoto = styled.img`
-//   display: block;
-//   width: 100%;
-//   max-width: 700px;
-//   margin: 0 auto;
-//   border-radius: 12px;
-//   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-// `;
 
 export const TeamTextBox = styled.div`
         display: flex;
@@ -136,7 +151,7 @@ export const TeamText = styled.p`
 `
 
 export const HighlightText = styled.span`
-  color: #9ceef1;
+    color: #5FC9D3; 
 `;
 
 export const DoctorsGrid = styled.div`

@@ -1,65 +1,108 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import Notification from "../../../../components/Notification/Notification";
 import {
   FormContainer,
   Label,
   Input,
-  Checkbox,
   SubmitButton,
   Wrapper,
 } from "./styles";
+import { createAdmin } from "../../../../api/adminAPI";
+import { AdminDto } from "../../../../store/types/adminTypes";
 
-interface AddAdminFormProps {
-  onBack: () => void;
-}
+const AddAdminForm: React.FC = () => {
+  const { t } = useTranslation();
 
-const AddAdminForm: React.FC<AddAdminFormProps> = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [adminRights, setAdminRights] = useState(false);
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "error" | "success";
+  } | null>(null);
 
   const handleSubmit = async () => {
-    const response = await fetch("/api/admins", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ login, password, adminRights }),
-    });
+    // Очистити попереднє повідомлення
+    setNotification(null);
 
-    const result = await response.json();
-    alert(result.message);
+    if (!login.trim() || !password.trim()) {
+      setNotification({
+        message: t("message.adminPanel.appointments.settings.admin.create.fillRequiredFields"),
+        type: "error",
+      });
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setNotification({
+        message: t("message.adminPanel.appointments.settings.admin.create.noToken"),
+        type: "error",
+      });
+      return;
+    }
+
+    const newAdmin: AdminDto = { login, password };
+
+    try {
+      await createAdmin(newAdmin, token);
+      setNotification({
+        message: t("message.adminPanel.appointments.settings.admin.create.successMessage"),
+        type: "success",
+      });
+      setLogin("");
+      setPassword("");
+    } catch (err: any) {
+      let cleanMessage = err.message;
+
+      const detailsIndex = cleanMessage.indexOf("Details:");
+      if (detailsIndex !== -1) {
+        cleanMessage = cleanMessage.slice(detailsIndex + 8).trim();
+        if (cleanMessage.startsWith("Invalid request:")) {
+          cleanMessage = cleanMessage.replace("Invalid request:", "").trim();
+        }
+      }
+
+      setNotification({
+        message: cleanMessage || t("message.adminPanel.appointments.settings.admin.create.errorMessage"),
+        type: "error",
+      });
+    }
   };
 
   return (
     <Wrapper>
       <FormContainer onSubmit={(e) => e.preventDefault()}>
         <Label>
-          Login:
+          {t("message.adminPanel.appointments.settings.admin.create.loginLabel")}
           <Input
             type="text"
             value={login}
             onChange={(e) => setLogin(e.target.value)}
-            placeholder="Enter login"
+            placeholder={t("message.adminPanel.appointments.settings.admin.create.loginPlaceholder")}
           />
         </Label>
         <Label>
-          Password:
+          {t("message.adminPanel.appointments.settings.admin.create.passwordLabel")}
           <Input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter password"
+            placeholder={t("message.adminPanel.appointments.settings.admin.create.passwordPlaceholder")}
           />
         </Label>
-        {/* <Label>
-          <Checkbox
-            type="checkbox"
-            checked={adminRights}
-            onChange={(e) => setAdminRights(e.target.checked)}
-          />
-          Grant Admin Rights
-        </Label> */}
+
         <SubmitButton type="button" onClick={handleSubmit}>
-          Create Admin
+          {t("message.adminPanel.appointments.settings.admin.create.createAdminButton")}
         </SubmitButton>
+
+        {notification && (
+          <Notification
+            message={notification.message}
+            type={notification.type}
+            onClose={() => setNotification(null)}
+          />
+        )}
       </FormContainer>
     </Wrapper>
   );

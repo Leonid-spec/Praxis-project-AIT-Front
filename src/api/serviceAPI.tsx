@@ -1,6 +1,6 @@
 import { ServiceData } from "../store/types/serviceTypes";
 
-const API_URL = "http://localhost:8100/api";
+const API_URL = "http://localhost:8080/api";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {

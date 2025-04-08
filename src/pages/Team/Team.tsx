@@ -39,16 +39,26 @@ const Team: React.FC = () => {
 
     try {
       dispatch(fetchActiveDoctorsStart());
-      const response = await fetch("http://localhost:8100/api/doctors/active", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8080/api/doctors/active", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+    
+        if (!response.ok) {
+          const errorText = await response.text(); 
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+    
+        const data = await response.json();
+        console.log("Doctors data:", data);
+        dispatch(fetchActiveDoctorsSuccess(data));
+      } catch (err: any) {
+        console.error("Failed to fetch active doctors:", err);
+        dispatch(fetchActiveDoctorsFailure(err.message || t("errorFetchingActiveDoctors")));
       }
 
       const data: Doctor[] = await response.json();

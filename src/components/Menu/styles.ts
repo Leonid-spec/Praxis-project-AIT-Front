@@ -149,6 +149,10 @@ export const StyledNavLinkMenu = styled(NavLink)`
     border-bottom: 2px solid #346b72;
   }
 
+  &:focus {
+    color: #5FC9D3; 
+  }
+
   @media (min-width: 1920px) {
     font-size: 1.5rem;
   }

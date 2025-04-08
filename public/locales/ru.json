@@ -8,7 +8,7 @@
         "contact": "Контакты",
         "home": "Главная",
         "logo_alt": "Логотип",
-         "cabinets": "кабинеты",
+        "cabinets": "кабинеты",
         "devices": "приборами"
       }
     },
@@ -19,8 +19,8 @@
         }
       },
       "home_page": {
-        "title": "Добро пожаловать в стоматологическую клинику",
-        "subtitle": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
+        "title": "Добро пожаловать в нашу стоматологическую клинику",
+        "subtitle": "Мы <HighlightedSpan>дарим</HighlightedSpan> вам вашу самую красивую <HighlightedSpan>улыбку</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Наши",
@@ -28,8 +28,8 @@
         "ausgestattet": "!"
       },
       "team_page": {
-        "servicesIntrot": "Наша     ",
-        "welcome": "Добро пожаловать в",
+        "servicesIntrot": "Наша",
+        "welcome": "Добро пожаловать в ",
         "subtitle": "Добро пожаловать на страницу нашей команды! Мы - команда профессионалов, стремящихся обеспечить вам качественную заботу о зубах. Наша миссия - подарить вам улыбку, полную здоровья и уверенности. Благодарим за доверие!",
         "moreInfoBtn": "Узнать больше",
         "noSpecialization": "Специализация не указана",
@@ -40,25 +40,24 @@
         }
       },
       "service_page": {
-        "welcome": "Добро пожаловать в ",
+        "welcome": "Добро пожаловать в",
         "subtitle": "Мы предлагаем широкий спектр стоматологических услуг, чтобы обеспечить здоровье и красоту вашей улыбки. Наши специалисты используют новейшие технологии и индивидуальный подход к каждому пациенту. Доверьте свою улыбку профессионалам!",
         "loadingServices": "Загрузка услуг...",
         "errorFetchingServices": "Ошибка при загрузке услуг.",
         "moreInfoBtn": "Узнать больше",
         "gallery": "Галерея",
         "serviceNotFound": "Услуга не найдена.",
-        "servicesIntro": "Наши ",
+        "servicesIntro": "Наши",
         "highlight": "Abramian Dental",
         "noDescription": "Описание отсутствует.",
         "noServicesAvailable": "Услуги пока недоступны.",
-        "servicerDetails":
-        {
+        "servicerDetails": {
           "title": "Название процедуры",
           "specialization": "Подробности"
         }
       },
       "contacts_page": {
-        "welcome_text": "Мы всегда рады вам помочь! Здесь вы найдете нашу контактную информацию, обращайтесь.",
+        "welcome_text": "Мы <HighlightedSpan>всегда</HighlightedSpan> рады вам помочь! Здесь вы найдете нашу <HighlightedSpan>контактную информацию</HighlightedSpan>, обращайтесь.",
         "titleContacts": "Контакты",
         "titleTime": "Часы работы",
         "titleInf": "Контактная информация",
@@ -107,7 +106,7 @@
           "missingEmail": "Введите email.",
           "usernameStartsWithSpace": "Имя пользователя не должно начинаться с пробела.",
           "passwordContainsSpaces": "Пароль не должен содержать пробелы.",
-          "loginContainsSpaces": "Имя пользователя не должно содержать пробелы."
+          "loginContainsSpaces": "Имя пользователя не должно содержать пробелы.",
         },
         "messages": {
           "forgotPasswordTitle": "Сброс пароля",
@@ -156,7 +155,6 @@
           "languageRequired": "Необходимо выбрать язык.",
           "textAreaDateRequired": "Пожалуйста, укажите свои предпочтения для записи."
         },
-
         "messages": {
           "appointmentScheduled": "Ваш приём успешно записан.",
           "appointmentFailed": "Возникла ошибка при записи на приём. Пожалуйста, попробуйте позже."
@@ -170,7 +168,7 @@
         }
       }
     },
-    "adminPanel":{
+    "adminPanel": {
       "appointments": {
         "title": "Записи",
         "noAppointments": "Нет записей.",
@@ -205,11 +203,101 @@
         "buttons": {
           "back": "Вернуться назад",
           "complete": "Завершить заявку",
-          "moreInfo": "Подробнее"
+          "moreInfo": "Подробнее",
+          "edit": "Редактировать"
+        },
+        "settings": {
+          "admin": {
+            "create": {
+              "loginLabel": "Логин:",
+              "passwordLabel": "Пароль:",
+              "loginPlaceholder": "Введите логин",
+              "passwordPlaceholder": "Введите пароль",
+              "createAdminButton": "Создать администратора",
+              "grantAdminRights": "Предоставить права администратора",
+              "successMessage": "Администратор успешно создан!"
+            },
+            "change": {
+              "currentLoginLabel": "Текущий логин:",
+              "currentPasswordPlaceholder": "Введите ваш текущий пароль",
+              "newPasswordLabel": "Новый пароль:",
+              "newPasswordPlaceholder": "Введите ваш новый пароль",
+              "confirmPasswordLabel": "Подтвердите пароль:",
+              "confirmPasswordPlaceholder": "Подтвердите ваш новый пароль",
+              "submitButton": "Изменить пароль",
+              "passwordsDoNotMatch": "Пароли не совпадают.",
+              "fillRequiredFields": "Пожалуйста, заполните все необходимые поля.",
+              "noToken": "Отсутствует токен. Попробуйте еще раз.",
+              "successMessage": "Ваш пароль успешно изменен.",
+              "errorMessage": "Произошла ошибка. Попробуйте еще раз.",
+              "loginLabel": "Пожалуйста, введите ваш логин.",
+              "loginPlaceholder": "Введите логин",
+              "currentPasswordLabel": "Текущий пароль:"
+            },
+            "view": {
+              "title": "Все администраторы"
+            },
+            "delete": {
+              "loginPlaceholder": "Введите логин администратора",
+              "passwordPlaceholder": "Введите пароль администратора",
+              "button": "Удалить администратора",
+              "success": "Администратор {{login}} удалён (заглушка)."
+            },
+            "navigation": {
+              "createAdmin": "Создать нового администратора",
+              "changePassword": "Изменить пароль",
+              "viewAdmins": "Просмотреть всех администраторов",
+              "deleteAdmin": "Удалить администратора"
+            },
+            "settingsPage": {
+              "title": "Настройки администратора",
+              "back": "Назад",
+              "greeting": "Добро пожаловать, <HighlightedSpan>Администратор</HighlightedSpan>!",
+              "capabilities": "Здесь вы можете управлять правами доступа и изменять пароль администратора.",
+              "buttons": {
+                "create": "Создать нового администратора",
+                "changePassword": "Изменить пароль",
+                "viewAll": "Просмотреть всех администраторов",
+                "delete": "Удалить администратора"
+              },
+              "sections": {
+                "create": "Создание нового администратора",
+                "changePassword": "Смена пароля",
+                "viewAll": "Все администраторы",
+                "delete": "Удаление администратора"
+              }
+            }
+          }
+        },
+        "services": {
+          "requiredField": "Это поле обязательно для заполнения",
+          "updated": "Услуга обновлена",
+          "errorUpdating": "Ошибка при обновлении услуги",
+          "returnBack": "Вернуться назад",
+          "saving": "Сохранение...",
+          "saveAll": "Сохранить все",
+          "makeCardVisible": "Сделать карточку видимой для пользователей:",
+          "editTopImage": "Изменить верхнее изображение",
+          "titles": "Заголовки:",
+          "enterTitleDe": "Введите заголовок (DE)",
+          "enterTitleEn": "Введите заголовок (EN)",
+          "enterTitleRu": "Введите заголовок (RU)",
+          "enterDescriptionDe": "Введите описание (DE)",
+          "enterDescriptionEn": "Введите описание (EN)",
+          "enterDescriptionRu": "Введите описание (RU)",
+          "descriptions": "Описание:",
+          "enterDescription": "Введите описание ({{lang}})",
+          "placeholder": "Введите название услуги",
+          "uploadImage": "Загрузите изображение",
+          "makeCardVisibleCheckbox": "Сделать карточку видимой",
+          "saveButton": "Сохранить все",
+          "savingButton": "Сохранение...",
+          "addNewService": "+ Добавить новую услугу",
+          "refresh": "Обновить",
+          "errorLoading": "Ошибка загрузки услуги",
+          "searchPlaceholder": "Поиск по названию услуги"
         }
       }
     }
-   }
- }
-  
-
+  }
+}

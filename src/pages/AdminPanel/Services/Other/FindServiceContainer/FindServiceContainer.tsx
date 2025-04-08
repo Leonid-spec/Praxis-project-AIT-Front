@@ -3,13 +3,17 @@ import {
   InputBox, 
   StyledButton 
 } from "./styles";
+import { useTranslation } from "react-i18next";  
 
 interface FindServiceContainerProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  placeholder?: string;
 }
 
 export const FindServiceContainer: React.FC<FindServiceContainerProps> = ({ searchTerm, setSearchTerm }) => {
+  const { t } = useTranslation();  
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value); 
   };
@@ -22,7 +26,7 @@ export const FindServiceContainer: React.FC<FindServiceContainerProps> = ({ sear
       />
       <InputBox 
         type="text" 
-        placeholder="Enter the service title" 
+        placeholder={t("message.adminPanel.appointments.services.placeholder")} 
         value={searchTerm}
         onChange={handleInputChange}
       />
