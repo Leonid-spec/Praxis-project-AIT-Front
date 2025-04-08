@@ -13,6 +13,8 @@ export const FormContainer = styled.form`
   max-width: 400px;
   padding: 25px;
   background-color: #f9f9f9;
+  background-color: #f7f7f7;
+  /* background-color: #f3f3f3; */
   border: 1px solid #ccc;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
