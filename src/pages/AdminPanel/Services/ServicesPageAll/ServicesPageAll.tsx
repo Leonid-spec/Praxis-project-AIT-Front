@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getServices } from "../../../../api/serviceAPI";
-import { Service } from "../../../../components/Appointment/ServiceDropdown";
+// import { Service } from "../../../../components/Appointment/ServiceDropdown";
 import AddNewServiceBtn from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceContainer";
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
@@ -22,7 +22,7 @@ import { ServiceData } from "../../../../store/types/serviceTypes";
 import { Outlet } from "react-router-dom";
 
 export const ServicesPageAll = () => {
-  const { t } = useTranslation(); // Инициализация для использования переводов
+  const { t } = useTranslation(); 
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
   const [isAddingNewService, setIsAddingNewService] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);

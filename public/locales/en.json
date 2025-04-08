@@ -213,23 +213,32 @@
               "loginPlaceholder": "Enter username",
               "passwordPlaceholder": "Enter password",
               "createAdminButton": "Create Administrator",
-              "grantAdminRights": "Grant Admin Rights"
+              "grantAdminRights": "Grant Admin Rights",
+              "successMessage": "Admin created successfully!"
             },
             "change": {
-              "currentLoginLabel": "Current login:",
-              "currentPasswordPlaceholder": "Enter current login",
+              "currentLoginLabel": "Current Login:",
+              "currentPasswordPlaceholder": "Enter your current password",
               "newPasswordLabel": "New Password:",
-              "newPasswordPlaceholder": "Enter new password",
+              "newPasswordPlaceholder": "Enter your new password",
               "confirmPasswordLabel": "Confirm Password:",
-              "confirmPasswordPlaceholder": "Confirm new password",
+              "confirmPasswordPlaceholder": "Confirm your new password",
               "submitButton": "Change Password",
-              "passwordsDoNotMatch": "New password and confirmation do not match."
+              "passwordsDoNotMatch": "The passwords do not match.",
+              "fillRequiredFields": "Please fill in all the required fields.",
+              "noToken": "Token is missing. Please try again.",
+              "successMessage": "Your password has been successfully changed.",
+              "errorMessage": "An error occurred. Please try again.",
+              "loginLabel": "Please enter your login.",
+              "loginPlaceholder": "Enter login",
+              "currentPasswordLabel": "Current Password:"
             },
             "view": {
               "title": "All Administrators"
             },
             "delete": {
-              "placeholder": "Enter administrator's username",
+              "loginPlaceholder": "Enter administrator's login",
+              "passwordPlaceholder": "Enter administrator's password",
               "button": "Delete Administrator",
               "success": "Administrator {{login}} has been deleted (placeholder)."
             },

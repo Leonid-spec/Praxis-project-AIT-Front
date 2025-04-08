@@ -5,7 +5,7 @@ export const ListContainer = styled.div`
   background-color: #f3f3f3;
   border-radius: 10px;
   max-width: 600px;
-  margin: auto;
+  margin: 20px auto;
 `;
 
 export const AdminItem = styled.div`

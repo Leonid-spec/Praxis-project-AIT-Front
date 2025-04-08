@@ -214,23 +214,32 @@
               "loginPlaceholder": "Введите логин",
               "passwordPlaceholder": "Введите пароль",
               "createAdminButton": "Создать администратора",
-              "grantAdminRights": "Предоставить права администратора"
+              "grantAdminRights": "Предоставить права администратора",
+              "successMessage": "Администратор успешно создан!"
             },
             "change": {
               "currentLoginLabel": "Текущий логин:",
-              "currentPasswordPlaceholder": "Введите текущий логин",
+              "currentPasswordPlaceholder": "Введите ваш текущий пароль",
               "newPasswordLabel": "Новый пароль:",
-              "newPasswordPlaceholder": "Введите новый пароль",
+              "newPasswordPlaceholder": "Введите ваш новый пароль",
               "confirmPasswordLabel": "Подтвердите пароль:",
-              "confirmPasswordPlaceholder": "Подтвердите новый пароль",
+              "confirmPasswordPlaceholder": "Подтвердите ваш новый пароль",
               "submitButton": "Изменить пароль",
-              "passwordsDoNotMatch": "Новый пароль и подтверждение не совпадают."
+              "passwordsDoNotMatch": "Пароли не совпадают.",
+              "fillRequiredFields": "Пожалуйста, заполните все необходимые поля.",
+              "noToken": "Отсутствует токен. Попробуйте еще раз.",
+              "successMessage": "Ваш пароль успешно изменен.",
+              "errorMessage": "Произошла ошибка. Попробуйте еще раз.",
+              "loginLabel": "Пожалуйста, введите ваш логин.",
+              "loginPlaceholder": "Введите логин",
+              "currentPasswordLabel": "Текущий пароль:"
             },
             "view": {
               "title": "Все администраторы"
             },
             "delete": {
-              "placeholder": "Введите логин администратора",
+              "loginPlaceholder": "Введите логин администратора",
+              "passwordPlaceholder": "Введите пароль администратора",
               "button": "Удалить администратора",
               "success": "Администратор {{login}} удалён (заглушка)."
             },

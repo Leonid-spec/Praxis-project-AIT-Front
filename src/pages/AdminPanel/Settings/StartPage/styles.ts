@@ -40,7 +40,7 @@ export const MainFunctionsText = styled.p`
 
 
 export const Section = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
 `;
 
 export const SectionTitle = styled.h2`
@@ -67,6 +67,10 @@ export const StyledButton = styled.button`
   &:hover {
     background-color: #1a8e92;
   }
+ 
+ &:focus {
+  background-color: #16888c;
+ }
 `;
 
 export const BackButton = styled.button`
@@ -125,4 +129,28 @@ export const HighlightedSpan = styled.span`
   color: #5fc9d3;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+`;
+
+export const RefreshIconBox = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+`;
+
+export const RefreshIconImage = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
+export const RefreshBtn = styled.button`
+  width: 40px;
+  height: 40px;
 `;

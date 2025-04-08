@@ -52,8 +52,7 @@
         "highlight": "Abramian Dental",
         "noDescription": "Keine Beschreibung verfügbar.",
         "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar.",
-        "servicerDetails":
-        {
+        "servicerDetails": {
           "title": "Verfahrensname",
           "specialization": "Mehr erfahren"
         }
@@ -207,94 +206,99 @@
           "moreInfo": "Mehr Infos",
           "edit": "Bearbeiten"
         },
-        
-          "settings": {
-            "admin": {
-              "create": {
-                "loginLabel": "Benutzername:",
-                "passwordLabel": "Passwort:",
-                "loginPlaceholder": "Benutzername eingeben",
-                "passwordPlaceholder": "Passwort eingeben",
-                "createAdminButton": "Administrator erstellen",
-                "grantAdminRights": "Administratorrechte gewähren"
-              },
-              "change": {
-                "currentLoginLabel": "Aktuelles Login:",
-                "currentPasswordPlaceholder": "Aktuelles Login eingeben",
-                "newPasswordLabel": "Neues Passwort:",
-                "newPasswordPlaceholder": "Neues Passwort eingeben",
-                "confirmPasswordLabel": "Passwort bestätigen:",
-                "confirmPasswordPlaceholder": "Neues Passwort bestätigen",
-                "submitButton": "Passwort ändern",
-                "passwordsDoNotMatch": "Neues Passwort und Bestätigung stimmen nicht überein."
-              },
-              "view": {
-                "title": "Alle Administratoren"
-              },
-              "delete": {
-                "placeholder": "Benutzername des Administrators eingeben",
-                "button": "Administrator löschen",
-                "success": "Administrator {{login}} wurde gelöscht (Platzhalter)."
-              },
-              "navigation": {
-                "createAdmin": "Neuen Administrator erstellen",
-                "changePassword": "Passwort ändern",
-                "viewAdmins": "Alle Administratoren anzeigen",
-                "deleteAdmin": "Administrator löschen"
-              },
-              "settingsPage": {
-                "title": "Administrator-Einstellungen",
-                "back": "Zurück",
+
+        "settings": {
+          "admin": {
+            "create": {
+              "loginLabel": "Benutzername:",
+              "passwordLabel": "Passwort:",
+              "loginPlaceholder": "Benutzername eingeben",
+              "passwordPlaceholder": "Passwort eingeben",
+              "createAdminButton": "Administrator erstellen",
+              "grantAdminRights": "Administratorrechte gewähren",
+              "successMessage": "Administrator erfolgreich erstellt!"
+            },
+            "change": {
+              "currentLoginLabel": "Aktuelles Login:",
+              "currentPasswordPlaceholder": "Bitte aktuelles Passwort eingeben",
+              "newPasswordLabel": "Neues Passwort:",
+              "newPasswordPlaceholder": "Bitte neues Passwort eingeben",
+              "confirmPasswordLabel": "Passwort bestätigen:",
+              "confirmPasswordPlaceholder": "Bitte neues Passwort bestätigen",
+              "submitButton": "Änderung des Passworts absenden",
+              "passwordsDoNotMatch": "Die eingegebenen Passwörter stimmen nicht überein.",
+              "fillRequiredFields": "Bitte füllen Sie alle erforderlichen Felder aus.",
+              "noToken": "Token fehlt. Bitte erneut versuchen.",
+              "successMessage": "Das Passwort wurde erfolgreich geändert.",
+              "errorMessage": "Ein Fehler ist aufgetreten. Bitte erneut versuchen.",
+              "loginLabel": "Bitte geben Sie Ihr Login ein.",
+              "loginPlaceholder": "Login eingeben",
+              "currentPasswordLabel": "Aktuelles Passwort:"
+            },
+            "view": {
+              "title": "Alle Administratoren"
+            },
+            "delete": {
+              "loginPlaceholder": "Benutzername des Administrators eingeben",
+              "passwordPlaceholder": "Passwort des Administrators eingeben",
+              "button": "Administrator löschen",
+              "success": "Administrator {{login}} wurde gelöscht (Platzhalter)."
+            },
+            "navigation": {
+              "createAdmin": "Neuen Administrator erstellen",
+              "changePassword": "Passwort ändern",
+              "viewAdmins": "Alle Administratoren anzeigen",
+              "deleteAdmin": "Administrator löschen"
+            },
+            "settingsPage": {
+              "title": "Administrator-Einstellungen",
+              "back": "Zurück",
               "greeting": "Willkommen, <HighlightedSpan>Administrator</HighlightedSpan>!",
               "capabilities": "Hier können Sie Zugriffsrechte verwalten und das Passwort des Administrators ändern.",
-                "buttons": {
-                  "create": "Neuen Administrator erstellen",
-                  "changePassword": "Passwort ändern",
-                  "viewAll": "Alle Administratoren anzeigen",
-                  "delete": "Administrator löschen"
-                },
-                "sections": {
-                  "create": "Neuen Administrator erstellen",
-                  "changePassword": "Passwort ändern",
-                  "viewAll": "Alle Administratoren",
-                  "delete": "Administrator löschen"
-                }
+              "buttons": {
+                "create": "Neuen Administrator erstellen",
+                "changePassword": "Passwort ändern",
+                "viewAll": "Alle Administratoren anzeigen",
+                "delete": "Administrator löschen"
+              },
+              "sections": {
+                "create": "Neuen Administrator erstellen",
+                "changePassword": "Passwort ändern",
+                "viewAll": "Alle Administratoren",
+                "delete": "Administrator löschen"
               }
             }
-          },
-            "services": {
-              "requiredField": "Dieses Feld ist erforderlich",
-              "updated": "Service aktualisiert",
-              "errorUpdating": "Fehler beim Aktualisieren des Service",
-              "returnBack": "Zurückkehren",
-              "saving": "Speichern...",
-              "saveAll": "Alles speichern",
-              "makeCardVisible": "Karte für Benutzer sichtbar machen:",
-              "editTopImage": "Oben Bild bearbeiten",
-              "titles": "Titel:",
-              "enterTitleDe": "Geben Sie einen Titel ein (DE)",
-              "enterTitleEn": "Geben Sie einen Titel ein (EN)",
-              "enterTitleRu": "Geben Sie einen Titel ein (RU)",
-              "enterDescriptionDe": "Geben Sie eine Beschreibung ein (DE)",
-              "enterDescriptionEn": "Geben Sie eine Beschreibung ein (EN)",
-              "enterDescriptionRu": "Geben Sie eine Beschreibung ein (RU)",
-              "descriptions": "Beschreibungen:",
-              "enterDescription": "Geben Sie eine Beschreibung ein ({{lang}})",
-              "placeholder": "Geben Sie den Namen des Service ein",
-              "uploadImage": "Bild hochladen",
-              "makeCardVisibleCheckbox": "Karte sichtbar machen",
-              "saveButton": "Alles speichern",
-              "savingButton": "Speichern...",
-              "addNewService": "Neuen Service hinzufügen",
-              "refresh": "Aktualisieren",
-              "errorLoading": "Fehler beim Laden des Service",
-              "searchPlaceholder": "Suche nach Servicenamen"
-            }
           }
+        },
+        "services": {
+          "requiredField": "Dieses Feld ist erforderlich",
+          "updated": "Service aktualisiert",
+          "errorUpdating": "Fehler beim Aktualisieren des Service",
+          "returnBack": "Zurückkehren",
+          "saving": "Speichern...",
+          "saveAll": "Alles speichern",
+          "makeCardVisible": "Karte für Benutzer sichtbar machen:",
+          "editTopImage": "Oben Bild bearbeiten",
+          "titles": "Titel:",
+          "enterTitleDe": "Geben Sie einen Titel ein (DE)",
+          "enterTitleEn": "Geben Sie einen Titel ein (EN)",
+          "enterTitleRu": "Geben Sie einen Titel ein (RU)",
+          "enterDescriptionDe": "Geben Sie eine Beschreibung ein (DE)",
+          "enterDescriptionEn": "Geben Sie eine Beschreibung ein (EN)",
+          "enterDescriptionRu": "Geben Sie eine Beschreibung ein (RU)",
+          "descriptions": "Beschreibungen:",
+          "enterDescription": "Geben Sie eine Beschreibung ein ({{lang}})",
+          "placeholder": "Geben Sie den Namen des Service ein",
+          "uploadImage": "Bild hochladen",
+          "makeCardVisibleCheckbox": "Karte sichtbar machen",
+          "saveButton": "Alles speichern",
+          "savingButton": "Speichern...",
+          "addNewService": "Neuen Service hinzufügen",
+          "refresh": "Aktualisieren",
+          "errorLoading": "Fehler beim Laden des Service",
+          "searchPlaceholder": "Suche nach Servicenamen"
         }
       }
+    }
+  }
 }
-  
-
-        
-           

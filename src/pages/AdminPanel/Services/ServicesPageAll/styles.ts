@@ -36,11 +36,6 @@ export const RefreshIconBox = styled.button`
   }
 `;
 
-export const RefreshIconImage2 = styled.image`
-  width: 50px;
-  height: 50px;
-`;
-
 export const RefreshIconImage = styled.img`
   width: 50px;
   height: 50px;

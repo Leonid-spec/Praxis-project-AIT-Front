@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import AddAdminForm from "../AddAdmin/AddAdminForm";
 import ChangePasswordForm from "../ChangePassword/ChangePasswordForm";
@@ -15,22 +15,29 @@ import {
   MainFunctionsText,
   MainWelcomeText,
   SectionTitle,
+  RefreshIconBox,
 } from "./styles";
 
-// Интерфейс пропсов для передачи логина администратора
+import { FaSyncAlt } from "react-icons/fa";
+import { AdminDto } from "../../../../store/types/adminTypes";
+import { getAllAdmins } from "../../../../api/adminAPI";
+
 interface SettingsPageProps {
-  adminLogin: string; // Логин администратора
+  adminLogin: string;
 }
 
-const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => { // Получаем adminLogin через пропсы
+const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
   const { t } = useTranslation();
 
-  // Состояние для отслеживания активной секции
+  const [admins, setAdmins] = useState<AdminDto[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<
     "createAdmin" | "changePassword" | "viewAdmins" | "deleteAdmin" | null
   >(null);
 
- const parseSubtitle = (text: string) => {
+  const token = localStorage.getItem("token");
+
+  const parseSubtitle = (text: string) => {
     return text
       .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
       .map((part, index) =>
@@ -42,23 +49,45 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => { // По�
       );
   };
 
+  const fetchAdmins = async () => {
+    try {
+      if (!token) {
+        setError(t("message.adminPanel.appointments.services.addServices.errorLoading"));
+        return;
+      }
+      const data = await getAllAdmins(token);
+      setAdmins(data);
+    } catch (err: any) {
+      setError(err.message || t("message.adminPanel.appointments.services.addServices.errorLoading"));
+    }
+  };
+
+  useEffect(() => {
+    if (activeSection === "viewAdmins" || activeSection === "deleteAdmin") {
+      fetchAdmins();
+    }
+  }, [activeSection]);
+
+  const handleRefreshBtn = () => {
+    if (activeSection === "viewAdmins" || activeSection === "deleteAdmin") {
+      fetchAdmins();
+    }
+  };
+
   return (
     <ContentContainer>
-      {/* Заголовок страницы */}
-      {/* <h1 style={{ textAlign: "center" }}>
-        {t("message.adminPanel.appointments.settings.admin.settingsPage.title")}
-      </h1> */}
-
-      {/* Контейнер с текстом на разных языках */}
       <WelcomeTextBox>
-        {/* Приветствие */}
-        <MainWelcomeText>{parseSubtitle(t("message.adminPanel.appointments.settings.admin.settingsPage.greeting"))}</MainWelcomeText>
+        <MainWelcomeText>
+          {parseSubtitle(
+            t("message.adminPanel.appointments.settings.admin.settingsPage.greeting")
+          )}
+        </MainWelcomeText>
 
-        {/* Текст возможностей */}
-        <MainFunctionsText>{t("message.adminPanel.appointments.settings.admin.settingsPage.capabilities")}</MainFunctionsText>
+        <MainFunctionsText>
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.capabilities")}
+        </MainFunctionsText>
       </WelcomeTextBox>
 
-      {/* Группа кнопок */}
       <ButtonGroup>
         <StyledButton onClick={() => setActiveSection("createAdmin")}>
           {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.create")}
@@ -72,35 +101,45 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => { // По�
         <StyledButton onClick={() => setActiveSection("deleteAdmin")}>
           {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete")}
         </StyledButton>
+        {/* <RefreshIconBox onClick={handleRefreshBtn}>
+          <FaSyncAlt size={24} color="#20b1b7" />
+        </RefreshIconBox> */}
       </ButtonGroup>
 
-      {/* Секции с контентом */}
       <Section>
         {activeSection === "createAdmin" && (
           <>
-            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}</SectionTitle>
+            <SectionTitle>
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}
+            </SectionTitle>
             <AddAdminForm />
           </>
         )}
 
         {activeSection === "changePassword" && (
           <>
-            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}</SectionTitle>
+            <SectionTitle>
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}
+            </SectionTitle>
             <ChangePasswordForm />
           </>
         )}
 
         {activeSection === "viewAdmins" && (
           <>
-            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}</SectionTitle>
-            <AdminList />
+            <SectionTitle>
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}
+            </SectionTitle>
+            <AdminList admins={admins} />
           </>
         )}
 
         {activeSection === "deleteAdmin" && (
           <>
-            <SectionTitle>{t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}</SectionTitle>
-            <DeleteAdminForm />
+            <SectionTitle>
+              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}
+            </SectionTitle>
+            <DeleteAdminForm admins={admins} />
           </>
         )}
       </Section>
