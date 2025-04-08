@@ -25,7 +25,7 @@ import { getAppointmentById } from "../../../../api/appointmentAPI";
 import { AppointmentData } from "../../../../store/types/appointmentTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { FaCopy } from "react-icons/fa";
-import { updateAppointment } from "../../../../api/appointmentAPI"; // Ensure to import your updateAppointment method
+import { updateAppointment } from "../../../../api/appointmentAPI"; 
 
 const AppointmentDetailsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -66,14 +66,14 @@ const AppointmentDetailsPage: React.FC = () => {
       try {
         const updatedAppointment = {
           ...appointment,
-          isNew: !appointment.isNew, 
+          isNew: !appointment.isNew,
         };
 
         if (token) {
           await updateAppointment(Number(id), updatedAppointment, token);
         }
 
-        setAppointment(updatedAppointment); 
+        setAppointment(updatedAppointment);
         setNotification({
           message: t("message.adminPanel.appointments.statusUpdated", {
             status: updatedAppointment.isNew ? "Active" : "Completed",
@@ -134,13 +134,13 @@ const AppointmentDetailsPage: React.FC = () => {
 
   return (
     <Container>
+      <Heading>
+        {t("message.adminPanel.appointments.appointmentDetails.title")}
+      </Heading>
       <ButtonContainer>
         <BackButton onClick={() => navigate("/admin-panel/appointments")}>
           {t("message.adminPanel.appointments.buttons.back")}
         </BackButton>
-        <Heading>
-          {t("message.adminPanel.appointments.appointmentDetails.title")}
-        </Heading>
         <CompleteButton onClick={handleCompleteClick}>
           {t("message.adminPanel.appointments.buttons.complete")}
         </CompleteButton>
@@ -177,7 +177,18 @@ const AppointmentDetailsPage: React.FC = () => {
                     readOnly
                   />
                 </div>
+                <div>
+                  <Label>
+                    {t(
+                      "message.adminPanel.appointments.appointmentDetails.email"
+                    )}
+                    :
+                  </Label>
+                  <Field type="email" value={appointment.email} readOnly />
+                </div>
+              </LeftContainer>
 
+              <RightContainer>
                 <PhoneBox>
                   <div>
                     <Label>
@@ -194,12 +205,38 @@ const AppointmentDetailsPage: React.FC = () => {
                   </div>
                   <FaCopy
                     onClick={handleCopyPhone1}
-                    style={{ cursor: "pointer", width: "20px", height: "20px" }}
+                    style={{
+                      cursor: "pointer",
+                      width: "20px",
+                      height: "20px",
+                    }}
                   />
                 </PhoneBox>
-              </LeftContainer>
 
-              <RightContainer>
+                <PhoneBox>
+                  <div>
+                    <Label>
+                      {t(
+                        "message.adminPanel.appointments.appointmentDetails.phone2"
+                      )}
+                      :
+                    </Label>
+                    <PhoneInput
+                      country={"de"}
+                      value={appointment.phone2 || ""}
+                      disabled
+                    />
+                  </div>
+                  <FaCopy
+                    onClick={handleCopyPhone2}
+                    style={{
+                      cursor: "pointer",
+                      width: "20px",
+                      height: "20px",
+                    }}
+                  />
+                </PhoneBox>
+
                 <div>
                   <Label>
                     {t(
@@ -218,36 +255,6 @@ const AppointmentDetailsPage: React.FC = () => {
                     readOnly
                   />
                 </div>
-
-                <div>
-                  <Label>
-                    {t(
-                      "message.adminPanel.appointments.appointmentDetails.email"
-                    )}
-                    :
-                  </Label>
-                  <Field type="email" value={appointment.email} readOnly />
-                </div>
-
-                <PhoneBox>
-                  <div>
-                    <Label>
-                      {t(
-                        "message.adminPanel.appointments.appointmentDetails.phone2"
-                      )}
-                      :
-                    </Label>
-                    <PhoneInput
-                      country={"de"}
-                      value={appointment.phone2 || ""}
-                      disabled
-                    />
-                  </div>
-                  <FaCopy
-                    onClick={handleCopyPhone2}
-                    style={{ cursor: "pointer", width: "20px", height: "20px" }}
-                  />
-                </PhoneBox>
               </RightContainer>
             </TopContainer>
 
