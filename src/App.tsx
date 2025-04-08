@@ -12,8 +12,7 @@ import DoctorDetails from "./pages/PageDetails/DoctorDetails/DoctorDetails";
 import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
-import { DoctorsProvider } from "./pages/AdminPanel/Doctors/DoctorsContext";
-import AppointmentForm from "./components/Appointment/AppointmentForm";
+import EditDoctorPage from "./pages/AdminPanel/Doctors/EditDoctor/EditDoctorPage"; // ✅ Добавлен импорт
 
 Modal.setAppElement("#root");
 
@@ -21,26 +20,34 @@ function App() {
   return (
     <ModalProvider>
       <AppointmentModal />
-       <DoctorsProvider>
-         {" "}
-        <Router>
-          <GlobalStyles />
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              {/* <Route path="/api/appointment" element={<AppointmentForm />} /> */}
-              {/* <Route path="/appointment" element={<AppointmentForm />} /> */}
-              <Route path="/doctors" element={<Team />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contacts" element={<Contacts />} />
-              <Route path="/doctor/:id" element={<DoctorDetails />} />
-              <Route path="/services" element={<Service />} />
-              <Route path="/service/:id" element={<ServiceDetails />} />
-              <Route path="/admin-panel/*" element={<AdminPanel />} />{" "}              
-            </Routes>
-          </Layout>
-        </Router>
-      </DoctorsProvider>
+      <Router>
+        <GlobalStyles />
+        <Layout>
+          <Routes>
+            {/* Главная страница */}
+            <Route path="/" element={<Home />} />
+
+            {/* О враче */}
+            <Route path="/team" element={<Team />} />
+            <Route path="/doctor/:id" element={<DoctorDetails />} />
+
+            {/* О компании */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
+
+            {/* Услуги */}
+            <Route path="/services" element={<Service />} />
+            <Route path="/service/:id" element={<ServiceDetails />} />
+
+            {/* Админ-панель */}
+            <Route path="/admin-panel/*" element={<AdminPanel />} />
+            <Route path="/admin-panel/edit-doctor/:id" element={<EditDoctorPage />} /> {/* ✅ Теперь "Edit" работает */}
+
+            {/* 404 */}
+            <Route path="*" element={<div>Page not found!</div>} />
+          </Routes>
+        </Layout>
+      </Router>
     </ModalProvider>
   );
 }
