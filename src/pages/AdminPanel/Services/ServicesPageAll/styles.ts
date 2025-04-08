@@ -20,6 +20,11 @@ export const HeaderMainBtnsContainer = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 30px;
+
+  @media(max-width: 768px) {
+   flex-direction: column; 
+   gap: 5px;
+  }
 `;
 
 export const RefreshIconBox = styled.button`
@@ -58,7 +63,7 @@ export const ServiceCardsMainContainer = styled.div`
   padding: 10px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-  gap: 20px;
+  gap: 40px;
   scroll-behavior: smooth;
 
   overflow-x: hidden;
@@ -77,7 +82,7 @@ export const ServiceCardsMainContainer = styled.div`
   }
 `;
 
-export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number }>`
+export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number; topImage?: string }>`
 opacity: ${(props) => (props.isActive ? "1" : "0.5")};
 transition: all 0.3s ease-in-out;
 &:hover {

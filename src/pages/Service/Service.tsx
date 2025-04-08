@@ -46,7 +46,7 @@ const ServicePage: React.FC = () => {
         }
 
         const response = await fetch(
-          "http://localhost:8100/api/services/active",
+          "http://localhost:8080/api/services/active",
           {
             headers: {
               Authorization: `Bearer ${token}`,
