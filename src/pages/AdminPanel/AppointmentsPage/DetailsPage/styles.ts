@@ -58,8 +58,8 @@ export const TopContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
-  @media (max-width: 768px) { 
-    grid-template-columns: 1fr; 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -69,6 +69,11 @@ export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  * {
+    margin: 0; 
+    padding: 0; 
+  }
 `;
 
 export const RightContainer = styled.div`
@@ -77,6 +82,11 @@ export const RightContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  * {
+    margin: 0; 
+    padding: 0; 
+  }
 `;
 
 export const BottomContainer = styled.div`
@@ -91,17 +101,12 @@ export const Field = styled.input`
   width: 100%;
   border-radius: 5px;
   border: 1px solid #cccccc;
-  margin-bottom: 10px;
-
-  &:focus {
-    border-color: #20b1b7;
-    outline: none;
-  }
+  margin-bottom: 0; 
 `;
 
 export const Label = styled.label`
   display: block;
-  margin-bottom: 5px;
+  margin: 0 0 5px 0; 
   font-weight: bold;
 `;
 
@@ -137,16 +142,13 @@ export const InputContainer = styled.div`
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-
-    &:focus {
-      border-color: #20b1b7;
-      outline: none;
-    }
+    margin: 0; 
   }
 `;
 
 export const PhoneBox = styled.div`
   display: flex;
-  gap: 20px;
-  align-items: center;;
+  gap: 20px; 
+  align-items: center;
+  margin: 0; 
 `;

@@ -12,6 +12,8 @@ const buttonCommonStyles = `
   cursor: pointer;
   padding: 10px 15px;
   border-radius: 18px;
+  justify-content: center;
+  align-items: center;
   background-color: #20B1B7;
   color: #fff;
   transition: background-color 0.3s ease;
@@ -156,7 +158,7 @@ export const MoreInfoButton = styled.button`
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-left: auto;
+  margin: 20px auto;
 `;
 
 export const Marker = styled.div`
