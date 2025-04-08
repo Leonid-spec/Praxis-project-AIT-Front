@@ -117,38 +117,68 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
   };
 
   return (
-    <ServicePageSingleContainer>
-      <HeaderBox>
-        <StyledReturnButton onClick={onReturnBack}>{t("message.adminPanel.appointments.services.returnBack")}</StyledReturnButton>
-        <StyledSaveButton onClick={handleSave} disabled={!isFormValid() || isSaving}>
-          {isSaving ? t("message.adminPanel.appointments.services.saving") : t("message.adminPanel.appointments.services.saveAll")}
-        </StyledSaveButton>
-      </HeaderBox>
-
-      <MainBox>
-        <MainBoxText>
-          <MakeCardVisibleBox>
-            <TitlesBox>{t("message.adminPanel.appointments.services.makeCardVisible")}</TitlesBox>
-            <StyledCheckbox
-              type="checkbox"
-              checked={serviceData?.isActive || false}
-              onChange={(e) => handleChange("isActive", e.target.checked)}
-            />
-          </MakeCardVisibleBox>
-
-          <EditTopImage>
-            <TitlesBox>{t("message.adminPanel.appointments.services.editTopImage")}</TitlesBox>
-            <UploadInput type="file" accept="image/*" onChange={handleImageUpload} />
-          </EditTopImage>
-
-          <TitleSection>
-            <TitlesBox>{t("message.adminPanel.appointments.services.titles")}</TitlesBox>
-            {["titleDe", "titleEn", "titleRu"].map((lang) => (
+    <>
+      <ServicePageSingleContainer>
+        <div>
+          <HeaderBox>
+            <StyledReturnButton onClick={onReturnBack}>{t("message.adminPanel.appointments.services.returnBack")}</StyledReturnButton>
+            <StyledSaveButton onClick={handleSave} disabled={!isFormValid() || isSaving}>
+              {isSaving ? t("message.adminPanel.appointments.services.saving") : t("message.adminPanel.appointments.services.saveAll")}
+            </StyledSaveButton>
+          </HeaderBox>
+    
+          <MainBox>
+            <MainBoxText>
+              <MakeCardVisibleBox>
+                <TitlesBox>{t("message.adminPanel.appointments.services.makeCardVisible")}</TitlesBox>
+                <StyledCheckbox
+                  type="checkbox"
+                  checked={serviceData?.isActive || false}
+                  onChange={(e) => handleChange("isActive", e.target.checked)}
+                />
+              </MakeCardVisibleBox>
+    
+              <EditTopImage>
+                <TitlesBox>{t("message.adminPanel.appointments.services.editTopImage")}</TitlesBox>
+                <UploadInput type="file" accept="image/*" onChange={handleImageUpload} />
+              </EditTopImage>
+    
+              <TitleSection>
+                <TitlesBox>{t("message.adminPanel.appointments.services.titles")}</TitlesBox>
+                {["titleDe", "titleEn", "titleRu"].map((lang) => (
+                  <InputContainer key={lang}>
+                    <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
+                    <Input
+                      type="text"
+                      placeholder={t("message.adminPanel.appointments.services.enterTitle", { lang: lang.slice(-2).toUpperCase() })}
+                      value={serviceData?.[lang as keyof ServiceData] || ""}
+                      onChange={(e) => handleChange(lang as keyof ServiceData, e.target.value)}
+                    />
+                    {fieldErrors[lang] && (
+                      <span style={{ color: "red", fontSize: "0.8rem" }}>{fieldErrors[lang]}</span>
+                    )}
+                  </InputContainer>
+                ))}
+              </TitleSection>
+            </MainBoxText>
+    
+            <ImageBox>
+              {serviceData?.topImage ? (
+                <ImagePreview src={serviceData.topImage} alt="Uploaded preview" />
+              ) : (
+                <ImagePreview src="https://via.placeholder.com/300" alt="Image" />
+              )}
+            </ImageBox>
+          </MainBox>
+    
+          <DescriptionSection>
+            <TitlesBox>{t("message.adminPanel.appointments.services.descriptions")}</TitlesBox>
+            {["descriptionDe", "descriptionEn", "descriptionRu"].map((lang) => (
               <InputContainer key={lang}>
                 <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
-                <Input
-                  type="text"
-                  placeholder={t("message.adminPanel.appointments.services.enterTitle", { lang: lang.slice(-2).toUpperCase() })}
+                <textarea
+                  placeholder={t("message.adminPanel.appointments.services.enterDescription", { lang: lang.slice(-2).toUpperCase() })}
+                  rows={5}
                   value={serviceData?.[lang as keyof ServiceData] || ""}
                   onChange={(e) => handleChange(lang as keyof ServiceData, e.target.value)}
                 />
@@ -157,38 +187,12 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
                 )}
               </InputContainer>
             ))}
-          </TitleSection>
-        </MainBoxText>
-
-        <ImageBox>
-          {serviceData?.topImage ? (
-            <ImagePreview src={serviceData.topImage} alt="Uploaded preview" />
-          ) : (
-            <ImagePreview src="https://via.placeholder.com/300" alt="Image" />
-          )}
-        </ImageBox>
-      </MainBox>
-
-      <DescriptionSection>
-        <TitlesBox>{t("message.adminPanel.appointments.services.descriptions")}</TitlesBox>
-        {["descriptionDe", "descriptionEn", "descriptionRu"].map((lang) => (
-          <InputContainer key={lang}>
-            <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
-            <textarea
-              placeholder={t("message.adminPanel.appointments.services.enterDescription", { lang: lang.slice(-2).toUpperCase() })}
-              rows={5}
-              value={serviceData?.[lang as keyof ServiceData] || ""}
-              onChange={(e) => handleChange(lang as keyof ServiceData, e.target.value)}
-            />
-            {fieldErrors[lang] && (
-              <span style={{ color: "red", fontSize: "0.8rem" }}>{fieldErrors[lang]}</span>
-            )}
-          </InputContainer>
-        ))}
-      </DescriptionSection>
-
-      {notification && <CustomNotification message={notification.message} type={notification.type} />}
-    </ServicePageSingleContainer>
+          </DescriptionSection>
+        </div>
+  
+        {notification && <CustomNotification message={notification.message} type={notification.type} />}
+      </ServicePageSingleContainer>
+    </>
   );
 };
 

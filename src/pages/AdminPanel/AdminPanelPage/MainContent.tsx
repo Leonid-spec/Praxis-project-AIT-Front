@@ -35,7 +35,7 @@ const MainContent: React.FC = () => {
         <Route path="admin-services/add-new-service" element={<ServicePageSingle />} />
         
         {/* Settings */}
-        <Route path="settings" element={<SettingsPage />} /> 
+        <Route path="settings" element={<SettingsPage adminLogin={""} />} /> 
         
         {/* Doctors */}
         <Route path="doctors" element={<DoctorsPage />} />

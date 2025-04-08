@@ -12,13 +12,15 @@ export const ServicePageSingleContainer = styled.div`
   height: 80vh;
   flex-direction: column;
   gap: 30px;
-  padding: 50px;
+  padding: 20px;
 `;
 
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0 100px;
+  margin-bottom: 40px;
+
 
   @media (max-width: 768px) {
     padding: 0 20px; 
@@ -27,8 +29,10 @@ export const HeaderBox = styled.div`
 
 export const MainBox = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 40% 60%;
   gap: 30px;
+  padding: 10px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr; 
@@ -49,9 +53,9 @@ export const MainBoxText = styled.div`
 export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 10px;
   width: 100%;
-  height: 500px;
+  height: auto;
 `;
 
 export const EditTopImage = styled.div`
