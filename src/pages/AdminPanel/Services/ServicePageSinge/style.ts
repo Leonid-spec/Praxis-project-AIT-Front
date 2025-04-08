@@ -18,13 +18,22 @@ export const ServicePageSingleContainer = styled.div`
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 100px
-  `;
+  padding: 0 100px;
+
+  /* Для узких экранов не меняем кнопки */
+  @media (max-width: 768px) {
+    padding: 0 20px; /* Уменьшаем отступы для узких экранов */
+  }
+`;
 
 export const MainBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;  /* Для узких экранов контент будет в один столбец */
+  }
 `;
 
 export const MainBoxText = styled.div`
@@ -39,6 +48,11 @@ export const ImageBox = styled.div`
   padding: 30px;
   width: 100%;
   height: 500px;
+  
+  @media (max-width: 768px) {
+    height: auto;  /* Убираем фиксированную высоту для мобильных экранов */
+    padding: 20px; /* Уменьшаем отступы */
+  }
 `;
 
 export const EditTopImage = styled.div`
@@ -156,6 +170,10 @@ export const StyledReturnButton = styled.button`
   &:hover {
     background-color: #0c989c;
   }
+
+  @media (max-width: 768px) {
+    /* Оставляем кнопки такими же, как и на широком экране */
+  }
 `;
 
 export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
@@ -169,5 +187,9 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
 
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
+  }
+
+  @media (max-width: 768px) {
+    /* Оставляем кнопки такими же, как и на широком экране */
   }
 `;

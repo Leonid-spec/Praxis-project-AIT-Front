@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getServices } from "../../../../api/serviceAPI";
-import { Service } from "../../../../components/Appointment/ServiceDropdown";
+import { Service } from "../../../../components/Appointment/ServiceDropdown/ServiceDropdown";
 import AddNewServiceBtn from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceContainer";
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
@@ -22,7 +22,7 @@ import { ServiceData } from "../../../../store/types/serviceTypes";
 import { Outlet } from "react-router-dom";
 
 export const ServicesPageAll = () => {
-  const { t } = useTranslation(); // Инициализация для использования переводов
+  const { t } = useTranslation(); // Используем переводы
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
   const [isAddingNewService, setIsAddingNewService] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
@@ -31,17 +31,17 @@ export const ServicesPageAll = () => {
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token"); // Получение токена
 
   const fetchServices = async () => {
+    if (!token) {
+      setError(t("message.adminPanel.appointments.services.addServices.errorLoading"));
+      return;
+    }
     try {
-      if (!token) {
-        setError(t("message.adminPanel.appointments.services.addServices.errorLoading"));
-        return;
-      }
       const data = await getServices(token);
-      setServices(data);
-      setFilteredServices(data ? [] : data);
+      setServices(data || []);
+      setFilteredServices(data || []);
       setError(null);
     } catch (err: any) {
       setError(err.message || t("message.adminPanel.appointments.services.addServices.errorLoading"));

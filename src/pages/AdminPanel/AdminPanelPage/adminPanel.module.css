@@ -1,8 +1,35 @@
 .mainPanel {
-  display: grid;
-  grid-template-columns: 15% 85%;
-  height: 100%;
+  display: flex;
+  flex-direction: row; 
+  height: 100vh;
   width: 100%;
   padding: 20px;
   overflow: hidden;
+}
+
+.sidebar {
+  width: 15%; 
+}
+
+.content {
+  flex-grow: 1; 
+  margin-left: 20px; 
+}
+
+/* Мобильная версия */
+@media screen and (max-width: 768px) {
+  .mainPanel {
+    flex-direction: column; 
+    padding: 10px;
+  }
+
+  .sidebar {
+    width: 100%; 
+    order: 1; 
+    margin-bottom: 10px;
+  }
+
+  .content {
+    flex-grow: 1;
+  }
 }

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"; 
 
 export const ScrollContainer = styled.div`
   flex: 1;
@@ -17,9 +17,25 @@ export const ServicesPageAllContainer = styled.div`
 
 export const HeaderMainBtnsContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 30px;
+  flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;  /* Разрешаем перенос элементов */
+    gap: 10px;  /* Уменьшаем промежуток между кнопками */
+
+    & > *:nth-child(1),
+    & > *:nth-child(2) {
+      flex: 1 1 auto;  /* Даем кнопкам гибкую ширину */
+      max-width: 220px;  /* Ограничиваем максимальную ширину кнопок */
+    }
+
+    & > *:nth-child(3) {
+      width: 100%;  /* Контейнер поиска займет всю ширину */
+    }
+  }
 `;
 
 export const RefreshIconBox = styled.button`
@@ -34,32 +50,53 @@ export const RefreshIconBox = styled.button`
   &:active {
     transform: scale(0.95);
   }
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const RefreshIconImage2 = styled.image`
   width: 50px;
   height: 50px;
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const RefreshIconImage = styled.img`
   width: 50px;
   height: 50px;
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const RefreshBtn = styled.button`
   width: 40px;
   height: 40px;
+
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const CardsMainContainer = styled.div`
   flex: 1; 
   overflow-y: auto; 
   padding-right: 10px;
+  margin-top: 20px;  /* Добавляем отступ сверху */
+  height: calc(100vh - 150px);  /* Учитываем высоту заголовка и кнопок */
 `;
 
 export const ServiceCardsMainContainer = styled.div`
   flex: 1;
-  overflow-y: auto; 
   padding: 10px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
@@ -80,13 +117,19 @@ export const ServiceCardsMainContainer = styled.div`
   &::-webkit-scrollbar-track {
     background: transparent;
   }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;  /* Для узких экранов - один столбец */
+    gap: 15px;  /* Уменьшаем промежуток между карточками */
+  }
 `;
 
 export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number }>`
-opacity: ${(props) => (props.isActive ? "1" : "0.5")};
-transition: all 0.3s ease-in-out;
-&:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
+  opacity: ${(props) => (props.isActive ? "1" : "0.5")};
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
 `;

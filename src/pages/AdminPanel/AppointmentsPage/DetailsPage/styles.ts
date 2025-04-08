@@ -4,6 +4,7 @@ export const ScrollContainer = styled.div`
   flex: 1;
   overflow-y: auto;
   scroll-behavior: smooth;
+  width: 100%;
   padding: 0 30px 0 20px;
 `;
 
@@ -34,7 +35,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 60px;
+  padding: 10px;
   border-radius: 5px;
   width: 100%;
   border: none;
@@ -56,6 +57,10 @@ export const TopContainer = styled.div`
   flex-wrap: wrap;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 768px) { 
+    grid-template-columns: 1fr; 
+  }
 `;
 
 export const LeftContainer = styled.div`
