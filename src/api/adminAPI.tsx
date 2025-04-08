@@ -1,6 +1,6 @@
 import { AdminDto, TokenResponseDto, ChangePasswordDto } from "../store/types/adminTypes";
 
-const API_URL = "http://localhost:8100/api";
+const API_URL = "http://localhost:8080/api";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {
@@ -51,6 +51,7 @@ export const getAllAdmins = async (token: string): Promise<AdminDto[]> => {
       },
     });
     return await handleFetchError(response);
+    
   } catch (error) {
     console.error("Failed to fetch admins:", error);
     throw error;
@@ -67,6 +68,8 @@ export const createAdmin = async (adminDto: AdminDto, token: string): Promise<Ad
       },
       body: JSON.stringify(adminDto),
     });
+    console.log("Add admins: ", response)
+
     return await handleFetchError(response);
   } catch (error) {
     console.error("Failed to create admin:", error);

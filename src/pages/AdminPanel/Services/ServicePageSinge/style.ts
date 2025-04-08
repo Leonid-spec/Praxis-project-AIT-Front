@@ -18,19 +18,32 @@ export const ServicePageSingleContainer = styled.div`
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 100px
+  padding: 0 100px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px; 
+  }
   `;
 
 export const MainBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; 
+  }
 `;
 
 export const MainBoxText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media (max-width: 768px) {
+    height: auto;  
+    padding: 20px; 
+  }
 `;
 
 export const ImageBox = styled.div`
@@ -156,6 +169,7 @@ export const StyledReturnButton = styled.button`
   &:hover {
     background-color: #0c989c;
   }
+  
 `;
 
 export const StyledSaveButton = styled.button<{ disabled?: boolean }>`

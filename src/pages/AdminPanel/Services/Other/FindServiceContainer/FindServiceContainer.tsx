@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 interface FindServiceContainerProps {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  placeholder?: string;
 }
 
 export const FindServiceContainer: React.FC<FindServiceContainerProps> = ({ searchTerm, setSearchTerm }) => {

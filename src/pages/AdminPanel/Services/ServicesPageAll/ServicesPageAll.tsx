@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getServices } from "../../../../api/serviceAPI";
-// import { Service } from "../../../../components/Appointment/ServiceDropdown";
 import AddNewServiceBtn from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceContainer";
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
@@ -22,11 +21,11 @@ import { ServiceData } from "../../../../store/types/serviceTypes";
 import { Outlet } from "react-router-dom";
 
 export const ServicesPageAll = () => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
   const [isAddingNewService, setIsAddingNewService] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
-  const [filteredServices, setFilteredServices] = useState<Service[]>([]);
+  const [filteredServices, setFilteredServices] = useState<ServiceData[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
@@ -36,7 +35,9 @@ export const ServicesPageAll = () => {
   const fetchServices = async () => {
     try {
       if (!token) {
-        setError(t("message.adminPanel.appointments.services.addServices.errorLoading"));
+        setError(
+          t("message.adminPanel.appointments.services.addServices.errorLoading")
+        );
         return;
       }
       const data = await getServices(token);
@@ -44,7 +45,10 @@ export const ServicesPageAll = () => {
       setFilteredServices(data ? [] : data);
       setError(null);
     } catch (err: any) {
-      setError(err.message || t("message.adminPanel.appointments.services.addServices.errorLoading"));
+      setError(
+        err.message ||
+          t("message.adminPanel.appointments.services.addServices.errorLoading")
+      );
     }
   };
 
@@ -97,7 +101,9 @@ export const ServicesPageAll = () => {
             <FindServiceContainer
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}
-              placeholder={t("message.adminPanel.appointments.services.addServices.searchPlaceholder")}
+              placeholder={t(
+                "message.adminPanel.appointments.services.addServices.searchPlaceholder"
+              )}
             />
           </HeaderMainBtnsContainer>
 
@@ -106,25 +112,27 @@ export const ServicesPageAll = () => {
           <ScrollContainer>
             <ServiceCardsMainContainer>
               {error && <p style={{ color: "red" }}>{error}</p>}
-              {!error &&
-                filteredServices.map((service) => (
-                  <ServiceCardStyled
-                    key={service.id}
-                    id={service.id}
-                    title={service.titleEn}
-                    topImage={service.topImage}
-                    onClick={() => handleEditClick(service.id)}
-                    isActive={service.isActive}
-                  >
-                    <ServiceCard
+              {filteredServices.map(
+                (service) =>
+                  service.id !== undefined && service.isActive !== undefined ? (
+                    <ServiceCardStyled
                       key={service.id}
                       id={service.id}
-                      title={service.titleEn}
-                      topImage={service.topImage}
-                      onEditClick={handleEditClick.bind(null, service.id)}
-                    />
-                  </ServiceCardStyled>
-                ))}
+                      title={service.titleEn || "Untitled Service"} 
+                      topImage={service.topImage || ""}
+                      onClick={() => handleEditClick(service.id!)}
+                      isActive={service.isActive}
+                    >
+                      <ServiceCard
+                        key={service.id}
+                        id={service.id}
+                        title={service.titleEn}
+                        topImage={service.topImage}
+                        onEditClick={handleEditClick.bind(null, service.id)}
+                      />
+                    </ServiceCardStyled>
+                  ) : null
+              )}
             </ServiceCardsMainContainer>
           </ScrollContainer>
         </>

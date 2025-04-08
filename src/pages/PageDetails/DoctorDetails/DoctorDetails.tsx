@@ -40,7 +40,7 @@ const DoctorDetails: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch("http://localhost:8100/api/doctors/active");
+          const response = await fetch("http://localhost:8080/api/doctors/active");
           if (!response.ok) {
             throw new Error("Failed to fetch doctors");
           }

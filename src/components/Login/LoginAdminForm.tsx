@@ -65,7 +65,7 @@ const LoginAdminForm = ({
     }
     if (login.length < 3 || login.length > 16) {
       setNotification({
-        message: t("message.other.loginAdmin.errors.loginLength"),
+        message: t("message.other.loginAdmin.errors.usernameLength"),
         type: "error",
       });
       return;
@@ -81,7 +81,7 @@ const LoginAdminForm = ({
     const loginData = { login, password };
 
     try {
-      const response = await fetch("http://localhost:8100/api/login", {
+      const response = await fetch("http://localhost:8080/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,6 @@ const LoginAdminForm = ({
       });
 
       if (!response.ok) {
-        // throw new Error(`HTTP error! status: ${response.status}`);
         throw new Error(`Invalid data!`);
       }
 
