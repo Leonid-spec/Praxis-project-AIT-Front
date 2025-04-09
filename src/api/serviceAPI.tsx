@@ -68,9 +68,7 @@ export const createService = async (service: Partial<ServiceData>, token: string
 };
 
 export const updateService = async (
-  service: Partial<ServiceData>,
-  token: string
-): Promise<ServiceData> => {
+service: Partial<ServiceData>, token: string): Promise<ServiceData> => {
   try {
     const response = await fetch(`${API_URL}/service`, {
       method: "PUT",

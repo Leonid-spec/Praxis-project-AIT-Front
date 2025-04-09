@@ -93,7 +93,7 @@ const DoctorDetails: React.FC = () => {
       <ContentWrapper>
         <ImageWrapper>
           <MainImage
-            src={doctor.topImage || "https://via.placeholder.com/400"}
+            src={doctor.topImage}
             alt={doctor.fullName}
           />
         </ImageWrapper>
