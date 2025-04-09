@@ -83,6 +83,14 @@ export const CardsMainContainer = styled.div`
   gap: 0;
   }
 `;
+export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number; topImage?: string }>`
+opacity: ${(props) => (props.isActive ? "1" : "0.5")};
+transition: all 0.3s ease-in-out;
+&:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+`;
 
 export const ServiceCardsMainContainer = styled.div`
   flex: 1;
@@ -110,28 +118,38 @@ export const ServiceCardsMainContainer = styled.div`
   }
 
   @media(max-width: 1980px) {
-  margin: 0 10px;
-  margin: 0 20px;
+    margin: 0 10px;
+    margin: 0 20px;
   }
 
   @media(max-width: 1240px) {
-  margin: 10px;
-  padding: 5px;
-  gap: 0;
+    margin: 10px;
+    padding: 5px;
+    gap: 0;
   }
 
-  @media(max-width: 768px) {
-  margin: 0;
-  padding: 0;
-  gap: 0;
+  @media(max-width: 770px) and (min-width: 530px) {
+    margin: 0 auto; /* Центрирование контейнера */
+    padding: 0;
+    gap: 20px; /* Расстояние между карточками */
+    justify-content: center; /* Центрируем карточки внутри сетки */
+    align-items: center; /* Центрируем по вертикали */
+    grid-template-columns: minmax(auto, 400px); /* Задаем ширину карточки */
+  }
+
+  @media(max-width: 530px) {
+    margin: 0 auto;
+    padding: 0;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr; /* Одноколоночная структура для узких экранов */
   }
 `;
 
-export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number; topImage?: string }>`
-opacity: ${(props) => (props.isActive ? "1" : "0.5")};
-transition: all 0.3s ease-in-out;
-&:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
+export const ServiceCardImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 `;

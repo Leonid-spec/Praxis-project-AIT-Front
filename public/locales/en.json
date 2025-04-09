@@ -296,8 +296,50 @@
           "refresh": "Refresh",
           "errorLoading": "Error loading service",
           "searchPlaceholder": "Search by service name"
-        }
+        },
+       "doctors": {
+  "requiredField": "This field is required",
+  "updated": "Doctor information updated",
+  "errorUpdating": "Error updating doctor information",
+  "returnBack": "Return back",
+  "saving": "Saving...",
+  "saveAll": "Save all",
+  "makeCardVisible": "Make the card visible to users:",
+  "editTopImage": "Edit top image",
+  "titles": "Titles:",
+  "title": "Title",
+  "enterTitleDe": "Enter title (DE)",
+  "enterTitleEn": "Enter title (EN)",
+  "enterTitleRu": "Enter title (RU)",
+  "enterDescriptionDe": "Enter description (DE)",
+  "enterDescriptionEn": "Enter description (EN)",
+  "enterDescriptionRu": "Enter description (RU)",
+  "specialisation": "Specialisation",
+  "Biography": "Biography ",
+  "edit": "Edit",
+  "details": "Details",
+  "inactive": "Inactive",
+  "descriptions": "Descriptions:",
+  "enterDescription": "Enter description ({{lang}})",
+  "placeholder": "Enter the doctor's full name",
+  "uploadImage": "Upload image",
+  "makeCardVisibleCheckbox": "Make card visible",
+  "saveButton": "Save all",
+  "savingButton": "Saving...",
+  "addNewDoctor": "+  Add new doctor",
+  "refresh": "Refresh",
+  "loadingDoctorData": "Loading doctor data...",
+  "doctorPreview": "Doctor preview",
+  "errorLoadingDoctorData": "Error loading doctor data:",
+  "doctorUpdatedSuccessfully": "Doctor \"{doctorData.fullName}\" updated successfully!",
+  "fullName": "Full name",
+  "searchPlaceholder": "Enter doctor's name",
+  "searchIconAlt": "Search"
+}
+
+
+      }
       }
     }
   }
-}
+

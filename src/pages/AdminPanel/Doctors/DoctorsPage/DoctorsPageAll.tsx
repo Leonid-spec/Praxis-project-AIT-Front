@@ -6,7 +6,7 @@ import AddNewDoctorBtn from "../Buttons/AddNewDoctorBtn";
 import { FindDoctorContainer } from "../Other/FindDoctorContainer";
 import DoctorCard from "../DoctorCard/DoctorCard";
 import { FaSyncAlt } from "react-icons/fa";
-import { Doctor } from "../doctorTypes";
+import { Doctor } from "../../../../store/types/doctorTypes"; // унифицированный импорт
 import {
   DoctorsPageAllContainer,
   ScrollContainer,
@@ -64,8 +64,10 @@ export const DoctorsPageAll = () => {
     navigate("add-new-doctor");
   };
 
-  const handleEditClick = (id: number) => {
-    navigate(`/admin-panel/edit-doctor/${id}`);
+  const handleEditClick = (id?: number) => {
+    if (id) {
+      navigate(`/admin-panel/edit-doctor/${id}`);
+    }
   };
 
   const handleRefreshBtn = () => {
@@ -101,13 +103,14 @@ export const DoctorsPageAll = () => {
               return (
                 <DoctorCard
                   key={doctor.id}
-                  id={doctor.id}
+                  id={doctor.id ?? 0} // Защита от undefined
                   fullName={doctor.fullName}
                   topImage={doctor.topImage}
                   specialization={formattedSpecialization}
                   isActive={doctor.isActive}
-                  onActionClick={() => handleEditClick(doctor.id)} // ✅ Теперь вызываем "Edit"
-                  isAdminPanel={true} // ✅ Флаг для отображения "Edit" вместо "Details"
+                  onActionClick={() => handleEditClick(doctor.id)}
+                  isAdminPanel={true}
+                  buttonLabel={t("message.adminPanel.appointments.doctors.edit")} // перевод кнопки
                 />
               );
             })}

@@ -1,13 +1,16 @@
 import { StyledAddButton } from "./styles";
+import { useTranslation } from "react-i18next";
 
 interface AddNewDoctorBtnProps {
   onAddDoctor: () => void;  
 }
 
 const AddNewDoctorBtn: React.FC<AddNewDoctorBtnProps> = ({ onAddDoctor }) => {
+  const { t } = useTranslation();
+
   return (
     <StyledAddButton onClick={onAddDoctor}>
-      + Add new doctor
+      {t("message.adminPanel.appointments.doctors.addNewDoctor")}
     </StyledAddButton>
   );
 };
