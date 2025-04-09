@@ -4,6 +4,8 @@ const API_URL = "http://localhost:8080/api";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {
+    console.log("response", response);
+    
     const errorText = await response.text();
     throw new Error(`HTTP error! Status: ${response.status}, Details: ${errorText}`);
   }
@@ -21,7 +23,7 @@ export const getActiveDoctors = async (): Promise<Doctor[]> => {
   }
 };
 
-// Get all doctors 
+// Get all doctors
 export const getAllDoctors = async (token: string): Promise<Doctor[]> => {
   try {
     const response = await fetch(`${API_URL}/doctors`, {
@@ -37,9 +39,11 @@ export const getAllDoctors = async (token: string): Promise<Doctor[]> => {
   }
 };
 
-// Get doctor by ID 
+// Get doctor by ID
 export const getDoctorById = async (id: number, token: string): Promise<Doctor> => {
   try {
+    console.log(`Fetching doctor data from ${API_URL}/doctor/${id}`); // ✅ Логируем URL для диагностики
+
     const response = await fetch(`${API_URL}/doctor/${id}`, {
       headers: {
         "Content-Type": "application/json",
@@ -64,6 +68,7 @@ export const createDoctor = async (doctor: Partial<Doctor>, token: string): Prom
       },
       body: JSON.stringify(doctor),
     });
+    console.log("doctor", doctor);
     return await handleFetchError(response);
   } catch (error) {
     console.error("Failed to create doctor:", error);
@@ -71,14 +76,12 @@ export const createDoctor = async (doctor: Partial<Doctor>, token: string): Prom
   }
 };
 
-// Update doctor 
-export const updateDoctor = async (
-  id: number,
-  doctor: Partial<Doctor>,
-  token: string
-): Promise<Doctor> => {
+// Update doctor
+export const updateDoctor = async (doctor: Partial<Doctor>, token: string): Promise<Doctor> => {
   try {
-    const response = await fetch(`${API_URL}/doctor/${id}`, {
+    console.log(`Updating doctor with ID at ${API_URL}/doctor`); // ✅ Логируем URL для проверки
+
+    const response = await fetch(`${API_URL}/doctor`, { // ✅ Оставляем PUT
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -88,24 +91,24 @@ export const updateDoctor = async (
     });
     return await handleFetchError(response);
   } catch (error) {
-    console.error(`Failed to update doctor with ID ${id}:`, error);
+    console.error(`Failed to update doctor with ID:`, error);
     throw error;
   }
 };
 
-//  Delete doctor (with token)
-// export const deleteDoctor = async (id: number, token: string): Promise<void> => {
-//   try {
-//     const response = await fetch(`${API_URL}/doctors/${id}`, {
-//       method: "DELETE",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${token}`,
-//       },
-//     });
-//     await handleFetchError(response);
-//   } catch (error) {
-//     console.error(`Failed to delete doctor with ID ${id}:`, error);
-//     throw error;
-//   }
-// };
+// Delete doctor
+export const deleteDoctor = async (id: number, token: string): Promise<void> => {
+  try {
+    const response = await fetch(`${API_URL}/doctors/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    await handleFetchError(response);
+  } catch (error) {
+    console.error(`Failed to delete doctor with ID ${id}:`, error);
+    throw error;
+  }
+};
