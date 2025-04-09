@@ -1,96 +1,220 @@
 import styled from "styled-components";
 
+// Контейнеры
 export const EditDoctorContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 50px;
-  align-items: center; /* ✅ Центрируем всю страницу */
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: auto; /* Убираем фиксированную высоту */
+    padding: 20px;
+    gap: 20px;
+    overflow-y: auto; /* Сохраняем скроллинг */
+    max-height: 100vh;
+  }
+`;
+
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 0 30px 0 20px;
+  max-height: calc(100vh - 200px);
+
+  @media (max-width: 768px) {
+    padding: 0 15px 0 10px;
+    overflow-y: auto;
+    max-height: 100vh; /* Ограничение высоты для мобильных устройств */
+  }
 `;
 
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  align-items: center;
+  margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const TopContainer = styled.div`
   display: flex;
-  justify-content: space-between; /* ✅ Две колонки */
-  align-items: flex-start;
+  justify-content: space-between;
   gap: 30px;
-  width: 100%;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 export const BottomContainer = styled.div`
   display: flex;
-  flex-direction: column; /* ✅ Биография в одной колонке */
-  align-items: center; /* ✅ Центрируем */
-  width: 80%;
-  gap: 20px; /* ✅ Добавил отступы */
+  flex-direction: column;
+  gap: 30px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    overflow-y: auto; /* Добавлено для скроллинга */
+  }
+`;
+
+export const TitleBoxText = styled.h2`
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+// Поля ввода
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+`;
+
+export const Input = styled.input`
+  padding: 12px 15px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  outline: none;
+
+  &:focus {
+    border-color: #007bff;
+    background-color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    font-size: 12px;
+  }
+`;
+
+export const UploadInput = styled.input`
+  font-size: 14px;
+  padding: 10px;
+  margin-top: 10px;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+    font-size: 12px;
+  }
+`;
+
+export const CheckboxLabel = styled.label`
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    gap: 8px;
+  }
 `;
 
 export const BiographySection = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px; /* ✅ Добавил отступы между заголовками и полем */
-  width: 100%;
-`;
+  gap: 10px;
 
+  @media (max-width: 768px) {
+    gap: 8px;
+    overflow-y: auto; /* Гарантируем скроллинг для длинного контента */
+    max-height: 150px; /* Ограничиваем высоту для мобильных устройств */
+  }
+`;
 export const BiographyLabel = styled.label`
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  color: #292828;
+  margin-bottom: 8px;
 `;
 
 export const BiographyTextareaDe = styled.textarea`
-  width: 80%;
-  height: 300px;
-  padding: 10px;
+  font-size: 14px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
+  background-color: #f9f9f9;
+  min-height: 100px;
   resize: none;
-  text-align: center;
-  margin: auto;
+  outline: none;
+
   &:focus {
-    border-color: #20b1b7;
-    outline: none;
+    border-color: #007bff;
+    background-color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    font-size: 12px;
+    min-height: 80px;
   }
 `;
 
-export const BiographyTextareaEn = styled(BiographyTextareaDe)`
-  height: 200px;
-`;
+export const BiographyTextareaEn = styled(BiographyTextareaDe)``;
+export const BiographyTextareaRu = styled(BiographyTextareaDe)``;
 
-export const BiographyTextareaRu = styled(BiographyTextareaDe)`
-  height: 200px;
-`;
-
+// Фото
 export const EditPhotoSection = styled.div`
-  width: 900px;
-  height: 727px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
+`;
+
+export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-`;
-
-export const UploadInput = styled.input`
-  padding: 10px;
-  border-radius: 5px;
-`;
-
-export const PhotoPreview = styled.img`
+  padding: 30px;
   width: 100%;
-  height: 100%;
+  height: 500px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+
+  @media (max-width: 768px) {
+    height: 300px;
+    padding: 20px;
+  }
+`;
+
+export const ImagePreview = styled.img`
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 10px;
 `;
 
+// Кнопки
 export const StyledReturnButton = styled.button`
   background-color: #20b1b7;
   color: #fff;
@@ -100,8 +224,14 @@ export const StyledReturnButton = styled.button`
   cursor: pointer;
   font-weight: bold;
   font-size: 18px;
+
   &:hover {
     background-color: #0c989c;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 16px;
   }
 `;
 
@@ -113,57 +243,43 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
   border-radius: 30px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   font-size: 18px;
+
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
   }
-`;
 
-export const CheckboxLabel = styled.label`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-
-  input {
-    width: 20px;
-    height: 20px;
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 16px;
   }
 `;
 
-/* ✅ Добавлен `InputContainer`, чтобы избежать ошибки */
-export const InputContainer = styled.div`
+export const StyledSaveButtonWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  width: 100%;
-`;
+  justify-content: flex-end;
+  margin-top: 20px;
 
-/* ✅ Добавлен `Input`, чтобы избежать ошибки */
-export const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  &:focus {
-    border-color: #20b1b7;
-    outline: none;
+  @media (max-width: 768px) {
+    margin-top: 15px;
   }
 `;
 
-/* ✅ Добавлен `MainBoxText`, чтобы избежать ошибки */
+export const PhotoPreview = styled.img`
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+`;
+
 export const MainBoxText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex: 1;
-`;
+  width: 60%;
 
-/* ✅ Добавлен `TitleBoxText`, чтобы избежать ошибки */
-export const TitleBoxText = styled.label`
-  font-size: 16px;
-  font-weight: bold;
-  color: #292828;
+  @media (max-width: 768px) {
+    width: 100%;
+    gap: 15px;
+  }
 `;

@@ -296,7 +296,48 @@
           "refresh": "Обновить",
           "errorLoading": "Ошибка загрузки услуги",
           "searchPlaceholder": "Поиск по названию услуги"
+        },
+        "doctors": {
+          "requiredField": "Это поле обязательно для заполнения",
+          "updated": "Информация о враче обновлена",
+          "errorUpdating": "Ошибка при обновлении данных о враче",
+          "returnBack": "Вернуться назад",
+          "saving": "Сохранение...",
+          "saveAll": "Сохранить все",
+          "makeCardVisible": "Сделать карточку видимой для пользователей:",
+          "editTopImage": "Редактировать верхнее изображение",
+          "titles": "Заголовки:",
+          "title": "Звание",
+          "enterTitleDe": "Введите заголовок (DE)",
+          "enterTitleEn": "Введите заголовок (EN)",
+          "enterTitleRu": "Введите заголовок (RU)",
+          "enterDescriptionDe": "Введите описание (DE)",
+          "enterDescriptionEn": "Введите описание (EN)",
+          "enterDescriptionRu": "Введите описание (RU)",
+          "specialisation": "Специализация",
+          "biography": "Биография ",
+          "edit": "Редактировать",
+          "details": "Подробнее",
+          "inactive": "Неактивен",
+          "descriptions": "Описания:",
+          "enterDescription": "Введите описание ({{lang}})",
+          "placeholder": "Введите имя врача",
+          "uploadImage": "Загрузить изображение",
+          "makeCardVisibleCheckbox": "Сделать карточку видимой",
+          "saveButton": "Сохранить все",
+          "savingButton": "Сохранение...",
+          "addNewDoctor": "+  Добавить нового врача",
+          "refresh": "Обновить",
+          "loadingDoctorData": "Загрузка данных о враче...",
+          "doctorPreview": "Предпросмотр врача",
+          "errorLoadingDoctorData": "Ошибка при загрузке данных о враче:",
+          "doctorUpdatedSuccessfully": "$Врач \"{doctorData.fullName}\" успешно обновлен!",
+          "fullName": "Полное имя",
+          "searchPlaceholder": "Введите имя врача",
+          "searchIconAlt": "Поиск"
+          
         }
+
       }
     }
   }
