@@ -101,6 +101,8 @@ const LoginAdminForm = ({
 
       if (data.token) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("isLoggedIn", "true");
+
         setNotification({
           message: t("message.other.loginAdmin.messages.loginSuccess"),
           type: "success",
@@ -110,7 +112,7 @@ const LoginAdminForm = ({
           onLoginSuccess();
           onClose();
           navigate("/admin-panel");
-        }, 1000);
+        }, 1500);
       } else {
         setNotification({
           message: data.message || "Login failed",

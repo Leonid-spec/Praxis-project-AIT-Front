@@ -22,9 +22,10 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     setShowDropdown(false);
-    navigate("/");
+    navigate("/login"); 
   };
 
   // const handleChangePassword = () => {

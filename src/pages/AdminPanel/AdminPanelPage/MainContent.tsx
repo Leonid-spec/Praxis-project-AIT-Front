@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import styles from "./mainContent.module.css";
 
@@ -17,17 +17,22 @@ import { ServicePageSingle } from "../Services/ServicePageSinge/ServicePageSingl
 import SettingsPage from "../Settings/StartPage/SettingsPage";
 
 const MainContent: React.FC = () => {
-
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-
-  //   if (!token) {
-  //     navigate("/login"); 
-  //   }
-  // }, [navigate]);
   
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const loggedInStatus = localStorage.getItem("isLoggedIn");
+
+    if (token && loggedInStatus === "true") {
+      setIsLoggedIn(true);
+    } else {
+      setIsLoggedIn(false);
+      navigate("/login"); 
+    }
+  }, [navigate]);
+
   return (
     <div className={styles.content}>
       <Routes>

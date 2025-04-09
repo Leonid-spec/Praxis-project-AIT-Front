@@ -14,20 +14,11 @@ import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
 import { DoctorsProvider } from "./pages/AdminPanel/Doctors/DoctorsContext";
 import AppointmentForm from "./components/Appointment/AppointmentForm";
-import { useEffect } from "react";
 
 Modal.setAppElement("#root");
 
 function App() {
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-    
-  //   if (!token) {
-  //     window.location.href = "/login";
-  //   }
-  // }, []);
-
+  
   return (
     <ModalProvider>
       <AppointmentModal />
