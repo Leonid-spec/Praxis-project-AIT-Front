@@ -17,6 +17,7 @@ import EditDoctorPage from "./pages/AdminPanel/Doctors/EditDoctor/EditDoctorPage
 Modal.setAppElement("#root");
 
 function App() {
+  
   return (
     <ModalProvider>
       <AppointmentModal />

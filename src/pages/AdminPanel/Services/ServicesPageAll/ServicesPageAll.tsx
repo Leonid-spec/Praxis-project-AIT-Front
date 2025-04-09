@@ -19,6 +19,7 @@ import {
 import EditServicePage from "../EditServicePage/EditServicePage";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { Outlet } from "react-router-dom";
+import ImageUploader from "../../Images/ImageUploader";
 
 export const ServicesPageAll = () => {
   const { t } = useTranslation();
@@ -42,7 +43,7 @@ export const ServicesPageAll = () => {
       }
       const data = await getServices(token);
       setServices(data);
-      setFilteredServices(data ? [] : data);
+      setFilteredServices(data || []);
       setError(null);
     } catch (err: any) {
       setError(
@@ -134,6 +135,7 @@ export const ServicesPageAll = () => {
                   ) : null
               )}
             </ServiceCardsMainContainer>
+
           </ScrollContainer>
         </>
       )}

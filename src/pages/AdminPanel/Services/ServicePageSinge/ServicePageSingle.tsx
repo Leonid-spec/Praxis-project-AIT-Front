@@ -21,6 +21,7 @@ import {
   ScrollContainer,
 } from "./style";
 import { createService } from "../../../../api/serviceAPI";
+import { getFile, pushImageFile } from "../../../../api/imageAPI";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { useNavigate } from "react-router-dom";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
@@ -29,6 +30,7 @@ import { useTranslation } from "react-i18next";
 export const ServicePageSingle: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [localPreviewURL, setLocalPreviewURL] = useState<string | null>(null);
 
   const [serviceData, setServiceData] = useState<ServiceData>({
     titleDe: "",
@@ -42,6 +44,7 @@ export const ServicePageSingle: React.FC = () => {
     images: [],
   });
 
+  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const [notification, setNotification] = useState<{
     message: string;
     type: "error" | "success";
@@ -63,7 +66,9 @@ export const ServicePageSingle: React.FC = () => {
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      setSelectedImageFile(file);
       const imageUrl = URL.createObjectURL(file);
+      setLocalPreviewURL(imageUrl);
       setServiceData((prev) => ({
         ...prev,
         topImage: imageUrl,
@@ -79,7 +84,6 @@ export const ServicePageSingle: React.FC = () => {
       descriptionDe,
       descriptionEn,
       descriptionRu,
-      topImage,
     } = serviceData;
 
     return (
@@ -89,7 +93,7 @@ export const ServicePageSingle: React.FC = () => {
       (descriptionDe ?? "").trim() !== "" &&
       (descriptionEn ?? "").trim() !== "" &&
       (descriptionRu ?? "").trim() !== "" &&
-      (topImage ?? "") !== ""
+      selectedImageFile !== null
     );
   };
 
@@ -107,7 +111,29 @@ export const ServicePageSingle: React.FC = () => {
     setIsSaving(true);
 
     try {
-      const newService = await createService(serviceData, token);
+      let uploadedTopImageUrl = "";
+      if (selectedImageFile) {
+        uploadedTopImageUrl = await pushImageFile(selectedImageFile, token);
+        uploadedTopImageUrl = "https://" + uploadedTopImageUrl;
+        console.log("Uploaded image URL:", uploadedTopImageUrl);
+      }
+
+      const serviceToSend: ServiceData = {
+        ...serviceData,
+        topImage: uploadedTopImageUrl,
+      };
+
+      const newService = await createService(serviceToSend, token);
+      setNotification({
+        message: `Service "${newService.titleEn}" created successfully!`,
+        type: "success",
+      });
+      
+      setServiceData((prev) => ({
+        ...prev,
+        topImage: newService.topImage,
+      }));
+      console.log("Image fetched from server 2:", newService);
       setNotification({
         message: `Service "${newService.titleEn}" created successfully!`,
         type: "success",
@@ -132,9 +158,13 @@ export const ServicePageSingle: React.FC = () => {
         <StyledReturnButton onClick={handleReturn}>
           ← {t("message.adminPanel.appointments.services.returnBack")}
         </StyledReturnButton>
-        <StyledSaveButton onClick={handleSave} disabled={!isFormValid() || isSaving}>
-          {isSaving ? t("message.adminPanel.appointments.services.savingButton") : 
-          t("message.adminPanel.appointments.services.saveButton")}
+        <StyledSaveButton
+          onClick={handleSave}
+          disabled={!isFormValid() || isSaving}
+        >
+          {isSaving
+            ? t("message.adminPanel.appointments.services.savingButton")
+            : t("message.adminPanel.appointments.services.saveButton")}
         </StyledSaveButton>
       </HeaderBox>
 
@@ -149,7 +179,9 @@ export const ServicePageSingle: React.FC = () => {
         <MainBox>
           <MainBoxText>
             <MakeCardVisibleBox>
-              <TitlesBox>{t("message.adminPanel.appointments.services.makeCardVisible")}</TitlesBox>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.services.makeCardVisible")}
+              </TitlesBox>
               <StyledCheckbox
                 type="checkbox"
                 checked={serviceData.isActive}
@@ -158,84 +190,75 @@ export const ServicePageSingle: React.FC = () => {
             </MakeCardVisibleBox>
 
             <EditTopImage>
-              <TitlesBox>{t("message.adminPanel.appointments.services.editTopImage")}</TitlesBox>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.services.editTopImage")}
+              </TitlesBox>
               <UploadInput
                 type="file"
-                accept="topImage/*"
+                accept="image/*"
                 onChange={handleImageUpload}
               />
             </EditTopImage>
 
             <TitleSection>
-              <TitlesBox>{t("message.adminPanel.appointments.services.titles")}</TitlesBox>
-              <InputContainer>
-                <TitleBoxText>De</TitleBoxText>
-                <Input
-                  type="text"
-                  placeholder={t("message.adminPanel.appointments.services.enterTitleDe")}
-                  value={serviceData.titleDe}
-                  onChange={(e) => handleChange("titleDe", e.target.value)}
-                />
-              </InputContainer>
-              <InputContainer>
-                <TitleBoxText>En</TitleBoxText>
-                <Input
-                  type="text"
-                  placeholder={t("message.adminPanel.appointments.services.enterTitleEn")}
-                  value={serviceData.titleEn}
-                  onChange={(e) => handleChange("titleEn", e.target.value)}
-                />
-              </InputContainer>
-              <InputContainer>
-                <TitleBoxText>Ru</TitleBoxText>
-                <Input
-                  type="text"
-                  placeholder={t("message.adminPanel.appointments.services.enterTitleRu")}
-                  value={serviceData.titleRu}
-                  onChange={(e) => handleChange("titleRu", e.target.value)}
-                />
-              </InputContainer>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.services.titles")}
+              </TitlesBox>
+              {["De", "En", "Ru"].map((lang) => (
+                <InputContainer key={lang}>
+                  <TitleBoxText>{lang}</TitleBoxText>
+                  <Input
+                    type="text"
+                    placeholder={t(
+                      `message.adminPanel.appointments.services.enterTitle${lang}`
+                    )}
+                    value={serviceData[`title${lang as "De" | "En" | "Ru"}`]}
+                    onChange={(e) =>
+                      handleChange(
+                        `title${lang as keyof ServiceData}`,
+                        e.target.value
+                      )
+                    }
+                  />
+                </InputContainer>
+              ))}
             </TitleSection>
           </MainBoxText>
 
           <ImageBox>
-            {serviceData.topImage ? (
-              <ImagePreview src={serviceData.topImage} alt="Uploaded preview" />
-            ) : (
-              <ImagePreview src="https://via.placeholder.com/300" alt="Image" />
-            )}
+            <ImagePreview
+              src={
+                serviceData.topImage ||
+                localPreviewURL ||
+                "https://via.placeholder.com/300"
+              }
+              alt="Uploaded preview"
+            />
           </ImageBox>
         </MainBox>
 
         <DescriptionSection>
-          <TitlesBox>{t("message.adminPanel.appointments.services.descriptions")}</TitlesBox>
-          <InputContainer>
-            <TitleBoxText>De</TitleBoxText>
-            <textarea
-              placeholder={t("message.adminPanel.appointments.services.enterDescriptionDe")}
-              rows={5}
-              value={serviceData.descriptionDe}
-              onChange={(e) => handleChange("descriptionDe", e.target.value)}
-            />
-          </InputContainer>
-          <InputContainer>
-            <TitleBoxText>En</TitleBoxText>
-            <textarea
-              placeholder={t("message.adminPanel.appointments.services.enterDescriptionEn")}
-              rows={5}
-              value={serviceData.descriptionEn}
-              onChange={(e) => handleChange("descriptionEn", e.target.value)}
-            />
-          </InputContainer>
-          <InputContainer>
-            <TitleBoxText>Ru</TitleBoxText>
-            <textarea
-              placeholder={t("message.adminPanel.appointments.services.enterDescriptionRu")}
-              rows={5}
-              value={serviceData.descriptionRu}
-              onChange={(e) => handleChange("descriptionRu", e.target.value)}
-            />
-          </InputContainer>
+          <TitlesBox>
+            {t("message.adminPanel.appointments.services.descriptions")}
+          </TitlesBox>
+          {["De", "En", "Ru"].map((lang) => (
+            <InputContainer key={lang}>
+              <TitleBoxText>{lang}</TitleBoxText>
+              <textarea
+                placeholder={t(
+                  `message.adminPanel.appointments.services.enterDescription${lang}`
+                )}
+                rows={5}
+                value={serviceData[`description${lang as "De" | "En" | "Ru"}`]}
+                onChange={(e) =>
+                  handleChange(
+                    `description${lang as keyof ServiceData}`,
+                    e.target.value
+                  )
+                }
+              />
+            </InputContainer>
+          ))}
         </DescriptionSection>
       </ScrollContainer>
     </ServicePageSingleContainer>
