@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // Контейнеры
 export const EditDoctorContainer = styled.div`
@@ -11,6 +11,28 @@ export const EditDoctorContainer = styled.div`
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: auto; /* Убираем фиксированную высоту */
+    padding: 20px;
+    gap: 20px;
+    overflow-y: auto; /* Сохраняем скроллинг */
+    max-height: 100vh;
+  }
+`;
+
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  padding: 0 30px 0 20px;
+  max-height: calc(100vh - 200px);
+
+  @media (max-width: 768px) {
+    padding: 0 15px 0 10px;
+    overflow-y: auto;
+    max-height: 100vh; /* Ограничение высоты для мобильных устройств */
+  }
 `;
 
 export const HeaderBox = styled.div`
@@ -18,6 +40,11 @@ export const HeaderBox = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 
 export const TopContainer = styled.div`
@@ -25,12 +52,22 @@ export const TopContainer = styled.div`
   justify-content: space-between;
   gap: 30px;
   margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 export const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  @media (max-width: 768px) {
+    gap: 20px;
+    overflow-y: auto; /* Добавлено для скроллинга */
+  }
 `;
 
 export const TitleBoxText = styled.h2`
@@ -38,6 +75,10 @@ export const TitleBoxText = styled.h2`
   font-weight: 600;
   margin-bottom: 10px;
   color: #333;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 // Поля ввода
@@ -45,6 +86,10 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
 `;
 
 export const Input = styled.input`
@@ -59,12 +104,22 @@ export const Input = styled.input`
     border-color: #007bff;
     background-color: #fff;
   }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    font-size: 12px;
+  }
 `;
 
 export const UploadInput = styled.input`
   font-size: 14px;
   padding: 10px;
   margin-top: 10px;
+
+  @media (max-width: 768px) {
+    padding: 8px;
+    font-size: 12px;
+  }
 `;
 
 export const CheckboxLabel = styled.label`
@@ -73,18 +128,28 @@ export const CheckboxLabel = styled.label`
   display: flex;
   align-items: center;
   gap: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    gap: 8px;
+  }
 `;
 
 export const BiographySection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-`;
 
+  @media (max-width: 768px) {
+    gap: 8px;
+    overflow-y: auto; /* Гарантируем скроллинг для длинного контента */
+    max-height: 150px; /* Ограничиваем высоту для мобильных устройств */
+  }
+`;
 export const BiographyLabel = styled.label`
   font-size: 14px;
-  font-weight: 500;
-  color: #555;
+  font-weight: bold;
+  margin-bottom: 8px;
 `;
 
 export const BiographyTextareaDe = styled.textarea`
@@ -101,6 +166,12 @@ export const BiographyTextareaDe = styled.textarea`
     border-color: #007bff;
     background-color: #fff;
   }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+    font-size: 12px;
+    min-height: 80px;
+  }
 `;
 
 export const BiographyTextareaEn = styled(BiographyTextareaDe)``;
@@ -113,6 +184,10 @@ export const EditPhotoSection = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
 `;
 
 export const ImageBox = styled.div`
@@ -124,6 +199,11 @@ export const ImageBox = styled.div`
   height: 500px;
   background-color: #f8f8f8;
   border-radius: 10px;
+
+  @media (max-width: 768px) {
+    height: 300px;
+    padding: 20px;
+  }
 `;
 
 export const ImagePreview = styled.img`
@@ -148,6 +228,11 @@ export const StyledReturnButton = styled.button`
   &:hover {
     background-color: #0c989c;
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
 `;
 
 export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
@@ -162,13 +247,23 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
   }
+
+  @media (max-width: 768px) {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
 `;
 
 export const StyledSaveButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
+
+  @media (max-width: 768px) {
+    margin-top: 15px;
+  }
 `;
+
 export const PhotoPreview = styled.img`
   width: 100%;
   max-width: 100%;
@@ -176,11 +271,15 @@ export const PhotoPreview = styled.img`
   object-fit: cover;
   border-radius: 10px;
 `;
+
 export const MainBoxText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 60%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    gap: 15px;
+  }
 `;
-
-

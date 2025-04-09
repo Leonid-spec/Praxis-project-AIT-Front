@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Doctor } from "../doctorTypes";
+import { Doctor } from "../../../../store/types/doctorTypes";
+import { ScrollContainer } from "./styles"; // или другой путь
 import { getDoctorById, updateDoctor } from "../../../../api/doctorAPI";
 import {
   EditDoctorContainer,
@@ -98,7 +99,7 @@ const EditDoctorPage: React.FC = () => {
     <EditDoctorContainer>
       <HeaderBox>
         <StyledReturnButton onClick={() => navigate("/admin-panel/doctors")}>
-          {t("message.adminPanel.appointments.doctors.returnBack")}
+          ← {t("message.adminPanel.appointments.doctors.returnBack")}
         </StyledReturnButton>
         <StyledSaveButton onClick={handleSave} disabled={isSaving}>
           {isSaving
@@ -112,114 +113,115 @@ const EditDoctorPage: React.FC = () => {
           type={notification.type}
         />
       )}
-      <TopContainer>
-        <MainBoxText>
-          <InputContainer>
-            <TitleBoxText>{t("message.adminPanel.appointments.doctors.fullName")}</TitleBoxText>
-            <Input
-              type="text"
-              value={doctorData.fullName}
-              onChange={(e) => setDoctorData({ ...doctorData, fullName: e.target.value })}
+      <ScrollContainer>
+        <TopContainer>
+          <MainBoxText>
+            <InputContainer>
+              <TitleBoxText>{t("message.adminPanel.appointments.doctors.fullName")}</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.fullName}
+                onChange={(e) => setDoctorData({ ...doctorData, fullName: e.target.value })}
+              />
+            </InputContainer>
+
+            <InputContainer>
+              <TitleBoxText>{t("message.adminPanel.appointments.doctors.uploadImage")}</TitleBoxText>
+              <UploadInput type="file" accept="image/*" onChange={handlePhotoUpload} />
+            </InputContainer>
+
+            <CheckboxLabel>
+              <input
+                type="checkbox"
+                checked={doctorData.isActive}
+                onChange={(e) => setDoctorData({ ...doctorData, isActive: e.target.checked })}
+              />
+              {t("message.adminPanel.appointments.doctors.makeCardVisibleCheckbox")}
+            </CheckboxLabel>
+
+            <InputContainer>
+              <TitleBoxText>{t("message.adminPanel.appointments.doctors.title")}</TitleBoxText>
+              <TitleBoxText>DE</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.specialisationDe || ""}
+                onChange={(e) => setDoctorData({ ...doctorData, specialisationDe: e.target.value })}
+              />
+              <TitleBoxText>EN</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.specialisationEn || ""}
+                onChange={(e) => setDoctorData({ ...doctorData, specialisationEn: e.target.value })}
+              />
+              <TitleBoxText>RU</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.specialisationRu || ""}
+                onChange={(e) => setDoctorData({ ...doctorData, specialisationRu: e.target.value })}
+              />
+            </InputContainer>
+
+            <InputContainer>
+              <TitleBoxText>{t("message.adminPanel.appointments.doctors.specialisation")}</TitleBoxText>
+              <TitleBoxText>DE</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.titleDe || ""}
+                onChange={(e) => setDoctorData({ ...doctorData, titleDe: e.target.value })}
+              />
+              <TitleBoxText>EN</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.titleEn || ""}
+                onChange={(e) => setDoctorData({ ...doctorData, titleEn: e.target.value })}
+              />
+              <TitleBoxText>RU</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.titleRu || ""}
+                onChange={(e) => setDoctorData({ ...doctorData, titleRu: e.target.value })}
+              />
+            </InputContainer>
+          </MainBoxText>
+
+          <EditPhotoSection>
+            <PhotoPreview
+              src={doctorData.topImage || "https://via.placeholder.com/600x400"}
+              alt={t("message.adminPanel.appointments.doctors.doctorPreview")}
             />
-          </InputContainer>
+          </EditPhotoSection>
+        </TopContainer>
 
-          <InputContainer>
-            <TitleBoxText>{t("message.adminPanel.appointments.doctors.uploadImage")}</TitleBoxText>
-            <UploadInput type="file" accept="image/*" onChange={handlePhotoUpload} />
-          </InputContainer>
+        <BottomContainer>
+          <TitleBoxText>{t("message.adminPanel.appointments.doctors.biography")}</TitleBoxText>
 
-          <CheckboxLabel>
-            <input
-              type="checkbox"
-              checked={doctorData.isActive}
-              onChange={(e) => setDoctorData({ ...doctorData, isActive: e.target.checked })}
+          <BiographySection>
+            <BiographyLabel>DE</BiographyLabel>
+            <BiographyTextareaDe
+              value={doctorData.biographyDe || ""}
+              onChange={(e) => setDoctorData({ ...doctorData, biographyDe: e.target.value })}
             />
-            {t("message.adminPanel.appointments.doctors.makeCardVisibleCheckbox")}
-          </CheckboxLabel>
+          </BiographySection>
 
-          <InputContainer>
-            <TitleBoxText>{t("message.adminPanel.appointments.doctors.specialisation")}</TitleBoxText>
-            <TitleBoxText>DE</TitleBoxText>
-            <Input
-              type="text"
-              value={doctorData.specialisationDe || ""}
-              onChange={(e) => setDoctorData({ ...doctorData, specialisationDe: e.target.value })}
+          <BiographySection>
+            <BiographyLabel>EN</BiographyLabel>
+            <BiographyTextareaEn
+              value={doctorData.biographyEn || ""}
+              onChange={(e) => setDoctorData({ ...doctorData, biographyEn: e.target.value })}
             />
-            <TitleBoxText>EN</TitleBoxText>
-            <Input
-              type="text"
-              value={doctorData.specialisationEn || ""}
-              onChange={(e) => setDoctorData({ ...doctorData, specialisationEn: e.target.value })}
+          </BiographySection>
+
+          <BiographySection>
+            <BiographyLabel>RU</BiographyLabel>
+            <BiographyTextareaRu
+              value={doctorData.biographyRu || ""}
+              onChange={(e) => setDoctorData({ ...doctorData, biographyRu: e.target.value })}
             />
-            <TitleBoxText>RU</TitleBoxText>
-            <Input
-              type="text"
-              value={doctorData.specialisationRu || ""}
-              onChange={(e) => setDoctorData({ ...doctorData, specialisationRu: e.target.value })}
-            />
-          </InputContainer>
-
-          <InputContainer>
-            <TitleBoxText>{t("message.adminPanel.appointments.doctors.titles")}</TitleBoxText>
-            <TitleBoxText>DE</TitleBoxText>
-            <Input
-              type="text"
-              value={doctorData.titleDe || ""}
-              onChange={(e) => setDoctorData({ ...doctorData, titleDe: e.target.value })}
-            />
-            <TitleBoxText>EN</TitleBoxText>
-            <Input
-              type="text"
-              value={doctorData.titleEn || ""}
-              onChange={(e) => setDoctorData({ ...doctorData, titleEn: e.target.value })}
-            />
-            <TitleBoxText>RU</TitleBoxText>
-            <Input
-              type="text"
-              value={doctorData.titleRu || ""}
-              onChange={(e) => setDoctorData({ ...doctorData, titleRu: e.target.value })}
-            />
-          </InputContainer>
-        </MainBoxText>
-
-        <EditPhotoSection>
-          <PhotoPreview
-            src={doctorData.topImage || "https://via.placeholder.com/600x400"}
-            alt={t("message.adminPanel.appointments.doctors.doctorPreview")}
-          />
-        </EditPhotoSection>
-      </TopContainer>
-
-      <BottomContainer>
-        <TitleBoxText>{t("message.adminPanel.appointments.doctors.biography")}</TitleBoxText>
-
-        <BiographySection>
-          <BiographyLabel>DE</BiographyLabel>
-          <BiographyTextareaDe
-            value={doctorData.biographyDe || ""}
-            onChange={(e) => setDoctorData({ ...doctorData, biographyDe: e.target.value })}
-          />
-        </BiographySection>
-
-        <BiographySection>
-          <BiographyLabel>EN</BiographyLabel>
-          <BiographyTextareaEn
-            value={doctorData.biographyEn || ""}
-            onChange={(e) => setDoctorData({ ...doctorData, biographyEn: e.target.value })}
-          />
-        </BiographySection>
-
-        <BiographySection>
-          <BiographyLabel>RU</BiographyLabel>
-          <BiographyTextareaRu
-            value={doctorData.biographyRu || ""}
-            onChange={(e) => setDoctorData({ ...doctorData, biographyRu: e.target.value })}
-          />
-        </BiographySection>
-      </BottomContainer>
+          </BiographySection>
+        </BottomContainer>
+      </ScrollContainer>
     </EditDoctorContainer>
   );
 };
 
 export default EditDoctorPage;
-

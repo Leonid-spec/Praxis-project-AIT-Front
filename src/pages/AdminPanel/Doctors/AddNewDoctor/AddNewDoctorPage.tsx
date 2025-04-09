@@ -99,7 +99,7 @@ const AddNewDoctorPage: React.FC = () => {
     <DoctorPageContainer>
       <HeaderBox>
         <StyledReturnButton onClick={handleReturn}>
-          {t("message.adminPanel.appointments.doctors.returnBack")}
+        ← {t("message.adminPanel.appointments.doctors.returnBack")}
         </StyledReturnButton>
         <StyledSaveButton onClick={handleSave} disabled={isSaving}>
           {isSaving
@@ -143,7 +143,7 @@ const AddNewDoctorPage: React.FC = () => {
             </EditTopImage>
 
             <SpecialisationSection>
-              <TitlesBox>{t("message.adminPanel.appointments.doctors.specialisation")}</TitlesBox>
+              <TitlesBox>{t("message.adminPanel.appointments.doctors.title")}</TitlesBox>
               <InputContainer>
                 <TitleBoxText>DE</TitleBoxText>
                 <Input
@@ -174,7 +174,7 @@ const AddNewDoctorPage: React.FC = () => {
             </SpecialisationSection>
 
             <TitleSection>
-              <TitlesBox>{t("message.adminPanel.appointments.doctors.titles")}</TitlesBox>
+              <TitlesBox>{t("message.adminPanel.appointments.doctors.specialisation")}</TitlesBox>
               <InputContainer>
                 <TitleBoxText>DE</TitleBoxText>
                 <Input
