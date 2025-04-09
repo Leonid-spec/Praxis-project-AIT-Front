@@ -1,31 +1,33 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { createDoctor } from "../../../../api/doctorAPI";
 import { Doctor } from "../../../../store/types/doctorTypes";
-import { 
-  StyledReturnButton, 
-  StyledSaveButton, 
-  DoctorPageContainer, 
-  Input, 
-  TitlesBox, 
-  ImagePreview, 
-  UploadInput, 
-  HeaderBox, 
-  InputContainer, 
-  ScrollContainer, 
-  EditTopImage, 
-  MakeCardVisibleBox, 
-  StyledCheckbox, 
-  TitleBoxText, 
-  BiographySection, 
-  TitleSection, 
+import {
+  StyledReturnButton,
+  StyledSaveButton,
+  DoctorPageContainer,
+  Input,
+  TitlesBox,
+  ImagePreview,
+  UploadInput,
+  HeaderBox,
+  InputContainer,
+  ScrollContainer,
+  EditTopImage,
+  MakeCardVisibleBox,
+  StyledCheckbox,
+  TitleBoxText,
+  BiographySection,
+  TitleSection,
   SpecialisationSection,
-  ImageBox, 
-  MainBox 
+  ImageBox,
+  MainBox,
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 
 const AddNewDoctorPage: React.FC = () => {
+  const { t } = useTranslation();
   const [notification, setNotification] = useState<{
     message: string;
     type: "error" | "success";
@@ -51,7 +53,7 @@ const AddNewDoctorPage: React.FC = () => {
   const token = localStorage.getItem("token");
 
   const handleReturn = () => {
-    navigate("/admin-panel/doctors"); 
+    navigate("/admin-panel/doctors");
   };
 
   const handleChange = (field: keyof Doctor, value: string | boolean) => {
@@ -66,60 +68,26 @@ const AddNewDoctorPage: React.FC = () => {
     }
   };
 
-  const isFieldValid = (value: string): boolean => value.trim().length >= 2;
-
-  const isFormValid = (): boolean => {
-    return isFieldValid(doctorData.fullName) &&
-      isFieldValid(doctorData.specialisationDe) &&
-      isFieldValid(doctorData.specialisationEn) &&
-      isFieldValid(doctorData.specialisationRu) &&
-      isFieldValid(doctorData.titleDe) &&
-      isFieldValid(doctorData.titleEn) &&
-      isFieldValid(doctorData.titleRu) &&
-      isFieldValid(doctorData.biographyDe) &&
-      isFieldValid(doctorData.biographyEn) &&
-      isFieldValid(doctorData.biographyRu);
-  };
-
   const handleSave = async () => {
-    if (!isFormValid()) return;
     if (!token) {
       setNotification({
-        message: "Authorization token is missing. Please log in again.",
+        message: t("message.adminPanel.appointments.doctors.errorLoadingDoctorData"),
         type: "error",
       });
       return;
     }
-    if (!token) return alert("Authorization token is missing!");
+
     setIsSaving(true);
     try {
-      const requestData = {
-        titleDe: doctorData.titleDe, 
-        titleEn: doctorData.titleEn,
-        titleRu: doctorData.titleRu,
-        fullName: doctorData.fullName,
-        biographyDe: doctorData.biographyDe,
-        biographyEn: doctorData.biographyEn,
-        biographyRu: doctorData.biographyRu,
-        specialisationDe: doctorData.specialisationDe,
-        specialisationEn: doctorData.specialisationEn,
-        specialisationRu: doctorData.specialisationRu,
-        topImage: doctorData.topImage,
-        isActive: doctorData.isActive,
-        images: doctorData.images
-      };
-
-      await createDoctor(requestData, token);
-      // alert("Doctor added successfully!");
+      await createDoctor(doctorData, token);
       setNotification({
-        message: `Doctor created successfully!`,
+        message: t("message.adminPanel.appointments.doctors.doctorUpdatedSuccessfully"),
         type: "success",
       });
-      navigate("/admin-panel/doctors"); 
+      navigate("/admin-panel/doctors");
     } catch (error: any) {
-      // alert(`Error creating doctor: ${error.message}`);
       setNotification({
-        message: `Error creating doctor: ${error.message}`,
+        message: t("message.adminPanel.appointments.doctors.errorUpdating"),
         type: "error",
       });
     } finally {
@@ -130,91 +98,138 @@ const AddNewDoctorPage: React.FC = () => {
   return (
     <DoctorPageContainer>
       <HeaderBox>
-        <StyledReturnButton onClick={handleReturn}>← Return back</StyledReturnButton>
-        <StyledSaveButton onClick={handleSave} disabled={!isFormValid() || isSaving}>
-          {isSaving ? "Saving..." : "Save all"}
+        <StyledReturnButton onClick={handleReturn}>
+          {t("message.adminPanel.appointments.doctors.returnBack")}
+        </StyledReturnButton>
+        <StyledSaveButton onClick={handleSave} disabled={isSaving}>
+          {isSaving
+            ? t("message.adminPanel.appointments.doctors.saving")
+            : t("message.adminPanel.appointments.doctors.saveAll")}
         </StyledSaveButton>
       </HeaderBox>
+
       {notification && (
         <CustomNotification
           message={notification.message}
           type={notification.type}
         />
       )}
+
       <ScrollContainer>
         <MainBox>
           <div>
-            <TitlesBox>Full Name:</TitlesBox>
+            <TitlesBox>{t("message.adminPanel.appointments.doctors.fullName")}</TitlesBox>
             <InputContainer>
-              <Input 
-                type="text" 
-                placeholder="Enter full name" 
-                value={doctorData.fullName} 
-                onChange={(e) => handleChange("fullName", e.target.value)} 
-                style={{ borderColor: isFieldValid(doctorData.fullName) ? "#ccc" : "red" }}
+              <Input
+                type="text"
+                value={doctorData.fullName}
+                onChange={(e) => handleChange("fullName", e.target.value)}
+                placeholder={t("message.adminPanel.appointments.doctors.placeholder")}
               />
             </InputContainer>
 
             <MakeCardVisibleBox>
-              <TitlesBox>Make card visible for users:</TitlesBox>
-              <StyledCheckbox 
-                type="checkbox" 
-                checked={doctorData.isActive} 
-                onChange={(e) => handleChange("isActive", e.target.checked)} 
+              <TitlesBox>{t("message.adminPanel.appointments.doctors.makeCardVisibleCheckbox")}</TitlesBox>
+              <StyledCheckbox
+                type="checkbox"
+                checked={doctorData.isActive}
+                onChange={(e) => handleChange("isActive", e.target.checked)}
               />
             </MakeCardVisibleBox>
 
             <EditTopImage>
-              <TitlesBox>Edit top image</TitlesBox>
-              <UploadInput type="file" accept="image/*" onChange={handleImageUpload} />
+              <TitlesBox>{t("message.adminPanel.appointments.doctors.uploadImage")}</TitlesBox>
+              <UploadInput type="file" onChange={handleImageUpload} />
             </EditTopImage>
 
             <SpecialisationSection>
-              <TitlesBox>Specialisation:</TitlesBox>
-              {["specialisationDe", "specialisationEn", "specialisationRu"].map((lang) => (
-                <InputContainer key={lang}>
-                  <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
-                  <Input 
-                    type="text" 
-                    placeholder={`Enter specialisation (${lang.slice(-2).toUpperCase()})`} 
-                    value={doctorData[lang as keyof Doctor]} 
-                    onChange={(e) => handleChange(lang as keyof Doctor, e.target.value)} 
-                    style={{ borderColor: isFieldValid(doctorData[lang as keyof Doctor]) ? "#ccc" : "red" }}
-                  />
-                </InputContainer>
-              ))}
+              <TitlesBox>{t("message.adminPanel.appointments.doctors.specialisation")}</TitlesBox>
+              <InputContainer>
+                <TitleBoxText>DE</TitleBoxText>
+                <Input
+                  type="text"
+                  value={doctorData.specialisationDe}
+                  onChange={(e) => handleChange("specialisationDe", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionDe")}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>EN</TitleBoxText>
+                <Input
+                  type="text"
+                  value={doctorData.specialisationEn}
+                  onChange={(e) => handleChange("specialisationEn", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionEn")}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>RU</TitleBoxText>
+                <Input
+                  type="text"
+                  value={doctorData.specialisationRu}
+                  onChange={(e) => handleChange("specialisationRu", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionRu")}
+                />
+              </InputContainer>
             </SpecialisationSection>
 
             <TitleSection>
-              <TitlesBox>Title:</TitlesBox>
-              {["titleDe", "titleEn", "titleRu"].map((lang) => (
-                <InputContainer key={lang}>
-                  <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
-                  <Input 
-                    type="text" 
-                    placeholder={`Enter title (${lang.slice(-2).toUpperCase()})`} 
-                    value={doctorData[lang as keyof Doctor]} 
-                    onChange={(e) => handleChange(lang as keyof Doctor, e.target.value)} 
-                    style={{ borderColor: isFieldValid(doctorData[lang as keyof Doctor]) ? "#ccc" : "red" }}
-                  />
-                </InputContainer>
-              ))}
+              <TitlesBox>{t("message.adminPanel.appointments.doctors.titles")}</TitlesBox>
+              <InputContainer>
+                <TitleBoxText>DE</TitleBoxText>
+                <Input
+                  type="text"
+                  value={doctorData.titleDe}
+                  onChange={(e) => handleChange("titleDe", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterTitleDe")}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>EN</TitleBoxText>
+                <Input
+                  type="text"
+                  value={doctorData.titleEn}
+                  onChange={(e) => handleChange("titleEn", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterTitleEn")}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>RU</TitleBoxText>
+                <Input
+                  type="text"
+                  value={doctorData.titleRu}
+                  onChange={(e) => handleChange("titleRu", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterTitleRu")}
+                />
+              </InputContainer>
             </TitleSection>
 
             <BiographySection>
-              <TitlesBox>Biography:</TitlesBox>
-              {["biographyDe", "biographyEn", "biographyRu"].map((lang) => (
-                <InputContainer key={lang}>
-                  <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
-                  <textarea 
-                    placeholder={`Enter biography (${lang.slice(-2).toUpperCase()})`} 
-                    rows={15} 
-                    value={doctorData[lang as keyof Doctor]} 
-                    onChange={(e) => handleChange(lang as keyof Doctor, e.target.value)} 
-                    style={{ borderColor: isFieldValid(doctorData[lang as keyof Doctor]) ? "#ccc" : "red" }}
-                  />
-                </InputContainer>
-              ))}
+              <TitlesBox>{t("message.adminPanel.appointments.doctors.biography")}</TitlesBox>
+              <InputContainer>
+                <TitleBoxText>DE</TitleBoxText>
+                <textarea
+                  value={doctorData.biographyDe}
+                  onChange={(e) => handleChange("biographyDe", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionDe")}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>EN</TitleBoxText>
+                <textarea
+                  value={doctorData.biographyEn}
+                  onChange={(e) => handleChange("biographyEn", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionEn")}
+                />
+              </InputContainer>
+              <InputContainer>
+                <TitleBoxText>RU</TitleBoxText>
+                <textarea
+                  value={doctorData.biographyRu}
+                  onChange={(e) => handleChange("biographyRu", e.target.value)}
+                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionRu")}
+                />
+              </InputContainer>
             </BiographySection>
           </div>
 
@@ -222,7 +237,7 @@ const AddNewDoctorPage: React.FC = () => {
             {doctorData.topImage ? (
               <ImagePreview src={doctorData.topImage} alt="Doctor preview" />
             ) : (
-              <ImagePreview src="https://via.placeholder.com/300" alt="Default Image" />
+              <ImagePreview src="https://via.placeholder.com/300" alt="Placeholder" />
             )}
           </ImageBox>
         </MainBox>

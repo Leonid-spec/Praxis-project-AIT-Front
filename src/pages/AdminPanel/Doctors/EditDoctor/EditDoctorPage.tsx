@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Doctor } from "../doctorTypes";
 import { getDoctorById, updateDoctor } from "../../../../api/doctorAPI";
 import {
@@ -26,6 +27,7 @@ import {
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 
 const EditDoctorPage: React.FC = () => {
+  const { t } = useTranslation();
   const [notification, setNotification] = useState<{
     message: string;
     type: "error" | "success";
@@ -44,32 +46,37 @@ const EditDoctorPage: React.FC = () => {
         const data = await getDoctorById(Number(id), token);
         setDoctorData(data);
       } catch (err: any) {
-        console.error("Error loading doctor data:", err);
-        setNotification({ message: err.message || "Failed to fetch data", type: "error" });
+        console.error(t("message.adminPanel.appointments.doctors.errorLoadingDoctorData"), err);
+        setNotification({
+          message: err.message || t("message.adminPanel.appointments.doctors.errorLoadingDoctorData"),
+          type: "error",
+        });
       }
     };
 
     fetchDoctorData();
-  }, [id, token]);
+  }, [id, token, t]);
 
   const handleSave = async () => {
     if (isSaving || !doctorData) return;
     setIsSaving(true);
     try {
       await updateDoctor(doctorData, token!);
-      // alert(`Doctor "${doctorData.fullName}" updated successfully!`);
       setNotification({
-      message:`$Doctor "${doctorData.fullName}" updated successfully!`,  type: "success"
-      })
+        message: t("message.adminPanel.appointments.doctors.doctorUpdatedSuccessfully", {
+          fullName: doctorData.fullName,
+        }),
+        type: "success",
+      });
       navigate("/admin-panel/doctors");
       setTimeout(() => {
         setIsSaving(false);
       }, 1500);
     } catch (error: any) {
-      // alert(`Error updating doctor: ${error.message}`);
       setNotification({
-        message:`Error updating doctor: ${error.message}`,  type: "error"
-        })
+        message: `${t("message.adminPanel.appointments.doctors.errorUpdating")}: ${error.message}`,
+        type: "error",
+      });
     } finally {
       setIsSaving(false);
     }
@@ -84,17 +91,19 @@ const EditDoctorPage: React.FC = () => {
   };
 
   if (!doctorData) {
-    return <p>Loading doctor data...</p>;
+    return <p>{t("message.adminPanel.appointments.doctors.loadingDoctorData")}</p>;
   }
 
   return (
     <EditDoctorContainer>
       <HeaderBox>
         <StyledReturnButton onClick={() => navigate("/admin-panel/doctors")}>
-          ← Return back
+          {t("message.adminPanel.appointments.doctors.returnBack")}
         </StyledReturnButton>
         <StyledSaveButton onClick={handleSave} disabled={isSaving}>
-          {isSaving ? "Saving..." : "Save changes"}
+          {isSaving
+            ? t("message.adminPanel.appointments.doctors.saving")
+            : t("message.adminPanel.appointments.doctors.saveAll")}
         </StyledSaveButton>
       </HeaderBox>
       {notification && (
@@ -103,11 +112,10 @@ const EditDoctorPage: React.FC = () => {
           type={notification.type}
         />
       )}
-      {/* ✅ Верхний контейнер */}
       <TopContainer>
         <MainBoxText>
           <InputContainer>
-            <TitleBoxText>Full Name</TitleBoxText>
+            <TitleBoxText>{t("message.adminPanel.appointments.doctors.fullName")}</TitleBoxText>
             <Input
               type="text"
               value={doctorData.fullName}
@@ -116,7 +124,7 @@ const EditDoctorPage: React.FC = () => {
           </InputContainer>
 
           <InputContainer>
-            <TitleBoxText>Edit Top Image</TitleBoxText>
+            <TitleBoxText>{t("message.adminPanel.appointments.doctors.uploadImage")}</TitleBoxText>
             <UploadInput type="file" accept="image/*" onChange={handlePhotoUpload} />
           </InputContainer>
 
@@ -126,11 +134,11 @@ const EditDoctorPage: React.FC = () => {
               checked={doctorData.isActive}
               onChange={(e) => setDoctorData({ ...doctorData, isActive: e.target.checked })}
             />
-            Make card visible for users
+            {t("message.adminPanel.appointments.doctors.makeCardVisibleCheckbox")}
           </CheckboxLabel>
 
           <InputContainer>
-            <TitleBoxText>Specialisation</TitleBoxText>
+            <TitleBoxText>{t("message.adminPanel.appointments.doctors.specialisation")}</TitleBoxText>
             <TitleBoxText>DE</TitleBoxText>
             <Input
               type="text"
@@ -152,7 +160,7 @@ const EditDoctorPage: React.FC = () => {
           </InputContainer>
 
           <InputContainer>
-            <TitleBoxText>Title</TitleBoxText>
+            <TitleBoxText>{t("message.adminPanel.appointments.doctors.titles")}</TitleBoxText>
             <TitleBoxText>DE</TitleBoxText>
             <Input
               type="text"
@@ -177,14 +185,13 @@ const EditDoctorPage: React.FC = () => {
         <EditPhotoSection>
           <PhotoPreview
             src={doctorData.topImage || "https://via.placeholder.com/600x400"}
-            alt="Doctor preview"
+            alt={t("message.adminPanel.appointments.doctors.doctorPreview")}
           />
         </EditPhotoSection>
       </TopContainer>
 
-      {/* ✅ Нижний контейнер */}
       <BottomContainer>
-        <TitleBoxText>Biography</TitleBoxText>
+        <TitleBoxText>{t("message.adminPanel.appointments.doctors.biography")}</TitleBoxText>
 
         <BiographySection>
           <BiographyLabel>DE</BiographyLabel>
@@ -215,3 +222,4 @@ const EditDoctorPage: React.FC = () => {
 };
 
 export default EditDoctorPage;
+
