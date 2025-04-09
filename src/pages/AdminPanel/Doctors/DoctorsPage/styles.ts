@@ -10,7 +10,7 @@ export const ScrollContainer = styled.div`
 export const DoctorsPageAllContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
   padding: 30px;
 `;
