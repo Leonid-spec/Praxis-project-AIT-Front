@@ -22,15 +22,16 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     setShowDropdown(false);
-    navigate("/");
+    navigate("/login"); 
   };
 
-  const handleChangePassword = () => {
-    alert("Change Password functionality is under development.");
-    setShowDropdown(false);
-  };
+  // const handleChangePassword = () => {
+  //   alert("Change Password functionality is under development.");
+  //   setShowDropdown(false);
+  // };
 
   return (
     <AdminMenuWrapper>
@@ -51,13 +52,13 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
       {isLoggedIn && showDropdown && (
         <Dropdown>
-          <DropdownItem onClick={() => navigate("/admin-panel/add-admin")}>
+          <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
             <FaTools style={{ marginRight: "8px" }} /> Admin panel
           </DropdownItem>
 
-          <DropdownItem onClick={handleChangePassword}>
+          <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
           <FaKey style={{ marginRight: "8px" }} />
-          Change passworda
+          Change password
         </DropdownItem>
 
           <DropdownItem onClick={() => navigate("/admin-panel/settings")}>

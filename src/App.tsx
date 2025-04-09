@@ -18,6 +18,7 @@ import AppointmentForm from "./components/Appointment/AppointmentForm";
 Modal.setAppElement("#root");
 
 function App() {
+  
   return (
     <ModalProvider>
       <AppointmentModal />

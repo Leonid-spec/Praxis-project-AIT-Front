@@ -22,7 +22,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, topImage, onEditClick 
     <Card>
       <PhotoContainer>
         <Photo
-          src={topImage || "https://via.placeholder.com/150"}
+          src={topImage}
           alt="Service preview"
         />
       </PhotoContainer>

@@ -5,12 +5,22 @@ export const ScrollContainer = styled.div`
   overflow-y: auto; 
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
+  
+  @media(max-width: 1440px) {
+  margin: 20px;
+  padding: 0 30px 0 20px;
+  }
+  
+  @media(max-width: 768px) {
+  margin: 0;
+  padding: 0;
+  }
 `;
 
 export const ServicesPageAllContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
   padding: 30px; 
 `;
@@ -55,6 +65,23 @@ export const CardsMainContainer = styled.div`
   flex: 1; 
   overflow-y: auto; 
   padding-right: 10px;
+
+  @media(max-width: 1980px) {
+  margin: 0 10px;
+  margin: 0 20px;
+  }
+
+@media(max-width: 1240px) {
+  margin: 10px;
+  padding: 5px;
+  gap: 0;
+  }
+  
+  @media(max-width: 768px) {
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  }
 `;
 
 export const ServiceCardsMainContainer = styled.div`
@@ -63,8 +90,9 @@ export const ServiceCardsMainContainer = styled.div`
   padding: 10px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
-  gap: 40px;
+  gap: 20px;
   scroll-behavior: smooth;
+  margin: 20px;
 
   overflow-x: hidden;
 
@@ -79,6 +107,23 @@ export const ServiceCardsMainContainer = styled.div`
 
   &::-webkit-scrollbar-track {
     background: transparent;
+  }
+
+  @media(max-width: 1980px) {
+  margin: 0 10px;
+  margin: 0 20px;
+  }
+
+  @media(max-width: 1240px) {
+  margin: 10px;
+  padding: 5px;
+  gap: 0;
+  }
+
+  @media(max-width: 768px) {
+  margin: 0;
+  padding: 0;
+  gap: 0;
   }
 `;
 
