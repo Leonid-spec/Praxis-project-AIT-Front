@@ -15,7 +15,7 @@ import {
   AdminPanelBox, 
   NavLinkImg, 
   NavLinkText,
- } from './styles';
+} from './styles';
 
 const Menu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -36,14 +36,14 @@ const Menu = () => {
             <NavLinkText>Abramian Dental</NavLinkText>
           </StyledNavLink>
         </Logo>
-  
+
         <Nav>
           <StyledNavLinkMenu to="/services">{t('message.header.menu.services')}</StyledNavLinkMenu>
           <StyledNavLinkMenu to="/about">{t('message.header.menu.about_us')}</StyledNavLinkMenu>
-          <StyledNavLinkMenu to="/doctors">{t('message.header.menu.team')}</StyledNavLinkMenu>
+          <StyledNavLinkMenu to="/team">{t('message.header.menu.team')}</StyledNavLinkMenu> {/* ✅ Исправлено */}
           <StyledNavLinkMenu to="/contacts">{t('message.header.menu.contact')}</StyledNavLinkMenu>
         </Nav>
-  
+
         <SprachUundAdminbereich>
           <LanguagePanel>
             <LanguageLink onClick={() => changeLanguage('de')}>DE</LanguageLink>
