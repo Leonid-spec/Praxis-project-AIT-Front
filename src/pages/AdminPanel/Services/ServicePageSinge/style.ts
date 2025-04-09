@@ -18,8 +18,8 @@ export const ServicePageSingleContainer = styled.div`
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 100px;
-  margin-bottom: 40px;
+  padding: 20px 100px 0;
+  margin-bottom: 20px;
 
 
   @media (max-width: 768px) {
@@ -53,9 +53,9 @@ export const MainBoxText = styled.div`
 export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding:0 20px 0 10px;
   width: 100%;
-  height: auto;
+  max-height: 450px;
 `;
 
 export const EditTopImage = styled.div`
