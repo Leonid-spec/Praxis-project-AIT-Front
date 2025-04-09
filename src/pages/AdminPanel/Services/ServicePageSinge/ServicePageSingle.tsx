@@ -26,6 +26,7 @@ import { ServiceData } from "../../../../store/types/serviceTypes";
 import { useNavigate } from "react-router-dom";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useTranslation } from "react-i18next";
+import GalleryServices from "../Gallery/GalleryServices";
 
 export const ServicePageSingle: React.FC = () => {
   const { t } = useTranslation();
@@ -128,7 +129,7 @@ export const ServicePageSingle: React.FC = () => {
         message: `Service "${newService.titleEn}" created successfully!`,
         type: "success",
       });
-      
+
       setServiceData((prev) => ({
         ...prev,
         topImage: newService.topImage,
@@ -260,6 +261,9 @@ export const ServicePageSingle: React.FC = () => {
             </InputContainer>
           ))}
         </DescriptionSection>
+
+        <GalleryServices />
+
       </ScrollContainer>
     </ServicePageSingleContainer>
   );

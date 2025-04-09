@@ -72,3 +72,16 @@ export const InactiveText = styled.div`
   font-weight: 600;
   z-index: 10;
 `;
+
+export const InactiveOverlay = styled.div`
+  position: relative;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(179, 36, 36, 0.7);
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: 600;
+  z-index: 1;
+`;

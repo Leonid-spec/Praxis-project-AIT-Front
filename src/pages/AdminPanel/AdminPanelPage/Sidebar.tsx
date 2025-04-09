@@ -22,12 +22,7 @@ const navItems = [
     path: "/admin-panel/doctors",
     label: "Doctors",
     icon: "https://th.bing.com/th/id/R.f6c7c7a2dcddf4dc8bbfd7e3bd0b7c00?rik=LYm39AE86bkYgw&pid=ImgRaw&r=0"
-  },
-  {
-    path: "/admin-panel/images",
-    label: "Images",
-    icon: "https://th.bing.com/th/id/R.b2242d32dc5434a7a2144b2dff9ccb11?rik=Doe5MOtFkP7fpQ&riu=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fpraveen%2Fminimal-outline%2F512%2Fgallery-icon.png&ehk=ufGGEm8Yn5y27iyvTpd%2FZC8yizpZMoKJf%2B2mMJoK0%2FU%3D&risl=&pid=ImgRaw&r=0"
-  },
+  }
 ];
 
 const Sidebar: React.FC = () => {

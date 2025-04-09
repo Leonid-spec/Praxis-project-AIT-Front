@@ -17,7 +17,6 @@ import {
 } from "../styles";
 import ServiceDropdown from "./ServiceDropdown";
 import { AppointmentData } from "../../../store/types/appointmentTypes";
-import ServiceDropdown from "./ServiceDropdown";
 
 const AppointmentForm = () => {
   const { t } = useTranslation();

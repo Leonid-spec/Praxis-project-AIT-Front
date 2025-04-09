@@ -6,7 +6,7 @@ import AdminAppointmentsPage from "../AppointmentsPage/MainPage/AdminAppointment
 import AppointmentDetailsPage from "../AppointmentsPage/DetailsPage/AppointmentDetailsPage";
 
 import { DoctorsPageAll } from "../Doctors/DoctorsPage/DoctorsPageAll";
-import AddNewDoctorPage from "../Doctors/AddNewDoctor/AddNewDoctorPage"; 
+import AddNewDoctorPage from "../Doctors/AddNewDoctor/AddNewDoctorPage";
 import EditDoctorPage from "../Doctors/EditDoctor/EditDoctorPage"; // ✅ Добавлен импорт страницы редактирования врача
 
 import { ServicesPageAll } from "../Services/ServicesPageAll/ServicesPageAll";
@@ -15,7 +15,6 @@ import { ServicePageSingle } from "../Services/ServicePageSinge/ServicePageSingl
 import SettingsPage from "../Settings/StartPage/SettingsPage";
 
 const MainContent: React.FC = () => {
-  
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -27,7 +26,7 @@ const MainContent: React.FC = () => {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
-      navigate("/login"); 
+      navigate("/login");
     }
   }, [navigate]);
 
@@ -43,11 +42,17 @@ const MainContent: React.FC = () => {
 
         {/* Услуги */}
         <Route path="admin-services" element={<ServicesPageAll />} />
-        <Route path="admin-services/add-new-service" element={<ServicePageSingle />} />
-        <Route path="settings" element={<SettingsPage adminLogin={""} />} /> 
+        <Route
+          path="admin-services/add-new-service"
+          element={<ServicePageSingle />}
+        />
+        <Route path="settings" element={<SettingsPage adminLogin={""} />} />
+
+        {/* Врачи */}
         <Route path="doctors/*" element={<DoctorsPageAll />} />
         <Route path="doctors/add-new-doctor" element={<AddNewDoctorPage />} />
-        <Route path="edit-doctor/:id" element={<EditDoctorPage />} /> {/* ✅ Теперь `/edit-doctor/:id` работает */}
+        <Route path="edit-doctor/:id" element={<EditDoctorPage />} />{" "}
+        {/* ✅ Теперь `/edit-doctor/:id` работает */}
 
         {/* Страница не найдена */}
         <Route path="*" element={<div>Page not found!</div>} />
