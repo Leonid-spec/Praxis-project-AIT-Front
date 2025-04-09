@@ -122,6 +122,8 @@ export const BiographySection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
+  height: 150px;
 `;
 
 export const TitleBoxText = styled.label`

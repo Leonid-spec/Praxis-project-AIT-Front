@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createDoctor } from "../../../../api/doctorAPI";
-import { DoctorData } from "../doctorTypes";
+import { Doctor } from "../../../../store/types/doctorTypes";
 import { 
   StyledReturnButton, 
   StyledSaveButton, 
@@ -23,10 +23,15 @@ import {
   ImageBox, 
   MainBox 
 } from "./styles";
+import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 
 const AddNewDoctorPage: React.FC = () => {
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "error" | "success";
+  } | null>(null);
   const navigate = useNavigate();
-  const [doctorData, setDoctorData] = useState<DoctorData>({
+  const [doctorData, setDoctorData] = useState<Doctor>({
     fullName: "",
     topImage: "",
     specialisationDe: "",
@@ -39,6 +44,7 @@ const AddNewDoctorPage: React.FC = () => {
     biographyEn: "",
     biographyRu: "",
     isActive: true,
+    images: [],
   });
 
   const [isSaving, setIsSaving] = useState(false);
@@ -48,7 +54,7 @@ const AddNewDoctorPage: React.FC = () => {
     navigate("/admin-panel/doctors"); 
   };
 
-  const handleChange = (field: keyof DoctorData, value: string | boolean) => {
+  const handleChange = (field: keyof Doctor, value: string | boolean) => {
     setDoctorData((prev) => ({ ...prev, [field]: value }));
   };
 
@@ -77,30 +83,45 @@ const AddNewDoctorPage: React.FC = () => {
 
   const handleSave = async () => {
     if (!isFormValid()) return;
+    if (!token) {
+      setNotification({
+        message: "Authorization token is missing. Please log in again.",
+        type: "error",
+      });
+      return;
+    }
     if (!token) return alert("Authorization token is missing!");
-
     setIsSaving(true);
     try {
       const requestData = {
-        fullName: doctorData.fullName,
-        topImage: doctorData.topImage,
-        specialisationDe: doctorData.specialisationDe,
-        specialisationEn: doctorData.specialisationEn,
-        specialisationRu: doctorData.specialisationRu,
         titleDe: doctorData.titleDe, 
         titleEn: doctorData.titleEn,
         titleRu: doctorData.titleRu,
+        fullName: doctorData.fullName,
         biographyDe: doctorData.biographyDe,
         biographyEn: doctorData.biographyEn,
         biographyRu: doctorData.biographyRu,
-        isActive: doctorData.isActive
+        specialisationDe: doctorData.specialisationDe,
+        specialisationEn: doctorData.specialisationEn,
+        specialisationRu: doctorData.specialisationRu,
+        topImage: doctorData.topImage,
+        isActive: doctorData.isActive,
+        images: doctorData.images
       };
 
       await createDoctor(requestData, token);
-      alert("Doctor added successfully!");
+      // alert("Doctor added successfully!");
+      setNotification({
+        message: `Doctor created successfully!`,
+        type: "success",
+      });
       navigate("/admin-panel/doctors"); 
     } catch (error: any) {
-      alert(`Error creating doctor: ${error.message}`);
+      // alert(`Error creating doctor: ${error.message}`);
+      setNotification({
+        message: `Error creating doctor: ${error.message}`,
+        type: "error",
+      });
     } finally {
       setIsSaving(false);
     }
@@ -114,7 +135,12 @@ const AddNewDoctorPage: React.FC = () => {
           {isSaving ? "Saving..." : "Save all"}
         </StyledSaveButton>
       </HeaderBox>
-
+      {notification && (
+        <CustomNotification
+          message={notification.message}
+          type={notification.type}
+        />
+      )}
       <ScrollContainer>
         <MainBox>
           <div>
@@ -151,9 +177,9 @@ const AddNewDoctorPage: React.FC = () => {
                   <Input 
                     type="text" 
                     placeholder={`Enter specialisation (${lang.slice(-2).toUpperCase()})`} 
-                    value={doctorData[lang as keyof DoctorData]} 
-                    onChange={(e) => handleChange(lang as keyof DoctorData, e.target.value)} 
-                    style={{ borderColor: isFieldValid(doctorData[lang as keyof DoctorData]) ? "#ccc" : "red" }}
+                    value={doctorData[lang as keyof Doctor]} 
+                    onChange={(e) => handleChange(lang as keyof Doctor, e.target.value)} 
+                    style={{ borderColor: isFieldValid(doctorData[lang as keyof Doctor]) ? "#ccc" : "red" }}
                   />
                 </InputContainer>
               ))}
@@ -167,9 +193,9 @@ const AddNewDoctorPage: React.FC = () => {
                   <Input 
                     type="text" 
                     placeholder={`Enter title (${lang.slice(-2).toUpperCase()})`} 
-                    value={doctorData[lang as keyof DoctorData]} 
-                    onChange={(e) => handleChange(lang as keyof DoctorData, e.target.value)} 
-                    style={{ borderColor: isFieldValid(doctorData[lang as keyof DoctorData]) ? "#ccc" : "red" }}
+                    value={doctorData[lang as keyof Doctor]} 
+                    onChange={(e) => handleChange(lang as keyof Doctor, e.target.value)} 
+                    style={{ borderColor: isFieldValid(doctorData[lang as keyof Doctor]) ? "#ccc" : "red" }}
                   />
                 </InputContainer>
               ))}
@@ -182,10 +208,10 @@ const AddNewDoctorPage: React.FC = () => {
                   <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
                   <textarea 
                     placeholder={`Enter biography (${lang.slice(-2).toUpperCase()})`} 
-                    rows={5} 
-                    value={doctorData[lang as keyof DoctorData]} 
-                    onChange={(e) => handleChange(lang as keyof DoctorData, e.target.value)} 
-                    style={{ borderColor: isFieldValid(doctorData[lang as keyof DoctorData]) ? "#ccc" : "red" }}
+                    rows={15} 
+                    value={doctorData[lang as keyof Doctor]} 
+                    onChange={(e) => handleChange(lang as keyof Doctor, e.target.value)} 
+                    style={{ borderColor: isFieldValid(doctorData[lang as keyof Doctor]) ? "#ccc" : "red" }}
                   />
                 </InputContainer>
               ))}

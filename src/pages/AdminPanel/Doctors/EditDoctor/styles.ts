@@ -5,66 +5,78 @@ export const EditDoctorContainer = styled.div`
   flex-direction: column;
   gap: 30px;
   padding: 50px;
+  align-items: center; /* ✅ Центрируем всю страницу */
 `;
 
 export const HeaderBox = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 
-export const MainBox = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+export const TopContainer = styled.div`
+  display: flex;
+  justify-content: space-between; /* ✅ Две колонки */
+  align-items: flex-start;
   gap: 30px;
+  width: 100%;
 `;
 
-export const MainBoxText = styled.div`
+export const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: column; /* ✅ Биография в одной колонке */
+  align-items: center; /* ✅ Центрируем */
+  width: 80%;
+  gap: 20px; /* ✅ Добавил отступы */
+`;
+
+export const BiographySection = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 10px; /* ✅ Добавил отступы между заголовками и полем */
+  width: 100%;
 `;
 
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-export const TitleBoxText = styled.label`
+export const BiographyLabel = styled.label`
   font-size: 16px;
   font-weight: bold;
   color: #292828;
 `;
 
-export const Input = styled.input`
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  &:focus {
-    border-color: #20b1b7;
-    outline: none;
-  }
-`;
-
-export const BiographyTextarea = styled.textarea`
-  width: 100%;
-  height: 150px; /* ✅ Теперь поле в 3 раза выше */
+export const BiographyTextareaDe = styled.textarea`
+  width: 80%;
+  height: 300px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  resize: vertical; /* ✅ Пользователь может изменять высоту */
+  resize: none;
+  text-align: center;
+  margin: auto;
   &:focus {
     border-color: #20b1b7;
     outline: none;
   }
 `;
 
+export const BiographyTextareaEn = styled(BiographyTextareaDe)`
+  height: 200px;
+`;
+
+export const BiographyTextareaRu = styled(BiographyTextareaDe)`
+  height: 200px;
+`;
+
 export const EditPhotoSection = styled.div`
+  width: 900px;
+  height: 727px;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 `;
 
 export const UploadInput = styled.input`
@@ -74,9 +86,9 @@ export const UploadInput = styled.input`
 
 export const PhotoPreview = styled.img`
   width: 100%;
-  border-radius: 10px;
+  height: 100%;
   object-fit: cover;
-  background-color: #f8f8f8;
+  border-radius: 10px;
 `;
 
 export const StyledReturnButton = styled.button`
@@ -118,4 +130,40 @@ export const CheckboxLabel = styled.label`
     width: 20px;
     height: 20px;
   }
+`;
+
+/* ✅ Добавлен `InputContainer`, чтобы избежать ошибки */
+export const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+`;
+
+/* ✅ Добавлен `Input`, чтобы избежать ошибки */
+export const Input = styled.input`
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  &:focus {
+    border-color: #20b1b7;
+    outline: none;
+  }
+`;
+
+/* ✅ Добавлен `MainBoxText`, чтобы избежать ошибки */
+export const MainBoxText = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+`;
+
+/* ✅ Добавлен `TitleBoxText`, чтобы избежать ошибки */
+export const TitleBoxText = styled.label`
+  font-size: 16px;
+  font-weight: bold;
+  color: #292828;
 `;

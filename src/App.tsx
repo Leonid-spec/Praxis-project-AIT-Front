@@ -12,7 +12,7 @@ import DoctorDetails from "./pages/PageDetails/DoctorDetails/DoctorDetails";
 import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
-import EditDoctorPage from "./pages/AdminPanel/Doctors/EditDoctor/EditDoctorPage"; // ✅ Добавлен импорт
+import EditDoctorPage from "./pages/AdminPanel/Doctors/EditDoctor/EditDoctorPage"; // ✅ Импорт страницы редактирования врача
 
 Modal.setAppElement("#root");
 
@@ -40,8 +40,9 @@ function App() {
             <Route path="/service/:id" element={<ServiceDetails />} />
 
             {/* Админ-панель */}
-            <Route path="/admin-panel/*" element={<AdminPanel />} />
-            <Route path="/admin-panel/edit-doctor/:id" element={<EditDoctorPage />} /> {/* ✅ Теперь "Edit" работает */}
+            <Route path="/admin-panel/*" element={<AdminPanel />}> {/* ✅ Теперь EditDoctorPage загружается внутри */}
+              <Route path="edit-doctor/:id" element={<EditDoctorPage />} /> 
+            </Route>
 
             {/* 404 */}
             <Route path="*" element={<div>Page not found!</div>} />
