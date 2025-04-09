@@ -106,7 +106,7 @@
           "missingEmail": "Введите email.",
           "usernameStartsWithSpace": "Имя пользователя не должно начинаться с пробела.",
           "passwordContainsSpaces": "Пароль не должен содержать пробелы.",
-          "loginContainsSpaces": "Имя пользователя не должно содержать пробелы.",
+          "loginContainsSpaces": "Имя пользователя не должно содержать пробелы."
         },
         "messages": {
           "forgotPasswordTitle": "Сброс пароля",
