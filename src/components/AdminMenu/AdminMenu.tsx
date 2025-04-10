@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginAdminForm from "../Login/LoginAdminForm";
 import { FaKey, FaSignOutAlt, FaTools } from "react-icons/fa";
@@ -20,18 +20,32 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     setShowDropdown(false);
-    navigate("/login"); 
+    navigate("/login");
   };
 
-  // const handleChangePassword = () => {
-  //   alert("Change Password functionality is under development.");
-  //   setShowDropdown(false);
-  // };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setShowDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <AdminMenuWrapper>
@@ -51,24 +65,21 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
       </AdminIconWrapper>
 
       {isLoggedIn && showDropdown && (
-        <Dropdown>
+        <Dropdown ref={dropdownRef}>
           <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
             <FaTools style={{ marginRight: "8px" }} /> Admin panel
           </DropdownItem>
 
           <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
-          <FaKey style={{ marginRight: "8px" }} />
-          Change password
-        </DropdownItem>
+            <FaKey style={{ marginRight: "8px" }} /> Change password
+          </DropdownItem>
 
           <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
-            <FaTools style={{ marginRight: "8px" }} />
-            Create New Admin
+            <FaTools style={{ marginRight: "8px" }} /> Create New Admin
           </DropdownItem>
 
           <DropdownItem onClick={handleLogout}>
-            <FaSignOutAlt style={{ marginRight: "8px" }} />
-            Log out
+            <FaSignOutAlt style={{ marginRight: "8px" }} /> Log out
           </DropdownItem>
         </Dropdown>
       )}

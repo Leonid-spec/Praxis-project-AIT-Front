@@ -156,7 +156,17 @@ export const HighlightText = styled.span`
 
 export const DoctorsGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr); /* Три колонки по умолчанию */
   gap: 20px;
   margin: 40px 10px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); /* Две колонки на средних экранах */
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; /* Одна колонка на узких экранах */
+  }
 `;
+
+
