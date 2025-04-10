@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { AppointmentData } from "../../../../store/types/appointmentTypes";
 import { getAppointments } from "../../../../api/appointmentAPI";
 import { FaSyncAlt, FaTrashAlt } from "react-icons/fa";
+import styled from "styled-components";
 import {
   Container,
   Heading,
@@ -31,6 +32,7 @@ import {
   ModalContent,
   ModalActions,
   ModalActionsBtn,
+  BtnBox,
 } from "./styles"; 
 import { getActiveServices } from "../../../../api/serviceAPI";
 import i18n from "../../../../utils/i18n";
@@ -215,7 +217,8 @@ const AdminAppointmentsPage: React.FC = () => {
                       {/* {new Date(appointment.).toLocaleDateString()} */}
                     {/* </Date> */}
                   </MainInfoContainer>
-  
+
+                  <BtnBox>
                   <MoreInfoButton
                     onClick={() => handleMoreInfoClick(appointment?.id || 1)}
                   >
@@ -224,6 +227,7 @@ const AdminAppointmentsPage: React.FC = () => {
                   <TrashIconBox onClick={() => handleDeleteBtn(appointment.id!)}>
                     <FaTrashAlt size={24} color="#20b1b7" />
                   </TrashIconBox>
+                  </BtnBox>
                 </AppointmentRow>
               ))}
             </AppointmentList>
