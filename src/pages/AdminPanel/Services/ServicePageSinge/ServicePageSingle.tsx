@@ -134,12 +134,7 @@ export const ServicePageSingle: React.FC = () => {
         ...prev,
         topImage: newService.topImage,
       }));
-      console.log("Image fetched from server 2:", newService);
-      setNotification({
-        message: `Service "${newService.titleEn}" created successfully!`,
-        type: "success",
-      });
-
+     
       setTimeout(() => {
         setIsSaving(false);
         handleReturn();

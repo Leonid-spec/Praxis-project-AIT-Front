@@ -6,7 +6,6 @@ export const StyledAddButton = styled.button`
   justify-content: center;
   padding: 12px 24px;
   margin: 20px;
-  width: 250px;
   border-radius: 30px;
   background-color: #20b1b7;
   color: #ffffff;

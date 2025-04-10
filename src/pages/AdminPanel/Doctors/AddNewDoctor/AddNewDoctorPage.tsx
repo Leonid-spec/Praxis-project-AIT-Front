@@ -23,8 +23,10 @@ import {
   SpecialisationSection,
   ImageBox,
   MainBox,
+  Container,
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
+import { pushImageFile } from "../../../../api/imageAPI";
 
 const AddNewDoctorPage: React.FC = () => {
   const { t } = useTranslation();
@@ -52,6 +54,9 @@ const AddNewDoctorPage: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
   const token = localStorage.getItem("token");
 
+  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
+  const [localPreviewURL, setLocalPreviewURL] = useState<string | null>(null);
+
   const handleReturn = () => {
     navigate("/admin-panel/doctors");
   };
@@ -63,15 +68,22 @@ const AddNewDoctorPage: React.FC = () => {
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      setSelectedImageFile(file);
       const imageUrl = URL.createObjectURL(file);
-      setDoctorData((prev) => ({ ...prev, topImage: imageUrl }));
+      setLocalPreviewURL(imageUrl);
+      setDoctorData((prev) => ({
+        ...prev,
+        topImage: imageUrl,
+      }));
     }
   };
 
   const handleSave = async () => {
     if (!token) {
       setNotification({
-        message: t("message.adminPanel.appointments.doctors.errorLoadingDoctorData"),
+        message: t(
+          "message.adminPanel.appointments.doctors.errorLoadingDoctorData"
+        ),
         type: "error",
       });
       return;
@@ -79,12 +91,33 @@ const AddNewDoctorPage: React.FC = () => {
 
     setIsSaving(true);
     try {
-      await createDoctor(doctorData, token);
+      let uploadedTopImageUrl = "";
+      if (selectedImageFile) {
+        uploadedTopImageUrl = await pushImageFile(selectedImageFile, token);
+        uploadedTopImageUrl = "https://" + uploadedTopImageUrl;
+        console.log("Uploaded image URL:", uploadedTopImageUrl);
+      }
+
+      const doctorToSend: Doctor = {
+        ...doctorData,
+        topImage: uploadedTopImageUrl,
+      };
+
+      const newDoctor = await createDoctor(doctorToSend, token);
       setNotification({
-        message: t("message.adminPanel.appointments.doctors.doctorUpdatedSuccessfully"),
+        message: `Doctor "${newDoctor.fullName}" created successfully!`,
         type: "success",
       });
-      navigate("/admin-panel/doctors");
+
+      setDoctorData((prev) => ({
+        ...prev,
+        topImage: newDoctor.topImage,
+      }));
+
+      setTimeout(() => {
+        setIsSaving(false);
+        navigate("/admin-panel/doctors");
+      }, 1500);
     } catch (error: any) {
       setNotification({
         message: t("message.adminPanel.appointments.doctors.errorUpdating"),
@@ -99,7 +132,7 @@ const AddNewDoctorPage: React.FC = () => {
     <DoctorPageContainer>
       <HeaderBox>
         <StyledReturnButton onClick={handleReturn}>
-        ← {t("message.adminPanel.appointments.doctors.returnBack")}
+          ← {t("message.adminPanel.appointments.doctors.returnBack")}
         </StyledReturnButton>
         <StyledSaveButton onClick={handleSave} disabled={isSaving}>
           {isSaving
@@ -116,41 +149,57 @@ const AddNewDoctorPage: React.FC = () => {
       )}
 
       <ScrollContainer>
-        <MainBox>
-          <div>
-            <TitlesBox>{t("message.adminPanel.appointments.doctors.fullName")}</TitlesBox>
-            <InputContainer>
-              <Input
-                type="text"
-                value={doctorData.fullName}
-                onChange={(e) => handleChange("fullName", e.target.value)}
-                placeholder={t("message.adminPanel.appointments.doctors.placeholder")}
-              />
-            </InputContainer>
+        <Container>
+          <MainBox>
+            <div>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.doctors.fullName")}
+              </TitlesBox>
+              <InputContainer>
+                <Input
+                  type="text"
+                  value={doctorData.fullName}
+                  onChange={(e) => handleChange("fullName", e.target.value)}
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.placeholder"
+                  )}
+                />
+              </InputContainer>
 
-            <MakeCardVisibleBox>
-              <TitlesBox>{t("message.adminPanel.appointments.doctors.makeCardVisibleCheckbox")}</TitlesBox>
-              <StyledCheckbox
-                type="checkbox"
-                checked={doctorData.isActive}
-                onChange={(e) => handleChange("isActive", e.target.checked)}
-              />
-            </MakeCardVisibleBox>
+              <MakeCardVisibleBox>
+                <TitlesBox>
+                  {t(
+                    "message.adminPanel.appointments.doctors.makeCardVisibleCheckbox"
+                  )}
+                </TitlesBox>
+                <StyledCheckbox
+                  type="checkbox"
+                  checked={doctorData.isActive}
+                  onChange={(e) => handleChange("isActive", e.target.checked)}
+                />
+              </MakeCardVisibleBox>
 
-            <EditTopImage>
-              <TitlesBox>{t("message.adminPanel.appointments.doctors.uploadImage")}</TitlesBox>
-              <UploadInput type="file" onChange={handleImageUpload} />
-            </EditTopImage>
-
-            <SpecialisationSection>
-              <TitlesBox>{t("message.adminPanel.appointments.doctors.title")}</TitlesBox>
+              <EditTopImage>
+                <TitlesBox>
+                  {t("message.adminPanel.appointments.doctors.uploadImage")}
+                </TitlesBox>
+                <UploadInput type="file" onChange={handleImageUpload} />
+              </EditTopImage>
+              <SpecialisationSection>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.doctors.title")}
+              </TitlesBox>
               <InputContainer>
                 <TitleBoxText>DE</TitleBoxText>
                 <Input
                   type="text"
                   value={doctorData.specialisationDe}
-                  onChange={(e) => handleChange("specialisationDe", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionDe")}
+                  onChange={(e) =>
+                    handleChange("specialisationDe", e.target.value)
+                  }
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterDescriptionDe"
+                  )}
                 />
               </InputContainer>
               <InputContainer>
@@ -158,8 +207,12 @@ const AddNewDoctorPage: React.FC = () => {
                 <Input
                   type="text"
                   value={doctorData.specialisationEn}
-                  onChange={(e) => handleChange("specialisationEn", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionEn")}
+                  onChange={(e) =>
+                    handleChange("specialisationEn", e.target.value)
+                  }
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterDescriptionEn"
+                  )}
                 />
               </InputContainer>
               <InputContainer>
@@ -167,21 +220,48 @@ const AddNewDoctorPage: React.FC = () => {
                 <Input
                   type="text"
                   value={doctorData.specialisationRu}
-                  onChange={(e) => handleChange("specialisationRu", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionRu")}
+                  onChange={(e) =>
+                    handleChange("specialisationRu", e.target.value)
+                  }
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterDescriptionRu"
+                  )}
                 />
               </InputContainer>
             </SpecialisationSection>
+            </div>
+            <div>
+              <ImageBox>
+                {doctorData.topImage ? (
+                  <ImagePreview
+                    src={doctorData.topImage}
+                    alt="Doctor preview"
+                  />
+                ) : (
+                  <ImagePreview
+                    src="https://via.placeholder.com/300"
+                    alt="Placeholder"
+                  />
+                )}
+              </ImageBox>
+            </div>
+          </MainBox>
+          <div>
+            
 
             <TitleSection>
-              <TitlesBox>{t("message.adminPanel.appointments.doctors.specialisation")}</TitlesBox>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.doctors.specialisation")}
+              </TitlesBox>
               <InputContainer>
                 <TitleBoxText>DE</TitleBoxText>
                 <Input
                   type="text"
                   value={doctorData.titleDe}
                   onChange={(e) => handleChange("titleDe", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterTitleDe")}
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterTitleDe"
+                  )}
                 />
               </InputContainer>
               <InputContainer>
@@ -190,7 +270,9 @@ const AddNewDoctorPage: React.FC = () => {
                   type="text"
                   value={doctorData.titleEn}
                   onChange={(e) => handleChange("titleEn", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterTitleEn")}
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterTitleEn"
+                  )}
                 />
               </InputContainer>
               <InputContainer>
@@ -199,19 +281,26 @@ const AddNewDoctorPage: React.FC = () => {
                   type="text"
                   value={doctorData.titleRu}
                   onChange={(e) => handleChange("titleRu", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterTitleRu")}
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterTitleRu"
+                  )}
                 />
               </InputContainer>
             </TitleSection>
 
             <BiographySection>
-              <TitlesBox>{t("message.adminPanel.appointments.doctors.biography")}</TitlesBox>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.doctors.biography")}
+              </TitlesBox>
               <InputContainer>
                 <TitleBoxText>DE</TitleBoxText>
                 <textarea
                   value={doctorData.biographyDe}
                   onChange={(e) => handleChange("biographyDe", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionDe")}
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterDescriptionDe"
+                  )}
+                  rows={5}
                 />
               </InputContainer>
               <InputContainer>
@@ -219,7 +308,10 @@ const AddNewDoctorPage: React.FC = () => {
                 <textarea
                   value={doctorData.biographyEn}
                   onChange={(e) => handleChange("biographyEn", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionEn")}
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterDescriptionEn"
+                  )}
+                  rows={5}
                 />
               </InputContainer>
               <InputContainer>
@@ -227,20 +319,15 @@ const AddNewDoctorPage: React.FC = () => {
                 <textarea
                   value={doctorData.biographyRu}
                   onChange={(e) => handleChange("biographyRu", e.target.value)}
-                  placeholder={t("message.adminPanel.appointments.doctors.enterDescriptionRu")}
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterDescriptionRu"
+                  )}
+                  rows={5}
                 />
               </InputContainer>
             </BiographySection>
           </div>
-
-          <ImageBox>
-            {doctorData.topImage ? (
-              <ImagePreview src={doctorData.topImage} alt="Doctor preview" />
-            ) : (
-              <ImagePreview src="https://via.placeholder.com/300" alt="Placeholder" />
-            )}
-          </ImageBox>
-        </MainBox>
+        </Container>
       </ScrollContainer>
     </DoctorPageContainer>
   );
