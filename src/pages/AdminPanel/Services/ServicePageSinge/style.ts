@@ -4,14 +4,14 @@ export const ScrollContainer = styled.div`
   flex: 1;
   overflow-y: auto; 
   scroll-behavior: smooth;
-  padding: 0 10px;
+  padding: 0 30px 0 20px;
 `;
 
 export const ServicePageSingleContainer = styled.div`
   display: flex;
   height: 80vh;
   flex-direction: column;
-  /* padding: 20px; */
+  padding: 20px;
 `;
 
 export const HeaderBox = styled.div`

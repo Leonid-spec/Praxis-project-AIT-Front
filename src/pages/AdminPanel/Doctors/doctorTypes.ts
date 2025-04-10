@@ -1,4 +1,5 @@
 export interface Doctor {
+  originalFullName: string;
   id: number;
   fullName: string;
   topImage: string;

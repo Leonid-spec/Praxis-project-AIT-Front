@@ -234,7 +234,5 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
 };
 
 export default EditServicePage;
-function setSelectedImageFile(file: File) {
-  throw new Error("Function not implemented.");
-}
+
 

@@ -334,10 +334,10 @@
           "doctorUpdatedSuccessfully": "$Врач \"{doctorData.fullName}\" успешно обновлен!",
           "fullName": "Полное имя",
           "searchPlaceholder": "Введите имя врача",
-          "searchIconAlt": "Поиск"
-          
+          "searchIconAlt": "Поиск",
+          "imageUploadFailed": "Failed to upload",
+          "duplicateNameError": "Врач с таким именем уже существует. Попробуйте другое имя или оставьте текущее без изменений."
         }
-
       }
     }
   }
