@@ -43,6 +43,13 @@ export const HeaderBox = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* gap: 30px; */
+
+`;
+
 export const MainBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -59,7 +66,7 @@ export const TitlesBox = styled.div`
   font-size: 18px;
   font-weight: bold;
   color: #292828;
-  margin: 20px 0 10px;
+  margin: 30px 0 10px;
 
   @media (max-width: 768px) {
     font-size: 16px;
@@ -208,7 +215,6 @@ export const BiographySection = styled.div`
   gap: 15px;
   width: 100%;
   height: 150px;
-  overflow-y: auto;
 
   @media (max-width: 768px) {
     height: auto;

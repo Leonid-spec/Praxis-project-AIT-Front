@@ -4,14 +4,14 @@ import styled from "styled-components";
 export const EditDoctorContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 40px 30px;
+  padding: 40px 50px;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  height: 80vh;
+  overflow: hidden;
   @media (max-width: 768px) {
     height: auto; /* Убираем фиксированную высоту */
     padding: 20px;
@@ -21,23 +21,22 @@ export const EditDoctorContainer = styled.div`
   }
 `;
 
+export const MainTextContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
 export const ScrollContainer = styled.div`
   flex: 1;
   overflow-y: auto;
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
-  max-height: calc(100vh - 200px);
-
-  @media (max-width: 768px) {
-    padding: 0 15px 0 10px;
-    overflow-y: auto;
-    max-height: 100vh; /* Ограничение высоты для мобильных устройств */
-  }
 `;
 
 export const HeaderBox = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-bottom: 30px;
 
@@ -59,10 +58,18 @@ export const TopContainer = styled.div`
   }
 `;
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+`;
+
 export const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  width: 100%;
 
   @media (max-width: 768px) {
     gap: 20px;
@@ -70,11 +77,22 @@ export const BottomContainer = styled.div`
   }
 `;
 
-export const TitleBoxText = styled.h2`
-  font-size: 16px;
+export const TitleBoxText = styled.label`
+  font-size: 14px;
+  padding-left: 10px;
+  color: #555;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+`;
+
+export const SectionTitles = styled.h2`
+  font-size: 18px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin: 30px 0 0px 0;
   color: #333;
+  color:  #292828;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -82,9 +100,19 @@ export const TitleBoxText = styled.h2`
 `;
 
 // Поля ввода
-export const InputContainer = styled.div`
+export const InputContainerFullName = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
+
+  @media (max-width: 768px) {
+    gap: 8px;
+  }
+`;
+
+export const InputContainer = styled.div`
+  display: flex;
+  align-items: center;
   gap: 10px;
 
   @media (max-width: 768px) {
@@ -97,9 +125,10 @@ export const Input = styled.input`
   font-size: 14px;
   border-radius: 5px;
   border: 1px solid #ccc;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   outline: none;
-
+  width: 100%;
+  color:  #292828;
   &:focus {
     border-color: #007bff;
     background-color: #fff;
@@ -135,9 +164,16 @@ export const CheckboxLabel = styled.label`
   }
 `;
 
+export const Section = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+`;
+
 export const BiographySection = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  align-items: center;
   gap: 10px;
 
   @media (max-width: 768px) {
@@ -157,13 +193,15 @@ export const BiographyTextareaDe = styled.textarea`
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f9f9f9;
+  /* background-color: #f9f9f9; */
   min-height: 100px;
   resize: none;
   outline: none;
-
+  width: 100%;
+  color:  #292828;
   &:focus {
-    border-color: #007bff;
+    border-color: #20b1b7;
+    outline: none;
     background-color: #fff;
   }
 

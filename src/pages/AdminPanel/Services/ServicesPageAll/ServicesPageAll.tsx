@@ -19,7 +19,7 @@ import {
 import EditServicePage from "../EditServicePage/EditServicePage";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { Outlet } from "react-router-dom";
-// import ImageUploader from "../../Images/ImageUploader"; // Removed unused import
+import { GalleryContainer } from "../Gallery/styles";
 
 export const ServicesPageAll = () => {
   const { t } = useTranslation();

@@ -5,6 +5,9 @@ export const ScrollContainer = styled.div`
   overflow-y: auto;
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
+  height: 80vh;
+
+  /* background-color: #0667c8; */
 `;
 
 const buttonCommonStyles = `
@@ -36,7 +39,7 @@ const circleStyles = `
 export const Container = styled.div`
   ${commonStyles}
   margin: 0 auto;
-  height: 100vh;
+  height: 80vh;
   padding: 0 40px;
 `;
 

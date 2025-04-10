@@ -11,7 +11,6 @@ export const ServicePageSingleContainer = styled.div`
   display: flex;
   height: 80vh;
   flex-direction: column;
-  gap: 30px;
   padding: 20px;
 `;
 
@@ -53,9 +52,10 @@ export const MainBoxText = styled.div`
 export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
-  padding:0 20px 0 10px;
+  align-content: center;
+  padding: 10% 5%;
   width: 100%;
-  max-height: 450px;
+  max-height: 400px;
 `;
 
 export const EditTopImage = styled.div`

@@ -41,8 +41,6 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
   const token = localStorage.getItem("token");
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null); 
 
-  
-
   useEffect(() => {
     const fetchServiceData = async () => {
       if (!token) return;
@@ -161,7 +159,7 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
     <ServicePageSingleContainer>
       <div>
         <HeaderBox>
-          <StyledReturnButton onClick={onReturnBack}>{t("message.adminPanel.appointments.services.returnBack")}</StyledReturnButton>
+          <StyledReturnButton onClick={onReturnBack}>← {t("message.adminPanel.appointments.services.returnBack")}</StyledReturnButton>
           <StyledSaveButton onClick={handleSave} disabled={!isFormValid() || isSaving}>
             {isSaving ? t("message.adminPanel.appointments.services.saving") : t("message.adminPanel.appointments.services.saveAll")}
           </StyledSaveButton>
@@ -236,7 +234,5 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
 };
 
 export default EditServicePage;
-function setSelectedImageFile(file: File) {
-  throw new Error("Function not implemented.");
-}
+
 

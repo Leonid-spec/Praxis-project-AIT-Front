@@ -189,44 +189,46 @@ const AdminAppointmentsPage: React.FC = () => {
           {t("message.adminPanel.appointments.noAppointments")}
         </EmptyMessage>
       ) : (
-        <ScrollContainer>
-          <AppointmentList>
-            {filteredAppointments.map((appointment) => (
-              <AppointmentRow
-                key={appointment.id}
-                isMobile={window.innerWidth <= 768}
-              >
-                <Marker>
-                  {appointment.isNew && <MarkerCircleNew />}
-                  {!appointment.isNew && <MarkerCircleCompleted />}
-                </Marker>
-
-                <MainInfoContainer isMobile={window.innerWidth <= 768}>
-                  <ClientName>
-                    {appointment.firstName} {appointment.lastName}
-                  </ClientName>
-                  <Service>
-                    {getServiceNameById(appointment.dentalServiceSectionId!)}
-                  </Service>
-
-                  {/* <Date> */}
-                  {/* Created at:  */}
-                    {/* {new Date(appointment.).toLocaleDateString()} */}
-                  {/* </Date> */}
-                </MainInfoContainer>
-
-                <MoreInfoButton
-                  onClick={() => handleMoreInfoClick(appointment?.id || 1)}
+       <>
+          <ScrollContainer>
+            <AppointmentList>
+              {filteredAppointments.map((appointment) => (
+                <AppointmentRow
+                  key={appointment.id}
+                  isMobile={window.innerWidth <= 768}
                 >
-                  {t("message.adminPanel.appointments.buttons.moreInfo")}
-                </MoreInfoButton>
-                <TrashIconBox onClick={() => handleDeleteBtn(appointment.id!)}>
-                  <FaTrashAlt size={24} color="#20b1b7" />
-                </TrashIconBox>
-              </AppointmentRow>
-            ))}
-          </AppointmentList>
-        </ScrollContainer>
+                  <Marker>
+                    {appointment.isNew && <MarkerCircleNew />}
+                    {!appointment.isNew && <MarkerCircleCompleted />}
+                  </Marker>
+  
+                  <MainInfoContainer isMobile={window.innerWidth <= 768}>
+                    <ClientName>
+                      {appointment.firstName} {appointment.lastName}
+                    </ClientName>
+                    <Service>
+                      {getServiceNameById(appointment.dentalServiceSectionId!)}
+                    </Service>
+  
+                    {/* <Date> */}
+                    {/* Created at:  */}
+                      {/* {new Date(appointment.).toLocaleDateString()} */}
+                    {/* </Date> */}
+                  </MainInfoContainer>
+  
+                  <MoreInfoButton
+                    onClick={() => handleMoreInfoClick(appointment?.id || 1)}
+                  >
+                    {t("message.adminPanel.appointments.buttons.moreInfo")}
+                  </MoreInfoButton>
+                  <TrashIconBox onClick={() => handleDeleteBtn(appointment.id!)}>
+                    <FaTrashAlt size={24} color="#20b1b7" />
+                  </TrashIconBox>
+                </AppointmentRow>
+              ))}
+            </AppointmentList>
+          </ScrollContainer>
+       </>
       )}
 
       {isModalVisible && (

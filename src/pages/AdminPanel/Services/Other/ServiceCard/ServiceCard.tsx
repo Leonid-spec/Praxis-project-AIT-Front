@@ -7,19 +7,27 @@ import {
   Info,
   Title,
   DetailsButton,
+  InactiveOverlay,
 } from "./styles";
 
 interface ServiceCardProps {
   id: number;
   title: string;
   topImage?: string;
+  isActive?: boolean;
   onEditClick: () => void;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ title, topImage, onEditClick }) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ 
+  title, 
+  topImage, 
+  onEditClick,
+  isActive = true,
+}) => {
   const { t } = useTranslation(); 
   return (
-    <Card>
+    <Card style={{ opacity: isActive ? 1 : 0.5 }}>
+       {!isActive && <InactiveOverlay>Inactive</InactiveOverlay>}
       <PhotoContainer>
         <Photo
           src={topImage}
@@ -35,47 +43,3 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ title, topImage, onEditClick 
 };
 
 export default ServiceCard;
-
-
-// import React from "react";
-// import {
-//   Card,
-//   PhotoContainer,
-//   Photo,
-//   Info,
-//   Title,
-//   DetailsButton,
-//   InactiveText,
-// } from "./styles";
-
-// interface ServiceCardProps {
-//   id: number;
-//   title: string;
-//   topImage?: string;
-//   onEditClick: () => void;
-//   isActive: boolean;
-// }
-
-// const ServiceCard: React.FC<ServiceCardProps> = ({ title, topImage, onEditClick, isActive }) => {
-//   return (
-//    <>
-//       <Card style={{ opacity: isActive ? 1 : 0.5 }}>
-//         {isActive && (
-//           <InactiveText>Card is unvisible for others</InactiveText>
-//         )}
-//         <PhotoContainer>
-//           <Photo
-//             src={topImage || "https://via.placeholder.com/150"}
-//             alt="Service preview"
-//           />
-//         </PhotoContainer>
-//         <Info>
-//           <Title>{title}</Title>
-//           <DetailsButton onClick={onEditClick}>Edit</DetailsButton>
-//         </Info>
-//       </Card>
-//    </>
-//   );
-// };
-
-// export default ServiceCard;
