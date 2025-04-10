@@ -1,124 +1,89 @@
 .footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 30px 20px;
-    background: linear-gradient(90deg, #A0EEF2, #F9F9F9);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; 
-    color: #222;
+  display: flex;
+  flex-wrap: wrap; /* Адаптация для узких экранов */
+  justify-content: space-between;
+  align-items: center; /* Центрирование по вертикали */
+  padding: 30px 20px;
+  /* background: linear-gradient(90deg, #A0EEF2, #F9F9F9); */
+  background-color: #A0EEF2; /* Цвет фона */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .leftSection {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 20%;
+  flex: 0 0 auto; /* Логотип занимает минимальную ширину */
+  display: flex;
+  justify-content: flex-start; /* Логотип остаётся слева */
+  align-items: center;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.8rem; 
-    cursor: pointer;
-    transition: color 0.3s ease;
-    width: 80%;
-  border-radius: 50%;
+  width: 100%; /* Логотип растягивается по ширине контейнера */
+  max-width: 200px; /* Ограничение максимальной ширины */
+  height: 100%; /* Сохраняем пропорции изображения */
+  border-radius: 50%; 
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
 
-  &:hover {
-    color: #78a2f0; 
-    transform: scale(1.05);
+  @media (max-width: 768px) {
+    max-width: 150px;
   }
-  
-    @media (max-width: 768px) {
-      justify-content: center;
-      font-size: 1.4rem;
-    }
-  
-    @media (max-width: 480px) {
-      font-size: 1.2rem;
-    }
+
+  @media (max-width: 480px) {
+    max-width: 150px;
+  }
 }
 
 .centerSection {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 50px;
-    margin: 0;
-    flex: 2; 
-    text-align: center;
-    font-size: 18px;
-    color: #222;
-}
-
-.contactInfo {
-    display: flex;
-    justify-content: center;
-    margin: 0;
+  flex: 1; /* Центр секция адаптивно заполняет доступное пространство */
+  display: flex;
+  flex-wrap: wrap; /* Позволяем перенос элементов на следующую строку */
+  gap: 20px; /* Отступы между элементами */
+  justify-content: center; /* Центрирование содержимого */
+  text-align: center;
 }
 
 .contactElement {
-    display: flex;
-    align-items: center;
-    margin: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Расстояние между иконкой и текстом */
+  font-size: 18px;
+
+  &:hover {
+    color: #78a2f0; /* Эффект при наведении */
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px; /* Уменьшаем размер текста на узких экранах */
+  }
 }
 
 .rightSection {
-    flex: 1; 
-    display: flex;
-    justify-content: flex-end; 
-    padding-right: 20px; 
+  flex: 0 0 auto; /* Контейнер занимает минимальную ширину */
+  display: flex;
+  justify-content: flex-end; /* Гарантируем, что содержимое остаётся справа */
+  align-items: center; /* Центрируем содержимое по вертикали */
+  padding: 20px 25px 0 20px;
+
+
+  @media (max-width: 768px) {
+    width: 100%; /* Контейнер занимает всю ширину */
+    justify-content: center; /* Сохраняем выравнивание вправо */
+    padding-right: 10px; /* Уменьшаем отступ для компактности */
+  }
+
+  @media (max-width: 480px) {
+    width: 100%; /* Контейнер занимает всю ширину */
+    justify-content: center; /* Гарантируем положение кнопки справа */
+    padding-right: 5px; /* Минимизируем отступ */
+  }
 }
 
 .rightSection button {
-    border: none;
+  border: none;
+  width: auto; /* Кнопка адаптируется по содержимому */
+  white-space: nowrap; /* Запрещаем перенос текста */
+  align-self: center; /* Кнопка остаётся вертикально центрированной */
 }
 
-.styledNavLink {
-  text-decoration: none;
-  color: #3d3d3d; 
-  font-size: 1.2rem;
-  font-weight: 500;
-  text-transform: uppercase; 
-  letter-spacing: 0.05em; 
-  padding: 8px 10px;
-  transition: all 0.3s ease-in-out;
 
-  &:hover {
-    color: #4a90e2;
-    transform: translateY(-2px); 
-  }
-
-  &:active {
-    color: #4b51a5;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1rem;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 0.9rem;
-  }
-}
-
-.navLinkImg {
-  height: 50px;
-  margin-right: 10px;
-  border-radius: 50%;
-  background-color: #e3f2fc;
-
-  &:hover {
-    opacity: 0.8;
-    transform: scale(1.05); 
-  }
-
-  @media (max-width: 768px) {
-    height: 45px;
-  }
-
-  @media (max-width: 480px) {
-    height: 40px;
-  }
-}
