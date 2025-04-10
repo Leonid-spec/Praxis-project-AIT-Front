@@ -6,7 +6,7 @@ export const ContentContainer = styled.div`
   margin: 0 auto;
   position: relative;
   transition: margin-left 0.3s ease, margin-top 0.3s ease;
-
+  height: 60vh;
   @media (max-width: 768px) {
     padding: 0 15px;
     margin-top: 60px;
@@ -18,13 +18,21 @@ export const ContentContainer = styled.div`
   }
 `;
 
+export const MainTextContainer = styled.p`
+       display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  height: 100%;
+
+`;
+
 export const WelcomeTextBox = styled.div`
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
   gap: 30px;
   text-align:center;
   margin: 20px 0;
-  padding: 10px 0 20px;
+  /* padding: 10px 0 20px; */
 `;
 
 export const MainWelcomeText = styled.p`
@@ -153,4 +161,10 @@ export const RefreshIconImage = styled.img`
 export const RefreshBtn = styled.button`
   width: 40px;
   height: 40px;
+`;
+
+export const ScrollContainer = styled.div`
+  overflow-y: auto;
+  margin: 0 auto;
+  height: 40vh;
 `;

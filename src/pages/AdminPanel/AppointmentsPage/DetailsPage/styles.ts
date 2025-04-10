@@ -36,7 +36,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 10px;
+  padding: 30px;
   border-radius: 5px;
   width: 100%;
   border: none;
@@ -128,7 +128,7 @@ export const Heading = styled.h1`
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 20px;
   color: #333;
 `;
 

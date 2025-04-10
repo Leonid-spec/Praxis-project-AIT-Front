@@ -2,7 +2,9 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  justify-content: center;
+  align-content: center;
+  gap: 10px;
 }
 
 .item {

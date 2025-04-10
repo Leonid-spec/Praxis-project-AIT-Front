@@ -5,6 +5,7 @@ export const ScrollContainer = styled.div`
   overflow-y: auto; 
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
+  height: 80vh;
 `;
 
 export const ServicePageSingleContainer = styled.div`

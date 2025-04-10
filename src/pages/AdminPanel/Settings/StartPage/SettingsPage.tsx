@@ -16,6 +16,7 @@ import {
   MainWelcomeText,
   SectionTitle,
   RefreshIconBox,
+  ScrollContainer,
 } from "./styles";
 
 import { FaSyncAlt } from "react-icons/fa";
@@ -106,43 +107,45 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
         </RefreshIconBox> */}
       </ButtonGroup>
 
-      <Section>
-        {activeSection === "createAdmin" && (
-          <>
-            <SectionTitle>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}
-            </SectionTitle>
-            <AddAdminForm />
-          </>
-        )}
-
-        {activeSection === "changePassword" && (
-          <>
-            <SectionTitle>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}
-            </SectionTitle>
-            <ChangePasswordForm />
-          </>
-        )}
-
-        {activeSection === "viewAdmins" && (
-          <>
-            <SectionTitle>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}
-            </SectionTitle>
-            <AdminList admins={admins} />
-          </>
-        )}
-
-        {activeSection === "deleteAdmin" && (
-          <>
-            <SectionTitle>
-              {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}
-            </SectionTitle>
-            <DeleteAdminForm admins={admins} />
-          </>
-        )}
-      </Section>
+      <ScrollContainer>
+        <Section>
+          {activeSection === "createAdmin" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}
+              </SectionTitle>
+              <AddAdminForm />
+            </>
+          )}
+  
+          {activeSection === "changePassword" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}
+              </SectionTitle>
+              <ChangePasswordForm />
+            </>
+          )}
+  
+          {activeSection === "viewAdmins" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}
+              </SectionTitle>
+              <AdminList admins={admins} />
+            </>
+          )}
+  
+          {activeSection === "deleteAdmin" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}
+              </SectionTitle>
+              <DeleteAdminForm admins={admins} />
+            </>
+          )}
+        </Section>
+      </ScrollContainer>
     </ContentContainer>
   );
 };
