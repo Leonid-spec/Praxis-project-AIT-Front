@@ -48,7 +48,7 @@ export const LeftContainer = styled.div`
   justify-content: center;
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 30px;
+  //padding: 30px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
   text-align: center;
   /* gap: 20px; */
@@ -60,21 +60,21 @@ export const LeftContainer = styled.div`
   }
 
   @media (min-width: 1920px) {
-    padding: 50px;
+   // padding: 50px;
     gap: 30px;
   }
 
   @media (max-width: 1200px) {
-    padding: 30px;
+    //padding: 30px;
   }
 
   @media (max-width: 768px) {
-    padding: 20px;
+    //padding: 20px;
   }
 
   @media (max-width: 480px) {
     gap: 15px;
-    padding: 15px;
+    //padding: 15px;
   }
 `;
 
@@ -95,20 +95,20 @@ export const RightContainer = styled.div`
   }
 
   @media (min-width: 1920px) {
-    padding: 50px;
+    //padding: 50px;
   }
 
   @media (max-width: 1200px) {
-    padding: 20px;
+    //padding: 20px;
   }
 
   @media (max-width: 768px) {
-    padding: 15px;
-    aspect-ratio: 4/3;
+    //padding: 15px;
+    //aspect-ratio: 4/3;
   }
 
   @media (max-width: 480px) {
-    padding: 10px;
+   // padding: 10px;
     aspect-ratio: 1/1;
   }
 `;
@@ -116,24 +116,33 @@ export const RightContainer = styled.div`
 export const RightContainerPhoto = styled.img`
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: cover;
   object-position: center;
   display: block;
 
   @media (min-width: 1920px) {
+    width: 100%; 
+    height: 500px; 
     border-radius: 10px;
   }
 
   @media (max-width: 1200px) {
-    max-width: 80%;
+    width: 100%;
+    height: 400px; 
+    border-radius: 8px;
   }
 
   @media (max-width: 768px) {
-    max-width: 70%;
+    flex-direction: column;
+    width: 100%;
+    height: 300px; 
+    border-radius: 6px;
   }
 
   @media (max-width: 480px) {
+    width: 100%; 
+    height: 250px; 
     border-radius: 4px;
   }
 `;
@@ -143,7 +152,7 @@ export const WelcomeTextTitle = styled.p`
   font-size: clamp(1.6rem, 3vw, 2rem);
   line-height: 1.4;
   text-align: center;
-  padding: 20px 30px;
+  //padding: 20px 30px;
 
   @media (min-width: 1920px) {
     font-size: clamp(2.5rem, 5vw, 4rem);
