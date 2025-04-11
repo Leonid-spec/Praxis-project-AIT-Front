@@ -9,6 +9,7 @@ import {
   LanguagePanel,
   LanguageLink,
   Divider,
+  BurgerMenuContainer,
 } from "./BurgerMenuStyles";
 import AdminMenu from "../AdminMenu/AdminMenu";
 import React from "react";
@@ -23,50 +24,54 @@ const BurgerMenu = () => {
     setIsOpen(false);
   };
 
+  const handleAdminMenuClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <>
-      <BurgerButton onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
-        {isOpen ? <FaTimes /> : <FaBars />}
-      </BurgerButton>
+      <BurgerMenuContainer>
+        <BurgerButton
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+        >
+          {isOpen ? <FaTimes /> : <FaBars />}
+        </BurgerButton>
 
-      {isOpen && (
-        <MobileMenuOverlay onClick={() => setIsOpen(false)}>
-          <MobileNav onClick={(e) => e.stopPropagation()}>
-            <MobileNavLink to="/services">
-              {t("message.header.menu.services")}
-            </MobileNavLink>
-            <MobileNavLink to="/about">
-              {t("message.header.menu.about_us")}
-            </MobileNavLink>
-            <MobileNavLink to="/team">
-              {t("message.header.menu.team")}
-            </MobileNavLink>
-            <MobileNavLink to="/contacts">
-              {t("message.header.menu.contact")}
-            </MobileNavLink>
+        {isOpen && (
+          <>
+            <MobileMenuOverlay onClick={() => setIsOpen(false)}>
+              <MobileNav onClick={(e) => e.stopPropagation()}>
+                <MobileNavLink to="/services">
+                  {t("message.header.menu.services")}
+                </MobileNavLink>
+                <MobileNavLink to="/about">
+                  {t("message.header.menu.about_us")}
+                </MobileNavLink>
+                <MobileNavLink to="/team">
+                  {t("message.header.menu.team")}
+                </MobileNavLink>
+                <MobileNavLink to="/contacts">
+                  {t("message.header.menu.contact")}
+                </MobileNavLink>
 
-            {/* <LanguagePanel>
-              {['de', 'en', 'ru'].map((lang) => (
-                <LanguageLink key={lang} onClick={() => handleLanguageChange(lang)}>
-                  {lang.toUpperCase()}
-                </LanguageLink>
-              ))}
-            </LanguagePanel> */}
-            <LanguagePanel>
-              {["de", "en", "ru"].map((lang, index) => (
-                <React.Fragment key={lang}>
-                  <LanguageLink onClick={() => handleLanguageChange(lang)}>
-                    {lang.toUpperCase()}
-                  </LanguageLink>
-                  {index < 2 && <Divider>|</Divider>}
-                </React.Fragment>
-              ))}
-            </LanguagePanel>
+                <LanguagePanel>
+                  {["de", "en", "ru"].map((lang, index) => (
+                    <React.Fragment key={lang}>
+                      <LanguageLink onClick={() => handleLanguageChange(lang)}>
+                        {lang.toUpperCase()}
+                      </LanguageLink>
+                      {index < 2 && <Divider>|</Divider>}
+                    </React.Fragment>
+                  ))}
+                </LanguagePanel>
+              </MobileNav>
+            </MobileMenuOverlay>
+          </>
+        )}
 
-            <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-          </MobileNav>
-        </MobileMenuOverlay>
-      )}
+        <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      </BurgerMenuContainer>
     </>
   );
 };

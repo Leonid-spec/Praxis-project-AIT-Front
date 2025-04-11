@@ -1,21 +1,18 @@
 .mainPanel {
   display: flex;
   flex-direction: row; 
-  /* height: 100vh; */
   width: 100%;
-  padding: 2px;
   overflow: hidden;
-  /* height: 80vh; */
 }
 
 
 .sidebar {
   width: 15%; 
+
 }
 
 .content {
   flex-grow: 1; 
-  margin-left: 20px; 
 }
 
 /* Мобильная версия */

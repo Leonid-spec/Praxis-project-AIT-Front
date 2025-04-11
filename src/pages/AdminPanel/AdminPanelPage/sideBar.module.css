@@ -5,6 +5,7 @@
   justify-content: center;
   align-content: center;
   gap: 10px;
+  margin-left: 20px;
 }
 
 .item {
@@ -25,7 +26,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   width: 100%;
   background-color: #fff;
   border-radius: 30px;
@@ -39,36 +40,69 @@
 }
 
 .icon {
-  /* width: 70px; */
-  height: 50px;
+  height: 60px;
+  width: auto;
   object-fit: contain;
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    flex-direction: row; 
-    justify-content: space-around; 
-    gap: 10px; 
-    width: 100%; 
-  }
-
-  .item {
-    flex-direction: column;
-    gap: 5px; 
-  }
-
-  .box {
-    width: 80px;
-    height: 80px;
-    border-radius: 15px; 
-  }
-
+/* Tablets */
+@media (max-width: 1024px) {
   .icon {
-    width: 50px; 
     height: 50px;
   }
 
   .labelTop {
-    font-size: 12px; 
+    font-size: 14px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 10px;
+    width: 100%;
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .item {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .box {
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .icon {
+    height: 40px;
+  }
+
+  .labelTop {
+    font-size: 11px;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  .box {
+    width: 60px;
+    height: 60px;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .icon {
+    height: 30px;
+  }
+
+  .labelTop {
+    font-size: 10px;
   }
 }

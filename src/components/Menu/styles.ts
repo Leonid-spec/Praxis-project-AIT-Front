@@ -11,6 +11,10 @@ export const MenuContainer = styled.div`
   padding: 15px 30px;
   background-color: #ffffff;
   box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 1024px) {
+    /* justify-content: flex-end; */
+  }
 `;
 
 export const Logo = styled.div`
@@ -40,8 +44,11 @@ export const StyledNavLink = styled(NavLink)`
 export const SprachUundAdminbereich = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
+  align-content: center;
   gap: 20px;
 `;
+
 
 export const LanguagePanel = styled.div`
   display: flex;
@@ -53,6 +60,7 @@ export const LanguageLink = styled.button`
   border: none;
   color: inherit;
   cursor: pointer;
+  
   &:hover {
     color: #9ceef1;
     color: #4ba0a5;
