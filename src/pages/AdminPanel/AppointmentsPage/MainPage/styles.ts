@@ -29,8 +29,10 @@ const circleStyles = `
 export const Container = styled.div`
   ${commonStyles}
   margin: 0 auto;
-  height: 70vh;
+  overflow: auto;
+  height: 80vh;
 `;
+
 
 export const HeaderBox = styled.ul`
   padding: 0;
@@ -91,9 +93,31 @@ export const FilterButton = styled.button<{ isActive: boolean }>`
 
 export const AppointmentList = styled.ul`
   list-style-type: none;
-  /* padding: 0 20px; */
-  margin: 0;
-  /* height: 60vh; */
+  padding: 0 20px;
+
+  @media (min-width: 1920px) {
+    height: 80vh; 
+  }
+
+  @media (max-width: 1920px) and (min-width: 1440px) {
+    height: 70vh; 
+  }
+
+  @media (max-width: 1440px) and (min-width: 1024px) {
+    height: 60vh;
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    height: 50vh; 
+  }
+
+  @media (max-width: 768px) and (min-width: 576px) {
+    height: 40vh; 
+  }
+
+  @media (max-width: 576px) {
+    height: 30vh; 
+  }
 `;
 
 export const AppointmentRow = styled.li<{ isMobile: boolean }>`

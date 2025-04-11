@@ -194,7 +194,6 @@ const AdminAppointmentsPage: React.FC = () => {
         </EmptyMessage>
       ) : (
        <>
-            <AppointmentList>
               {filteredAppointments.map((appointment) => (
                 <AppointmentRow
                   key={appointment.id}
@@ -231,10 +230,9 @@ const AdminAppointmentsPage: React.FC = () => {
                   </BtnBox>
                 </AppointmentRow>
               ))}
-            </AppointmentList>
        </>
       )}
-          </ScrollContainer>
+      </ScrollContainer>
 
       {isModalVisible && (
         <ModalOverlay>

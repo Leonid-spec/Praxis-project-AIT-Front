@@ -6,7 +6,7 @@ export const ContentContainer = styled.div`
   margin: 0 auto;
   position: relative;
   transition: margin-left 0.3s ease, margin-top 0.3s ease;
-  height: 60vh;
+  height: 80vh;
   @media (max-width: 768px) {
     padding: 0 15px;
     margin-top: 60px;

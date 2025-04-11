@@ -11,9 +11,9 @@
 
 }
 
-.content {
+/* .content {
   flex-grow: 1; 
-}
+} */
 
 /* Мобильная версия */
 @media screen and (max-width: 768px) {
@@ -28,7 +28,4 @@
     /* margin-bottom: 10px; */
   }
 
-  .content {
-    flex-grow: 1;
-  }
 }
