@@ -295,7 +295,9 @@
           "addNewService": "+ Добавить новую услугу",
           "refresh": "Обновить",
           "errorLoading": "Ошибка загрузки услуги",
-          "searchPlaceholder": "Поиск по названию услуги"
+          "searchPlaceholder": "Поиск по названию услуги",
+          "gallery": "Галерея",
+          "editGallery": "Редактировать галерею"
         },
         "doctors": {
           "requiredField": "Это поле обязательно для заполнения",

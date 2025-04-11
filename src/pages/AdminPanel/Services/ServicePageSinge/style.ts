@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ScrollContainer = styled.div`
   flex: 1;
-  overflow-y: auto; 
+  overflow-y: auto;
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
   height: 80vh;
@@ -21,11 +21,10 @@ export const HeaderBox = styled.div`
   padding: 20px 100px 0;
   margin-bottom: 20px;
 
-
   @media (max-width: 768px) {
-    padding: 0 20px; 
+    padding: 0 20px;
   }
-  `;
+`;
 
 export const MainBox = styled.div`
   display: grid;
@@ -35,7 +34,7 @@ export const MainBox = styled.div`
   padding: 10px;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -45,8 +44,8 @@ export const MainBoxText = styled.div`
   gap: 20px;
 
   @media (max-width: 768px) {
-    height: auto;  
-    padding: 20px; 
+    height: auto;
+    padding: 20px;
   }
 `;
 
@@ -57,16 +56,6 @@ export const ImageBox = styled.div`
   padding: 10% 5%;
   width: 100%;
   max-height: 400px;
-`;
-
-export const EditTopImage = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const UploadInput = styled.input`
-  padding: 10px;
-  border-radius: 5px;
 `;
 
 export const ImagePreview = styled.img`
@@ -121,7 +110,7 @@ export const TitlesBox = styled.div`
 export const TitleBoxText = styled.label`
   font-size: 16px;
   color: #b5abab;
-  color:  #292828;
+  color: #292828;
   padding: 0 0 0 20px;
 `;
 
@@ -174,7 +163,6 @@ export const StyledReturnButton = styled.button`
   &:hover {
     background-color: #0c989c;
   }
-  
 `;
 
 export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
@@ -189,4 +177,52 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
   }
+`;
+
+// Gallery
+
+export const GalleryContainer = styled.div`
+  padding: 16px;
+`;
+
+export const TitleBox = styled.h2`
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-top: 20px;
+`;
+
+export const UploadText = styled.label`
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  margin-top: 20px;
+`;
+
+export const EditTopImage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const UploadInput = styled.input`
+  padding: 10px;
+  border-radius: 5px;
+`;
+
+export const GalleryGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+`;
+
+export const GalleryImageWrapper = styled.div`
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+`;
+
+export const PreviewImage = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
 `;

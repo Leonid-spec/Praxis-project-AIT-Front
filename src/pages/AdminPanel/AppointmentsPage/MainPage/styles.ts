@@ -235,3 +235,10 @@ export const BtnBox = styled.div`
   justify-content: flex-start; /* Выравнивание кнопок по началу */
   margin-top: 10px; /* Отступ сверху для пространства */
 `;
+
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto; 
+  scroll-behavior: smooth;
+  padding: 0 30px 0 20px;
+`;

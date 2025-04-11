@@ -295,7 +295,9 @@
           "addNewService": "Add new service",
           "refresh": "Refresh",
           "errorLoading": "Error loading service",
-          "searchPlaceholder": "Search by service name"
+          "searchPlaceholder": "Search by service name",
+          "gallery": "Gallery",
+          "editGallery": "Edit gallery"
         },
         "doctors": {
           "requiredField": "This field is required",

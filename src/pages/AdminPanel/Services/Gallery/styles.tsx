@@ -5,14 +5,18 @@ export const GalleryContainer = styled.div`
 `;
 
 export const TitleBox = styled.h2`
+  display: flex;
+  justify-content: center;
   font-size: 1.4rem;
-  margin-bottom: 12px;
+  margin-top: 20px;
 `;
 
 export const UploadText = styled.label`
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
+  margin-top: 20px;
+
 `;
 
 export const UploadInput = styled.input`
