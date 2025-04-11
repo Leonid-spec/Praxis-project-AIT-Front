@@ -9,44 +9,46 @@ const MiniFooter: React.FC = () => {
   const { t } = useTranslation();
 
   const handleCall = () => {
-    window.location.href = "tel:+1234567890"; 
+    window.location.href = `tel:${t("message.footer.contact.phone")}`; 
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:example@example.com"; 
+    window.location.href = `mailto:${t("message.footer.contact.email")}`; 
   };
 
   return (
     <footer className={styles.footer}>
-  <div className={styles.leftSection}>
-    <Link to="/" className={styles.styledNavLink}>
-      <img src="/src/public/MainLogo-removebg.png" alt="Zahn" className={styles.logo} />
-    </Link>
-  </div>
+      <div className={styles.leftSection}>
+        <Link to="/" className={styles.styledNavLink}>
+          <img
+            src="/src/public/MainLogo-removebg.png"
+            alt={t("message.footer.logo.alt")}
+            className={styles.logo}
+          />
+        </Link>
+      </div>
 
-  <div className={styles.centerSection}>
-    <div className={styles.contactElement} onClick={handleCall}>
-      <FaPhone style={{ cursor: "pointer", marginRight: "5px" }} />
-      +49 017 223 334
-    </div>
-    <div className={styles.contactElement} onClick={handleEmail}>
-      <FaEnvelope style={{ cursor: "pointer", marginRight: "5px" }} />
-      info@dentalclinic.de
-    </div>
-    <div className={styles.contactElement}>
-      Mo-Fr: 08:00 - 12:00, 13:00 - 18:00
-    </div>
-    <div className={styles.contactElement}>
-      Sa-So: geschlossen
-    </div>
-  </div>
+      <div className={styles.centerSection}>
+        <div className={styles.contactElement} onClick={handleCall}>
+          <FaPhone style={{ cursor: "pointer", marginRight: "5px" }} />
+          {t("message.footer.contact.phone")}
+        </div>
+        <div className={styles.contactElement} onClick={handleEmail}>
+          <FaEnvelope style={{ cursor: "pointer", marginRight: "5px" }} />
+          {t("message.footer.contact.email")}
+        </div>
+        <div className={styles.contactElement}>
+          {t("message.footer.hours.weekdays")}
+        </div>
+        <div className={styles.contactElement}>
+          {t("message.footer.hours.weekend")}
+        </div>
+      </div>
 
-  <div className={styles.rightSection}>
-    <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
-  </div>
-</footer>
-
-  
+      <div className={styles.rightSection}>
+        <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+      </div>
+    </footer>
   );
 };
 

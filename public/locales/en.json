@@ -74,17 +74,37 @@
       }
     },
     "footer": {
-      "titles": {
-        "contact": "CONTACTS",
-        "time": "OPENING HOURS"
-      },
-      "daysOfWeek": {
-        "monday": "Monday",
-        "tuesday": "Tuesday",
-        "wednesday": "Wednesday",
-        "thursday": "Thursday",
-        "friday": "Friday"
-      }
+  "titles": {
+    "contact": "CONTACT",
+    "time": "WORKING HOURS"
+  },
+  "daysOfWeek": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday"
+  },
+  "logo": {
+    "alt": "Zahn Logo"
+  },
+  "contact": {
+    "clinicName": "DentalClinic",
+    "street": "MusterStreet 10",
+    "city": "12345 Munich",
+    "phone": "+49 017 223 334",
+    "email": "info@dentalclinic.de"
+  },
+  "hours": {
+    "monday": "08:00 - 12:00, 13:00 - 18:00",
+    "tuesday": "08:00 - 12:00, 13:00 - 18:00",
+    "wednesday": "08:00 - 12:00, 13:00 - 18:00",
+    "thursday": "08:00 - 12:00, 13:00 - 18:00",
+    "friday": "08:00 - 12:00, 13:00 - 18:00",
+    "weekdays": "Mon-Fri: 08:00 - 12:00, 13:00 - 18:00",
+    "weekend": "Sat-Sun: closed"
+  }
+  
     },
     "other": {
       "loginAdmin": {
