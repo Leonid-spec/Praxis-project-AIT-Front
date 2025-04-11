@@ -180,9 +180,9 @@ const AdminAppointmentsPage: React.FC = () => {
             </FilterButton>
           ))}
 
-          <RefreshIconBox onClick={handleRefreshBtn}>
+          {/* <RefreshIconBox onClick={handleRefreshBtn}>
             <FaSyncAlt size={24} color="#20b1b7" />
-          </RefreshIconBox>
+          </RefreshIconBox> */}
         </FilterContainer>
       </HeaderBox>
 
