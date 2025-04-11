@@ -1,15 +1,13 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-export const BurgerButton = styled.button`
+export const BurgerButton = styled.div`
   display: none;
-
   @media (max-width: 768px) {
     display: block;
-    background: none;
-    border: none;
     font-size: 2rem;
     color: #3b7f83;
+    color: #9ceef1;
     cursor: pointer;
   }
 `;
@@ -27,25 +25,12 @@ export const MobileMenuOverlay = styled.div`
 
 export const MobileNav = styled.nav`
   background-color: #3b7f83;
-  border-radius: 12px;
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 90%;
   max-width: 300px;
-  animation: slideDown 0.3s ease;
-
-  @keyframes slideDown {
-    from {
-      transform: translateY(-20px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
 `;
 
 export const MobileNavLink = styled(NavLink)`
@@ -53,12 +38,26 @@ export const MobileNavLink = styled(NavLink)`
   color: #ffffff;
   font-size: 1.1rem;
   text-align: center;
+`;
 
+export const LanguagePanel = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+`;
+
+export const LanguageLink = styled.button`
+  background: none;
+  border: none;
+  color: inherit;
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
   &:hover {
-    color: #dffeff;
+    color: #4a90e2;
   }
+`;
 
-  &.active {
-    color: #a0eef2;
-  }
+export const Divider = styled.span`
+  color: #dcd5d5;
 `;
