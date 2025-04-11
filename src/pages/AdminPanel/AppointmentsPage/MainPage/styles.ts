@@ -93,7 +93,13 @@ export const FilterContainer = styled.div`
   gap: 10px;
   justify-content: center;
   margin-bottom: 20px;
+  flex-wrap: wrap; 
+
+  @media (max-width: 668px) {
+    justify-content: center;
+  }
 `;
+
 
 export const FilterButton = styled.button<{ isActive: boolean }>`
   ${buttonCommonStyles}
@@ -127,6 +133,11 @@ export const MainInfoContainer = styled.div<{ isMobile: boolean }>`
   align-items: center;
   justify-content: center;
   width: 100%;
+
+  @media (max-width: 688px) {
+  flex-direction: column;
+}
+
 `;
 
 export const ClientName = styled.div`
@@ -243,6 +254,6 @@ export const BtnBox = styled.div`
   display: flex;
   gap: 15px;
   align-items: center;
-  justify-content: flex-start; /* Выравнивание кнопок по началу */
-  margin-top: 10px; /* Отступ сверху для пространства */
+  justify-content: flex-start; 
+  margin-top: 10px; 
 `;
