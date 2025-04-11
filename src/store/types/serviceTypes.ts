@@ -1,3 +1,5 @@
+import { ImageDto } from "./imageTypes";
+
 export interface ServiceData {
   [key: string]: any;
   id?: number;
@@ -9,5 +11,5 @@ export interface ServiceData {
   descriptionRu: string;
   topImage: string;
   isActive?: boolean;
-  images?: { id: number; path: string }[];
+  images?: ImageDto[];
 }

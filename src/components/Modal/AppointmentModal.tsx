@@ -18,7 +18,7 @@ const AppointmentModal: React.FC = () => {
      <ButtonCloseContainer> 
       <ButtonClose onClick={closeModal} />
       </ButtonCloseContainer>
-      <AppointmentForm />
+      <AppointmentForm onSuccess={closeModal} />
      
     </Modal>
   );

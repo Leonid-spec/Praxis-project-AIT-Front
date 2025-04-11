@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const ScrollContainer = styled.div`
-  flex: 1;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  padding: 0 30px 0 20px;
-  height: 80vh;
-
-  /* background-color: #0667c8; */
-`;
-
 const buttonCommonStyles = `
   border: 1px solid #ccc;
   cursor: pointer;
@@ -39,12 +29,13 @@ const circleStyles = `
 export const Container = styled.div`
   ${commonStyles}
   margin: 0 auto;
+  overflow: auto;
   height: 80vh;
-  padding: 0 40px;
 `;
 
+
 export const HeaderBox = styled.ul`
-  padding: 20px;
+  padding: 0;
 `;
 
 export const RefreshIconBox = styled.button`
@@ -103,8 +94,30 @@ export const FilterButton = styled.button<{ isActive: boolean }>`
 export const AppointmentList = styled.ul`
   list-style-type: none;
   padding: 0 20px;
-  margin: 0;
-  height: 60vh;
+
+  @media (min-width: 1920px) {
+    height: 80vh; 
+  }
+
+  @media (max-width: 1920px) and (min-width: 1440px) {
+    height: 70vh; 
+  }
+
+  @media (max-width: 1440px) and (min-width: 1024px) {
+    height: 60vh;
+  }
+
+  @media (max-width: 1024px) and (min-width: 768px) {
+    height: 50vh; 
+  }
+
+  @media (max-width: 768px) and (min-width: 576px) {
+    height: 40vh; 
+  }
+
+  @media (max-width: 576px) {
+    height: 30vh; 
+  }
 `;
 
 export const AppointmentRow = styled.li<{ isMobile: boolean }>`
@@ -245,4 +258,11 @@ export const BtnBox = styled.div`
   align-items: center;
   justify-content: flex-start; /* Выравнивание кнопок по началу */
   margin-top: 10px; /* Отступ сверху для пространства */
+`;
+
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto; 
+  scroll-behavior: smooth;
+  padding: 0 30px 0 20px;
 `;

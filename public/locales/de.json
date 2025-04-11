@@ -296,7 +296,9 @@
           "addNewService": "Neuen Service hinzufügen",
           "refresh": "Aktualisieren",
           "errorLoading": "Fehler beim Laden des Service",
-          "searchPlaceholder": "Suche nach Servicenamen"
+          "searchPlaceholder": "Suche nach Servicenamen",
+          "gallery": "Galerie",
+          "editGallery": "Galerie bearbeiten"
         },
         "doctors": {
           "requiredField": "Dieses Feld ist erforderlich",

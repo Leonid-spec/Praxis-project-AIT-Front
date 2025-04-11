@@ -134,17 +134,19 @@ const AppointmentDetailsPage: React.FC = () => {
 
   return (
     <Container>
-      <Heading>
-        {t("message.adminPanel.appointments.appointmentDetails.title")}
-      </Heading>
-      <ButtonContainer>
-        <BackButton onClick={() => navigate("/admin-panel/appointments")}>
-          {t("message.adminPanel.appointments.buttons.back")}
-        </BackButton>
-        <CompleteButton onClick={handleCompleteClick}>
-          {t("message.adminPanel.appointments.buttons.complete")}
-        </CompleteButton>
-      </ButtonContainer>
+      <div>
+        <Heading>
+          {t("message.adminPanel.appointments.appointmentDetails.title")}
+        </Heading>
+        <ButtonContainer>
+          <BackButton onClick={() => navigate("/admin-panel/appointments")}>
+            {t("message.adminPanel.appointments.buttons.back")}
+          </BackButton>
+          <CompleteButton onClick={handleCompleteClick}>
+            {t("message.adminPanel.appointments.buttons.complete")}
+          </CompleteButton>
+        </ButtonContainer>
+      </div>
 
       <ScrollContainer>
         {appointment && (

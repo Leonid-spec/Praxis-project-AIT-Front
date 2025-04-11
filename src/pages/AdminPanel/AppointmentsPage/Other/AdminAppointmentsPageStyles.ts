@@ -8,7 +8,6 @@ export const ScrollContainer = styled.div`
   padding: 0 30px 0 20px;
 `;
 
-// Стили кнопок
 const buttonCommonStyles: CSSProperties = {
   border: "1px solid #ccc",
   cursor: "pointer",
@@ -17,11 +16,10 @@ const buttonCommonStyles: CSSProperties = {
   backgroundColor: "#20B1B7",
   color: "#fff",
   transition: "background-color 0.3s ease",
-  width: "auto", // Ширина кнопки зависит от содержимого
-  whiteSpace: "nowrap", // Запрещаем перенос текста
+  width: "auto", 
+  whiteSpace: "nowrap",
 };
 
-// Общие стили
 const commonStyles: CSSProperties = {
   textAlign: "center",
   borderRadius: "18px",
@@ -29,11 +27,10 @@ const commonStyles: CSSProperties = {
   transition: "background-color 0.3s ease",
 };
 
-// Стили для маркеров
 const circleStyles: CSSProperties = {
   width: "15px",
   height: "15px",
-  borderRadius: "50%", // Круглый маркер
+  borderRadius: "50%", 
   marginRight: "10px",
 };
 
@@ -41,7 +38,7 @@ const styles = {
   container: {
     ...commonStyles,
     padding: "20px",
-    maxWidth: "1200px", // Централизованный, шире по экрану
+    maxWidth: "1200px", 
     margin: "0 auto",
   } as CSSProperties,
   heading: {
@@ -87,7 +84,7 @@ const styles = {
   } as CSSProperties,
   appointmentRow: (isMobile: boolean): CSSProperties => ({
     display: "flex",
-    flexDirection: isMobile ? "column" : "row", // Компоновка горизонтально/вертикально
+    flexDirection: isMobile ? "column" : "row", 
     alignItems: "center",
     justifyContent: "center",
     padding: "15px",

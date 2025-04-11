@@ -20,11 +20,10 @@ import ServiceDropdown from "./ServiceDropdown/ServiceDropdown";
 import { createAppointment } from "../../api/appointmentAPI";
 import { AppointmentData } from "../../store/types/appointmentTypes";
 
-const AppointmentForm = () => {
+const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
   const { t } = useTranslation();
 
   const [services, setServices] = useState<ServiceData[]>([]);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -125,7 +124,7 @@ const AppointmentForm = () => {
         },
       );
 
-      console.log("Appointment created successfully:", newAppointment);
+      // console.log("Appointment created successfully:", newAppointment);
       setNotification({
         message: t(
           "message.other.makeAppointment.messages.appointmentScheduled"
@@ -145,6 +144,10 @@ const AppointmentForm = () => {
         availableTime: "",
         isNew: true,
       });
+    
+      setTimeout(() => {
+        if (onSuccess) onSuccess();
+      }, 2000);
     } catch (err: any) {
       setNotification({
         message: t("message.other.makeAppointment.messages.appointmentFailed"),

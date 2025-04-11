@@ -40,7 +40,7 @@ const ServiceDetails: React.FC = () => {
       dispatch(fetchActiveServicesStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch("http://localhost:8080/api/services/active");
+          const response = await fetch("http://localhost:8100/api/services/active");
           if (!response.ok) {
             throw new Error("Failed to fetch services");
           }
