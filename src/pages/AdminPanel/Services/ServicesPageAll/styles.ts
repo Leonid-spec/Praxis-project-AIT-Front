@@ -5,6 +5,7 @@ export const ScrollContainer = styled.div`
   overflow-y: auto; 
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
+  height: 60vh;
   
   @media(max-width: 1440px) {
   margin: 20px;

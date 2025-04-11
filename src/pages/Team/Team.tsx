@@ -41,7 +41,7 @@ const Team: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:8080/api/doctors/active", {
+        const response = await fetch("http://localhost:8100/api/doctors/active", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -138,7 +138,7 @@ const Team: React.FC = () => {
             return (
               <DoctorCard
                 key={doctor.id}
-                id={doctor.id}
+                id={doctor.id!}
                 photo={
                   doctor.topImage
                     ? doctor.topImage.replace(/\\/g, "/")
@@ -146,7 +146,7 @@ const Team: React.FC = () => {
                 }
                 fullName={doctor.fullName}
                 specialization={specialization || t("noSpecialization")}
-                onDetailsClick={() => handleDetailsClick(doctor.id)}
+                onDetailsClick={() => handleDetailsClick(doctor.id!)}
               />
             );
           })

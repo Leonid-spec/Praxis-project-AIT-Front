@@ -3,16 +3,19 @@ import {
   EditTopImage,
   GalleryContainer,
   TitleBox,
-  TitleSection,
   UploadInput,
   UploadText,
+  GalleryGrid,
+  GalleryImageWrapper,
+  PreviewImage,
 } from "./styles";
 import { useState } from "react";
 import { ServiceData } from "../../../../store/types/serviceTypes";
+import { GalleryImageCard } from "./GalleryImageCard";
 
 function GalleryServices() {
-  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
-  const [localPreviewURL, setLocalPreviewURL] = useState<string | null>(null);
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
+  const [previewURLs, setPreviewURLs] = useState<string[]>([]);
   const [serviceData, setServiceData] = useState<ServiceData>({
     titleDe: "",
     titleEn: "",
@@ -26,38 +29,80 @@ function GalleryServices() {
   });
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      setSelectedImageFile(file);
-      const imageUrl = URL.createObjectURL(file);
-      setLocalPreviewURL(imageUrl);
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const fileArray = Array.from(files);
+      const urls = fileArray.map((file) => URL.createObjectURL(file));
+
+      setSelectedImages((prev) => [...prev, ...fileArray]);
+      setPreviewURLs((prev) => [...prev, ...urls]);
+
       setServiceData((prev) => ({
         ...prev,
-        topImage: imageUrl,
+        images: [
+          ...(prev.images ?? []),
+          ...urls.map((url) => ({ id: 0, path: url })),
+        ],
       }));
     }
   };
 
+  const handleReplaceImage = (index: number) => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.onchange = () => {
+      const file = fileInput.files?.[0];
+      if (file) {
+        const newUrl = URL.createObjectURL(file);
+        setServiceData((prev) => {
+          const newImages = [...(prev.images ?? [])];
+          newImages[index] = { ...newImages[index], path: newUrl };
+          return { ...prev, images: newImages };
+        });
+      }
+    };
+    fileInput.click();
+  };
+
+  const handleDeleteImage = (index: number) => {
+    setServiceData((prev) => {
+      const newImages = [...(prev.images ?? [])];
+      newImages.splice(index, 1);
+      return { ...prev, images: newImages };
+    });
+  };
+
   return (
     <GalleryContainer>
+      <TitleBox>
+        {t("message.adminPanel.appointments.services.gallery") || "Gallery"}
+      </TitleBox>
 
-        <TitleBox>
-          {/* {t("message.adminPanel.appointments.services.gallery")} */}
-          Gallery
-        </TitleBox>
+      <EditTopImage>
+        <UploadText>
+          {t("message.adminPanel.appointments.services.editGallery") ||
+            "Upload Gallery Images"}
+        </UploadText>
+        <UploadInput
+          type="file"
+          accept="image/*"
+          multiple
+          onChange={handleImageUpload}
+        />
+      </EditTopImage>
 
-        <EditTopImage>
-          <UploadText>
-            {t("message.adminPanel.appointments.services.editTopImage")}
-          </UploadText>
-          <UploadInput
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-        </EditTopImage>
-
-
+      <GalleryGrid>
+        {serviceData.images?.map((img, index) => (
+          <GalleryImageWrapper key={index}>
+            <GalleryImageCard
+              url={img.path}
+              onReplace={() => handleReplaceImage(index)}
+              onDelete={() => handleDeleteImage(index)}
+            />
+          </GalleryImageWrapper>
+        ))}
+      </GalleryGrid>
     </GalleryContainer>
   );
 }

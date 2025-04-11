@@ -185,6 +185,8 @@ const AdminAppointmentsPage: React.FC = () => {
           </RefreshIconBox>
         </FilterContainer>
       </HeaderBox>
+      
+      <ScrollContainer>
 
       {filteredAppointments.length === 0 ? (
         <EmptyMessage>
@@ -192,7 +194,6 @@ const AdminAppointmentsPage: React.FC = () => {
         </EmptyMessage>
       ) : (
        <>
-          <ScrollContainer>
             <AppointmentList>
               {filteredAppointments.map((appointment) => (
                 <AppointmentRow
@@ -231,9 +232,9 @@ const AdminAppointmentsPage: React.FC = () => {
                 </AppointmentRow>
               ))}
             </AppointmentList>
-          </ScrollContainer>
        </>
       )}
+          </ScrollContainer>
 
       {isModalVisible && (
         <ModalOverlay>
