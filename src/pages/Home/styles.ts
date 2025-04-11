@@ -54,10 +54,10 @@ export const LeftContainer = styled.div`
   /* gap: 20px; */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover {
+  /* &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
-  }
+  } */
 
   @media (min-width: 1920px) {
     padding: 50px;
@@ -90,9 +90,9 @@ export const RightContainer = styled.div`
   /* box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  &:hover {
+  /* &:hover {
     transform: translateY(-5px);
-  }
+  } */
 
   @media (min-width: 1920px) {
     padding: 50px;
