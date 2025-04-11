@@ -228,11 +228,10 @@ export const ModalActionsBtn = styled.button`
     background-color: #18a8a0;
   }
 `;
-
-export const ScrollContainer = styled.div`
-  ${commonStyles}
-  overflow-y: auto;
-  margin: 0 auto;
-  height: 50vh;
-  /* padding: 0 40px; */
+export const BtnBox = styled.div`
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: flex-start; /* Выравнивание кнопок по началу */
+  margin-top: 10px; /* Отступ сверху для пространства */
 `;
