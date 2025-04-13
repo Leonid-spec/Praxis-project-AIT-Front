@@ -31,14 +31,14 @@ const MiniFooter: React.FC = () => {
       <div className={styles.centerSection}>
         <div className={styles.contactElement} onClick={handleCall}>
           <FaPhone style={{ cursor: "pointer", marginRight: "5px" }} />
-          {t("message.footer.contact.phone")}
+          +49 017 123 456 789
         </div>
         <div className={styles.contactElement} onClick={handleEmail}>
           <FaEnvelope style={{ cursor: "pointer", marginRight: "5px" }} />
-          {t("message.footer.contact.email")}
+          info@dentalclinic.de
         </div>
         <div className={styles.contactElement}>
-          {t("message.footer.hours.weekdays")}
+          {t("message.footer.hours.weekdays")} 08:00 - 12:00, 13:00 - 18:00
         </div>
         <div className={styles.contactElement}>
           {t("message.footer.hours.weekend")}
