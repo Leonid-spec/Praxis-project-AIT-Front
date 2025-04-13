@@ -8,14 +8,14 @@
         "contact": "Contact",
         "home": "Home",
         "logo_alt": "Logo",
-        "cabinets": "cabinets",
-        "devices": "devices"
+        "cabinets": "Our",
+        "praxis": "cabinets"
       }
     },
     "main": {
       "use_oft": {
         "button": {
-          "title": "Book Appointment"
+          "title": "BOOK APPOINTMENT"
         }
       },
       "home_page": {
@@ -23,7 +23,7 @@
         "subtitle": "We <HighlightedSpan>give</HighlightedSpan> you your most beautiful <HighlightedSpan>smile</HighlightedSpan>"
       },
       "about_us_page": {
-        "ours": "Our",
+        "ours": "Our ",
         "are": "are equipped with modern",
         "ausgestattet": "!"
       },
@@ -63,8 +63,8 @@
         "titleInf": "Contact Information",
         "subtitle": "Our contact details",
         "address": "MusterStrasse 10, 12345 München",
-        "phone": "Phone: +49 017 223 334",
-        "email": "Email: info@dentalclinic.de",
+        "phone": "+49 017 223 334",
+        "email": "info@dentalclinic.de",
         "copy": "Copied",
         "coordinates": "GPS: ",
         "coordinatesCopied": "Coordinates successfully copied!",

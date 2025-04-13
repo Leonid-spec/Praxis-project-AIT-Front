@@ -37,7 +37,7 @@ const Menu = () => {
       <Logo>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
           <NavLinkImg
-            src="/src/assets/MainLogo.png"
+            src="/src/assets/images/MainLogo.png"
             alt={t("message.menu.logo")}
           />
         </StyledNavLink>

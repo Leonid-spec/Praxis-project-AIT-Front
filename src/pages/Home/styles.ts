@@ -2,13 +2,14 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-  padding: 50px 20px;
-  max-width: 1200px;
+  grid-template-columns: 40% 60%;
+  /* gap: 30px; */
+  /* padding: 50px 20px; */
+  /* max-width: 1200px; */
   margin: 30px auto;
   align-items: center;
   align-items: stretch;
+
 
   @media (min-width: 1920px) {
     max-width: 1600px;
@@ -44,20 +45,14 @@ export const HomeContainer = styled.div`
 export const LeftContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+  align-items: flex-start;
+  justify-content: flex-start;
   text-align: center;
-  /* gap: 20px; */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
-  } */
+  width: 700px;
+  position: relative;
+  top: 250px;
+  left: 110px;
 
   @media (min-width: 1920px) {
     padding: 50px;
@@ -82,17 +77,9 @@ export const RightContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
   overflow: hidden;
   width: 100%;
   height: auto;
-  aspect-ratio: 16/9;
-  /* box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15); */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  /* &:hover {
-    transform: translateY(-5px);
-  } */
 
   @media (min-width: 1920px) {
     padding: 50px;
@@ -115,8 +102,7 @@ export const RightContainer = styled.div`
 
 export const RightContainerPhoto = styled.img`
   width: 100%;
-  height: 100%;
-  border-radius: 8px;
+  height: 500px ;
   object-fit: cover;
   object-position: center;
   display: block;
@@ -140,8 +126,8 @@ export const RightContainerPhoto = styled.img`
 
 export const WelcomeTextTitle = styled.p`
   color: #555;
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  line-height: 1.4;
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.8;
   text-align: center;
   padding: 20px 30px;
 
@@ -164,9 +150,9 @@ export const WelcomeTextTitle = styled.p`
 
 export const WelcomeTextSubtitle = styled.p`
   color: #555555;
-  font-size: clamp(1.6rem, 3vw, 2rem);
-  line-height: 1.5;
-  padding: 0 30px;
+  font-size: clamp(1.6rem, 3vw, 3rem);
+  line-height: 1.6;
+  font-weight: bold; 
 
   span {
     color: #77c0eb;
@@ -193,6 +179,7 @@ export const WelcomeTextSubtitle = styled.p`
 export const HighlightedSpan = styled.span`
   && {
     color: #206c7a;
+    color: #9ceef1;
     font-weight: bold;
     transition: color 0.3s ease;
   }

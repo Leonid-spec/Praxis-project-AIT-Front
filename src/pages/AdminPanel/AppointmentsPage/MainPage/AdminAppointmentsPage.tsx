@@ -4,11 +4,9 @@ import { useTranslation } from "react-i18next";
 import { AppointmentData } from "../../../../store/types/appointmentTypes";
 import { getAppointments } from "../../../../api/appointmentAPI";
 import { FaSyncAlt, FaTrashAlt } from "react-icons/fa";
-import styled from "styled-components";
 import {
   Container,
   Heading,
-  Loading,
   Error,
   EmptyMessage,
   FilterContainer,
@@ -21,7 +19,7 @@ import {
   MainInfoContainer,
   ClientName,
   Service,
-  Date,
+  // Date,
   MoreInfoButton,
   ScrollContainer,
   HeaderBox,
@@ -33,23 +31,24 @@ import {
   ModalActions,
   ModalActionsBtn,
   BtnBox,
-} from "./styles"; 
+} from "./styles";
 import { getActiveServices } from "../../../../api/serviceAPI";
 import i18n from "../../../../utils/i18n";
 import { ServiceData } from "../../../../store/types/serviceTypes";
-import { deleteAppointment } from "../../../../api/appointmentAPI"; 
+import { deleteAppointment } from "../../../../api/appointmentAPI";
 
 const AdminAppointmentsPage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [appointments, setAppointments] = useState<AppointmentData[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<"all" | "new" | "completed">("all");
   const [services, setServices] = useState<ServiceData[]>([]);
-  const [isModalVisible, setIsModalVisible] = useState<boolean>(false); 
-  const [appointmentToDelete, setAppointmentToDelete] = useState<number | null>(null);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [appointmentToDelete, setAppointmentToDelete] = useState<number | null>(
+    null
+  );
 
   const token = localStorage.getItem("token");
 
@@ -69,8 +68,6 @@ const AdminAppointmentsPage: React.FC = () => {
         setError(
           t("message.adminPanel.appointments.errorFetchingAppointments")
         );
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -90,14 +87,6 @@ const AdminAppointmentsPage: React.FC = () => {
     if (filter === "completed") return !appointment.isNew;
     return true;
   });
-
-  if (isLoading) {
-    return (
-      <Loading>
-        {t("message.adminPanel.appointments.loadingAppointments")}
-      </Loading>
-    );
-  }
 
   if (error) {
     return <Error>{error}</Error>;
@@ -131,9 +120,11 @@ const AdminAppointmentsPage: React.FC = () => {
     if (appointmentToDelete !== null && token) {
       try {
         await deleteAppointment(appointmentToDelete, token);
-        setAppointments(appointments.filter(a => a.id !== appointmentToDelete)); // Оновлюємо список записів
-        setIsModalVisible(false); 
-        setAppointmentToDelete(null); 
+        setAppointments(
+          appointments.filter((a) => a.id !== appointmentToDelete)
+        ); // Оновлюємо список записів
+        setIsModalVisible(false);
+        setAppointmentToDelete(null);
       } catch (err: any) {
         setError(err.message || "Error deleting appointment");
       }
@@ -141,7 +132,7 @@ const AdminAppointmentsPage: React.FC = () => {
   };
 
   const cancelDelete = () => {
-    setIsModalVisible(false); 
+    setIsModalVisible(false);
     setAppointmentToDelete(null);
   };
 
@@ -180,58 +171,63 @@ const AdminAppointmentsPage: React.FC = () => {
             </FilterButton>
           ))}
 
-          <RefreshIconBox onClick={handleRefreshBtn}>
+          {/* <RefreshIconBox onClick={handleRefreshBtn}>
             <FaSyncAlt size={24} color="#20b1b7" />
-          </RefreshIconBox>
+          </RefreshIconBox> */}
         </FilterContainer>
       </HeaderBox>
-      
+
       <ScrollContainer>
+      <AppointmentList>
 
-      {filteredAppointments.length === 0 ? (
-        <EmptyMessage>
-          {t("message.adminPanel.appointments.noAppointments")}
-        </EmptyMessage>
-      ) : (
-       <>
-              {filteredAppointments.map((appointment) => (
-                <AppointmentRow
-                  key={appointment.id}
-                  isMobile={window.innerWidth <= 768}
-                >
-                  <Marker>
-                    {appointment.isNew && <MarkerCircleNew />}
-                    {!appointment.isNew && <MarkerCircleCompleted />}
-                  </Marker>
-  
-                  <MainInfoContainer isMobile={window.innerWidth <= 768}>
-                    <ClientName>
-                      {appointment.firstName} {appointment.lastName}
-                    </ClientName>
-                    <Service>
-                      {getServiceNameById(appointment.dentalServiceSectionId!)}
-                    </Service>
-  
-                    {/* <Date> */}
-                    {/* Created at:  */}
-                      {/* {new Date(appointment.).toLocaleDateString()} */}
-                    {/* </Date> */}
-                  </MainInfoContainer>
+        {filteredAppointments.length === 0 ? (
+          <EmptyMessage>
+            {t("message.adminPanel.appointments.noAppointments")}
+          </EmptyMessage>
+        ) : (
+          <>
+            {filteredAppointments.map((appointment) => (
+              <AppointmentRow
+                key={appointment.id}
+                isMobile={window.innerWidth <= 768}
+              >
+                <Marker>
+                  {appointment.isNew && <MarkerCircleNew />}
+                  {!appointment.isNew && <MarkerCircleCompleted />}
+                </Marker>
 
-                  <BtnBox>
+                <MainInfoContainer isMobile={window.innerWidth <= 768}>
+                  <ClientName>
+                    {appointment.firstName} {appointment.lastName}
+                  </ClientName>
+                  <Service>
+                    {getServiceNameById(appointment.dentalServiceSectionId!)}
+                  </Service>
+
+                  {/* <Date> */}
+                  {/* Created at:  */}
+                  {/* {new Date(appointment.).toLocaleDateString()} */}
+                  {/* </Date> */}
+                </MainInfoContainer>
+
+                <BtnBox>
                   <MoreInfoButton
                     onClick={() => handleMoreInfoClick(appointment?.id || 1)}
                   >
                     {t("message.adminPanel.appointments.buttons.moreInfo")}
                   </MoreInfoButton>
-                  <TrashIconBox onClick={() => handleDeleteBtn(appointment.id!)}>
+                  <TrashIconBox
+                    onClick={() => handleDeleteBtn(appointment.id!)}
+                  >
                     <FaTrashAlt size={24} color="#20b1b7" />
                   </TrashIconBox>
-                  </BtnBox>
-                </AppointmentRow>
-              ))}
-       </>
-      )}
+                </BtnBox>
+              </AppointmentRow>
+            ))}
+          </>
+        )}
+
+      </AppointmentList>
       </ScrollContainer>
 
       {isModalVisible && (

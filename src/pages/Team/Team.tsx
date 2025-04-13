@@ -14,16 +14,10 @@ import {
   TeamTextBox,
   TeamText,
   DoctorsGrid,
-  LeftContainer,
-  WelcomeTextSubtitle,
   HighlightedSpan,
-  RightContainer,
-  RightContainerPhoto,
-  TeamContainerMainPhoto,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { Doctor } from "../../store/types/doctorTypes";
-import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 type Language = "En" | "De" | "Ru";
 
@@ -66,10 +60,6 @@ const Team: React.FC = () => {
   }, [dispatch]);
   
   
-  // useEffect(() => {
-  //   dispatch(getActiveDoctors()); 
-  // }, [dispatch]);
-
   const handleDetailsClick = (id: number) => {
     navigate(`/doctor/${id}`);
   };
@@ -89,24 +79,6 @@ const Team: React.FC = () => {
   return (
     <TeamContainer>
 
-      <TeamContainerMainPhoto>
-
-        <LeftContainer>
-          <WelcomeTextSubtitle>
-            {parseSubtitle(t("message.main.team_page.subtitle"))}
-          </WelcomeTextSubtitle>
-          <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
-        </LeftContainer>
-
-        <RightContainer>
-          <RightContainerPhoto
-            src="https://www.zahnaerzte-siermann.de/wp-content/uploads/2022/12/Fotowand_Team.jpg"
-            alt="Team"
-          />
-        </RightContainer>
-
-      </TeamContainerMainPhoto>
-
       <TeamTextBox>
         <TeamText>
         {parseSubtitle(t("message.main.team_page.servicesIntrot"))}{" "}
@@ -122,15 +94,11 @@ const Team: React.FC = () => {
           <p>{t("errorFetchingActiveDoctors")}</p>
         ) : doctors.length > 0 ? (
           doctors.map((doctor) => {
-            // console.log("Doctor object:", doctor);
             const specializationKey =
               `specialisation${currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)}` as keyof Pick<
                 Doctor,
                 "specialisationDe" | "specialisationEn" | "specialisationRu"
               >;
-
-              // console.log("Specialization key:", specializationKey);
-              // console.log("Specialization value:", doctor[specializationKey]);
 
             const specialization =
               (doctor[specializationKey] as string) || t("noSpecialization");

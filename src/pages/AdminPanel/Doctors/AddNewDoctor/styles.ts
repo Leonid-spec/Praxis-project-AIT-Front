@@ -80,7 +80,6 @@ export const ImageBox = styled.div`
   padding: 30px;
   width: 100%;
   height: 500px;
-
   @media (max-width: 768px) {
     padding: 20px;
     height: 300px;

@@ -2,20 +2,22 @@
   display: flex;
   flex-direction: row; 
   width: 100%;
-  overflow: hidden;
+  height: 100%;
+  gap: 1.5rem;
+  /* overflow: hidden; */
+  padding: 2rem;
 }
 
 
 .sidebar {
   width: 15%; 
-
 }
 
-/* .content {
+.content {
   flex-grow: 1; 
-} */
+}
 
-/* Мобильная версия */
+ /* Мобильная версия  */
 @media screen and (max-width: 768px) {
   .mainPanel {
     flex-direction: column; 
@@ -25,7 +27,5 @@
   .sidebar {
     width: 100%; 
     order: 1; 
-    /* margin-bottom: 10px; */
   }
-
 }

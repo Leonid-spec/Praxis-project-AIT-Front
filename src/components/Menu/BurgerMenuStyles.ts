@@ -15,6 +15,7 @@ export const BurgerButton = styled.div`
     font-size: 2rem;
     color: #3b7f83;
     color: #9ceef1;
+    color: #88e3e6;
     cursor: pointer;
   }
 `;

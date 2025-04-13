@@ -178,7 +178,10 @@ const EditServicePage: React.FC<{ onReturnBack: () => void; serviceId: number }>
 
             <EditTopImage>
               <TitlesBox>{t("message.adminPanel.appointments.services.editTopImage")}</TitlesBox>
-              <UploadInput type="file" accept="image/*" onChange={handleImageUpload} />
+              <UploadInput 
+                type="file" 
+                accept="image/*" 
+                onChange={handleImageUpload} />
             </EditTopImage>
 
             <TitleSection>

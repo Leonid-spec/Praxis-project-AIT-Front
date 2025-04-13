@@ -42,16 +42,16 @@ const BurgerMenu = () => {
           <>
             <MobileMenuOverlay onClick={() => setIsOpen(false)}>
               <MobileNav onClick={(e) => e.stopPropagation()}>
-                <MobileNavLink to="/services">
+                <MobileNavLink to="/services" onClick={handleAdminMenuClick}>
                   {t("message.header.menu.services")}
                 </MobileNavLink>
-                <MobileNavLink to="/about">
+                <MobileNavLink to="/about" onClick={handleAdminMenuClick}>
                   {t("message.header.menu.about_us")}
                 </MobileNavLink>
-                <MobileNavLink to="/team">
+                <MobileNavLink to="/team" onClick={handleAdminMenuClick}>
                   {t("message.header.menu.team")}
                 </MobileNavLink>
-                <MobileNavLink to="/contacts">
+                <MobileNavLink to="/contacts" onClick={() => setIsOpen(false)}>
                   {t("message.header.menu.contact")}
                 </MobileNavLink>
 

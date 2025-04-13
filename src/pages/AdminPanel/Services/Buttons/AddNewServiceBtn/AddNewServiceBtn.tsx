@@ -10,7 +10,7 @@ function AddNewServiceBtn({ onAddService }: AddNewServiceBtnProps) {
  
   return (
     <StyledAddButton onClick={onAddService}>
-       {t("message.adminPanel.appointments.services.addNewService")} 
+       + {t("message.adminPanel.appointments.services.addNewService")} 
     </StyledAddButton>
   );
 }

@@ -7,7 +7,7 @@ export const Card = styled.div`
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  width: 320px;
+  max-width: 350px;
   position: relative;
   
   &:hover {
@@ -18,7 +18,7 @@ export const Card = styled.div`
 
 export const PhotoContainer = styled.div`
   width: 100%;
-  height: 180px;
+  height: 300px;
   background-color: #f0f0f0;
 `;
 

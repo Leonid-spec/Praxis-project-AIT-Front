@@ -10,7 +10,7 @@ export const MenuContainer = styled.div`
   align-items: center;
   padding: 15px 30px;
   background-color: #ffffff;
-  box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.05);
 
   @media (max-width: 1024px) {
     /* justify-content: flex-end; */
@@ -32,7 +32,6 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: #3d3d3d;
   font-size: 1.2rem;
-  font-weight: 500;
   
 
   &:hover {
@@ -40,6 +39,7 @@ export const StyledNavLink = styled(NavLink)`
     color: #4ba0a5;
   }
 `;
+
 
 export const SprachUundAdminbereich = styled.div`
   display: flex;
@@ -98,7 +98,8 @@ export const NavLinkImg = styled.img`
 export const NavLinkText = styled.span`
   color: #3d3d3d;
   font-size: 1.2rem;
-
+text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+font-weight: bold;
      &:hover {
      color: #3b7f83;
    }

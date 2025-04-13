@@ -2,23 +2,19 @@ import React, { useState } from "react";
 import {
   ButtonContainer,
   CardsGrid,
-  ContactBox,
   ContactIcons,
-  ContactLink,
   ContactsBox,
   ContactsBoxTitle,
   ContactsContainer,
   ContactsPageContainer,
   ContactsWrapper,
   DaysOfWeek,
+  DaysOfWeekBox,
   HighlightedSpan,
   IconCircle,
   MapContainer,
   SprechzeitenBox,
   SprechzeitenWrapper,
-  TeamContainer,
-  WelcomeTextContainer,
-  WelcomeTextSubtitle,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
@@ -43,18 +39,6 @@ const Contacts: React.FC = () => {
     window.location.href = "mailto:example@example.com";
   };
 
-  const parseSubtitle = (text: string) => {
-    return text
-      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
-      .map((part, index) =>
-        index % 2 === 1 ? (
-          <HighlightedSpan key={index}>{part}</HighlightedSpan>
-        ) : (
-          part
-        )
-      );
-  };
-
   return (
     <ContactsContainer>
       {showMessage && (
@@ -73,85 +57,68 @@ const Contacts: React.FC = () => {
           {t("message.main.contacts_page.copy")}
         </div>
       )}
-      <TeamContainer>
-        <WelcomeTextContainer>
-          <WelcomeTextSubtitle>
-            {parseSubtitle(t("message.main.contacts_page.welcome_text"))}
-          </WelcomeTextSubtitle>
-        </WelcomeTextContainer>
-      </TeamContainer>
 
       <ContactsPageContainer>
         <CardsGrid>
           <ContactsWrapper>
             <ContactsBox>
               <ContactsBoxTitle>
-                  {t("message.main.contacts_page.titleContacts")}
-              </ContactsBoxTitle>
-
-              <ContactBox>
-                <ContactLink
-                  href="https://www.google.com/maps?q=50.4501,30.5234"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {t("message.main.contacts_page.address")}
-                </ContactLink>
-              </ContactBox>
-
-              <ContactIcons>
-                  <IconCircle><FaCopy
-                      onClick={handleCopyCoordinates}
-                      style={{ cursor: "pointer"}}
-                    /></IconCircle>
-                  <span>GPS: 50.4501° N, 30.5234° E</span>
+                {t("message.main.contacts_page.titleContacts")}
+              </ContactsBoxTitle>{" "}
+              <DaysOfWeek>
+                <p>{t("message.main.contacts_page.address")}</p>
+              </DaysOfWeek>
+              <ContactIcons
+                onClick={handleCopyCoordinates}
+                style={{
+                  cursor: "pointer",
+                }}
+              >
+                <IconCircle>
+                  <FaCopy />
+                </IconCircle>
+                <span>GPS: 50.4501° N, 30.5234° E</span>
               </ContactIcons>
-
-              <ContactIcons>
-                <IconCircle> 
-                  <FaPhone 
-                      onClick={handleCall}
-                      style={{ cursor: "pointer" }} />
-                  </IconCircle>
+              <ContactIcons onClick={handleCall} style={{ cursor: "pointer" }}>
+                <IconCircle>
+                  <FaPhone
+                    style={{
+                      transform: "rotate(90deg)",
+                    }}
+                  />
+                </IconCircle>
                 <span>{t("message.main.contacts_page.phone")}</span>
               </ContactIcons>
-
-              <ContactIcons>
-                  <IconCircle>
-                    <FaEnvelope 
-                        onClick={handleEmail}
-                        style={{ cursor: "pointer" }} />
-                    </IconCircle>
-                  <span>{t("message.main.contacts_page.email")}</span>
+              <ContactIcons onClick={handleEmail} style={{ cursor: "pointer" }}>
+                <IconCircle>
+                  <FaEnvelope />
+                </IconCircle>
+                <span>{t("message.main.contacts_page.email")}</span>
               </ContactIcons>
             </ContactsBox>
           </ContactsWrapper>
 
           <SprechzeitenWrapper>
             <SprechzeitenBox>
-              <ContactsBoxTitle>{t("message.main.contacts_page.titleTime")}</ContactsBoxTitle>
-              <DaysOfWeek>
-                <p>
-                  {t("message.footer.daysOfWeek.monday")}: 08:00 - 12:00, 13:00
-                  - 18:00
-                </p>
-                <p>
-                  {t("message.footer.daysOfWeek.tuesday")}: 08:00 - 12:00, 13:00
-                  - 18:00
-                </p>
-                <p>
-                  {t("message.footer.daysOfWeek.wednesday")}: 08:00 - 12:00,
-                  13:00 - 18:00
-                </p>
-                <p>
-                  {t("message.footer.daysOfWeek.thursday")}: 08:00 - 12:00,
-                  13:00 - 18:00
-                </p>
-                <p>
-                  {t("message.footer.daysOfWeek.friday")}: 08:00 - 12:00, 13:00
-                  - 18:00
-                </p>
-              </DaysOfWeek>
+              <ContactsBoxTitle>
+                {t("message.main.contacts_page.titleTime")}
+              </ContactsBoxTitle>
+              <DaysOfWeekBox>
+                <DaysOfWeek>
+                  <p>{t("message.footer.daysOfWeek.monday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.thursday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.friday")}:</p>
+                </DaysOfWeek>
+                <DaysOfWeek>
+                  <p>08:00 - 12:00, 13:00 - 18:00</p>
+                  <p>08:00 - 12:00, 13:00 - 18:00</p>
+                  <p>08:00 - 12:00, 13:00 - 18:00</p>
+                  <p>08:00 - 12:00, 13:00 - 18:00</p>
+                  <p>08:00 - 12:00, 13:00 - 18:00</p>
+                </DaysOfWeek>
+              </DaysOfWeekBox>
               <ButtonContainer>
                 <MakeAppointmentBtn
                   text={t("message.main.use_oft.button.title")}
@@ -162,7 +129,9 @@ const Contacts: React.FC = () => {
         </CardsGrid>
 
         <MapContainer>
-          <ContactsBoxTitle>{t("message.main.contacts_page.map.title")}</ContactsBoxTitle>
+          <ContactsBoxTitle>
+            {t("message.main.contacts_page.map.title")}
+          </ContactsBoxTitle>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.577930682343!2d11.587207676366516!3d48.1093323792194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf31d5b7085f%3A0xd3a9396049ec4d54!2sAlbrecht-D%C3%BCrer-Stra%C3%9Fe%2010%2C%2081543%20M%C3%BCnchen%2C%20Germany!5e0!3m2!1sen!2sus!4v1688561234567!5m2!1sen!2sus"
             width="100%"

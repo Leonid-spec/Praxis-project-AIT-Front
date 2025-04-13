@@ -5,6 +5,7 @@ export const ScrollContainer = styled.div`
   overflow-y: auto;
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
+  /* height: 60vh; */
 
   @media(max-width: 1440px) {
     margin: 20px;
@@ -68,7 +69,6 @@ export const CardsMainContainer = styled.div`
 
   @media(max-width: 1980px) {
     margin: 0 10px;
-    margin: 0 20px;
   }
 
   @media(max-width: 1240px) {
@@ -90,9 +90,9 @@ export const DoctorCardsMainContainer = styled.div`
   padding: 10px 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 10px;
   scroll-behavior: smooth;
-  margin: 20px;
+  margin: 10px;
 
   overflow-x: hidden;
 
@@ -125,10 +125,19 @@ export const DoctorCardsMainContainer = styled.div`
     padding: 0;
     gap: 20px;
     justify-content: center; /* Для центрирования элементов */
-    grid-template-columns: 1fr; /* Одна колонка на узких экранах */
+    align-items: center; /* Центрируем по вертикали */
+    grid-template-columns: minmax(auto, 400px); /* Задаем ширину карточки */
+  }
+
+   @media(max-width: 530px) {
+    margin: 0 auto;
+    padding: 0;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr; /* Одноколоночная структура для узких экранов */
   }
 `;
-
 
 export const DoctorCardStyled = styled.div<{ isActive: boolean }>`
   opacity: ${(props) => (props.isActive ? "1" : "0.5")};
