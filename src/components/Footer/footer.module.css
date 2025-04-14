@@ -1,97 +1,88 @@
 .footer {
-  display: flex; /* Flexbox для горизонтального расположения столбцов */
-  justify-content: center; /* Центрируем весь контент по горизонтали */
-  align-items: stretch; /* Равная высота для всех столбцов */
-  width: 100%; /* Footer растягивается на всю ширину */
+  display: flex; /* Flexbox для горизонтального расположения секций */
+  justify-content: center; /* Центрируем содержимое */
+  align-items: stretch; /* Равная высота секций */
+  width: 100%; /* Footer растягивается на всю ширину экрана */
   background-color: #A0EEF2; /* Цвет фона */
   padding: 40px 20px; /* Внутренние отступы */
-  margin-top: 30px;
+  margin-top: 30px; /* Отступ сверху */
 }
 
 .content {
-  display: flex; /* Flexbox для размещения столбцов */
-  justify-content: space-between; /* Равное расстояние между столбцами */
-  align-items: stretch; /* Выравниваем высоту столбцов */
-  width: 100%; /* Растягиваем контент на всю ширину Footer */
+  display: flex; /* Flexbox для секций */
+  justify-content: space-between; /* Равномерное расположение секций */
+  align-items: center; /* Центрируем содержимое */
+  width: 100%; /* Контент растягивается на всю ширину родителя */
   max-width: 1200px; /* Ограничиваем максимальную ширину */
 }
 
-.logoContainer,
-.kontakt,
-.sprechzeiten {
-  display: flex; /* Включаем Flexbox внутри каждого столбца */
-  flex-direction: column; /* Содержимое располагается вертикально */
-  justify-content: space-between; /* Выравниваем строки по вертикали */
-  align-items: flex-start; /* Текст выравнивается по левому краю */
-  flex: 1; /* Все столбцы занимают одинаковое пространство */
-  text-align: left; /* Выравниваем текст по левому краю */
-  min-height: 200px; /* Устанавливаем минимальную высоту */
-}
-
 .logoContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  min-height: 200px; /* Совпадает с высотой других столбцов */
-  background-color: #A0EEF2; /* Устанавливаем такой же цвет, как у footer */
-  text-align: center;
+  display: flex; /* Flexbox внутри секции */
+  justify-content: flex-start; /* Логотип выравнивается слева */
+  align-items: center; /* Центрируем содержимое вертикально */
+  flex: 1; /* Логотип занимает пропорциональную часть ширины */
+  text-align: left; /* Текст выравнивается слева */
 }
 
 .logo {
-  width: 380px; /* Увеличенный размер логотипа */
+  width: 300px; /* Размер логотипа */
+  max-width: 100%; /* Адаптивность */
   height: auto;
-  object-fit: contain;
-  background-color: transparent; /* Убираем любой другой фон логотипа */
+  object-fit: contain; /* Сохраняем пропорции логотипа */
+}
+
+.kontakt {
+  display: flex; /* Flexbox внутри секции */
+  justify-content: center; /* Контакты центрируются */
+  align-items: center; /* Центрируем содержимое вертикально */
+  flex: 1; /* Контакты занимают свою пропорциональную часть ширины */
+  text-align: center; /* Текст центрируется */
+}
+
+.sprechzeiten {
+  display: flex; /* Flexbox внутри секции */
+  justify-content: flex-end; /* Время работы выравнивается справа */
+  align-items: center; /* Центрируем содержимое вертикально */
+  flex: 1; /* Время работы занимает свою пропорциональную часть ширины */
+  text-align: right; /* Текст выравнивается справа */
 }
 
 .kontakt h3,
 .sprechzeiten h3 {
-  font-size: 20px; /* Размер заголовка */
-  margin-bottom: 10px; /* Отступ под заголовком */
+  font-size: 22px; /* Размер заголовков */
+  margin-bottom: 15px; /* Отступ под заголовком */
 }
 
 .adresse {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Отступ между строками */
-
+  gap: 20px; /* Расстояние между строками */
 }
 
 .daysOfWeek {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 16px;
+  gap: 20px; /* Расстояние между днями */
 }
 
-.kontaktInfo { /* Для email */
+.kontaktInfo {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  font-size: 20px; /* Размер текста */
-  font-weight: bold; /* Делаем текст жирным */
-  margin: 5px 10px; /* Отступы между строками */
+  gap: 20px; /* Расстояние между строками */
 }
 
 .button {
-  margin-top: auto; /* Кнопка располагается строго внизу столбца */
-  padding: 8px 16px; /* Размер кнопки */
-  font-size: 14px; /* Размер текста кнопки */
-  background-color: #007BFF; /* Основной цвет кнопки */
-  color: #fff; /* Цвет текста */
-  border: none; /* Убираем рамку */
+  margin-top: auto; /* Кнопка располагается строго внизу */
+  padding: 10px 20px; /* Размер кнопки */
+  font-size: 16px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
   border-radius: 5px; /* Скругленные углы */
-  cursor: pointer; /* Изменение курсора при наведении */
-  transition: background-color 0.3s ease; /* Анимация изменения цвета */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Анимация цвета */
 }
 
 .button:hover {
   background-color: #0056b3; /* Цвет при наведении */
 }
-
-.icon {
-  height: 20px;
-  vertical-align: middle;
-  margin-right: 18px;
-} 
