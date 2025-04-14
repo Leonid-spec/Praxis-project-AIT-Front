@@ -9,7 +9,8 @@
         "home": "Главная",
         "logo_alt": "Логотип",
         "cabinets": "кабинеты",
-        "devices": "приборами"
+        "devices": "приборами",
+        "praxis": "Наши"
       }
     },
     "main": {
@@ -64,8 +65,8 @@
         "titleInf": "Контактная информация",
         "subtitle": "Наша информация для связи",
         "address": "MusterStrasse 10, 12345 Мюнхен",
-        "phone": "Телефон: +49 017 223 334",
-        "email": "Электронная почта: info@dentalclinic.de",
+        "phone": "+49 017 223 334",
+        "email": "info@dentalclinic.de",
         "copy": "Скопировано",
         "coordinates": "GPS: ",
         "coordinatesCopied": "Координаты успешно скопированы!",

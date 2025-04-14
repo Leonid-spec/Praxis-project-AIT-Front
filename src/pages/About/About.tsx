@@ -76,9 +76,9 @@ const About: React.FC = () => {
     
           <HeaderTextBox>
             <ServiceText>
-            {t("message.header.menu.cabinets")}{" "}
+            {t("message.header.menu.praxis")}{" "}
               <HighlightText>
-                {parseSubtitle(t("message.header.menu.praxis"))}
+                {parseSubtitle(t("message.header.menu.cabinets"))}
               </HighlightText>{" "}
               |
             </ServiceText>

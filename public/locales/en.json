@@ -9,7 +9,8 @@
         "home": "Home",
         "logo_alt": "Logo",
         "cabinets": "cabinets",
-        "devices": "devices"
+        "devices": "devices",
+        "praxis": "Our"
       }
     },
     "main": {
@@ -64,8 +65,8 @@
         "titleInf": "Contact Information",
         "subtitle": "Our contact details",
         "address": "MusterStrasse 10, 12345 München",
-        "phone": "Phone: +49 017 223 334",
-        "email": "Email: info@dentalclinic.de",
+        "phone": "+49 017 223 334",
+        "email": "info@dentalclinic.de",
         "copy": "Copied",
         "coordinates": "GPS: ",
         "coordinatesCopied": "Coordinates successfully copied!",
