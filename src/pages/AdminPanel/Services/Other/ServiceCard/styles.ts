@@ -1,18 +1,13 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  margin: 20px;
+  margin: 20px 10px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   max-width: 400px;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
-  }
 
   @media(max-width: 768px) {
   margin: 10px;

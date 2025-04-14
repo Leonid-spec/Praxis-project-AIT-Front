@@ -81,7 +81,7 @@ const LoginAdminForm = ({
     const loginData = { login, password };
 
     try {
-      const response = await fetch("http://localhost:8080/api/login", {
+      const response = await fetch("http://localhost:8100/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,10 +94,10 @@ const LoginAdminForm = ({
       }
 
       const textResponse = await response.text(); 
-      console.log("Text Response:", textResponse);
+      // console.log("Text Response:", textResponse);
 
       const data = textResponse ? JSON.parse(textResponse) : {};
-      console.log("Parsed Data:", data);
+      // console.log("Parsed Data:", data);
 
       if (data.token) {
         localStorage.setItem("token", data.token);

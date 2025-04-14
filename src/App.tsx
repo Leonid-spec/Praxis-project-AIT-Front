@@ -21,7 +21,7 @@ function App() {
   return (
     <ModalProvider>
       <AppointmentModal />
-      <Router>
+      {/* <Router> */}
         <GlobalStyles />
         <Layout>
           <Routes>
@@ -49,7 +49,7 @@ function App() {
             <Route path="*" element={<div>Page not found!</div>} />
           </Routes>
         </Layout>
-      </Router>
+      {/* </Router> */}
     </ModalProvider>
   );
 }

@@ -6,46 +6,47 @@ export const ContentContainer = styled.div`
   margin: 0 auto;
   position: relative;
   transition: margin-left 0.3s ease, margin-top 0.3s ease;
-
+  height: 80vh;
   @media (max-width: 768px) {
     padding: 0 15px;
     margin-top: 60px;
     z-index: 2;
 
-    h1, h2 {
+    h1,
+    h2 {
       text-align: center;
     }
   }
 `;
 
+export const MainTextContainer = styled.p`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  height: 100%;
+`;
+
 export const WelcomeTextBox = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
   gap: 30px;
-  text-align:center;
-  margin: 20px 0;
-  padding: 10px 0 20px;
+  text-align: center;
+  margin-bottom: 20px;
 `;
 
 export const MainWelcomeText = styled.p`
-    font-size: 28px;
+  font-size: 24px;
   font-weight: bold;
 `;
 
-
-export const MainFunctionsText = styled.p`
-      font-size: 24px;
-
-`;
-
-
 export const Section = styled.div`
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
-export const SectionTitle = styled.h2`
-  text-align:center;
-
+export const SectionTitle = styled.h3`
+  text-align: center;
+  padding: 0;
+  margin: 0;
 `;
 
 export const ButtonGroup = styled.div`
@@ -63,14 +64,15 @@ export const StyledButton = styled.button`
   border-radius: 18px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 
   &:hover {
     background-color: #1a8e92;
   }
- 
- &:focus {
-  background-color: #16888c;
- }
+
+  &:focus {
+    background-color: #16888c;
+  }
 `;
 
 export const BackButton = styled.button`
@@ -98,7 +100,6 @@ export const StyledForm = styled.form`
   flex-direction: column;
   width: 300px;
   margin: 20px auto;
-  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
@@ -153,4 +154,15 @@ export const RefreshIconImage = styled.img`
 export const RefreshBtn = styled.button`
   width: 40px;
   height: 40px;
+`;
+
+export const ScrollContainer = styled.div`
+  overflow-y: auto;
+  margin: 0 auto;
+  /* height: 40vh; */
+`;
+
+export const MainFunctionsText = styled.p`
+  font-size: 24px;
+  margin-top: 10%;
 `;

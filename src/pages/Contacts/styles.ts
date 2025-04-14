@@ -54,36 +54,6 @@ export const WelcomeTextSubtitle = styled.span`
   font-weight: none;
 `;
 
-// export const WelcomeTextContainer = styled.div`
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border-radius: 12px;
-//   padding: 20px;
-//   margin: 40px 70px 0;
-//   width: 100%;
-//   text-align: center;
-//   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-//   @media (max-width: 768px) {
-//     padding: 20px;
-//   }
-// `;
-
-// export const WelcomeTextSubtitle = styled.p`
-//   color: #333;
-//   font-size: clamp(1.2rem, 3vw, 1.6rem);
-//   line-height: 1.5;
-
-//   span {
-//     color: #5fc9d3;
-//   }
-
-//   @media (max-width: 768px) {
-//     font-size: clamp(1.2rem, 4vw, 1.4rem);
-//   }
-// `;
-
 export const HighlightedSpan = styled.span`
   color: #5fc9d3;
   /* font-weight: bold; */
@@ -105,7 +75,7 @@ export const ContactsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 30px;
+  padding: 20px;
   border-radius: 12px;
 `;
 
@@ -113,33 +83,26 @@ export const ContactsBox = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  background-color: #ffffff;
-  padding: 20px 50px;
+  padding: 0 50px;
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   gap: 10px;
   flex: 1;
 `;
 
 export const ContactBox = styled.p`
-  margin: 20px 0 0 20px;
   cursor: pointer;
 `;
 
 export const ContactsBoxTitle = styled.h2`
-  margin: 10px;
-  text-align: center;
+margin-left: 4px;
   font-size: 1.8rem;
   color: #333;
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
 `;
 
 export const SprechzeitenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 30px;
-  border-radius: 12px;
   
 `;
 
@@ -148,18 +111,24 @@ export const SprechzeitenBox = styled.div`
   flex-direction: column;
   gap: 20px;
   padding: 20px 50px;
-  background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
   flex: 1;
+  margin: 0;
 `;
 
+export const DaysOfWeekBox = styled.div`
+  display: grid;
+  grid-template-columns:30% 70%;
+`;
+
+
 export const DaysOfWeek = styled.div`
-  padding: 0 0 0 5%;
+  padding: 0 0 0 2%;
   color: #333;
   font-size: 20px;
   line-height: 2;
 `;
+
 
 export const MapContainer = styled.div`
   display: flex;
@@ -198,7 +167,5 @@ export const IconCircle = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  margin: 10px;
-  display: flex;
-  justify-content: center;
+/* margin-left: 10px; */
 `;

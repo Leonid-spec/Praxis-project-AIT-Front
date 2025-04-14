@@ -49,6 +49,8 @@ export const HeaderBox = styled.div`
 export const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
   margin-bottom: 40px;
 
@@ -314,7 +316,6 @@ export const MainBoxText = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 60%;
 
   @media (max-width: 768px) {
     width: 100%;

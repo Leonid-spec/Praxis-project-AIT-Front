@@ -12,7 +12,6 @@ import {
   Field,
   Label,
   ButtonContainer,
-  Loading,
   Error,
   Heading,
   BackButton,
@@ -20,6 +19,7 @@ import {
   ScrollContainer,
   InputContainer,
   PhoneBox,
+  HeaderBox,
 } from "./styles";
 import { getAppointmentById } from "../../../../api/appointmentAPI";
 import { AppointmentData } from "../../../../store/types/appointmentTypes";
@@ -33,7 +33,6 @@ const AppointmentDetailsPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [appointment, setAppointment] = useState<AppointmentData | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [notification, setNotification] = useState<{
     message: string;
@@ -53,8 +52,6 @@ const AppointmentDetailsPage: React.FC = () => {
         setError(
           t("message.adminPanel.appointments.errorFetchingAppointments")
         );
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -96,14 +93,6 @@ const AppointmentDetailsPage: React.FC = () => {
     }
   };
 
-  if (isLoading) {
-    return (
-      <Loading>
-        {t("message.adminPanel.appointments.loadingAppointments")}
-      </Loading>
-    );
-  }
-
   if (error) {
     return <Error>{error}</Error>;
   }
@@ -134,17 +123,19 @@ const AppointmentDetailsPage: React.FC = () => {
 
   return (
     <Container>
-      <Heading>
-        {t("message.adminPanel.appointments.appointmentDetails.title")}
-      </Heading>
-      <ButtonContainer>
-        <BackButton onClick={() => navigate("/admin-panel/appointments")}>
-          {t("message.adminPanel.appointments.buttons.back")}
-        </BackButton>
-        <CompleteButton onClick={handleCompleteClick}>
-          {t("message.adminPanel.appointments.buttons.complete")}
-        </CompleteButton>
-      </ButtonContainer>
+      <HeaderBox>
+        <Heading>
+          {t("message.adminPanel.appointments.appointmentDetails.title")}
+        </Heading>
+        <ButtonContainer>
+          <BackButton onClick={() => navigate("/admin-panel/appointments")}>
+            {t("message.adminPanel.appointments.buttons.back")}
+          </BackButton>
+          <CompleteButton onClick={handleCompleteClick}>
+            {t("message.adminPanel.appointments.buttons.complete")}
+          </CompleteButton>
+        </ButtonContainer>
+      </HeaderBox>
 
       <ScrollContainer>
         {appointment && (
