@@ -1,18 +1,18 @@
 .footer {
-  display: flex; /* Flexbox для горизонтального расположения столбцов */
-  justify-content: center; /* Центрируем весь контент по горизонтали */
-  align-items: stretch; /* Равная высота для всех столбцов */
-  width: 100%; /* Footer растягивается на всю ширину */
+  display: flex; /* Flexbox для горизонтального расположения секций */
+  justify-content: center; /* Центрируем содержимое */
+  align-items: stretch; /* Равная высота секций */
+  width: 100%; /* Footer растягивается на всю ширину экрана */
   background-color: #A0EEF2; /* Цвет фона */
   padding: 40px 20px; /* Внутренние отступы */
-  margin-top: 30px;
+  margin-top: 30px; /* Отступ сверху */
 }
 
 .content {
-  display: flex; /* Flexbox для размещения столбцов */
-  justify-content: space-between; /* Равное расстояние между столбцами */
-  align-items: stretch; /* Выравниваем высоту столбцов */
-  width: 100%; /* Растягиваем контент на всю ширину Footer */
+  display: flex; /* Flexbox для секций */
+  justify-content: space-between; /* Равномерное расположение секций */
+  align-items: center; /* Центрируем содержимое */
+  width: 100%; /* Контент растягивается на всю ширину родителя */
   max-width: 1200px; /* Ограничиваем максимальную ширину */
 }
 

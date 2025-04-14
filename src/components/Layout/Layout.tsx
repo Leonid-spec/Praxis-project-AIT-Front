@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import MiniFooter from "../../pages/Contacts/MiniFooter"; 
-// import ResponsiveFooter from "../Footer/ResponsiveFooter"; // Правильный путь к компоненту ResponsiveFooter
 import styles from "./layout.module.css";
 
 interface LayoutProps {
@@ -32,9 +31,6 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Условное отображение футера */}
       {!hideFooter && (isMiniFooter ? <MiniFooter /> : <Footer />)}
 
-
-      {/* {!hideFooter && <ResponsiveFooter />} */}
-      
     </div>
   );
 };
