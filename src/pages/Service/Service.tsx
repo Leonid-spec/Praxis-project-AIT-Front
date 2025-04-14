@@ -14,16 +14,10 @@ import {
   HeaderTextBox,
   ServiceText,
   ServicesGrid,
-  LeftContainer,
-  RightContainer,
-  RightContainerPhoto,
-  ServiceContainerMainPhoto,
-  WelcomeTextSubtitle,
   HighlightedSpan,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { ServiceData } from "../../store/types/serviceTypes";
-import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 type Language = "En" | "De" | "Ru";
 
@@ -42,11 +36,11 @@ const ServicePage: React.FC = () => {
       try {
         const token = localStorage.getItem("token");
         if (!token) {
-          throw new Error(t("missingToken")); 
+          throw new Error(t("missingToken"));
         }
 
         const response = await fetch(
-          "http://localhost:8080/api/services/active",
+          "http://localhost:8100/api/services/active",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -79,7 +73,7 @@ const ServicePage: React.FC = () => {
     if (id) {
       navigate(`/service/${id}`);
     } else {
-      console.error('Service ID is missing');
+      console.error("Service ID is missing");
     }
   };
 
@@ -97,26 +91,14 @@ const ServicePage: React.FC = () => {
 
   return (
     <ServiceContainer>
-      <ServiceContainerMainPhoto>
-        <LeftContainer>
-          <WelcomeTextSubtitle>
-            {parseSubtitle(t("message.main.service_page.subtitle"))}
-          </WelcomeTextSubtitle>
-          <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
-        </LeftContainer>
-
-        <RightContainer>
-          <RightContainerPhoto
-            src="https://denticus-lb.de/wp-content/uploads/2017/10/MG_3734.jpg"
-            alt="Service"
-          />
-        </RightContainer>
-      </ServiceContainerMainPhoto>
-
+      
       <HeaderTextBox>
         <ServiceText>
-        {parseSubtitle(t("message.main.service_page.servicesIntro"))}{" "}
-    <HighlightText>{parseSubtitle(t("message.header.menu.services"))}</HighlightText> |
+          {parseSubtitle(t("message.main.service_page.servicesIntro"))}{" "}
+          <HighlightText>
+            {parseSubtitle(t("message.header.menu.services"))}
+          </HighlightText>{" "}
+          |
         </ServiceText>
       </HeaderTextBox>
 

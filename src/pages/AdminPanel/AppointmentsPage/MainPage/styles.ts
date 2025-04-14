@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-export const ScrollContainer = styled.div`
-  flex: 1;
-  overflow-y: auto;
-  scroll-behavior: smooth;
-  padding: 0 30px 0 20px;
-  height: 80vh;
-
-  /* background-color: #0667c8; */
-`;
-
 const buttonCommonStyles = `
   border: 1px solid #ccc;
   cursor: pointer;
@@ -37,14 +27,13 @@ const circleStyles = `
 `;
 
 export const Container = styled.div`
-  ${commonStyles}
-  margin: 0 auto;
   height: 80vh;
-  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
 `;
 
-export const HeaderBox = styled.ul`
-  padding: 20px;
+export const HeaderBox = styled.div`
+  /* box-shadow: 0px 0px 22px rgba(0, 0, 0, 0.1); */
 `;
 
 export const RefreshIconBox = styled.button`
@@ -93,18 +82,23 @@ export const FilterContainer = styled.div`
   gap: 10px;
   justify-content: center;
   margin-bottom: 20px;
+  flex-wrap: wrap; 
+
+  @media (max-width: 668px) {
+    justify-content: center;
+  }
 `;
 
 export const FilterButton = styled.button<{ isActive: boolean }>`
   ${buttonCommonStyles}
   opacity: ${(props) => (props.isActive ? "0.9" : "1")};
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+
 `;
 
 export const AppointmentList = styled.ul`
   list-style-type: none;
-  padding: 0 20px;
-  margin: 0;
-  height: 60vh;
+  padding: 10px 20px;
 `;
 
 export const AppointmentRow = styled.li<{ isMobile: boolean }>`
@@ -127,6 +121,11 @@ export const MainInfoContainer = styled.div<{ isMobile: boolean }>`
   align-items: center;
   justify-content: center;
   width: 100%;
+
+  @media (max-width: 688px) {
+  flex-direction: column;
+}
+
 `;
 
 export const ClientName = styled.div`
@@ -194,8 +193,6 @@ export const TrashIconBox = styled.button`
   }
 `;
 
-// styles.js
-
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -245,4 +242,9 @@ export const BtnBox = styled.div`
   align-items: center;
   justify-content: flex-start; /* Выравнивание кнопок по началу */
   margin-top: 10px; /* Отступ сверху для пространства */
+`;
+
+export const ScrollContainer = styled.div`
+  flex: 1;
+  overflow-y: auto;
 `;

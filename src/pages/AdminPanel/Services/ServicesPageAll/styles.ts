@@ -5,6 +5,7 @@ export const ScrollContainer = styled.div`
   overflow-y: auto; 
   scroll-behavior: smooth;
   padding: 0 30px 0 20px;
+  height: 60vh;
   
   @media(max-width: 1440px) {
   margin: 20px;
@@ -145,11 +146,4 @@ export const ServiceCardsMainContainer = styled.div`
     align-items: center;
     grid-template-columns: 1fr; /* Одноколоночная структура для узких экранов */
   }
-`;
-
-export const ServiceCardImage = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
 `;

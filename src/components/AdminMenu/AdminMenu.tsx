@@ -27,7 +27,7 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     setShowDropdown(false);
-    navigate("/login");
+    navigate("/");
   };
 
   useEffect(() => {
@@ -70,13 +70,13 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
             <FaTools style={{ marginRight: "8px" }} /> Admin panel
           </DropdownItem>
 
-          <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
+          {/* <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
             <FaKey style={{ marginRight: "8px" }} /> Change password
           </DropdownItem>
 
           <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
             <FaTools style={{ marginRight: "8px" }} /> Create New Admin
-          </DropdownItem>
+          </DropdownItem> */}
 
           <DropdownItem onClick={handleLogout}>
             <FaSignOutAlt style={{ marginRight: "8px" }} /> Log out

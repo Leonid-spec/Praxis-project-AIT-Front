@@ -19,20 +19,29 @@ import {
   MakeCardVisibleBox,
   TitleSection,
   ScrollContainer,
+  UploadText,
+  GalleryContainer,
+  GalleryGrid,
+  GalleryImageWrapper,
+  TitleBox,
 } from "./style";
-import { createService } from "../../../../api/serviceAPI";
-import { getFile, pushImageFile } from "../../../../api/imageAPI";
+import {
+  createService,
+  getServiceById,
+} from "../../../../api/serviceAPI";
+import { addImage, pushImageFile } from "../../../../api/imageAPI";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { useNavigate } from "react-router-dom";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useTranslation } from "react-i18next";
-import GalleryServices from "../Gallery/GalleryServices";
+import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 
 export const ServicePageSingle: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [localPreviewURL, setLocalPreviewURL] = useState<string | null>(null);
-
+  const [selectedImages, setSelectedImages] = useState<File[]>([]);
+  const [previewURLs, setPreviewURLs] = useState<string[]>([]);
   const [serviceData, setServiceData] = useState<ServiceData>({
     titleDe: "",
     titleEn: "",
@@ -116,36 +125,126 @@ export const ServicePageSingle: React.FC = () => {
       if (selectedImageFile) {
         uploadedTopImageUrl = await pushImageFile(selectedImageFile, token);
         uploadedTopImageUrl = "https://" + uploadedTopImageUrl;
-        console.log("Uploaded image URL:", uploadedTopImageUrl);
       }
 
       const serviceToSend: ServiceData = {
         ...serviceData,
         topImage: uploadedTopImageUrl,
+        images: [],
       };
 
       const newService = await createService(serviceToSend, token);
+
+      const dentalServiceId = newService.id;
+
+      for (const file of selectedImages) {
+        await addImage(file, dentalServiceId!, 0, token);
+      }
+
       setNotification({
         message: `Service "${newService.titleEn}" created successfully!`,
         type: "success",
       });
 
-      setServiceData((prev) => ({
-        ...prev,
-        topImage: newService.topImage,
-      }));
-     
+      const getServiceByIdAll = await getServiceById(newService.id!, token);
+
+      const updatedImages = getServiceByIdAll.images!.map((img: any) => {
+        if (!img.path.startsWith("https://")) {
+          return { ...img, path: "https://" + img.path };
+        }
+        return img;
+      });
+
+      getServiceByIdAll.images = updatedImages;
+
       setTimeout(() => {
         setIsSaving(false);
         handleReturn();
       }, 1500);
-    } catch (error: any) {
+    } catch (error) {
+      console.error("❌ Error creating service:", error);
       setNotification({
-        message: `Error creating service: ${error.message}`,
+        message: "Failed to create service.",
         type: "error",
       });
       setIsSaving(false);
     }
+  };
+
+  const handleImagesUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const files = event.target.files;
+    if (files && files.length > 0) {
+      const fileArray = Array.from(files);
+      const urls = fileArray.map((file) => URL.createObjectURL(file));
+
+      setSelectedImages((prev) => [...prev, ...fileArray]);
+      setPreviewURLs((prev) => [...prev, ...urls]);
+
+      setServiceData((prev) => ({
+        ...prev,
+        images: [
+          ...(prev.images ?? []),
+          ...urls.map((url) => ({
+            path: url,
+            dentalServiceId: serviceData.id,
+            doctorId: 0,
+          })),
+        ],
+      }));
+      console.log("Selected images:", fileArray);
+    }
+  };
+
+  const handleReplaceImage = (index: number) => {
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.onchange = () => {
+      const file = fileInput.files?.[0];
+      if (file) {
+        const newUrl = URL.createObjectURL(file);
+        console.log(
+          `📝 [handleReplaceImage] Замінюється зображення ${index}:`,
+          newUrl
+        );
+        setSelectedImages((prev) => {
+          const newFiles = [...prev];
+          newFiles[index] = file;
+          return newFiles;
+        });
+
+        setPreviewURLs((prev) => {
+          const newPreviews = [...prev];
+          newPreviews[index] = newUrl;
+          return newPreviews;
+        });
+        setServiceData((prev) => {
+          const newImages = [...(prev.images ?? [])];
+          newImages[index] = { ...newImages[index], path: newUrl };
+          return { ...prev, images: newImages };
+        });
+      }
+    };
+    fileInput.click();
+  };
+
+  const handleDeleteImage = (index: number) => {
+    setServiceData((prev) => {
+      const newImages = [...(prev.images ?? [])];
+      newImages.splice(index, 1);
+      return { ...prev, images: newImages };
+    });
+    setSelectedImages((prev) => {
+      const updated = [...prev];
+      updated.splice(index, 1);
+      return updated;
+    });
+
+    setPreviewURLs((prev) => {
+      const updated = [...prev];
+      updated.splice(index, 1);
+      return updated;
+    });
   };
 
   return (
@@ -257,8 +356,36 @@ export const ServicePageSingle: React.FC = () => {
           ))}
         </DescriptionSection>
 
-        <GalleryServices />
+        <GalleryContainer>
+          <TitleBox>
+            {t("message.adminPanel.appointments.services.gallery") || "Gallery"}
+          </TitleBox>
 
+          <EditTopImage>
+            <UploadText>
+              {t("message.adminPanel.appointments.services.editGallery") ||
+                "Upload Gallery Images"}
+            </UploadText>
+            <UploadInput
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleImagesUpload}
+            />
+          </EditTopImage>
+
+          <GalleryGrid>
+            {serviceData.images?.map((img, index) => (
+              <GalleryImageWrapper key={index}>
+                <GalleryImageCard
+                  url={img.path}
+                  onReplace={() => handleReplaceImage(index)}
+                  onDelete={() => handleDeleteImage(index)}
+                />
+              </GalleryImageWrapper>
+            ))}
+          </GalleryGrid>
+        </GalleryContainer>
       </ScrollContainer>
     </ServicePageSingleContainer>
   );

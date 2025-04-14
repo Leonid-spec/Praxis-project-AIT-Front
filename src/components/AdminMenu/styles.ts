@@ -32,7 +32,6 @@ export const DropdownItem = styled.div`
   display: grid;
   min-width: 250px;
   grid-template-columns: 30% 70%;
-  /* grid-template-rows: 300px; */
   padding: 10px 20px;
   justify-content: center;
   align-items: center;

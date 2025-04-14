@@ -4,6 +4,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./aboutModule.css";
 import { useTranslation } from "react-i18next";
+import { AboutContainer, HeaderTextBox, HighlightedSpan, ServiceText } from "./styles";
+import { HighlightText } from "../Team/styles";
+import Carousel from "../../components/Carousel/Carousel";
 
 const About: React.FC = () => {
   const { t } = useTranslation();
@@ -55,45 +58,62 @@ const About: React.FC = () => {
     sliderRef.current?.slickNext();
   };
 
+  const parseSubtitle = (text: string) => {
+    return text
+      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+      .map((part, index) =>
+        index % 2 === 1 ? (
+          <HighlightedSpan key={index}>{part}</HighlightedSpan>
+        ) : (
+          part
+        )
+      );
+  };
+
   return (
-    <div className="aboutPageContainer">
-      <h2>
-        {t("message.main.about_us_page.ours")}{" "}
-        <span className="textKabinet">{t("message.header.menu.cabinets")}</span>{" "}
-        {t("message.main.about_us_page.are")}{" "}
-        <span className="ausgestattet">{t("message.header.menu.devices")}</span>{" "}
-        {t("message.main.about_us_page.ausgestattet")}
-      </h2>
+    <>
+      <AboutContainer>
+    
+          <HeaderTextBox>
+            <ServiceText>
+            {t("message.header.menu.cabinets")}{" "}
+              <HighlightText>
+                {parseSubtitle(t("message.header.menu.praxis"))}
+              </HighlightText>{" "}
+              |
+            </ServiceText>
+          </HeaderTextBox>
+    
+          {/* <div className="carousel-container">
+            <button
+              className="carousel-arrow carousel-arrow-left"
+              onClick={handlePrev}
+            >
+              ‹
+            </button>
+            <Slider {...settings} ref={sliderRef}>
+              {images.map((src, index) => (
+                <div key={index} className="carousel-slide">
+                  <img
+                    src={src}
+                    alt={`Slide ${index + 1}`}
+                    className="carousel-image"
+                  />
+                </div>
+              ))}
+            </Slider>
+            <button
+              className="carousel-arrow carousel-arrow-right"
+              onClick={handleNext}
+            >
+              ›
+            </button>
+          </div> */}
+    
+          <Carousel />
 
-      <div className="carousel-container">
-        <button
-          className="carousel-arrow carousel-arrow-left"
-          onClick={handlePrev}
-        >
-          ‹
-        </button>
-        <Slider {...settings} ref={sliderRef}>
-          {images.map((src, index) => (
-            <div key={index} className="carousel-slide">
-              <img
-                src={src}
-                alt={`Slide ${index + 1}`}
-                className="carousel-image"
-              />
-            </div>
-          ))}
-        </Slider>
-        <button
-          className="carousel-arrow carousel-arrow-right"
-          onClick={handleNext}
-        >
-          ›
-        </button>
-      </div>
-
-      {/* <h1 className="text-title">Unsere Praxis</h1>
-      <h3 className="texth3-title">Here can be your text</h3> */}
-    </div>
+      </AboutContainer>
+    </>
   );
 };
 

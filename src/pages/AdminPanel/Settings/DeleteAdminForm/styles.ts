@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
   margin: auto;
 `;
 

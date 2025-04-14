@@ -4,9 +4,6 @@ export const ScrollContainer = styled.div`
   flex: 1;
   overflow-y: auto;
   scroll-behavior: smooth;
-  /* width: 100%; */
-  padding: 0 30px 0 20px;
-
 `;
 
 const Button = styled.button`
@@ -36,12 +33,17 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  padding: 10px;
+  padding: 30px;
   border-radius: 5px;
   width: 100%;
   border: none;
   height: 80vh;
-  
+`;
+
+export const HeaderBox = styled.div`
+  padding: 0;
+  margin: 0;
+  /* box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1); */
 `;
 
 export const ButtonContainer = styled.div`
@@ -128,7 +130,7 @@ export const Heading = styled.h1`
   text-align: center;
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-top: 20px;
   color: #333;
 `;
 

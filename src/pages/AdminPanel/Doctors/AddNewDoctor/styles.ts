@@ -80,20 +80,10 @@ export const ImageBox = styled.div`
   padding: 30px;
   width: 100%;
   height: 500px;
-
   @media (max-width: 768px) {
     padding: 20px;
     height: 300px;
     overflow-y: auto;
-  }
-`;
-
-export const UploadInput = styled.input`
-  padding: 10px;
-  border-radius: 5px;
-
-  @media (max-width: 768px) {
-    padding: 8px;
   }
 `;
 
@@ -151,15 +141,6 @@ export const Input = styled.input<{ isInvalid?: boolean }>`
   }
 `;
 
-export const EditTopImage = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  @media (max-width: 768px) {
-    gap: 10px;
-  }
-`;
-
 export const MakeCardVisibleBox = styled.div`
   display: flex;
   align-items: center;
@@ -214,7 +195,6 @@ export const BiographySection = styled.div`
   flex-direction: column;
   gap: 15px;
   width: 100%;
-  height: 150px;
 
   @media (max-width: 768px) {
     height: auto;
@@ -272,4 +252,57 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
     font-size: 16px;
   }
 
+`;
+
+
+// Gallery
+
+export const GalleryContainer = styled.div`
+position: relative;
+bottom: 0;
+left: 0;
+margin-top: 20px;
+  padding: 16px;
+`;
+
+export const TitleBox = styled.h2`
+  display: flex;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-top: 20px;
+`;
+
+export const UploadText = styled.label`
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  margin-top: 20px;
+`;
+
+export const EditTopImage = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const UploadInput = styled.input`
+  padding: 10px;
+  border-radius: 5px;
+`;
+
+export const GalleryGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+`;
+
+export const GalleryImageWrapper = styled.div`
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+`;
+
+export const PreviewImage = styled.img`
+  width: 100%;
+  height: auto;
+  display: block;
 `;
