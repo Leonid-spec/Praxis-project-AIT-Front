@@ -1,6 +1,6 @@
 import { AdminDto, TokenResponseDto, ChangePasswordDto } from "../store/types/adminTypes";
 
-const API_URL = "http://localhost:8100/api";
+const API_URL = "http://localhost:8080/api";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {

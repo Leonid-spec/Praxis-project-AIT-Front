@@ -15,7 +15,7 @@ import { ServicePageSingle } from "../Services/ServicePageSinge/ServicePageSingl
 import SettingsPage from "../Settings/StartPage/SettingsPage";
 
 const MainContent: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [, setIsLoggedIn] = useState<boolean>(false);
   const navigate = useNavigate();
 
   useEffect(() => {

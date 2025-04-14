@@ -2,7 +2,7 @@ import {
   HomeContainer, 
   LeftContainer, 
   RightContainer, 
-  WelcomeTextTitle,
+  // WelcomeTextTitle,
   WelcomeTextSubtitle,
   HighlightedSpan,
   RightContainerPhoto,

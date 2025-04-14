@@ -41,7 +41,7 @@ export const ServicePageSingle: React.FC = () => {
   const navigate = useNavigate();
   const [localPreviewURL, setLocalPreviewURL] = useState<string | null>(null);
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
-  const [previewURLs, setPreviewURLs] = useState<string[]>([]);
+  const [, setPreviewURLs] = useState<string[]>([]);
   const [serviceData, setServiceData] = useState<ServiceData>({
     titleDe: "",
     titleEn: "",
@@ -185,12 +185,14 @@ export const ServicePageSingle: React.FC = () => {
         images: [
           ...(prev.images ?? []),
           ...urls.map((url) => ({
+            id: 0, 
             path: url,
             dentalServiceId: serviceData.id,
             doctorId: 0,
           })),
         ],
       }));
+      
       console.log("Selected images:", fileArray);
     }
   };

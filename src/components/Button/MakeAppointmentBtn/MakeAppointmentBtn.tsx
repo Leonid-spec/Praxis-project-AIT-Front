@@ -1,24 +1,24 @@
 import React, { useContext } from 'react';
 import { StyledButton } from './styles';
 import { ModalContext } from '../../Modal/ModalContext';
-// import { useNavigate } from "react-router-dom";
 
 interface MakeAppointmentBtnProps {
   text: string; 
   onClick?: () => void;
   disabled?: boolean;
+  serviceId?: number | null;
 }
 
-const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, disabled }) => {
+const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, disabled, serviceId }) => {
   const { openModal } = useContext(ModalContext);
-  // const navigate = useNavigate();
 
   const handleClick = () => {
+    console.log('Clicked serviceId:', serviceId); 
+
     if (onClick) {
       onClick();
     } else {
-      openModal();
-      // navigate("/api/appointment");
+      openModal(undefined, serviceId!); 
     }
   };
 

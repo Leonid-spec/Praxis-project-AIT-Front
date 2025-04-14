@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Photo, Info, Title, Description, DetailsButton, PhotoContainer } from "./styles";
+import { Card, Photo, Info, Title, DetailsButton, PhotoContainer } from "./styles";
 import { useTranslation } from "react-i18next";
 
 interface ServiceCardProps {

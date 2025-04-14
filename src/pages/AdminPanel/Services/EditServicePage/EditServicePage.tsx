@@ -44,7 +44,7 @@ const EditServicePage: React.FC<{
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const token = localStorage.getItem("token");
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
-  const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
+  const [, setGalleryFiles] = useState<File[]>([]);
   const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
 
   useEffect(() => {

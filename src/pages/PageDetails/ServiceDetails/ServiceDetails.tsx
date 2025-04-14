@@ -16,6 +16,7 @@ import {
   LabelWrapper,
   TitleWrapper,
   Description,
+  ImgAndBtnWrapper,
 } from "./styles";
 import { AppDispatch, RootState } from "../../../store/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +26,7 @@ import {
   fetchServicesFailure,
   fetchServicesSuccess,
 } from "../../../store/slices/serviceSlice";
+import MakeAppointmentBtn from "../../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 type Language = "De" | "En" | "Ru";
 
@@ -45,7 +47,7 @@ const ServiceDetails: React.FC = () => {
       const fetchDoctors = async () => {
         try {
           const response = await fetch(
-            "http://localhost:8100/api/services/active"
+            "http://localhost:8080/api/services/active"
           );
           if (!response.ok) {
             throw new Error("Failed to fetch services");
@@ -90,12 +92,15 @@ const ServiceDetails: React.FC = () => {
   return (
     <Container>
       <ContentWrapper>
-        <ImageWrapper>
-          <MainImage
-            src={service.topImage || "https://via.placeholder.com/400"}
-            alt="Main image of service"
-          />
-        </ImageWrapper>
+       <ImgAndBtnWrapper>
+          <ImageWrapper>
+            <MainImage
+              src={service.topImage || "https://via.placeholder.com/400"}
+              alt="Main image of service"
+            />
+          </ImageWrapper>
+          <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+       </ImgAndBtnWrapper>
         <InfoWrapper>
           <TitleWrapper>
             <LabelWrapper>

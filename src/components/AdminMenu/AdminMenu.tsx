@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginAdminForm from "../Login/LoginAdminForm";
-import { FaKey, FaSignOutAlt, FaTools } from "react-icons/fa";
+import { FaSignOutAlt, FaTools } from "react-icons/fa";
 import {
   AdminMenuWrapper,
   AdminIconWrapper,

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8100/api/image";
+const API_URL = "http://localhost:8080/api/image";
 
 const handleFetchError = async (response: Response) => {
   if (!response.ok) {

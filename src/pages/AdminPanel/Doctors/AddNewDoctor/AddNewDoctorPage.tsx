@@ -61,8 +61,8 @@ const AddNewDoctorPage: React.FC = () => {
   const token = localStorage.getItem("token");
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
-  const [localPreviewURL, setLocalPreviewURL] = useState<string | null>(null);
-  const [previewURLs, setPreviewURLs] = useState<string[]>([]);
+  const [, setLocalPreviewURL] = useState<string | null>(null);
+  const [, setPreviewURLs] = useState<string[]>([]);
 
   const handleReturn = () => {
     navigate("/admin-panel/doctors");
@@ -74,6 +74,7 @@ const AddNewDoctorPage: React.FC = () => {
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+
     if (file) {
       setSelectedImageFile(file);
       const imageUrl = URL.createObjectURL(file);
@@ -85,9 +86,9 @@ const AddNewDoctorPage: React.FC = () => {
     }
   };
 
-  const handleImagePreview = (imageUrl: string) => {
-    setLocalPreviewURL(imageUrl);
-  };
+  // const handleImagePreview = (imageUrl: string) => {
+  //   setLocalPreviewURL(imageUrl);
+  // };
   const handleSave = async () => {
     if (!token) {
       setNotification({
@@ -166,12 +167,24 @@ const AddNewDoctorPage: React.FC = () => {
         images: [
           ...(prev.images ?? []),
           ...urls.map((url) => ({
+            id: 0, 
             path: url,
             doctorId: doctorData.id,
             dentalServiceId: 0,
           })),
         ],
       }));
+
+      // setDoctorData((prev) => ({
+      //   ...prev,
+      //   images: [
+      //     ...(prev.images ?? []),
+      //     ...urls.map((url) => ({
+      //       id: Date.now() + Math.random(),
+      //       path: url,
+      //     })),
+      //   ],
+      // }));
     }
   };
 

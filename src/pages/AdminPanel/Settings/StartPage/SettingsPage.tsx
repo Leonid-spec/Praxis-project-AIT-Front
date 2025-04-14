@@ -32,8 +32,8 @@ interface SettingsPageProps {
 
 const SettingsPage: React.FC<SettingsPageProps> = () => {
   const { t } = useTranslation();
-  const [admins, setAdmins] = useState<AdminDto[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [, setAdmins] = useState<AdminDto[]>([]);
+  const [, setError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<
     | "createAdmin"
     | "changePassword"

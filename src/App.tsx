@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/Home/Home";
 import AdminPanel from "./pages/AdminPanel/AdminPanelPage/AdminPanel";
@@ -21,7 +22,7 @@ function App() {
   return (
     <ModalProvider>
       <AppointmentModal />
-      {/* <Router> */}
+      {/* <HashRouter> */}
         <GlobalStyles />
         <Layout>
           <Routes>
@@ -49,7 +50,7 @@ function App() {
             <Route path="*" element={<div>Page not found!</div>} />
           </Routes>
         </Layout>
-      {/* </Router> */}
+      {/* </HashRouter> */}
     </ModalProvider>
   );
 }

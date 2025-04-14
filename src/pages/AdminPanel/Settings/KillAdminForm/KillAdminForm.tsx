@@ -1,10 +1,10 @@
 import React from "react";
 import { Wrapper } from "./styles";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 const KillAdminForm: React.FC = () => {
  
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   return (
     <>

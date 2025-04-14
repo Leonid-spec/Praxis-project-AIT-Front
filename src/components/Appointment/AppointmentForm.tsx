@@ -43,7 +43,9 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
     type: "error" | "success";
   } | null>(null);
 
-  const [formData, setFormData] = useState<AppointmentData>({
+  const [formData, setFormData] = useState<
+    AppointmentData & { dentalServiceSectionId: ServiceData | null | number }
+  >({
     dentalServiceSectionId: null,
     firstName: "",
     lastName: "",
@@ -108,21 +110,32 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
       return cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
     };
 
+    const serviceId =
+      typeof formData.dentalServiceSectionId === "object" &&
+      formData.dentalServiceSectionId !== null &&
+      "id" in formData.dentalServiceSectionId
+        ? (formData.dentalServiceSectionId as ServiceData).id
+        : formData.dentalServiceSectionId ?? null;
+    console.log("Service ID:", serviceId);
     try {
-      const newAppointment = await createAppointment(
-        {
-          dentalServiceSectionId: formData.dentalServiceSectionId?.id ?? 1,
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          phone1: formatPhone(formData.phone1),
-          phone2: formData.phone2 ? formatPhone(formData.phone2) : "",
-          email: formData.email,
-          availableTime: formData.availableTime || "",
-          comment: formData.comment || "",
-          language: formData.language?.toLowerCase() || "de",
-          isNew: true,
-        },
-      );
+      const newAppointment = await createAppointment({
+        dentalServiceSectionId:
+          typeof formData.dentalServiceSectionId === "object" &&
+          formData.dentalServiceSectionId !== null &&
+          "id" in formData.dentalServiceSectionId
+            ? (formData.dentalServiceSectionId as ServiceData).id
+            : formData.dentalServiceSectionId ?? 1,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        phone1: formatPhone(formData.phone1),
+        phone2: formData.phone2 ? formatPhone(formData.phone2) : "",
+        email: formData.email,
+        availableTime: formData.availableTime || "",
+        comment: formData.comment || "",
+        language: formData.language?.toLowerCase() || "de",
+        isNew: true,
+      });
+    console.log("newAppointment:", newAppointment);
 
       // console.log("Appointment created successfully:", newAppointment);
       setNotification({
@@ -144,7 +157,7 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
         availableTime: "",
         isNew: true,
       });
-    
+
       setTimeout(() => {
         if (onSuccess) onSuccess();
       }, 2000);
