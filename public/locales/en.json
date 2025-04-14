@@ -273,6 +273,9 @@
                 "create": "Create New Administrator",
                 "changePassword": "Change Password",
                 "viewAll": "View All Administrators",
+                "address": "Address",
+                "runningLine": "Running line",
+                "workingMode": "Working mode",
                 "delete": "Delete Administrator"
               },
               "sections": {

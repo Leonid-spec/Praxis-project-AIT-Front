@@ -264,6 +264,7 @@
               "createAdmin": "Neuen Administrator erstellen",
               "changePassword": "Passwort ändern",
               "viewAdmins": "Alle Administratoren anzeigen",
+              
               "deleteAdmin": "Administrator löschen"
             },
             "settingsPage": {
@@ -275,6 +276,9 @@
                 "create": "Neuen Administrator erstellen",
                 "changePassword": "Passwort ändern",
                 "viewAll": "Alle Administratoren anzeigen",
+                "address": "Adresse",
+                "runningLine": "Lauftext",
+                "workingMode": "Arbeitsmodus",
                 "delete": "Administrator löschen"
               },
               "sections": {

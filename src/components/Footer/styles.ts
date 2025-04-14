@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: stretch;
   width: 100%;
   background-color: #a0eef2;
-  padding: 40px 20px;
-  margin-top: 30px;
+  margin-top: 10px;
 
   @media (max-width: 1200px) {
     padding: 30px 15px;
@@ -18,7 +17,6 @@ export const FooterContainer = styled.footer`
   }
 
   @media (max-width: 768px) {
-    flex-direction: column;
     align-items: center;
     padding: 20px;
   }
@@ -32,12 +30,40 @@ export const FooterContainer = styled.footer`
   }
 `;
 
+export const RunningLineWrapper = styled.div`
+  width: 100%;
+  background-color: #f0f8ff; /* Светлый фон для выделения */
+  padding: 10px 0;
+  position: relative;
+  overflow: hidden; /* Скрывает текст, выходящий за пределы */
+`;
+
+export const RunningLineContainer = styled.div`
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+`;
+
+export const RunningLine = styled.div`
+  display: inline-block;
+  animation: scroll 10s linear infinite;
+
+  @keyframes scroll {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+`;
+
 export const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
-  /* max-width: 1200px; */
   gap: 40px;
 
   @media (max-width: 992px) {
@@ -136,6 +162,7 @@ export const Days = styled.div`
     gap: 12px;
   }
 `;
+
 export const ButtonWrapper = styled.div`
   width: fit-content;
   align-self: flex-start;
@@ -144,4 +171,6 @@ export const ButtonWrapper = styled.div`
     align-self: center;
   }
 `;
+
+
 

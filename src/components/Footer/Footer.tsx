@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   FooterContainer,
   Content,
@@ -10,6 +10,9 @@ import {
   Info,
   Days,
   ButtonWrapper,
+  RunningLineWrapper,
+  RunningLineContainer,
+  RunningLine,
 } from "./styles";
 import MakeAppointmentBtn from "../Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import { useTranslation } from "react-i18next";
@@ -17,16 +20,34 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const [runningText, setRunningText] = useState("");
+
+  useEffect(() => {
+    const savedText = localStorage.getItem("runningLineText");
+    if (savedText) {
+      setRunningText(savedText);
+    }
+  }, []);
 
   return (
     <FooterContainer>
+      
+      {/* Бегущая строка выше всего содержимого */}
+      {runningText && (
+        <RunningLineWrapper>
+          <RunningLineContainer>
+            <RunningLine>{runningText}</RunningLine>
+          </RunningLineContainer>
+        </RunningLineWrapper>
+      )}
+
       <Content>
         <LogoContainer>
           <Logo src="/src/public/logo.png" alt="Zahn" />
         </LogoContainer>
+
         <Column>
           <Title>{t("message.footer.titles.contact")}</Title>
-          //TODO: add address from i18n
           <Address>
             <p>ClinicName</p>
             <p>street</p>
@@ -43,6 +64,7 @@ const Footer: React.FC = () => {
             </p>
           </Info>
         </Column>
+
         <Column>
           <Title>{t("message.footer.titles.time")}</Title>
           <Days>
@@ -53,7 +75,7 @@ const Footer: React.FC = () => {
             <p>{t("message.footer.daysOfWeek.friday")}: 08:00 - 12:00, 13:00 - 18:00</p>
           </Days>
           <ButtonWrapper>
-             <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+            <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
           </ButtonWrapper>
         </Column>
       </Content>

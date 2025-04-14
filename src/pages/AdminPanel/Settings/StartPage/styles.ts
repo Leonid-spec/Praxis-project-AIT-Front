@@ -72,6 +72,90 @@ export const StyledButton = styled.button`
   background-color: #16888c;
  }
 `;
+export const WorkingModeButton = styled.button`
+  padding: 12px 20px;
+  background-color: #20b1b7;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1a8e92;
+  }
+
+  &:focus {
+    background-color: #16888c;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+`;
+
+export const AddressButton = styled.button`
+  padding: 12px 20px;
+  background-color: #20b1b7;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1a8e92;
+  }
+
+  &:focus {
+    background-color: #16888c;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+`;
+
+export const RunningLineButton = styled.button`
+  padding: 12px 20px;
+  background-color: #20b1b7;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #1a8e92;
+  }
+
+  &:focus {
+    background-color: #16888c;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+`;
+
 
 export const BackButton = styled.button`
   padding: 10px 20px;
