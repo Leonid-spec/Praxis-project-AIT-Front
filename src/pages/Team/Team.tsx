@@ -3,25 +3,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState, AppDispatch } from "../../store/store";
 import {
-  fetchDoctorsStart,
-  fetchDoctorsSuccess,
-  fetchDoctorsFailure,
+  fetchActiveDoctorsFailure,
+  fetchActiveDoctorsStart,
+  fetchActiveDoctorsSuccess,
 } from "../../store/slices/doctorSlice";
 import DoctorCard from "../../components/Cards/Doctor/DoctorCard";
 import {
   TeamContainer,
-  WelcomeSection,
-  TeamHeaderText,
   HighlightText,
-  TeamPhoto,
-  HeaderTextBox,
+  TeamTextBox,
   TeamText,
   DoctorsGrid,
+  LeftContainer,
+  WelcomeTextSubtitle,
+  HighlightedSpan,
+  RightContainer,
+  RightContainerPhoto,
+  TeamContainerMainPhoto,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { Doctor } from "../../store/types/doctorTypes";
+import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
-type Language = "en" | "de" | "ru";
+type Language = "En" | "De" | "Ru";
 
 const Team: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -33,56 +37,100 @@ const Team: React.FC = () => {
   const currentLanguage = i18n.language as Language;
 
   useEffect(() => {
-    const fetchDoctors = async () => {
-      dispatch(fetchDoctorsStart());
+    const fetchActiveDoctors = async () => {
+      dispatch(fetchActiveDoctorsStart());
       try {
-        const response = await fetch("http://localhost:5000/doctors");
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:8080/api/doctors/active", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+    
+        if (!response.ok) {
+          const errorText = await response.text(); 
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+    
         const data = await response.json();
-        dispatch(fetchDoctorsSuccess(data));
+        console.log("Doctors data:", data);
+        dispatch(fetchActiveDoctorsSuccess(data));
       } catch (err: any) {
-        dispatch(fetchDoctorsFailure(err.message || t("errorFetchingDoctors")));
+        console.error("Failed to fetch active doctors:", err);
+        dispatch(fetchActiveDoctorsFailure(err.message || t("errorFetchingActiveDoctors")));
       }
     };
-
-    fetchDoctors();
+  
+    fetchActiveDoctors();
   }, [dispatch]);
+  
+  
+  // useEffect(() => {
+  //   dispatch(getActiveDoctors()); 
+  // }, [dispatch]);
 
   const handleDetailsClick = (id: number) => {
     navigate(`/doctor/${id}`);
   };
 
+  const parseSubtitle = (text: string) => {
+    return text
+      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+      .map((part, index) =>
+        index % 2 === 1 ? (
+          <HighlightedSpan key={index}>{part}</HighlightedSpan>
+        ) : (
+          part
+        )
+      );
+  };
+
   return (
     <TeamContainer>
-      <WelcomeSection>
-        <TeamHeaderText>
-          {t("message.main.team_page.welcome")}{" "}
-          <HighlightText>Abramian Dental</HighlightText>
-        </TeamHeaderText>
-      </WelcomeSection>
 
-      <TeamPhoto
-        src="https://www.zahnaerzte-siermann.de/wp-content/uploads/2022/12/Fotowand_Team.jpg"
-        alt="Team"
-      />
+      <TeamContainerMainPhoto>
 
-      <HeaderTextBox>
+        <LeftContainer>
+          <WelcomeTextSubtitle>
+            {parseSubtitle(t("message.main.team_page.subtitle"))}
+          </WelcomeTextSubtitle>
+          <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+        </LeftContainer>
+
+        <RightContainer>
+          <RightContainerPhoto
+            src="https://www.zahnaerzte-siermann.de/wp-content/uploads/2022/12/Fotowand_Team.jpg"
+            alt="Team"
+          />
+        </RightContainer>
+
+      </TeamContainerMainPhoto>
+
+      <TeamTextBox>
         <TeamText>
-          Unser <HighlightText>Ärzteteam</HighlightText> |
+        {parseSubtitle(t("message.main.team_page.servicesIntrot"))}{" "}
+           <HighlightText>{parseSubtitle(t("message.header.menu.team"))}</HighlightText> |
+         
         </TeamText>
-      </HeaderTextBox>
+      </TeamTextBox>
 
       <DoctorsGrid>
         {loading ? (
           <p>{t("loadingDoctors")}</p>
         ) : error ? (
-          <p>{t("errorFetchingDoctors")}</p>
+          <p>{t("errorFetchingActiveDoctors")}</p>
         ) : doctors.length > 0 ? (
           doctors.map((doctor) => {
+            // console.log("Doctor object:", doctor);
             const specializationKey =
-              `specialisation_${currentLanguage}` as keyof Pick<
+              `specialisation${currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)}` as keyof Pick<
                 Doctor,
-                "specialisation_de" | "specialisation_en" | "specialisation_ru"
+                "specialisationDe" | "specialisationEn" | "specialisationRu"
               >;
+
+              // console.log("Specialization key:", specializationKey);
+              // console.log("Specialization value:", doctor[specializationKey]);
 
             const specialization =
               (doctor[specializationKey] as string) || t("noSpecialization");
@@ -92,11 +140,11 @@ const Team: React.FC = () => {
                 key={doctor.id}
                 id={doctor.id}
                 photo={
-                  doctor.topimage
-                    ? doctor.topimage.replace(/\\/g, "/")
+                  doctor.topImage
+                    ? doctor.topImage.replace(/\\/g, "/")
                     : "https://via.placeholder.com/150"
                 }
-                fullName={doctor.full_name}
+                fullName={doctor.fullName}
                 specialization={specialization || t("noSpecialization")}
                 onDetailsClick={() => handleDetailsClick(doctor.id)}
               />

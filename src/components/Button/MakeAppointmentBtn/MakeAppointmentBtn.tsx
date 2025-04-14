@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { StyledButton } from './styles';
 import { ModalContext } from '../../Modal/ModalContext';
+// import { useNavigate } from "react-router-dom";
 
 interface MakeAppointmentBtnProps {
   text: string; 
@@ -10,12 +11,14 @@ interface MakeAppointmentBtnProps {
 
 const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, disabled }) => {
   const { openModal } = useContext(ModalContext);
+  // const navigate = useNavigate();
 
   const handleClick = () => {
     if (onClick) {
       onClick();
     } else {
       openModal();
+      // navigate("/api/appointment");
     }
   };
 

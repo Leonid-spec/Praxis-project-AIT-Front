@@ -6,6 +6,7 @@ import {
   WelcomeTextSubtitle,
   HighlightedSpan,
   RightContainerPhoto,
+  MakeAppointmentBtnBox,
 } from './styles';
 import { useTranslation } from 'react-i18next';
 import MakeAppointmentBtn from '../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn'; 
@@ -31,9 +32,11 @@ const Home = () => {
           <WelcomeTextSubtitle>
             {parseSubtitle(t('message.main.home_page.subtitle'))}
           </WelcomeTextSubtitle>
-          <MakeAppointmentBtn 
-            text={t('message.main.use_oft.button.title')}
-          />
+          <MakeAppointmentBtnBox>
+            <MakeAppointmentBtn 
+              text={t('message.main.use_oft.button.title')}
+            />
+          </MakeAppointmentBtnBox>
       </LeftContainer>
       <RightContainer>
         <RightContainerPhoto 

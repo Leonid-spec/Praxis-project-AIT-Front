@@ -1,19 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-
-export interface Service {
-  id: number;
-  name: string;
-  topimage?: string;
-  images?: { id: number; path: string }[];
-  description_de?: string;
-  description_en?: string;
-  description_ru?: string;
-}
-
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ServiceData } from "../types/serviceTypes";
 
 interface ServiceState {
-  services: Service[];
+  [x: string]: any;
+  services: ServiceData[];
   loading: boolean;
   error: string | null;
 }
@@ -25,14 +15,26 @@ const initialState: ServiceState = {
 };
 
 const serviceSlice = createSlice({
-  name: 'service',
+  name: "service",
   initialState,
   reducers: {
+    fetchActiveServicesStart(state) {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchActiveServicesSuccess(state, action: PayloadAction<ServiceData[]>) {
+      state.loading = false;
+      state.services = action.payload;
+    },
+    fetchActiveServicesFailure(state, action: PayloadAction<string>) {
+      state.loading = false;
+      state.error = action.payload;
+    },
     fetchServicesStart(state) {
       state.loading = true;
       state.error = null;
     },
-    fetchServicesSuccess(state, action: PayloadAction<Service[]>) {
+    fetchServicesSuccess(state, action: PayloadAction<ServiceData[]>) {
       state.loading = false;
       state.services = action.payload;
     },
@@ -40,10 +42,10 @@ const serviceSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-    addService(state, action: PayloadAction<Service>) {
+    addService(state, action: PayloadAction<ServiceData>) {
       state.services.push(action.payload);
     },
-    updateService(state, action: PayloadAction<Service>) {
+    updateService(state, action: PayloadAction<ServiceData>) {
       const index = state.services.findIndex((s) => s.id === action.payload.id);
       if (index !== -1) {
         state.services[index] = action.payload;
@@ -55,8 +57,10 @@ const serviceSlice = createSlice({
   },
 });
 
-
 export const {
+  fetchActiveServicesStart,
+  fetchActiveServicesSuccess,
+  fetchActiveServicesFailure,
   fetchServicesStart,
   fetchServicesSuccess,
   fetchServicesFailure,
@@ -64,6 +68,5 @@ export const {
   updateService,
   deleteService,
 } = serviceSlice.actions;
-
 
 export default serviceSlice.reducer;

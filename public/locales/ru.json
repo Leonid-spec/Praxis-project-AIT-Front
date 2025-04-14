@@ -7,7 +7,9 @@
         "about_us": "О нас",
         "contact": "Контакты",
         "home": "Главная",
-        "logo_alt": "Логотип"
+        "logo_alt": "Логотип",
+        "cabinets": "кабинеты",
+        "devices": "приборами"
       }
     },
     "main": {
@@ -17,16 +19,60 @@
         }
       },
       "home_page": {
-        "title": "Добро пожаловать в стоматологическую клинику",
-        "subtitle": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
+        "title": "Добро пожаловать в нашу стоматологическую клинику",
+        "subtitle": "Мы <HighlightedSpan>дарим</HighlightedSpan> вам вашу самую красивую <HighlightedSpan>улыбку</HighlightedSpan>"
+      },
+      "about_us_page": {
+        "ours": "Наши",
+        "are": "оснащены современными",
+        "ausgestattet": "!"
       },
       "team_page": {
-        "welcome": "Добро пожаловать в",
+        "servicesIntrot": "Наша",
+        "welcome": "Добро пожаловать в ",
+        "subtitle": "Добро пожаловать на страницу нашей команды! Мы - команда профессионалов, стремящихся обеспечить вам качественную заботу о зубах. Наша миссия - подарить вам улыбку, полную здоровья и уверенности. Благодарим за доверие!",
         "moreInfoBtn": "Узнать больше",
-        "noSpecialization": "Специализация не указана"
+        "noSpecialization": "Специализация не указана",
+        "doctorDetails": {
+          "title": "Звание",
+          "specialization": "Специализация",
+          "biography": "Биография"
+        }
+      },
+      "service_page": {
+        "welcome": "Добро пожаловать в",
+        "subtitle": "Мы предлагаем широкий спектр стоматологических услуг, чтобы обеспечить здоровье и красоту вашей улыбки. Наши специалисты используют новейшие технологии и индивидуальный подход к каждому пациенту. Доверьте свою улыбку профессионалам!",
+        "loadingServices": "Загрузка услуг...",
+        "errorFetchingServices": "Ошибка при загрузке услуг.",
+        "moreInfoBtn": "Узнать больше",
+        "gallery": "Галерея",
+        "serviceNotFound": "Услуга не найдена.",
+        "servicesIntro": "Наши",
+        "highlight": "Abramian Dental",
+        "noDescription": "Описание отсутствует.",
+        "noServicesAvailable": "Услуги пока недоступны.",
+        "servicerDetails": {
+          "title": "Название процедуры",
+          "specialization": "Подробности"
+        }
+      },
+      "contacts_page": {
+        "welcome_text": "Мы <HighlightedSpan>всегда</HighlightedSpan> рады вам помочь! Здесь вы найдете нашу <HighlightedSpan>контактную информацию</HighlightedSpan>, обращайтесь.",
+        "titleContacts": "Контакты",
+        "titleTime": "Часы работы",
+        "titleInf": "Контактная информация",
+        "subtitle": "Наша информация для связи",
+        "address": "MusterStrasse 10, 12345 Мюнхен",
+        "phone": "Телефон: +49 017 223 334",
+        "email": "Электронная почта: info@dentalclinic.de",
+        "copy": "Скопировано",
+        "coordinates": "GPS: ",
+        "coordinatesCopied": "Координаты успешно скопированы!",
+        "map": {
+          "title": "Мы на карте"
+        }
       }
     },
-
     "footer": {
       "titles": {
         "contact": "КОНТАКТЫ",
@@ -55,11 +101,12 @@
         },
         "errors": {
           "missingCredentials": "Введите логин и пароль.",
-          "usernameLength": "Имя пользователя должно содержать от 2 до 16 символов.",
-          "passwordLength": "Пароль должен содержать хотя бы 1 символ.",
+          "usernameLength": "Имя пользователя должно содержать от 3 до 16 символов.",
+          "passwordLength": "Пароль должен содержать от 4 до 32 символов.",
           "missingEmail": "Введите email.",
           "usernameStartsWithSpace": "Имя пользователя не должно начинаться с пробела.",
-          "passwordContainsSpaces": "Пароль не должен содержать пробелы."
+          "passwordContainsSpaces": "Пароль не должен содержать пробелы.",
+          "loginContainsSpaces": "Имя пользователя не должно содержать пробелы."
         },
         "messages": {
           "forgotPasswordTitle": "Сброс пароля",
@@ -73,28 +120,40 @@
         }
       },
       "makeAppointment": {
-        "formTitle": "Записаться на приём",
+        "formTitle": "Запись на прием",
         "labelService": "Услуга:",
         "labelFirstName": "Имя:",
-        "labelSecondName": "Фамилия:",
+        "labelLastName": "Фамилия:",
         "labelPhoneNumber1": "Номер телефона:",
-        "labelPhoneNumber2": "Дополнительный номер (по желанию):",
+        "labelPhoneNumber2": "Дополнительный номер телефона (необязательно):",
         "labelComment": "Комментарий:",
         "language": "Язык:",
-        "textAreaDate": "Ваши пожелания по записи на приём:",
+        "textAreaDate": "Ваши предпочтения для записи на прием:",
         "buttonText": "Отправить",
+        "buttonDisabledText": "Пожалуйста, заполните все обязательные поля.",
         "errors": {
-          "firstNameRequired": "Имя обязательно.",
-          "firstNameInvalid": "Имя должно содержать только буквы.",
-          "secondNameRequired": "Фамилия обязательна.",
-          "secondNameInvalid": "Фамилия должна содержать только буквы.",
-          "phoneNumberRequired": "Номер телефона обязателен.",
+          "firstNameRequired": "Имя обязательно для заполнения.",
+          "firstCharCannotBeSpace": "Имя не может начинаться с пробела.",
+          "firstNameLetterCount": "Имя должно содержать минимум 2 символа (en, de).",
+          "firstNameLetterCountMax": "Имя должно содержать максимум 64 символа (en, de).",
+          "firstNameExtraSpaces": "Имя не может содержать подряд идущие пробелы.",
+          "firstNameInvalid": "Имя может содержать только буквы (en, de) и только один пробел",
+          "lastNameRequired": "Фамилия обязательна для заполнения.",
+          "lastCharCannotBeSpace": "Фамилия не может начинаться с пробела.",
+          "lastNameLetterCount": "Фамилия должна содержать минимум 2 символа (en, de) и только один пробел.",
+          "lastNameLetterCountMax": "Фамилия должна содержать максимум 64 символа (en, de).",
+          "lastNameExtraSpaces": "Фамилия не может содержать подряд идущие пробелы.",
+          "lastNameInvalid": "Фамилия может содержать только буквы (en, de) и только один пробел",
+          "phoneNumberRequired": "Номер телефона обязателен для заполнения.",
           "phoneNumberInvalid": "Пожалуйста, укажите корректный номер телефона.",
-          "emailRequired": "Электронная почта обязательна.",
+          "emailRequired": "Адрес электронной почты обязателен для заполнения.",
           "emailInvalid": "Пожалуйста, укажите корректный адрес электронной почты.",
+          "emailWithoutSpaces": "Электронная почта не может содержать пробелы.",
+          "emailWithoutAtSymbol": "Электронная почта должна содержать '@'.",
+          "emailWithoutDot": "Электронная почта должна содержать домен.",
           "serviceRequired": "Пожалуйста, выберите услугу.",
           "languageRequired": "Необходимо выбрать язык.",
-          "textAreaDateRequired": "Пожалуйста, укажите ваши пожелания по записи на приём."
+          "textAreaDateRequired": "Пожалуйста, укажите свои предпочтения для записи."
         },
         "messages": {
           "appointmentScheduled": "Ваш приём успешно записан.",
@@ -106,6 +165,178 @@
           "lastName": "Введите вашу фамилию",
           "textAreaDate": "Здесь вы можете указать свои пожелания по дате и времени приёма (до 1024 символов)",
           "textAreaComment": "Оставьте комментарий (до 1024 символов)"
+        }
+      }
+    },
+    "adminPanel": {
+      "appointments": {
+        "title": "Записи",
+        "noAppointments": "Нет записей.",
+        "loadingAppointments": "Загрузка записей...",
+        "errorFetchingAppointments": "Ошибка при загрузке записей.",
+        "statusUpdated": "Статус заявки обновлён на '{{status}}'.",
+        "statusUpdateError": "Не удалось обновить статус заявки на '{{status}}'.",
+        "appointmentDetails": {
+          "title": "Детали записи",
+          "client": "Клиент",
+          "service": "Услуга",
+          "date": "Дата",
+          "email": "Email",
+          "phone1": "Телефон 1",
+          "phone2": "Телефон 2",
+          "language": "Язык",
+          "comment": "Комментарий",
+          "available_time": "Доступное время",
+          "noPhone": "Не указан",
+          "noComment": "Нет комментария",
+          "noLanguage": "Не указан",
+          "noAvailable_time": "Нет доступного времени"
+        },
+        "confirmDelete": "Вы уверены, что хотите удалить?",
+        "cancel": "Отмена",
+        "phoneCopied": "Номер телефона успешно скопирован!",
+        "filter": {
+          "all": "Все",
+          "new": "Новая",
+          "completed": "Выполнена"
+        },
+        "buttons": {
+          "back": "Вернуться назад",
+          "complete": "Завершить заявку",
+          "moreInfo": "Подробнее",
+          "edit": "Редактировать"
+        },
+        "settings": {
+          "admin": {
+            "create": {
+              "loginLabel": "Логин:",
+              "passwordLabel": "Пароль:",
+              "loginPlaceholder": "Введите логин",
+              "passwordPlaceholder": "Введите пароль",
+              "createAdminButton": "Создать администратора",
+              "grantAdminRights": "Предоставить права администратора",
+              "successMessage": "Администратор успешно создан!"
+            },
+            "change": {
+              "currentLoginLabel": "Текущий логин:",
+              "currentPasswordPlaceholder": "Введите ваш текущий пароль",
+              "newPasswordLabel": "Новый пароль:",
+              "newPasswordPlaceholder": "Введите ваш новый пароль",
+              "confirmPasswordLabel": "Подтвердите пароль:",
+              "confirmPasswordPlaceholder": "Подтвердите ваш новый пароль",
+              "submitButton": "Изменить пароль",
+              "passwordsDoNotMatch": "Пароли не совпадают.",
+              "fillRequiredFields": "Пожалуйста, заполните все необходимые поля.",
+              "noToken": "Отсутствует токен. Попробуйте еще раз.",
+              "successMessage": "Ваш пароль успешно изменен.",
+              "errorMessage": "Произошла ошибка. Попробуйте еще раз.",
+              "loginLabel": "Пожалуйста, введите ваш логин.",
+              "loginPlaceholder": "Введите логин",
+              "currentPasswordLabel": "Текущий пароль:"
+            },
+            "view": {
+              "title": "Все администраторы"
+            },
+            "delete": {
+              "loginPlaceholder": "Введите логин администратора",
+              "passwordPlaceholder": "Введите пароль администратора",
+              "button": "Удалить администратора",
+              "success": "Администратор {{login}} удалён (заглушка)."
+            },
+            "navigation": {
+              "createAdmin": "Создать нового администратора",
+              "changePassword": "Изменить пароль",
+              "viewAdmins": "Просмотреть всех администраторов",
+              "deleteAdmin": "Удалить администратора"
+            },
+            "settingsPage": {
+              "title": "Настройки администратора",
+              "back": "Назад",
+              "greeting": "Добро пожаловать, <HighlightedSpan>Администратор</HighlightedSpan>!",
+              "capabilities": "Здесь вы можете управлять правами доступа и изменять пароль администратора.",
+              "buttons": {
+                "create": "Создать нового администратора",
+                "changePassword": "Изменить пароль",
+                "viewAll": "Просмотреть всех администраторов",
+                "delete": "Удалить администратора"
+              },
+              "sections": {
+                "create": "Создание нового администратора",
+                "changePassword": "Смена пароля",
+                "viewAll": "Все администраторы",
+                "delete": "Удаление администратора"
+              }
+            }
+          }
+        },
+        "services": {
+          "requiredField": "Это поле обязательно для заполнения",
+          "updated": "Услуга обновлена",
+          "errorUpdating": "Ошибка при обновлении услуги",
+          "returnBack": "Вернуться назад",
+          "saving": "Сохранение...",
+          "saveAll": "Сохранить все",
+          "makeCardVisible": "Сделать карточку видимой для пользователей:",
+          "editTopImage": "Изменить верхнее изображение",
+          "titles": "Заголовки:",
+          "enterTitleDe": "Введите заголовок (DE)",
+          "enterTitleEn": "Введите заголовок (EN)",
+          "enterTitleRu": "Введите заголовок (RU)",
+          "enterDescriptionDe": "Введите описание (DE)",
+          "enterDescriptionEn": "Введите описание (EN)",
+          "enterDescriptionRu": "Введите описание (RU)",
+          "descriptions": "Описание:",
+          "enterDescription": "Введите описание ({{lang}})",
+          "placeholder": "Введите название услуги",
+          "uploadImage": "Загрузите изображение",
+          "makeCardVisibleCheckbox": "Сделать карточку видимой",
+          "saveButton": "Сохранить все",
+          "savingButton": "Сохранение...",
+          "addNewService": "+ Добавить новую услугу",
+          "refresh": "Обновить",
+          "errorLoading": "Ошибка загрузки услуги",
+          "searchPlaceholder": "Поиск по названию услуги"
+        },
+        "doctors": {
+          "requiredField": "Это поле обязательно для заполнения",
+          "updated": "Информация о враче обновлена",
+          "errorUpdating": "Ошибка при обновлении данных о враче",
+          "returnBack": "Вернуться назад",
+          "saving": "Сохранение...",
+          "saveAll": "Сохранить все",
+          "makeCardVisible": "Сделать карточку видимой для пользователей:",
+          "editTopImage": "Редактировать верхнее изображение",
+          "titles": "Заголовки:",
+          "title": "Звание",
+          "enterTitleDe": "Введите заголовок (DE)",
+          "enterTitleEn": "Введите заголовок (EN)",
+          "enterTitleRu": "Введите заголовок (RU)",
+          "enterDescriptionDe": "Введите описание (DE)",
+          "enterDescriptionEn": "Введите описание (EN)",
+          "enterDescriptionRu": "Введите описание (RU)",
+          "specialisation": "Специализация",
+          "biography": "Биография ",
+          "edit": "Редактировать",
+          "details": "Подробнее",
+          "inactive": "Неактивен",
+          "descriptions": "Описания:",
+          "enterDescription": "Введите описание ({{lang}})",
+          "placeholder": "Введите имя врача",
+          "uploadImage": "Загрузить изображение",
+          "makeCardVisibleCheckbox": "Сделать карточку видимой",
+          "saveButton": "Сохранить все",
+          "savingButton": "Сохранение...",
+          "addNewDoctor": "+  Добавить нового врача",
+          "refresh": "Обновить",
+          "loadingDoctorData": "Загрузка данных о враче...",
+          "doctorPreview": "Предпросмотр врача",
+          "errorLoadingDoctorData": "Ошибка при загрузке данных о враче:",
+          "doctorUpdatedSuccessfully": "$Врач \"{doctorData.fullName}\" успешно обновлен!",
+          "fullName": "Полное имя",
+          "searchPlaceholder": "Введите имя врача",
+          "searchIconAlt": "Поиск",
+          "imageUploadFailed": "Failed to upload",
+          "duplicateNameError": "Врач с таким именем уже существует. Попробуйте другое имя или оставьте текущее без изменений."
         }
       }
     }

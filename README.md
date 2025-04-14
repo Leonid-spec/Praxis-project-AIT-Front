@@ -18,9 +18,12 @@ npm install -g json-server
 npm install @reduxjs/toolkit react-redux  redux
 
 6) Запустить сервер
- json-server --watch src/api/doctors.json --port 5000
+ <!-- json-server --watch src/api/doctors.json --port 5000 -->
 
-7) 
+7) Библиотека для карусели
+npm install react-slick slick-carousel
 
 
+8) npm install axios
 
+9) npm i --save-dev @types/jquery
