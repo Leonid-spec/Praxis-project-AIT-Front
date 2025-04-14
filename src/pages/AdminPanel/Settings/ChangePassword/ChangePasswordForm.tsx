@@ -40,6 +40,7 @@ const ChangePasswordForm: React.FC = () => {
 
     try {
       const response = await changePassword(dto, token); 
+      console.log(response);
       setNotification({
         message: t("message.adminPanel.appointments.settings.admin.change.successMessage"),
         type: "success",

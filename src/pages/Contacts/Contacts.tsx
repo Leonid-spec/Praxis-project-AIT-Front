@@ -10,7 +10,7 @@ import {
   ContactsWrapper,
   DaysOfWeek,
   DaysOfWeekBox,
-  HighlightedSpan,
+  // HighlightedSpan,
   IconCircle,
   MapContainer,
   SprechzeitenBox,

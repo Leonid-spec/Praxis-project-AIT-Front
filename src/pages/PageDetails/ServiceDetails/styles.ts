@@ -17,11 +17,19 @@ export const ContentWrapper = styled.div`
   width: 100%;
 `;
 
+
+export const ImgAndBtnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 export const ImageWrapper = styled.div`
   flex: 1;
   height: 300px;
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 `;
 
 export const MainImage = styled.img`

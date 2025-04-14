@@ -11,8 +11,8 @@ export interface AdminDto {
   }
   
   export interface TokenResponseDto {
-    accessToken: string;
-    refreshToken: string;
+    login: string;
+    token: string;
   }
   
   export interface RefreshRequestDto {

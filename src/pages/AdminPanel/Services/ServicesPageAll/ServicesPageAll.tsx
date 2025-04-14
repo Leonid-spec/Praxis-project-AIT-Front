@@ -19,12 +19,12 @@ import {
 import EditServicePage from "../EditServicePage/EditServicePage";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { Outlet } from "react-router-dom";
-import { GalleryContainer } from "../Gallery/styles";
+// import { GalleryContainer } from "../Gallery/styles";
 
 export const ServicesPageAll = () => {
   const { t } = useTranslation();
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
-  const [isAddingNewService, setIsAddingNewService] = useState(false);
+  const [, setIsAddingNewService] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
   const [filteredServices, setFilteredServices] = useState<ServiceData[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");

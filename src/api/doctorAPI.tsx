@@ -1,6 +1,6 @@
-import { Doctor } from "../store/types/doctorTypes";
+import {Doctor} from "../store/types/doctorTypes";
 
-const API_URL = "http://localhost:8100/api"; // ✅ Убедимся, что API_URL существует
+const API_URL = "/api";
 if (!API_URL) throw new Error("API_URL is not set!");
 
 const handleFetchError = async (response: Response) => {

@@ -7,15 +7,15 @@ import {
   UploadText,
   GalleryGrid,
   GalleryImageWrapper,
-  PreviewImage,
+  // PreviewImage,
 } from "./styles";
 import { useState } from "react";
 import { GalleryImageCard } from "./GalleryImageCard";
 import { ServiceData } from "../../../../../store/types/serviceTypes";
 
 function GalleryServices() {
-  const [selectedImages, setSelectedImages] = useState<File[]>([]);
-  const [previewURLs, setPreviewURLs] = useState<string[]>([]);
+  const [, setSelectedImages] = useState<File[]>([]);
+  const [, setPreviewURLs] = useState<string[]>([]);
   const [serviceData, setServiceData] = useState<ServiceData>({
     titleDe: "",
     titleEn: "",

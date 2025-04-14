@@ -5,8 +5,8 @@ import { ServiceData } from "../../../store/types/serviceTypes";
 
 interface ServiceDropdownProps {
   services: ServiceData[];
-  selectedService: ServiceData | null;
-  onSelect: (service: ServiceData) => void;
+  selectedService: number | null;  
+  onSelect: (id: number) => void;
 }
 
 const ServiceDropdown: React.FC<ServiceDropdownProps> = ({ services, selectedService, onSelect }) => {
@@ -29,7 +29,10 @@ const ServiceDropdown: React.FC<ServiceDropdownProps> = ({ services, selectedSer
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
@@ -38,21 +41,21 @@ const ServiceDropdown: React.FC<ServiceDropdownProps> = ({ services, selectedSer
   }, []);
 
   const handleToggle = () => setIsOpen((prev) => !prev);
-  const handleSelect = (service: ServiceData) => {
-    onSelect(service);
+  const handleSelect = (id: number) => {
+    onSelect(id); 
     setIsOpen(false);
   };
 
   return (
     <DropdownContainer ref={dropdownRef}>
       <DropdownHeader onClick={handleToggle}>
-        {selectedService ? getLocalizedName(selectedService) : t("message.other.makeAppointment.placeholders.service")}
+        {selectedService ? getLocalizedName(services.find(service => service.id === selectedService)!) : t("message.other.makeAppointment.placeholders.service")}
         <DropdownArrow>{isOpen ? "▲" : "▼"}</DropdownArrow>
       </DropdownHeader>
       {isOpen && (
         <DropdownList>
           {services.map((service) => (
-            <DropdownListItem key={service.id} onClick={() => handleSelect(service)}>
+            <DropdownListItem key={service.id} onClick={() => handleSelect(service.id!)}>
               {getLocalizedName(service)}
             </DropdownListItem>
           ))}
@@ -63,4 +66,3 @@ const ServiceDropdown: React.FC<ServiceDropdownProps> = ({ services, selectedSer
 };
 
 export default ServiceDropdown;
-

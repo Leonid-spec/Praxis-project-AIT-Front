@@ -25,7 +25,7 @@ import {
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useTranslation } from "react-i18next";
-import { addImage } from "../../../../api/imageAPI";
+import { addImage, deleteImage, updateImage } from "../../../../api/imageAPI";
 import { GalleryContainer, TitleBox, UploadText } from "../Gallery/styles";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 
@@ -44,7 +44,7 @@ const EditServicePage: React.FC<{
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const token = localStorage.getItem("token");
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
-  const [galleryFiles, setGalleryFiles] = useState<File[]>([]);
+  const [, setGalleryFiles] = useState<File[]>([]);
   const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
 
   useEffect(() => {
@@ -144,122 +144,229 @@ const EditServicePage: React.FC<{
     );
   };
 
-  const handleSave = async () => {
-    if (isSaving || !serviceData) return;
-    if (!validateFields()) return;
+  // const handleSave = async () => {
+  //   if (isSaving || !serviceData) return;
+  //   if (!validateFields()) return;
 
-    setIsSaving(true);
+  //   setIsSaving(true);
 
-    let uploadedImageUrl = serviceData.topImage;
-    if (previewImage) {
-      console.log(
-        "Image preview is available, starting upload... previewImage: ",
-        previewImage
-      );
-      const cloudImageUrl = await uploadImageToCloud();
-      if (cloudImageUrl) {
-        uploadedImageUrl = cloudImageUrl;
-      }
+  //   let uploadedImageUrl = serviceData.topImage;
+  //   if (previewImage) {
+  //     console.log(
+  //       "Image preview is available, starting upload... previewImage: ",
+  //       previewImage
+  //     );
+  //     const cloudImageUrl = await uploadImageToCloud();
+  //     if (cloudImageUrl) {
+  //       uploadedImageUrl = cloudImageUrl;
+  //     }
+  //   }
+
+  //   try {
+  //     console.log("Updating service data...");
+  //     await updateService(
+  //       { ...serviceData, topImage: uploadedImageUrl },
+  //       token!
+  //     );
+  //     console.log("Service updated successfully!", serviceData);
+  //     setNotification({
+  //       message: `${t("message.adminPanel.appointments.services.updated")} "${
+  //         serviceData.titleEn
+  //       }"`,
+  //       type: "success",
+  //     });
+  //     setTimeout(() => {
+  //       setIsSaving(false);
+  //       onReturnBack();
+  //     }, 1500);
+  //   } catch (error: any) {
+  //     setNotification({
+  //       message: `${t(
+  //         "message.adminPanel.appointments.services.errorUpdating"
+  //       )}: ${error.message}`,
+  //       type: "error",`
+  //     });
+  //     setIsSaving(false);
+  //   }
+  // };
+//
+
+const handleSave = async () => {
+  if (isSaving || !serviceData) return;
+  if (!validateFields()) return;
+
+  setIsSaving(true);
+
+  let uploadedImageUrl = serviceData.topImage;
+  if (previewImage) {
+    console.log("Image preview is available, starting upload... previewImage: ", previewImage);
+    const cloudImageUrl = await uploadImageToCloud();
+    if (cloudImageUrl) {
+      uploadedImageUrl = cloudImageUrl;
     }
+  }
 
+  console.log("🔍 Saving service with data:", {
+    ...serviceData,
+    topImage: uploadedImageUrl,
+  });
+
+  try {
+    await updateService(
+      { ...serviceData, topImage: uploadedImageUrl },
+      token!
+    );
+    setNotification({
+      message: `${t("message.adminPanel.appointments.services.updated")} "${serviceData.titleEn}"`,
+      type: "success",
+    });
+    setTimeout(() => {
+      setIsSaving(false);
+      onReturnBack();
+    }, 1500);
+  } catch (error: any) {
+    setNotification({
+      message: `${t("message.adminPanel.appointments.services.errorUpdating")}: ${error.message}`,
+      type: "error",
+    });
+    setIsSaving(false);
+  }
+};
+
+  const handleDeleteGalleryImage = async (index: number) => {
+    if (!serviceData || !serviceData.images || !token) return;
+  
+    const image = serviceData.images[index];
+    const imageId = image?.id;
+  
+    if (!imageId) return;
+  
     try {
-      console.log("Updating service data...");
-      await updateService(
-        { ...serviceData, topImage: uploadedImageUrl },
-        token!
-      );
-      console.log("Service updated successfully!", serviceData);
+      console.log(`Deleting image at index ${index} with imageId ${imageId}`);
+  
+      await deleteImage(imageId, token);
+  
+      setGalleryPreviews((prev) => {
+        const updated = [...prev];
+        updated.splice(index, 1);
+        return updated;
+      });
+  
+      setServiceData((prev) => {
+        if (!prev) return prev;
+        const newImages = [...(prev.images || [])];
+        newImages.splice(index, 1);
+        return { ...prev, images: newImages };
+      });
+  
       setNotification({
-        message: `${t("message.adminPanel.appointments.services.updated")} "${
-          serviceData.titleEn
-        }"`,
+        message: t("message.adminPanel.appointments.services.imageDeleted") || "Image deleted successfully",
         type: "success",
       });
-      setTimeout(() => {
-        setIsSaving(false);
-        onReturnBack();
-      }, 1500);
-    } catch (error: any) {
+    } catch (error) {
+      console.error("Error deleting image:", error);
       setNotification({
-        message: `${t(
-          "message.adminPanel.appointments.services.errorUpdating"
-        )}: ${error.message}`,
+        message: t("message.adminPanel.appointments.services.imageDeleteError") || "Failed to delete image",
         type: "error",
       });
-      setIsSaving(false);
     }
   };
 
-  const handleReplaceGalleryImage = (index: number) => {
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/*";
-    fileInput.onchange = () => {
-      const file = fileInput.files?.[0];
-      if (file) {
-        const newUrl = URL.createObjectURL(file);
-
-        setGalleryFiles((prev) => {
-          const updated = [...prev];
-          updated[index] = file;
-          return updated;
-        });
-
-        setGalleryPreviews((prev) => {
-          const updated = [...prev];
-          updated[index] = newUrl;
-          return updated;
-        });
-      }
-    };
-    fileInput.click();
-  };
-
-  const handleDeleteGalleryImage = (index: number) => {
-    setGalleryFiles((prev) => {
-      const updated = [...prev];
-      updated.splice(index, 1);
-      return updated;
-    });
-
-    setGalleryPreviews((prev) => {
-      const updated = [...prev];
-      updated.splice(index, 1);
-      return updated;
-    });
-
-    setServiceData((prev) => {
-      if (!prev) return prev;
-      const newImages = [...(prev.images || [])];
-      newImages.splice(index, 1);
-      return { ...prev, images: newImages };
-    });
-  };
-
-  const handleAddGalleryImages = (
+  const handleAddGalleryImages = async (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const files = event.target.files;
     if (files && files.length > 0 && serviceData?.id) {
       const fileArray = Array.from(files);
       const urls = fileArray.map((file) => URL.createObjectURL(file));
-
+  
       setGalleryFiles((prev) => [...prev, ...fileArray]);
       setGalleryPreviews((prev) => [...prev, ...urls]);
-
-      fileArray.forEach(async (file) => {
-        await addImage(file, serviceData.id!, 0, token!);
-      });
-
-      setNotification({
-        message: `${fileArray.length} ${t(
-          "message.adminPanel.appointments.services.imagesAdded"
-        )}`,
-        type: "success",
-      });
+  
+      try {
+        const uploaded = await Promise.all(
+          fileArray.map((file) => addImage(file, serviceData.id!, 0, token!))
+        );
+  
+        setServiceData((prev) =>
+          prev
+            ? {
+                ...prev,
+                images: [...(prev.images || []), ...uploaded],
+              }
+            : prev
+        );
+  
+        setNotification({
+          message: `${uploaded.length} ${t(
+            "message.adminPanel.appointments.services.imagesAdded"
+          )}`,
+          type: "success",
+        });
+      } catch (err) {
+        setNotification({
+          message: t("message.errorUploadingImages") || "Upload failed",
+          type: "error",
+        });
+      }
     }
   };
-
+  
+  const handleReplaceGalleryImage = async (index: number) => {
+    if (!serviceData || !token || !serviceData.images || !serviceData.images[index]) return;
+  
+    const oldImage = serviceData.images[index];
+    const fileInput = document.createElement("input");
+    fileInput.type = "file";
+    fileInput.accept = "image/*";
+    fileInput.click();
+  
+    fileInput.onchange = async () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+  
+      const previewUrl = URL.createObjectURL(file);
+      setGalleryPreviews((prev) => {
+        const updated = [...prev];
+        updated[index] = previewUrl;
+        return updated;
+      });
+  
+      try {
+        console.log("Uploading new image:", file);
+        console.log("Old image ID:", oldImage.id);
+  
+        const uploaded = await updateImage(file, oldImage.id, token);
+  
+        console.log("Image successfully updated:", uploaded);
+  
+        setServiceData((prev) => {
+          if (!prev) return prev;
+          const updatedImages = [...prev.images!];
+          updatedImages[index] = uploaded;  
+          return { ...prev, images: updatedImages };
+        });
+  
+        setNotification({
+          message:
+            t("message.adminPanel.appointments.services.imageReplaced") ||
+            "Image successfully replaced",
+          type: "success",
+        });
+      } catch (err) {
+        console.error("Failed to replace image:", err);
+        setNotification({
+          message:
+            t("message.adminPanel.appointments.services.imageReplaceError") ||
+            "Failed to replace image",
+          type: "error",
+        });
+      }
+    };
+  };
+  
+  
+  
   return (
     <ServicePageSingleContainer>
       <div>
@@ -405,6 +512,7 @@ const EditServicePage: React.FC<{
           </GalleryGrid>
         )}
       </GalleryContainer>
+
     </ServicePageSingleContainer>
   );
 };

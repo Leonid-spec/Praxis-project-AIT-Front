@@ -32,8 +32,8 @@ interface SettingsPageProps {
 
 const SettingsPage: React.FC<SettingsPageProps> = () => {
   const { t } = useTranslation();
-  const [admins, setAdmins] = useState<AdminDto[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [, setAdmins] = useState<AdminDto[]>([]);
+  const [, setError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<
     | "createAdmin"
     | "changePassword"
@@ -47,7 +47,7 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
 
   const parseSubtitle = (text: string) => {
     return text
-      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+      .split(/<HighlightedSpan><\/HighlightedSpan>/)
       .map((part, index) =>
         index % 2 === 1 ? (
           <HighlightedSpan key={index}>{part}</HighlightedSpan>

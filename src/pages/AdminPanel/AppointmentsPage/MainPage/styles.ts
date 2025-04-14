@@ -54,7 +54,6 @@ export const Heading = styled.h1`
   ${commonStyles}
   font-size: 28px;
   font-weight: bold;
-  margin-bottom: 20px;
   color: #333;
 `;
 

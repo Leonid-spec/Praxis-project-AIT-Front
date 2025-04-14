@@ -3,9 +3,9 @@ import { ListContainer, AdminItem } from "./styles";
 import { getAllAdmins } from "../../../../api/adminAPI";
 import { AdminDto } from "../../../../store/types/adminTypes";
 
-interface AdminListProps {
-  admins: AdminDto[];
-}
+// interface AdminListProps {
+//   admins: AdminDto[];
+// }
 
 const AdminList = () => {
   const [admins, setAdmins] = useState<AdminDto[]>([]);

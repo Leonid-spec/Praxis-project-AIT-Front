@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { AppointmentData } from "../../../../store/types/appointmentTypes";
 import { getAppointments } from "../../../../api/appointmentAPI";
-import { FaSyncAlt, FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import {
   Container,
   Heading,
@@ -23,7 +23,6 @@ import {
   MoreInfoButton,
   ScrollContainer,
   HeaderBox,
-  RefreshIconBox,
   TrashIconBox,
   ModalOverlay,
   Modal,
@@ -92,24 +91,20 @@ const AdminAppointmentsPage: React.FC = () => {
     return <Error>{error}</Error>;
   }
 
-  const fetchAppointments = async () => {
-    try {
-      if (!token) {
-        setError("Access token is missing");
-        return;
-      }
-      const data = await getAppointments(token);
-      setAppointments(data);
-      setError(null);
-      console.log("message", data);
-    } catch (err: any) {
-      setError(err.message || "Appointments loading error");
-    }
-  };
-
-  const handleRefreshBtn = () => {
-    fetchAppointments();
-  };
+  // const fetchAppointments = async () => {
+  //   try {
+  //     if (!token) {
+  //       setError("Access token is missing");
+  //       return;
+  //     }
+  //     const data = await getAppointments(token);
+  //     setAppointments(data);
+  //     setError(null);
+  //     console.log("message", data);
+  //   } catch (err: any) {
+  //     setError(err.message || "Appointments loading error");
+  //   }
+  // };
 
   const handleDeleteBtn = (appointmentId: number) => {
     setAppointmentToDelete(appointmentId);

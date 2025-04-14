@@ -1,3 +1,5 @@
+import { ImageDto } from "./imageTypes";
+
 export interface Doctor {
   id?: number;
   fullName: string;
@@ -12,5 +14,5 @@ export interface Doctor {
   specialisationRu: string;
   topImage: string;
   isActive: boolean;
-  images?: { id: number; path: string }[]; 
+  images?: ImageDto[]; 
 }

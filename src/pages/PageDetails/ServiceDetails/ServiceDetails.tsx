@@ -1,30 +1,33 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React, {useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {
   Container,
   ContentWrapper,
-  ImageWrapper,
-  MainImage,
-  InfoWrapper,
-  Title,
-  GalleryWrapper,
-  GalleryTitle,
-  ImagesGrid,
-  GalleryImage,
-  DescriptionWrapper,
-  LabelWrapper,
-  TitleWrapper,
   Description,
+  DescriptionWrapper,
+  GalleryImage,
+  GalleryTitle,
+  GalleryWrapper,
+  ImagesGrid,
+  ImageWrapper,
+  ImgAndBtnWrapper,
+  InfoWrapper,
+  LabelWrapper,
+  MainImage,
+  Title,
+  TitleWrapper,
 } from "./styles";
-import { AppDispatch, RootState } from "../../../store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { ServiceData } from "../../../store/types/serviceTypes";
+import {AppDispatch, RootState} from "../../../store/store";
+import {useDispatch, useSelector} from "react-redux";
+import {ServiceData} from "../../../store/types/serviceTypes";
 import {
   fetchActiveServicesStart,
   fetchServicesFailure,
   fetchServicesSuccess,
 } from "../../../store/slices/serviceSlice";
+import MakeAppointmentBtn from "../../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
+import { getActiveServices } from "../../../api/serviceAPI";
 
 type Language = "De" | "En" | "Ru";
 
@@ -44,18 +47,10 @@ const ServiceDetails: React.FC = () => {
       dispatch(fetchActiveServicesStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch(
-            "http://localhost:8100/api/services/active"
-          );
-          if (!response.ok) {
-            throw new Error("Failed to fetch services");
-          }
-          const data = await response.json();
+          const data = await getActiveServices();
           dispatch(fetchServicesSuccess(data));
         } catch (err: any) {
-          dispatch(
-            fetchServicesFailure(err.message || t("errorFetchingServices"))
-          );
+          dispatch(fetchServicesFailure(err.message || t("errorFetchingServices")));
         }
       };
       fetchDoctors();
@@ -90,12 +85,15 @@ const ServiceDetails: React.FC = () => {
   return (
     <Container>
       <ContentWrapper>
-        <ImageWrapper>
-          <MainImage
-            src={service.topImage || "https://via.placeholder.com/400"}
-            alt="Main image of service"
-          />
-        </ImageWrapper>
+       <ImgAndBtnWrapper>
+          <ImageWrapper>
+            <MainImage
+              src={service.topImage || "https://via.placeholder.com/400"}
+              alt="Main image of service"
+            />
+          </ImageWrapper>
+          <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+       </ImgAndBtnWrapper>
         <InfoWrapper>
           <TitleWrapper>
             <LabelWrapper>
@@ -113,7 +111,7 @@ const ServiceDetails: React.FC = () => {
       </ContentWrapper>
 
       <GalleryWrapper>
-        <GalleryTitle>{t("gallery")}</GalleryTitle>
+        <GalleryTitle>{t("Gallery")}</GalleryTitle>
         <ImagesGrid>
           {service.images && service.images.length > 0 ? (
             service.images.map((img) => (
