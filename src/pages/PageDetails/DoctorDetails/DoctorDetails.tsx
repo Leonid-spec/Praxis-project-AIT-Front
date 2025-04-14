@@ -119,7 +119,15 @@ const DoctorDetails: React.FC = () => {
         <ImagesGrid>
           {doctor.images && doctor.images.length > 0 ? (
             doctor.images.map((img) => (
-              <GalleryImage key={img.id} src={img.path} alt="Doctor's work" />
+              <GalleryImage 
+                key={img.id} 
+                src={
+                  img.path.startsWith("https://")
+                    ? img.path
+                    : `https://${img.path}`
+                }
+                alt="Doctor's work" 
+              />
             ))
           ) : (
             <p>{t("noImages")}</p>

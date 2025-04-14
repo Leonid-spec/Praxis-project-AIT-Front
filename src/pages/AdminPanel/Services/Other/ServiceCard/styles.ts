@@ -9,11 +9,6 @@ export const Card = styled.div`
   transition: all 0.3s ease-in-out;
   max-width: 400px;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
-  }
-
   @media(max-width: 768px) {
   margin: 10px;
     width: 300px;

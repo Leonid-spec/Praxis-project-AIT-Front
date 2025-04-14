@@ -161,3 +161,8 @@ export const ScrollContainer = styled.div`
   margin: 0 auto;
   /* height: 40vh; */
 `;
+
+export const MainFunctionsText = styled.p`
+  font-size: 24px;
+  margin-top: 10%;
+`;

@@ -25,8 +25,11 @@ import {
   GalleryImageWrapper,
   TitleBox,
 } from "./style";
-import { createService } from "../../../../api/serviceAPI";
-import { getFile, pushImageFile } from "../../../../api/imageAPI";
+import {
+  createService,
+  getServiceById,
+} from "../../../../api/serviceAPI";
+import { addImage, pushImageFile } from "../../../../api/imageAPI";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { useNavigate } from "react-router-dom";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
@@ -123,55 +126,51 @@ export const ServicePageSingle: React.FC = () => {
         uploadedTopImageUrl = await pushImageFile(selectedImageFile, token);
         uploadedTopImageUrl = "https://" + uploadedTopImageUrl;
       }
-      
-      const uploadedGalleryImages: { path: string; id?: number }[] = [];
-      for (let file of selectedImages) {
-        const uploadedUrl = await pushImageFile(file, token);
-        uploadedGalleryImages.push({
-           path: "https://" + uploadedUrl ,
-          }); 
-      }
-
-      const imagesWithMetadata = uploadedGalleryImages.map((image, index) => ({
-        path: image.path,
-        dentalServiceId: serviceData.id,
-        doctorId: 0, 
-      }));
 
       const serviceToSend: ServiceData = {
         ...serviceData,
         topImage: uploadedTopImageUrl,
-        images: imagesWithMetadata,
+        images: [],
       };
 
       const newService = await createService(serviceToSend, token);
+
+      const dentalServiceId = newService.id;
+
+      for (const file of selectedImages) {
+        await addImage(file, dentalServiceId!, 0, token);
+      }
+
       setNotification({
         message: `Service "${newService.titleEn}" created successfully!`,
         type: "success",
       });
 
-      setServiceData((prev) => ({
-        ...prev,
-        topImage: newService.topImage,
-        images: newService.images,
-      }));
+      const getServiceByIdAll = await getServiceById(newService.id!, token);
 
-      console.log("New service created:", newService);
+      const updatedImages = getServiceByIdAll.images!.map((img: any) => {
+        if (!img.path.startsWith("https://")) {
+          return { ...img, path: "https://" + img.path };
+        }
+        return img;
+      });
+
+      getServiceByIdAll.images = updatedImages;
 
       setTimeout(() => {
         setIsSaving(false);
         handleReturn();
       }, 1500);
-    } catch (error: any) {
+    } catch (error) {
+      console.error("❌ Error creating service:", error);
       setNotification({
-        message: `Error creating service: ${error.message}`,
+        message: "Failed to create service.",
         type: "error",
       });
       setIsSaving(false);
     }
   };
 
-  // gallery
   const handleImagesUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files && files.length > 0) {
@@ -185,13 +184,14 @@ export const ServicePageSingle: React.FC = () => {
         ...prev,
         images: [
           ...(prev.images ?? []),
-          ...urls.map((url) => ({ 
-            path: url,  
+          ...urls.map((url) => ({
+            path: url,
             dentalServiceId: serviceData.id,
-            doctorId: 0, 
+            doctorId: 0,
           })),
         ],
       }));
+      console.log("Selected images:", fileArray);
     }
   };
 
@@ -203,6 +203,21 @@ export const ServicePageSingle: React.FC = () => {
       const file = fileInput.files?.[0];
       if (file) {
         const newUrl = URL.createObjectURL(file);
+        console.log(
+          `📝 [handleReplaceImage] Замінюється зображення ${index}:`,
+          newUrl
+        );
+        setSelectedImages((prev) => {
+          const newFiles = [...prev];
+          newFiles[index] = file;
+          return newFiles;
+        });
+
+        setPreviewURLs((prev) => {
+          const newPreviews = [...prev];
+          newPreviews[index] = newUrl;
+          return newPreviews;
+        });
         setServiceData((prev) => {
           const newImages = [...(prev.images ?? [])];
           newImages[index] = { ...newImages[index], path: newUrl };
@@ -218,6 +233,17 @@ export const ServicePageSingle: React.FC = () => {
       const newImages = [...(prev.images ?? [])];
       newImages.splice(index, 1);
       return { ...prev, images: newImages };
+    });
+    setSelectedImages((prev) => {
+      const updated = [...prev];
+      updated.splice(index, 1);
+      return updated;
+    });
+
+    setPreviewURLs((prev) => {
+      const updated = [...prev];
+      updated.splice(index, 1);
+      return updated;
     });
   };
 

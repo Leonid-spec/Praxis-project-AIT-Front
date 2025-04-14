@@ -20,7 +20,11 @@ import {
 import { AppDispatch, RootState } from "../../../store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { ServiceData } from "../../../store/types/serviceTypes";
-import { fetchActiveServicesStart, fetchServicesFailure, fetchServicesSuccess } from "../../../store/slices/serviceSlice";
+import {
+  fetchActiveServicesStart,
+  fetchServicesFailure,
+  fetchServicesSuccess,
+} from "../../../store/slices/serviceSlice";
 
 type Language = "De" | "En" | "Ru";
 
@@ -40,14 +44,18 @@ const ServiceDetails: React.FC = () => {
       dispatch(fetchActiveServicesStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch("http://localhost:8100/api/services/active");
+          const response = await fetch(
+            "http://localhost:8100/api/services/active"
+          );
           if (!response.ok) {
             throw new Error("Failed to fetch services");
           }
           const data = await response.json();
           dispatch(fetchServicesSuccess(data));
         } catch (err: any) {
-          dispatch(fetchServicesFailure(err.message || t("errorFetchingServices")));
+          dispatch(
+            fetchServicesFailure(err.message || t("errorFetchingServices"))
+          );
         }
       };
       fetchDoctors();
@@ -90,13 +98,15 @@ const ServiceDetails: React.FC = () => {
         </ImageWrapper>
         <InfoWrapper>
           <TitleWrapper>
-            <LabelWrapper> 
-              {t("message.main.service_page.servicerDetails.title")}</LabelWrapper>
+            <LabelWrapper>
+              {t("message.main.service_page.servicerDetails.title")}
+            </LabelWrapper>
             <Title>{title}</Title>
           </TitleWrapper>
           <DescriptionWrapper>
             <LabelWrapper>
-              {t("message.main.service_page.servicerDetails.specialization")}</LabelWrapper>
+              {t("message.main.service_page.servicerDetails.specialization")}
+            </LabelWrapper>
             <Description>{description}</Description>
           </DescriptionWrapper>
         </InfoWrapper>
@@ -107,7 +117,15 @@ const ServiceDetails: React.FC = () => {
         <ImagesGrid>
           {service.images && service.images.length > 0 ? (
             service.images.map((img) => (
-              <GalleryImage key={img.id} src={img.path} alt="Service's work" />
+              <GalleryImage
+                key={img.id}
+                src={
+                  img.path.startsWith("https://")
+                    ? img.path
+                    : `https://${img.path}`
+                }
+                alt="Service's work"
+              />
             ))
           ) : (
             <p>{t("noImages")}</p>

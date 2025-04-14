@@ -17,13 +17,13 @@ import {
   SectionTitle,
   // RefreshIconBox,
   ScrollContainer,
+  MainFunctionsText,
   // RefreshIconBox,
 } from "./styles";
 
 // import { FaSyncAlt } from "react-icons/fa";
 import { AdminDto } from "../../../../store/types/adminTypes";
 import { getAllAdmins } from "../../../../api/adminAPI";
-import { MainFunctionsText } from "../HelloText/styles";
 // import { FaSyncAlt } from "react-icons/fa";
 
 interface SettingsPageProps {
