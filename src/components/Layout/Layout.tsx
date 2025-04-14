@@ -13,18 +13,18 @@ const Layout = ({ children }: LayoutProps) => {
   const location = useLocation(); // Получение текущего маршрута
 
   // Список страниц, где нужно отображать мини-футер
-  const miniFooterPages = ["/contacts", "/another-page"];
+  const miniFooterPages = ["/contacts", "/another-page"]; 
   const isMiniFooter = miniFooterPages.includes(location.pathname); // Проверка, нужен ли мини-футер
 
-  // Страницы без футера вообще
-  const noFooterPages = ["/admin-panel", "/admin-panel/doctors", "/panel/appointments", "/admin-panel/services"];
-  const hideFooter = noFooterPages.some((path) => location.pathname.startsWith(path));
+   // Страницы без футера вообще
+   const noFooterPages = ["/admin-panel", "/admin-panel/doctors", "/panel/appointments", "/admin-panel/services"];
+   const hideFooter = noFooterPages.some((path) => location.pathname.startsWith(path)); 
 
-  return (
+   return (
     <div className={styles.layout}>
       {/* Шапка сайта */}
       <Header />
-
+      
       {/* Основное содержимое */}
       <main className={styles.content}>{children}</main>
 
