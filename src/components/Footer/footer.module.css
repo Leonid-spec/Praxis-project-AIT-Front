@@ -3,8 +3,9 @@
   justify-content: center; /* Центрируем весь контент по горизонтали */
   align-items: stretch; /* Равная высота для всех столбцов */
   width: 100%; /* Footer растягивается на всю ширину */
-  background-color: #A0EEF2; /* Цвет фона */
+  background-color: #a0eef2; /* Цвет фона */
   padding: 40px 20px; /* Внутренние отступы */
+  margin-top: 30px;
 }
 
 .content {
@@ -33,7 +34,7 @@
   align-items: center;
   flex: 1;
   min-height: 200px; /* Совпадает с высотой других столбцов */
-  background-color: #A0EEF2; /* Устанавливаем такой же цвет, как у footer */
+  background-color: #a0eef2; /* Устанавливаем такой же цвет, как у footer */
   text-align: center;
 }
 
@@ -54,7 +55,6 @@
   display: flex;
   flex-direction: column;
   gap: 16px; /* Отступ между строками */
-
 }
 
 .daysOfWeek {
@@ -64,7 +64,8 @@
   gap: 16px;
 }
 
-.kontaktInfo { /* Для email */
+.kontaktInfo {
+  /* Для email */
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -77,7 +78,7 @@
   margin-top: auto; /* Кнопка располагается строго внизу столбца */
   padding: 8px 16px; /* Размер кнопки */
   font-size: 14px; /* Размер текста кнопки */
-  background-color: #007BFF; /* Основной цвет кнопки */
+  background-color: #007bff; /* Основной цвет кнопки */
   color: #fff; /* Цвет текста */
   border: none; /* Убираем рамку */
   border-radius: 5px; /* Скругленные углы */

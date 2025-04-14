@@ -1,0 +1,57 @@
+<button onClick={handleCopyCoordinates} style={styles.copyButton}>
+  {t("message.copy")}
+</button>
+
+<div style={styles.contactIcons}>
+  <div style={styles.iconCircle}>📍</div>
+  <span>{t("message.main.contacts_page.coordinates")}</span>
+</div>
+
+<div style={styles.iconCircle}>
+                    <FaCopy
+                      onClick={handleCopyCoordinates}
+                      style={{ cursor: "pointer"}}
+                    />
+                  </div>
+
+ <div style={styles.contactIcons} onClick={handleCall}>
+                  <div style={styles.iconCircle}>
+                    <FaPhone style={{ cursor: "pointer" }} />
+                  </div>
+                  <p>{t("message.main.contacts_page.phone")}</p>
+                </div>
+
+<div style={styles.iconCircle} onClick={handleEmail}>
+                    <FaEnvelope style={{ cursor: "pointer" }} />
+                  </div>
+                  <p>{t("message.main.contacts_page.email")}</p>
+                </div>
+
+// Yullia
+
+<div style={styles.contactBox}>
+                <div style={styles.contactIcons}>
+
+                  <div style={styles.contactIcons}>
+                    <div style={styles.iconCircle}>📍</div>
+                    <span>GPS: 50.4501° N, 30.5234° E</span>
+                  </div>
+                  {/* <button onClick={handleCopyCoordinates} style={styles.copyButton}>
+                {t("message.copy")}
+                //TODO что-то сделать с кнопкой, не понимаю, что она должна и куда копировать
+              </button> */}
+                </div>
+
+                <div style={styles.contactIcons}>
+                  <div style={styles.iconCircle}>📞</div>
+                  <span>{t("message.main.contacts_page.phone")}</span>
+                </div>
+
+                <div style={styles.contactIcons}>
+                  <div style={styles.contactIcons}>
+                    <div style={styles.iconCircle}>📧</div>
+                    <span>{t("message.main.contacts_page.email")}</span>
+                  </div>
+                </div>
+                
+              </div>

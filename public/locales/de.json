@@ -7,10 +7,12 @@
         "about_us": "Über uns",
         "contact": "Kontakte",
         "home": "Startseite",
-        "logo_alt": "Logo"
+        "logo_alt": "Logo",
+        "cabinets": "Kabinette",
+        "devices": "Geräten",
+        "praxis": "Unsere"
       }
     },
-
     "main": {
       "use_oft": {
         "button": {
@@ -19,15 +21,61 @@
       },
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
-        "subtitle": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN IHR SCHÖNSTES <HighlightedSpan>LÄCHELN"
+        "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN  IHR",
+        "subtitle2": "SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
+      },
+      "about_us_page": {
+        "ours": "Unsere",
+        "are": "sind mit modernen",
+        "ausgestattet": "ausgestattet !"
       },
       "team_page": {
+        "servicesIntrot": "Unsere ",
         "welcome": "Willkommen bei",
+        "subtitle": "Willkommen auf der Seite unseres Teams! Wir sind engagierte Fachleute, die sich leidenschaftlich dafür einsetzen, Ihnen erstklassige Zahnpflege zu bieten. Unsere Mission ist es, Ihnen ein gesundes und selbstbewusstes Lächeln zu schenken. Vielen Dank für Ihr Vertrauen!",
         "moreInfoBtn": "Mehr erfahren",
-        "noSpecialization": "Keine Spezialisierung verfügbar"
+        "noSpecialization": "Keine Spezialisierung verfügbar",
+        "doctorDetails": {
+          "title": "Titel",
+          "specialization": "Spezialisierung",
+          "biography": "Biografie"
+        }
+      },
+      "service_page": {
+        "servicesIntrot": "Unsere ",
+        "welcome": "Willkommen bei",
+        "subtitle": "Wir bieten ein umfassendes Spektrum an zahnmedizinischen Dienstleistungen, um Ihr Lächeln gesund und schön zu erhalten. Unsere Spezialisten nutzen modernste Technologien und eine individuelle Betreuung. Vertrauen Sie Ihr Lächeln den Profis an!",
+        "loadingServices": "Lade Leistungen...",
+        "errorFetchingServices": "Fehler beim Laden der Leistungen.",
+        "moreInfoBtn": "Mehr erfahren",
+        "gallery": "Galerie",
+        "serviceNotFound": "Leistung nicht gefunden.",
+        "servicesIntro": "Unsere ",
+        "highlight": "Abramian Dental",
+        "noDescription": "Keine Beschreibung verfügbar.",
+        "noServicesAvailable": "Zurzeit sind keine Leistungen verfügbar.",
+        "servicerDetails": {
+          "title": "Verfahrensname",
+          "specialization": "Mehr erfahren"
+        }
+      },
+      "contacts_page": {
+        "welcome_text": "Wir sind <HighlightedSpan>immer</HighlightedSpan> für Sie da! Hier finden Sie unsere <HighlightedSpan>Kontaktinformationen</HighlightedSpan>, melden Sie sich gerne bei uns.",
+        "titleContacts": "Contacts",
+        "titleTime": "Sprechzeiten",
+        "titleInf": "Kontaktinformationen",
+        "subtitle": "Unsere Kontaktdaten",
+        "address": "MusterStrasse 10, 12345 München",
+        "phone": "+49 017 223 334",
+        "email": "info@dentalclinic.de",
+        "copy": "Kopiert",
+        "coordinates": "GPS: ",
+        "coordinatesCopied": "Koordinaten erfolgreich kopiert!",
+        "map": {
+          "title": "Finden Sie uns auf der Karte"
+        }
       }
     },
-
     "footer": {
       "titles": {
         "contact": "KONTAKTE",
@@ -41,14 +89,13 @@
         "friday": "Freitag"
       }
     },
-
     "other": {
       "loginAdmin": {
         "title": "Anmeldung",
         "subtitle": "MELDEN SIE SICH AN IHREM KONTO AN",
         "button": "Anmelden",
         "labelUsername": "Benutzername:",
-        "labelPassword": "Password:",
+        "labelPassword": "Passwort:",
         "forgotPassword": {
           "text": "Passwort vergessen?",
           "subtitle": "Geben Sie Ihre E-Mail-Adresse ein, um Ihr Passwort zurückzusetzen",
@@ -57,11 +104,12 @@
         },
         "errors": {
           "missingCredentials": "Bitte geben Sie Benutzername und Passwort ein.",
-          "usernameLength": "Der Benutzername muss zwischen 2 und 16 Zeichen lang sein.",
-          "passwordLength": "Das Passwort muss mindestens 1 Zeichen enthalten.",
+          "usernameLength": "Der Benutzername muss zwischen 3 und 16 Zeichen lang sein.",
+          "passwordLength": "Das Passwort muss zwischen 4 und 32 Zeichen lang sein.",
           "missingEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
           "usernameStartsWithSpace": "Der Benutzername sollte nicht mit einem Leerzeichen beginnen.",
-          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten."
+          "passwordContainsSpaces": "Das Passwort sollte keine Leerzeichen enthalten.",
+          "loginContainsSpaces": "Der Benutzername sollte keine Leerzeichen enthalten."
         },
         "messages": {
           "forgotPasswordTitle": "Passwort zurücksetzen",
@@ -76,31 +124,43 @@
       },
       "makeAppointment": {
         "formTitle": "Termin vereinbaren",
-        "labelService": "Leistung:",
+        "labelService": "Dienstleistung:",
         "labelFirstName": "Vorname:",
-        "labelSecondName": "Nachname:",
+        "labelLastName": "Nachname:",
         "labelPhoneNumber1": "Telefonnummer:",
         "labelPhoneNumber2": "Zusätzliche Telefonnummer (optional):",
-        "labelComment": "Komentar:",
+        "labelComment": "Kommentar:",
         "language": "Sprache:",
-        "textAreaDate": "Ihre Wünsche für den Termin:",
-        "buttonText": "Absenden",
+        "textAreaDate": "Ihre Terminwünsche:",
+        "buttonText": "Einreichen",
+        "buttonDisabledText": "Bitte füllen Sie alle erforderlichen Felder aus",
         "errors": {
-          "nameRequired": "Dieses Feld darf nicht leer sein.",
-          "nameLength": "Der Name muss mindestens 2 Zeichen lang sein.",
-          "nameNotChar": "Ungültige Zeichen im Namen.",
-
-          "emailRequired": "Dieses Feld darf nicht leer sein.",
-          "emailWithoutDot": "Die E-Mail-Adresse muss ein @ enthalten.",
-          "emailDomain": "Die E-Mail-Adresse muss einen gültigen Domainnamen mit einer Punktstruktur enthalten.",
-          "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
-
-          "phoneNumberRequired": "Dieses Feld ist erforderlich.",
-          "phoneNumberInvalid": "Bitte geben Sie eine gültige Telefonnummer ein."
+          "firstNameRequired": "Der Vorname ist erforderlich.",
+          "firstCharCannotBeSpace": "Der Vorname darf nicht mit einem Leerzeichen beginnen.",
+          "firstNameLetterCount": "Der Vorname muss mindestens 2 Zeichen enthalten (en, de).",
+          "firstNameLetterCountMax": "Der Vorname muss nicht länger als 64 Zeichen sein (en, de).",
+          "firstNameExtraSpaces": "Der Vorname darf keine aufeinanderfolgenden Leerzeichen enthalten.",
+          "firstNameInvalid": "Der Vorname darf nur Buchstaben enthalten (en, de) und nur ein Leerzeichen.",
+          "lastNameRequired": "Der Nachname ist erforderlich.",
+          "lastCharCannotBeSpace": "Der Nachname darf nicht mit einem Leerzeichen beginnen.",
+          "lastNameLetterCount": "Der Nachname muss mindestens 2 Zeichen enthalten (en, de) und nur ein Leerzeichen",
+          "lastNameLetterCountMax": "Der Nachname muss nicht länger als 64 Zeichen enthalten (en, de) und nur ein Leerzeichen",
+          "lastNameExtraSpaces": "Der Nachname darf keine aufeinanderfolgenden Leerzeichen enthalten.",
+          "lastNameInvalid": "Der Nachname darf nur Buchstaben enthalten (en, de) und nur ein Leerzeichen.",
+          "phoneNumberRequired": "Die Telefonnummer ist erforderlich.",
+          "phoneNumberInvalid": "Bitte geben Sie eine gültige Telefonnummer an.",
+          "emailRequired": "Die E-Mail-Adresse ist erforderlich.",
+          "emailInvalid": "Bitte geben Sie eine gültige E-Mail-Adresse an.",
+          "emailWithoutSpaces": "Die E-Mail-Adresse darf keine Leerzeichen enthalten.",
+          "emailWithoutAtSymbol": "Die E-Mail-Adresse muss ein '@' enthalten.",
+          "emailWithoutDot": "Die E-Mail-Adresse muss eine Domain enthalten.",
+          "serviceRequired": "Bitte wählen Sie eine Dienstleistung aus.",
+          "languageRequired": "Eine Sprache muss ausgewählt werden.",
+          "textAreaDateRequired": "Bitte geben Sie Ihre Terminwünsche an."
         },
         "messages": {
-          "success": "Die Anmeldung war erfolgreich!",
-          "error": "Bitte beheben Sie die Fehler, bevor Sie das Formular absenden."
+          "appointmentScheduled": "Ihr Termin wurde erfolgreich vereinbart.",
+          "appointmentFailed": "Es gab ein Problem bei der Terminvereinbarung. Bitte versuchen Sie es später erneut."
         },
         "placeholders": {
           "service": "Wählen Sie die gewünschte Dienstleistung",
@@ -108,6 +168,178 @@
           "lastName": "Geben Sie Ihren Nachnamen ein",
           "textAreaDate": "Hier können Sie Ihre Wünsche zum Datum und zur Uhrzeit Ihres Termins eingeben (bis zu 1024 Zeichen)",
           "textAreaComment": "Hinterlassen Sie einen Kommentar (bis zu 1024 Zeichen)"
+        }
+      }
+    },
+    "adminPanel": {
+      "appointments": {
+        "title": "Termine",
+        "noAppointments": "Keine Termine.",
+        "loadingAppointments": "Termine werden geladen...",
+        "errorFetchingAppointments": "Fehler beim Laden der Termine.",
+        "statusUpdated": "Der Status des Termins wurde auf '{{status}}' aktualisiert.",
+        "statusUpdateError": "Der Status des Termins konnte nicht auf '{{status}}' aktualisiert werden.",
+        "appointmentDetails": {
+          "title": "Termindetails",
+          "client": "Kunde",
+          "service": "Dienstleistung",
+          "date": "Datum",
+          "email": "E-Mail",
+          "phone1": "Telefon 1",
+          "phone2": "Telefon 2",
+          "language": "Sprache",
+          "comment": "Kommentar",
+          "available_time": "Verfügbare Zeit",
+          "noPhone": "Nicht angegeben",
+          "noComment": "Kein Kommentar",
+          "noLanguage": "Nicht angegeben",
+          "noAvailable_time": "Keine verfügbare Zeit"
+        },
+        "confirmDelete": "Möchten Sie wirklich löschen?",
+        "phoneCopied": "Telefonnummer erfolgreich kopiert!",
+        "filter": {
+          "all": "Alle",
+          "new": "Neu",
+          "completed": "Abgeschlossen"
+        },
+        "buttons": {
+          "back": "Zurückgehen",
+          "complete": "Termin abschließen",
+          "moreInfo": "Mehr Infos",
+          "edit": "Bearbeiten"
+        },
+
+        "settings": {
+          "admin": {
+            "create": {
+              "loginLabel": "Benutzername:",
+              "passwordLabel": "Passwort:",
+              "loginPlaceholder": "Benutzername eingeben",
+              "passwordPlaceholder": "Passwort eingeben",
+              "createAdminButton": "Administrator erstellen",
+              "grantAdminRights": "Administratorrechte gewähren",
+              "successMessage": "Administrator erfolgreich erstellt!"
+            },
+            "change": {
+              "currentLoginLabel": "Aktuelles Login:",
+              "currentPasswordPlaceholder": "Bitte aktuelles Passwort eingeben",
+              "newPasswordLabel": "Neues Passwort:",
+              "newPasswordPlaceholder": "Bitte neues Passwort eingeben",
+              "confirmPasswordLabel": "Passwort bestätigen:",
+              "confirmPasswordPlaceholder": "Bitte neues Passwort bestätigen",
+              "submitButton": "Änderung des Passworts absenden",
+              "passwordsDoNotMatch": "Die eingegebenen Passwörter stimmen nicht überein.",
+              "fillRequiredFields": "Bitte füllen Sie alle erforderlichen Felder aus.",
+              "noToken": "Token fehlt. Bitte erneut versuchen.",
+              "successMessage": "Das Passwort wurde erfolgreich geändert.",
+              "errorMessage": "Ein Fehler ist aufgetreten. Bitte erneut versuchen.",
+              "loginLabel": "Bitte geben Sie Ihr Login ein.",
+              "loginPlaceholder": "Login eingeben",
+              "currentPasswordLabel": "Aktuelles Passwort:"
+            },
+            "view": {
+              "title": "Alle Administratoren"
+            },
+            "delete": {
+              "loginPlaceholder": "Benutzername des Administrators eingeben",
+              "passwordPlaceholder": "Passwort des Administrators eingeben",
+              "button": "Administrator löschen",
+              "success": "Administrator {{login}} wurde gelöscht (Platzhalter)."
+            },
+            "navigation": {
+              "createAdmin": "Neuen Administrator erstellen",
+              "changePassword": "Passwort ändern",
+              "viewAdmins": "Alle Administratoren anzeigen",
+              "deleteAdmin": "Administrator löschen"
+            },
+            "settingsPage": {
+              "title": "Administrator-Einstellungen",
+              "back": "Zurück",
+              "greeting": "Willkommen, <HighlightedSpan>Administrator</HighlightedSpan>!",
+              "capabilities": "Hier können Sie Zugriffsrechte verwalten und das Passwort des Administrators ändern.",
+              "buttons": {
+                "create": "Neuen Administrator erstellen",
+                "changePassword": "Passwort ändern",
+                "viewAll": "Alle Administratoren anzeigen",
+                "delete": "Administrator löschen"
+              },
+              "sections": {
+                "create": "Neuen Administrator erstellen",
+                "changePassword": "Passwort ändern",
+                "viewAll": "Alle Administratoren",
+                "delete": "Administrator löschen"
+              }
+            }
+          }
+        },
+        "services": {
+          "requiredField": "Dieses Feld ist erforderlich",
+          "updated": "Service aktualisiert",
+          "errorUpdating": "Fehler beim Aktualisieren des Service",
+          "returnBack": "Zurückkehren",
+          "saving": "Speichern...",
+          "saveAll": "Alles speichern",
+          "makeCardVisible": "Karte für Benutzer sichtbar machen:",
+          "editTopImage": "Oben Bild bearbeiten",
+          "titles": "Titel:",
+          "enterTitleDe": "Geben Sie einen Titel ein (DE)",
+          "enterTitleEn": "Geben Sie einen Titel ein (EN)",
+          "enterTitleRu": "Geben Sie einen Titel ein (RU)",
+          "enterDescriptionDe": "Geben Sie eine Beschreibung ein (DE)",
+          "enterDescriptionEn": "Geben Sie eine Beschreibung ein (EN)",
+          "enterDescriptionRu": "Geben Sie eine Beschreibung ein (RU)",
+          "descriptions": "Beschreibungen:",
+          "enterDescription": "Geben Sie eine Beschreibung ein ({{lang}})",
+          "placeholder": "Geben Sie den Namen des Service ein",
+          "uploadImage": "Bild hochladen",
+          "makeCardVisibleCheckbox": "Karte sichtbar machen",
+          "saveButton": "Alles speichern",
+          "savingButton": "Speichern...",
+          "addNewService": "Neuen Service hinzufügen",
+          "refresh": "Aktualisieren",
+          "errorLoading": "Fehler beim Laden des Service",
+          "searchPlaceholder": "Suche nach Servicenamen"
+        },
+        "doctors": {
+          "requiredField": "Dieses Feld ist erforderlich",
+          "updated": "Informationen über den Arzt wurden aktualisiert",
+          "errorUpdating": "Fehler beim Aktualisieren der Informationen über den Arzt",
+          "returnBack": "Zurückkehren",
+          "saving": "Speichern...",
+          "saveAll": "Alles speichern",
+          "makeCardVisible": "Karte für Benutzer sichtbar machen:",
+          "editTopImage": "Oben Bild bearbeiten",
+          "titles": "Titel:",
+          "title": "Titel",
+          "enterTitleDe": "Titel eingeben (DE)",
+          "enterTitleEn": "Titel eingeben (EN)",
+          "enterTitleRu": "Titel eingeben (RU)",
+          "enterDescriptionDe": "Beschreibung eingeben (DE)",
+          "enterDescriptionEn": "Beschreibung eingeben (EN)",
+          "enterDescriptionRu": "Beschreibung eingeben (RU)",
+          "specialisation": "Spezialisierung",
+          "biography": "Biografie",
+          "edit": "Bearbeiten",
+          "details": "Details",
+          "inactive": "Inaktiv",
+          "descriptions": "Beschreibungen:",
+          "enterDescription": "Beschreibung eingeben ({{lang}})",
+          "placeholder": "Vollständigen Namen des Arztes eingeben",
+          "uploadImage": "Bild hochladen",
+          "makeCardVisibleCheckbox": "Karte sichtbar machen",
+          "saveButton": "Alles speichern",
+          "savingButton": "Speichern...",
+          "addNewDoctor": "+  Neuen Arzt hinzufügen",
+          "refresh": "Aktualisieren",
+          "loadingDoctorData": "Arztdaten werden geladen...",
+          "doctorPreview": "Arztvorschau",
+          "errorLoadingDoctorData": "Fehler beim Laden der Arztdaten:",
+          "doctorUpdatedSuccessfully": "$Arzt \"{doctorData.fullName}\" wurde erfolgreich aktualisiert!",
+          "fullName": "Vollständiger Name",
+          "searchPlaceholder": "Geben Sie den Namen des Arztes ein",
+          "searchIconAlt": "Suche",
+          "imageUploadFailed": "Failed to upload",
+          "duplicateNameError": "Einen Arzt mit diesem Namen gibt es bereits. Versuchen Sie es mit einem anderen Namen oder lassen Sie den aktuellen Namen unverändert."
         }
       }
     }

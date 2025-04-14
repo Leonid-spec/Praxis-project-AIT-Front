@@ -1,0 +1,31 @@
+.mainPanel {
+  display: flex;
+  flex-direction: row; 
+  width: 100%;
+  height: 100%;
+  gap: 1.5rem;
+  /* overflow: hidden; */
+  padding: 2rem;
+}
+
+
+.sidebar {
+  width: 15%; 
+}
+
+.content {
+  flex-grow: 1; 
+}
+
+ /* Мобильная версия  */
+@media screen and (max-width: 768px) {
+  .mainPanel {
+    flex-direction: column; 
+    padding: 10px;
+  }
+
+  .sidebar {
+    width: 100%; 
+    order: 1; 
+  }
+}

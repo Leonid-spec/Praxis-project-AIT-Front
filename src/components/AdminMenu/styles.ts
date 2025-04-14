@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const AdminMenuWrapper = styled.div`
+  
   position: relative;
 `;
 
@@ -23,18 +24,20 @@ export const Dropdown = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   overflow: hidden;
-  z-index: 1000;
+  z-index: 10;
 `;
 
 export const DropdownItem = styled.div`
+
   display: grid;
+  min-width: 250px;
   grid-template-columns: 30% 70%;
-  padding: 10px 15px;
+  padding: 10px 20px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   &:hover {
-    background-color: #f4f4f4;
+    background-color: #e6dcdc;
   }
   &:not(:last-child) {
     border-bottom: 1px solid #ddd;

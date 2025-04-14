@@ -7,10 +7,12 @@
         "about_us": "About Us",
         "contact": "Contact",
         "home": "Home",
-        "logo_alt": "Logo"
+        "logo_alt": "Logo",
+        "cabinets": "cabinets",
+        "devices": "devices",
+        "praxis": "Our"
       }
     },
-
     "main": {
       "use_oft": {
         "button": {
@@ -19,15 +21,60 @@
       },
       "home_page": {
         "title": "Welcome to our caring and professional dental practice",
-        "subtitle": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+        "subtitle1": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR",
+        "subtitle2": "MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+      },
+      "about_us_page": {
+        "ours": "Our",
+        "are": "are equipped with modern",
+        "ausgestattet": "!"
       },
       "team_page": {
+        "servicesIntrot": "Our ",
         "welcome": "Welcome to",
+        "subtitle": "Welcome to our team’s page! We are dedicated professionals passionate about providing you with top-notch dental care. Our mission is to bring you a smile full of health and confidence. Thank you for trusting us!",
         "moreInfoBtn": "Learn more",
-        "noSpecialization": "No specialization available"
+        "noSpecialization": "No specialization available",
+        "doctorDetails": {
+          "title": "Title",
+          "specialization": "Specialization",
+          "biography": "Biography"
+        }
+      },
+      "service_page": {
+        "welcome": "Welcome to ",
+        "subtitle": "We offer a comprehensive range of dental services to keep your smile healthy and beautiful. Our specialists use the latest technologies and provide personalized care for every patient. Trust your smile to the experts!",
+        "loadingServices": "Loading services...",
+        "errorFetchingServices": "An error occurred while loading services.",
+        "moreInfoBtn": "Learn more",
+        "gallery": "Gallery",
+        "serviceNotFound": "Service not found.",
+        "servicesIntro": "Our ",
+        "highlight": "Abramian Dental",
+        "noDescription": "No description available.",
+        "noServicesAvailable": "No services available at the moment.",
+        "servicerDetails": {
+          "title": "Procedure Name",
+          "specialization": "Learn More"
+        }
+      },
+      "contacts_page": {
+        "welcome_text": "We’re <HighlightedSpan>always</HighlightedSpan> happy to assist you! Here you can find our <HighlightedSpan>contact information</HighlightedSpan>, feel free to reach out.",
+        "titleContacts": "Contacts",
+        "titleTime": "Opening hours",
+        "titleInf": "Contact Information",
+        "subtitle": "Our contact details",
+        "address": "MusterStrasse 10, 12345 München",
+        "phone": "+49 017 223 334",
+        "email": "info@dentalclinic.de",
+        "copy": "Copied",
+        "coordinates": "GPS: ",
+        "coordinatesCopied": "Coordinates successfully copied!",
+        "map": {
+          "title": "Find us on the map"
+        }
       }
     },
-
     "footer": {
       "titles": {
         "contact": "CONTACTS",
@@ -41,7 +88,6 @@
         "friday": "Friday"
       }
     },
-
     "other": {
       "loginAdmin": {
         "title": "Login",
@@ -57,11 +103,12 @@
         },
         "errors": {
           "missingCredentials": "Please enter username and password.",
-          "usernameLength": "Username must be between 2 and 16 characters.",
-          "passwordLength": "Password must have at least 1 character.",
+          "usernameLength": "Username must be between 3 and 16 characters.",
+          "passwordLength": "Password must be between 4 and 32 characters.",
           "missingEmail": "Please enter your email.",
           "usernameStartsWithSpace": "Username should not start with a space.",
-          "passwordContainsSpaces": "Password should not contain spaces."
+          "passwordContainsSpaces": "Password should not contain spaces.",
+          "loginContainsSpaces": "Username should not contain spaces."
         },
         "messages": {
           "forgotPasswordTitle": "Reset Password",
@@ -78,22 +125,34 @@
         "formTitle": "Make an appointment",
         "labelService": "Service:",
         "labelFirstName": "First name:",
-        "labelSecondName": "Last name:",
+        "labelLastName": "Last name:",
         "labelPhoneNumber1": "Phone number:",
         "labelPhoneNumber2": "Additional phone number (optional):",
         "labelComment": "Comment:",
         "language": "Language:",
         "textAreaDate": "Your preferences for the appointment:",
         "buttonText": "Submit",
+        "buttonDisabledText": "Please fill in all required fields",
         "errors": {
           "firstNameRequired": "First name is required.",
-          "firstNameInvalid": "First name can only contain letters.",
-          "secondNameRequired": "Last name is required.",
-          "secondNameInvalid": "Last name can only contain letters.",
+          "firstCharCannotBeSpace": "First name cannot start with a space.",
+          "firstNameLetterCount": "First name must be at least 2 characters (en, de)",
+          "firstNameLetterCountMax": "First name must be less than 64 characters (en, de)",
+          "firstNameExtraSpaces": "First name cannot have consecutive spaces.",
+          "firstNameInvalid": "First name can only contain letters (en, de) and one space",
+          "lastNameRequired": "Last name is required.",
+          "lastCharCannotBeSpace": "Last name cannot start with a space.",
+          "lastNameLetterCount": "Last name must be at least 2 characters (en, de) and one space",
+          "lastNameLetterCountMax": "Last name must be less than 64 characters (en, de) and one space",
+          "lastNameExtraSpaces": "Last name cannot have consecutive spaces.",
+          "lastNameInvalid": "Last name can only contain letters (en, de) and one space",
           "phoneNumberRequired": "Phone number is required.",
           "phoneNumberInvalid": "Please provide a valid phone number.",
           "emailRequired": "Email address is required.",
           "emailInvalid": "Please provide a valid email address.",
+          "emailWithoutSpaces": "Email cannot contain spaces.",
+          "emailWithoutAtSymbol": "Email must contain '@'.",
+          "emailWithoutDot": "Email must contain a domain.",
           "serviceRequired": "Please select a service.",
           "languageRequired": "Language must be selected.",
           "textAreaDateRequired": "Please provide your preferences for the appointment."
@@ -108,6 +167,178 @@
           "lastName": "Enter your surname",
           "textAreaDate": "Here you can enter your preferences for the date and time of your appointment (up to 1024 characters)",
           "textAreaComment": "Leave a comment (up to 1024 characters)"
+        }
+      }
+    },
+    "adminPanel": {
+      "appointments": {
+        "title": "Appointments",
+        "noAppointments": "No appointments.",
+        "loadingAppointments": "Loading appointments...",
+        "errorFetchingAppointments": "Error fetching appointments.",
+        "statusUpdated": "Appointment status updated to '{{status}}'.",
+        "statusUpdateError": "Failed to update appointment status to '{{status}}'.",
+        "appointmentDetails": {
+          "title": "Appointment details",
+          "client": "Client",
+          "service": "Service",
+          "date": "Date",
+          "email": "Email",
+          "phone1": "Phone 1",
+          "phone2": "Phone 2",
+          "language": "Language",
+          "comment": "Comment",
+          "available_time": "Available Time",
+          "noPhone": "Not specified",
+          "noComment": "No comment",
+          "noLanguage": "Not specified",
+          "noAvailable_time": "No available time"
+        },
+        "confirmDelete": "Are you sure you want to delete?",
+        "phoneCopied": "Phone number copied successfully!",
+        "filter": {
+          "all": "All",
+          "new": "New",
+          "completed": "Completed"
+        },
+        "buttons": {
+          "back": "Go back",
+          "complete": "Complete appointment",
+          "moreInfo": "More info",
+          "edit": "Edit"
+        },
+        "settings": {
+          "admin": {
+            "create": {
+              "loginLabel": "Username:",
+              "passwordLabel": "Password:",
+              "loginPlaceholder": "Enter username",
+              "passwordPlaceholder": "Enter password",
+              "createAdminButton": "Create Administrator",
+              "grantAdminRights": "Grant Admin Rights",
+              "successMessage": "Admin created successfully!"
+            },
+            "change": {
+              "currentLoginLabel": "Current Login:",
+              "currentPasswordPlaceholder": "Enter your current password",
+              "newPasswordLabel": "New Password:",
+              "newPasswordPlaceholder": "Enter your new password",
+              "confirmPasswordLabel": "Confirm Password:",
+              "confirmPasswordPlaceholder": "Confirm your new password",
+              "submitButton": "Change Password",
+              "passwordsDoNotMatch": "The passwords do not match.",
+              "fillRequiredFields": "Please fill in all the required fields.",
+              "noToken": "Token is missing. Please try again.",
+              "successMessage": "Your password has been successfully changed.",
+              "errorMessage": "An error occurred. Please try again.",
+              "loginLabel": "Please enter your login.",
+              "loginPlaceholder": "Enter login",
+              "currentPasswordLabel": "Current Password:"
+            },
+            "view": {
+              "title": "All Administrators"
+            },
+            "delete": {
+              "loginPlaceholder": "Enter administrator's login",
+              "passwordPlaceholder": "Enter administrator's password",
+              "button": "Delete Administrator",
+              "success": "Administrator {{login}} has been deleted (placeholder)."
+            },
+            "navigation": {
+              "createAdmin": "Create New Administrator",
+              "changePassword": "Change Password",
+              "viewAdmins": "View All Administrators",
+              "deleteAdmin": "Delete Administrator"
+            },
+            "settingsPage": {
+              "title": "Administrator Settings",
+              "back": "Back",
+              "greeting": "Welcome, <HighlightedSpan>Administrator</HighlightedSpan>!",
+              "capabilities": "Here you can manage access rights and change the administrator's password.",
+              "buttons": {
+                "create": "Create New Administrator",
+                "changePassword": "Change Password",
+                "viewAll": "View All Administrators",
+                "delete": "Delete Administrator"
+              },
+              "sections": {
+                "create": "Create New Administrator",
+                "changePassword": "Change Password",
+                "viewAll": "All Administrators",
+                "delete": "Delete Administrator"
+              }
+            }
+          }
+        },
+
+        "services": {
+          "requiredField": "This field is required",
+          "updated": "Service updated",
+          "errorUpdating": "Error updating service",
+          "returnBack": "Return back",
+          "saving": "Saving...",
+          "saveAll": "Save all",
+          "makeCardVisible": "Make the card visible to users:",
+          "editTopImage": "Edit top image",
+          "titles": "Titles:",
+          "enterTitleDe": "Enter title (DE)",
+          "enterTitleEn": "Enter title (EN)",
+          "enterTitleRu": "Enter title (RU)",
+          "enterDescriptionDe": "Enter description (DE)",
+          "enterDescriptionEn": "Enter description (EN)",
+          "enterDescriptionRu": "Enter description (RU)",
+          "descriptions": "Descriptions:",
+          "enterDescription": "Enter description ({{lang}})",
+          "placeholder": "Enter the name of the service",
+          "uploadImage": "Upload image",
+          "makeCardVisibleCheckbox": "Make card visible",
+          "saveButton": "Save all",
+          "savingButton": "Saving...",
+          "addNewService": "Add new service",
+          "refresh": "Refresh",
+          "errorLoading": "Error loading service",
+          "searchPlaceholder": "Search by service name"
+        },
+        "doctors": {
+          "requiredField": "This field is required",
+          "updated": "Doctor information updated",
+          "errorUpdating": "Error updating doctor information",
+          "returnBack": "Return back",
+          "saving": "Saving...",
+          "saveAll": "Save all",
+          "makeCardVisible": "Make the card visible to users:",
+          "editTopImage": "Edit top image",
+          "titles": "Titles:",
+          "title": "Title",
+          "enterTitleDe": "Enter title (DE)",
+          "enterTitleEn": "Enter title (EN)",
+          "enterTitleRu": "Enter title (RU)",
+          "enterDescriptionDe": "Enter description (DE)",
+          "enterDescriptionEn": "Enter description (EN)",
+          "enterDescriptionRu": "Enter description (RU)",
+          "specialisation": "Specialisation",
+          "Biography": "Biography ",
+          "edit": "Edit",
+          "details": "Details",
+          "inactive": "Inactive",
+          "descriptions": "Descriptions:",
+          "enterDescription": "Enter description ({{lang}})",
+          "placeholder": "Enter the doctor's full name",
+          "uploadImage": "Upload image",
+          "makeCardVisibleCheckbox": "Make card visible",
+          "saveButton": "Save all",
+          "savingButton": "Saving...",
+          "addNewDoctor": "+  Add new doctor",
+          "refresh": "Refresh",
+          "loadingDoctorData": "Loading doctor data...",
+          "doctorPreview": "Doctor preview",
+          "errorLoadingDoctorData": "Error loading doctor data:",
+          "doctorUpdatedSuccessfully": "Doctor \"{doctorData.fullName}\" updated successfully!",
+          "fullName": "Full name",
+          "searchPlaceholder": "Enter doctor's name",
+          "searchIconAlt": "Search",
+          "imageUploadFailed": "Failed to upload",
+          "duplicateNameError": "A doctor with this name already exists. Try a different name or leave the current one unchanged."
         }
       }
     }

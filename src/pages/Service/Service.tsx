@@ -1,28 +1,25 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState, AppDispatch } from "../../store/store";
 import {
-  fetchServicesStart,
-  fetchServicesSuccess,
-  fetchServicesFailure,
+  fetchActiveServicesFailure,
+  fetchActiveServicesStart,
+  fetchActiveServicesSuccess,
 } from "../../store/slices/serviceSlice";
 import ServiceCard from "../../components/Cards/Service/ServiceCard";
 import {
   ServiceContainer,
-  WelcomeSection,
-  ServiceHeaderText,
   HighlightText,
-  ServicePhoto,
   HeaderTextBox,
   ServiceText,
   ServicesGrid,
+  HighlightedSpan,
 } from "./styles";
 import { useTranslation } from "react-i18next";
-import { Service } from "../../store/slices/serviceSlice";
-import servicesData from "../../api/service.json"; // Локальный JSON для тестовых данных
+import { ServiceData } from "../../store/types/serviceTypes";
 
-type Language = "en" | "de" | "ru";
+type Language = "En" | "De" | "Ru";
 
 const ServicePage: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -34,40 +31,74 @@ const ServicePage: React.FC = () => {
   const currentLanguage = i18n.language as Language;
 
   useEffect(() => {
-    const fetchServices = async () => {
-      dispatch(fetchServicesStart());
+    const fetchActiveServices = async () => {
+      dispatch(fetchActiveServicesStart());
       try {
-        // Используем локальные данные вместо API-запроса
-        dispatch(fetchServicesSuccess(servicesData.services));
+        const token = localStorage.getItem("token");
+        if (!token) {
+          throw new Error(t("missingToken"));
+        }
+
+        const response = await fetch(
+          "http://localhost:8080/api/services/active",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`HTTP ${response.status}: ${errorText}`);
+        }
+
+        const data = await response.json();
+        dispatch(fetchActiveServicesSuccess(data));
       } catch (err: any) {
-        dispatch(fetchServicesFailure("Failed to load services"));
+        console.error("Failed to fetch active services:", err);
+        dispatch(
+          fetchActiveServicesFailure(
+            err.message || t("errorFetchingActiveServices")
+          )
+        );
       }
     };
 
-    fetchServices();
-  }, [dispatch]);
+    fetchActiveServices();
+  }, [dispatch, t]);
 
   const handleDetailsClick = (id: number) => {
-    navigate(`/service/${id}`);
+    if (id) {
+      navigate(`/service/${id}`);
+    } else {
+      console.error("Service ID is missing");
+    }
+  };
+
+  const parseSubtitle = (text: string) => {
+    return text
+      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+      .map((part, index) =>
+        index % 2 === 1 ? (
+          <HighlightedSpan key={index}>{part}</HighlightedSpan>
+        ) : (
+          part
+        )
+      );
   };
 
   return (
     <ServiceContainer>
-      <WelcomeSection>
-        <ServiceHeaderText>
-          {t("message.main.service_page.welcome")}{" "}
-          <HighlightText>Abramian Dental</HighlightText>
-        </ServiceHeaderText>
-      </WelcomeSection>
-
-      <ServicePhoto
-        src="https://example.com/service-photo.jpg"
-        alt="Service"
-      />
-
+      
       <HeaderTextBox>
         <ServiceText>
-          Unsere <HighlightText>Leistungen</HighlightText> |
+          {parseSubtitle(t("message.main.service_page.servicesIntro"))}{" "}
+          <HighlightText>
+            {parseSubtitle(t("message.header.menu.services"))}
+          </HighlightText>{" "}
+          |
         </ServiceText>
       </HeaderTextBox>
 
@@ -77,24 +108,33 @@ const ServicePage: React.FC = () => {
         ) : error ? (
           <p>{t("errorFetchingServices")}</p>
         ) : services.length > 0 ? (
-          services.map((service: Service) => {
-            const descriptionKey = `description_${currentLanguage}` as keyof Service;
-            const description = service[descriptionKey] || t("noDescription");
-            const validDescription =
-              typeof description === "string" ? description : t("noDescription"); // Проверка типа данных
+          services.map((service: ServiceData) => {
+            const titleKey = `title${
+              currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
+            }` as keyof Pick<ServiceData, "titleDe" | "titleEn" | "titleRu">;
+            const title = (service[titleKey] as string) || t("noTitle");
+
+            const descriptionKey = `description${
+              currentLanguage.charAt(0).toUpperCase() + currentLanguage.slice(1)
+            }` as keyof Pick<
+              ServiceData,
+              "descriptionDe" | "descriptionEn" | "descriptionRu"
+            >;
+            const description =
+              (service[descriptionKey] as string) || t("noDescription");
 
             return (
               <ServiceCard
                 key={service.id}
-                id={service.id}
-                photo={
-                  service.topimage
-                    ? service.topimage.replace(/\\/g, "/")
+                id={service.id!}
+                topImage={
+                  service.topImage
+                    ? service.topImage.replace(/\\/g, "/")
                     : "https://via.placeholder.com/150"
                 }
-                name={service.name}
-                description={validDescription} // Безопасно передаём только строку
-                onDetailsClick={() => handleDetailsClick(service.id)}
+                title={title}
+                description={description}
+                onDetailsClick={() => handleDetailsClick(service.id!)}
               />
             );
           })

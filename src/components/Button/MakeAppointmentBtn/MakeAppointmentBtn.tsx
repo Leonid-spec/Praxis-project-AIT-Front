@@ -6,16 +6,19 @@ interface MakeAppointmentBtnProps {
   text: string; 
   onClick?: () => void;
   disabled?: boolean;
+  serviceId?: number | null;
 }
 
-const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, disabled }) => {
+const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, disabled, serviceId }) => {
   const { openModal } = useContext(ModalContext);
 
   const handleClick = () => {
+    console.log('Clicked serviceId:', serviceId); 
+
     if (onClick) {
       onClick();
     } else {
-      openModal();
+      openModal(undefined, serviceId!); 
     }
   };
 

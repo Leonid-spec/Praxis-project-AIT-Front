@@ -1,60 +1,84 @@
-import '../../utils/i18n';
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import AdminMenu from '../AdminMenu/AdminMenu';
-import { 
-  MenuContainer, 
-  Logo, 
-  Nav, 
-  StyledNavLink, 
-  StyledNavLinkMenu,
-  SprachUundAdminbereich, 
-  LanguagePanel, 
-  LanguageLink, 
-  Divider, 
-  AdminPanelBox, 
-  NavLinkImg, 
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import AdminMenu from "../AdminMenu/AdminMenu";
+import {
+  MenuContainer,
+  Logo,
+  Nav,
+  StyledNavLink,
+  SprachUundAdminbereich,
+  LanguagePanel,
+  LanguageLink,
+  Divider,
+  NavLinkImg,
   NavLinkText,
-} from './styles';
+} from "./styles";
+import BurgerMenu from "./BurgerMenu";
+import React from "react";
 
 const Menu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { t, i18n } = useTranslation();
+  const [isMobile, setIsMobile] = useState(false);
 
-  const changeLanguage = (lng: string) => {
+  const handleLanguageChange = (lng: string) => {
     i18n.changeLanguage(lng);
   };
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <MenuContainer>
       <Logo>
-        <StyledNavLink to="/" aria-label={t('message.menu.home')}>
-          <NavLinkImg src="/src/assets/MainLogo.png" alt={t('message.menu.logo')} />
+        <StyledNavLink to="/" aria-label={t("message.menu.home")}>
+          <NavLinkImg
+            src="/src/assets/images/MainLogo.png"
+            alt="Logo"
+          />
         </StyledNavLink>
-        <StyledNavLink to="/" aria-label={t('message.menu.home')}>
+        <StyledNavLink to="/" aria-label={t("message.menu.home")}>
           <NavLinkText>Abramian Dental</NavLinkText>
         </StyledNavLink>
       </Logo>
 
-      <Nav>
-        <StyledNavLinkMenu to="/service">{t('message.header.menu.services')}</StyledNavLinkMenu>
-        <StyledNavLinkMenu to="/team">{t('message.header.menu.team')}</StyledNavLinkMenu>
-        <StyledNavLinkMenu to="/about">{t('message.header.menu.about_us')}</StyledNavLinkMenu>
-        <StyledNavLinkMenu to="/contacts">{t('message.header.menu.contact')}</StyledNavLinkMenu>
-      </Nav>
-
-      <SprachUundAdminbereich>
-        <LanguagePanel>
-          <LanguageLink onClick={() => changeLanguage('de')}>DE</LanguageLink>
-          <Divider>|</Divider>
-          <LanguageLink onClick={() => changeLanguage('en')}>EN</LanguageLink>
-          <Divider>|</Divider>
-          <LanguageLink onClick={() => changeLanguage('ru')}>RU</LanguageLink>
-        </LanguagePanel>
-        <AdminPanelBox>
-          <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
-        </AdminPanelBox>
-      </SprachUundAdminbereich>
+      {!isMobile ? (
+        <>
+            <Nav>
+              <StyledNavLink to="/services">
+                {t("message.header.menu.services")}
+              </StyledNavLink>
+              <StyledNavLink to="/about">
+                {t("message.header.menu.about_us")}
+              </StyledNavLink>
+              <StyledNavLink to="/team">
+                {t("message.header.menu.team")}
+              </StyledNavLink>
+              <StyledNavLink to="/contacts">
+                {t("message.header.menu.contact")}
+              </StyledNavLink>
+            </Nav>
+            <SprachUundAdminbereich>
+              <LanguagePanel>
+              {["de", "en", "ru"].map((lang, index) => (
+                <React.Fragment key={lang}>
+                  <LanguageLink onClick={() => handleLanguageChange(lang)}>
+                    {lang.toUpperCase()}
+                  </LanguageLink>
+                  {index < 2 && <Divider>|</Divider>}
+                </React.Fragment>
+              ))}
+            </LanguagePanel>
+              <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            </SprachUundAdminbereich>
+        </>
+      ) : (
+        <BurgerMenu />
+      )}
     </MenuContainer>
   );
 };
