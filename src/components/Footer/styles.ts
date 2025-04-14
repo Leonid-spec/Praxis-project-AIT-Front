@@ -7,7 +7,6 @@ export const FooterContainer = styled.footer`
   width: 100%;
   background-color: #a0eef2;
   padding: 40px 20px;
-  margin-top: 50px;
 
   @media (max-width: 1200px) {
     padding: 30px 15px;
@@ -37,16 +36,11 @@ export const Content = styled.div`
   justify-content: space-between;
   align-items: stretch;
   width: 100%;
-  /* max-width: 1200px; */
-  gap: 40px;
-  @media (max-width: 992px) {
-    gap: 30px;
-  }
+  max-width: 1200px;
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
-    gap: 20px;
   }
 `;
 
@@ -141,13 +135,5 @@ export const Days = styled.div`
 
   @media (max-width: 768px) {
     gap: 12px;
-  }
-`;
-
-export const ButtonWrapper = styled.div`
-  width: fit-content;
-  align-self: flex-start;
-  @media (max-width: 768px) {
-    align-self: center;
   }
 `;
