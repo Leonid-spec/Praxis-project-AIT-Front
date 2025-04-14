@@ -60,7 +60,7 @@ const About: React.FC = () => {
 
   const parseSubtitle = (text: string) => {
     return text
-      .split(/<HighlightedSpan><\/HighlightedSpan>/)
+      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
       .map((part, index) =>
         index % 2 === 1 ? (
           <HighlightedSpan key={index}>{part}</HighlightedSpan>

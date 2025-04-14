@@ -8,7 +8,7 @@ export const FooterContainer = styled.footer`
   background-color: #f0f0f0;
   background-color: #effcf6;
   background-color: #eff1fc;
-  /* background-color: #a5a0b6; */
+  background-color: #f0effc;
   padding: 40px 20px;
 
   @media (max-width: 1200px) {
@@ -100,9 +100,12 @@ export const Logo = styled.img`
 `;
 
 export const Title = styled.h3`
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 20px;
-  color: #a0eef2;
+  /* color: #a0eef2; */
+  color: #69e5ec;
+  color: #69e5ec;
+  /* color: #333; */
 
   @media (max-width: 768px) {
     font-size: 20px;

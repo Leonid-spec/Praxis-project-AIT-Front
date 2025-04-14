@@ -26,7 +26,6 @@ import {
   fetchServicesFailure,
   fetchServicesSuccess,
 } from "../../../store/slices/serviceSlice";
-import MakeAppointmentBtn from "../../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import { getActiveServices } from "../../../api/serviceAPI";
 
 type Language = "De" | "En" | "Ru";
@@ -92,7 +91,6 @@ const ServiceDetails: React.FC = () => {
               alt="Main image of service"
             />
           </ImageWrapper>
-          <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
        </ImgAndBtnWrapper>
         <InfoWrapper>
           <TitleWrapper>

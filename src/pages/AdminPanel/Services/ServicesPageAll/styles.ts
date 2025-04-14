@@ -83,10 +83,10 @@ export const CardsMainContainer = styled.div`
 `;
 export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number; topImage?: string }>`
 opacity: ${(props) => (props.isActive ? "1" : "0.5")};
-transition: all 0.3s ease-in-out;
+/* transition: all 0.3s ease-in-out; */
 &:hover {
   cursor: pointer;
-  transform: scale(1.05);
+  /* transform: scale(1.05); */
 }
 `;
 

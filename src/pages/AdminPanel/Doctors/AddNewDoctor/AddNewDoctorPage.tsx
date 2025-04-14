@@ -29,6 +29,7 @@ import {
   GalleryImageWrapper,
   TitleBox,
   UploadText,
+  CheckboxLabel,
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { addImage, pushImageFile } from "../../../../api/imageAPI";
@@ -281,18 +282,19 @@ const AddNewDoctorPage: React.FC = () => {
                 />
               </InputContainer>
 
-              <MakeCardVisibleBox>
-                <TitlesBox>
-                  {t(
-                    "message.adminPanel.appointments.doctors.makeCardVisibleCheckbox"
-                  )}
-                </TitlesBox>
-                <StyledCheckbox
-                  type="checkbox"
-                  checked={doctorData.isActive}
-                  onChange={(e) => handleChange("isActive", e.target.checked)}
-                />
-              </MakeCardVisibleBox>
+             <MakeCardVisibleBox>
+                <CheckboxLabel>
+                              {t("message.adminPanel.appointments.doctors.makeCardVisible")} 
+                
+                                <input
+                                  type="checkbox"
+                                  checked={doctorData.isActive}
+                                  onChange={(e) =>
+                                    setDoctorData({ ...doctorData, isActive: e.target.checked })
+                                  }
+                                />
+                              </CheckboxLabel>
+             </MakeCardVisibleBox>
 
               <EditTopImage>
                 <TitlesBox>
