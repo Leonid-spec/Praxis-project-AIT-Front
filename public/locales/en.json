@@ -285,11 +285,51 @@
                 "changePassword": "Change Password",
                 "viewAll": "All Administrators",
                 "delete": "Delete Administrator"
+              },
+              "address": {
+                  "title": "Edit Address",
+                  "street": "Street",
+                  "city": "City",
+                  "zipCode": "Zip Code",
+                  "gps": "GPS",
+                  "phone": "Phone",
+                  "email": "Email",
+                  "placeholder": {
+                    "street": "Enter street...",
+                    "city": "Enter city...",
+                    "zipCode": "Enter zip code...",
+                    "gps": "Enter GPS coordinates...",
+                    "phone": "Enter phone number...",
+                    "email": "Enter email..."
+                  },
+                  "saveButton": "Save",
+                  "successMessage": "Address successfully saved!",
+                  "errorMessage": "An error occurred while saving. Please try again."
+                },
+                "workingMode": {
+                  "title": "Edit Working Hours",
+                  "days": {
+                    "monday": "Monday",
+                    "tuesday": "Tuesday",
+                    "wednesday": "Wednesday",
+                    "thursday": "Thursday",
+                    "friday": "Friday"
+                  },
+                  "placeholder": "Enter working hours...",
+                  "saveButton": "Save",
+                  "successMessage": "Working hours successfully saved!",
+                  "errorMessage": "An error occurred while saving working hours. Please try again."
+                },
+                "runningLine": {
+                  "title": "Edit Running Line",
+                  "placeholder": "Enter running line text...",
+                  "saveButton": "Save",
+                  "successMessage": "Running line successfully saved!",
+                  "errorMessage": "An error occurred while saving the running line. Please try again."
+                }
               }
-            }
           }
         },
-
         "services": {
           "requiredField": "This field is required",
           "updated": "Service updated",

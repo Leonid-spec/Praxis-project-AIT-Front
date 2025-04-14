@@ -7,6 +7,7 @@ import DeleteAdminForm from "../DeleteAdminForm/DeleteAdminForm";
 import RunningLinePage from "../RunningLine/RunningLinePage";
 import WorkingModePage from "../WorkingMode/WorkingModePage";
 import AddressPage from "../AddressPages/AddressPage";
+
 import {
   ContentContainer,
   Section,
@@ -14,19 +15,14 @@ import {
   StyledButton,
   HighlightedSpan,
   WelcomeTextBox,
-  // MainFunctionsText,
   MainWelcomeText,
   SectionTitle,
-  // RefreshIconBox,
-  ScrollContainer,
   MainFunctionsText,
-  // RefreshIconBox,
+  BodyLayout, // добавлен сюда
 } from "./styles";
 
-// import { FaSyncAlt } from "react-icons/fa";
 import { AdminDto } from "../../../../store/types/adminTypes";
 import { getAllAdmins } from "../../../../api/adminAPI";
-// import { FaSyncAlt } from "react-icons/fa";
 
 interface SettingsPageProps {
   adminLogin: string;
@@ -67,18 +63,11 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
         setError(
           t("message.adminPanel.appointments.services.addServices.errorLoading")
         );
-        setError(
-          t("message.adminPanel.appointments.services.addServices.errorLoading")
-        );
         return;
       }
       const data = await getAllAdmins(token);
       setAdmins(data);
     } catch (err: any) {
-      setError(
-        err.message ||
-          t("message.adminPanel.appointments.services.addServices.errorLoading")
-      );
       setError(
         err.message ||
           t("message.adminPanel.appointments.services.addServices.errorLoading")
@@ -92,12 +81,6 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
     }
   }, [activeSection]);
 
-  // const handleRefreshBtn = () => {
-  //   if (activeSection === "viewAdmins" || activeSection === "deleteAdmin") {
-  //     fetchAdmins();
-  //   }
-  // };
-
   return (
     <ContentContainer>
       <WelcomeTextBox>
@@ -108,7 +91,6 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
             )
           )}
         </MainWelcomeText>
-
         <MainFunctionsText>
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.capabilities"
@@ -116,119 +98,87 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
         </MainFunctionsText>
       </WelcomeTextBox>
 
-      <ButtonGroup>
-        <StyledButton onClick={() => setActiveSection("createAdmin")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.create"
-          )}
-        </StyledButton>
-        <StyledButton onClick={() => setActiveSection("changePassword")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword"
-          )}
-        </StyledButton>
-        <StyledButton onClick={() => setActiveSection("viewAdmins")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll"
-          )}
-        </StyledButton>
-        <StyledButton onClick={() => setActiveSection("deleteAdmin")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete"
-          )}
-        </StyledButton>
-        <StyledButton onClick={() => setActiveSection("workingMode")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.workingMode"
-          )}
-        </StyledButton>
-        <StyledButton onClick={() => setActiveSection("address")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.address"
-          )}
-        </StyledButton>
-        <StyledButton onClick={() => setActiveSection("runningLine")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.runningLine"
-          )}
-        </StyledButton>
-        {/* <RefreshIconBox onClick={handleRefreshBtn}>
-          <FaSyncAlt size={24} color="#20b1b7" />
-        </RefreshIconBox> */}
+      <BodyLayout>
+        <ButtonGroup>
+          <StyledButton onClick={() => setActiveSection("createAdmin")}>
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.create")}
+          </StyledButton>
+          <StyledButton onClick={() => setActiveSection("changePassword")}>
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword")}
+          </StyledButton>
+          <StyledButton onClick={() => setActiveSection("viewAdmins")}>
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll")}
+          </StyledButton>
+          <StyledButton onClick={() => setActiveSection("deleteAdmin")}>
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete")}
+          </StyledButton>
+          <StyledButton onClick={() => setActiveSection("workingMode")}>
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.workingMode")}
+          </StyledButton>
+          <StyledButton onClick={() => setActiveSection("address")}>
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.address")}
+          </StyledButton>
+          <StyledButton onClick={() => setActiveSection("runningLine")}>
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.buttons.runningLine")}
+          </StyledButton>
+        </ButtonGroup>
 
-        {activeSection === "welcome" && (
-          <MainFunctionsText>
-            {t(
-              "message.adminPanel.appointments.settings.admin.settingsPage.capabilities"
-            )}
-          </MainFunctionsText>
-        )}
-      </ButtonGroup>
+        <Section>
+          {activeSection === "createAdmin" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.create")}
+              </SectionTitle>
+              <AddAdminForm />
+            </>
+          )}
 
-      <Section>
-        {activeSection === "createAdmin" && (
-          <>
-            <SectionTitle>
-              {t(
-                "message.adminPanel.appointments.settings.admin.settingsPage.sections.create"
-              )}
-            </SectionTitle>
-            <AddAdminForm />
-          </>
-        )}
-        {activeSection === "changePassword" && (
-          <>
-            <SectionTitle>
-              {t(
-                "message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword"
-              )}
-            </SectionTitle>
-            <ChangePasswordForm />
-          </>
-        )}
-        {activeSection === "viewAdmins" && (
-          <>
-            <SectionTitle>
-              {t(
-                "message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll"
-              )}
-            </SectionTitle>
-            <AdminList admins={admins} />
-          </>
-        )}
-        {activeSection === "deleteAdmin" && (
-          <>
-            <SectionTitle>
-              {t(
-                "message.adminPanel.appointments.settings.admin.settingsPage.sections.delete"
-              )}
-            </SectionTitle>
-            <DeleteAdminForm admins={admins} />
-          </>
-        )}
-        {activeSection === "workingMode" && (
-          <>
-            <SectionTitle></SectionTitle>
-            <WorkingModePage /> 
-          </>
-        )}
+          {activeSection === "changePassword" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.changePassword")}
+              </SectionTitle>
+              <ChangePasswordForm />
+            </>
+          )}
 
-        {activeSection === "address" && (
-          <>
-            <SectionTitle>
-              
-            </SectionTitle>
-            <AddressPage />{" "}
-           
-          </>
-        )}
+          {activeSection === "viewAdmins" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.viewAll")}
+              </SectionTitle>
+              <AdminList admins={admins} />
+            </>
+          )}
 
-        {activeSection === "runningLine" && (
-          <>
-            <RunningLinePage />
-          </>
-        )}
-      </Section>
+          {activeSection === "deleteAdmin" && (
+            <>
+              <SectionTitle>
+                {t("message.adminPanel.appointments.settings.admin.settingsPage.sections.delete")}
+              </SectionTitle>
+              <DeleteAdminForm admins={admins} />
+            </>
+          )}
+
+          {activeSection === "workingMode" && (
+            <>
+              <WorkingModePage />
+            </>
+          )}
+
+          {activeSection === "address" && (
+            <>
+              <AddressPage />
+            </>
+          )}
+
+          {activeSection === "runningLine" && (
+            <>
+              <RunningLinePage />
+            </>
+          )}
+        </Section>
+      </BodyLayout>
     </ContentContainer>
   );
 };

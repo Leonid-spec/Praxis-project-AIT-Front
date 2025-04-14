@@ -1,66 +1,89 @@
 .working-mode-page-container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #333;
-  }
-  
-  .working-mode-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .day-input {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .label {
-    flex: 1;
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .input {
-    flex: 2;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .save-button-container {
-    display: flex; 
-    justify-content: center; 
-    margin-top: 20px;
-  }
-  
-  .save-button {
-    padding: 12px 24px; 
-    margin-top: 20px; 
-    background-color: #20b1b7;
-    color: white;
-    border: none;
-    border-radius: 18px;
-    font-size: 16px; 
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  
-    &:hover {
-      background-color: #1a8e92; 
-    }
-  }
-  
-  
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+.working-mode-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.day-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.input {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  border-color: #20b1b7;
+  outline: none;
+}
+
+.save-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.save-button {
+  padding: 12px 24px;
+  background-color: #20b1b7;
+  color: white;
+  border: none;
+  border-radius: 18px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #1a8e92;
+}
+
+.notification {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.notification.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.notification.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

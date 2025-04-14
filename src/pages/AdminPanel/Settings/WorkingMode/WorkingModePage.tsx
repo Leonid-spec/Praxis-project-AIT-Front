@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./WorkingModePage.css";
 
+interface WorkingHours {
+  monday: string;
+  tuesday: string;
+  wednesday: string;
+  thursday: string;
+  friday: string;
+}
 
 const WorkingModePage: React.FC = () => {
-  const [workingHours, setWorkingHours] = useState({
+  const { t } = useTranslation();
+  const [workingHours, setWorkingHours] = useState<WorkingHours>({
     monday: "",
     tuesday: "",
     wednesday: "",
@@ -18,50 +27,50 @@ const WorkingModePage: React.FC = () => {
     }
   }, []);
 
-  const handleInputChange = (day: string, value: string) => {
+  const handleInputChange = (day: keyof WorkingHours, value: string) => {
     setWorkingHours((prev) => ({ ...prev, [day]: value }));
   };
 
   const handleSave = () => {
-   
     const allFieldsFilled = Object.values(workingHours).every((time) => time.trim() !== "");
-    
+
     if (!allFieldsFilled) {
-      alert("Пожалуйста, заполните все поля перед сохранением.");
+      alert(t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.errorMessage"));
       return;
     }
-  
+
     try {
       localStorage.setItem("workingHours", JSON.stringify(workingHours));
-      alert("Режим работы успешно сохранён!");
+      alert(t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.successMessage"));
     } catch (error) {
       console.error("Ошибка при сохранении данных в localStorage:", error);
     }
   };
-  
 
   return (
     <div className="working-mode-page-container">
-      <h2 className="title">Редактирование режима работы</h2>
+      <h2 className="title">{t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.title")}</h2>
       <div className="working-mode-form">
         {Object.keys(workingHours).map((day) => (
           <div key={day} className="day-input">
             <label className="label">
-              {day.charAt(0).toUpperCase() + day.slice(1)}:
+              {t(`message.adminPanel.appointments.settings.admin.settingsPage.workingMode.days.${day}`)}:
             </label>
             <input
               className="input"
               type="text"
-              value={(workingHours as any)[day]}
-              onChange={(e) => handleInputChange(day, e.target.value)}
-              placeholder="Введите часы работы..."
+              value={workingHours[day as keyof WorkingHours]}
+              onChange={(e) => handleInputChange(day as keyof WorkingHours, e.target.value)}
+              placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.placeholder")}
             />
           </div>
         ))}
       </div>
       <div className="save-button-container">
-      <button className="save-button" onClick={handleSave}>Сохранить</button>
-    </div>
+        <button className="save-button" onClick={handleSave}>
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.saveButton")}
+        </button>
+      </div>
     </div>
   );
 };

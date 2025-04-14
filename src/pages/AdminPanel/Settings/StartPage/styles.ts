@@ -1,42 +1,74 @@
 import styled from "styled-components";
 
 export const ContentContainer = styled.div`
+  display: flex;
+  flex-direction: column; 
   width: 100%;
+  height: 100vh;
   padding: 20px 10px;
   margin: 0 auto;
-  position: relative;
+  max-width: 1200px;  /* Ограничение ширины, если нужно для больших экранов */
   transition: margin-left 0.3s ease, margin-top 0.3s ease;
-  height: 80vh;
-  @media (max-width: 768px) {
-    padding: 0 15px;
-    margin-top: 60px;
-    z-index: 2;
 
-    h1,
-    h2 {
-      text-align: center;
-    }
+  @media (min-width: 768px) {
+   
+    padding: 20px;
+  }
+`;
+export const BodyLayout = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 40px;
   }
 `;
 
-export const MainTextContainer = styled.p`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  height: 100%;
+
+export const Sidebar = styled.div`
+  display: flex;
+  flex-direction: column; /* Кнопки располагаются вертикально */
+  justify-content: flex-start;
+  align-items: flex-start; /* Кнопки прижаты к левому краю */
+  width: 250px; /* Фиксированная ширина для сайдбара */
+  background-color: #f8f9fa;
+  padding: 20px;
+  gap: 15px;
+
+  @media (max-width: 768px) {
+    flex-direction: row; /* Горизонтальное размещение кнопок */
+    justify-content: center;
+    width: 100%; /* На мобильных кнопки занимают всю ширину */
+    padding: 10px;
+  }
+`;
+
+export const MainContent = styled.div`
+  flex: 1;
+  padding: 20px;
+  background-color: #ffffff; /* Фон содержимого */
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 export const WelcomeTextBox = styled.div`
   display: flex;
+  flex-direction: column; /* Заголовки располагаются сверху */
   justify-content: center;
-  gap: 30px;
-  text-align: center;
+  align-items: center; /* Центровка текста */
+  gap: 15px;
   margin-bottom: 20px;
 `;
 
-export const MainWelcomeText = styled.p`
-  font-size: 24px;
+export const MainWelcomeText = styled.h1`
+  font-size: 28px;
   font-weight: bold;
+  text-align: center;
+  margin: 0;
 `;
 
 export const Section = styled.div`
@@ -45,15 +77,20 @@ export const Section = styled.div`
 
 export const SectionTitle = styled.h3`
   text-align: center;
-  padding: 0;
-  margin: 0;
+  margin: 0 auto;
+  padding-bottom: 15px; /* Пространство под заголовком */
 `;
 
 export const ButtonGroup = styled.div`
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column; /* Вертикально на широких экранах */
+  gap: 15px;
+
+  @media (max-width: 768px) {
+    flex-direction: row; /* Горизонтально на мобильных устройствах */
+    justify-content: center;
+    flex-wrap: wrap; /* Перенос кнопок на следующую строку */
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -73,23 +110,6 @@ export const StyledButton = styled.button`
   &:focus {
     background-color: #16888c;
   }
-`;
-export const WorkingModeButton = styled.button`
-  padding: 12px 20px;
-  background-color: #20b1b7;
-  color: white;
-  border: none;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #1a8e92;
-  }
-
-  &:focus {
-    background-color: #16888c;
-  }
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -101,63 +121,6 @@ export const WorkingModeButton = styled.button`
     padding: 8px 12px;
   }
 `;
-
-export const AddressButton = styled.button`
-  padding: 12px 20px;
-  background-color: #20b1b7;
-  color: white;
-  border: none;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #1a8e92;
-  }
-
-  &:focus {
-    background-color: #16888c;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 10px 15px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 12px;
-    padding: 8px 12px;
-  }
-`;
-
-export const RunningLineButton = styled.button`
-  padding: 12px 20px;
-  background-color: #20b1b7;
-  color: white;
-  border: none;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #1a8e92;
-  }
-
-  &:focus {
-    background-color: #16888c;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-    padding: 10px 15px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 12px;
-    padding: 8px 12px;
-  }
-`;
-
 
 export const BackButton = styled.button`
   padding: 10px 20px;
@@ -182,7 +145,8 @@ export const BackButton = styled.button`
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
+  max-width: 1200px;
   margin: 20px auto;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -197,17 +161,6 @@ export const Input = styled.input<{ type?: string }>`
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 14px;
-`;
-
-export const Label = styled.label`
-  font-size: 14px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-
-  input[type="checkbox"] {
-    margin-right: 10px;
-  }
 `;
 
 export const HighlightedSpan = styled.span`
@@ -230,23 +183,13 @@ export const RefreshIconBox = styled.button`
   }
 `;
 
-export const RefreshIconImage = styled.img`
-  width: 50px;
-  height: 50px;
-`;
-
-export const RefreshBtn = styled.button`
-  width: 40px;
-  height: 40px;
-`;
-
 export const ScrollContainer = styled.div`
   overflow-y: auto;
   margin: 0 auto;
-  /* height: 40vh; */
 `;
 
 export const MainFunctionsText = styled.p`
-  font-size: 24px;
-  margin-top: 10%;
+  font-size: 18px;
+  margin-top: 20px;
+  text-align: center;
 `;

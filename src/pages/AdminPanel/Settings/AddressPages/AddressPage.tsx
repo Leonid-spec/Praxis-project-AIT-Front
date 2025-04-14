@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import "./AddressPage.css";
 
 const AddressPage: React.FC = () => {
+  const { t } = useTranslation();
   const [address, setAddress] = useState({
     street: "",
     city: "",
@@ -31,18 +33,18 @@ const AddressPage: React.FC = () => {
   };
 
   const handleSave = () => {
-    setNotification(null); // Очистить предыдущее уведомление
+    setNotification(null);
 
     try {
       localStorage.setItem("address", JSON.stringify(address));
       setNotification({
-        message: "Адрес успешно сохранён!",
+        message: t("message.adminPanel.appointments.settings.admin.settingsPage.address.successMessage"),
         type: "success",
       });
     } catch (error) {
       console.error("Ошибка при сохранении данных в localStorage:", error);
       setNotification({
-        message: "Произошла ошибка при сохранении. Попробуйте снова.",
+        message: t("message.adminPanel.appointments.settings.admin.settingsPage.address.errorMessage"),
         type: "error",
       });
     }
@@ -50,72 +52,72 @@ const AddressPage: React.FC = () => {
 
   return (
     <div className="address-page-container">
-      <h2 className="title">Редактирование адреса</h2>
+      <h2 className="title">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.title")}</h2>
       <div className="address-form">
         <div className="field-input">
-          <label className="label">Улица:</label>
+          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.street")}</label>
           <input
             className="input"
             type="text"
             value={address.street}
             onChange={(e) => handleInputChange("street", e.target.value)}
-            placeholder="Введите улицу..."
+            placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.address.placeholder.street")}
           />
         </div>
         <div className="field-input">
-          <label className="label">Город:</label>
+          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.city")}</label>
           <input
             className="input"
             type="text"
             value={address.city}
             onChange={(e) => handleInputChange("city", e.target.value)}
-            placeholder="Введите город..."
+            placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.address.placeholder.city")}
           />
         </div>
         <div className="field-input">
-          <label className="label">Индекс:</label>
+          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.zipCode")}</label>
           <input
             className="input"
             type="text"
             value={address.zipCode}
             onChange={(e) => handleInputChange("zipCode", e.target.value)}
-            placeholder="Введите индекс..."
+            placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.address.placeholder.zipCode")}
           />
         </div>
         <div className="field-input">
-          <label className="label">GPS:</label>
+          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.gps")}</label>
           <input
             className="input"
             type="text"
             value={address.gps}
             onChange={(e) => handleInputChange("gps", e.target.value)}
-            placeholder="Введите GPS-координаты..."
+            placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.address.placeholder.gps")}
           />
         </div>
         <div className="field-input">
-          <label className="label">Телефон:</label>
+          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.phone")}</label>
           <input
             className="input"
             type="text"
             value={address.phone}
             onChange={(e) => handleInputChange("phone", e.target.value)}
-            placeholder="Введите телефон..."
+            placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.address.placeholder.phone")}
           />
         </div>
         <div className="field-input">
-          <label className="label">Email:</label>
+          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.email")}</label>
           <input
             className="input"
             type="email"
             value={address.email}
             onChange={(e) => handleInputChange("email", e.target.value)}
-            placeholder="Введите email..."
+            placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.address.placeholder.email")}
           />
         </div>
       </div>
       <div className="save-button-container">
         <button className="save-button" onClick={handleSave}>
-          Сохранить
+          {t("message.adminPanel.appointments.settings.admin.settingsPage.address.saveButton")}
         </button>
       </div>
       {notification && (
