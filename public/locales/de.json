@@ -5,31 +5,30 @@
         "services": "Leistungen",
         "team": "Team",
         "about_us": "Über uns",
-        "contact": "Kontakt",
+        "contact": "Kontakte",
         "home": "Startseite",
         "logo_alt": "Logo",
-        "cabinets": "Unser",
-        "praxis": "Praxis"
+        "cabinets": "Kabinette",
+        "devices": "Geräten"
       }
     },
     "main": {
       "use_oft": {
         "button": {
-          "title": "TERMIN BUCHEN"
+          "title": "Termin Buchen"
         }
       },
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
-        "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan>   IHNEN",
-        "subtitle2": "IHR SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
+        "subtitle": "Wir <HighlightedSpan>schenken</HighlightedSpan> Ihnen Ihr schönstes <HighlightedSpan>lächeln"
       },
       "about_us_page": {
-        "ours": "Unsere ",
+        "ours": "Unsere",
         "are": "sind mit modernen",
         "ausgestattet": "ausgestattet !"
       },
       "team_page": {
-        "servicesIntrot": "Unser ",
+        "servicesIntrot": "Unsere ",
         "welcome": "Willkommen bei",
         "subtitle": "Willkommen auf der Seite unseres Teams! Wir sind engagierte Fachleute, die sich leidenschaftlich dafür einsetzen, Ihnen erstklassige Zahnpflege zu bieten. Unsere Mission ist es, Ihnen ein gesundes und selbstbewusstes Lächeln zu schenken. Vielen Dank für Ihr Vertrauen!",
         "moreInfoBtn": "Mehr erfahren",
@@ -60,13 +59,13 @@
       },
       "contacts_page": {
         "welcome_text": "Wir sind <HighlightedSpan>immer</HighlightedSpan> für Sie da! Hier finden Sie unsere <HighlightedSpan>Kontaktinformationen</HighlightedSpan>, melden Sie sich gerne bei uns.",
-        "titleContacts": "Kontakt",
+        "titleContacts": "Contacts",
         "titleTime": "Sprechzeiten",
         "titleInf": "Kontaktinformationen",
         "subtitle": "Unsere Kontaktdaten",
         "address": "MusterStrasse 10, 12345 München",
-        "phone": "+49 017 223 334",
-        "email": "info@dentalclinic.de",
+        "phone": "Telefon: +49 017 223 334",
+        "email": "E-Mail: info@dentalclinic.de",
         "copy": "Kopiert",
         "coordinates": "GPS: ",
         "coordinatesCopied": "Koordinaten erfolgreich kopiert!",
@@ -297,9 +296,7 @@
           "addNewService": "Neuen Service hinzufügen",
           "refresh": "Aktualisieren",
           "errorLoading": "Fehler beim Laden des Service",
-          "searchPlaceholder": "Suche nach Servicenamen",
-          "gallery": "Galerie",
-          "editGallery": "Galerie bearbeiten"
+          "searchPlaceholder": "Suche nach Servicenamen"
         },
         "doctors": {
           "requiredField": "Dieses Feld ist erforderlich",

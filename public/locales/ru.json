@@ -8,14 +8,14 @@
         "contact": "Контакты",
         "home": "Главная",
         "logo_alt": "Логотип",
-        "cabinets": "Наши",
-        "praxis": "кабинеты"
+        "cabinets": "кабинеты",
+        "devices": "приборами"
       }
     },
     "main": {
       "use_oft": {
         "button": {
-          "title": "ЗАПИСАТЬСЯ НА ПРИЕМ"
+          "title": "Записаться на прием"
         }
       },
       "home_page": {
@@ -23,12 +23,12 @@
         "subtitle": "Мы <HighlightedSpan>дарим</HighlightedSpan> вам вашу самую красивую <HighlightedSpan>улыбку</HighlightedSpan>"
       },
       "about_us_page": {
-        "ours": "Наши ",
+        "ours": "Наши",
         "are": "оснащены современными",
         "ausgestattet": "!"
       },
       "team_page": {
-        "servicesIntrot": "Наша ",
+        "servicesIntrot": "Наша",
         "welcome": "Добро пожаловать в ",
         "subtitle": "Добро пожаловать на страницу нашей команды! Мы - команда профессионалов, стремящихся обеспечить вам качественную заботу о зубах. Наша миссия - подарить вам улыбку, полную здоровья и уверенности. Благодарим за доверие!",
         "moreInfoBtn": "Узнать больше",
@@ -47,7 +47,7 @@
         "moreInfoBtn": "Узнать больше",
         "gallery": "Галерея",
         "serviceNotFound": "Услуга не найдена.",
-        "servicesIntro": "Наши ",
+        "servicesIntro": "Наши",
         "highlight": "Abramian Dental",
         "noDescription": "Описание отсутствует.",
         "noServicesAvailable": "Услуги пока недоступны.",
@@ -63,8 +63,8 @@
         "titleInf": "Контактная информация",
         "subtitle": "Наша информация для связи",
         "address": "MusterStrasse 10, 12345 Мюнхен",
-        "phone": "+49 017 223 334",
-        "email": "info@dentalclinic.de",
+        "phone": "Телефон: +49 017 223 334",
+        "email": "Электронная почта: info@dentalclinic.de",
         "copy": "Скопировано",
         "coordinates": "GPS: ",
         "coordinatesCopied": "Координаты успешно скопированы!",
@@ -292,12 +292,10 @@
           "makeCardVisibleCheckbox": "Сделать карточку видимой",
           "saveButton": "Сохранить все",
           "savingButton": "Сохранение...",
-          "addNewService": "Добавить новую услугу",
+          "addNewService": "+ Добавить новую услугу",
           "refresh": "Обновить",
           "errorLoading": "Ошибка загрузки услуги",
-          "searchPlaceholder": "Поиск по названию услуги",
-          "gallery": "Галерея",
-          "editGallery": "Редактировать галерею"
+          "searchPlaceholder": "Поиск по названию услуги"
         },
         "doctors": {
           "requiredField": "Это поле обязательно для заполнения",
