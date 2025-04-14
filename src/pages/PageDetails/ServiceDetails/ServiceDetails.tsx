@@ -1,26 +1,26 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React, {useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {
   Container,
   ContentWrapper,
-  ImageWrapper,
-  MainImage,
-  InfoWrapper,
-  Title,
-  GalleryWrapper,
-  GalleryTitle,
-  ImagesGrid,
-  GalleryImage,
-  DescriptionWrapper,
-  LabelWrapper,
-  TitleWrapper,
   Description,
+  DescriptionWrapper,
+  GalleryImage,
+  GalleryTitle,
+  GalleryWrapper,
+  ImagesGrid,
+  ImageWrapper,
   ImgAndBtnWrapper,
+  InfoWrapper,
+  LabelWrapper,
+  MainImage,
+  Title,
+  TitleWrapper,
 } from "./styles";
-import { AppDispatch, RootState } from "../../../store/store";
-import { useDispatch, useSelector } from "react-redux";
-import { ServiceData } from "../../../store/types/serviceTypes";
+import {AppDispatch, RootState} from "../../../store/store";
+import {useDispatch, useSelector} from "react-redux";
+import {ServiceData} from "../../../store/types/serviceTypes";
 import {
   fetchActiveServicesStart,
   fetchServicesFailure,
@@ -47,7 +47,7 @@ const ServiceDetails: React.FC = () => {
       const fetchDoctors = async () => {
         try {
           const response = await fetch(
-            "http://localhost:8080/api/services/active"
+            "/api/services/active"
           );
           if (!response.ok) {
             throw new Error("Failed to fetch services");

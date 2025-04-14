@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { RootState, AppDispatch } from "../../store/store";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {AppDispatch, RootState} from "../../store/store";
 import {
   fetchActiveServicesFailure,
   fetchActiveServicesStart,
   fetchActiveServicesSuccess,
 } from "../../store/slices/serviceSlice";
 import ServiceCard from "../../components/Cards/Service/ServiceCard";
-import {
-  ServiceContainer,
-  HighlightText,
-  HeaderTextBox,
-  ServiceText,
-  ServicesGrid,
-  HighlightedSpan,
-} from "./styles";
-import { useTranslation } from "react-i18next";
-import { ServiceData } from "../../store/types/serviceTypes";
+import {HeaderTextBox, HighlightedSpan, HighlightText, ServiceContainer, ServicesGrid, ServiceText,} from "./styles";
+import {useTranslation} from "react-i18next";
+import {ServiceData} from "../../store/types/serviceTypes";
 
 type Language = "En" | "De" | "Ru";
 
@@ -40,7 +33,7 @@ const ServicePage: React.FC = () => {
         }
 
         const response = await fetch(
-          "http://localhost:8080/api/services/active",
+          "/api/services/active",
           {
             headers: {
               Authorization: `Bearer ${token}`,

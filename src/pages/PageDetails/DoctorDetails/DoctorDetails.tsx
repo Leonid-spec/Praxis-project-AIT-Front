@@ -1,28 +1,28 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React, {useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {useTranslation} from "react-i18next";
 import {
+  Biography,
+  BiographyWrapper,
   Container,
   ContentWrapper,
-  ImageWrapper,
-  MainImage,
-  InfoWrapper,
-  Title,
-  Specialization,
-  Biography,
-  GalleryWrapper,
-  GalleryTitle,
-  ImagesGrid,
-  GalleryImage,
   FullName,
-  TitleWrapper,
-  BiographyWrapper,
-  SpecializationWrapper,
+  GalleryImage,
+  GalleryTitle,
+  GalleryWrapper,
+  ImagesGrid,
+  ImageWrapper,
+  InfoWrapper,
   LabelWrapper,
+  MainImage,
+  Specialization,
+  SpecializationWrapper,
+  Title,
+  TitleWrapper,
 } from "./styles";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../store/store";
-import { fetchDoctorsSuccess, fetchDoctorsFailure, fetchActiveDoctorsStart } from "../../../store/slices/doctorSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {AppDispatch, RootState} from "../../../store/store";
+import {fetchActiveDoctorsStart, fetchDoctorsFailure, fetchDoctorsSuccess} from "../../../store/slices/doctorSlice";
 
 type Language = "De" | "En" | "Ru";
 
@@ -40,7 +40,7 @@ const DoctorDetails: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch("http://localhost:8080/api/doctors/active");
+          const response = await fetch("/api/doctors/active");
           if (!response.ok) {
             throw new Error("Failed to fetch doctors");
           }

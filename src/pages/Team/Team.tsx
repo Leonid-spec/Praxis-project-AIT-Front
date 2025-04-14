@@ -1,23 +1,16 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { RootState, AppDispatch } from "../../store/store";
+import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import {AppDispatch, RootState} from "../../store/store";
 import {
   fetchActiveDoctorsFailure,
   fetchActiveDoctorsStart,
   fetchActiveDoctorsSuccess,
 } from "../../store/slices/doctorSlice";
 import DoctorCard from "../../components/Cards/Doctor/DoctorCard";
-import {
-  TeamContainer,
-  HighlightText,
-  TeamTextBox,
-  TeamText,
-  DoctorsGrid,
-  HighlightedSpan,
-} from "./styles";
-import { useTranslation } from "react-i18next";
-import { Doctor } from "../../store/types/doctorTypes";
+import {DoctorsGrid, HighlightedSpan, HighlightText, TeamContainer, TeamText, TeamTextBox,} from "./styles";
+import {useTranslation} from "react-i18next";
+import {Doctor} from "../../store/types/doctorTypes";
 
 type Language = "En" | "De" | "Ru";
 
@@ -35,7 +28,7 @@ const Team: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:8080/api/doctors/active", {
+        const response = await fetch("/api/doctors/active", {
           headers: {
             Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",

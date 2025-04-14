@@ -1,13 +1,13 @@
-import { AdminDto, TokenResponseDto, ChangePasswordDto } from "../store/types/adminTypes";
+import {AdminDto, ChangePasswordDto, TokenResponseDto} from "../store/types/adminTypes";
 
 const API_URL = "/api";
 
 const handleFetchError = async (response: Response) => {
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`HTTP error! Status: ${response.status}, Details: ${errorText}`);
-  }
-  return response.json();
+    if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP error! Status: ${response.status}, Details: ${errorText}`);
+    }
+    return response.json();
 };
 
 // ===== Auth =====

@@ -1,19 +1,12 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { FaUser, FaLock } from "react-icons/fa";
-import {
-  Overlay,
-  FormContainer,
-  TitleAndSub,
-  Title,
-  Subtitle,
-  ButtonCloseContainer,
-} from "./styles";
+import React, {useState} from "react";
+import {useTranslation} from "react-i18next";
+import {FaLock, FaUser} from "react-icons/fa";
+import {ButtonCloseContainer, FormContainer, Overlay, Subtitle, Title, TitleAndSub,} from "./styles";
 import ButtonClose from "../Button/ButtonClose/ButtonClose";
 import SubmitButton from "../Button/SubmitButton/SubmitButton";
 import Notification from "../Notification/Notification";
 import TextInput from "../Input/TextInput";
-import { useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const LoginAdminForm = ({
   onClose,
@@ -81,7 +74,7 @@ const LoginAdminForm = ({
     const loginData = { login, password };
 
     try {
-      const response = await fetch("http://localhost:8080/api/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
