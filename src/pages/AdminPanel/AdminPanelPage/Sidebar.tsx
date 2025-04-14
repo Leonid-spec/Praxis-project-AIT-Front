@@ -6,12 +6,14 @@ const navItems = [
   {
     path: "/admin-panel/settings",
     label: "Settings",
-    icon: "https://static.vecteezy.com/system/resources/previews/031/716/638/non_2x/transparent-background-settings-icon-png.png"
+    // icon: "https://static.vecteezy.com/system/resources/previews/031/716/638/non_2x/transparent-background-settings-icon-png.png"
+    icon: "https://cdn3.iconfinder.com/data/icons/smarthome-30/24/Customize_Home-1024.png"
   },
   {
     path: "/admin-panel/appointments",
     label: "Appointment",
-    icon: "https://www.vhv.rs/dpng/f/274-2749469_appointment-icon-png.png"
+    icon: "https://cdn-icons-png.flaticon.com/512/10279/10279235.png"
+    // https://png.pngtree.com/png-vector/20230825/ourmid/pngtree-vector-flat-line-silhouette-human-form-with-an-appointment-icon-on-png-image_6941000.png
   },
   {
     path: "/admin-panel/admin-services",
@@ -21,7 +23,7 @@ const navItems = [
   {
     path: "/admin-panel/doctors",
     label: "Doctors",
-    icon: "https://th.bing.com/th/id/R.f6c7c7a2dcddf4dc8bbfd7e3bd0b7c00?rik=LYm39AE86bkYgw&pid=ImgRaw&r=0"
+    icon: "https://png.pngtree.com/png-clipart/20230405/original/pngtree-dentist-line-icon-png-image_9028987.png"
   }
 ];
 

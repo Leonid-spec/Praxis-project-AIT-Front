@@ -8,6 +8,7 @@ export const StyledButton = styled.button`
   border: none; 
   border-radius: 6px;
   background-color: #5FC9D3; 
+  background-color: #9ceef1;
   color: #ffffff;
   cursor: pointer;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
@@ -22,6 +23,8 @@ export const StyledButton = styled.button`
   &:active {
     background-color: #308b9d; 
     /* background-color: #268294;  */
+  background-color: #5FC9D3; 
+
     transform: translateY(0); 
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }

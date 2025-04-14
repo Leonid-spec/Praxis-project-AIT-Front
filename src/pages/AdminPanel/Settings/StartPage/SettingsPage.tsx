@@ -15,23 +15,26 @@ import {
   StyledButton,
   HighlightedSpan,
   WelcomeTextBox,
-  MainFunctionsText,
+  // MainFunctionsText,
   MainWelcomeText,
   SectionTitle,
-  RefreshIconBox,
+  // RefreshIconBox,
+  ScrollContainer,
+  MainFunctionsText,
+  // RefreshIconBox,
 } from "./styles";
 
-import { FaSyncAlt } from "react-icons/fa";
+// import { FaSyncAlt } from "react-icons/fa";
 import { AdminDto } from "../../../../store/types/adminTypes";
 import { getAllAdmins } from "../../../../api/adminAPI";
+// import { FaSyncAlt } from "react-icons/fa";
 
 interface SettingsPageProps {
   adminLogin: string;
 }
 
-const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
+const SettingsPage: React.FC<SettingsPageProps> = () => {
   const { t } = useTranslation();
-
   const [admins, setAdmins] = useState<AdminDto[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<
@@ -59,11 +62,18 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
         setError(
           t("message.adminPanel.appointments.services.addServices.errorLoading")
         );
+        setError(
+          t("message.adminPanel.appointments.services.addServices.errorLoading")
+        );
         return;
       }
       const data = await getAllAdmins(token);
       setAdmins(data);
     } catch (err: any) {
+      setError(
+        err.message ||
+          t("message.adminPanel.appointments.services.addServices.errorLoading")
+      );
       setError(
         err.message ||
           t("message.adminPanel.appointments.services.addServices.errorLoading")
@@ -77,11 +87,11 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
     }
   }, [activeSection]);
 
-  const handleRefreshBtn = () => {
-    if (activeSection === "viewAdmins" || activeSection === "deleteAdmin") {
-      fetchAdmins();
-    }
-  };
+  // const handleRefreshBtn = () => {
+  //   if (activeSection === "viewAdmins" || activeSection === "deleteAdmin") {
+  //     fetchAdmins();
+  //   }
+  // };
 
   return (
     <ContentContainer>
@@ -91,6 +101,7 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
             t(
               "message.adminPanel.appointments.settings.admin.settingsPage.greeting"
             )
+            
           )}
         </MainWelcomeText>
 
@@ -106,13 +117,22 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.create"
           )}
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.create"
+          )}
         </StyledButton>
         <StyledButton onClick={() => setActiveSection("changePassword")}>
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword"
           )}
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword"
+          )}
         </StyledButton>
         <StyledButton onClick={() => setActiveSection("viewAdmins")}>
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll"
+          )}
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll"
           )}
@@ -140,6 +160,14 @@ const SettingsPage: React.FC<SettingsPageProps> = ({ adminLogin }) => {
         {/* <RefreshIconBox onClick={handleRefreshBtn}>
           <FaSyncAlt size={24} color="#20b1b7" />
         </RefreshIconBox> */}
+
+        {activeSection === "welcome" && (
+          <MainFunctionsText>
+            {t(
+              "message.adminPanel.appointments.settings.admin.settingsPage.capabilities"
+            )}
+          </MainFunctionsText>
+        )}
       </ButtonGroup>
 
       <Section>

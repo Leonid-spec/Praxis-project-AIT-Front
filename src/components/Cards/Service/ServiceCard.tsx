@@ -13,7 +13,6 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({
   id,
   title,
-  description,
   topImage,
   onDetailsClick,
 }) => {
@@ -29,7 +28,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
      </PhotoContainer>
       <Info>
         <Title>{title}</Title>
-        <Description>{description}</Description>
         <DetailsButton onClick={() => onDetailsClick(id)}>
                   {t("message.main.team_page.moreInfoBtn")} 
                 </DetailsButton>

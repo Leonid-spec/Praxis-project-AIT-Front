@@ -1,12 +1,10 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { Doctor } from "../doctorTypes";
 import { getAllDoctors, getDoctorById, updateDoctor } from "../../../../api/doctorAPI";
 import {
   EditDoctorContainer,
   HeaderBox,
   StyledReturnButton,
   StyledSaveButton,
-  InputContainer,
   Input,
   TitleBoxText,
   UploadInput,
@@ -17,13 +15,11 @@ import {
   MainBoxText,
   CheckboxLabel,
   BiographySection,
-  BiographyLabel,
   BiographyTextareaDe,
   BiographyTextareaEn,
   BiographyTextareaRu,
   ScrollContainer,
   Section,
-  MiddleContainer,
   Container,
   MainTextContainer,
   InputContainerFullName,
@@ -34,6 +30,7 @@ import { useState, useEffect } from "react";
 import { addImage } from "../../../../api/imageAPI";
 import { useTranslation } from "react-i18next"; 
 import { EditTopImage, TitlesBox } from "../../Services/ServicePageSinge/style";
+import { Doctor } from "../../../../store/types/doctorTypes";
 
 const EditDoctorPage: React.FC = () => {
   const { t } = useTranslation(); 
@@ -176,7 +173,9 @@ const EditDoctorPage: React.FC = () => {
       <ScrollContainer>
         <MainTextContainer>
           <TopContainer>
+            
             <MainBoxText>
+
               <InputContainerFullName>
                 <SectionTitles>{t("message.adminPanel.appointments.doctors.fullName")}</SectionTitles> 
                 <Input

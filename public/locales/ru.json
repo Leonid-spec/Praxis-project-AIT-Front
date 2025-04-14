@@ -9,7 +9,8 @@
         "home": "Главная",
         "logo_alt": "Логотип",
         "cabinets": "кабинеты",
-        "devices": "приборами"
+        "devices": "приборами",
+        "praxis": "Наши"
       }
     },
     "main": {
@@ -20,7 +21,8 @@
       },
       "home_page": {
         "title": "Добро пожаловать в нашу стоматологическую клинику",
-        "subtitle": "Мы <HighlightedSpan>дарим</HighlightedSpan> вам вашу самую красивую <HighlightedSpan>улыбку</HighlightedSpan>"
+        "subtitle1": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ",
+        "subtitle2": "САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Наши",
@@ -63,8 +65,8 @@
         "titleInf": "Контактная информация",
         "subtitle": "Наша информация для связи",
         "address": "MusterStrasse 10, 12345 Мюнхен",
-        "phone": "Телефон: +49 017 223 334",
-        "email": "Электронная почта: info@dentalclinic.de",
+        "phone": "+49 017 223 334",
+        "email": "info@dentalclinic.de",
         "copy": "Скопировано",
         "coordinates": "GPS: ",
         "coordinatesCopied": "Координаты успешно скопированы!",

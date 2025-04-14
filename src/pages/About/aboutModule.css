@@ -1,3 +1,4 @@
+
 .aboutPageContainer {
   display: flex;
   flex-direction: column;
@@ -150,9 +151,6 @@
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
-  /* display: flex;
-    align-items: center;
-    justify-content: center; */
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {

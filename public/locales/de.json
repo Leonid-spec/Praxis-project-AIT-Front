@@ -9,7 +9,8 @@
         "home": "Startseite",
         "logo_alt": "Logo",
         "cabinets": "Kabinette",
-        "devices": "Geräten"
+        "devices": "Geräten",
+        "praxis": "Unsere"
       }
     },
     "main": {
@@ -20,7 +21,8 @@
       },
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
-        "subtitle": "Wir <HighlightedSpan>schenken</HighlightedSpan> Ihnen Ihr schönstes <HighlightedSpan>lächeln"
+        "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN  IHR",
+        "subtitle2": "SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Unsere",
@@ -64,8 +66,8 @@
         "titleInf": "Kontaktinformationen",
         "subtitle": "Unsere Kontaktdaten",
         "address": "MusterStrasse 10, 12345 München",
-        "phone": "Telefon: +49 017 223 334",
-        "email": "E-Mail: info@dentalclinic.de",
+        "phone": "+49 017 223 334",
+        "email": "info@dentalclinic.de",
         "copy": "Kopiert",
         "coordinates": "GPS: ",
         "coordinatesCopied": "Koordinaten erfolgreich kopiert!",

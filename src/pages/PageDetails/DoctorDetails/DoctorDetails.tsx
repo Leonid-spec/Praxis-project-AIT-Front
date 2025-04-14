@@ -40,7 +40,7 @@ const DoctorDetails: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch("http://localhost:8080/api/doctors/active");
+          const response = await fetch("http://localhost:8100/api/doctors/active");
           if (!response.ok) {
             throw new Error("Failed to fetch doctors");
           }
@@ -119,7 +119,15 @@ const DoctorDetails: React.FC = () => {
         <ImagesGrid>
           {doctor.images && doctor.images.length > 0 ? (
             doctor.images.map((img) => (
-              <GalleryImage key={img.id} src={img.path} alt="Doctor's work" />
+              <GalleryImage 
+                key={img.id} 
+                src={
+                  img.path.startsWith("https://")
+                    ? img.path
+                    : `https://${img.path}`
+                }
+                alt="Doctor's work" 
+              />
             ))
           ) : (
             <p>{t("noImages")}</p>
