@@ -20,7 +20,8 @@
       },
       "home_page": {
         "title": "Добро пожаловать в нашу стоматологическую клинику",
-        "subtitle": "Мы <HighlightedSpan>дарим</HighlightedSpan> вам вашу самую красивую <HighlightedSpan>улыбку</HighlightedSpan>"
+        "subtitle1": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ",
+        "subtitle2": "САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Наши",

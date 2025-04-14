@@ -20,7 +20,8 @@
       },
       "home_page": {
         "title": "Welcome to our caring and professional dental practice",
-        "subtitle": "We <HighlightedSpan>give</HighlightedSpan> you your most beautiful <HighlightedSpan>smile</HighlightedSpan>"
+        "subtitle1": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR",
+        "subtitle2": "MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Our",

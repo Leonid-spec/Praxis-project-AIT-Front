@@ -20,7 +20,8 @@
       },
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
-        "subtitle": "Wir <HighlightedSpan>schenken</HighlightedSpan> Ihnen Ihr schönstes <HighlightedSpan>lächeln"
+        "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN  IHR",
+        "subtitle2": "SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Unsere",
