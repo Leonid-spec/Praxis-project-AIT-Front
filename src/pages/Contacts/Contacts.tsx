@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   ButtonContainer,
   CardsGrid,
@@ -8,9 +8,7 @@ import {
   ContactsContainer,
   ContactsPageContainer,
   ContactsWrapper,
-  DaysOfWeek,
   DaysOfWeekBox,
-  HighlightedSpan,
   IconCircle,
   MapContainer,
   SprechzeitenBox,
@@ -23,37 +21,67 @@ import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
   const [showMessage, setShowMessage] = useState(false);
+  const [address, setAddress] = useState({
+    street: "MusterStrasse 10",
+    city: "München",
+    zipCode: "12345",
+    gps: "50.4501° N, 30.5234° E",
+    phone: "+49 017 223 334",
+    email: "info@dentalclinic.de",
+  });
+
+  const [workingHours, setWorkingHours] = useState({
+    monday: "08:00 - 12:00, 13:00 - 18:00",
+    tuesday: "08:00 - 12:00, 13:00 - 18:00",
+    wednesday: "08:00 - 12:00, 13:00 - 18:00",
+    thursday: "08:00 - 12:00, 13:00 - 18:00",
+    friday: "08:00 - 12:00, 13:00 - 18:00",
+  });
+
+  // Загрузка адреса из localStorage
+  useEffect(() => {
+    const savedAddress = localStorage.getItem("address");
+    if (savedAddress) {
+      try {
+        const parsedAddress = JSON.parse(savedAddress);
+        setAddress(parsedAddress);
+      } catch (error) {
+        console.error("Ошибка при загрузке адреса из localStorage:", error);
+      }
+    }
+  }, []);
+
+  // Загрузка данных режима работы из localStorage
+  useEffect(() => {
+    const savedHours = localStorage.getItem("workingHours");
+    if (savedHours) {
+      try {
+        const parsedHours = JSON.parse(savedHours);
+        setWorkingHours(parsedHours);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных из localStorage:", error);
+      }
+    }
+  }, []);
 
   const handleCopyCoordinates = () => {
-    const coordinates = "50.4501° N, 30.5234° E";
-    navigator.clipboard.writeText(coordinates);
+    navigator.clipboard.writeText(address.gps);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
   };
 
   const handleCall = () => {
-    window.location.href = "tel:+1234567890";
+    window.location.href = `tel:${address.phone}`;
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:example@example.com";
+    window.location.href = `mailto:${address.email}`;
   };
 
   return (
     <ContactsContainer>
       {showMessage && (
-        <div
-          style={{
-            position: "fixed",
-            bottom: "30px",
-            right: "10px",
-            backgroundColor: "#4caf50",
-            color: "white",
-            padding: "10px 20px",
-            borderRadius: "5px",
-            zIndex: 1,
-          }}
-        >
+        <div className="notification-message">
           {t("message.main.contacts_page.copy")}
         </div>
       )}
@@ -64,36 +92,32 @@ const Contacts: React.FC = () => {
             <ContactsBox>
               <ContactsBoxTitle>
                 {t("message.main.contacts_page.titleContacts")}
-              </ContactsBoxTitle>{" "}
-              <DaysOfWeek>
-                <p>{t("message.main.contacts_page.address")}</p>
-              </DaysOfWeek>
+              </ContactsBoxTitle>
+              <DaysOfWeekBox>
+                <p>
+                  {address.street}, {address.zipCode} {address.city}
+                </p>
+              </DaysOfWeekBox>
               <ContactIcons
                 onClick={handleCopyCoordinates}
-                style={{
-                  cursor: "pointer",
-                }}
+                style={{ cursor: "pointer" }}
               >
                 <IconCircle>
                   <FaCopy />
                 </IconCircle>
-                <span>GPS: 50.4501° N, 30.5234° E</span>
+                <span>GPS: {address.gps}</span>
               </ContactIcons>
               <ContactIcons onClick={handleCall} style={{ cursor: "pointer" }}>
                 <IconCircle>
-                  <FaPhone
-                    style={{
-                      transform: "rotate(90deg)",
-                    }}
-                  />
+                  <FaPhone />
                 </IconCircle>
-                <span>{t("message.main.contacts_page.phone")}</span>
+                <span>{address.phone}</span>
               </ContactIcons>
               <ContactIcons onClick={handleEmail} style={{ cursor: "pointer" }}>
                 <IconCircle>
                   <FaEnvelope />
                 </IconCircle>
-                <span>{t("message.main.contacts_page.email")}</span>
+                <span>{address.email}</span>
               </ContactIcons>
             </ContactsBox>
           </ContactsWrapper>
@@ -104,21 +128,22 @@ const Contacts: React.FC = () => {
                 {t("message.main.contacts_page.titleTime")}
               </ContactsBoxTitle>
               <DaysOfWeekBox>
-                <DaysOfWeek>
-                  <p>{t("message.footer.daysOfWeek.monday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.thursday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.friday")}:</p>
-                </DaysOfWeek>
-                <DaysOfWeek>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                </DaysOfWeek>
+                <div className="days-column">
+                  <p>{t("message.footer.daysOfWeek.monday")}</p>
+                  <p>{t("message.footer.daysOfWeek.tuesday")}</p>
+                  <p>{t("message.footer.daysOfWeek.wednesday")}</p>
+                  <p>{t("message.footer.daysOfWeek.thursday")}</p>
+                  <p>{t("message.footer.daysOfWeek.friday")}</p>
+                </div>
+                <div className="hours-column">
+                  <p>{workingHours.monday}</p>
+                  <p>{workingHours.tuesday}</p>
+                  <p>{workingHours.wednesday}</p>
+                  <p>{workingHours.thursday}</p>
+                  <p>{workingHours.friday}</p>
+                </div>
               </DaysOfWeekBox>
+
               <ButtonContainer>
                 <MakeAppointmentBtn
                   text={t("message.main.use_oft.button.title")}

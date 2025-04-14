@@ -22,8 +22,8 @@ const globalStyles = css`
   body,
   html {
     height: 100%;
-    margin: 0;
-    padding: 0;
+    margin: 15px;
+    padding: 15px;
   }
 // Yuliia
   @media (max-width: 868px) {

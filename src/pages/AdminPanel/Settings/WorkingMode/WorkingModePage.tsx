@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./WorkingModePage.css";
 
+
 const WorkingModePage: React.FC = () => {
   const [workingHours, setWorkingHours] = useState({
     monday: "",
@@ -22,9 +23,22 @@ const WorkingModePage: React.FC = () => {
   };
 
   const handleSave = () => {
-    localStorage.setItem("workingHours", JSON.stringify(workingHours));
-    alert("Режим работы успешно сохранён!");
+   
+    const allFieldsFilled = Object.values(workingHours).every((time) => time.trim() !== "");
+    
+    if (!allFieldsFilled) {
+      alert("Пожалуйста, заполните все поля перед сохранением.");
+      return;
+    }
+  
+    try {
+      localStorage.setItem("workingHours", JSON.stringify(workingHours));
+      alert("Режим работы успешно сохранён!");
+    } catch (error) {
+      console.error("Ошибка при сохранении данных в localStorage:", error);
+    }
   };
+  
 
   return (
     <div className="working-mode-page-container">
@@ -45,9 +59,9 @@ const WorkingModePage: React.FC = () => {
           </div>
         ))}
       </div>
-      <button className="save-button" onClick={handleSave}>
-        Сохранить
-      </button>
+      <div className="save-button-container">
+      <button className="save-button" onClick={handleSave}>Сохранить</button>
+    </div>
     </div>
   );
 };

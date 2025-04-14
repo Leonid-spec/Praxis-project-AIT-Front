@@ -234,6 +234,8 @@
               "createAdminButton": "Создать администратора",
               "grantAdminRights": "Предоставить права администратора",
               "successMessage": "Администратор успешно создан!"
+
+              
             },
             "change": {
               "currentLoginLabel": "Текущий логин:",

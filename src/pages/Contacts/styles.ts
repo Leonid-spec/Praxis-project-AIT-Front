@@ -21,7 +21,7 @@ export const TeamContainer = styled.div`
 `;
 
 export const WelcomeTextContainer = styled.p`
-padding: 20px 40px 0;
+  padding: 20px 40px 0;
   font-size: 1.4rem;
   color: #555;
   text-align: center;
@@ -50,13 +50,10 @@ padding: 20px 40px 0;
 
 export const WelcomeTextSubtitle = styled.span`
   color: #555;
-  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
-  font-weight: none;
 `;
 
 export const HighlightedSpan = styled.span`
   color: #5fc9d3;
-  /* font-weight: bold; */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
@@ -94,7 +91,7 @@ export const ContactBox = styled.p`
 `;
 
 export const ContactsBoxTitle = styled.h2`
-margin-left: 4px;
+  margin-left: 4px;
   font-size: 1.8rem;
   color: #333;
 `;
@@ -103,7 +100,6 @@ export const SprechzeitenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  
 `;
 
 export const SprechzeitenBox = styled.div`
@@ -115,19 +111,37 @@ export const SprechzeitenBox = styled.div`
   flex: 1;
   margin: 0;
 `;
-
 export const DaysOfWeekBox = styled.div`
   display: grid;
-  grid-template-columns:30% 70%;
+  grid-template-columns: 30% 70%; 
+  gap: 20px; 
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; 
+    gap: 15px; 
+  }
 `;
 
-
-export const DaysOfWeek = styled.div`
-  padding: 0 0 0 2%;
+export const DaysColumn = styled.div`
   color: #333;
   font-size: 20px;
-  line-height: 2;
+
+  p {
+    line-height: 2.5; 
+    margin: 10px 0; 
+  }
 `;
+
+export const HoursColumn = styled.div`
+  color: #555;
+  font-size: 20px;
+
+  p {
+    line-height: 2.5; 
+    margin: 10px 0; 
+  }
+`;
+
 
 
 export const MapContainer = styled.div`
@@ -166,6 +180,4 @@ export const IconCircle = styled.div`
   margin-right: 10px;
 `;
 
-export const ButtonContainer = styled.div`
-/* margin-left: 10px; */
-`;
+export const ButtonContainer = styled.div``;

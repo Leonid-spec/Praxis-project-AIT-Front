@@ -1,4 +1,4 @@
-.working-mode-page-container {
+.address-page-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -14,13 +14,13 @@
     color: #333;
   }
   
-  .working-mode-form {
+  .address-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
   
-  .day-input {
+  .field-input {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -62,5 +62,4 @@
       background-color: #1a8e92; 
     }
   }
-  
   

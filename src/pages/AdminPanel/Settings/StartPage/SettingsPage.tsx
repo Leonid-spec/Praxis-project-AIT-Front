@@ -6,8 +6,7 @@ import AdminList from "../AdminList/AdminList";
 import DeleteAdminForm from "../DeleteAdminForm/DeleteAdminForm";
 import RunningLinePage from "../RunningLine/RunningLinePage";
 import WorkingModePage from "../WorkingMode/WorkingModePage";
-
-
+import AddressPage from "../AddressPages/AddressPage";
 import {
   ContentContainer,
   Section,
@@ -38,9 +37,15 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
   const [admins, setAdmins] = useState<AdminDto[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [activeSection, setActiveSection] = useState<
-  "createAdmin" | "changePassword" | "viewAdmins" | "deleteAdmin" | "workingMode" | "address" | "runningLine" | null
->(null);
-
+    | "createAdmin"
+    | "changePassword"
+    | "viewAdmins"
+    | "deleteAdmin"
+    | "workingMode"
+    | "address"
+    | "runningLine"
+    | null
+  >(null);
 
   const token = localStorage.getItem("token");
 
@@ -101,7 +106,6 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
             t(
               "message.adminPanel.appointments.settings.admin.settingsPage.greeting"
             )
-            
           )}
         </MainWelcomeText>
 
@@ -117,22 +121,13 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.create"
           )}
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.create"
-          )}
         </StyledButton>
         <StyledButton onClick={() => setActiveSection("changePassword")}>
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword"
           )}
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.changePassword"
-          )}
         </StyledButton>
         <StyledButton onClick={() => setActiveSection("viewAdmins")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll"
-          )}
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.viewAll"
           )}
@@ -171,7 +166,6 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
       </ButtonGroup>
 
       <Section>
-       
         {activeSection === "createAdmin" && (
           <>
             <SectionTitle>
@@ -213,27 +207,24 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
           </>
         )}
         {activeSection === "workingMode" && (
-  <>
-    <SectionTitle>
-     
-    </SectionTitle>
-    <WorkingModePage /> {/* Компонент с формой для редактирования */}
-  </>
-)}
+          <>
+            <SectionTitle></SectionTitle>
+            <WorkingModePage /> 
+          </>
+        )}
 
         {activeSection === "address" && (
           <>
             <SectionTitle>
-              {t(
-                "message.adminPanel.appointments.settings.admin.settingsPage.sections.address"
-              )}
+              
             </SectionTitle>
-            <div>Здесь можно указать наш адрес</div>
+            <AddressPage />{" "}
+           
           </>
         )}
+
         {activeSection === "runningLine" && (
           <>
-           
             <RunningLinePage />
           </>
         )}

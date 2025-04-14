@@ -32,10 +32,10 @@ export const FooterContainer = styled.footer`
 
 export const RunningLineWrapper = styled.div`
   width: 100%;
-  background-color: #f0f8ff; /* Светлый фон для выделения */
+  background-color: #f0f8ff; 
   padding: 10px 0;
   position: relative;
-  overflow: hidden; /* Скрывает текст, выходящий за пределы */
+  overflow: hidden; 
 `;
 
 export const RunningLineContainer = styled.div`
@@ -47,7 +47,7 @@ export const RunningLineContainer = styled.div`
 
 export const RunningLine = styled.div`
   display: inline-block;
-  animation: scroll 10s linear infinite;
+  animation: scroll 20s linear infinite;
 
   @keyframes scroll {
     from {
