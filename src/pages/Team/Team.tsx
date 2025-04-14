@@ -1,16 +1,23 @@
-import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useNavigate} from "react-router-dom";
-import {AppDispatch, RootState} from "../../store/store";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from "../../store/store";
 import {
   fetchActiveDoctorsFailure,
   fetchActiveDoctorsStart,
   fetchActiveDoctorsSuccess,
 } from "../../store/slices/doctorSlice";
 import DoctorCard from "../../components/Cards/Doctor/DoctorCard";
-import {DoctorsGrid, HighlightedSpan, HighlightText, TeamContainer, TeamText, TeamTextBox,} from "./styles";
-import {useTranslation} from "react-i18next";
-import {Doctor} from "../../store/types/doctorTypes";
+import {
+  DoctorsGrid,
+  HighlightedSpan,
+  HighlightText,
+  TeamContainer,
+  TeamText,
+  TeamTextBox,
+} from "./styles";
+import { useTranslation } from "react-i18next";
+import { Doctor } from "../../store/types/doctorTypes";
 
 type Language = "En" | "De" | "Ru";
 
@@ -27,13 +34,7 @@ const Team: React.FC = () => {
     const fetchActiveDoctors = async () => {
       dispatch(fetchActiveDoctorsStart());
       try {
-        const token = localStorage.getItem("token");
-        const response = await fetch("/api/doctors/active", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch("/api/doctors/active");
     
         if (!response.ok) {
           const errorText = await response.text(); 
@@ -41,18 +42,17 @@ const Team: React.FC = () => {
         }
     
         const data = await response.json();
-        console.log("Doctors data:", data);
+        // console.log("Doctors data:", data);
         dispatch(fetchActiveDoctorsSuccess(data));
       } catch (err: any) {
         console.error("Failed to fetch active doctors:", err);
         dispatch(fetchActiveDoctorsFailure(err.message || t("errorFetchingActiveDoctors")));
       }
     };
-  
+
     fetchActiveDoctors();
-  }, [dispatch]);
-  
-  
+  }, [dispatch, t]);
+
   const handleDetailsClick = (id: number) => {
     navigate(`/doctor/${id}`);
   };
@@ -71,12 +71,10 @@ const Team: React.FC = () => {
 
   return (
     <TeamContainer>
-
       <TeamTextBox>
         <TeamText>
-        {parseSubtitle(t("message.main.team_page.servicesIntrot"))}{" "}
-           <HighlightText>{parseSubtitle(t("message.header.menu.team"))}</HighlightText> |
-         
+          {parseSubtitle(t("message.main.team_page.servicesIntrot"))}{" "}
+          <HighlightText>{parseSubtitle(t("message.header.menu.team"))}</HighlightText>
         </TeamText>
       </TeamTextBox>
 

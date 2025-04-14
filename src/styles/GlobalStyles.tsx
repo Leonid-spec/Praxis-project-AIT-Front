@@ -11,10 +11,10 @@ const globalStyles = css`
   }
 
   body {
-    /* font-family: "Lato", sans-serif; */
+    font-family: "Lato", sans-serif;
     /* font-family: "Open Sans", sans-serif; */
     /* font-family: "Roboto", sans-serif; */
-    font-family: "Nunito", sans-serif;
+    /* font-family: "Nunito", sans-serif; */
     /* font-variant: small-caps; */
     background-color: #f6f9fc;
   }

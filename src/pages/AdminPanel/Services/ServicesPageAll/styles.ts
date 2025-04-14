@@ -4,11 +4,9 @@ export const ScrollContainer = styled.div`
   flex: 1;
   overflow-y: auto; 
   scroll-behavior: smooth;
-  padding: 0 30px 0 20px;
   height: 60vh;
   
   @media(max-width: 1440px) {
-  margin: 20px;
   padding: 0 30px 0 20px;
   }
   
@@ -23,7 +21,6 @@ export const ServicesPageAllContainer = styled.div`
   flex-direction: column;
   height: 80vh;
   overflow: hidden;
-  padding: 30px; 
 `;
 
 export const HeaderMainBtnsContainer = styled.div`

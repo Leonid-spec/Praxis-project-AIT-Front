@@ -23,6 +23,7 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import {AppDispatch, RootState} from "../../../store/store";
 import {fetchActiveDoctorsStart, fetchDoctorsFailure, fetchDoctorsSuccess} from "../../../store/slices/doctorSlice";
+import { getActiveDoctors } from "../../../api/doctorAPI";
 
 type Language = "De" | "En" | "Ru";
 
@@ -40,11 +41,7 @@ const DoctorDetails: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch("/api/doctors/active");
-          if (!response.ok) {
-            throw new Error("Failed to fetch doctors");
-          }
-          const data = await response.json();
+          const data = await getActiveDoctors();
           dispatch(fetchDoctorsSuccess(data));
         } catch (err: any) {
           dispatch(fetchDoctorsFailure(err.message || t("errorFetchingDoctors")));

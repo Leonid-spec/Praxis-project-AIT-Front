@@ -25,6 +25,7 @@ export const Logo = styled.div`
 
 export const Nav = styled.nav`
   display: flex;
+  align-items: center;
   gap: 25px;
 `;
 
@@ -32,14 +33,12 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: #3d3d3d;
   font-size: 1.2rem;
-  
 
   &:hover {
     color: #9ceef1;
-    color: #4ba0a5;
+    /* color: #4ba0a5; */
   }
 `;
-
 
 export const SprachUundAdminbereich = styled.div`
   display: flex;
@@ -49,10 +48,9 @@ export const SprachUundAdminbereich = styled.div`
   gap: 20px;
 `;
 
-
 export const LanguagePanel = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 2px;
 `;
 
 export const LanguageLink = styled.button`
@@ -60,11 +58,10 @@ export const LanguageLink = styled.button`
   border: none;
   color: inherit;
   cursor: pointer;
-  
+
   &:hover {
     color: #9ceef1;
-    color: #4ba0a5;
-
+    /* color: #4ba0a5; */
   }
 
   &:active {
@@ -75,8 +72,6 @@ export const LanguageLink = styled.button`
 export const Divider = styled.span`
   color: #3d3d3d;
 `;
-
-
 
 export const AdminPanelBox = styled.div`
   display: flex;
@@ -98,16 +93,18 @@ export const NavLinkImg = styled.img`
 export const NavLinkText = styled.span`
   color: #3d3d3d;
   font-size: 1.2rem;
-text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
-font-weight: bold;
-     &:hover {
-     color: #3b7f83;
-   }
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+
+  &:hover {
+    color: #3b7f83;
+    color: #9ceef1;
+  }
 
   @media (min-width: 1920px) {
     font-size: 1.4rem;
   }
-;`
+`;
 
 export const StyledNavLinkMenu = styled(Link)`
   display: flex;
@@ -116,7 +113,7 @@ export const StyledNavLinkMenu = styled(Link)`
   text-decoration: none;
   color: #333;
   font-size: 18px;
-  font-weight: 600;
+  /* font-weight: 600; */
   transition: background-color 0.3s ease;
 
   &:hover {

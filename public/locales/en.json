@@ -297,7 +297,9 @@
           "addNewService": "Add new service",
           "refresh": "Refresh",
           "errorLoading": "Error loading service",
-          "searchPlaceholder": "Search by service name"
+          "searchPlaceholder": "Search by service name",
+          "gallery": "Image gallery where you can browse photos.",
+          "editGallery": "Edit the gallery by adding or removing images."
         },
         "doctors": {
           "requiredField": "This field is required",

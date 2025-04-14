@@ -38,6 +38,7 @@ export const MainImageContainer = styled.div`
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    transition: transform 8s ease-in-out, opacity 3s ease-in-out;
 
     @media (max-width: 768px) {
       border-radius: 8px;
@@ -56,7 +57,7 @@ export const SideImagesContainer = styled.div`
   justify-content: center;
   height: 80%;
   margin: 0 10px;
-
+  transition: transform 2s ease-in-out, opacity 1s ease-in-out; 
   @media (max-width: 768px) {
     margin: 0 15px;
   }
@@ -72,7 +73,7 @@ export const SideImage = styled.img`
   object-fit: cover;
   border-radius: 5px;
   opacity: 0.7;
-
+  
   @media (max-width: 768px) {
     height: 60%; 
   }
@@ -97,7 +98,7 @@ export const NavButton = styled.button`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 10;
+  z-index: 1;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 
   &:hover {

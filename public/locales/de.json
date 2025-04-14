@@ -8,9 +8,9 @@
         "contact": "Kontakte",
         "home": "Startseite",
         "logo_alt": "Logo",
-        "cabinets": "Kabinette",
+        "cabinets": "Praxis",
         "devices": "Geräten",
-        "praxis": "Unsere"
+        "praxis": "Unser"
       }
     },
     "main": {
@@ -21,8 +21,8 @@
       },
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
-        "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan> IHNEN  IHR",
-        "subtitle2": "SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
+        "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan>  IHNEN",
+        "subtitle2": "IHR SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
       },
       "about_us_page": {
         "ours": "Unsere",
@@ -30,7 +30,7 @@
         "ausgestattet": "ausgestattet !"
       },
       "team_page": {
-        "servicesIntrot": "Unsere ",
+        "servicesIntrot": "Unser",
         "welcome": "Willkommen bei",
         "subtitle": "Willkommen auf der Seite unseres Teams! Wir sind engagierte Fachleute, die sich leidenschaftlich dafür einsetzen, Ihnen erstklassige Zahnpflege zu bieten. Unsere Mission ist es, Ihnen ein gesundes und selbstbewusstes Lächeln zu schenken. Vielen Dank für Ihr Vertrauen!",
         "moreInfoBtn": "Mehr erfahren",
@@ -298,7 +298,9 @@
           "addNewService": "Neuen Service hinzufügen",
           "refresh": "Aktualisieren",
           "errorLoading": "Fehler beim Laden des Service",
-          "searchPlaceholder": "Suche nach Servicenamen"
+          "searchPlaceholder": "Suche nach Servicenamen",
+          "gallery": "Bildergalerie, in der Sie Fotos durchsuchen können.",
+          "editGallery": "Bearbeiten Sie die Galerie, indem Sie Bilder hinzufügen oder entfernen."
         },
         "doctors": {
           "requiredField": "Dieses Feld ist erforderlich",

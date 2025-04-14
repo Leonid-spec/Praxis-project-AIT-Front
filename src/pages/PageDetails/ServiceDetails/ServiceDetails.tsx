@@ -27,6 +27,7 @@ import {
   fetchServicesSuccess,
 } from "../../../store/slices/serviceSlice";
 import MakeAppointmentBtn from "../../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
+import { getActiveServices } from "../../../api/serviceAPI";
 
 type Language = "De" | "En" | "Ru";
 
@@ -46,18 +47,10 @@ const ServiceDetails: React.FC = () => {
       dispatch(fetchActiveServicesStart());
       const fetchDoctors = async () => {
         try {
-          const response = await fetch(
-            "/api/services/active"
-          );
-          if (!response.ok) {
-            throw new Error("Failed to fetch services");
-          }
-          const data = await response.json();
+          const data = await getActiveServices();
           dispatch(fetchServicesSuccess(data));
         } catch (err: any) {
-          dispatch(
-            fetchServicesFailure(err.message || t("errorFetchingServices"))
-          );
+          dispatch(fetchServicesFailure(err.message || t("errorFetchingServices")));
         }
       };
       fetchDoctors();
@@ -118,7 +111,7 @@ const ServiceDetails: React.FC = () => {
       </ContentWrapper>
 
       <GalleryWrapper>
-        <GalleryTitle>{t("gallery")}</GalleryTitle>
+        <GalleryTitle>{t("Gallery")}</GalleryTitle>
         <ImagesGrid>
           {service.images && service.images.length > 0 ? (
             service.images.map((img) => (

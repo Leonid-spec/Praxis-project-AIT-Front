@@ -27,16 +27,16 @@ const ServicePage: React.FC = () => {
     const fetchActiveServices = async () => {
       dispatch(fetchActiveServicesStart());
       try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          throw new Error(t("missingToken"));
-        }
+        // const token = localStorage.getItem("token");
+        // if (!token) {
+        //   throw new Error(t("missingToken"));
+        // }
 
         const response = await fetch(
           "/api/services/active",
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              // Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
             },
           }
@@ -72,7 +72,7 @@ const ServicePage: React.FC = () => {
 
   const parseSubtitle = (text: string) => {
     return text
-      .split(/<HighlightedSpan>|<\/HighlightedSpan>/)
+      .split(/<HighlightedSpan><\/HighlightedSpan>/)
       .map((part, index) =>
         index % 2 === 1 ? (
           <HighlightedSpan key={index}>{part}</HighlightedSpan>
@@ -91,7 +91,7 @@ const ServicePage: React.FC = () => {
           <HighlightText>
             {parseSubtitle(t("message.header.menu.services"))}
           </HighlightText>{" "}
-          |
+          
         </ServiceText>
       </HeaderTextBox>
 

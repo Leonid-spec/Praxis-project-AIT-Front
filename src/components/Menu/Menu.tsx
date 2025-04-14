@@ -15,6 +15,7 @@ import {
 } from "./styles";
 import BurgerMenu from "./BurgerMenu";
 import React from "react";
+import MakeAppointmentBtn from "../Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 const Menu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -61,7 +62,10 @@ const Menu = () => {
               <StyledNavLink to="/contacts">
                 {t("message.header.menu.contact")}
               </StyledNavLink>
+              
             </Nav>
+            <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
+
             <SprachUundAdminbereich>
               <LanguagePanel>
               {["de", "en", "ru"].map((lang, index) => (

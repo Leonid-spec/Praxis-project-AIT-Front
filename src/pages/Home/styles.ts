@@ -3,9 +3,6 @@ import styled from "styled-components";
 export const HomeContainer = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
-  /* gap: 30px; */
-  /* padding: 50px 20px; */
-  /* max-width: 1200px; */
   margin: 30px auto;
   align-items: center;
   align-items: stretch;
