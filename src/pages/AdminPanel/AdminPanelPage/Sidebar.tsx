@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import styles from "./sidebar.module.css";
+import styles from "./sideBar.module.css";
 
 const navItems = [
   {
