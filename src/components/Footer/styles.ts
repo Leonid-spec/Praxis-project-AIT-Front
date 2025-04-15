@@ -30,6 +30,11 @@ export const FooterContainer = styled.footer`
     padding: 10px;
   }
 `;
+export const Days = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
 export const Content = styled.div`
   display: flex;
 
