@@ -3,7 +3,6 @@ import {
   FooterContainer,
   Content,
   Column,
-  Title,
   Address,
   Info,
   ContactIcons,
@@ -15,6 +14,8 @@ import {
   Days,
   DayRow,
   DaysOfWeekBox,
+  Title2,
+  Title1,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
@@ -76,7 +77,7 @@ const Footer: React.FC = () => {
 
         <ColumnLeft>
 
-          <Title>{t("message.footer.titles.contact")}</Title>
+          <Title1>{t("message.footer.titles.contact")}</Title1>
           <Address>
             <p>{address.clinicName}</p>
             <p>{address.street}</p>
@@ -103,52 +104,12 @@ const Footer: React.FC = () => {
 
         </ColumnLeft>
         
-        <Column>
-          <Title>{t("message.footer.titles.time")}</Title>
-         <TimesContainer>
-            <Days>
-              <DaysStyle>
-                {t("message.footer.daysOfWeek.monday")}: 
-              </DaysStyle>
-              <DaysStyle>
-                {t("message.footer.daysOfWeek.tuesday")}: 
-              </DaysStyle>
-              <DaysStyle>
-                {t("message.footer.daysOfWeek.wednesday")}: 
-              </DaysStyle>
-              <DaysStyle>
-                {t("message.footer.daysOfWeek.thursday")}: 
-              </DaysStyle>
-              <DaysStyle>
-                {t("message.footer.daysOfWeek.friday")}: 
-              </DaysStyle>
-            </Days>
-            <Days>
-              <DaysTimesContainer>
-              {workingHours.monday}
-              </DaysTimesContainer>
-              <p>
-              {workingHours.tuesday}
-              </p>
-              <p>
-              {workingHours.wednesday}
-              </p>
-              <p>
-              {workingHours.thursday}
-              </p>
-              <p>
-              {workingHours.friday}
-              </p>
-            </Days>
-         </TimesContainer>
-
-        </Column>
-        
         {/* Колонка с рабочим временем */}
         <Column>
-          <Title>{t("message.footer.titles.time")}</Title>
+         
           <TimesContainer>
             <DaysOfWeekBox>
+            <Title2>{t("message.footer.titles.time")}</Title2>
               <DayRow>
                 <p>{t("message.footer.daysOfWeek.monday")}:</p>
                 <p>{workingHours.monday}</p>
