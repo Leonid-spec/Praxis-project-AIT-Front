@@ -18,14 +18,19 @@ const AddressPage: React.FC = () => {
     type: "error" | "success";
   } | null>(null);
 
+  // Загружаем сохранённый адрес из localStorage
   useEffect(() => {
     const savedAddress = localStorage.getItem("address");
     if (savedAddress) {
-      setAddress(JSON.parse(savedAddress));
+      try {
+        setAddress(JSON.parse(savedAddress));
+      } catch (error) {
+        console.error("Ошибка при загрузке адреса из localStorage:", error);
+      }
     }
   }, []);
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: keyof typeof address, value: string) => {
     setAddress((prev) => ({
       ...prev,
       [field]: value,
@@ -37,11 +42,13 @@ const AddressPage: React.FC = () => {
 
     try {
       localStorage.setItem("address", JSON.stringify(address));
+      console.log("Сохранённый адрес:", JSON.stringify(address)); // Для проверки в консоли
       setNotification({
         message: t("message.adminPanel.appointments.settings.admin.settingsPage.address.successMessage"),
         type: "success",
       });
     } catch (error) {
+      console.error("Ошибка сохранения адреса:", error);
       setNotification({
         message: t("message.adminPanel.appointments.settings.admin.settingsPage.address.errorMessage"),
         type: "error",
@@ -51,10 +58,14 @@ const AddressPage: React.FC = () => {
 
   return (
     <div className="address-page-container">
-      <h2 className="title">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.title")}</h2>
+      <h2 className="title">
+        {t("message.adminPanel.appointments.settings.admin.settingsPage.address.title")}
+      </h2>
       <div className="address-form">
         <div className="field-input">
-          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.street")}</label>
+          <label className="label">
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.address.street")}
+          </label>
           <input
             className="input"
             type="text"
@@ -64,7 +75,9 @@ const AddressPage: React.FC = () => {
           />
         </div>
         <div className="field-input">
-          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.city")}</label>
+          <label className="label">
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.address.city")}
+          </label>
           <input
             className="input"
             type="text"
@@ -74,7 +87,9 @@ const AddressPage: React.FC = () => {
           />
         </div>
         <div className="field-input">
-          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.zipCode")}</label>
+          <label className="label">
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.address.zipCode")}
+          </label>
           <input
             className="input"
             type="text"
@@ -84,7 +99,9 @@ const AddressPage: React.FC = () => {
           />
         </div>
         <div className="field-input">
-          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.gps")}</label>
+          <label className="label">
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.address.gps")}
+          </label>
           <input
             className="input"
             type="text"
@@ -94,7 +111,9 @@ const AddressPage: React.FC = () => {
           />
         </div>
         <div className="field-input">
-          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.phone")}</label>
+          <label className="label">
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.address.phone")}
+          </label>
           <input
             className="input"
             type="text"
@@ -104,7 +123,9 @@ const AddressPage: React.FC = () => {
           />
         </div>
         <div className="field-input">
-          <label className="label">{t("message.adminPanel.appointments.settings.admin.settingsPage.address.email")}</label>
+          <label className="label">
+            {t("message.adminPanel.appointments.settings.admin.settingsPage.address.email")}
+          </label>
           <input
             className="input"
             type="email"

@@ -5,9 +5,6 @@ export const FooterContainer = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #f0f0f0;
-  background-color: #effcf6;
-  background-color: #eff1fc;
   background-color: #f0effc;
   padding: 40px 20px;
 
@@ -33,23 +30,22 @@ export const FooterContainer = styled.footer`
     padding: 10px;
   }
 `;
-
 export const Content = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  /* align-items: stretch; */
+  justify-content: space-between; /* Размещаем секции слева и справа */
+  align-items: flex-start; /* Выравниваем заголовки сверху */
   width: 100%;
-  /* max-width: 1200px; */
-  /* background-color: red; */
-  padding: 0 20%;
+  max-width: 1400px; /* Ограничиваем ширину */
+  padding: 0 10%; /* Пространство внутри контейнера */
+  padding-bottom: 20px;
+  margin: 0 auto; /* Центрирование на странице */
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column; /* Колонки становятся вертикальными */
     align-items: center;
   }
 `;
+
 
 export const Column = styled.div`
   display: flex;
@@ -58,7 +54,6 @@ export const Column = styled.div`
   align-items: flex-start;
   flex: 1;
   text-align: left;
-  /* min-height: 200px; */
   margin: 0 10px;
 
   @media (max-width: 768px) {
@@ -68,7 +63,6 @@ export const Column = styled.div`
   }
 
   @media (max-width: 576px) {
-    min-height: auto;
     margin: 0;
   }
 `;
@@ -84,11 +78,14 @@ export const LogoContainer = styled(Column)`
   }
 `;
 
+export const ContentBelowTitle = styled.div`
+  margin-top: 20px; /* Отступ сверху */
+`;
+
 export const Logo = styled.img`
   width: 300px;
   height: auto;
   object-fit: contain;
-  background-color: transparent;
 
   @media (max-width: 992px) {
     width: 250px;
@@ -102,13 +99,16 @@ export const Logo = styled.img`
 export const Title = styled.h3`
   font-size: 17px;
   margin-bottom: 20px;
-  /* color: #a0eef2; */
+ 
   color: #69e5ec;
-  color: #69e5ec;
-  /* color: #333; */
+  text-align: left; /* Убираем центрирование */
+  display: flex;
+  align-items: center; /* Центрируем текст вертикально */
+  height: 50px; /* Добавляем одинаковую высоту для заголовков */
 
   @media (max-width: 768px) {
     font-size: 20px;
+    height: auto; /* Убираем фиксированную высоту для мобильных устройств */
   }
 
   @media (max-width: 576px) {
@@ -116,9 +116,13 @@ export const Title = styled.h3`
   }
 `;
 
+
 export const TimesContainer = styled.div`
   display: flex;
   gap: 40px;
+  width: 100%;
+  max-width: 1400px; /* Расширение контейнера */
+  margin: 0 auto; /* Центрирование */
   
 `;
 
@@ -134,24 +138,50 @@ export const Info = styled.div`
   flex-direction: column;
   gap: 16px;
   font-size: 16px;
-  /* margin: 5px 10px; */
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   @media (max-width: 576px) {
-    font-size: 16px;
+    font-size: 12px;
   }
 `;
 
-export const Days = styled.div`
+export const DaysOfWeekBox = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-direction: column; 
+  gap: 5px;
+  background-color: #f0effc;
+  border-radius: 12px;
+  padding: 5px;
+  width: 100%;
+  max-width: 1200px; 
+`;
 
-  @media (max-width: 768px) {
-    gap: 12px;
+export const DayRow = styled.div`
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px; 
+  color: #333;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  & > p:first-child {
+    flex: 1;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  & > p:last-child {
+    flex: 2;
+    text-align: left;
   }
 `;
 
@@ -184,13 +214,12 @@ export const DaysStyle = styled.div`
   font-size: 16px;
 `;
 
-// date
 export const RunningLineWrapper = styled.div`
   width: 100%;
-  background-color: #f0f8ff; 
+  background-color: #f0f8ff;
   padding: 10px 0;
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 `;
 
 export const RunningLineContainer = styled.div`
@@ -203,6 +232,7 @@ export const RunningLineContainer = styled.div`
 export const RunningLine = styled.div`
   display: inline-block;
   animation: scroll 20s linear infinite;
+
   @keyframes scroll {
     from {
       transform: translateX(100%);
@@ -216,6 +246,7 @@ export const RunningLine = styled.div`
 export const ButtonWrapper = styled.div`
   width: fit-content;
   align-self: flex-start;
+
   @media (max-width: 768px) {
     align-self: center;
   }
