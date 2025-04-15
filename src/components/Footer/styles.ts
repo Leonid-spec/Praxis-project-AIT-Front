@@ -91,16 +91,16 @@ export const Column = styled.div`
 `;
 
 
-export const LogoContainer = styled(Column)`
-  justify-content: center;
-  align-items: center;
-  background-color: #a0eef2;
-  text-align: center;
+// export const LogoContainer = styled(Column)`
+//   justify-content: center;
+//   align-items: center;
+//   background-color: #a0eef2;
+//   text-align: center;
 
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
-  }
-`;
+//   @media (max-width: 768px) {
+//     margin-bottom: 20px;
+//   }
+// `;
 
 export const ContentBelowTitle = styled.div`
   margin-top: 20px; /* Отступ сверху */
@@ -120,7 +120,23 @@ export const Logo = styled.img`
   }
 `;
 
-export const Title = styled.h3`
+export const Title1 = styled.h3`
+  font-size: 17px;
+  margin-bottom: 20px;
+  color: #69e5ec;
+  color: #7a2141;
+  /* color: #333; */
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    height: auto; /* Убираем фиксированную высоту для мобильных устройств */
+  }
+
+  @media (max-width: 576px) {
+    font-size: 18px;
+  }
+`;
+export const Title2 = styled.h3`
   font-size: 17px;
   margin-bottom: 20px;
   color: #69e5ec;
@@ -151,8 +167,9 @@ export const DaysTimesContainer = styled.p`
 export const Address = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   margin-bottom: 20px;
+  margin-top: 8px;
 `;
 
 export const Info = styled.div`
@@ -188,7 +205,7 @@ export const DayRow = styled.div`
   align-items: center;
   gap: 20px;
   padding: 5px 0;
-  border-bottom: 1px solid #ccc;
+  
   font-size: 16px; 
   color: #333;
 
