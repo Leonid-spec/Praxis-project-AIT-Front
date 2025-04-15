@@ -45,7 +45,7 @@ export const Description = styled.p`
 export const DetailsButton = styled.button`
   background-color: #a0eef2; 
   background-color: #9ceef1; 
-
+  background-color: #7a2141;
   color: white;
   padding: 10px 20px;
   border-radius: 6px;
@@ -59,6 +59,6 @@ export const DetailsButton = styled.button`
   &:hover {
     background-color: #89d4e3;   
     background-color: #3b7f83;
-
+    background-color: #641230;
   }
 `;

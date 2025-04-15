@@ -4,13 +4,12 @@ import {
   GalleryContainer,
   TitleBox,
   UploadInput,
-  UploadText,
   GalleryGrid,
   GalleryImageWrapper,
   // PreviewImage,
 } from "./styles";
 import { useState } from "react";
-import { ServiceData } from "../../../../store/types/serviceTypes";
+import { ServiceData } from "../../../../../store/types/serviceTypes";
 import { GalleryImageCard } from "./GalleryImageCard";
 
 function GalleryServices() {

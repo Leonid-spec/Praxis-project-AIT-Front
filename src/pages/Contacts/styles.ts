@@ -157,6 +157,7 @@ export const IconCircle = styled.div`
   width: 50px;
   height: 50px;
   background-color: #a0eef2;
+  background-color: #7a2141;
   border-radius: 50%;
   display: flex;
   align-items: center;

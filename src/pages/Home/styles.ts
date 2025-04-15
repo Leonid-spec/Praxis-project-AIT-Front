@@ -185,6 +185,7 @@ export const HighlightedSpan = styled.span`
   && {
     color: #206c7a;
     color: #9ceef1;
+    color: #7a2141;
     font-weight: bold;
     transition: color 0.3s ease;
   }

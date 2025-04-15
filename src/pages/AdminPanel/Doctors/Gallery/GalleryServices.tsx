@@ -4,7 +4,6 @@ import {
   GalleryContainer,
   TitleBox,
   UploadInput,
-  UploadText,
   GalleryGrid,
   GalleryImageWrapper,
   // PreviewImage,

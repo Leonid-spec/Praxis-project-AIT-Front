@@ -9,6 +9,7 @@ export const StyledButton = styled.button`
   border-radius: 6px;
   background-color: #5FC9D3; 
   background-color: #9ceef1;
+  background-color: #7a2141;
   color: #ffffff;
   cursor: pointer;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
@@ -17,7 +18,6 @@ export const StyledButton = styled.button`
   &:hover {
     cursor: pointer;
     /* background-color:#4A9FB0; */
-    /* background-color: #69e5ec; */
     transform: translateY(-2px); 
   }
 

@@ -38,7 +38,7 @@ const Menu = () => {
     <MenuContainer>
       <Logo>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
-          <NavLinkImg src="/src/assets/images/MainLogo.png" alt="Logo" />
+          <NavLinkImg src="/public/images/MainLogo.jpg" alt="Logo" />
         </StyledNavLink>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
           <NavLinkText>Abramian Dental</NavLinkText>

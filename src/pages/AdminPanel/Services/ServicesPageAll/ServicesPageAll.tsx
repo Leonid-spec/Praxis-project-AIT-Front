@@ -4,7 +4,6 @@ import { getServices } from "../../../../api/serviceAPI";
 import AddNewServiceBtn from "../Buttons/AddNewServiceBtn/AddNewServiceBtn";
 import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceContainer";
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
-import { FaSyncAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 
 import {
@@ -13,7 +12,6 @@ import {
   ScrollContainer,
   HeaderMainBtnsContainer,
   ServiceCardsMainContainer,
-  RefreshIconBox,
   ServiceCardStyled,
 } from "./styles";
 import EditServicePage from "../EditServicePage/EditServicePage";
@@ -77,10 +75,6 @@ export const ServicesPageAll = () => {
   const handleBackToMainClick = () => {
     setIsEditingService(null);
     setIsAddingNewService(false);
-  };
-
-  const handleRefreshBtn = () => {
-    fetchServices();
   };
 
   return (

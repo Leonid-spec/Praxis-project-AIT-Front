@@ -9,6 +9,7 @@ export const ServiceContainer = styled.div`
 export const HighlightedSpan = styled.span`
   color: #555555;
   color: #77c0eb;
+  color: #7a2141;
   font-weight: bold;
 `;
 
@@ -27,6 +28,7 @@ export const ServiceText = styled.p`
 
 export const HighlightText = styled.span`
   color: #5FC9D3; 
+  color: #7a2141;
   color: #333;
   font-weight: bold;
 `;

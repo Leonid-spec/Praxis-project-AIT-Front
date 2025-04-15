@@ -6,14 +6,13 @@ import {
   Title,
   Address,
   Info,
-  Days,
   ContactIcons,
   IconCircle,
   TimesContainer,
   DaysStyle,
   DaysTimesContainer,
-  DaysLeft,
   ColumnLeft,
+  Days,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";

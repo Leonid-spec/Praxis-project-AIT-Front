@@ -68,7 +68,6 @@ const Contacts: React.FC = () => {
   }, []);
   
   const handleCopyCoordinates = () => {
-    const coordinates = "50.4501° N, 30.5234° E";
     navigator.clipboard.writeText(address.gps);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
@@ -120,7 +119,7 @@ const Contacts: React.FC = () => {
                 <IconCircle>
                   <FaCopy />
                 </IconCircle>
-                <span>GPS: `${address.gps}`</span>
+                <span>GPS: {address.gps}</span>
               </ContactIcons>
               <ContactIcons onClick={handleCall} style={{ cursor: "pointer" }}>
                 <IconCircle>

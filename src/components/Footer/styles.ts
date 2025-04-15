@@ -117,7 +117,7 @@ export const Column = styled.div`
   align-items: flex-start;
   flex: 1;
   text-align: left;
-
+  /* margin: 0 10px; */
   @media (max-width: 768px) {
     align-items: center;
     text-align: center;
@@ -163,6 +163,7 @@ export const Title = styled.h3`
   /* color: #a0eef2; */
   color: #69e5ec;
   color: #69e5ec;
+  color: #7a2141;
   /* color: #333; */
 
   @media (max-width: 768px) {
@@ -240,6 +241,7 @@ export const IconCircle = styled.div`
   width: 30px;
   height: 30px;
   background-color: #a0eef2;
+  background-color: #7a2141;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -289,5 +291,29 @@ export const ButtonWrapper = styled.div`
   align-self: flex-start;
   @media (max-width: 768px) {
     align-self: center;
+  }
+`;
+
+
+export const DayRowAdd = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  flex-direction: column;
+  gap: 6px;
+  padding: 5px 0;
+  font-size: 16px;
+  color: #333;
+  /* Делаем первую колонку жирной */
+  & > p:first-child {
+    flex: 1;
+    font-weight: bold;
+    text-align: left;
+  }
+  /* Вторая колонка остаётся обычной */
+  & > p:last-child {
+    flex: 2;
+    font-weight: normal;
+    text-align: left;
   }
 `;
