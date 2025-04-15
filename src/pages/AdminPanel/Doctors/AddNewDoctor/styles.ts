@@ -238,7 +238,7 @@ export const StyledReturnButton = styled.button`
   font-size: 18px;
 
   &:hover {
-    background-color: #0c989c;
+    background-color: #641230;
   }
 
   @media (max-width: 768px) {
@@ -248,7 +248,7 @@ export const StyledReturnButton = styled.button`
 `;
 
 export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
-  background-color: ${({ disabled }) => (disabled ? "#ccc" : "#20B1B7")};
+  background-color: ${({ disabled }) => (disabled ? "#ccc" : "#7a2141; ")};
   color: ${({ disabled }) => (disabled ? "#888" : "#fff")};
   padding: 10px 20px;
   border: none;
@@ -257,7 +257,7 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
   font-size: 18px;
   font-weight: bold;
   &:hover {
-    background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
+    background-color: ${({ disabled }) => (disabled ? "#ccc" : "#641230")};
   }
 
   @media (max-width: 768px) {

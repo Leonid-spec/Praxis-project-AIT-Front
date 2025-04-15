@@ -223,7 +223,7 @@ const AdminAppointmentsPage: React.FC = () => {
                   <TrashIconBox
                     onClick={() => handleDeleteBtn(appointment.id!)}
                   >
-                    <FaTrashAlt size={24} color="#20b1b7" />
+                    <FaTrashAlt size={24} color="#7a2141;" />
                   </TrashIconBox>
                 </BtnBox>
               </AppointmentRow>

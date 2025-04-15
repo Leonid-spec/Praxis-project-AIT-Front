@@ -23,7 +23,7 @@ export const StyledAddButton = styled.button`
   }
 
   &:active {
-    background-color: #045f62;
+    background-color: #5c0d2a;
     transform: scale(0.95);
   }
 `;
