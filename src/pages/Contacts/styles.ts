@@ -255,7 +255,6 @@ export const IconCircle = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-/* margin-left: 10px; */
 `;
 
 // date
