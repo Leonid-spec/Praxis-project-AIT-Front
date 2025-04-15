@@ -24,11 +24,11 @@ const Footer: React.FC = () => {
   const { t } = useTranslation();
 
   const [workingHours, setWorkingHours] = useState({
-    monday: "",
-    tuesday: "",
-    wednesday: "",
-    thursday: "",
-    friday: "",
+    monday: "08:00 - 12:00, 13:00 - 18:00",
+    tuesday: "08:00 - 12:00, 13:00 - 18:00",
+    wednesday: "08:00 - 12:00, 13:00 - 18:00",
+    thursday: "08:00 - 12:00, 13:00 - 18:00",
+    friday: "08:00 - 12:00, 13:00 - 18:00",
   });
 
   const [address, setAddress] = useState({
