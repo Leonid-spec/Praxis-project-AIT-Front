@@ -85,6 +85,7 @@ export const SideImage = styled.img`
 
 export const NavButton = styled.button`
   background-color: #9ceef1; 
+  background-color: #7a2141;
   border: none;
   color: white; 
   font-size: 1.5rem; 
@@ -103,6 +104,7 @@ export const NavButton = styled.button`
 
   &:hover {
     background-color: #88d4e6; 
+    background-color: #641230;
   }
 
   &:nth-child(1) {
@@ -144,7 +146,7 @@ export const DotsContainer = styled.div`
 export const Dot = styled.div<{ isActive: boolean }>`
   width: 10px;
   height: 10px;
-  background-color: ${(props) => (props.isActive ? "#9ceef1" : "#d3d3d3")};
+  background-color: ${(props) => (props.isActive ? "#7a2141;" : "#d3d3d3")};
   border-radius: 50%;
   margin: 0 5px;
   cursor: pointer;
@@ -152,6 +154,8 @@ export const Dot = styled.div<{ isActive: boolean }>`
 
   &:hover {
     background-color: #88d4e6;
+    background-color: #7a2141;
+    background-color: #641230;
   }
 `;
 
@@ -160,6 +164,7 @@ export const CloseButton = styled.button`
   top: 10px;
   right: 10px;
   background-color: #9ceef1; 
+  background-color: #641230;
   border: none;
   color: white; 
   border-radius: 50%;
@@ -173,6 +178,7 @@ export const CloseButton = styled.button`
 
   &:hover {
     background-color: #88d4e6;
+    background-color: #641230;
   }
 
   @media (max-width: 768px) {
