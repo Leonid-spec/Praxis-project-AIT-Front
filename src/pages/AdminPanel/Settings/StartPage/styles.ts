@@ -58,7 +58,7 @@ export const ButtonGroup = styled.div`
 
 export const StyledButton = styled.button`
   padding: 12px 20px;
-  background-color: #20b1b7;
+  background-color:  #7a2141;
   color: white;
   border: none;
   border-radius: 18px;
@@ -67,17 +67,17 @@ export const StyledButton = styled.button`
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 
   &:hover {
-    background-color: #1a8e92;
+    background-color: #5c0d2a;
   }
 
   &:focus {
-    background-color: #16888c;
+    background-color: #98395c;
   }
 `;
 
 export const BackButton = styled.button`
   padding: 10px 20px;
-  background-color: #20b1b7;
+  background-color: #7a2141;
   color: white;
   border: none;
   border-radius: 15px;
@@ -86,7 +86,8 @@ export const BackButton = styled.button`
   margin-bottom: 10px;
 
   &:hover {
-    background-color: #1a8e92;
+    background-color: #5c0d2a;
+
   }
 
   @media (max-width: 768px) {

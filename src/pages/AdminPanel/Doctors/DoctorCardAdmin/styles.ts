@@ -40,7 +40,7 @@ export const FullName = styled.h3`
 `;
 
 export const DetailsButton = styled.button`
-  background-color: #20b1b7;
+  background-color: #7a2141;
   color: white;
   padding: 10px 18px;
   border-radius: 6px;
@@ -50,7 +50,8 @@ export const DetailsButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s;
   &:hover {
-    background-color: #1a8e92;
+    background-color: #5c0d2a;
+
   }
 `;
 

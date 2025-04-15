@@ -5,7 +5,7 @@ const buttonCommonStyles = `
   cursor: pointer;
   padding: 10px 15px;
   border-radius: 18px;
-  background-color: #20B1B7;
+  background-color: #7a2141;
   color: #fff;
   transition: background-color 0.3s ease;
   width: auto; 
@@ -225,7 +225,7 @@ export const ModalActions = styled.div`
 export const ModalActionsBtn = styled.button`
   padding: 10px 20px;
   font-size: 18px;
-  background-color: #20b1b7;
+  background-color: #7a2141;
   border-radius: 30px;
   color: white;
   border: none;
