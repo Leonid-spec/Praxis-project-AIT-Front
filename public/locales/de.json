@@ -284,9 +284,49 @@
               "sections": {
                 "create": "Neuen Administrator erstellen",
                 "changePassword": "Passwort ändern",
-                "viewAll": "Alle Administratoren",
-                
+                "viewAll": "Alle Administratoren",                
                 "delete": "Administrator löschen"
+              },
+              "address": {
+                "title": "Adresse bearbeiten",
+                "street": "Straße",
+                "city": "Stadt",
+                "zipCode": "Postleitzahl",
+                "gps": "GPS",
+                "phone": "Telefon",
+                "email": "Email",
+                "placeholder": {
+                  "street": "Straße eingeben...",
+                  "city": "Stadt eingeben...",
+                  "zipCode": "Postleitzahl eingeben...",
+                  "gps": "GPS-Koordinaten eingeben...",
+                  "phone": "Telefonnummer eingeben...",
+                  "email": "Email eingeben..."
+                },
+                "saveButton": "Speichern",
+                "successMessage": "Adresse erfolgreich gespeichert!",
+                "errorMessage": "Fehler beim Speichern. Bitte versuchen Sie es erneut."
+              },
+              "workingMode": {
+                "title": "Arbeitszeiten bearbeiten",
+                "days": {
+                  "monday": "Montag",
+                  "tuesday": "Dienstag",
+                  "wednesday": "Mittwoch",
+                  "thursday": "Donnerstag",
+                  "friday": "Freitag"
+                },
+                "placeholder": "Arbeitszeiten eingeben...",
+                "saveButton": "Speichern",
+                "successMessage": "Arbeitszeiten erfolgreich gespeichert!",
+                "errorMessage": "Fehler beim Speichern der Arbeitszeiten. Bitte versuchen Sie es erneut."
+              },
+              "runningLine": {
+                "title": "Lauftext bearbeiten",
+                "placeholder": "Lauftext eingeben...",
+                "saveButton": "Speichern",
+                "successMessage": "Lauftext erfolgreich gespeichert!",
+                "errorMessage": "Fehler beim Speichern des Lauftextes. Bitte versuchen Sie es erneut."
               }
             }
           }
