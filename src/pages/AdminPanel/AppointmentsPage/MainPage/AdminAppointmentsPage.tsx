@@ -49,6 +49,11 @@ const AdminAppointmentsPage: React.FC = () => {
     null
   );
 
+   const [, setNotification] = useState<{
+      message: string;
+      type: "error" | "success";
+    } | null>(null);
+  
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -77,7 +82,11 @@ const AdminAppointmentsPage: React.FC = () => {
     try {
       navigate(`/admin-panel/appointment/${appointmentId}`);
     } catch (error) {
-      alert(t("message.adminPanel.appointments.errorFetchingAppointments"));
+      setNotification({
+        message: t("message.adminPanel.appointments.errorFetchingAppointments"),
+        type: "error",
+      });
+      // alert(t("message.adminPanel.appointments.errorFetchingAppointments"));
     }
   };
 

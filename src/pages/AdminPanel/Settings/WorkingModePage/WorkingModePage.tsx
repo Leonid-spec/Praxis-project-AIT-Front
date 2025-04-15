@@ -10,6 +10,12 @@ interface WorkingHours {
   friday: string;
 }
 
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "error" | "success";
+  } | null>(null);
+
+
 const WorkingModePage: React.FC = () => {
   const { t } = useTranslation();
   const [workingHours, setWorkingHours] = useState<WorkingHours>({
@@ -35,15 +41,28 @@ const WorkingModePage: React.FC = () => {
     const allFieldsFilled = Object.values(workingHours).every((time) => time.trim() !== "");
 
     if (!allFieldsFilled) {
-      alert(t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.errorMessage"));
+      setNotification({
+        message: t(
+          "message.adminPanel.appointments.settings.admin.settingsPage.workingMode.errorMessage"
+        ),
+        type: "success",
+      });
+      // alert(t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.errorMessage"));
       return;
     }
 
     try {
       localStorage.setItem("workingHours", JSON.stringify(workingHours));
-      alert(t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.successMessage"));
+      setNotification({
+        message: t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.successMessage"),
+        type: "success",
+      });
+      // alert(t("message.adminPanel.appointments.settings.admin.settingsPage.workingMode.successMessage"));
     } catch (error) {
-      console.error("Ошибка при сохранении данных в localStorage:", error);
+      setNotification({
+        message: t("Ошибка при сохранении данных в localStorage:"),
+        type: "error",
+      });
     }
   };
 
