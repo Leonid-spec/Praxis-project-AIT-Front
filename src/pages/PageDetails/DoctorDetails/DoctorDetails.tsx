@@ -50,7 +50,9 @@ const DoctorDetails: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       const fetchDoctors = async () => {
         try {
+
           const data = await getActiveDoctors();
+
           dispatch(fetchDoctorsSuccess(data));
         } catch (err: any) {
           dispatch(

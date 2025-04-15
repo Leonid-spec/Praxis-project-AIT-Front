@@ -33,7 +33,9 @@ const ServicePage: React.FC = () => {
         // }
 
         const response = await fetch(
+
           "/api/services/active",
+
           {
             headers: {
               // Authorization: `Bearer ${token}`,
