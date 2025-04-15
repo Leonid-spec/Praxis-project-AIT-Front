@@ -151,6 +151,18 @@ export const ContactIcons = styled.div`
   display: flex;
   align-items: center;
   margin-top: 10px;
+
+  span {
+    font-size: 1rem;
+
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.8rem;
+    }
+  }
 `;
 
 export const IconCircle = styled.div`
@@ -165,6 +177,18 @@ export const IconCircle = styled.div`
   font-size: 20px;
   color: #ffffff;
   margin-right: 10px;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
