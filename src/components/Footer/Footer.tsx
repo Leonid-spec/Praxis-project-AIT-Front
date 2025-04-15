@@ -9,6 +9,10 @@ import {
   ContactIcons,
   IconCircle,
   TimesContainer,
+  DaysStyle,
+  DaysTimesContainer,
+  DaysLeft,
+  ColumnLeft,
   DaysOfWeekBox,
   DayRow,
 } from "./styles";
@@ -69,8 +73,9 @@ const Footer: React.FC = () => {
   return (
     <FooterContainer>
       <Content>
-        {/* Колонка с контактной информацией */}
-        <Column>
+
+        <ColumnLeft>
+
           <Title>{t("message.footer.titles.contact")}</Title>
           <Address>
             <p>{address.clinicName}</p>
@@ -95,6 +100,48 @@ const Footer: React.FC = () => {
               <span>{address.email}</span>
             </ContactIcons>
           </Info>
+
+        </ColumnLeft>
+        
+        <Column>
+          <Title>{t("message.footer.titles.time")}</Title>
+         <TimesContainer>
+            <Days>
+              <DaysStyle>
+                {t("message.footer.daysOfWeek.monday")}: 
+              </DaysStyle>
+              <DaysStyle>
+                {t("message.footer.daysOfWeek.tuesday")}: 
+              </DaysStyle>
+              <DaysStyle>
+                {t("message.footer.daysOfWeek.wednesday")}: 
+              </DaysStyle>
+              <DaysStyle>
+                {t("message.footer.daysOfWeek.thursday")}: 
+              </DaysStyle>
+              <DaysStyle>
+                {t("message.footer.daysOfWeek.friday")}: 
+              </DaysStyle>
+            </Days>
+            <Days>
+              <DaysTimesContainer>
+              {workingHours.monday}
+              </DaysTimesContainer>
+              <p>
+              {workingHours.tuesday}
+              </p>
+              <p>
+              {workingHours.wednesday}
+              </p>
+              <p>
+              {workingHours.thursday}
+              </p>
+              <p>
+              {workingHours.friday}
+              </p>
+            </Days>
+         </TimesContainer>
+
         </Column>
         
         {/* Колонка с рабочим временем */}
@@ -124,6 +171,7 @@ const Footer: React.FC = () => {
               </DayRow>
             </DaysOfWeekBox>
           </TimesContainer>
+
         </Column>
       </Content>
     </FooterContainer>
