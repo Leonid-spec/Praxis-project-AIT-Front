@@ -10,11 +10,7 @@ interface WorkingHours {
   friday: string;
 }
 
-  const [notification, setNotification] = useState<{
-    message: string;
-    type: "error" | "success";
-  } | null>(null);
-
+ 
 
 const WorkingModePage: React.FC = () => {
   const { t } = useTranslation();
@@ -25,6 +21,11 @@ const WorkingModePage: React.FC = () => {
     thursday: "",
     friday: "",
   });
+
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "error" | "success";
+  } | null>(null);
 
   useEffect(() => {
     const savedHours = localStorage.getItem("workingHours");

@@ -38,15 +38,6 @@ const MiniFooter: React.FC = () => {
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.leftSection}>
-        <Link to="/" className={styles.styledNavLink}>
-          <img
-            src="/src/public/MainLogo-removebg.png"
-            alt={t("message.footer.logo.alt")}
-            className={styles.logo}
-          />
-        </Link>
-      </div>
 
       <div className={styles.centerSection}>
         <div className={styles.contactElement} onClick={handleCall}>
@@ -62,9 +53,9 @@ const MiniFooter: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.rightSection}>
+      {/* <div className={styles.rightSection}>
         <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
-      </div>
+      </div> */}
     </footer>
   );
 };

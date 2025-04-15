@@ -49,7 +49,7 @@ const AdminAppointmentsPage: React.FC = () => {
     null
   );
 
-   const [, setNotification] = useState<{
+   const [notification, setNotification] = useState<{
       message: string;
       type: "error" | "success";
     } | null>(null);

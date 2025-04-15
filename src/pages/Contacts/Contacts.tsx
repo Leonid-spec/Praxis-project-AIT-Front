@@ -13,9 +13,6 @@ import {
   // HighlightedSpan,
   IconCircle,
   MapContainer,
-  RunningLine,
-  RunningLineContainer,
-  RunningLineWrapper,
   SprechzeitenBox,
   SprechzeitenWrapper,
 } from "./styles";
@@ -25,12 +22,11 @@ import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
 
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
-  const [runningText, setRunningText] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [address, setAddress] = useState({
-    clinicName: "Abramian Dental",
-    street: "Breslauer Str. 17",
-    city: "78467 Konstanz",
+    clinicName: "Abramian Dental", 
+    street: "Breslauer Str. 17", 
+    city: "78467 Konstanz", 
     phone: "+49 75 31 7 72 73",
     email: "praxis.sofia.abramian@gmail.com",
     gps: "50.4501° N, 30.5234° E",
@@ -58,14 +54,6 @@ const Contacts: React.FC = () => {
     }
   }, []);
 
- // Загрузка бегущей строки из localStorage
-  useEffect(() => {
-    const savedText = localStorage.getItem("runningLineText");
-    if (savedText) {
-      setRunningText(savedText);
-    }
-  }, []);
-
   // Загрузка данных режима работы из localStorage
   useEffect(() => {
     const savedHours = localStorage.getItem("workingHours");
@@ -78,7 +66,7 @@ const Contacts: React.FC = () => {
       }
     }
   }, []);
-
+  
   const handleCopyCoordinates = () => {
     const coordinates = "50.4501° N, 30.5234° E";
     navigator.clipboard.writeText(address.gps);
@@ -196,15 +184,7 @@ const Contacts: React.FC = () => {
             loading="lazy"
           ></iframe>
         </MapContainer>
-
-        {/* Бегущая строка выше всего содержимого */}
-        {runningText && (
-          <RunningLineWrapper>
-            <RunningLineContainer>
-              <RunningLine>{runningText}</RunningLine>
-            </RunningLineContainer>
-          </RunningLineWrapper>
-        )}
+        
       </ContactsPageContainer>
     </ContactsContainer>
   );
