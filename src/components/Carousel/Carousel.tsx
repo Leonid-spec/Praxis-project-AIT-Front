@@ -11,11 +11,18 @@ import {
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const photos = [
-  "/src/public/photo_5456500184721778858_y.jpg",
-  "/src/public/photo_5456500184721778860_y.jpg",
-  "/src/public/photo_5456500184721778861_y.jpg",
-  "/src/public/photo_5456500184721778863_y.jpg",
+  "/images/photo_5456500184721778858_y.jpg",
+  "/images/photo_5456500184721778860_y.jpg",
+  "/images/photo_5456500184721778861_y.jpg",
+  "/images/photo_5456500184721778863_y.jpg",
 ];
+
+// const photos = [
+//   "/src/public/photo_5456500184721778858_y.jpg",
+//   "/src/public/photo_5456500184721778860_y.jpg",
+//   "/src/public/photo_5456500184721778861_y.jpg",
+//   "/src/public/photo_5456500184721778863_y.jpg",
+// ];
 
 const Carousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
