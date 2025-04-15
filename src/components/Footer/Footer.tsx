@@ -13,6 +13,8 @@ import {
   DaysTimesContainer,
   ColumnLeft,
   Days,
+  DayRow,
+  DaysOfWeekBox,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
