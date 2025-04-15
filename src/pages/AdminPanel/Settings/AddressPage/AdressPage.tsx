@@ -42,7 +42,6 @@ const AddressPage: React.FC = () => {
         type: "success",
       });
     } catch (error) {
-      console.error("Ошибка при сохранении данных в localStorage:", error);
       setNotification({
         message: t("message.adminPanel.appointments.settings.admin.settingsPage.address.errorMessage"),
         type: "error",

@@ -184,6 +184,7 @@ const Contacts: React.FC = () => {
             loading="lazy"
           ></iframe>
         </MapContainer>
+        
       </ContactsPageContainer>
     </ContactsContainer>
   );
