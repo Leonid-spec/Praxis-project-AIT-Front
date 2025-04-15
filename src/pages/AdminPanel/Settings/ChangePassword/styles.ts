@@ -35,7 +35,7 @@ export const Input = styled.input`
   transition: border-color 0.2s ease;
 
   &:focus {
-    border-color: #20b1b7;
+    border-color: #7a2141;
     outline: none;
   }
 `;
@@ -43,7 +43,7 @@ export const Input = styled.input`
 export const SubmitButton = styled.button`
   padding: 12px;
   margin-top: 10px;
-  background-color: #20b1b7;
+  background-color: #7a2141;
   color: white;
   border: none;
   border-radius: 18px;
@@ -52,6 +52,7 @@ export const SubmitButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #1a8e92;
+    background-color: #5c0d2a;
+
   }
 `;

@@ -203,7 +203,7 @@ export const BiographyTextareaDe = styled.textarea`
   width: 100%;
   color:  #292828;
   &:focus {
-    border-color: #20b1b7;
+    border-color: #7a2141;
     outline: none;
     background-color: #fff;
   }
@@ -257,7 +257,7 @@ export const ImagePreview = styled.img`
 
 // Кнопки
 export const StyledReturnButton = styled.button`
-  background-color: #20b1b7;
+  background-color: #7a2141;
   color: #fff;
   padding: 10px 20px;
   border: none;

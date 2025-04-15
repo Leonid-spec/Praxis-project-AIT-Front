@@ -79,7 +79,7 @@ export const TitleSection = styled.div`
     border-radius: 5px;
 
     &:focus {
-      border-color: #20b1b7;
+      border-color: #7a2141;
       outline: none;
     }
   }
@@ -88,11 +88,11 @@ export const TitleSection = styled.div`
 export const StyledCheckbox = styled.input`
   width: 20px;
   height: 20px;
-  accent-color: #20b1b7;
+  accent-color: #7a2141;
   cursor: pointer;
 
   &:checked {
-    background-color: #20b1b7;
+    background-color: #7a2141;
   }
 `;
 
@@ -128,7 +128,7 @@ export const InputContainer = styled.div`
     border-radius: 5px;
 
     &:focus {
-      border-color: #20b1b7;
+      border-color: #7a2141;
       outline: none;
     }
   }
@@ -153,7 +153,7 @@ export const DescriptionSection = styled.div`
 `;
 
 export const StyledReturnButton = styled.button`
-  background-color: #20b1b7;
+  background-color: #7a2141;
   color: #fff;
   padding: 10px 20px;
   border: none;

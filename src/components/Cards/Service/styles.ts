@@ -12,8 +12,8 @@ export const Card = styled.div`
 export const PhotoContainer = styled.div`
   width: 100%;
   height: 250px;
-  background-color: #9ceef1;
-  background-color: #9ceef196; 
+  background-color: #bbb9f2;
+  background-color: #e0def696; 
 
 `;
 

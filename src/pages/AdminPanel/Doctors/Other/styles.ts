@@ -8,7 +8,7 @@ export const StyledButton = styled.div`
   margin: 20px;
   min-width: 400px;
   border-radius: 30px;
-  background-color: #20b1b7;
+  background-color: #7a2141;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
 `;
