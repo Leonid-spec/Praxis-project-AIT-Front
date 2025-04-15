@@ -86,6 +86,21 @@
         "wednesday": "Среда",
         "thursday": "Четверг",
         "friday": "Пятница"
+      },
+      "logo": {
+        "alt": "Логотип Zahn"
+      },
+      "contact": {
+        "clinicName": "Abramian Dental",
+        "street": "Breslauer Str. 17",
+        "city": "78467 Konstanz",
+        "phone": "+49 75 31 7 72 73",
+        "email": "praxis.sofia.abramian@gmail.com"
+      },
+      "hours": {
+
+        "weekdays": "Пн-Пт: ",
+        "weekend": "Сб-Вс: выходной"
       }
     },
     "other": {
@@ -260,12 +275,15 @@
                 "create": "Создать нового администратора",
                 "changePassword": "Изменить пароль",
                 "viewAll": "Просмотреть всех администраторов",
+                "address": "Адрес",
+                "runningLine": "Бегущая строка",
+                "workingMode": "Режим работы",
                 "delete": "Удалить администратора"
               },
               "sections": {
                 "create": "Создание нового администратора",
                 "changePassword": "Смена пароля",
-                "viewAll": "Все администраторы",
+                "viewAll": "Все администраторы",            
                 "delete": "Удаление администратора"
               }
             }
@@ -298,9 +316,7 @@
           "refresh": "Обновить",
           "errorLoading": "Ошибка загрузки услуги",
           "searchPlaceholder": "Поиск по названию услуги",
-          "gallery": "Галерея изображений, где вы можете просматривать фото",
-          "editGallery": "Редактируйте галерею, добавляя или удаляя изображения"
-        },
+          "gallery": "Галерея изображений, где вы можете просматривать фото"        },
         "doctors": {
           "requiredField": "Это поле обязательно для заполнения",
           "updated": "Информация о враче обновлена",

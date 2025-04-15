@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getServiceById, updateService } from "../../../../api/serviceAPI";
 import {
-  ServicePageSingleContainer,
   HeaderBox,
   StyledReturnButton,
   StyledSaveButton,
@@ -26,7 +25,7 @@ import { ServiceData } from "../../../../store/types/serviceTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useTranslation } from "react-i18next";
 import { addImage, deleteImage, updateImage } from "../../../../api/imageAPI";
-import { GalleryContainer, TitleBox, UploadText } from "../Gallery/styles";
+import { GalleryContainer, TitleBox } from "../Gallery/styles";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 import { CheckboxLabel, EditDoctorContainer, ScrollContainer } from "./styles";
 
@@ -529,10 +528,6 @@ const EditServicePage: React.FC<{
             </TitleBox>
 
             <EditTopImage>
-              <UploadText>
-                {t("message.adminPanel.appointments.services.editGallery") ||
-                  "Upload Gallery Images"}
-              </UploadText>
               <UploadInput
                 type="file"
                 accept="image/*"

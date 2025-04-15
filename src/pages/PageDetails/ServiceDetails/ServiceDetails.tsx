@@ -1,26 +1,25 @@
-import React, {useEffect} from "react";
-import {useParams} from "react-router-dom";
-import {useTranslation} from "react-i18next";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Container,
   ContentWrapper,
   Description,
   DescriptionWrapper,
+  GalleryGrid,
   GalleryImage,
-  GalleryTitle,
-  GalleryWrapper,
-  ImagesGrid,
+  ImageSectionWrapper,
   ImageWrapper,
-  ImgAndBtnWrapper,
   InfoWrapper,
   LabelWrapper,
   MainImage,
   Title,
   TitleWrapper,
+  ResetImageButton,
 } from "./styles";
-import {AppDispatch, RootState} from "../../../store/store";
-import {useDispatch, useSelector} from "react-redux";
-import {ServiceData} from "../../../store/types/serviceTypes";
+import { AppDispatch, RootState } from "../../../store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { ServiceData } from "../../../store/types/serviceTypes";
 import {
   fetchActiveServicesStart,
   fetchServicesFailure,
@@ -35,6 +34,8 @@ const ServiceDetails: React.FC = () => {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as Language;
   const dispatch: AppDispatch = useDispatch();
+  const [mainImage, setMainImage] = useState<string | null>(null); 
+  const [, setPrevImage] = useState<string | null>(null); 
 
   const { services, loading, error } = useSelector(
     (state: RootState) => state.service
@@ -49,7 +50,9 @@ const ServiceDetails: React.FC = () => {
           const data = await getActiveServices();
           dispatch(fetchServicesSuccess(data));
         } catch (err: any) {
-          dispatch(fetchServicesFailure(err.message || t("errorFetchingServices")));
+          dispatch(
+            fetchServicesFailure(err.message || t("errorFetchingServices"))
+          );
         }
       };
       fetchDoctors();
@@ -81,17 +84,64 @@ const ServiceDetails: React.FC = () => {
   const title =
     typeof service[titleKey] === "string" ? service[titleKey] : t("noTitle");
 
+  const handleImageClick = (imgPath: string) => {
+    setPrevImage(mainImage);
+    setMainImage(imgPath);
+  };
+
+  const resetImage = () => {
+    setMainImage(service.topImage || "https://via.placeholder.com/400");
+    setPrevImage(null);
+  };
+
   return (
     <Container>
+      <ImageSectionWrapper>
+        <ImageWrapper>
+          <MainImage
+            src={
+              mainImage || service.topImage || "https://via.placeholder.com/400"
+            }
+            alt="Main image of service"
+          />
+        </ImageWrapper>
+        <GalleryGrid>
+          {service.images && service.images.length > 0 ? (
+            <>
+              {service.images.map((img) => (
+                <GalleryImage
+                  key={img.id}
+                  src={
+                    img.path.startsWith("https://")
+                      ? img.path
+                      : `https://${img.path}`
+                  }
+                  alt="Service thumbnail"
+                  onClick={() =>
+                    handleImageClick(
+                      img.path.startsWith("https://")
+                        ? img.path
+                        : `https://${img.path}`
+                    )
+                  }
+                />
+              ))}
+
+              <ResetImageButton onClick={resetImage} title={t("reset")}>
+                ↻ {t("reset")}
+              </ResetImageButton>
+            </>
+          ) : (
+            <p>{t("noImages")}</p>
+          )}
+        </GalleryGrid>
+
+        {/* <ResetImageButton onClick={resetImage}>
+          <span>↻</span> {t("reset")}
+        </ResetImageButton> */}
+      </ImageSectionWrapper>
+
       <ContentWrapper>
-       <ImgAndBtnWrapper>
-          <ImageWrapper>
-            <MainImage
-              src={service.topImage || "https://via.placeholder.com/400"}
-              alt="Main image of service"
-            />
-          </ImageWrapper>
-       </ImgAndBtnWrapper>
         <InfoWrapper>
           <TitleWrapper>
             <LabelWrapper>
@@ -107,27 +157,6 @@ const ServiceDetails: React.FC = () => {
           </DescriptionWrapper>
         </InfoWrapper>
       </ContentWrapper>
-
-      <GalleryWrapper>
-        <GalleryTitle>{t("Gallery")}</GalleryTitle>
-        <ImagesGrid>
-          {service.images && service.images.length > 0 ? (
-            service.images.map((img) => (
-              <GalleryImage
-                key={img.id}
-                src={
-                  img.path.startsWith("https://")
-                    ? img.path
-                    : `https://${img.path}`
-                }
-                alt="Service's work"
-              />
-            ))
-          ) : (
-            <p>{t("noImages")}</p>
-          )}
-        </ImagesGrid>
-      </GalleryWrapper>
     </Container>
   );
 };

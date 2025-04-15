@@ -87,6 +87,21 @@
         "wednesday": "Mittwoch",
         "thursday": "Donnerstag",
         "friday": "Freitag"
+      },
+      "logo": {
+        "alt": "Zahn Logo"
+      },
+      "contact": {
+        "clinicName": "Abramian Dental",
+        "street": "Breslauer Str. 17",
+        "city": "78467 Konstanz",
+        "phone": "+49 75 31 7 72 73",
+        "email": "praxis.sofia.abramian@gmail.com"
+      },
+      "hours": {
+    
+        "weekdays": "Mo-Fr: ",
+        "weekend": "Sa-So: geschlossen"
       }
     },
     "other": {
@@ -261,12 +276,16 @@
                 "create": "Neuen Administrator erstellen",
                 "changePassword": "Passwort ändern",
                 "viewAll": "Alle Administratoren anzeigen",
+                "address": "Adresse",
+                "runningLine": "Lauftext",
+                "workingMode": "Arbeitsmodus",
                 "delete": "Administrator löschen"
               },
               "sections": {
                 "create": "Neuen Administrator erstellen",
                 "changePassword": "Passwort ändern",
                 "viewAll": "Alle Administratoren",
+                
                 "delete": "Administrator löschen"
               }
             }
@@ -299,9 +318,7 @@
           "refresh": "Aktualisieren",
           "errorLoading": "Fehler beim Laden des Service",
           "searchPlaceholder": "Suche nach Servicenamen",
-          "gallery": "Bildergalerie, in der Sie Fotos durchsuchen können.",
-          "editGallery": "Bearbeiten Sie die Galerie, indem Sie Bilder hinzufügen oder entfernen."
-        },
+          "gallery": "Bildergalerie, in der Sie Fotos durchsuchen können."        },
         "doctors": {
           "requiredField": "Dieses Feld ist erforderlich",
           "updated": "Informationen über den Arzt wurden aktualisiert",

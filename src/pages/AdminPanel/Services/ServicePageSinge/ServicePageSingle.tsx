@@ -6,7 +6,6 @@ import {
   Input,
   MainBox,
   TitlesBox,
-  StyledCheckbox,
   TitleBoxText,
   ImagePreview,
   UploadInput,
@@ -19,7 +18,6 @@ import {
   MakeCardVisibleBox,
   TitleSection,
   ScrollContainer,
-  UploadText,
   GalleryContainer,
   GalleryGrid,
   GalleryImageWrapper,
@@ -367,10 +365,7 @@ export const ServicePageSingle: React.FC = () => {
           </TitleBox>
 
           <EditTopImage>
-            <UploadText>
-              {t("message.adminPanel.appointments.services.editGallery") ||
-                "Upload Gallery Images"}
-            </UploadText>
+    
             <UploadInput
               type="file"
               accept="image/*"
