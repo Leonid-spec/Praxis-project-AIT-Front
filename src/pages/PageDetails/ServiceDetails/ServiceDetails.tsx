@@ -47,7 +47,9 @@ const ServiceDetails: React.FC = () => {
       dispatch(fetchActiveServicesStart());
       const fetchDoctors = async () => {
         try {
+
           const data = await getActiveServices();
+
           dispatch(fetchServicesSuccess(data));
         } catch (err: any) {
           dispatch(

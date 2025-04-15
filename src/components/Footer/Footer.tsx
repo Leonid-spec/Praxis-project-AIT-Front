@@ -21,21 +21,20 @@ const Footer: React.FC = () => {
   const { t } = useTranslation();
 
   const [workingHours, setWorkingHours] = useState({
-    monday: "08:00 - 12:00, 13:00 - 18:00",
-    tuesday: "08:00 - 12:00, 13:00 - 18:00",
-    wednesday: "08:00 - 12:00, 13:00 - 18:00",
-    thursday: "08:00 - 12:00, 13:00 - 18:00",
-    friday: "08:00 - 12:00, 13:00 - 18:00",
+    monday: "",
+    tuesday: "",
+    wednesday: "",
+    thursday: "",
+    friday: "",
   });
 
   const [address, setAddress] = useState({
-    clinicName: "Abramian Dental", // Значение по умолчанию
-    street: "Breslauer Str. 17", // Значение по умолчанию
-    city: "78467 Konstanz", // Значение по умолчанию
-    phone: "+49 75 31 7 72 73", // Значение по умолчанию
-    email: "praxis.sofia.abramian@gmail.com", // Значение по умолчанию
+    clinicName: "",
+    street: "",
+    city: "",
+    phone: "",
+    email: "",
   });
-
 
   // Загрузка данных режима работы из localStorage
   useEffect(() => {
@@ -56,25 +55,25 @@ const Footer: React.FC = () => {
     if (savedAddress) {
       try {
         const parsedAddress = JSON.parse(savedAddress);
-        setAddress((prevState) => ({
-          ...prevState,
-          clinicName: parsedAddress.clinicName || prevState.clinicName,
-          street: parsedAddress.street || prevState.street,
-          city: parsedAddress.city || prevState.city,
-          phone: parsedAddress.phone || prevState.phone,
-          email: parsedAddress.email || prevState.email,
-        }));
+        setAddress({
+          clinicName: parsedAddress.clinicName || "Abramian Dental",
+          street: parsedAddress.street || "Breslauer Str. 17",
+          city: parsedAddress.city || "78467 Konstanz",
+          phone: parsedAddress.phone || "+49 75 31 7 72 73",
+          email: parsedAddress.email || "praxis.sofia.abramian@gmail.com",
+        });
       } catch (error) {
         console.error("Ошибка при загрузке адреса из localStorage:", error);
       }
     }
   }, []);
-  
+
   return (
     <FooterContainer>
-
       <Content>
+
         <ColumnLeft>
+
           <Title>{t("message.footer.titles.contact")}</Title>
           <Address>
             <p>{address.clinicName}</p>
@@ -99,6 +98,7 @@ const Footer: React.FC = () => {
               <span>{address.email}</span>
             </ContactIcons>
           </Info>
+
         </ColumnLeft>
         
         <Column>
@@ -139,6 +139,37 @@ const Footer: React.FC = () => {
               </p>
             </Days>
          </TimesContainer>
+
+        </Column>
+        
+        {/* Колонка с рабочим временем */}
+        <Column>
+          <Title>{t("message.footer.titles.time")}</Title>
+          <TimesContainer>
+            <DaysOfWeekBox>
+              <DayRow>
+                <p>{t("message.footer.daysOfWeek.monday")}:</p>
+                <p>{workingHours.monday}</p>
+              </DayRow>
+              <DayRow>
+                <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
+                <p>{workingHours.tuesday}</p>
+              </DayRow>
+              <DayRow>
+                <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
+                <p>{workingHours.wednesday}</p>
+              </DayRow>
+              <DayRow>
+                <p>{t("message.footer.daysOfWeek.thursday")}:</p>
+                <p>{workingHours.thursday}</p>
+              </DayRow>
+              <DayRow>
+                <p>{t("message.footer.daysOfWeek.friday")}:</p>
+                <p>{workingHours.friday}</p>
+              </DayRow>
+            </DaysOfWeekBox>
+          </TimesContainer>
+
         </Column>
       </Content>
     </FooterContainer>

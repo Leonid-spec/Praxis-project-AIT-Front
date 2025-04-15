@@ -34,6 +34,7 @@ const Team: React.FC = () => {
     const fetchActiveDoctors = async () => {
       dispatch(fetchActiveDoctorsStart());
       try {
+
         const response = await fetch("/api/doctors/active");
     
         if (!response.ok) {
