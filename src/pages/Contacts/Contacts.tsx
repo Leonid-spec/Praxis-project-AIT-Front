@@ -23,13 +23,13 @@ const Contacts: React.FC = () => {
   const { t } = useTranslation();
   const [showMessage, setShowMessage] = useState(false);
   const [address, setAddress] = useState({
-    clinicName: "Abramian Dental",
-    street: "",
-    city: "",
-    phone: "",
-    email: "",
-    gps: "",
-    zipCode: "",
+    clinicName: "Zahnarztpraxis Sofia Abramian",
+    street: "Breslauer Str. 17",
+    city: "Konstanz",
+    phone: "+49 75 31 7 72 73",
+    email: "praxis.sofia.abramian@gmail.com",
+    gps: "50.4501° N, 30.5234°",
+    zipCode: "78467",
   });
 
   const [workingHours, setWorkingHours] = useState({
@@ -115,10 +115,8 @@ const Contacts: React.FC = () => {
                 {t("message.main.contacts_page.titleContacts")}
               </ContactsBoxTitle>
               <DaysOfWeek>
-                <p>{t("message.main.contacts_page.address")}</p>
-                <p>{address.street}</p>
-                <p>{address.city}</p>
-                <p>{address.zipCode}</p>
+                <p>{address.street}, {address.zipCode} {address.city}
+                  </p>
               </DaysOfWeek>
               <ContactIcons
                 onClick={handleCopyCoordinates}

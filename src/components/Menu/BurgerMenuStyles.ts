@@ -10,7 +10,7 @@ align-items: center;
 
 export const BurgerButton = styled.div`
   display: none;
-  @media (max-width: 1024px) {
+  @media (max-width: 1440px) {
     display: block;
     font-size: 2rem;
     color: #3b7f83;
@@ -63,9 +63,11 @@ export const LanguageLink = styled.button`
   color: inherit;
   font-weight: bold;
   color: #ffffff;
+  /* color: #7a2141; */
   cursor: pointer;
   &:hover {
     color: #4a90e2;
+    color: #7a2141;
   }
 `;
 
