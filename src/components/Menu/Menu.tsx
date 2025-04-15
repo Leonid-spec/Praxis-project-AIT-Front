@@ -28,7 +28,7 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1024);
+    const handleResize = () => setIsMobile(window.innerWidth < 1250);
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
@@ -41,7 +41,7 @@ const Menu = () => {
           <NavLinkImg src="/public/images/MainLogo.jpg" alt="Logo" />
         </StyledNavLink>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
-          <NavLinkText>Abramian Dental</NavLinkText>
+          <NavLinkText>Zahnarztpraxis Sofia Abramian</NavLinkText>
         </StyledNavLink>
       </Logo>
 

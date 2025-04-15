@@ -32,11 +32,11 @@ const Footer: React.FC = () => {
   });
 
   const [address, setAddress] = useState({
-    clinicName: "",
-    street: "",
-    city: "",
-    phone: "",
-    email: "",
+    clinicName: "Zahnarztpraxis Sofia Abramian",
+    street: "Breslauer Str. 17",
+    city: "Konstanz",
+    phone: "+49 75 31 7 72 73",
+    email: "praxis.sofia.abramian@gmail.com",
   });
 
   // Загрузка данных режима работы из localStorage
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
       try {
         const parsedAddress = JSON.parse(savedAddress);
         setAddress({
-          clinicName: parsedAddress.clinicName || "Abramian Dental",
+          clinicName: parsedAddress.clinicName || "Zahnarztpraxis Sofia Abramian",
           street: parsedAddress.street || "Breslauer Str. 17",
           city: parsedAddress.city || "78467 Konstanz",
           phone: parsedAddress.phone || "+49 75 31 7 72 73",
