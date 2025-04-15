@@ -1,7 +1,5 @@
 // const API_URL = "/api/image";
 
-import { ImageDto } from "../store/types/imageTypes";
-
 // const handleFetchError = async (response: Response) => {
 //   if (!response.ok) {
 //     const errorText = await response.text();

@@ -11,10 +11,8 @@ import {
   TimesContainer,
   DaysStyle,
   DaysTimesContainer,
-  DaysLeft,
   ColumnLeft,
-  DaysOfWeekBox,
-  DayRow,
+  Days,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";

@@ -22,7 +22,7 @@ const WorkingModePage: React.FC = () => {
     friday: "",
   });
 
-  const [notification, setNotification] = useState<{
+  const [, setNotification] = useState<{
     message: string;
     type: "error" | "success";
   } | null>(null);

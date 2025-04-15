@@ -7,6 +7,7 @@ export const TeamContainer = styled.div`
 
 export const HighlightedSpan = styled.span`
   color: #77c0eb;
+  color: #7a2141;
   font-weight: bold;
 `;
 

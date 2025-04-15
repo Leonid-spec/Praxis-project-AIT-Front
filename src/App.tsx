@@ -21,7 +21,7 @@ Modal.setAppElement("#root");
 
 function App() {
   
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

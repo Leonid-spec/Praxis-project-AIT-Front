@@ -12,7 +12,6 @@ import {
   HeaderMainBtnsContainer,
   DoctorCardsMainContainer,
 } from "./styles";
-import { FaSearch } from "react-icons/fa";
 export const DoctorsPageAll = () => {
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();

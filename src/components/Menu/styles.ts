@@ -46,6 +46,7 @@ export const StyledNavLink = styled(NavLink)`
 
   &:hover {
     color: #9ceef1;
+    color: #7a2141;
     /* color: #4ba0a5; */
   }
 `;
@@ -76,6 +77,7 @@ export const LanguageLink = styled.button`
 
   &:hover {
     color: #9ceef1;
+    color: #7a2141;
     /* color: #4ba0a5; */
   }
 

@@ -46,7 +46,7 @@ export const Specialization = styled.p`
 export const DetailsButton = styled.button`
   background-color:  #9ceef1;
   /* background-color: #28c3c8f5;  */
-
+  background-color: #7a2141;
   color: white;
   padding: 10px 20px;
   border-radius: 6px;
@@ -60,6 +60,6 @@ export const DetailsButton = styled.button`
   &:hover {
     background-color: #9dd7ef;
     background-color: #3b7f83;
-
+    background-color: #641230;
   }
 `;

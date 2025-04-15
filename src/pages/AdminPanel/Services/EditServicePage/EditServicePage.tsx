@@ -12,7 +12,6 @@ import {
   MainBox,
   MainBoxText,
   MakeCardVisibleBox,
-  StyledCheckbox,
   TitleBoxText,
   TitlesBox,
   TitleSection,

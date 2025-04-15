@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "./miniFooter.module.css";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
-import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
-import { Link } from "react-router-dom";
 
 const MiniFooter: React.FC = () => {
   const { t } = useTranslation();

@@ -22,5 +22,6 @@ export const ServiceText = styled.p`
 
 export const HighlightedSpan = styled.span`
   color: #555555;
+  color: #7a2141;
   font-weight: bold;
 `;
