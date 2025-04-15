@@ -39,11 +39,7 @@ export const Content = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
-  /* align-items: stretch; */
   width: 100%;
-  /* max-width: 1200px; */
-  /* background-color: red; */
-  padding: 0 20%;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -51,15 +47,56 @@ export const Content = styled.div`
   }
 `;
 
-export const Column = styled.div`
+// export const ColumnLeft = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: flex-start;
+//   flex: 1;
+//   text-align: left;
+
+//   @media (max-width: 768px) {
+//     align-items: center;
+//     text-align: center;
+//     margin-bottom: 20px;
+//   }
+
+//   @media (max-width: 576px) {
+//     min-height: auto;
+//     margin: 0;
+//   }
+// `;
+
+
+// export const Column = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-around;
+//   align-items: flex-start;
+//   flex: 1;
+//   text-align: left;
+//   margin: 0 10px;
+
+//   @media (max-width: 768px) {
+//     align-items: center;
+//     text-align: center;
+//     margin-bottom: 20px;
+//   }
+
+//   @media (max-width: 576px) {
+//     min-height: auto;
+//     margin: 0;
+//   }
+// `;
+
+export const ColumnLeft = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-end;
   align-items: flex-start;
   flex: 1;
   text-align: left;
-  /* min-height: 200px; */
-  margin: 0 10px;
+  margin-left: 20%; 
 
   @media (max-width: 768px) {
     align-items: center;
@@ -72,6 +109,27 @@ export const Column = styled.div`
     margin: 0;
   }
 `;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex: 1;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 576px) {
+    min-height: auto;
+    margin: 0;
+  }
+`;
+
 
 export const LogoContainer = styled(Column)`
   justify-content: center;
@@ -119,7 +177,11 @@ export const Title = styled.h3`
 export const TimesContainer = styled.div`
   display: flex;
   gap: 40px;
-  
+  width: 100%;
+`;
+
+export const DaysTimesContainer = styled.p`
+  width: 100%;
 `;
 
 export const Address = styled.div`
@@ -142,6 +204,15 @@ export const Info = styled.div`
 
   @media (max-width: 576px) {
     font-size: 16px;
+  }
+`;
+
+export const DaysLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  @media (max-width: 768px) {
+    gap: 12px;
   }
 `;
 

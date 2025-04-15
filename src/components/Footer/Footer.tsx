@@ -11,6 +11,9 @@ import {
   IconCircle,
   TimesContainer,
   DaysStyle,
+  DaysTimesContainer,
+  DaysLeft,
+  ColumnLeft,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
@@ -72,7 +75,7 @@ const Footer: React.FC = () => {
     <FooterContainer>
 
       <Content>
-        <Column>
+        <ColumnLeft>
           <Title>{t("message.footer.titles.contact")}</Title>
           <Address>
             <p>{address.clinicName}</p>
@@ -97,7 +100,8 @@ const Footer: React.FC = () => {
               <span>{address.email}</span>
             </ContactIcons>
           </Info>
-        </Column>
+        </ColumnLeft>
+        
         <Column>
           <Title>{t("message.footer.titles.time")}</Title>
          <TimesContainer>
@@ -119,9 +123,9 @@ const Footer: React.FC = () => {
               </DaysStyle>
             </Days>
             <Days>
-              <p>
+              <DaysTimesContainer>
               {workingHours.monday}
-              </p>
+              </DaysTimesContainer>
               <p>
               {workingHours.tuesday}
               </p>
