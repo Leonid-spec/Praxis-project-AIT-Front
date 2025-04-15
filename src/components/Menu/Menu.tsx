@@ -28,7 +28,7 @@ const Menu = () => {
   };
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 1250);
+    const handleResize = () => setIsMobile(window.innerWidth < 1280);
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => window.removeEventListener("resize", handleResize);
