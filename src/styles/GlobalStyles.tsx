@@ -11,10 +11,10 @@ const globalStyles = css`
   }
 
   body {
-    /* font-family: "Lato", sans-serif; */
+    font-family: "Lato", sans-serif;
     /* font-family: "Open Sans", sans-serif; */
     /* font-family: "Roboto", sans-serif; */
-    font-family: "Nunito", sans-serif;
+    /* font-family: "Nunito", sans-serif; */
     /* font-variant: small-caps; */
     background-color: #f6f9fc;
   }
@@ -24,6 +24,8 @@ const globalStyles = css`
     height: 100%;
     margin: 0;
     padding: 0;
+    /* margin: 15px;
+    padding: 15px; */
   }
 // Yuliia
   @media (max-width: 868px) {

@@ -24,6 +24,9 @@ import {
 // import { FaSyncAlt } from "react-icons/fa";
 import { AdminDto } from "../../../../store/types/adminTypes";
 import { getAllAdmins } from "../../../../api/adminAPI";
+import AddressPage from "../AddressPage/AdressPage";
+import RunningLinePage from "../RunningLine/RunningLinePage";
+import WorkingModePage from "../WorkingModePage/WorkingModePage";
 // import { FaSyncAlt } from "react-icons/fa";
 
 interface SettingsPageProps {
@@ -40,6 +43,9 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
     | "viewAdmins"
     | "deleteAdmin"
     | "welcome"
+    | "workingMode"
+    | "address"
+    | "runningLine"
     | null
   >("welcome");
 
@@ -120,6 +126,21 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete"
           )}
         </StyledButton>
+        <StyledButton onClick={() => setActiveSection("workingMode")}>
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.workingMode"
+          )}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveSection("address")}>
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.address"
+          )}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveSection("runningLine")}>
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.runningLine"
+          )}
+        </StyledButton>
         {/* <RefreshIconBox onClick={handleRefreshBtn}>
           <FaSyncAlt size={24} color="#20b1b7" />
         </RefreshIconBox> */}
@@ -176,6 +197,23 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
                 )}
               </SectionTitle>
               <DeleteAdminForm />
+            </>
+          )}
+          {activeSection === "workingMode" && (
+            <>
+              <SectionTitle></SectionTitle>
+              <WorkingModePage />
+            </>
+          )}
+          {activeSection === "address" && (
+            <>
+              <SectionTitle></SectionTitle>
+              <AddressPage />{" "}
+            </>
+          )}
+          {activeSection === "runningLine" && (
+            <>
+              <RunningLinePage />
             </>
           )}
         </Section>

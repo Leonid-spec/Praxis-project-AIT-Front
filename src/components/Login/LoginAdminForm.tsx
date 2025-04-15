@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { FaUser, FaLock } from "react-icons/fa";
-import {
-  Overlay,
-  FormContainer,
-  TitleAndSub,
-  Title,
-  Subtitle,
-  ButtonCloseContainer,
-} from "./styles";
+import { SubmitButton } from "../Appointment/styles";
 import ButtonClose from "../Button/ButtonClose/ButtonClose";
-import SubmitButton from "../Button/SubmitButton/SubmitButton";
-import Notification from "../Notification/Notification";
 import TextInput from "../Input/TextInput";
-import { useNavigate } from "react-router-dom";
+import { Overlay, FormContainer, ButtonCloseContainer, TitleAndSub, Title, Subtitle } from "./styles";
+import { login } from "../../api/adminAPI";
+import { AdminDto } from "../../store/types/adminTypes";
+import Notification from "../Notification/Notification";
 
 const LoginAdminForm = ({
   onClose,
@@ -22,7 +17,7 @@ const LoginAdminForm = ({
   onClose: () => void;
   onLoginSuccess: () => void;
 }) => {
-  const [login, setlogin] = useState("");
+  const [loginField, setLoginField] = useState("");
   const [password, setPassword] = useState("");
   const [notification, setNotification] = useState<{
     message: string;
@@ -35,14 +30,14 @@ const LoginAdminForm = ({
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (login[0] === " ") {
+    if (loginField[0] === " ") {
       setNotification({
         message: t("message.other.loginAdmin.errors.usernameStartsWithSpace"),
         type: "error",
       });
       return;
     }
-    if (/\s/.test(login)) {
+    if (/\s/.test(loginField)) {
       setNotification({
         message: t("message.other.loginAdmin.errors.loginContainsSpaces"),
         type: "error",
@@ -56,21 +51,21 @@ const LoginAdminForm = ({
       });
       return;
     }
-    if (!login.trim() || !password.trim()) {
+    if (!loginField.trim() || !password.trim()) {
       setNotification({
         message: t("message.other.loginAdmin.errors.missingCredentials"),
         type: "error",
       });
       return;
     }
-    if (login.length < 3 || login.length > 16) {
+    if (loginField.length < 3 || loginField.length > 16) {
       setNotification({
         message: t("message.other.loginAdmin.errors.usernameLength"),
         type: "error",
       });
       return;
     }
-    if (password.length < 4 || login.length > 32) {
+    if (password.length < 4 || password.length > 32) {
       setNotification({
         message: t("message.other.loginAdmin.errors.passwordLength"),
         type: "error",
@@ -78,27 +73,12 @@ const LoginAdminForm = ({
       return;
     }
 
-    const loginData = { login, password };
+    const loginData: AdminDto = { login: loginField, password };
 
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(loginData),
-      });
 
-      if (!response.ok) {
-        throw new Error(`Invalid data!`);
-      }
-
-      const textResponse = await response.text(); 
-      // console.log("Text Response:", textResponse);
-
-      const data = textResponse ? JSON.parse(textResponse) : {};
-      // console.log("Parsed Data:", data);
-
+      const data = await login(loginData); 
+      
       if (data.token) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("isLoggedIn", "true");
@@ -115,12 +95,12 @@ const LoginAdminForm = ({
         }, 1500);
       } else {
         setNotification({
-          message: data.message || "Login failed",
+          message: "Login failed",
           type: "error",
         });
       }
     } catch (error: any) {
-      console.error("Error:", error);
+      console.error("Error during login:", error);
       setNotification({
         message: error.message || "Something went wrong",
         type: "error",
@@ -153,8 +133,8 @@ const LoginAdminForm = ({
           icon={<FaUser />}
           type="text"
           placeholder={t("message.other.loginAdmin.placeholders.username")}
-          value={login}
-          onChange={(e) => setlogin(e.target.value)}
+          value={loginField}
+          onChange={(e) => setLoginField(e.target.value)}
         />
         <div style={{ position: "relative" }}>
           <TextInput
@@ -175,8 +155,7 @@ const LoginAdminForm = ({
               transform: "translateY(-50%)",
               cursor: "pointer",
             }}
-          >
-          </div>
+          />
         </div>
         <SubmitButton type="submit">
           {t("message.other.loginAdmin.button")}

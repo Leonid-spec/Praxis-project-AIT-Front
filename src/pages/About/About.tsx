@@ -80,7 +80,7 @@ const About: React.FC = () => {
               <HighlightText>
                 {parseSubtitle(t("message.header.menu.cabinets"))}
               </HighlightText>{" "}
-              |
+             
             </ServiceText>
           </HeaderTextBox>
     

@@ -2,11 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1200px;
   margin: 40px auto;
-  padding: 20px;
 `;
 
 export const ContentWrapper = styled.div`
@@ -17,19 +13,36 @@ export const ContentWrapper = styled.div`
   width: 100%;
 `;
 
+
+export const ImgAndBtnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 export const ImageWrapper = styled.div`
-  flex: 1;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: #f8f8f8;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const MainImage = styled.img`
   width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  height: 100%;
   object-fit: cover;
+  border-radius: 12px;
 `;
 
 export const InfoWrapper = styled.div`
@@ -39,18 +52,29 @@ export const InfoWrapper = styled.div`
   text-align: left;
 `;
 
-export const FullName = styled.h1`
-  font-size: 28px;
+export const FullName = styled.h2`
+  font-size: 24px;
   color: #333;
   margin-bottom: 10px;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 `;
 
 export const TitleWrapper = styled.div`
   font-size: 24px;
   color: #333;
   margin-bottom: 10px;
+`;
+
+export const ResetImageButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 24px;
+  color: #333;
 `;
 
 export const LabelWrapper = styled.div`
@@ -62,36 +86,32 @@ export const LabelWrapper = styled.div`
 
 export const Title = styled.p`
   font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+  color: #555;
+  margin-bottom: 10px;
 `;
 
 export const SpecializationWrapper = styled.div`
-  font-size: 24px;
-  color: #555;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 `;
 
 export const Specialization = styled.p`
-  font-size: 24px;
+  font-size: 18px;
   color: #555;
-  margin-bottom: 15px;
 `;
 
 export const BiographyWrapper = styled.div`
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
+  margin-top: 20px;
 `;
 
 export const Biography = styled.p`
-  font-size: 24px;
-  color: #555;
+  font-size: 16px;
+  color: #666;
   line-height: 1.6;
 `;
 
 export const GalleryWrapper = styled.div`
-  margin-top: 50px;
+display: flex;
+justify-content: center;
   width: 100%;
   text-align: center;
 `;
@@ -112,11 +132,30 @@ export const ImagesGrid = styled.div`
 export const GalleryImage = styled.img`
   width: 120px;
   height: 120px;
+  max-width: 120px;
   object-fit: cover;
   border-radius: 8px;
   transition: transform 0.3s ease;
 
   &:hover {
     transform: scale(1.1);
+    cursor: pointer;
   }
+`;
+
+export const ImageSectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+export const GalleryGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: center;
+  max-width: 400px;
+  width: 100%;
 `;

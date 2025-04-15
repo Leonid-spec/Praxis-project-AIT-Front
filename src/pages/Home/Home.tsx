@@ -2,7 +2,6 @@ import {
   HomeContainer, 
   LeftContainer, 
   RightContainer, 
-  // WelcomeTextTitle,
   WelcomeTextSubtitle,
   HighlightedSpan,
   RightContainerPhoto,
@@ -27,8 +26,8 @@ const Home = () => {
 
   return (
     <HomeContainer>
+      
       <LeftContainer>
-          {/* <WelcomeTextTitle>{t('message.main.home_page.title')}</WelcomeTextTitle> */}
           <WelcomeTextSubtitle>
             {parseSubtitle(t('message.main.home_page.subtitle1'))}
           </WelcomeTextSubtitle>

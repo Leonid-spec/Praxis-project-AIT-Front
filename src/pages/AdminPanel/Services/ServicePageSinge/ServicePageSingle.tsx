@@ -6,7 +6,6 @@ import {
   Input,
   MainBox,
   TitlesBox,
-  StyledCheckbox,
   TitleBoxText,
   ImagePreview,
   UploadInput,
@@ -19,16 +18,13 @@ import {
   MakeCardVisibleBox,
   TitleSection,
   ScrollContainer,
-  UploadText,
   GalleryContainer,
   GalleryGrid,
   GalleryImageWrapper,
   TitleBox,
+  CheckboxLabel,
 } from "./style";
-import {
-  createService,
-  getServiceById,
-} from "../../../../api/serviceAPI";
+import { createService, getServiceById } from "../../../../api/serviceAPI";
 import { addImage, pushImageFile } from "../../../../api/imageAPI";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { useNavigate } from "react-router-dom";
@@ -185,14 +181,14 @@ export const ServicePageSingle: React.FC = () => {
         images: [
           ...(prev.images ?? []),
           ...urls.map((url) => ({
-            id: 0, 
+            id: 0,
             path: url,
             dentalServiceId: serviceData.id,
             doctorId: 0,
           })),
         ],
       }));
-      
+
       console.log("Selected images:", fileArray);
     }
   };
@@ -276,14 +272,19 @@ export const ServicePageSingle: React.FC = () => {
         <MainBox>
           <MainBoxText>
             <MakeCardVisibleBox>
-              <TitlesBox>
-                {t("message.adminPanel.appointments.services.makeCardVisible")}
-              </TitlesBox>
-              <StyledCheckbox
-                type="checkbox"
-                checked={serviceData.isActive}
-                onChange={(e) => handleChange("isActive", e.target.checked)}
-              />
+              <CheckboxLabel>
+                {t("message.adminPanel.appointments.doctors.makeCardVisible")}
+                <input
+                  type="checkbox"
+                  checked={serviceData?.isActive}
+                  onChange={(e) =>
+                    setServiceData({
+                      ...serviceData,
+                      isActive: e.target.checked,
+                    })
+                  }
+                />
+              </CheckboxLabel>
             </MakeCardVisibleBox>
 
             <EditTopImage>
@@ -364,10 +365,7 @@ export const ServicePageSingle: React.FC = () => {
           </TitleBox>
 
           <EditTopImage>
-            <UploadText>
-              {t("message.adminPanel.appointments.services.editGallery") ||
-                "Upload Gallery Images"}
-            </UploadText>
+    
             <UploadInput
               type="file"
               accept="image/*"

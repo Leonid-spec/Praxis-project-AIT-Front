@@ -17,14 +17,25 @@ export const MenuContainer = styled.div`
   }
 `;
 
+export const BesideLogoContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 60px;
+  font-size: 1.6rem;
+`;
+
+
 export const Logo = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.6rem;
+  margin-left: 30px;
+  /* font-size: 1.6rem; */
+  /* font-size: 1.8rem; */
 `;
 
 export const Nav = styled.nav`
   display: flex;
+  align-items: center;
   gap: 25px;
 `;
 
@@ -32,14 +43,12 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: #3d3d3d;
   font-size: 1.2rem;
-  
 
   &:hover {
     color: #9ceef1;
-    color: #4ba0a5;
+    /* color: #4ba0a5; */
   }
 `;
-
 
 export const SprachUundAdminbereich = styled.div`
   display: flex;
@@ -49,10 +58,12 @@ export const SprachUundAdminbereich = styled.div`
   gap: 20px;
 `;
 
-
 export const LanguagePanel = styled.div`
   display: flex;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 `;
 
 export const LanguageLink = styled.button`
@@ -60,11 +71,12 @@ export const LanguageLink = styled.button`
   border: none;
   color: inherit;
   cursor: pointer;
-  
+  margin: 0;
+  font-size: 14px;
+
   &:hover {
     color: #9ceef1;
-    color: #4ba0a5;
-
+    /* color: #4ba0a5; */
   }
 
   &:active {
@@ -74,9 +86,10 @@ export const LanguageLink = styled.button`
 
 export const Divider = styled.span`
   color: #3d3d3d;
+  /* font-size: 24px; */
+  font-size: 14px;
+
 `;
-
-
 
 export const AdminPanelBox = styled.div`
   display: flex;
@@ -97,17 +110,16 @@ export const NavLinkImg = styled.img`
 
 export const NavLinkText = styled.span`
   color: #3d3d3d;
-  font-size: 1.2rem;
-text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
-font-weight: bold;
-     &:hover {
-     color: #3b7f83;
-   }
+  font-size: 1.4rem;
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+
+
 
   @media (min-width: 1920px) {
     font-size: 1.4rem;
   }
-;`
+`;
 
 export const StyledNavLinkMenu = styled(Link)`
   display: flex;
@@ -116,7 +128,7 @@ export const StyledNavLinkMenu = styled(Link)`
   text-decoration: none;
   color: #333;
   font-size: 18px;
-  font-weight: 600;
+  /* font-weight: 600; */
   transition: background-color 0.3s ease;
 
   &:hover {

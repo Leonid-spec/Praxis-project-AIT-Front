@@ -3,30 +3,26 @@ import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   padding: 12px 35px; 
+  padding: 12px 12px; 
   font-size: 1.1rem;
-  font-weight: bold; 
   border: none; 
   border-radius: 6px;
   background-color: #5FC9D3; 
   background-color: #9ceef1;
   color: #ffffff;
   cursor: pointer;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease background-color 0.3s ease;;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
 
+  transition: all 0.3s ease-in-out;
   &:hover {
-    background-color:#4A9FB0;
+    cursor: pointer;
+    /* background-color:#4A9FB0; */
+    /* background-color: #69e5ec; */
     transform: translateY(-2px); 
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
   }
 
   &:active {
-    background-color: #308b9d; 
-    /* background-color: #268294;  */
-  background-color: #5FC9D3; 
 
-    transform: translateY(0); 
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   &:disabled {

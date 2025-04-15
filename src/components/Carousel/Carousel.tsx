@@ -11,15 +11,18 @@ import {
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const photos = [
-  "/src/public/photo_5456500184721778858_y.jpg",
-  "/src/public/photo_5456500184721778860_y.jpg",
-  "/src/public/photo_5456500184721778861_y.jpg",
-  "/src/public/photo_5456500184721778863_y.jpg",
-  "/src/public/depositphotos_159678230-stock-photo-empty-dentist-office.jpg",
-  "/src/public/depositphotos_24829235-stock-photo-dentist-office.jpg",
-  "/src/public/depositphotos_93803168-stock-photo-modern-dental-office-interior.jpg",
-  "/src/public/mwwh3sospdtz1mgfd2e70f3pl24stnq4.jpg",
+  "/images/photo_5456500184721778858_y.jpg",
+  "/images/photo_5456500184721778860_y.jpg",
+  "/images/photo_5456500184721778861_y.jpg",
+  "/images/photo_5456500184721778863_y.jpg",
 ];
+
+// const photos = [
+//   "/src/public/photo_5456500184721778858_y.jpg",
+//   "/src/public/photo_5456500184721778860_y.jpg",
+//   "/src/public/photo_5456500184721778861_y.jpg",
+//   "/src/public/photo_5456500184721778863_y.jpg",
+// ];
 
 const Carousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,7 +30,7 @@ const Carousel: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % photos.length);
-    }, 3000);
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 

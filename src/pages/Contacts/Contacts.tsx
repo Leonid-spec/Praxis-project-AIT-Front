@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ButtonContainer,
   CardsGrid,
@@ -10,7 +10,6 @@ import {
   ContactsWrapper,
   DaysOfWeek,
   DaysOfWeekBox,
-  // HighlightedSpan,
   IconCircle,
   MapContainer,
   SprechzeitenBox,
@@ -23,20 +22,70 @@ import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
   const [showMessage, setShowMessage] = useState(false);
+  const [address, setAddress] = useState({
+    clinicName: "Abramian Dental",
+    street: "",
+    city: "",
+    phone: "",
+    email: "",
+    gps: "",
+    zipCode: "",
+  });
+
+  const [workingHours, setWorkingHours] = useState({
+    monday: "",
+    tuesday: "",
+    wednesday: "",
+    thursday: "",
+    friday: "",
+  });
+
+  // Загружаем адрес из локального хранилища
+  useEffect(() => {
+    const savedAddress = localStorage.getItem("address");
+    if (savedAddress) {
+      try {
+        const parsedAddress = JSON.parse(savedAddress);
+        setAddress((prev) => ({
+          ...prev,
+          street: parsedAddress.street,
+          city: parsedAddress.city,
+          phone: parsedAddress.phone,
+          email: parsedAddress.email,
+          gps: parsedAddress.gps,
+          zipCode: parsedAddress.zipCode,
+        }));
+      } catch (error) {
+        console.error("Ошибка при загрузке адреса из localStorage:", error);
+      }
+    }
+  }, []);
+
+  // Загружаем рабочее время из локального хранилища
+  useEffect(() => {
+    const savedHours = localStorage.getItem("workingHours");
+    if (savedHours) {
+      try {
+        const parsedHours = JSON.parse(savedHours);
+        setWorkingHours(parsedHours);
+      } catch (error) {
+        console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
+      }
+    }
+  }, []);
 
   const handleCopyCoordinates = () => {
-    const coordinates = "50.4501° N, 30.5234° E";
-    navigator.clipboard.writeText(coordinates);
+    navigator.clipboard.writeText(address.gps);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
   };
 
   const handleCall = () => {
-    window.location.href = "tel:+1234567890";
+    window.location.href = `tel:${address.phone}`;
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:example@example.com";
+    window.location.href = `mailto:${address.email}`;
   };
 
   return (
@@ -64,20 +113,21 @@ const Contacts: React.FC = () => {
             <ContactsBox>
               <ContactsBoxTitle>
                 {t("message.main.contacts_page.titleContacts")}
-              </ContactsBoxTitle>{" "}
+              </ContactsBoxTitle>
               <DaysOfWeek>
                 <p>{t("message.main.contacts_page.address")}</p>
+                <p>{address.street}</p>
+                <p>{address.city}</p>
+                <p>{address.zipCode}</p>
               </DaysOfWeek>
               <ContactIcons
                 onClick={handleCopyCoordinates}
-                style={{
-                  cursor: "pointer",
-                }}
+                style={{ cursor: "pointer" }}
               >
                 <IconCircle>
                   <FaCopy />
                 </IconCircle>
-                <span>GPS: 50.4501° N, 30.5234° E</span>
+                <span>GPS: {address.gps}</span>
               </ContactIcons>
               <ContactIcons onClick={handleCall} style={{ cursor: "pointer" }}>
                 <IconCircle>
@@ -87,13 +137,13 @@ const Contacts: React.FC = () => {
                     }}
                   />
                 </IconCircle>
-                <span>{t("message.main.contacts_page.phone")}</span>
+                <span>{address.phone}</span>
               </ContactIcons>
               <ContactIcons onClick={handleEmail} style={{ cursor: "pointer" }}>
                 <IconCircle>
                   <FaEnvelope />
                 </IconCircle>
-                <span>{t("message.main.contacts_page.email")}</span>
+                <span>{address.email}</span>
               </ContactIcons>
             </ContactsBox>
           </ContactsWrapper>
@@ -112,11 +162,11 @@ const Contacts: React.FC = () => {
                   <p>{t("message.footer.daysOfWeek.friday")}:</p>
                 </DaysOfWeek>
                 <DaysOfWeek>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
+                  <p>{workingHours.monday}</p>
+                  <p>{workingHours.tuesday}</p>
+                  <p>{workingHours.wednesday}</p>
+                  <p>{workingHours.thursday}</p>
+                  <p>{workingHours.friday}</p>
                 </DaysOfWeek>
               </DaysOfWeekBox>
               <ButtonContainer>

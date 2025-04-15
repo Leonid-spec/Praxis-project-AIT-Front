@@ -17,12 +17,14 @@ export const ServicePageSingleContainer = styled.div`
 
 export const HeaderBox = styled.div`
   display: flex;
-  justify-content: space-between;
-  padding: 20px 100px 0;
-  margin-bottom: 20px;
+  justify-content: flex-start;;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
 
   @media (max-width: 768px) {
-    padding: 0 20px;
+    flex-direction: column;
+    gap: 10px;
   }
 `;
 
@@ -173,6 +175,7 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
   border-radius: 30px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   font-size: 18px;
+  font-weight: bold;
 
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
@@ -225,4 +228,18 @@ export const PreviewImage = styled.img`
   width: 100%;
   height: auto;
   display: block;
+`;
+
+export const CheckboxLabel = styled.label`
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    gap: 8px;
+  }
 `;

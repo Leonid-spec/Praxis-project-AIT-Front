@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
-  align-items: stretch;
+  align-items: center;
   width: 100%;
-  background-color: #a0eef2;
+  background-color: #f0effc;
   padding: 40px 20px;
 
   @media (max-width: 1200px) {
@@ -30,29 +30,28 @@ export const FooterContainer = styled.footer`
     padding: 10px;
   }
 `;
-
 export const Content = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: stretch;
+
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   width: 100%;
-  max-width: 1200px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column; /* Колонки становятся вертикальными */
     align-items: center;
   }
 `;
 
-export const Column = styled.div`
+export const ColumnLeft = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-start;
   flex: 1;
   text-align: left;
-  min-height: 200px;
-  margin: 0 10px;
+  margin-left: 20%; 
 
   @media (max-width: 768px) {
     align-items: center;
@@ -66,6 +65,27 @@ export const Column = styled.div`
   }
 `;
 
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex: 1;
+  text-align: left;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 576px) {
+    margin: 0;
+  }
+`;
+
+
 export const LogoContainer = styled(Column)`
   justify-content: center;
   align-items: center;
@@ -77,11 +97,14 @@ export const LogoContainer = styled(Column)`
   }
 `;
 
+export const ContentBelowTitle = styled.div`
+  margin-top: 20px; /* Отступ сверху */
+`;
+
 export const Logo = styled.img`
   width: 300px;
   height: auto;
   object-fit: contain;
-  background-color: transparent;
 
   @media (max-width: 992px) {
     width: 250px;
@@ -93,12 +116,18 @@ export const Logo = styled.img`
 `;
 
 export const Title = styled.h3`
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #222;
+  font-size: 17px;
+  margin-bottom: 20px;
+ 
+  color: #69e5ec;
+  text-align: left; /* Убираем центрирование */
+  display: flex;
+  align-items: center; /* Центрируем текст вертикально */
+  height: 50px; /* Добавляем одинаковую высоту для заголовков */
 
   @media (max-width: 768px) {
     font-size: 20px;
+    height: auto; /* Убираем фиксированную высоту для мобильных устройств */
   }
 
   @media (max-width: 576px) {
@@ -106,34 +135,140 @@ export const Title = styled.h3`
   }
 `;
 
+
+export const TimesContainer = styled.div`
+  display: flex;
+  gap: 40px;
+  width: 100%;
+`;
+
+export const DaysTimesContainer = styled.p`
+  width: 100%;
+`;
+
 export const Address = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
 `;
 
 export const Info = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  font-size: 20px;
-  margin: 5px 10px;
+  font-size: 16px;
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   @media (max-width: 576px) {
-    font-size: 16px;
+    font-size: 12px;
   }
 `;
 
-export const Days = styled.div`
+export const DaysOfWeekBox = styled.div`
+
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  flex-direction: column; 
+  gap: 5px;
+  background-color: #f0effc;
+  border-radius: 12px;
+  padding: 5px;
+  width: 100%;
+  max-width: 1200px; 
+`;
+
+export const DayRow = styled.div`
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px; 
+  color: #333;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  & > p:first-child {
+    flex: 1;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  & > p:last-child {
+    flex: 2;
+    text-align: left;
+  }
+`;
+
+export const Text = styled.div`
+  padding: 0;
+  margin: 0;
+`;
+
+export const ContactIcons = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const IconCircle = styled.div`
+  width: 30px;
+  height: 30px;
+  background-color: #a0eef2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #ffffff;
+  margin-right: 10px;
+`;
+
+export const DaysStyle = styled.div`
+  font-weight: bold;
+  color: #111;
+  font-size: 16px;
+`;
+
+export const RunningLineWrapper = styled.div`
+  width: 100%;
+  background-color: #f0f8ff;
+  padding: 10px 0;
+  position: relative;
+  overflow: hidden;
+`;
+
+export const RunningLineContainer = styled.div`
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+`;
+
+export const RunningLine = styled.div`
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+
+  @keyframes scroll {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  width: fit-content;
+  align-self: flex-start;
 
   @media (max-width: 768px) {
-    gap: 12px;
+    align-self: center;
   }
 `;
