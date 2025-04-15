@@ -169,3 +169,40 @@ export const IconCircle = styled.div`
 export const ButtonContainer = styled.div`
 /* margin-left: 10px; */
 `;
+
+// date
+export const RunningLineWrapper = styled.div`
+  width: 100%;
+  background-color: #f0f8ff; 
+  padding: 10px 0;
+  position: relative;
+  overflow: hidden; 
+`;
+
+export const RunningLineContainer = styled.div`
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+`;
+
+export const RunningLine = styled.div`
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+  @keyframes scroll {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  width: fit-content;
+  align-self: flex-start;
+  @media (max-width: 768px) {
+    align-self: center;
+  }
+`;

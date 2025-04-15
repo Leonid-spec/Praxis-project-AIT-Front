@@ -11,9 +11,6 @@ import {
   IconCircle,
   TimesContainer,
   DaysStyle,
-  RunningLineWrapper,
-  RunningLineContainer,
-  RunningLine,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
@@ -21,7 +18,6 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
-  const [runningText, setRunningText] = useState("");
   const [workingHours, setWorkingHours] = useState({
     monday: "08:00 - 12:00, 13:00 - 18:00",
     tuesday: "08:00 - 12:00, 13:00 - 18:00",
@@ -38,13 +34,6 @@ const Footer: React.FC = () => {
     email: "praxis.sofia.abramian@gmail.com", // Значение по умолчанию
   });
 
-  // Загрузка бегущей строки из localStorage
-  useEffect(() => {
-    const savedText = localStorage.getItem("runningLineText");
-    if (savedText) {
-      setRunningText(savedText);
-    }
-  }, []);
 
   // Загрузка данных режима работы из localStorage
   useEffect(() => {
@@ -81,16 +70,6 @@ const Footer: React.FC = () => {
   
   return (
     <FooterContainer>
-
-       {/* Бегущая строка выше всего содержимого */}
-       {runningText && (
-        <RunningLineWrapper>
-          <RunningLineContainer>
-            <RunningLine>{runningText}</RunningLine>
-          </RunningLineContainer>
-        </RunningLineWrapper>
-      )}
-
 
       <Content>
         <Column>
