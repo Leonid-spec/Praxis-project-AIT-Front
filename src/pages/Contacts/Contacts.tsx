@@ -22,23 +22,27 @@ import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
   const [showMessage, setShowMessage] = useState(false);
-  const [address, setAddress] = useState({
+  
+  const defaultAddress = {
     clinicName: "Abramian Dental",
-    street: "",
-    city: "",
-    phone: "",
-    email: "",
-    gps: "",
-    zipCode: "",
-  });
+    street: "Breslauer Str. 17",
+    city: "Konstanz",
+    phone: "+49 75 31 7 72 73",
+    email: "praxis.sofia.abramian@gmail.com",
+    gps: "78467 Konstanz",
+    zipCode: "78467",
+  };
 
-  const [workingHours, setWorkingHours] = useState({
-    monday: "",
-    tuesday: "",
-    wednesday: "",
-    thursday: "",
-    friday: "",
-  });
+  const defaultWorkingHours = {
+    monday: "08:00 - 12:00, 13:00 - 18:00",
+    tuesday: "08:00 - 12:00, 13:00 - 18:00",
+    wednesday: "08:00 - 12:00",
+    thursday: "08:00 - 12:00, 13:00 - 18:00",
+    friday: "08:00 - 12:00",
+  };
+
+  const [address, setAddress] = useState(defaultAddress);
+  const [workingHours, setWorkingHours] = useState(defaultWorkingHours);
 
   // Загружаем адрес из локального хранилища
   useEffect(() => {
@@ -48,12 +52,7 @@ const Contacts: React.FC = () => {
         const parsedAddress = JSON.parse(savedAddress);
         setAddress((prev) => ({
           ...prev,
-          street: parsedAddress.street,
-          city: parsedAddress.city,
-          phone: parsedAddress.phone,
-          email: parsedAddress.email,
-          gps: parsedAddress.gps,
-          zipCode: parsedAddress.zipCode,
+          ...parsedAddress,
         }));
       } catch (error) {
         console.error("Ошибка при загрузке адреса из localStorage:", error);
@@ -109,6 +108,7 @@ const Contacts: React.FC = () => {
 
       <ContactsPageContainer>
         <CardsGrid>
+          {/* Контейнер с контактной информацией */}
           <ContactsWrapper>
             <ContactsBox>
               <ContactsBoxTitle>
@@ -148,6 +148,7 @@ const Contacts: React.FC = () => {
             </ContactsBox>
           </ContactsWrapper>
 
+          {/* Контейнер с расписанием */}
           <SprechzeitenWrapper>
             <SprechzeitenBox>
               <ContactsBoxTitle>
@@ -178,6 +179,7 @@ const Contacts: React.FC = () => {
           </SprechzeitenWrapper>
         </CardsGrid>
 
+        {/* Карта */}
         <MapContainer>
           <ContactsBoxTitle>
             {t("message.main.contacts_page.map.title")}

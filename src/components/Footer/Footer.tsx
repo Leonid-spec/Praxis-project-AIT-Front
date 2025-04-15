@@ -11,6 +11,7 @@ import {
   TimesContainer,
   DaysOfWeekBox,
   DayRow,
+  DayRowAdd,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
@@ -18,50 +19,46 @@ import { FaPhone, FaEnvelope } from "react-icons/fa";
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
-  const [workingHours, setWorkingHours] = useState({
-    monday: "",
-    tuesday: "",
-    wednesday: "",
-    thursday: "",
-    friday: "",
-  });
+  const defaultAddress = {
+    clinicName: t("message.footer.contact.clinicName"),
+    street: t("message.footer.contact.street"),
+    city: t("message.footer.contact.city"),
+    phone: t("message.footer.contact.phone"),
+    email: t("message.footer.contact.email"),
+  };
 
-  const [address, setAddress] = useState({
-    clinicName: "",
-    street: "",
-    city: "",
-    phone: "",
-    email: "",
-  });
+  const defaultWorkingHours = {
+    monday: "08:00 - 12:00, 13:00 - 18:00",
+    tuesday: "08:00 - 12:00, 13:00 - 18:00",
+    wednesday: "08:00 - 12:00",
+    thursday: "08:00 - 12:00, 13:00 - 18:00",
+    friday: "08:00 - 12:00",
+  };
 
-  // Загрузка данных режима работы из localStorage
+  const [address, setAddress] = useState(defaultAddress);
+  const [workingHours, setWorkingHours] = useState(defaultWorkingHours);
+
   useEffect(() => {
+    const savedAddress = localStorage.getItem("address");
+    if (savedAddress) {
+      try {
+        const parsedAddress = JSON.parse(savedAddress);
+        setAddress((prev) => ({
+          ...prev,
+          ...parsedAddress,
+        }));
+      } catch (error) {
+        console.error("Ошибка при загрузке данных адреса из localStorage:", error);
+      }
+    }
+
     const savedHours = localStorage.getItem("workingHours");
     if (savedHours) {
       try {
         const parsedHours = JSON.parse(savedHours);
         setWorkingHours(parsedHours);
       } catch (error) {
-        console.error("Ошибка при загрузке данных из localStorage:", error);
-      }
-    }
-  }, []);
-
-  // Загрузка данных адреса из localStorage
-  useEffect(() => {
-    const savedAddress = localStorage.getItem("address");
-    if (savedAddress) {
-      try {
-        const parsedAddress = JSON.parse(savedAddress);
-        setAddress({
-          clinicName: parsedAddress.clinicName || "Abramian Dental",
-          street: parsedAddress.street || "Breslauer Str. 17",
-          city: parsedAddress.city || "78467 Konstanz",
-          phone: parsedAddress.phone || "+49 75 31 7 72 73",
-          email: parsedAddress.email || "praxis.sofia.abramian@gmail.com",
-        });
-      } catch (error) {
-        console.error("Ошибка при загрузке адреса из localStorage:", error);
+        console.error("Ошибка при загрузке данных режима работы из localStorage:", error);
       }
     }
   }, []);
@@ -71,32 +68,35 @@ const Footer: React.FC = () => {
       <Content>
         {/* Колонка с контактной информацией */}
         <Column>
-          <Title>{t("message.footer.titles.contact")}</Title>
-          <Address>
-            <p>{address.clinicName}</p>
-            <p>{address.street}</p>
-            <p>{address.city}</p>
-          </Address>
-          <Info>
-            <ContactIcons style={{ cursor: "pointer" }}>
-              <IconCircle>
-                <FaPhone
-                  style={{
-                    transform: "rotate(90deg)",
-                  }}
-                />
-              </IconCircle>
-              <span>{address.phone}</span>
-            </ContactIcons>
-            <ContactIcons style={{ cursor: "pointer" }}>
-              <IconCircle>
-                <FaEnvelope />
-              </IconCircle>
-              <span>{address.email}</span>
-            </ContactIcons>
-          </Info>
-        </Column>
-        
+  <Title>{t("message.footer.titles.contact")}</Title>
+  <DaysOfWeekBox>
+    <DayRowAdd>
+      <p>{address.clinicName}</p>
+      <p>{address.street}</p>
+      <p>{address.city}</p>
+    </DayRowAdd>
+    <DayRow>
+      <ContactIcons style={{ cursor: "pointer" }}>
+        <IconCircle>
+          <FaPhone style={{ transform: "rotate(90deg)" }} />
+        </IconCircle>
+        <p style={{ marginLeft: "10px" }}>{address.phone}</p>
+      </ContactIcons>
+    </DayRow>
+    <DayRow>
+      <ContactIcons style={{ cursor: "pointer" }}>
+        <IconCircle>
+          <FaEnvelope />
+        </IconCircle>
+        <p style={{ marginLeft: "10px" }}>{address.email}</p>
+      </ContactIcons>
+    </DayRow>
+  </DaysOfWeekBox>
+</Column>
+
+
+
+
         {/* Колонка с рабочим временем */}
         <Column>
           <Title>{t("message.footer.titles.time")}</Title>

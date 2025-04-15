@@ -30,22 +30,22 @@ export const FooterContainer = styled.footer`
     padding: 10px;
   }
 `;
+
 export const Content = styled.div`
   display: flex;
-  justify-content: space-between; /* Размещаем секции слева и справа */
-  align-items: flex-start; /* Выравниваем заголовки сверху */
+  justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
-  max-width: 1400px; /* Ограничиваем ширину */
-  padding: 0 10%; /* Пространство внутри контейнера */
+  max-width: 1400px;
+  padding: 0 10%;
   padding-bottom: 20px;
-  margin: 0 auto; /* Центрирование на странице */
+  margin: 0 auto;
 
   @media (max-width: 768px) {
-    flex-direction: column; /* Колонки становятся вертикальными */
+    flex-direction: column;
     align-items: center;
   }
 `;
-
 
 export const Column = styled.div`
   display: flex;
@@ -59,7 +59,6 @@ export const Column = styled.div`
   @media (max-width: 768px) {
     align-items: center;
     text-align: center;
-    margin-bottom: 20px;
   }
 
   @media (max-width: 576px) {
@@ -74,12 +73,12 @@ export const LogoContainer = styled(Column)`
   text-align: center;
 
   @media (max-width: 768px) {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
 `;
 
 export const ContentBelowTitle = styled.div`
-  margin-top: 20px; /* Отступ сверху */
+  margin-top: 20px;
 `;
 
 export const Logo = styled.img`
@@ -98,17 +97,15 @@ export const Logo = styled.img`
 
 export const Title = styled.h3`
   font-size: 17px;
-  margin-bottom: 20px;
- 
   color: #69e5ec;
-  text-align: left; /* Убираем центрирование */
+  text-align: left;
   display: flex;
-  align-items: center; /* Центрируем текст вертикально */
-  height: 50px; /* Добавляем одинаковую высоту для заголовков */
+  align-items: center;
+  height: 50px;
 
   @media (max-width: 768px) {
     font-size: 20px;
-    height: auto; /* Убираем фиксированную высоту для мобильных устройств */
+    height: auto;
   }
 
   @media (max-width: 576px) {
@@ -116,22 +113,22 @@ export const Title = styled.h3`
   }
 `;
 
-
 export const TimesContainer = styled.div`
   display: flex;
   gap: 40px;
   width: 100%;
-  max-width: 1400px; /* Расширение контейнера */
-  margin: 0 auto; /* Центрирование */
-  
+  max-width: 1400px;
+  margin: 0 auto;
 `;
 
 export const Address = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 2px;
+
 `;
+
+
 
 export const Info = styled.div`
   display: flex;
@@ -150,37 +147,58 @@ export const Info = styled.div`
 
 export const DaysOfWeekBox = styled.div`
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 5px;
   background-color: #f0effc;
   border-radius: 12px;
-  padding: 5px;
   width: 100%;
-  max-width: 1200px; 
+  max-width: 1200px;
 `;
 
 export const DayRow = styled.div`
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   gap: 20px;
   padding: 5px 0;
-  border-bottom: 1px solid #ccc;
-  font-size: 16px; 
+  font-size: 16px;
   color: #333;
 
-  &:last-child {
-    border-bottom: none;
-  }
-
+  /* Делаем первую колонку жирной */
   & > p:first-child {
     flex: 1;
     font-weight: bold;
     text-align: left;
   }
 
+  /* Вторая колонка остаётся обычной */
   & > p:last-child {
     flex: 2;
+    font-weight: normal;
+    text-align: left;
+  }
+`;
+export const DayRowAdd = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  flex-direction: column;
+  gap: 6px;
+  padding: 5px 0;
+  font-size: 16px;
+  color: #333;
+
+  /* Делаем первую колонку жирной */
+  & > p:first-child {
+    flex: 1;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  /* Вторая колонка остаётся обычной */
+  & > p:last-child {
+    flex: 2;
+    font-weight: normal;
     text-align: left;
   }
 `;
