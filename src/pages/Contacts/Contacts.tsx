@@ -10,6 +10,8 @@ import {
   ContactsWrapper,
   DaysOfWeek,
   DaysOfWeekBox,
+  DaysOfWeekp,
+  DaysOfWeekspan,
   IconCircle,
   MapContainer,
   SprechzeitenBox,
@@ -114,36 +116,38 @@ const Contacts: React.FC = () => {
               <ContactsBoxTitle>
                 {t("message.main.contacts_page.titleContacts")}
               </ContactsBoxTitle>
+
               <DaysOfWeek>
-                <p>{address.street}, {address.zipCode} {address.city}
-                  </p>
+                <DaysOfWeekp>{address.street}, {address.zipCode} {address.city}
+                  </DaysOfWeekp>
               </DaysOfWeek>
-              <ContactIcons
-                onClick={handleCopyCoordinates}
-                style={{ cursor: "pointer" }}
-              >
-                <IconCircle>
+
+              <ContactIcons >
+                <IconCircle onClick={handleCopyCoordinates} style={{ cursor: "pointer" }}>
                   <FaCopy />
                 </IconCircle>
-                <span>GPS: {address.gps}</span>
+                <DaysOfWeekspan>GPS: {address.gps}</DaysOfWeekspan>
               </ContactIcons>
-              <ContactIcons onClick={handleCall} style={{ cursor: "pointer" }}>
-                <IconCircle>
+
+              <ContactIcons >
+                <IconCircle onClick={handleCall} style={{ cursor: "pointer" }}>
                   <FaPhone
                     style={{
                       transform: "rotate(90deg)",
                     }}
                   />
                 </IconCircle>
-                <span>{address.phone}</span>
+                <DaysOfWeekspan>{address.phone}</DaysOfWeekspan>
               </ContactIcons>
-              <ContactIcons onClick={handleEmail} style={{ cursor: "pointer" }}>
-                <IconCircle>
+
+              <ContactIcons >
+                <IconCircle onClick={handleEmail} style={{ cursor: "pointer" }}>
                   <FaEnvelope />
                 </IconCircle>
-                <span>{address.email}</span>
+                <DaysOfWeekspan>{address.email}</DaysOfWeekspan>
               </ContactIcons>
             </ContactsBox>
+            
           </ContactsWrapper>
 
           <SprechzeitenWrapper>
