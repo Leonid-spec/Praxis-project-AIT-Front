@@ -4,18 +4,13 @@ export const StyledButton = styled.div`
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 12px 20px;
+  padding: 8px 20px;
   margin: 20px;
   width: 350px;
   border-radius: 30px;
   background-color: #20b1b7;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
-
-  &:hover {
-    /* background-color: #1a8e92; */
-    /* transform: scale(1.02); */
-  }
 `;
 
 export const ImageItem = styled.img`

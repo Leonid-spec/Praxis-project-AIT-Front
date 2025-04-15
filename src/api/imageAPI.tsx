@@ -161,7 +161,6 @@ const handleFetchError = async (response: Response) => {
 
 const API_URL = "/api/image";
 
-// Add image to service or doctor
 export const addImage = async (
   file: File,
   dentalServiceId: number,
@@ -203,9 +202,6 @@ export const updateImage = async (file: File, imageId: number, token: string) =>
   return updatedImage;
 };
 
-
-
-// Delete image from DB and cloud
 export const deleteImage = async (
   imageId: number,
   token: string
@@ -219,7 +215,6 @@ export const deleteImage = async (
   await handleFetchError(response);
 };
 
-// Find image by ID
 export const findImageById = async (
   imageId: number,
   token: string
@@ -233,7 +228,6 @@ export const findImageById = async (
   return (await handleFetchError(response)).json();
 };
 
-// Push image to cloud without storing in DB
 export const pushImageFile = async (
   file: File,
   token: string
@@ -251,7 +245,6 @@ export const pushImageFile = async (
   return (await handleFetchError(response)).text();
 };
 
-// Delete image from cloud only (by link)
 export const deleteImageFile = async (
   link: string,
   token: string
@@ -267,7 +260,6 @@ export const deleteImageFile = async (
   await handleFetchError(response);
 };
 
-// Get image file from server by filename
 export const getFile = async (
   filename: string,
   token: string

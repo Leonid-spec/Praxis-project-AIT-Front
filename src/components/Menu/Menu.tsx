@@ -12,6 +12,7 @@ import {
   Divider,
   NavLinkImg,
   NavLinkText,
+  BesideLogoContainer,
 } from "./styles";
 import BurgerMenu from "./BurgerMenu";
 import React from "react";
@@ -37,18 +38,16 @@ const Menu = () => {
     <MenuContainer>
       <Logo>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
-          <NavLinkImg
-            src="/src/assets/images/MainLogo.png"
-            alt="Logo"
-          />
+          <NavLinkImg src="/src/assets/images/MainLogo.png" alt="Logo" />
         </StyledNavLink>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
           <NavLinkText>Abramian Dental</NavLinkText>
         </StyledNavLink>
       </Logo>
 
-      {!isMobile ? (
-        <>
+      <BesideLogoContainer>
+        {!isMobile ? (
+          <>
             <Nav>
               <StyledNavLink to="/services">
                 {t("message.header.menu.services")}
@@ -62,27 +61,30 @@ const Menu = () => {
               <StyledNavLink to="/contacts">
                 {t("message.header.menu.contact")}
               </StyledNavLink>
-              
             </Nav>
             <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
 
             <SprachUundAdminbereich>
               <LanguagePanel>
-              {["de", "en", "ru"].map((lang, index) => (
-                <React.Fragment key={lang}>
-                  <LanguageLink onClick={() => handleLanguageChange(lang)}>
-                    {lang.toUpperCase()}
-                  </LanguageLink>
-                  {index < 2 && <Divider>|</Divider>}
-                </React.Fragment>
-              ))}
-            </LanguagePanel>
-              <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+                {["de", "en", "ru"].map((lang, index) => (
+                  <React.Fragment key={lang}>
+                    <LanguageLink onClick={() => handleLanguageChange(lang)}>
+                      {lang.toUpperCase()}
+                    </LanguageLink>
+                    {index < 2 && <Divider>|</Divider>}
+                  </React.Fragment>
+                ))}
+              </LanguagePanel>
+              <AdminMenu
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+              />
             </SprachUundAdminbereich>
-        </>
-      ) : (
-        <BurgerMenu />
-      )}
+          </>
+        ) : (
+          <BurgerMenu />
+        )}
+      </BesideLogoContainer>
     </MenuContainer>
   );
 };

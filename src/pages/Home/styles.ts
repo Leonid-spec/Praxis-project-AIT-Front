@@ -4,18 +4,18 @@ export const HomeContainer = styled.div`
   display: grid;
   grid-template-columns: 40% 60%;
   margin: 30px auto;
-  align-items: center;
-  align-items: stretch;
-
+  /* align-items: center; */
+  /* align-items: stretch; */
+  width: 100%;
 
   @media (min-width: 1920px) {
-    max-width: 1600px;
+    /* max-width: 1600px; */
     padding: 70px 30px;
     gap: 40px;
   }
 
   @media (max-width: 1440px) {
-    max-width: 90%;
+    /* max-width: 90%; */
   }
 
   @media (max-width: 1200px) {
@@ -52,21 +52,21 @@ export const LeftContainer = styled.div`
   left: 110px;
 
   @media (min-width: 1920px) {
-    padding: 50px;
+    /* padding: 50px; */
     gap: 30px;
   }
 
   @media (max-width: 1200px) {
-    padding: 30px;
+    /* padding: 30px; */
   }
 
   @media (max-width: 768px) {
-    padding: 20px;
+    /* padding: 20px; */
   }
 
   @media (max-width: 480px) {
     gap: 15px;
-    padding: 15px;
+    /* padding: 15px; */
   }
 `;
 
@@ -79,46 +79,54 @@ export const RightContainer = styled.div`
   height: auto;
 
   @media (min-width: 1920px) {
-    padding: 50px;
+    /* padding: 50px; */
   }
 
   @media (max-width: 1200px) {
-    padding: 20px;
+    /* padding: 20px; */
   }
 
   @media (max-width: 768px) {
-    padding: 15px;
+    /* padding: 15px; */
     aspect-ratio: 4/3;
   }
 
   @media (max-width: 480px) {
-    padding: 10px;
+    /* padding: 10px; */
     aspect-ratio: 1/1;
   }
 `;
 
 export const RightContainerPhoto = styled.img`
-  width: 100%;
+  /* width: 100%;
   height: 500px ;
   object-fit: cover;
   object-position: center;
   display: block;
 
   @media (min-width: 1920px) {
-    border-radius: 10px;
+    height: 90%;
   }
 
   @media (max-width: 1200px) {
     max-width: 80%;
+    height: 80%;
+
   }
 
   @media (max-width: 768px) {
     max-width: 70%;
+    height: 70%;
+
   }
 
   @media (max-width: 480px) {
-    border-radius: 4px;
-  }
+  } */
+  width: 100%;
+  height: auto; 
+  object-fit: contain; 
+  object-position: center;
+  display: block;
 `;
 
 export const WelcomeTextTitle = styled.p`

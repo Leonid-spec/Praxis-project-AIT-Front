@@ -11,9 +11,17 @@ export const Card = styled.div`
   position: relative;
   
   &:hover {
+    cursor: pointer;
     transform: translateY(-5px);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
   }
+`;
+
+export const DoctorCardStyled = styled.div<{ isActive: boolean, id?: number; topImage?: string }>`
+opacity: ${(props) => (props.isActive ? "1" : "0.5")};
+&:hover {
+  cursor: pointer;
+}
 `;
 
 export const PhotoContainer = styled.div`
@@ -73,5 +81,5 @@ export const InactiveOverlay = styled.div`
   font-size: 12px;
   border-radius: 5px;
   font-weight: 600;
-  z-index: 10;
+  z-index: 1;
 `;

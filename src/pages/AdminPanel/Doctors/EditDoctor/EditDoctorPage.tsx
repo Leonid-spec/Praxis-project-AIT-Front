@@ -197,6 +197,8 @@ const EditDoctorPage: React.FC = () => {
               </EditTopImage>
     
               <CheckboxLabel>
+              {t("message.adminPanel.appointments.doctors.makeCardVisible")} 
+
                 <input
                   type="checkbox"
                   checked={doctorData.isActive}
@@ -204,7 +206,6 @@ const EditDoctorPage: React.FC = () => {
                     setDoctorData({ ...doctorData, isActive: e.target.checked })
                   }
                 />
-                {t("message.adminPanel.appointments.doctors.makeCardVisible")} 
               </CheckboxLabel>
     
               <Container>

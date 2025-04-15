@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ButtonContainer,
   CardsGrid,
@@ -23,20 +23,63 @@ import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
   const [showMessage, setShowMessage] = useState(false);
+  const [address, setAddress] = useState({
+    clinicName: "Abramian Dental", 
+    street: "Breslauer Str. 17", 
+    city: "78467 Konstanz", 
+    phone: "+49 75 31 7 72 73",
+    email: "praxis.sofia.abramian@gmail.com",
+    gps: "50.4501° N, 30.5234° E",
+    zipCode: "78467",
+  });
 
+  const [workingHours, setWorkingHours] = useState({
+    monday: "08:00 - 12:00, 13:00 - 18:00",
+    tuesday: "08:00 - 12:00, 13:00 - 18:00",
+    wednesday: "08:00 - 12:00, 13:00 - 18:00",
+    thursday: "08:00 - 12:00, 13:00 - 18:00",
+    friday: "08:00 - 12:00, 13:00 - 18:00",
+  });
+
+  // Загрузка адреса из localStorage
+  useEffect(() => {
+    const savedAddress = localStorage.getItem("address");
+    if (savedAddress) {
+      try {
+        const parsedAddress = JSON.parse(savedAddress);
+        setAddress(parsedAddress);
+      } catch (error) {
+        console.error("Ошибка при загрузке адреса из localStorage:", error);
+      }
+    }
+  }, []);
+
+  // Загрузка данных режима работы из localStorage
+  useEffect(() => {
+    const savedHours = localStorage.getItem("workingHours");
+    if (savedHours) {
+      try {
+        const parsedHours = JSON.parse(savedHours);
+        setWorkingHours(parsedHours);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных из localStorage:", error);
+      }
+    }
+  }, []);
+  
   const handleCopyCoordinates = () => {
     const coordinates = "50.4501° N, 30.5234° E";
-    navigator.clipboard.writeText(coordinates);
+    navigator.clipboard.writeText(address.gps);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
   };
 
   const handleCall = () => {
-    window.location.href = "tel:+1234567890";
+    window.location.href = `${address.phone}`;
   };
 
   const handleEmail = () => {
-    window.location.href = "mailto:example@example.com";
+    window.location.href = `${address.email}`;
   };
 
   return (
@@ -77,7 +120,7 @@ const Contacts: React.FC = () => {
                 <IconCircle>
                   <FaCopy />
                 </IconCircle>
-                <span>GPS: 50.4501° N, 30.5234° E</span>
+                <span>GPS: `${address.gps}`</span>
               </ContactIcons>
               <ContactIcons onClick={handleCall} style={{ cursor: "pointer" }}>
                 <IconCircle>
@@ -87,13 +130,13 @@ const Contacts: React.FC = () => {
                     }}
                   />
                 </IconCircle>
-                <span>{t("message.main.contacts_page.phone")}</span>
+                <span>{address.phone}</span>
               </ContactIcons>
               <ContactIcons onClick={handleEmail} style={{ cursor: "pointer" }}>
                 <IconCircle>
                   <FaEnvelope />
                 </IconCircle>
-                <span>{t("message.main.contacts_page.email")}</span>
+                <span>{address.email}</span>
               </ContactIcons>
             </ContactsBox>
           </ContactsWrapper>
@@ -112,11 +155,11 @@ const Contacts: React.FC = () => {
                   <p>{t("message.footer.daysOfWeek.friday")}:</p>
                 </DaysOfWeek>
                 <DaysOfWeek>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
-                  <p>08:00 - 12:00, 13:00 - 18:00</p>
+                  <p>{workingHours.monday}</p>
+                  <p>{workingHours.tuesday}</p>
+                  <p>{workingHours.wednesday}</p>
+                  <p>{workingHours.thursday}</p>
+                  <p>{workingHours.friday}</p>
                 </DaysOfWeek>
               </DaysOfWeekBox>
               <ButtonContainer>

@@ -9,9 +9,9 @@ export const Card = styled.div`
   transition: all 0.3s ease-in-out;
   max-width: 400px;
 
-  @media(max-width: 768px) {
-  margin: 10px;
-    width: 300px;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
   }
 `;
 
@@ -65,7 +65,7 @@ export const InactiveText = styled.div`
   font-size: 12px;
   border-radius: 5px;
   font-weight: 600;
-  z-index: 10;
+  z-index: 1;
 `;
 
 export const InactiveOverlay = styled.div`
@@ -73,6 +73,7 @@ export const InactiveOverlay = styled.div`
   top: 10px;
   right: 10px;
   background-color: rgba(179, 36, 36, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 5px 10px;
   font-size: 12px;

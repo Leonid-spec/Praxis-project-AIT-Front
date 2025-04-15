@@ -96,9 +96,9 @@ export const ServicesPageAll = () => {
         <>
           <HeaderMainBtnsContainer>
             <AddNewServiceBtn onAddService={handleAddServiceClick} />
-            <RefreshIconBox onClick={handleRefreshBtn}>
+            {/* <RefreshIconBox onClick={handleRefreshBtn}>
               <FaSyncAlt size={24} color="#20b1b7" />
-            </RefreshIconBox>
+            </RefreshIconBox> */}
             <FindServiceContainer
               searchTerm={searchTerm}
               setSearchTerm={setSearchTerm}

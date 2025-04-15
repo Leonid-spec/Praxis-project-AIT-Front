@@ -16,7 +16,7 @@
     "main": {
       "use_oft": {
         "button": {
-          "title": "Book Appointment"
+          "title": "Book appointment"
         }
       },
       "home_page": {
@@ -86,6 +86,21 @@
         "wednesday": "Wednesday",
         "thursday": "Thursday",
         "friday": "Friday"
+      },
+      "logo": {
+        "alt": "Zahn Logo"
+      },
+      "contact": {
+        "clinicName": "Abramian Dental",
+        "street": "Breslauer Str. 17",
+        "city": "78467 Konstanz",
+        "phone": "+49 75 31 7 72 73",
+        "email": "praxis.sofia.abramian@gmail.com"
+      },
+      "hours": {
+    
+        "weekdays": "Mon-Fri:",
+        "weekend": "Sat-Sun: closed"
       }
     },
     "other": {
@@ -259,14 +274,58 @@
                 "create": "Create New Administrator",
                 "changePassword": "Change Password",
                 "viewAll": "View All Administrators",
+                "address": "Address",
+                "runningLine": "Running line",
+                "workingMode": "Working mode",
                 "delete": "Delete Administrator"
               },
               "sections": {
                 "create": "Create New Administrator",
                 "changePassword": "Change Password",
-                "viewAll": "All Administrators",
+                "viewAll": "All Administrators",            
                 "delete": "Delete Administrator"
-              }
+              },
+              "address": {
+                  "title": "Edit Address",
+                  "street": "Street",
+                  "city": "City",
+                  "zipCode": "Zip Code",
+                  "gps": "GPS",
+                  "phone": "Phone",
+                  "email": "Email",
+                  "placeholder": {
+                    "street": "Enter street...",
+                    "city": "Enter city...",
+                    "zipCode": "Enter zip code...",
+                    "gps": "Enter GPS coordinates...",
+                    "phone": "Enter phone number...",
+                    "email": "Enter email..."
+                  },
+                  "saveButton": "Save",
+                  "successMessage": "Address successfully saved!",
+                  "errorMessage": "An error occurred while saving. Please try again."
+                },
+                "workingMode": {
+                  "title": "Edit Working Hours",
+                  "days": {
+                    "monday": "Monday",
+                    "tuesday": "Tuesday",
+                    "wednesday": "Wednesday",
+                    "thursday": "Thursday",
+                    "friday": "Friday"
+                  },
+                  "placeholder": "Enter working hours...",
+                  "saveButton": "Save",
+                  "successMessage": "Working hours successfully saved!",
+                  "errorMessage": "An error occurred while saving working hours. Please try again."
+                },
+                "runningLine": {
+                  "title": "Edit Running Line",
+                  "placeholder": "Enter running line text...",
+                  "saveButton": "Save",
+                  "successMessage": "Running line successfully saved!",
+                  "errorMessage": "An error occurred while saving the running line. Please try again."
+                }
             }
           }
         },
@@ -275,9 +334,9 @@
           "requiredField": "This field is required",
           "updated": "Service updated",
           "errorUpdating": "Error updating service",
-          "returnBack": "Return back",
+          "returnBack": "Back",
           "saving": "Saving...",
-          "saveAll": "Save all",
+          "saveAll": "Save",
           "makeCardVisible": "Make the card visible to users:",
           "editTopImage": "Edit top image",
           "titles": "Titles:",
@@ -292,22 +351,20 @@
           "placeholder": "Enter the name of the service",
           "uploadImage": "Upload image",
           "makeCardVisibleCheckbox": "Make card visible",
-          "saveButton": "Save all",
+          "saveButton": "Save",
           "savingButton": "Saving...",
           "addNewService": "Add new service",
           "refresh": "Refresh",
           "errorLoading": "Error loading service",
           "searchPlaceholder": "Search by service name",
-          "gallery": "Image gallery where you can browse photos.",
-          "editGallery": "Edit the gallery by adding or removing images."
-        },
+          "gallery": "Image gallery where you can browse photos."        },
         "doctors": {
           "requiredField": "This field is required",
           "updated": "Doctor information updated",
           "errorUpdating": "Error updating doctor information",
-          "returnBack": "Return back",
+          "returnBack": "Back",
           "saving": "Saving...",
-          "saveAll": "Save all",
+          "saveAll": "Save",
           "makeCardVisible": "Make the card visible to users:",
           "editTopImage": "Edit top image",
           "titles": "Titles:",
@@ -328,7 +385,7 @@
           "placeholder": "Enter the doctor's full name",
           "uploadImage": "Upload image",
           "makeCardVisibleCheckbox": "Make card visible",
-          "saveButton": "Save all",
+          "saveButton": "Save",
           "savingButton": "Saving...",
           "addNewDoctor": "+  Add new doctor",
           "refresh": "Refresh",

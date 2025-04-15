@@ -16,7 +16,6 @@ import {
   ScrollContainer,
   EditTopImage,
   MakeCardVisibleBox,
-  StyledCheckbox,
   TitleBoxText,
   BiographySection,
   TitleSection,
@@ -28,11 +27,12 @@ import {
   GalleryGrid,
   GalleryImageWrapper,
   TitleBox,
-  UploadText,
+  CheckboxLabel,
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { addImage, pushImageFile } from "../../../../api/imageAPI";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
+// import { getDoctorById } from './../../../../api/doctorAPI';
 
 const AddNewDoctorPage: React.FC = () => {
   const { t } = useTranslation();
@@ -89,6 +89,7 @@ const AddNewDoctorPage: React.FC = () => {
   // const handleImagePreview = (imageUrl: string) => {
   //   setLocalPreviewURL(imageUrl);
   // };
+  
   const handleSave = async () => {
     if (!token) {
       setNotification({
@@ -114,6 +115,7 @@ const AddNewDoctorPage: React.FC = () => {
       };
 
       const newDoctor = await createDoctor(doctorToSend, token);
+
       const doctorId = newDoctor.id;
 
       for (const file of selectedImages) {
@@ -122,19 +124,21 @@ const AddNewDoctorPage: React.FC = () => {
 
       const fullDoctor = await getDoctorById(doctorId!, token);
 
-      const updatedImages = fullDoctor.images!.map((img: any) => {
-        if (!img.path.startsWith("https://")) {
-          return { ...img, path: "https://" + img.path };
-        }
-        return img;
-      });
-
-      fullDoctor.images = updatedImages;
-
       setNotification({
         message: `Doctor "${fullDoctor.fullName}" created successfully!`,
         type: "success",
       });
+
+      const getDoctorByIdAll = await getDoctorById(doctorId!, token);
+
+      const updatedImages = getDoctorByIdAll.images!.map((img: any) => {
+        if (!img.path.startsWith("https://")) {
+          return { ...img, path: "https://" + img.path };
+        }
+        return img;
+      });    
+
+      fullDoctor.images = updatedImages;
 
       setTimeout(() => {
         setIsSaving(false);
@@ -169,12 +173,12 @@ const AddNewDoctorPage: React.FC = () => {
           ...urls.map((url) => ({
             id: 0, 
             path: url,
-            doctorId: doctorData.id,
             dentalServiceId: 0,
+            doctorId: doctorData.id,
           })),
         ],
       }));
-
+      console.log("Selected images:", fileArray);
       // setDoctorData((prev) => ({
       //   ...prev,
       //   images: [
@@ -281,18 +285,19 @@ const AddNewDoctorPage: React.FC = () => {
                 />
               </InputContainer>
 
-              <MakeCardVisibleBox>
-                <TitlesBox>
-                  {t(
-                    "message.adminPanel.appointments.doctors.makeCardVisibleCheckbox"
-                  )}
-                </TitlesBox>
-                <StyledCheckbox
-                  type="checkbox"
-                  checked={doctorData.isActive}
-                  onChange={(e) => handleChange("isActive", e.target.checked)}
-                />
-              </MakeCardVisibleBox>
+             <MakeCardVisibleBox>
+                <CheckboxLabel>
+                              {t("message.adminPanel.appointments.doctors.makeCardVisible")} 
+                
+                                <input
+                                  type="checkbox"
+                                  checked={doctorData.isActive}
+                                  onChange={(e) =>
+                                    setDoctorData({ ...doctorData, isActive: e.target.checked })
+                                  }
+                                />
+                              </CheckboxLabel>
+             </MakeCardVisibleBox>
 
               <EditTopImage>
                 <TitlesBox>
@@ -447,10 +452,6 @@ const AddNewDoctorPage: React.FC = () => {
           </TitleBox>
 
           <EditTopImage>
-            <UploadText>
-              {t("message.adminPanel.appointments.services.editGallery") ||
-                "Upload Gallery Images"}
-            </UploadText>
             <UploadInput
               type="file"
               accept="image/*"

@@ -26,6 +26,7 @@ const Home = () => {
 
   return (
     <HomeContainer>
+      
       <LeftContainer>
           <WelcomeTextSubtitle>
             {parseSubtitle(t('message.main.home_page.subtitle1'))}

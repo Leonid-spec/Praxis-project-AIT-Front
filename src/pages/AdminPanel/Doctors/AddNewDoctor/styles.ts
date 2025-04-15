@@ -30,15 +30,28 @@ export const DoctorPageContainer = styled.div`
   }
 `;
 
-export const HeaderBox = styled.div`
+export const CheckboxLabel = styled.label`
+  font-size: 14px;
+  color: #333;
   display: flex;
-  justify-content: space-between;
-  padding: 0 100px;
+  align-items: center;
+  gap: 10px;
 
   @media (max-width: 768px) {
-    padding: 0 20px;
+    font-size: 12px;
+    gap: 8px;
+  }
+`;
+
+export const HeaderBox = styled.div`
+  display: flex;
+  justify-content: flex-start;;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
     gap: 10px;
   }
 `;
@@ -145,7 +158,7 @@ export const MakeCardVisibleBox = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-
+  margin-top: 20px;
   @media (max-width: 768px) {
     flex-direction: column;
     gap: 8px;
@@ -242,7 +255,7 @@ export const StyledSaveButton = styled.button<{ disabled?: boolean }>`
   border-radius: 30px;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   font-size: 18px;
-
+  font-weight: bold;
   &:hover {
     background-color: ${({ disabled }) => (disabled ? "#ccc" : "#0c989c")};
   }

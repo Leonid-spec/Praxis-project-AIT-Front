@@ -80,10 +80,6 @@ function GalleryServices() {
       </TitleBox>
 
       <EditTopImage>
-        <UploadText>
-          {t("message.adminPanel.appointments.services.editGallery") ||
-            "Upload Gallery Images"}
-        </UploadText>
         <UploadInput
           type="file"
           accept="image/*"

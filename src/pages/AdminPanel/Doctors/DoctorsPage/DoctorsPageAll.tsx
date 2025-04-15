@@ -5,16 +5,14 @@ import { getAllDoctors } from "../../../../api/doctorAPI";
 import AddNewDoctorBtn from "../Buttons/AddNewDoctorBtn";
 import { FindDoctorContainer } from "../Other/FindDoctorContainer";
 import DoctorCard from "../DoctorCard/DoctorCard";
-import { FaSyncAlt } from "react-icons/fa";
 import { Doctor } from "../../../../store/types/doctorTypes"; // унифицированный импорт
 import {
   DoctorsPageAllContainer,
   ScrollContainer,
   HeaderMainBtnsContainer,
   DoctorCardsMainContainer,
-  RefreshIconBox,
 } from "./styles";
-
+import { FaSearch } from "react-icons/fa";
 export const DoctorsPageAll = () => {
   const { i18n, t } = useTranslation();
   const navigate = useNavigate();
@@ -70,18 +68,12 @@ export const DoctorsPageAll = () => {
     }
   };
 
-  const handleRefreshBtn = () => {
-    fetchDoctors();
-  };
 
   return (
     <DoctorsPageAllContainer>
       {location.pathname === "/admin-panel/doctors" && (
         <HeaderMainBtnsContainer>
           <AddNewDoctorBtn onAddDoctor={handleAddDoctorClick} />
-          <RefreshIconBox onClick={handleRefreshBtn}>
-            <FaSyncAlt size={24} color="#20b1b7" />
-          </RefreshIconBox>
           <FindDoctorContainer searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </HeaderMainBtnsContainer>
       )}

@@ -1,9 +1,9 @@
 import { 
-  ImageItem, 
   InputBox, 
   StyledButton 
 } from "./styles";
 import { useTranslation } from "react-i18next";  
+import { FaSearch } from "react-icons/fa";
 
 interface FindServiceContainerProps {
   searchTerm: string;
@@ -20,10 +20,9 @@ export const FindServiceContainer: React.FC<FindServiceContainerProps> = ({ sear
 
   return (
     <StyledButton>
-      <ImageItem
-        src="https://static.vecteezy.com/system/resources/previews/011/947/136/original/silver-search-icon-free-png.png"
-        alt="Search"
-      />
+      <div>
+        <FaSearch style={{ color: "white", fontSize: "24px" }} />
+      </div>
       <InputBox 
         type="text" 
         placeholder={t("message.adminPanel.appointments.services.placeholder")} 

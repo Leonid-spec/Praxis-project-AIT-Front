@@ -17,10 +17,20 @@ export const MenuContainer = styled.div`
   }
 `;
 
+export const BesideLogoContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  gap: 60px;
+  font-size: 1.6rem;
+`;
+
+
 export const Logo = styled.div`
   display: flex;
   align-items: center;
-  font-size: 1.6rem;
+  margin-left: 30px;
+  /* font-size: 1.6rem; */
+  /* font-size: 1.8rem; */
 `;
 
 export const Nav = styled.nav`
@@ -50,7 +60,10 @@ export const SprachUundAdminbereich = styled.div`
 
 export const LanguagePanel = styled.div`
   display: flex;
-  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
 `;
 
 export const LanguageLink = styled.button`
@@ -58,6 +71,8 @@ export const LanguageLink = styled.button`
   border: none;
   color: inherit;
   cursor: pointer;
+  margin: 0;
+  font-size: 14px;
 
   &:hover {
     color: #9ceef1;
@@ -71,6 +86,9 @@ export const LanguageLink = styled.button`
 
 export const Divider = styled.span`
   color: #3d3d3d;
+  /* font-size: 24px; */
+  font-size: 14px;
+
 `;
 
 export const AdminPanelBox = styled.div`
@@ -92,14 +110,11 @@ export const NavLinkImg = styled.img`
 
 export const NavLinkText = styled.span`
   color: #3d3d3d;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
   font-weight: 600;
 
-  &:hover {
-    color: #3b7f83;
-    color: #9ceef1;
-  }
+
 
   @media (min-width: 1920px) {
     font-size: 1.4rem;

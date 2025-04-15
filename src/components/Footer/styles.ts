@@ -8,7 +8,7 @@ export const FooterContainer = styled.footer`
   background-color: #f0f0f0;
   background-color: #effcf6;
   background-color: #eff1fc;
-  /* background-color: #a5a0b6; */
+  background-color: #f0effc;
   padding: 40px 20px;
 
   @media (max-width: 1200px) {
@@ -100,9 +100,12 @@ export const Logo = styled.img`
 `;
 
 export const Title = styled.h3`
-  font-size: 18px;
+  font-size: 17px;
   margin-bottom: 20px;
-  color: #a0eef2;
+  /* color: #a0eef2; */
+  color: #69e5ec;
+  color: #69e5ec;
+  /* color: #333; */
 
   @media (max-width: 768px) {
     font-size: 20px;
@@ -179,4 +182,41 @@ export const DaysStyle = styled.div`
   font-weight: bold;
   color: #111;
   font-size: 16px;
+`;
+
+// date
+export const RunningLineWrapper = styled.div`
+  width: 100%;
+  background-color: #f0f8ff; 
+  padding: 10px 0;
+  position: relative;
+  overflow: hidden; 
+`;
+
+export const RunningLineContainer = styled.div`
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+`;
+
+export const RunningLine = styled.div`
+  display: inline-block;
+  animation: scroll 20s linear infinite;
+  @keyframes scroll {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  width: fit-content;
+  align-self: flex-start;
+  @media (max-width: 768px) {
+    align-self: center;
+  }
 `;
