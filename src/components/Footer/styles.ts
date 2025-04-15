@@ -5,9 +5,6 @@ export const FooterContainer = styled.footer`
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: #f0f0f0;
-  background-color: #effcf6;
-  background-color: #eff1fc;
   background-color: #f0effc;
   padding: 40px 20px;
 
@@ -33,61 +30,19 @@ export const FooterContainer = styled.footer`
     padding: 10px;
   }
 `;
-
 export const Content = styled.div`
   display: flex;
+
   justify-content: center;
   align-items: center;
   align-content: center;
   width: 100%;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-direction: column; /* Колонки становятся вертикальными */
     align-items: center;
   }
 `;
-
-// export const ColumnLeft = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: flex-start;
-//   flex: 1;
-//   text-align: left;
-
-//   @media (max-width: 768px) {
-//     align-items: center;
-//     text-align: center;
-//     margin-bottom: 20px;
-//   }
-
-//   @media (max-width: 576px) {
-//     min-height: auto;
-//     margin: 0;
-//   }
-// `;
-
-
-// export const Column = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-//   align-items: flex-start;
-//   flex: 1;
-//   text-align: left;
-//   margin: 0 10px;
-
-//   @media (max-width: 768px) {
-//     align-items: center;
-//     text-align: center;
-//     margin-bottom: 20px;
-//   }
-
-//   @media (max-width: 576px) {
-//     min-height: auto;
-//     margin: 0;
-//   }
-// `;
 
 export const ColumnLeft = styled.div`
   display: flex;
@@ -110,6 +65,7 @@ export const ColumnLeft = styled.div`
   }
 `;
 
+
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
@@ -125,7 +81,6 @@ export const Column = styled.div`
   }
 
   @media (max-width: 576px) {
-    min-height: auto;
     margin: 0;
   }
 `;
@@ -142,11 +97,14 @@ export const LogoContainer = styled(Column)`
   }
 `;
 
+export const ContentBelowTitle = styled.div`
+  margin-top: 20px; /* Отступ сверху */
+`;
+
 export const Logo = styled.img`
   width: 300px;
   height: auto;
   object-fit: contain;
-  background-color: transparent;
 
   @media (max-width: 992px) {
     width: 250px;
@@ -160,19 +118,23 @@ export const Logo = styled.img`
 export const Title = styled.h3`
   font-size: 17px;
   margin-bottom: 20px;
-  /* color: #a0eef2; */
+ 
   color: #69e5ec;
-  color: #69e5ec;
-  /* color: #333; */
+  text-align: left; /* Убираем центрирование */
+  display: flex;
+  align-items: center; /* Центрируем текст вертикально */
+  height: 50px; /* Добавляем одинаковую высоту для заголовков */
 
   @media (max-width: 768px) {
     font-size: 20px;
+    height: auto; /* Убираем фиксированную высоту для мобильных устройств */
   }
 
   @media (max-width: 576px) {
     font-size: 18px;
   }
 `;
+
 
 export const TimesContainer = styled.div`
   display: flex;
@@ -196,33 +158,51 @@ export const Info = styled.div`
   flex-direction: column;
   gap: 16px;
   font-size: 16px;
-  /* margin: 5px 10px; */
 
   @media (max-width: 768px) {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   @media (max-width: 576px) {
-    font-size: 16px;
+    font-size: 12px;
   }
 `;
 
-export const DaysLeft = styled.div`
+export const DaysOfWeekBox = styled.div`
+
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-  @media (max-width: 768px) {
-    gap: 12px;
-  }
+  flex-direction: column; 
+  gap: 5px;
+  background-color: #f0effc;
+  border-radius: 12px;
+  padding: 5px;
+  width: 100%;
+  max-width: 1200px; 
 `;
 
-export const Days = styled.div`
+export const DayRow = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px; 
+  color: #333;
 
-  @media (max-width: 768px) {
-    gap: 12px;
+  &:last-child {
+    border-bottom: none;
+  }
+
+  & > p:first-child {
+    flex: 1;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  & > p:last-child {
+    flex: 2;
+    text-align: left;
   }
 `;
 
@@ -255,13 +235,12 @@ export const DaysStyle = styled.div`
   font-size: 16px;
 `;
 
-// date
 export const RunningLineWrapper = styled.div`
   width: 100%;
-  background-color: #f0f8ff; 
+  background-color: #f0f8ff;
   padding: 10px 0;
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 `;
 
 export const RunningLineContainer = styled.div`
@@ -274,6 +253,7 @@ export const RunningLineContainer = styled.div`
 export const RunningLine = styled.div`
   display: inline-block;
   animation: scroll 20s linear infinite;
+
   @keyframes scroll {
     from {
       transform: translateX(100%);
@@ -287,6 +267,7 @@ export const RunningLine = styled.div`
 export const ButtonWrapper = styled.div`
   width: fit-content;
   align-self: flex-start;
+
   @media (max-width: 768px) {
     align-self: center;
   }

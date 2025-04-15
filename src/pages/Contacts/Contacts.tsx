@@ -10,7 +10,6 @@ import {
   ContactsWrapper,
   DaysOfWeek,
   DaysOfWeekBox,
-  // HighlightedSpan,
   IconCircle,
   MapContainer,
   SprechzeitenBox,
@@ -24,37 +23,45 @@ const Contacts: React.FC = () => {
   const { t } = useTranslation();
   const [showMessage, setShowMessage] = useState(false);
   const [address, setAddress] = useState({
-    clinicName: "Abramian Dental", 
-    street: "Breslauer Str. 17", 
-    city: "78467 Konstanz", 
-    phone: "+49 75 31 7 72 73",
-    email: "praxis.sofia.abramian@gmail.com",
-    gps: "50.4501° N, 30.5234° E",
-    zipCode: "78467",
+    clinicName: "Abramian Dental",
+    street: "",
+    city: "",
+    phone: "",
+    email: "",
+    gps: "",
+    zipCode: "",
   });
 
   const [workingHours, setWorkingHours] = useState({
-    monday: "08:00 - 12:00, 13:00 - 18:00",
-    tuesday: "08:00 - 12:00, 13:00 - 18:00",
-    wednesday: "08:00 - 12:00, 13:00 - 18:00",
-    thursday: "08:00 - 12:00, 13:00 - 18:00",
-    friday: "08:00 - 12:00, 13:00 - 18:00",
+    monday: "",
+    tuesday: "",
+    wednesday: "",
+    thursday: "",
+    friday: "",
   });
 
-  // Загрузка адреса из localStorage
+  // Загружаем адрес из локального хранилища
   useEffect(() => {
     const savedAddress = localStorage.getItem("address");
     if (savedAddress) {
       try {
         const parsedAddress = JSON.parse(savedAddress);
-        setAddress(parsedAddress);
+        setAddress((prev) => ({
+          ...prev,
+          street: parsedAddress.street,
+          city: parsedAddress.city,
+          phone: parsedAddress.phone,
+          email: parsedAddress.email,
+          gps: parsedAddress.gps,
+          zipCode: parsedAddress.zipCode,
+        }));
       } catch (error) {
         console.error("Ошибка при загрузке адреса из localStorage:", error);
       }
     }
   }, []);
 
-  // Загрузка данных режима работы из localStorage
+  // Загружаем рабочее время из локального хранилища
   useEffect(() => {
     const savedHours = localStorage.getItem("workingHours");
     if (savedHours) {
@@ -62,24 +69,23 @@ const Contacts: React.FC = () => {
         const parsedHours = JSON.parse(savedHours);
         setWorkingHours(parsedHours);
       } catch (error) {
-        console.error("Ошибка при загрузке данных из localStorage:", error);
+        console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
       }
     }
   }, []);
-  
+
   const handleCopyCoordinates = () => {
-    const coordinates = "50.4501° N, 30.5234° E";
     navigator.clipboard.writeText(address.gps);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
   };
 
   const handleCall = () => {
-    window.location.href = `${address.phone}`;
+    window.location.href = `tel:${address.phone}`;
   };
 
   const handleEmail = () => {
-    window.location.href = `${address.email}`;
+    window.location.href = `mailto:${address.email}`;
   };
 
   return (
@@ -107,20 +113,21 @@ const Contacts: React.FC = () => {
             <ContactsBox>
               <ContactsBoxTitle>
                 {t("message.main.contacts_page.titleContacts")}
-              </ContactsBoxTitle>{" "}
+              </ContactsBoxTitle>
               <DaysOfWeek>
                 <p>{t("message.main.contacts_page.address")}</p>
+                <p>{address.street}</p>
+                <p>{address.city}</p>
+                <p>{address.zipCode}</p>
               </DaysOfWeek>
               <ContactIcons
                 onClick={handleCopyCoordinates}
-                style={{
-                  cursor: "pointer",
-                }}
+                style={{ cursor: "pointer" }}
               >
                 <IconCircle>
                   <FaCopy />
                 </IconCircle>
-                <span>GPS: `${address.gps}`</span>
+                <span>GPS: {address.gps}</span>
               </ContactIcons>
               <ContactIcons onClick={handleCall} style={{ cursor: "pointer" }}>
                 <IconCircle>
@@ -184,7 +191,6 @@ const Contacts: React.FC = () => {
             loading="lazy"
           ></iframe>
         </MapContainer>
-        
       </ContactsPageContainer>
     </ContactsContainer>
   );
