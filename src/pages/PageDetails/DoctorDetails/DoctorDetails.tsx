@@ -50,7 +50,6 @@ const DoctorDetails: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       const fetchDoctors = async () => {
         try {
-
           const data = await getActiveDoctors();
 
           dispatch(fetchDoctorsSuccess(data));
@@ -109,50 +108,51 @@ const DoctorDetails: React.FC = () => {
 
   return (
     <Container>
-      <ImageSectionWrapper>
-        <ImageWrapper>
-          <MainImage
-            src={
-              mainImage || doctor.topImage || "https://via.placeholder.com/400"
-            }
-            alt={doctor.fullName}
-          />
-        </ImageWrapper>
-
-        <GalleryWrapper>
-          <GalleryGrid>
-            {doctor.images && doctor.images.length > 0 ? (
-              <>
-                {doctor.images.map((img) => (
-                  <GalleryImage
-                    key={img.id}
-                    src={
-                      img.path.startsWith("https://")
-                        ? img.path
-                        : `https://${img.path}`
-                    }
-                    alt="Doctor's image"
-                    onClick={() =>
-                      handleImageClick(
+      <ContentWrapper>
+        
+  
+        <ImageSectionWrapper>
+          <ImageWrapper>
+            <MainImage
+              src={
+                mainImage || doctor.topImage || "https://via.placeholder.com/400"
+              }
+              alt={doctor.fullName}
+            />
+          </ImageWrapper>
+  
+          <GalleryWrapper>
+            <GalleryGrid>
+              {doctor.images && doctor.images.length > 0 ? (
+                <>
+                  {doctor.images.map((img) => (
+                    <GalleryImage
+                      key={img.id}
+                      src={
                         img.path.startsWith("https://")
                           ? img.path
                           : `https://${img.path}`
-                      )
-                    }
-                  />
-                ))}
-                <ResetImageButton onClick={resetImage} title={t("reset")}>
-                  ↻ {t("reset")}
-                </ResetImageButton>
-              </>
-            ) : (
-              <p>{t("noImages")}</p>
-            )}
-          </GalleryGrid>
-        </GalleryWrapper>
-      </ImageSectionWrapper>
-
-      <ContentWrapper>
+                      }
+                      alt="Doctor's image"
+                      onClick={() =>
+                        handleImageClick(
+                          img.path.startsWith("https://")
+                            ? img.path
+                            : `https://${img.path}`
+                        )
+                      }
+                    />
+                  ))}
+                  <ResetImageButton onClick={resetImage} title={t("reset")}>
+                    ↻ {t("reset")}
+                  </ResetImageButton>
+                </>
+              ) : (
+                <p>{t("noImages")}</p>
+              )}
+            </GalleryGrid>
+          </GalleryWrapper>
+        </ImageSectionWrapper>
         <InfoWrapper>
           <FullName>{doctor.fullName}</FullName>
           <TitleWrapper>
@@ -174,9 +174,11 @@ const DoctorDetails: React.FC = () => {
             <Biography>{biography}</Biography>
           </BiographyWrapper>
         </InfoWrapper>
+        
       </ContentWrapper>
     </Container>
   );
+  
 };
 
 export default DoctorDetails;

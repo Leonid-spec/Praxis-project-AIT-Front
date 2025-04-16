@@ -8,7 +8,6 @@ import {
   ContactsContainer,
   ContactsPageContainer,
   ContactsWrapper,
-  DaysOfWeek,
   DaysOfWeekBox,
   DaysOfWeekp,
   DaysOfWeekspan,
@@ -20,6 +19,7 @@ import {
 import { useTranslation } from "react-i18next";
 import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
+import { DayRow } from "../../components/Footer/styles";
 
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
@@ -30,7 +30,7 @@ const Contacts: React.FC = () => {
     city: "Konstanz",
     phone: "+49 75 31 7 72 73",
     email: "praxis.sofia.abramian@gmail.com",
-    gps: "50.4501° N, 30.5234°",
+    gps: "47°41'06.7 N 9°09'04.4 E",
     zipCode: "78467",
   });
 
@@ -43,38 +43,38 @@ const Contacts: React.FC = () => {
   });
 
   // Загружаем адрес из локального хранилища
-  useEffect(() => {
-    const savedAddress = localStorage.getItem("address");
-    if (savedAddress) {
-      try {
-        const parsedAddress = JSON.parse(savedAddress);
-        setAddress((prev) => ({
-          ...prev,
-          street: parsedAddress.street,
-          city: parsedAddress.city,
-          phone: parsedAddress.phone,
-          email: parsedAddress.email,
-          gps: parsedAddress.gps,
-          zipCode: parsedAddress.zipCode,
-        }));
-      } catch (error) {
-        console.error("Ошибка при загрузке адреса из localStorage:", error);
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedAddress = localStorage.getItem("address");
+  //   if (savedAddress) {
+  //     try {
+  //       const parsedAddress = JSON.parse(savedAddress);
+  //       setAddress((prev) => ({
+  //         ...prev,
+  //         street: parsedAddress.street,
+  //         city: parsedAddress.city,
+  //         phone: parsedAddress.phone,
+  //         email: parsedAddress.email,
+  //         gps: parsedAddress.gps,
+  //         zipCode: parsedAddress.zipCode,
+  //       }));
+  //     } catch (error) {
+  //       console.error("Ошибка при загрузке адреса из localStorage:", error);
+  //     }
+  //   }
+  // }, []);
 
   // Загружаем рабочее время из локального хранилища
-  useEffect(() => {
-    const savedHours = localStorage.getItem("workingHours");
-    if (savedHours) {
-      try {
-        const parsedHours = JSON.parse(savedHours);
-        setWorkingHours(parsedHours);
-      } catch (error) {
-        console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedHours = localStorage.getItem("workingHours");
+  //   if (savedHours) {
+  //     try {
+  //       const parsedHours = JSON.parse(savedHours);
+  //       setWorkingHours(parsedHours);
+  //     } catch (error) {
+  //       console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
+  //     }
+  //   }
+  // }, []);
 
   const handleCopyCoordinates = () => {
     navigator.clipboard.writeText(address.gps);
@@ -156,21 +156,27 @@ const Contacts: React.FC = () => {
                 {t("message.main.contacts_page.titleTime")}
               </ContactsBoxTitle>
               <DaysOfWeekBox>
-                <DaysOfWeek>
-                  <p>{t("message.footer.daysOfWeek.monday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.thursday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.friday")}:</p>
-                </DaysOfWeek>
-                <DaysOfWeek>
-                  <p>{workingHours.monday}</p>
-                  <p>{workingHours.tuesday}</p>
-                  <p>{workingHours.wednesday}</p>
-                  <p>{workingHours.thursday}</p>
-                  <p>{workingHours.friday}</p>
-                </DaysOfWeek>
-              </DaysOfWeekBox>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.monday")}:</p>
+                              <p>{workingHours.monday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
+                              <p>{workingHours.tuesday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
+                              <p>{workingHours.wednesday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.thursday")}:</p>
+                              <p>{workingHours.thursday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.friday")}:</p>
+                              <p>{workingHours.friday}</p>
+                            </DayRow>
+                          </DaysOfWeekBox>
               <ButtonContainer>
                 <MakeAppointmentBtn
                   text={t("message.main.use_oft.button.title")}
