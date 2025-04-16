@@ -52,7 +52,7 @@ export const ImageWrapper = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    width: 90%;
+    width: 88%;
     height: auto;
     margin: 10px 0 25px 0;
   }
