@@ -21,7 +21,7 @@ Modal.setAppElement("#root");
 
 function App() {
   
-  const [, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -57,7 +57,10 @@ function App() {
             <Route path="/service/:id" element={<ServiceDetails />} />
 
             {/* Админ-панель */}
-            <Route path="/admin-panel/*" element={<AdminPanel />}> {/* ✅ Теперь EditDoctorPage загружается внутри */}
+            
+
+            {/* <Route path="/admin-panel/*" element={<AdminPanel />}> ✅ Теперь EditDoctorPage загружается внутри */}
+            <Route path="/admin-panel/*" element={<AdminPanel isLoggedIn={isLoggedIn} />} >
               <Route path="edit-doctor/:id" element={<EditDoctorPage />} /> 
             </Route>
 
