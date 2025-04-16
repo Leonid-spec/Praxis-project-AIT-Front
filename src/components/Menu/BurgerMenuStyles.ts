@@ -18,6 +18,7 @@ export const BurgerAndAppBtnContainer = styled.div`
 
 export const BurgerButton = styled.div`
   display: none;
+  margin-top: 8px;
 
   @media (max-width: 1440px) {
     display: block;
