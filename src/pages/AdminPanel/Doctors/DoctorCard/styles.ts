@@ -67,20 +67,22 @@ export const ActionButton = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #5c0d2a;
-
+    background-color: #57142d;
   }
 `;
 
 export const InactiveOverlay = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
   color: white;
-  padding: 5px 10px;
-  font-size: 12px;
-  border-radius: 5px;
-  font-weight: 600;
-  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* Увеличенный текст */
+  z-index: 15; /* Поверх всего остального */
+  border-radius: 10px; /* Совпадает с ImagePreview */
 `;
