@@ -56,7 +56,6 @@ export const WelcomeTextSubtitle = styled.span`
 
 export const HighlightedSpan = styled.span`
   color: #5fc9d3;
-  /* font-weight: bold; */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
@@ -67,9 +66,7 @@ export const ContactsPageContainer = styled.div`
 export const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  /* margin: 20px 40px; */
-  /* max-width: 1200px; */
-
+  padding: 30px;
   @media (max-width: 910px) {
     grid-template-columns: 1fr;
     padding: 0 10px;
