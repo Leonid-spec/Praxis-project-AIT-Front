@@ -124,7 +124,7 @@ export const NavLinkText = styled.span`
   font-size: 1.4rem;
   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
   font-weight: 600;
-  @media (max-width: 420px) {
+  @media (max-width: 450px) {
     display: none;
   }
 
