@@ -45,7 +45,9 @@
   
 }
 
+
 /* Big monitor */ 
+
 @media (min-width: 1440px) {
   .box  {
     width: 200px;
