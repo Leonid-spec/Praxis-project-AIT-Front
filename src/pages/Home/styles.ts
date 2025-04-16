@@ -168,8 +168,12 @@ export const HomeContainer = styled.div`
   grid-template-columns: 40% 60%;
   margin: 30px auto;
   width: 100%;
+  /* max-height: 60vh; */
   gap: 40px;
   padding-right: 50px;
+  position: relative;
+  top: 0;
+  left: 0;
 
   @media (max-width: 1200px) {
     grid-template-columns: 1fr;
@@ -237,7 +241,6 @@ export const RightContainer = styled.div`
   align-items: center;
   overflow: hidden;
   width: 100%;
-  height: auto;
 
   @media (max-width: 1024px) {
     padding: 0 10px;
