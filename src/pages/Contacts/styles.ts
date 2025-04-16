@@ -67,7 +67,7 @@ export const ContactsPageContainer = styled.div`
 export const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 20px 40px;
+  /* margin: 20px 40px; */
   /* max-width: 1200px; */
 
   @media (max-width: 910px) {
@@ -97,11 +97,14 @@ export const ContactsBox = styled.div`
   border-radius: 12px;
   gap: 10px;
   flex: 1;
-  /* min-width: 460px; */
 
   @media (max-width: 768px) {
     padding: 0 20px;
     font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 4px;
   }
 `;
 
@@ -133,7 +136,6 @@ export const SprechzeitenBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* padding: 20px 50px; */
   border-radius: 12px;
   flex: 1;
   margin: 0;
@@ -144,6 +146,12 @@ export const SprechzeitenBox = styled.div`
 
   @media (max-width: 768px) {
     padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 10px 20px;
+    font-size: 8px;
   }
 `;
 
@@ -151,7 +159,6 @@ export const DaysOfWeekBox = styled.div`
 display: flex;
 gap: 20px;
 width: 100%;
-min-width: 460px;
 `;
 
 export const DaysOfWeek = styled.div`
@@ -159,14 +166,66 @@ export const DaysOfWeek = styled.div`
   font-size: 20px;
   line-height: 2;
 
+p {
+    font-size: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 13px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: 12px;
+    }
+  }
 `;
 
 export const DaysOfWeekp = styled.div`
   margin-top: 10px;
+  font-size: 20px;
+  
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 12px;
+  }
 `;
 
 export const DaysOfWeekspan = styled.p`
   font-size: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 12px;
+  }
 `;
 
 export const MapContainer = styled.div`
