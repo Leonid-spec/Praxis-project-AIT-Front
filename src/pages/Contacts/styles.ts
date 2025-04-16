@@ -56,7 +56,6 @@ export const WelcomeTextSubtitle = styled.span`
 
 export const HighlightedSpan = styled.span`
   color: #5fc9d3;
-  /* font-weight: bold; */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 `;
 
