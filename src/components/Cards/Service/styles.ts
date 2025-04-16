@@ -7,6 +7,13 @@ export const Card = styled.div`
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
+  }
+
 `;
 
 export const PhotoContainer = styled.div`
@@ -31,7 +38,6 @@ export const Info = styled.div`
 export const Title = styled.h3`
   font-size: 22px;
   color: #2e3a59; 
-  margin-bottom: 20px;
   font-weight: bold;
 `;
 

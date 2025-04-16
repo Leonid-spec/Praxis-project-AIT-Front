@@ -10,7 +10,7 @@
         "logo_alt": "Logo",
         "cabinets": "Praxis",
         "devices": "Geräten",
-        "praxis": "Unser"
+        "praxis": "Unser "
       }
     },
     "main": {
@@ -25,12 +25,12 @@
         "subtitle2": "IHR SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
       },
       "about_us_page": {
-        "ours": "Unsere",
+        "ours": "Unsere ",
         "are": "sind mit modernen",
         "ausgestattet": "ausgestattet !"
       },
       "team_page": {
-        "servicesIntrot": "Unser",
+        "servicesIntrot": "Unser ",
         "welcome": "Willkommen bei",
         "subtitle": "Willkommen auf der Seite unseres Teams! Wir sind engagierte Fachleute, die sich leidenschaftlich dafür einsetzen, Ihnen erstklassige Zahnpflege zu bieten. Unsere Mission ist es, Ihnen ein gesundes und selbstbewusstes Lächeln zu schenken. Vielen Dank für Ihr Vertrauen!",
         "moreInfoBtn": "Mehr erfahren",

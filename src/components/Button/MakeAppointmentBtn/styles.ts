@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+    import styled from 'styled-components';
 
 interface ButtonProps {
   bgColor?: string; 
@@ -14,6 +14,7 @@ export const StyledButton = styled.button<ButtonProps>`
   color: ${({ textColor }) => textColor || '#ffffff'}; 
   cursor: pointer;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+  font-weight: bold;
 
   transition: all 0.3s ease-in-out;
   &:hover {

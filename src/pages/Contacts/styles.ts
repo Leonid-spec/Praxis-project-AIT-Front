@@ -8,6 +8,8 @@ export const ContactsContainer = styled.div`
   width: 100%;
   background-color: #f6f9fc;
   margin: 0 auto;
+  margin-top: 20px;
+
 `;
 
 export const TeamContainer = styled.div`
@@ -16,12 +18,12 @@ export const TeamContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 30px;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   background-color: #f6f9fc;
 `;
 
 export const WelcomeTextContainer = styled.p`
-padding: 20px 40px 0;
+  padding: 20px 40px 0;
   font-size: 1.4rem;
   color: #555;
   text-align: center;
@@ -67,6 +69,7 @@ export const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   padding: 30px;
+ 
   @media (max-width: 910px) {
     grid-template-columns: 1fr;
     padding: 0 10px;
@@ -79,7 +82,6 @@ export const ContactsWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   border-radius: 12px;
-  /* margin-left: 40px; */
 
   @media (max-width: 768px) {
     padding: 10px;
@@ -90,13 +92,13 @@ export const ContactsBox = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  padding: 10px 30px;
+  /* padding: 10px 30px; */
   border-radius: 12px;
   gap: 10px;
   flex: 1;
 
   @media (max-width: 768px) {
-    padding: 0 20px;
+    /* padding: 0 20px; */
     font-size: 16px;
   }
 
@@ -110,7 +112,7 @@ export const ContactBox = styled.p`
 `;
 
 export const ContactsBoxTitle = styled.h2`
-/* margin-left: 4px; */
+  /* margin-left: 4px; */
   font-size: 1.8rem;
   color: #333;
 
@@ -123,7 +125,7 @@ export const SprechzeitenWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  
+
   @media (max-width: 768px) {
     padding: 0 10px;
   }
@@ -138,25 +140,24 @@ export const SprechzeitenBox = styled.div`
   margin: 0;
 
   @media (max-width: 1024px) {
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
   }
 
   @media (max-width: 768px) {
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     font-size: 12px;
   }
 
   @media (max-width: 480px) {
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     font-size: 8px;
   }
 `;
 
-
 export const DaysOfWeekBox = styled.div`
-display: flex;
-gap: 20px;
-width: 100%;
+  display: flex;
+  gap: 20px;
+  width: 100%;
 `;
 
 export const DaysOfWeek = styled.div`
@@ -164,7 +165,7 @@ export const DaysOfWeek = styled.div`
   font-size: 20px;
   line-height: 2;
 
-p {
+  p {
     font-size: 20px;
 
     @media (max-width: 768px) {
@@ -188,7 +189,7 @@ p {
 export const DaysOfWeekp = styled.div`
   margin-top: 10px;
   font-size: 20px;
-  
+
   @media (max-width: 768px) {
     font-size: 16px;
   }
@@ -225,7 +226,6 @@ export const DaysOfWeekspan = styled.p`
     font-size: 12px;
   }
 `;
-
 
 export const MapContainer = styled.div`
   display: flex;
@@ -299,16 +299,15 @@ export const IconCircle = styled.div`
   }
 `;
 
-export const ButtonContainer = styled.div`
-`;
+export const ButtonContainer = styled.div``;
 
 // date
 export const RunningLineWrapper = styled.div`
   width: 100%;
-  background-color: #f0f8ff; 
+  background-color: #f0f8ff;
   padding: 10px 0;
   position: relative;
-  overflow: hidden; 
+  overflow: hidden;
 `;
 
 export const RunningLineContainer = styled.div`
