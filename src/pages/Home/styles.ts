@@ -230,13 +230,11 @@ export const LeftContainer = styled.div`
   @media (min-width: 1920px) {
     width: 1100px;
     left: 200px;
-    /* gap: 50px; */
   }
 
   @media (min-width: 1440px) {
     width: 900px;
     left: 160px;
-    /* gap: 40px; */
   }
 
   @media (max-width: 1200px) {

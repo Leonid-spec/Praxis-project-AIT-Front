@@ -19,7 +19,10 @@ import React from "react";
 import MakeAppointmentBtn from "../Button/MakeAppointmentBtn/MakeAppointmentBtn";
 
 const Menu = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
+    return localStorage.getItem("token") !== null;
+  });
+  
   const { t, i18n } = useTranslation();
   const [isMobile, setIsMobile] = useState(false);
 

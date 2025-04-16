@@ -1,4 +1,3 @@
-// src/styles/globalStyles.ts
 import { Global, css } from "@emotion/react";
 
 const globalStyles = css`
@@ -8,8 +7,9 @@ const globalStyles = css`
   @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
 
   *, *::before, *::after {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
+
 
   body {
     font-family: "Lato", sans-serif;
@@ -22,58 +22,40 @@ const globalStyles = css`
 
   body,
   html {
+    width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
   }
-
-  /* Стиль для всех кнопок */
-  button {
-    font-family: inherit;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  /* Медиазапрос для уменьшения шрифтов и отступов на экранах до 768px */
-  @media (max-width: 768px) {
-    button {
-      font-size: 12px;
-      padding: 8px 10px;
-    }
-  }
-
+// Yuliia
   @media (max-width: 868px) {
     body {
-      font-size: 12px;
+      font-size: 14px; /* Общий размер текста для тела */
     }
     h1 {
-      font-size: 20px;
+      font-size: 20px; /* Размер шрифта для заголовков */
     }
     h2 {
       font-size: 18px;
     }
     p {
-      /* font-size: 12px;  Размер шрифта для параграфов */
+      //font-size: 12px; /* Размер шрифта для параграфов */
     }
   }
-
   @media (max-width: 668px) {
     body {
-      font-size: 10px;
+      font-size: 12px; /* Общий размер текста для тела */
     }
     h1 {
-      font-size: 18px;
+      font-size: 18px; /* Размер шрифта для заголовков */
     }
     h2 {
-      font-size: 16px;
+      font-size: 16px; /* Размер шрифта для подзаголовков */
     }
     p {
-      /* font-size: 10px;  Размер шрифта для параграфов */
+      //font-size: 10px; /* Размер шрифта для параграфов */
     }
-  }
+}
 
   h1,
   h2,
