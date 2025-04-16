@@ -17,7 +17,6 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <div className={styles.layout}>
-      <div className={styles.globalContainer}>
        {/* Шапка сайта */}
       <Header />
 
@@ -26,7 +25,6 @@ const Layout = ({ children }: LayoutProps) => {
       
       {/* Условное отображение футера */}
       {!hideFooter && <ResponsiveFooter />}
-    </div>
     </div>
   );
 };

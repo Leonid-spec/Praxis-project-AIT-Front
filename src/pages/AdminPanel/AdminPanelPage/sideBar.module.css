@@ -29,7 +29,6 @@
   background-color: #fff;
   border-radius: 20px;
   padding: 14px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -42,10 +41,9 @@
   height: 60px;
   width: auto;
   object-fit: contain;
-  
 }
 
-/* Big monitor */ 
+/* Big monitor */
 @media (min-width: 1440px) {
   .box  {
     width: 200px;
@@ -120,7 +118,7 @@
   }
 
   .box {
-    width: 100px;
+    width: 130px;
     height: 100px;
     /* border-radius: 15px; */
     padding: 10px;
@@ -129,7 +127,6 @@
 
   .icon {
     height: 40px;
-    width: auto;
   }
 
   .labelTop {
@@ -140,15 +137,14 @@
 /* Very small screens */
 @media (max-width: 480px) {
   .box {
-    width: 75px;
-    height: 75px;
+    width: 100px;
+    height: 80px;
     padding: 8px;
     gap: 8px;
   }
 
   .icon {
-    height: 30px;
-    width: auto;
+    height: 40px;
   }
 
   .labelTop {

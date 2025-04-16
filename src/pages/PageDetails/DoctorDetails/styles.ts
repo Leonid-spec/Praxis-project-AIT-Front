@@ -8,23 +8,10 @@ export const Container = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   gap: 30px;
   width: 100%;
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-
-    // На мобилке: текст вверх, картинка вниз
-    & > div:first-child {
-      order: 2; // ImageSectionWrapper
-    }
-
-    & > div:last-child {
-      order: 1; // InfoWrapper
-    }
-  }
 `;
-
 
 
 export const ImgAndBtnWrapper = styled.div`
@@ -56,10 +43,6 @@ export const MainImage = styled.img`
   height: 100%;
   object-fit: cover;
   border-radius: 12px;
-  @media (max-width: 768px) {
-    height: auto;
-    max-height: 400px;
-  }
 `;
 
 export const InfoWrapper = styled.div`

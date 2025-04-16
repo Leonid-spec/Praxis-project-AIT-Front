@@ -1,41 +1,19 @@
 .layout {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.globalContainer {
-  max-width: 1200px; /* Ограничение ширины */
-  margin: 0 auto; /* Центрирование содержимого */
-  padding: 0 20px; /* Отступы по бокам */
-  width: 100%; /* Убедимся, что занимает всю ширину */
-  box-sizing: border-box; /* Учет отступов и границ */
-}
-
-.header {
-  margin-bottom: 20px;
-  width: 100%; /* Гарантируем одинаковую ширину */
-}
-
-.content {
-  flex: 1;
-  background-color: #f6f9fc;
-  width: 100%; /* Гарантируем одинаковую ширину */
-}
-
-.footer {
-  margin-top: 20px;
-  width: 100%; /* Гарантируем одинаковую ширину */
-}
-
-@media (max-width: 768px) {
-  .globalContainer {
-    padding: 0 15px; /* Уменьшим боковые отступы на мобильных устройствах */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
   }
-
-  .header,
-  .content,
+  
+  .header {
+    margin-bottom: 20px; 
+  }
+  
+  .content {
+    flex: 1; 
+    background-color: #f6f9fc;
+  }
+  
   .footer {
-    width: 100%; /* Одинаковая ширина на узких экранах */
+    margin-top: 20px; 
   }
-}
+  

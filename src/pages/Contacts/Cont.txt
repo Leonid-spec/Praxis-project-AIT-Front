@@ -34,7 +34,7 @@
 
                   <div style={styles.contactIcons}>
                     <div style={styles.iconCircle}>📍</div>
-                    <span>GPS: 47°41'06.7"N 9°09'04.4"E</span>
+                    <span>GPS: 50.4501° N, 30.5234° E</span>
                   </div>
                   {/* <button onClick={handleCopyCoordinates} style={styles.copyButton}>
                 {t("message.copy")}
