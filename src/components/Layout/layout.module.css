@@ -1,19 +1,43 @@
 .layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.globalContainer {
+  /* max-width: 1200px; Ограничение ширины */
+  /* margin: 0 auto; Центрирование содержимого */
+ 
+  width: 100%; /* Убедимся, что занимает всю ширину */
+  box-sizing: border-box; /* Учет отступов и границ */
+}
+
+.header {
+  
+  width: 100%; /* Гарантируем одинаковую ширину */
+}
+
+.content {
+  flex: 1;
+  padding: 0 25px; /*боковые отступы на мобильных устройствах */
+  background-color: #f6f9fc;
+  width: 100%; /* Гарантируем одинаковую ширину */
+}
+
+.footer {
+  
+  width: 100%; /* Гарантируем одинаковую ширину */
+}
+
+@media (max-width: 768px) {
+  .globalContainer {
+    max-width: 100%;
   }
   
-  .header {
-    margin-bottom: 20px; 
-  }
-  
-  .content {
-    flex: 1; 
-    background-color: #f6f9fc;
-  }
-  
+
+  .header,
+  .content,
   .footer {
-    margin-top: 20px; 
+    width: 100%; /* Одинаковая ширина на узких экранах */
   }
-  
+}

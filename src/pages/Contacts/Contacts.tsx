@@ -20,6 +20,7 @@ import {
 import { useTranslation } from "react-i18next";
 import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
+import { DayRow } from "../../components/Footer/styles";
 
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
@@ -147,30 +148,34 @@ const Contacts: React.FC = () => {
                 <DaysOfWeekspan>{address.email}</DaysOfWeekspan>
               </ContactIcons>
             </ContactsBox>
-            
           </ContactsWrapper>
-
           <SprechzeitenWrapper>
             <SprechzeitenBox>
               <ContactsBoxTitle>
                 {t("message.main.contacts_page.titleTime")}
               </ContactsBoxTitle>
               <DaysOfWeekBox>
-                <DaysOfWeek>
-                  <p>{t("message.footer.daysOfWeek.monday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.thursday")}:</p>
-                  <p>{t("message.footer.daysOfWeek.friday")}:</p>
-                </DaysOfWeek>
-                <DaysOfWeek>
-                  <p>{workingHours.monday}</p>
-                  <p>{workingHours.tuesday}</p>
-                  <p>{workingHours.wednesday}</p>
-                  <p>{workingHours.thursday}</p>
-                  <p>{workingHours.friday}</p>
-                </DaysOfWeek>
-              </DaysOfWeekBox>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.monday")}:</p>
+                              <p>{workingHours.monday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
+                              <p>{workingHours.tuesday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
+                              <p>{workingHours.wednesday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.thursday")}:</p>
+                              <p>{workingHours.thursday}</p>
+                            </DayRow>
+                            <DayRow>
+                              <p>{t("message.footer.daysOfWeek.friday")}:</p>
+                              <p>{workingHours.friday}</p>
+                            </DayRow>
+                          </DaysOfWeekBox>
               <ButtonContainer>
                 <MakeAppointmentBtn
                   text={t("message.main.use_oft.button.title")}

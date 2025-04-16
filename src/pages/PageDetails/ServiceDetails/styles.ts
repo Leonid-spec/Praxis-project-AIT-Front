@@ -3,7 +3,25 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   margin: 40px auto;
+  flex-direction: row;
+
+  @media (max-width: 1200px) and (min-width: 768px) {
+    gap: 40px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    & > div:first-child {
+      order: 2;
+    }
+
+    & > div:last-child {
+      order: 1;
+    }
+  }
 `;
+
 
 export const ContentWrapper = styled.div`
   display: flex;
@@ -20,7 +38,7 @@ export const ImgAndBtnWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  width: 500px;
+  width: auto;
   height: 300px;
   display: flex;
   justify-content: center;
@@ -30,6 +48,11 @@ export const ImageWrapper = styled.div`
   border-radius: 12px;
   background-color: #f8f8f8;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 88%;
+    height: auto;
+  }
 `;
 
 export const MainImage = styled.img`
