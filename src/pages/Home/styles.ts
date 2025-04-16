@@ -136,6 +136,11 @@ export const WelcomeTextSubtitle = styled.p`
     font-size: clamp(2rem, 5vw, 2.8rem);
   }
 
+  @media (min-width: 1440px) {
+    font-size: clamp(2.4rem, 3.5vw, 3.8rem);
+    line-height: 1.8;
+  }
+
   @media (max-width: 1200px) {
     font-size: clamp(1.2rem, 4vw, 1.6rem);
   }
@@ -170,6 +175,18 @@ export const HomeContainer = styled.div`
   width: 100%;
   gap: 40px;
   padding-right: 50px;
+
+  @media (min-width: 1920px) {
+    max-width: 2000px;
+    gap: 80px;
+    padding: 0 100px;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1800px;
+    padding: 0 80px;
+    gap: 60px;
+  }
 
   @media (max-width: 1200px) {
     grid-template-columns: 1fr;
@@ -209,6 +226,18 @@ export const LeftContainer = styled.div`
   position: relative;
   top: 250px;
   left: 110px;
+
+  @media (min-width: 1920px) {
+    width: 1100px;
+    left: 200px;
+    /* gap: 50px; */
+  }
+
+  @media (min-width: 1440px) {
+    width: 900px;
+    left: 160px;
+    /* gap: 40px; */
+  }
 
   @media (max-width: 1200px) {
     align-items: center;
