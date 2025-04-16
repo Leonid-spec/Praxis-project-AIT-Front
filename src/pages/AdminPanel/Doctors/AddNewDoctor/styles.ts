@@ -9,7 +9,7 @@ export const ScrollContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0 15px 0 10px;
     overflow-y: auto;
-    max-height: 100vh; /* Ограничение высоты для мобильных устройств */
+    max-height: 100vh; 
   }
 `;
 
