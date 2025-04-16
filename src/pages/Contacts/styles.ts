@@ -116,18 +116,43 @@ export const SprechzeitenBox = styled.div`
   margin: 0;
 `;
 
+
 export const DaysOfWeekBox = styled.div`
-  display: grid;
-  grid-template-columns:30% 70%;
+
+  display: flex;
+  flex-direction: column; 
+  gap: 5px;
+  border-radius: 12px;
+  padding: 5px;
+  width: 100%;
+  max-width: 1200px; 
 `;
-
-
-export const DaysOfWeek = styled.div`
-  padding: 0 0 0 2%;
+export const DayRow = styled.div`
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px;
+  padding: 5px 0;
+  
+  font-size: 16px; 
   color: #333;
-  font-size: 20px;
-  line-height: 2;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  & > p:first-child {
+    flex: 1;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  & > p:last-child {
+    flex: 2;
+    text-align: left;
+  }
 `;
+
 
 
 export const MapContainer = styled.div`
@@ -168,7 +193,6 @@ export const ContactIcons = styled.div`
 export const IconCircle = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #a0eef2;
   background-color: #7a2141;
   border-radius: 50%;
   display: flex;
@@ -181,13 +205,15 @@ export const IconCircle = styled.div`
   @media (max-width: 768px) {
     width: 40px;
     height: 40px;
-    font-size: 16px;
+    font-size: 18px;
+    margin-right: 8px;
   }
 
   @media (max-width: 480px) {
     width: 32px;
     height: 32px;
-    font-size: 14px;
+    font-size: 16px;
+    margin-right: 5px;
   }
 `;
 

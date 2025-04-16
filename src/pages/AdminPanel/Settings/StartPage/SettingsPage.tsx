@@ -18,7 +18,6 @@ import {
   // RefreshIconBox,
   ScrollContainer,
   MainFunctionsText,
-  // RefreshIconBox,
 } from "./styles";
 
 // import { FaSyncAlt } from "react-icons/fa";
@@ -102,6 +101,13 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
               "message.adminPanel.appointments.settings.admin.settingsPage.greeting"
             )
           )}
+          {activeSection === "welcome" && (
+          <MainFunctionsText>
+            {t(
+              "message.adminPanel.appointments.settings.admin.settingsPage.capabilities"
+            )}
+          </MainFunctionsText>
+        )}
         </MainWelcomeText>
       </WelcomeTextBox>
 
@@ -144,15 +150,10 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
         {/* <RefreshIconBox onClick={handleRefreshBtn}>
           <FaSyncAlt size={24} color="#20b1b7" />
         </RefreshIconBox> */}
+        </ButtonGroup>
 
-        {activeSection === "welcome" && (
-          <MainFunctionsText>
-            {t(
-              "message.adminPanel.appointments.settings.admin.settingsPage.capabilities"
-            )}
-          </MainFunctionsText>
-        )}
-      </ButtonGroup>
+        
+      
 
       <ScrollContainer>
         <Section>
