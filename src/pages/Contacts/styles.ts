@@ -8,7 +8,7 @@ export const ContactsContainer = styled.div`
   width: 100%;
   background-color: #f6f9fc;
   margin: 0 auto;
-  margin-top: 20px;
+  margin: 20px 0 0 20px;
 
 `;
 

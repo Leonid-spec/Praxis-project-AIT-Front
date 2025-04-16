@@ -16,6 +16,7 @@ const Button = styled.button`
   transition: background-color 0.3s ease;
   background-color: #7a2141;
   border: 1px solid #ddd;
+  font-weight: bold;
 
   &:hover {
     background-color: #641230;

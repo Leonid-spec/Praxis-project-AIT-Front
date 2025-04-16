@@ -40,7 +40,7 @@ export const RefreshIconBox = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
-
+  font-weight: bold;
   &:hover {
     transform: scale(1.05);
   }
@@ -96,6 +96,8 @@ export const FilterButton = styled.button<{ isActive: boolean }>`
   border-radius: 30px;
   padding: 12px 20px;
   font-size: 20px;
+  font-weight: bold;
+
 `;
 
 export const AppointmentList = styled.ul`
@@ -169,6 +171,8 @@ export const MoreInfoButton = styled.button`
   flex-direction: column;
   justify-content: center;
   margin-left: auto;
+  font-weight: bold;
+
 `;
 
 export const Marker = styled.div`
@@ -193,6 +197,7 @@ export const TrashIconBox = styled.button`
   background-color: transparent;
   cursor: pointer;
   padding-left: 30px;
+  font-weight: bold;
 
   &:hover {
     transform: scale(1.05);
@@ -241,6 +246,7 @@ export const ModalActionsBtn = styled.button`
   color: white;
   border: none;
   cursor: pointer;
+  font-weight: bold;
 
   &:hover {
     background-color: #18a8a0;
