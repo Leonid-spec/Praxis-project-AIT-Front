@@ -20,7 +20,6 @@ import {
 import { useTranslation } from "react-i18next";
 import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
-import { DayRow } from "../../components/Footer/styles";
 
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
