@@ -30,15 +30,18 @@ import {
   ModalActions,
   ModalActionsBtn,
   BtnBox,
+  DateText,
 } from "./styles";
 import { getActiveServices } from "../../../../api/serviceAPI";
 import i18n from "../../../../utils/i18n";
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import { deleteAppointment } from "../../../../api/appointmentAPI";
+import { FindByTime } from "./FindByTime/FindByTime";
 
 const AdminAppointmentsPage: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [appointments, setAppointments] = useState<AppointmentData[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -49,11 +52,11 @@ const AdminAppointmentsPage: React.FC = () => {
     null
   );
 
-   const [, setNotification] = useState<{
-      message: string;
-      type: "error" | "success";
-    } | null>(null);
-  
+  const [, setNotification] = useState<{
+    message: string;
+    type: "error" | "success";
+  } | null>(null);
+
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -86,34 +89,37 @@ const AdminAppointmentsPage: React.FC = () => {
         message: t("message.adminPanel.appointments.errorFetchingAppointments"),
         type: "error",
       });
-      // alert(t("message.adminPanel.appointments.errorFetchingAppointments"));
     }
   };
 
-  const filteredAppointments = appointments.filter((appointment) => {
-    if (filter === "new") return appointment.isNew;
-    if (filter === "completed") return !appointment.isNew;
-    return true;
+  // const filteredAppointments = appointments.filter((appointment) => {
+  //   if (filter === "new") return appointment.isNew;
+  //   if (filter === "completed") return !appointment.isNew;
+  //   return true;
+  // });
+
+  const sortedAppointments = [...appointments].sort((a, b) => {
+    const dateA = new Date(a.createdTime || "").getTime();
+    const dateB = new Date(b.createdTime || "").getTime();
+    return dateB - dateA;
+  });
+
+  const filteredAppointments = sortedAppointments.filter((appointment) => {
+    const matchesFilter =
+      filter === "all" ||
+      (filter === "new" && appointment.isNew) ||
+      (filter === "completed" && !appointment.isNew);
+
+    const matchesSearch = appointment.createdTime
+      ?.toLowerCase()
+      .includes(searchTerm.toLowerCase());
+
+    return matchesFilter && matchesSearch;
   });
 
   if (error) {
     return <Error>{error}</Error>;
   }
-
-  // const fetchAppointments = async () => {
-  //   try {
-  //     if (!token) {
-  //       setError("Access token is missing");
-  //       return;
-  //     }
-  //     const data = await getAppointments(token);
-  //     setAppointments(data);
-  //     setError(null);
-  //     console.log("message", data);
-  //   } catch (err: any) {
-  //     setError(err.message || "Appointments loading error");
-  //   }
-  // };
 
   const handleDeleteBtn = (appointmentId: number) => {
     setAppointmentToDelete(appointmentId);
@@ -126,7 +132,7 @@ const AdminAppointmentsPage: React.FC = () => {
         await deleteAppointment(appointmentToDelete, token);
         setAppointments(
           appointments.filter((a) => a.id !== appointmentToDelete)
-        ); // Оновлюємо список записів
+        ); 
         setIsModalVisible(false);
         setAppointmentToDelete(null);
       } catch (err: any) {
@@ -178,60 +184,62 @@ const AdminAppointmentsPage: React.FC = () => {
           {/* <RefreshIconBox onClick={handleRefreshBtn}>
             <FaSyncAlt size={24} color="#20b1b7" />
           </RefreshIconBox> */}
+          <FindByTime
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            placeholder={t(
+              "message.adminPanel.appointments.services.placeholderTime"
+            )}
+          />
         </FilterContainer>
       </HeaderBox>
 
       <ScrollContainer>
-      <AppointmentList>
+        <AppointmentList>
+          {filteredAppointments.length === 0 ? (
+            <EmptyMessage>
+              {t("message.adminPanel.appointments.noAppointments")}
+            </EmptyMessage>
+          ) : (
+            <>
+              {filteredAppointments.map((appointment) => (
+                <AppointmentRow
+                  key={appointment.id}
+                  isMobile={window.innerWidth <= 768}
+                >
+                  <Marker>
+                    {appointment.isNew && <MarkerCircleNew />}
+                    {!appointment.isNew && <MarkerCircleCompleted />}
+                  </Marker>
 
-        {filteredAppointments.length === 0 ? (
-          <EmptyMessage>
-            {t("message.adminPanel.appointments.noAppointments")}
-          </EmptyMessage>
-        ) : (
-          <>
-            {filteredAppointments.map((appointment) => (
-              <AppointmentRow
-                key={appointment.id}
-                isMobile={window.innerWidth <= 768}
-              >
-                <Marker>
-                  {appointment.isNew && <MarkerCircleNew />}
-                  {!appointment.isNew && <MarkerCircleCompleted />}
-                </Marker>
+                  <MainInfoContainer isMobile={window.innerWidth <= 768}>
+                    <ClientName>
+                      {appointment.firstName} {appointment.lastName}
+                    </ClientName>
+                    <Service>
+                      {getServiceNameById(appointment.dentalServiceSectionId!)}
+                    </Service>
 
-                <MainInfoContainer isMobile={window.innerWidth <= 768}>
-                  <ClientName>
-                    {appointment.firstName} {appointment.lastName}
-                  </ClientName>
-                  <Service>
-                    {getServiceNameById(appointment.dentalServiceSectionId!)}
-                  </Service>
+                    <DateText>Created at: {appointment.createdTime}</DateText>
+                  </MainInfoContainer>
 
-                  {/* <Date> */}
-                  {/* Created at:  */}
-                  {/* {new Date(appointment.).toLocaleDateString()} */}
-                  {/* </Date> */}
-                </MainInfoContainer>
-
-                <BtnBox>
-                  <MoreInfoButton
-                    onClick={() => handleMoreInfoClick(appointment?.id || 1)}
-                  >
-                    {t("message.adminPanel.appointments.buttons.moreInfo")}
-                  </MoreInfoButton>
-                  <TrashIconBox
-                    onClick={() => handleDeleteBtn(appointment.id!)}
-                  >
-                    <FaTrashAlt size={24} color="#7a2141;" />
-                  </TrashIconBox>
-                </BtnBox>
-              </AppointmentRow>
-            ))}
-          </>
-        )}
-
-      </AppointmentList>
+                  <BtnBox>
+                    <MoreInfoButton
+                      onClick={() => handleMoreInfoClick(appointment?.id || 1)}
+                    >
+                      {t("message.adminPanel.appointments.buttons.moreInfo")}
+                    </MoreInfoButton>
+                    <TrashIconBox
+                      onClick={() => handleDeleteBtn(appointment.id!)}
+                    >
+                      <FaTrashAlt size={24} color="#7a2141;" />
+                    </TrashIconBox>
+                  </BtnBox>
+                </AppointmentRow>
+              ))}
+            </>
+          )}
+        </AppointmentList>
       </ScrollContainer>
 
       {isModalVisible && (

@@ -11,10 +11,6 @@ export const MenuContainer = styled.div`
   padding: 15px 30px;
   background-color: #ffffff;
   box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.05);
-
-  @media (max-width: 1024px) {
-    /* justify-content: flex-end; */
-  }
 `;
 
 export const BesideLogoContainer = styled.div`
@@ -22,6 +18,10 @@ export const BesideLogoContainer = styled.div`
   justify-content: space-around;
   gap: 60px;
   font-size: 1.6rem;
+
+  @media (max-width: 1350px) {
+    gap: 30px;
+  }
 `;
 
 
@@ -29,14 +29,16 @@ export const Logo = styled.div`
   display: flex;
   align-items: center;
   margin-left: 30px;
-  /* font-size: 1.6rem; */
-  /* font-size: 1.8rem; */
 `;
 
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
   gap: 25px;
+
+  @media (max-width: 1350px) {
+    gap: 10px;
+  }
 `;
 
 export const StyledNavLink = styled(NavLink)`

@@ -7,9 +7,18 @@ gap: 20px;
 align-items: center;
 `;
 
+export const BurgerAndAppBtnContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  gap: 50px;
+`;
+
 
 export const BurgerButton = styled.div`
   display: none;
+
   @media (max-width: 1440px) {
     display: block;
     font-size: 2rem;
@@ -49,6 +58,12 @@ export const MobileNavLink = styled(NavLink)`
   color: #ffffff;
   font-size: 1.1rem;
   text-align: center;
+  border: none;
+
+  &:hover {
+    color: #111;
+    /* color: #ef1c57; */
+  }
 `;
 
 export const LanguagePanel = styled.div`
@@ -63,11 +78,11 @@ export const LanguageLink = styled.button`
   color: inherit;
   font-weight: bold;
   color: #ffffff;
-  /* color: #7a2141; */
   cursor: pointer;
   &:hover {
     color: #4a90e2;
     color: #7a2141;
+    color: #111;
   }
 `;
 
