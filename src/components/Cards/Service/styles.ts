@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Card = styled.div`
   margin-top: 50px;
   background-color: #fff;
-  border-radius: 6px;
+  border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 
   &:hover {
     cursor: pointer;

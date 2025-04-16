@@ -23,7 +23,7 @@ export const HeaderBox = styled.div`
   padding: 0 20px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
   }
 `;
@@ -55,9 +55,10 @@ export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
-  padding: 10% 5%;
+  padding-right: 20px;
+  gap: 10px;
   width: 100%;
-  max-height: 400px;
+  max-height: 600px;
   position: relative; /* Ключевой момент */
 
 `;
