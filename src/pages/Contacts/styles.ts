@@ -67,12 +67,13 @@ export const ContactsPageContainer = styled.div`
 export const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  margin: 20px auto;
-  max-width: 1200px;
+  margin: 20px 40px;
+  /* max-width: 1200px; */
 
-  @media (max-width: 768px) {
+  @media (max-width: 910px) {
     grid-template-columns: 1fr;
     padding: 0 10px;
+    gap: 30px;
   }
 `;
 
@@ -80,8 +81,8 @@ export const ContactsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 20px;
   border-radius: 12px;
+  /* margin-left: 40px; */
 
   @media (max-width: 768px) {
     padding: 10px;
@@ -92,10 +93,11 @@ export const ContactsBox = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  padding: 0 50px;
+  padding: 10px 30px;
   border-radius: 12px;
   gap: 10px;
   flex: 1;
+  /* min-width: 460px; */
 
   @media (max-width: 768px) {
     padding: 0 20px;
@@ -108,7 +110,7 @@ export const ContactBox = styled.p`
 `;
 
 export const ContactsBoxTitle = styled.h2`
-margin-left: 4px;
+/* margin-left: 4px; */
   font-size: 1.8rem;
   color: #333;
 
@@ -131,10 +133,14 @@ export const SprechzeitenBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 20px 50px;
+  /* padding: 20px 50px; */
   border-radius: 12px;
   flex: 1;
   margin: 0;
+
+  @media (max-width: 1024px) {
+    padding: 10px 20px;
+  }
 
   @media (max-width: 768px) {
     padding: 10px 20px;
@@ -143,25 +149,17 @@ export const SprechzeitenBox = styled.div`
 
 
 export const DaysOfWeekBox = styled.div`
-  display: grid;
-  grid-template-columns:30% 70%;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 5px;
-  }
+display: flex;
+gap: 20px;
+width: 100%;
+min-width: 460px;
 `;
 
 export const DaysOfWeek = styled.div`
-  padding: 0 0 0 2%;
   color: #333;
   font-size: 20px;
   line-height: 2;
 
-  @media (max-width: 768px) {
-    font-size: 16px;
-    padding-left: 0;
-  }
 `;
 
 export const DaysOfWeekp = styled.div`
@@ -170,18 +168,6 @@ export const DaysOfWeekp = styled.div`
 
 export const DaysOfWeekspan = styled.p`
   font-size: 20px;
-
-  @media (max-width: 1024px) {
-    font-size: 18px;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 14px;
-  }
 `;
 
 
@@ -258,7 +244,6 @@ export const IconCircle = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-/* margin-left: 10px; */
 `;
 
 // date

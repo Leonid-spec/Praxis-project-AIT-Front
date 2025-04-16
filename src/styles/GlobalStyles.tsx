@@ -40,7 +40,7 @@ const globalStyles = css`
       font-size: 18px;
     }
     p {
-      font-size: 12px; /* Размер шрифта для параграфов */
+      //font-size: 12px; /* Размер шрифта для параграфов */
     }
   }
   @media (max-width: 668px) {
@@ -54,7 +54,7 @@ const globalStyles = css`
       font-size: 16px; /* Размер шрифта для подзаголовков */
     }
     p {
-      font-size: 10px; /* Размер шрифта для параграфов */
+      //font-size: 10px; /* Размер шрифта для параграфов */
     }
 }
 

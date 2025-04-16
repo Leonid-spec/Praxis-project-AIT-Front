@@ -56,7 +56,7 @@ export const ColumnLeft = styled.div`
   align-items: flex-start;
   flex: 1;
   text-align: left;
-  margin-left: 20%; 
+  margin-left: 10%; 
 
   @media (max-width: 768px) {
     align-items: center;
@@ -196,7 +196,7 @@ export const DaysOfWeekBox = styled.div`
   border-radius: 12px;
   padding: 5px;
   width: 100%;
-  max-width: 1200px; 
+  /* max-width: 1200px;  */
 `;
 
 export const DayRow = styled.div`
@@ -219,7 +219,7 @@ export const DayRow = styled.div`
   }
 
   & > p:last-child {
-    flex: 2;
+    flex: 3;
     text-align: left;
   }
 `;
