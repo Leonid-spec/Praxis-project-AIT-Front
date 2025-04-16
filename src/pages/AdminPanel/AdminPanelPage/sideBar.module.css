@@ -43,7 +43,7 @@
   object-fit: contain;
 }
 
-/* Big monitor */
+/* Big monitor 1*/
 @media (min-width: 1440px) {
   .box  {
     width: 200px;
