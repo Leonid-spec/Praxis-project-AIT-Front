@@ -302,7 +302,7 @@ export const IconCircle = styled.div`
 export const ButtonContainer = styled.div`
 `;
 
-// date 2
+// date
 export const RunningLineWrapper = styled.div`
   width: 100%;
   background-color: #f0f8ff; 
