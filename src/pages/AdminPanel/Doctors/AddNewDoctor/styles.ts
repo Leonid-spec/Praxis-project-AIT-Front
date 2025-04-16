@@ -22,7 +22,7 @@ export const DoctorPageContainer = styled.div`
   overflow-y: auto; /* Добавлено для скроллинга */
 
   @media (max-width: 768px) {
-    height: auto; /* Убираем фиксированную высоту */
+    height: auto; 
     padding: 20px;
     gap: 20px;
     overflow-y: auto; /* Сохраняем скроллинг */
