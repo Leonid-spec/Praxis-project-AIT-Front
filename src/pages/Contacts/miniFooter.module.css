@@ -89,3 +89,10 @@
 }
 
 
+.contactText {
+  display: inline;
+
+  @media (max-width: 420px) {
+    display: none;
+  }
+}
