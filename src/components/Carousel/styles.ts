@@ -39,6 +39,7 @@ export const MainImageContainer = styled.div`
     object-fit: cover;
     border-radius: 10px;
     transition: transform 8s ease-in-out, opacity 3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
 
     @media (max-width: 768px) {
       border-radius: 8px;
@@ -73,6 +74,8 @@ export const SideImage = styled.img`
   object-fit: cover;
   border-radius: 5px;
   opacity: 0.7;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
   
   @media (max-width: 768px) {
     height: 60%; 
