@@ -7,8 +7,8 @@ import {
   FullName,
   Specialization,
   ActionButton,
-  InactiveOverlay,
   DoctorCardStyled,
+  InactiveOverlay,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 
@@ -35,24 +35,35 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
   const { t } = useTranslation(); // Подключаем `t()` для переводов
 
   // ✅ Гарантируем, что specialization всегда будет строкой
-  const formattedSpecialization = typeof specialization === "string" ? specialization : String(specialization);
+  const formattedSpecialization =
+    typeof specialization === "string"
+      ? specialization
+      : String(specialization);
 
   return (
-    <DoctorCardStyled 
-    isActive={isActive} 
-    topImage={topImage}
-    onClick={() => onActionClick()}
+    <DoctorCardStyled
+      isActive={isActive}
+      topImage={topImage}
+      onClick={() => onActionClick()}
     >
-      <Card style={{ opacity: isActive ? 1 : 0.5 }}>
-        {!isActive && <InactiveOverlay>{t("message.adminPanel.appointments.doctors.inactive")}</InactiveOverlay>}
+      <Card>
         <PhotoContainer>
           <Photo src={topImage} alt="Doctor preview" />
+          {!isActive && (
+            <InactiveOverlay>
+              {t("message.adminPanel.appointments.doctors.inactive")}
+            </InactiveOverlay>
+          )}
         </PhotoContainer>
         <Info>
           <FullName>{fullName}</FullName>
-          <Specialization>{formattedSpecialization}</Specialization> {/* ✅ Используем исправленный specialization */}
+          <Specialization>{formattedSpecialization}</Specialization>{" "}
+          {/* ✅ Используем исправленный specialization */}
           <ActionButton onClick={onActionClick}>
-            {buttonLabel || (isAdminPanel ? t("message.adminPanel.appointments.doctors.edit") : t("message.adminPanel.appointments.doctors.details"))}
+            {buttonLabel ||
+              (isAdminPanel
+                ? t("message.adminPanel.appointments.doctors.edit")
+                : t("message.adminPanel.appointments.doctors.details"))}
           </ActionButton>
         </Info>
       </Card>

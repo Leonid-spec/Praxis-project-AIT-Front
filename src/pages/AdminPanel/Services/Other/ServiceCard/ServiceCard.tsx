@@ -7,7 +7,7 @@ import {
   Info,
   Title,
   DetailsButton,
-  
+  InactiveOverlay,
 } from "./styles";
 
 interface ServiceCardProps {
@@ -18,26 +18,29 @@ interface ServiceCardProps {
   onEditClick: () => void;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ 
-  title, 
-  topImage, 
+const ServiceCard: React.FC<ServiceCardProps> = ({
+  title,
+  topImage,
   onEditClick,
   isActive = true,
 }) => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   return (
-    <Card style={{ opacity: isActive ? 1 : 0.5 }}>
-      
+    <Card>
       <PhotoContainer>
-      
-        <Photo
-          src={topImage}
-          alt="Service preview"
-        />
+        <Photo src={topImage} alt="Service preview" />
+        {!isActive && (
+          <InactiveOverlay>
+            {t("message.adminPanel.appointments.doctors.inactive")}
+          </InactiveOverlay>
+        )}
       </PhotoContainer>
       <Info>
         <Title>{title}</Title>
-        <DetailsButton onClick={onEditClick}> {t("message.adminPanel.appointments.buttons.edit")} </DetailsButton>
+        <DetailsButton onClick={onEditClick}>
+          {" "}
+          {t("message.adminPanel.appointments.buttons.edit")}{" "}
+        </DetailsButton>
       </Info>
     </Card>
   );

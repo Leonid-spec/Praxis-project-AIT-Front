@@ -6,8 +6,6 @@ import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceC
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
 import { useTranslation } from "react-i18next";
 
-import { InactiveOverlay } from "./styles";
-
 import {
   ServicesPageAllContainer,
   CardsMainContainer,
@@ -22,7 +20,8 @@ import { Outlet } from "react-router-dom";
 // import { GalleryContainer } from "../Gallery/styles";
 
 export const ServicesPageAll = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
   const [isEditingService, setIsEditingService] = useState<number | null>(null);
   const [, setIsAddingNewService] = useState(false);
   const [services, setServices] = useState<ServiceData[]>([]);
@@ -109,12 +108,25 @@ export const ServicesPageAll = () => {
           <ScrollContainer>
             <ServiceCardsMainContainer>
               {error && <p style={{ color: "red" }}>{error}</p>}
-              {filteredServices.map((service) =>
-                service.id !== undefined && service.isActive !== undefined ? (
+              {filteredServices.map((service) => {
+                if (service.id === undefined || service.isActive === undefined)
+                  return null;
+
+                const titleKey = `title${
+                  currentLanguage.charAt(0).toUpperCase() +
+                  currentLanguage.slice(1)
+                }` as keyof Pick<
+                  ServiceData,
+                  "titleDe" | "titleEn" | "titleRu"
+                >;
+
+                const title = (service[titleKey] as string) || t("noTitle");
+
+                return (
                   <ServiceCardStyled
                     key={service.id}
                     id={service.id}
-                    title={service.titleEn || "Untitled Service"}
+                    title={title}
                     topImage={service.topImage || ""}
                     onClick={() => handleEditClick(service.id!)}
                     isActive={service.isActive}
@@ -122,18 +134,14 @@ export const ServicesPageAll = () => {
                     <ServiceCard
                       key={service.id}
                       id={service.id}
-                      title={service.titleEn}
+                      title={title}
                       topImage={service.topImage}
                       onEditClick={handleEditClick.bind(null, service.id)}
+                      isActive={service.isActive}
                     />
-                    {!service.isActive && (
-                      <InactiveOverlay>
-                        {t("message.adminPanel.appointments.doctors.inactive")}
-                      </InactiveOverlay>
-                    )}
                   </ServiceCardStyled>
-                ) : null
-              )}
+                );
+              })}
             </ServiceCardsMainContainer>
           </ScrollContainer>
         </>

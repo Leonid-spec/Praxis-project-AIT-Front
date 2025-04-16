@@ -137,7 +137,6 @@ export const DoctorCardsMainContainer = styled.div`
 `;
 
 export const DoctorCardStyled = styled.div<{ isActive: boolean }>`
-  opacity: ${(props) => (props.isActive ? "1" : "0.5")};
   transition: all 0.3s ease-in-out;
 
   &:hover {

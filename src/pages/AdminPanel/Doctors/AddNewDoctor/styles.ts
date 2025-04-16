@@ -51,7 +51,7 @@ export const HeaderBox = styled.div`
   padding: 0 20px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
   }
 `;
@@ -65,13 +65,13 @@ export const Container = styled.div`
 
 export const MainBox = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 40% 60%;
   gap: 30px;
+  padding: 10px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 20px;
-    overflow-y: auto; /* Добавляем скроллинг для мобильных экранов */
   }
 `;
 
@@ -90,11 +90,9 @@ export const TitlesBox = styled.div`
 export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
-  padding: 30px;
   width: 100%;
-  height: 500px;
+  min-height: 400px;
   @media (max-width: 768px) {
-    padding: 20px;
     height: 300px;
     overflow-y: auto;
   }
@@ -117,7 +115,7 @@ export const InputContainer = styled.div`
   gap: 20px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
   }
 

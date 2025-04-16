@@ -86,18 +86,15 @@ export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number; top
 
 position: relative;
 
-opacity: ${(props) => (props.isActive ? "1" : "0.5")};
-/* transition: all 0.3s ease-in-out; */
 &:hover {
   cursor: pointer;
-  /* transform: scale(1.05); */
 }
 `;
 
 export const ServiceCardsMainContainer = styled.div`
   flex: 1;
   overflow-y: auto; 
-  padding: 10px 0;
+  padding: 10px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   gap: 20px;
@@ -155,18 +152,18 @@ export const Wrapper = styled.div`
 export const InactiveOverlay = styled.div`
   all: unset;
   position: absolute;
-  top: 0;
+  top: 20px;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
   color: white;
   display: flex;
-
+  /* background-color:red; */
   justify-content: center;
   align-items: center;
   font-size: 1.5rem; /* Увеличенный текст */
-  z-index: 15; /* Поверх всего остального */
+  z-index: 1; /* Поверх всего остального */
   border-radius: 10px; /* Совпадает с ImagePreview */
 /* Сброс внешнего влияния от родителя */
 margin: 0 !important;
