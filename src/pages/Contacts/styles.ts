@@ -241,13 +241,12 @@ export const MapContainer = styled.div`
   padding: 30px;
   border-radius: 12px;
   text-align: center;
-  /* max-width: 1200px; */
   max-width: 90%;
   margin: auto;
 
   @media (max-width: 1282px) {
     margin: 0;
-    
+
   }
 
   @media (max-width: 768px) {
