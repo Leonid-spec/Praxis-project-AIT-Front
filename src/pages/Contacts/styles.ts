@@ -7,7 +7,7 @@ export const ContactsContainer = styled.div`
   align-items: center;
   width: 100%;
   background-color: #f6f9fc;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   margin: 20px 0 0 20px;
 
 `;
@@ -82,6 +82,7 @@ export const ContactsWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   border-radius: 12px;
+  /* margin: 20px 0 0 20px; */
 
   @media (max-width: 768px) {
     padding: 10px;
@@ -96,6 +97,7 @@ export const ContactsBox = styled.div`
   border-radius: 12px;
   gap: 10px;
   flex: 1;
+  /* margin: 20px 0 0 20px; */
 
   @media (max-width: 768px) {
     /* padding: 0 20px; */
