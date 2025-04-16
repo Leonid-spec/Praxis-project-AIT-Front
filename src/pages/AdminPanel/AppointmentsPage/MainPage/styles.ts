@@ -78,6 +78,7 @@ export const EmptyMessage = styled.div`
 
 export const FilterContainer = styled.div`
   display: flex;
+  align-items: center;
   gap: 10px;
   justify-content: center;
   margin-bottom: 20px;
@@ -92,7 +93,9 @@ export const FilterButton = styled.button<{ isActive: boolean }>`
   ${buttonCommonStyles}
   opacity: ${(props) => (props.isActive ? "0.9" : "1")};
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 20px;
 `;
 
 export const AppointmentList = styled.ul`
@@ -151,6 +154,14 @@ export const Date = styled.div`
   font-size: 14px;
 `;
 
+export const DateText = styled.div`
+ flex: 1 1 auto;
+ text-align: center;
+  color: gray;
+  font-size: 14px;
+`;
+
+
 export const MoreInfoButton = styled.button`
   ${buttonCommonStyles}
   display: flex;
@@ -169,12 +180,12 @@ export const Marker = styled.div`
 
 export const MarkerCircleNew = styled.div`
   ${circleStyles}
-  background-color: #28a745;
+  background-color:  #ff4d4d;
 `;
 
 export const MarkerCircleCompleted = styled.div`
   ${circleStyles}
-  background-color: #ff4d4d;
+  background-color: #28a745;
 `;
 
 export const TrashIconBox = styled.button`
@@ -233,14 +244,15 @@ export const ModalActionsBtn = styled.button`
 
   &:hover {
     background-color: #18a8a0;
+    background-color: #641230;
   }
 `;
 export const BtnBox = styled.div`
   display: flex;
   gap: 15px;
   align-items: center;
-  justify-content: flex-start; /* Выравнивание кнопок по началу */
-  margin-top: 10px; /* Отступ сверху для пространства */
+  justify-content: flex-start; 
+  margin-top: 10px;
 `;
 
 export const ScrollContainer = styled.div`

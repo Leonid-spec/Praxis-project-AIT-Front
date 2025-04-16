@@ -1,6 +1,13 @@
 import React from "react";
-import { Card, Photo, Info, Title, DetailsButton, PhotoContainer } from "./styles";
-import { useTranslation } from "react-i18next";
+import {
+  Card,
+  Photo,
+  Info,
+  Title,
+  // DetailsButton,
+  PhotoContainer,
+} from "./styles";
+// import { useTranslation } from "react-i18next";
 
 interface ServiceCardProps {
   id: number;
@@ -16,21 +23,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   topImage,
   onDetailsClick,
 }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
+
+  const handleCardClick = () => {
+    onDetailsClick(id);
+  };
 
   return (
-    <Card>
-     <PhotoContainer>
-        <Photo
-          src={topImage}
-          alt={`Photo of ${title}`}
-        />
-     </PhotoContainer>
+    <Card onClick={handleCardClick}>
+      <PhotoContainer>
+        <Photo src={topImage} alt={`Photo of ${title}`} />
+      </PhotoContainer>
       <Info>
         <Title>{title}</Title>
-        <DetailsButton onClick={() => onDetailsClick(id)}>
+        {/* <DetailsButton onClick={() => onDetailsClick(id)}>
                   {t("message.main.team_page.moreInfoBtn")} 
-                </DetailsButton>
+                </DetailsButton> */}
       </Info>
     </Card>
   );

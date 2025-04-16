@@ -6,9 +6,10 @@ export interface AppointmentData {
     phone1: string;
     phone2?: string;  
     email: string;
-    availableTime: string;
+    availableTime?: string;
     comment?: string; 
     language?: string;
+    createdTime?: string;
     isNew?: boolean;
   }
   

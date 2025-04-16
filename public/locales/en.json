@@ -10,7 +10,7 @@
         "logo_alt": "Logo",
         "cabinets": "cabinets",
         "devices": "devices",
-        "praxis": "Our"
+        "praxis": "Our "
       }
     },
     "main": {
@@ -25,7 +25,7 @@
         "subtitle2": "MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
       },
       "about_us_page": {
-        "ours": "Our",
+        "ours": "Our ",
         "are": "are equipped with modern",
         "ausgestattet": "!"
       },
@@ -349,6 +349,7 @@
           "descriptions": "Descriptions:",
           "enterDescription": "Enter description ({{lang}})",
           "placeholder": "Enter the name of the service",
+          "placeholderTime": "e.g. 10:00, 16:30, 2025-04-16",
           "uploadImage": "Upload image",
           "makeCardVisibleCheckbox": "Make card visible",
           "saveButton": "Save",
