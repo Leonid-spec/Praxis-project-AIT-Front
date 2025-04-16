@@ -21,6 +21,7 @@ export const ServicesPageAllContainer = styled.div`
   flex-direction: column;
   height: 80vh;
   overflow: hidden;
+ 
 `;
 
 export const HeaderMainBtnsContainer = styled.div`
@@ -82,6 +83,9 @@ export const CardsMainContainer = styled.div`
   }
 `;
 export const ServiceCardStyled = styled.div<{ isActive: boolean, id: number; topImage?: string }>`
+
+position: relative;
+
 opacity: ${(props) => (props.isActive ? "1" : "0.5")};
 /* transition: all 0.3s ease-in-out; */
 &:hover {
@@ -143,4 +147,29 @@ export const ServiceCardsMainContainer = styled.div`
     align-items: center;
     grid-template-columns: 1fr; /* Одноколоночная структура для узких экранов */
   }
+`;
+export const Wrapper = styled.div`
+  position: relative; /* Чтобы InactiveOverlay работал */
+  margin: 0; /* Нейтрализует margin родителя */
+`;
+export const InactiveOverlay = styled.div`
+  all: unset;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  color: white;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* Увеличенный текст */
+  z-index: 15; /* Поверх всего остального */
+  border-radius: 10px; /* Совпадает с ImagePreview */
+/* Сброс внешнего влияния от родителя */
+margin: 0 !important;
+  padding: 0;
+
 `;
