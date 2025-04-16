@@ -1,4 +1,4 @@
-import { InputBox, StyledButton } from "./styles";
+import { InputBox, SearchIcon, StyledButton } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaSearch } from "react-icons/fa";
 
@@ -18,9 +18,9 @@ export const FindDoctorContainer: React.FC<FindDoctorContainerProps> = ({
 
   return (
     <StyledButton>
-      <div>
+      <SearchIcon>
         <FaSearch style={{ color: "white", fontSize: "24px" }} />
-      </div>
+      </SearchIcon>
       <InputBox
         type="text"
         placeholder={t(

@@ -180,12 +180,12 @@ export const Marker = styled.div`
 
 export const MarkerCircleNew = styled.div`
   ${circleStyles}
-  background-color: #28a745;
+  background-color:  #ff4d4d;
 `;
 
 export const MarkerCircleCompleted = styled.div`
   ${circleStyles}
-  background-color: #ff4d4d;
+  background-color: #28a745;
 `;
 
 export const TrashIconBox = styled.button`
