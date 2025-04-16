@@ -32,6 +32,7 @@ import CustomNotification from "../../../../components/CustomNotification/Custom
 import { useTranslation } from "react-i18next";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 
+
 export const ServicePageSingle: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -324,6 +325,7 @@ export const ServicePageSingle: React.FC = () => {
           </MainBoxText>
 
           <ImageBox>
+            
             <ImagePreview
               src={
                 serviceData.topImage ||
@@ -365,7 +367,6 @@ export const ServicePageSingle: React.FC = () => {
           </TitleBox>
 
           <EditTopImage>
-    
             <UploadInput
               type="file"
               accept="image/*"

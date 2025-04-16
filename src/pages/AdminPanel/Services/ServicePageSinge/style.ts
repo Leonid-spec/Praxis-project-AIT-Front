@@ -58,7 +58,11 @@ export const ImageBox = styled.div`
   padding: 10% 5%;
   width: 100%;
   max-height: 400px;
+  position: relative; /* Ключевой момент */
+
 `;
+
+
 
 export const ImagePreview = styled.img`
   width: 100%;
