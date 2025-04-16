@@ -7,9 +7,18 @@ interface MakeAppointmentBtnProps {
   onClick?: () => void;
   disabled?: boolean;
   serviceId?: number | null;
+  bgColor?: string;
+  textColor?: string; 
 }
 
-const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, disabled, serviceId }) => {
+const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ 
+  text, 
+  onClick,
+  disabled, 
+  serviceId,
+  bgColor,
+  textColor 
+}) => {
   const { openModal } = useContext(ModalContext);
 
   const handleClick = () => {
@@ -23,7 +32,7 @@ const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ text, onClick, 
   };
 
   return (
-    <StyledButton onClick={handleClick} disabled={disabled}>
+    <StyledButton onClick={handleClick} disabled={disabled} bgColor={bgColor} textColor={textColor}>
       {text}
     </StyledButton>
   );

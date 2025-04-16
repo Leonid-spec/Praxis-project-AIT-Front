@@ -10,7 +10,7 @@ export const ContentContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0 15px;
     margin-top: 60px;
-    z-index: 2;
+    z-index: 1;
 
     h1,
     h2 {

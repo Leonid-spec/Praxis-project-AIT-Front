@@ -25,8 +25,6 @@ const globalStyles = css`
     height: 100%;
     margin: 0;
     padding: 0;
-    /* margin: 15px;
-    padding: 15px; */
   }
 // Yuliia
   @media (max-width: 868px) {
@@ -40,7 +38,7 @@ const globalStyles = css`
       font-size: 18px;
     }
     p {
-      font-size: 12px; /* Размер шрифта для параграфов */
+      //font-size: 12px; /* Размер шрифта для параграфов */
     }
   }
   @media (max-width: 668px) {
@@ -54,7 +52,7 @@ const globalStyles = css`
       font-size: 16px; /* Размер шрифта для подзаголовков */
     }
     p {
-      font-size: 10px; /* Размер шрифта для параграфов */
+      //font-size: 10px; /* Размер шрифта для параграфов */
     }
 }
 
