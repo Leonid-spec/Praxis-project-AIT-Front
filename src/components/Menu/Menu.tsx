@@ -38,7 +38,7 @@ const Menu = () => {
     <MenuContainer>
       <Logo>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
-          <NavLinkImg src="/public/images/MainLogo.jpg" alt="Logo" />
+          <NavLinkImg src="/images/MainLogo.jpg" alt="Logo" />
         </StyledNavLink>
         <StyledNavLink to="/" aria-label={t("message.menu.home")}>
           <NavLinkText>Zahnarztpraxis Sofia Abramian</NavLinkText>
@@ -68,7 +68,12 @@ const Menu = () => {
               <LanguagePanel>
                 {["de", "en", "ru"].map((lang, index) => (
                   <React.Fragment key={lang}>
-                    <LanguageLink onClick={() => handleLanguageChange(lang)}>
+                    <LanguageLink
+                      onClick={(e) => {
+                        e.preventDefault();
+                        handleLanguageChange(lang);
+                      }}
+                    >
                       {lang.toUpperCase()}
                     </LanguageLink>
                     {index < 2 && <Divider>|</Divider>}

@@ -69,6 +69,11 @@ export const CardsGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   margin: 20px auto;
   max-width: 1200px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding: 0 10px;
+  }
 `;
 
 export const ContactsWrapper = styled.div`
@@ -77,6 +82,10 @@ export const ContactsWrapper = styled.div`
   flex: 1;
   padding: 20px;
   border-radius: 12px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 `;
 
 export const ContactsBox = styled.div`
@@ -87,6 +96,11 @@ export const ContactsBox = styled.div`
   border-radius: 12px;
   gap: 10px;
   flex: 1;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    font-size: 16px;
+  }
 `;
 
 export const ContactBox = styled.p`
@@ -97,6 +111,10 @@ export const ContactsBoxTitle = styled.h2`
 margin-left: 4px;
   font-size: 1.8rem;
   color: #333;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const SprechzeitenWrapper = styled.div`
@@ -104,6 +122,9 @@ export const SprechzeitenWrapper = styled.div`
   flex-direction: column;
   flex: 1;
   
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 `;
 
 export const SprechzeitenBox = styled.div`
@@ -114,45 +135,54 @@ export const SprechzeitenBox = styled.div`
   border-radius: 12px;
   flex: 1;
   margin: 0;
+
+  @media (max-width: 768px) {
+    padding: 10px 20px;
+  }
 `;
 
 
 export const DaysOfWeekBox = styled.div`
+  display: grid;
+  grid-template-columns:30% 70%;
 
-  display: flex;
-  flex-direction: column; 
-  gap: 5px;
-  border-radius: 12px;
-  padding: 5px;
-  width: 100%;
-  max-width: 1200px; 
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
 `;
-export const DayRow = styled.div`
-  display: flex;
-  justify-content: space-between; 
-  align-items: center;
-  gap: 20px;
-  padding: 5px 0;
-  
-  font-size: 16px; 
+
+export const DaysOfWeek = styled.div`
+  padding: 0 0 0 2%;
   color: #333;
+  font-size: 20px;
+  line-height: 2;
 
-  &:last-child {
-    border-bottom: none;
-  }
-
-  & > p:first-child {
-    flex: 1;
-    font-weight: bold;
-    text-align: left;
-  }
-
-  & > p:last-child {
-    flex: 2;
-    text-align: left;
+  @media (max-width: 768px) {
+    font-size: 16px;
+    padding-left: 0;
   }
 `;
 
+export const DaysOfWeekp = styled.div`
+  margin-top: 10px;
+`;
+
+export const DaysOfWeekspan = styled.p`
+  font-size: 20px;
+
+  @media (max-width: 1024px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+`;
 
 
 export const MapContainer = styled.div`
@@ -180,6 +210,10 @@ export const ContactIcons = styled.div`
   span {
     font-size: 1rem;
 
+    @media (max-width: 1024px) {
+      font-size: 1rem;
+    }
+
     @media (max-width: 768px) {
       font-size: 0.9rem;
     }
@@ -201,6 +235,12 @@ export const IconCircle = styled.div`
   font-size: 20px;
   color: #ffffff;
   margin-right: 10px;
+
+  @media (max-width: 1024px) {
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+  }
 
   @media (max-width: 768px) {
     width: 40px;
