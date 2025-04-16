@@ -8,6 +8,7 @@ import {
   ContactsContainer,
   ContactsPageContainer,
   ContactsWrapper,
+  DaysOfWeek,
   DaysOfWeekBox,
   DaysOfWeekp,
   DaysOfWeekspan,
@@ -30,7 +31,7 @@ const Contacts: React.FC = () => {
     city: "Konstanz",
     phone: "+49 75 31 7 72 73",
     email: "praxis.sofia.abramian@gmail.com",
-    gps: "47°41'06.7 N 9°09'04.4 E",
+    gps: "50.4501° N, 30.5234°",
     zipCode: "78467",
   });
 
@@ -43,38 +44,38 @@ const Contacts: React.FC = () => {
   });
 
   // Загружаем адрес из локального хранилища
-  // useEffect(() => {
-  //   const savedAddress = localStorage.getItem("address");
-  //   if (savedAddress) {
-  //     try {
-  //       const parsedAddress = JSON.parse(savedAddress);
-  //       setAddress((prev) => ({
-  //         ...prev,
-  //         street: parsedAddress.street,
-  //         city: parsedAddress.city,
-  //         phone: parsedAddress.phone,
-  //         email: parsedAddress.email,
-  //         gps: parsedAddress.gps,
-  //         zipCode: parsedAddress.zipCode,
-  //       }));
-  //     } catch (error) {
-  //       console.error("Ошибка при загрузке адреса из localStorage:", error);
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedAddress = localStorage.getItem("address");
+    if (savedAddress) {
+      try {
+        const parsedAddress = JSON.parse(savedAddress);
+        setAddress((prev) => ({
+          ...prev,
+          street: parsedAddress.street,
+          city: parsedAddress.city,
+          phone: parsedAddress.phone,
+          email: parsedAddress.email,
+          gps: parsedAddress.gps,
+          zipCode: parsedAddress.zipCode,
+        }));
+      } catch (error) {
+        console.error("Ошибка при загрузке адреса из localStorage:", error);
+      }
+    }
+  }, []);
 
   // Загружаем рабочее время из локального хранилища
-  // useEffect(() => {
-  //   const savedHours = localStorage.getItem("workingHours");
-  //   if (savedHours) {
-  //     try {
-  //       const parsedHours = JSON.parse(savedHours);
-  //       setWorkingHours(parsedHours);
-  //     } catch (error) {
-  //       console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedHours = localStorage.getItem("workingHours");
+    if (savedHours) {
+      try {
+        const parsedHours = JSON.parse(savedHours);
+        setWorkingHours(parsedHours);
+      } catch (error) {
+        console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
+      }
+    }
+  }, []);
 
   const handleCopyCoordinates = () => {
     navigator.clipboard.writeText(address.gps);
@@ -147,9 +148,7 @@ const Contacts: React.FC = () => {
                 <DaysOfWeekspan>{address.email}</DaysOfWeekspan>
               </ContactIcons>
             </ContactsBox>
-            
           </ContactsWrapper>
-
           <SprechzeitenWrapper>
             <SprechzeitenBox>
               <ContactsBoxTitle>
