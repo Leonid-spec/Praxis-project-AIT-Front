@@ -31,7 +31,7 @@ import { useNavigate } from "react-router-dom";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useTranslation } from "react-i18next";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
-import { InactiveOverlay } from "../../Doctors/DoctorCard/styles";
+
 
 export const ServicePageSingle: React.FC = () => {
   const { t } = useTranslation();

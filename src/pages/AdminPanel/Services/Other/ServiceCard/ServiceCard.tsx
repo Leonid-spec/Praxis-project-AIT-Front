@@ -7,7 +7,7 @@ import {
   Info,
   Title,
   DetailsButton,
-  InactiveOverlay,
+  
 } from "./styles";
 
 interface ServiceCardProps {
