@@ -19,13 +19,13 @@ export const DoctorPageContainer = styled.div`
   flex-direction: column;
   gap: 30px;
   padding: 50px;
-  overflow-y: auto; /* Добавлено для скроллинга */
+  overflow-y: auto;
 
   @media (max-width: 768px) {
     height: auto; 
     padding: 20px;
     gap: 20px;
-    overflow-y: auto; /* Сохраняем скроллинг */
+    overflow-y: auto; 
     max-height: 100vh;
   }
 `;
