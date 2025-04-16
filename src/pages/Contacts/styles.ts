@@ -68,12 +68,13 @@ export const ContactsPageContainer = styled.div`
 export const CardsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  padding: 30px;
+  margin: 40px;
  
-  @media (max-width: 910px) {
+  @media (max-width: 1282px) {
     grid-template-columns: 1fr;
     padding: 0 10px;
     gap: 30px;
+    margin: 0;
   }
 `;
 
@@ -85,7 +86,7 @@ export const ContactsWrapper = styled.div`
   /* margin: 20px 0 0 20px; */
 
   @media (max-width: 768px) {
-    padding: 10px;
+    /* padding: 10px; */
   }
 `;
 
@@ -232,13 +233,27 @@ export const DaysOfWeekspan = styled.p`
 export const MapContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content:center;
+  align-content: center;
+  align-items: center;
   gap: 20px;
   margin-top: 30px;
   padding: 30px;
   border-radius: 12px;
   text-align: center;
-  max-width: 1200px;
-  margin: 0 auto 50px;
+  /* max-width: 1200px; */
+  max-width: 90%;
+  margin: auto;
+
+  @media (max-width: 1282px) {
+    margin: 0;
+    
+  }
+
+  @media (max-width: 768px) {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 export const ContactLink = styled.a`
