@@ -10,7 +10,7 @@ export const ContentContainer = styled.div`
   @media (max-width: 768px) {
     padding: 0 15px;
     margin-top: 60px;
-    z-index: 2;
+    z-index: 1;
 
     h1,
     h2 {
@@ -54,6 +54,13 @@ export const ButtonGroup = styled.div`
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
+  @media (max-width: 768px) {
+    gap: 15px; /* Уменьшите расстояние между кнопками */
+  }
+
+  button {
+    flex-shrink: 0; /* Запрет растягивания кнопок */
+  }
 `;
 
 export const StyledButton = styled.button`
@@ -165,5 +172,5 @@ export const ScrollContainer = styled.div`
 
 export const MainFunctionsText = styled.p`
   font-size: 24px;
-  margin-top: 10%;
+  margin: 20px;
 `;

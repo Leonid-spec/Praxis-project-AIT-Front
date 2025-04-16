@@ -40,20 +40,16 @@ const MiniFooter: React.FC = () => {
       <div className={styles.centerSection}>
         <div className={styles.contactElement} onClick={handleCall}>
           <FaPhone style={{ cursor: "pointer", marginRight: "5px" }} />
-          {address.phone}
+          <span className={styles.contactText}>{address.phone}</span>
         </div>
         <div className={styles.contactElement} onClick={handleEmail}>
           <FaEnvelope style={{ cursor: "pointer", marginRight: "5px" }} />
-          {address.email}
+         <span className={styles.contactText}> {address.email}</span>
         </div>
         <div className={styles.contactElement}>
           {t("message.footer.hours.weekend")}
         </div>
       </div>
-
-      {/* <div className={styles.rightSection}>
-        <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
-      </div> */}
     </footer>
   );
 };

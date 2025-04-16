@@ -7,6 +7,12 @@ export const Card = styled.div`
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.04);
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
+  }
 `;
 
 export const PhotoContainer = styled.div`
@@ -14,7 +20,6 @@ export const PhotoContainer = styled.div`
   height: 300px;
   background-color: #bbb9f2;
   background-color: #e0def696; 
-  
 
 `;
 
@@ -41,7 +46,7 @@ export const FullName = styled.h3`
 export const Specialization = styled.p`
   font-size: 16px;
   color: #4A5568;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 `;
 
 export const DetailsButton = styled.button`

@@ -1,6 +1,13 @@
 import React from "react";
-import { Card, Photo, Info, FullName, Specialization, DetailsButton, PhotoContainer } from "./styles";
-import { useTranslation } from "react-i18next";
+import { 
+  Card, 
+  Photo, 
+  Info, 
+  FullName,
+  Specialization, 
+  // DetailsButton, 
+  PhotoContainer } from "./styles";
+// import { useTranslation } from "react-i18next";
 
 interface DoctorCardProps {
   id: number;
@@ -17,10 +24,14 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
   specialization,
   onDetailsClick,
 }) => {
-  const { t } = useTranslation(); 
+  // const { t } = useTranslation(); 
+
+  const handleCardClick = () => {
+    onDetailsClick(id);
+  };
 
   return (
-    <Card>
+    <Card onClick={handleCardClick}>
       <PhotoContainer>
         <Photo 
           src={photo || "https://via.placeholder.com/150"}
@@ -30,9 +41,9 @@ const DoctorCard: React.FC<DoctorCardProps> = ({
       <Info>
         <FullName>{fullName}</FullName>
         <Specialization>{specialization}</Specialization>
-        <DetailsButton onClick={() => onDetailsClick(id)}>
+        {/* <DetailsButton onClick={() => onDetailsClick(id)}>
           {t("message.main.team_page.moreInfoBtn")} 
-        </DetailsButton>
+        </DetailsButton> */}
       </Info>
     </Card>
   );

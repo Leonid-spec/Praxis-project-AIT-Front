@@ -3,7 +3,25 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   margin: 40px auto;
+  flex-direction: row;
+  
+  @media (max-width: 1200px) and (min-width: 768px) {
+    gap: 40px; // отступ между изображением и текстом
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+
+    & > div:first-child {
+      order: 2; // ImageSectionWrapper
+    }
+
+    & > div:last-child {
+      order: 1; // ContentWrapper
+    }
+  }
 `;
+
 
 export const ContentWrapper = styled.div`
   display: flex;
@@ -28,13 +46,15 @@ export const ImageWrapper = styled.div`
   align-items: center;
   margin-bottom: 10px;
   overflow: hidden;
+  margin: 10px 0 25px 0;
   border-radius: 12px;
   background-color: #f8f8f8;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    width: 100%;
+    width: 88%;
     height: auto;
+    margin: 10px 0 25px 0;
   }
 `;
 

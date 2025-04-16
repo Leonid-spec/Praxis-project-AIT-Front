@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const AdminMenuWrapper = styled.div`
+  margin-top: 8px;
   
   position: relative;
 `;

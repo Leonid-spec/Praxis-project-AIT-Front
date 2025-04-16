@@ -17,8 +17,8 @@ import { useTranslation } from "react-i18next";
 import { ServiceData } from "../../store/types/serviceTypes";
 import { getActiveServices } from "../../api/serviceAPI";
 import ServiceDropdown from "./ServiceDropdown/ServiceDropdown";
-import { createAppointment } from "../../api/appointmentAPI";
 import { AppointmentData } from "../../store/types/appointmentTypes";
+import { createAppointment } from "../../api/appointmentAPI";
 
 const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
   const { t } = useTranslation();
@@ -55,6 +55,7 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
     language: "De",
     comment: "",
     availableTime: "",
+    createdTime: `${Date.now()}`,
     isNew: true,
   });
 
@@ -67,6 +68,7 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
     phone2: "",
     comment: "",
     availableTime: "",
+    createdTime: `${Date.now()}`,
     isNew: true,
   });
 
@@ -100,6 +102,17 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
     );
   };
 
+  const formatDateTime = (date: Date): string => {
+    const pad = (n: number) => (n < 10 ? "0" + n : n);
+    const year = date.getFullYear();
+    const month = pad(date.getMonth() + 1);
+    const day = pad(date.getDate());
+    const hours = pad(date.getHours());
+    const minutes = pad(date.getMinutes());
+    const seconds = pad(date.getSeconds());
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -110,38 +123,52 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
       return cleaned.startsWith("+") ? cleaned : `+${cleaned}`;
     };
 
-    const serviceId =
-      typeof formData.dentalServiceSectionId === "object" &&
-      formData.dentalServiceSectionId !== null &&
-      "id" in formData.dentalServiceSectionId
-        ? (formData.dentalServiceSectionId as ServiceData).id
-        : formData.dentalServiceSectionId ?? null;
-    console.log("Service ID:", serviceId);
+    const createdTimeFormatted = formatDateTime(new Date());
+
+    const finalData = {
+      ...formData,
+      createdTime: createdTimeFormatted,
+    };
+
+    console.log("finalData with createdTime:", finalData);
+
     try {
-      const newAppointment = await createAppointment({
-        dentalServiceSectionId:
-          typeof formData.dentalServiceSectionId === "object" &&
-          formData.dentalServiceSectionId !== null &&
-          "id" in formData.dentalServiceSectionId
-            ? (formData.dentalServiceSectionId as ServiceData).id
-            : formData.dentalServiceSectionId ?? 1,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        phone1: formatPhone(formData.phone1),
-        phone2: formData.phone2 ? formatPhone(formData.phone2) : "",
-        email: formData.email,
-        availableTime: formData.availableTime || "",
-        comment: formData.comment || "",
-        language: formData.language?.toLowerCase() || "de",
+      setFormData({
+        dentalServiceSectionId: null,
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone1: "",
+        phone2: "",
+        language: "De",
+        comment: "",
+        availableTime: "",
+        createdTime: `${Date.now()}`,
         isNew: true,
       });
-    console.log("newAppointment:", newAppointment);
 
-      // console.log("Appointment created successfully:", newAppointment);
+      const newAppointment = await createAppointment({
+        dentalServiceSectionId:
+          (finalData.dentalServiceSectionId as ServiceData)?.id ??
+          finalData.dentalServiceSectionId ??
+          1,
+        firstName: finalData.firstName,
+        lastName: finalData.lastName,
+        phone1: formatPhone(finalData.phone1),
+        phone2: finalData.phone2 ? formatPhone(finalData.phone2) : "",
+        email: finalData.email,
+        availableTime: finalData.availableTime || "",
+        comment: finalData.comment || "",
+        language: finalData.language?.toLowerCase() || "de",
+        createdTime: finalData.createdTime || formData.createdTime,
+        isNew: true,
+      });
+
+      console.log("NewAppointment:", newAppointment);
+
+
       setNotification({
-        message: t(
-          "message.other.makeAppointment.messages.appointmentScheduled"
-        ),
+        message: t("message.other.makeAppointment.messages.appointmentScheduled"),
         type: "success",
       });
 
@@ -155,19 +182,25 @@ const AppointmentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
         language: "De",
         comment: "",
         availableTime: "",
+        createdTime: `${Date.now()}`,
         isNew: true,
       });
+
+      console.log("formData:", formData);
 
       setTimeout(() => {
         if (onSuccess) onSuccess();
       }, 2000);
     } catch (err: any) {
+      console.log("Appointment not created. Payload:", finalData);
+
       setNotification({
         message: t("message.other.makeAppointment.messages.appointmentFailed"),
         type: "error",
       });
     }
   };
+  
 
   return (
     <>

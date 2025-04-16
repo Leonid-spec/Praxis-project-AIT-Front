@@ -97,7 +97,7 @@ const ServiceDetails: React.FC = () => {
   };
 
   return (
-    <Container>
+    <Container >
       <ImageSectionWrapper>
         <ImageWrapper>
           <MainImage
