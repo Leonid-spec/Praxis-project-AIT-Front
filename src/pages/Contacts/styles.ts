@@ -141,6 +141,7 @@ export const SprechzeitenBox = styled.div`
   }
 `;
 
+
 export const DaysOfWeekBox = styled.div`
   display: grid;
   grid-template-columns:30% 70%;
@@ -182,6 +183,7 @@ export const DaysOfWeekspan = styled.p`
     font-size: 14px;
   }
 `;
+
 
 export const MapContainer = styled.div`
   display: flex;
@@ -225,7 +227,6 @@ export const ContactIcons = styled.div`
 export const IconCircle = styled.div`
   width: 50px;
   height: 50px;
-  background-color: #a0eef2;
   background-color: #7a2141;
   border-radius: 50%;
   display: flex;
@@ -244,13 +245,15 @@ export const IconCircle = styled.div`
   @media (max-width: 768px) {
     width: 40px;
     height: 40px;
-    font-size: 16px;
+    font-size: 18px;
+    margin-right: 8px;
   }
 
   @media (max-width: 480px) {
     width: 32px;
     height: 32px;
-    font-size: 14px;
+    font-size: 16px;
+    margin-right: 5px;
   }
 `;
 
