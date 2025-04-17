@@ -325,7 +325,6 @@ export const ServicePageSingle: React.FC = () => {
           </MainBoxText>
 
           <ImageBox>
-            
             <ImagePreview
               src={
                 serviceData.topImage ||

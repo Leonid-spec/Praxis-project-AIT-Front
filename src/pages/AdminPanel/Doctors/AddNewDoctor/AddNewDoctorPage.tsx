@@ -307,7 +307,7 @@ const AddNewDoctorPage: React.FC = () => {
               </EditTopImage>
               <SpecialisationSection>
                 <TitlesBox>
-                  {t("message.adminPanel.appointments.doctors.title")}
+                {t("message.adminPanel.appointments.doctors.specialisation")}
                 </TitlesBox>
                 <InputContainer>
                   <TitleBoxText>DE</TitleBoxText>
@@ -318,7 +318,7 @@ const AddNewDoctorPage: React.FC = () => {
                       handleChange("specialisationDe", e.target.value)
                     }
                     placeholder={t(
-                      "message.adminPanel.appointments.doctors.enterDescriptionDe"
+                      "message.adminPanel.appointments.doctors.enterSpecialisationDe"
                     )}
                   />
                 </InputContainer>
@@ -331,7 +331,7 @@ const AddNewDoctorPage: React.FC = () => {
                       handleChange("specialisationEn", e.target.value)
                     }
                     placeholder={t(
-                      "message.adminPanel.appointments.doctors.enterDescriptionEn"
+                      "message.adminPanel.appointments.doctors.enterSpecialisationEn"
                     )}
                   />
                 </InputContainer>
@@ -344,7 +344,7 @@ const AddNewDoctorPage: React.FC = () => {
                       handleChange("specialisationRu", e.target.value)
                     }
                     placeholder={t(
-                      "message.adminPanel.appointments.doctors.enterDescriptionRu"
+                      "message.adminPanel.appointments.doctors.enterSpecialisationRu"
                     )}
                   />
                 </InputContainer>
@@ -369,7 +369,8 @@ const AddNewDoctorPage: React.FC = () => {
           <div>
             <TitleSection>
               <TitlesBox>
-                {t("message.adminPanel.appointments.doctors.specialisation")}
+                {t("message.adminPanel.appointments.doctors.title")}
+
               </TitlesBox>
               <InputContainer>
                 <TitleBoxText>DE</TitleBoxText>
@@ -416,7 +417,7 @@ const AddNewDoctorPage: React.FC = () => {
                   value={doctorData.biographyDe}
                   onChange={(e) => handleChange("biographyDe", e.target.value)}
                   placeholder={t(
-                    "message.adminPanel.appointments.doctors.enterDescriptionDe"
+                    "message.adminPanel.appointments.doctors.enterBiographyDe"
                   )}
                   rows={5}
                 />
@@ -427,7 +428,7 @@ const AddNewDoctorPage: React.FC = () => {
                   value={doctorData.biographyEn}
                   onChange={(e) => handleChange("biographyEn", e.target.value)}
                   placeholder={t(
-                    "message.adminPanel.appointments.doctors.enterDescriptionEn"
+                    "message.adminPanel.appointments.doctors.enterBiographyEn"
                   )}
                   rows={5}
                 />
@@ -438,7 +439,7 @@ const AddNewDoctorPage: React.FC = () => {
                   value={doctorData.biographyRu}
                   onChange={(e) => handleChange("biographyRu", e.target.value)}
                   placeholder={t(
-                    "message.adminPanel.appointments.doctors.enterDescriptionRu"
+                    "message.adminPanel.appointments.doctors.enterBiographyRu"
                   )}
                   rows={5}
                 />

@@ -391,7 +391,7 @@ const EditServicePage: React.FC<{
         console.error("Failed to replace image:", err);
         setNotification({
           message:
-            t("message.adminPanel.appointments.services.imageReplaceError") ||
+            t("message.adminPanel.appointments.services.imageEditeError") ||
             "Failed to replace image",
           type: "error",
         });
@@ -459,7 +459,7 @@ const EditServicePage: React.FC<{
                     <Input
                       type="text"
                       placeholder={t(
-                        "message.adminPanel.appointments.services.enterTitle",
+                        "message.adminPanel.appointments.services.enterTitleEn",
                         { lang: lang.slice(-2).toUpperCase() }
                       )}
                       value={serviceData?.[lang as keyof ServiceData] || ""}
@@ -495,7 +495,7 @@ const EditServicePage: React.FC<{
                 <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
                 <textarea
                   placeholder={t(
-                    "message.adminPanel.appointments.services.enterDescription",
+                    "message.adminPanel.appointments.services.enterDescriptionDe",
                     { lang: lang.slice(-2).toUpperCase() }
                   )}
                   rows={5}

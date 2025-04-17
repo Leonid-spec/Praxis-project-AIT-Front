@@ -184,6 +184,8 @@ const EditDoctorPage: React.FC = () => {
                   onChange={(e) =>
                     setDoctorData({ ...doctorData, fullName: e.target.value })
                   }
+                placeholder={t("message.adminPanel.appointments.doctors.enterFullName")}
+
                 />
               </InputContainerFullName>
     
@@ -221,6 +223,8 @@ const EditDoctorPage: React.FC = () => {
                         titleDe: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleDe")}
+
                   />
                 </Section>
                 <Section>
@@ -234,6 +238,7 @@ const EditDoctorPage: React.FC = () => {
                         titleEn: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleEn")}
                   />
                 </Section>
                 <Section>
@@ -247,6 +252,8 @@ const EditDoctorPage: React.FC = () => {
                         titleRu: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleRu")}
+
                   />
                 </Section>
               </Container>
@@ -275,6 +282,8 @@ const EditDoctorPage: React.FC = () => {
                         specialisationDe: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationDe")}
+
                   />
                 </Section>
                 <Section>
@@ -288,6 +297,8 @@ const EditDoctorPage: React.FC = () => {
                         specialisationEn: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationEn")}
+
                   />
                 </Section>
                 <Section>
@@ -301,6 +312,8 @@ const EditDoctorPage: React.FC = () => {
                         specialisationRu: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationRu")}
+
                   />
                 </Section>
   
@@ -317,6 +330,8 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyDe: e.target.value })
                 }
+                placeholder={t("message.adminPanel.appointments.doctors.enterBiographyDe")}
+
               />
             </BiographySection>
     
@@ -327,6 +342,8 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyEn: e.target.value })
                 }
+                placeholder={t("message.adminPanel.appointments.doctors.enterBiographyEn")}
+
               />
             </BiographySection>
     
@@ -337,6 +354,8 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyRu: e.target.value })
                 }
+                placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationRu")}
+
               />
             </BiographySection>
           </BottomContainer>
