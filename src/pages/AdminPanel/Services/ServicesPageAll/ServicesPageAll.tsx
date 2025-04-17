@@ -6,6 +6,8 @@ import { FindServiceContainer } from "../Other/FindServiceContainer/FindServiceC
 import ServiceCard from "../Other/ServiceCard/ServiceCard";
 import { useTranslation } from "react-i18next";
 
+import { InactiveOverlay } from "./styles";
+
 import {
   ServicesPageAllContainer,
   CardsMainContainer,
@@ -107,29 +109,32 @@ export const ServicesPageAll = () => {
           <ScrollContainer>
             <ServiceCardsMainContainer>
               {error && <p style={{ color: "red" }}>{error}</p>}
-              {filteredServices.map(
-                (service) =>
-                  service.id !== undefined && service.isActive !== undefined ? (
-                    <ServiceCardStyled
+              {filteredServices.map((service) =>
+                service.id !== undefined && service.isActive !== undefined ? (
+                  <ServiceCardStyled
+                    key={service.id}
+                    id={service.id}
+                    title={service.titleEn || "Untitled Service"}
+                    topImage={service.topImage || ""}
+                    onClick={() => handleEditClick(service.id!)}
+                    isActive={service.isActive}
+                  >
+                    <ServiceCard
                       key={service.id}
                       id={service.id}
-                      title={service.titleEn || "Untitled Service"} 
-                      topImage={service.topImage || ""}
-                      onClick={() => handleEditClick(service.id!)}
-                      isActive={service.isActive}
-                    >
-                      <ServiceCard
-                        key={service.id}
-                        id={service.id}
-                        title={service.titleEn}
-                        topImage={service.topImage}
-                        onEditClick={handleEditClick.bind(null, service.id)}
-                      />
-                    </ServiceCardStyled>
-                  ) : null
+                      title={service.titleEn}
+                      topImage={service.topImage}
+                      onEditClick={handleEditClick.bind(null, service.id)}
+                    />
+                    {!service.isActive && (
+                      <InactiveOverlay>
+                        {t("message.adminPanel.appointments.doctors.inactive")}
+                      </InactiveOverlay>
+                    )}
+                  </ServiceCardStyled>
+                ) : null
               )}
             </ServiceCardsMainContainer>
-
           </ScrollContainer>
         </>
       )}

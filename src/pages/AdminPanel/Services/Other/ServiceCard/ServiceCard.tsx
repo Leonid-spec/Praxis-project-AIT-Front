@@ -7,7 +7,7 @@ import {
   Info,
   Title,
   DetailsButton,
-  InactiveOverlay,
+  
 } from "./styles";
 
 interface ServiceCardProps {
@@ -27,8 +27,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const { t } = useTranslation(); 
   return (
     <Card style={{ opacity: isActive ? 1 : 0.5 }}>
-       {!isActive && <InactiveOverlay>Inactive</InactiveOverlay>}
+      
       <PhotoContainer>
+      
         <Photo
           src={topImage}
           alt="Service preview"
