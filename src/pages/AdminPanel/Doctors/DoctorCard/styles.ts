@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
+  margin-top: 20px;
   margin: 20px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  max-width: 350px;
-  position: relative;
-  
+  /* max-width: 400px; */
+  /* position: relative; */
+
   &:hover {
     cursor: pointer;
     transform: translateY(-5px);
@@ -18,16 +19,19 @@ export const Card = styled.div`
 `;
 
 export const DoctorCardStyled = styled.div<{ isActive: boolean, id?: number; topImage?: string }>`
-opacity: ${(props) => (props.isActive ? "1" : "0.5")};
+min-width: 350px;
+
 &:hover {
   cursor: pointer;
 }
 `;
 
 export const PhotoContainer = styled.div`
+  background-color: #f0f0f0;
+  position: relative;
   width: 100%;
   height: 300px;
-  background-color: #f0f0f0;
+  overflow: hidden;
 `;
 
 export const Photo = styled.img`
@@ -72,17 +76,21 @@ export const ActionButton = styled.button`
 `;
 
 export const InactiveOverlay = styled.div`
+  all: unset;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 2;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem; /* Увеличенный текст */
-  z-index: 15; /* Поверх всего остального */
-  border-radius: 10px; /* Совпадает с ImagePreview */
+  font-size: 1.5rem;
+  z-index: 1;
+  border-radius: 10px;
+  margin: 0 !important;
+  padding: 0;
 `;

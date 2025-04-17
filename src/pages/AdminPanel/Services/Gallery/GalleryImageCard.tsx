@@ -1,9 +1,8 @@
-import { FaTrashAlt, FaEdit } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import styled from "styled-components";
 
 type GalleryImageCardProps = {
   url: string;
-  onReplace: () => void;
   onDelete: () => void;
 };
 
@@ -36,7 +35,7 @@ const IconBtn = styled.button`
   border-radius: 6px;
   padding: 4px;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,12 +51,11 @@ const IconBtn = styled.button`
   }
 `;
 
-export const GalleryImageCard = ({ url, onReplace, onDelete }: GalleryImageCardProps) => {
+export const GalleryImageCard = ({ url, onDelete }: GalleryImageCardProps) => {
   return (
     <ImageCard>
       <Img src={url} alt="Gallery image" />
       <ButtonGroup>
-        <IconBtn onClick={onReplace}><FaEdit /></IconBtn>
         <IconBtn onClick={onDelete}><FaTrashAlt /></IconBtn>
       </ButtonGroup>
     </ImageCard>

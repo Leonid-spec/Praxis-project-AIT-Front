@@ -30,7 +30,7 @@ const Contacts: React.FC = () => {
     city: "Konstanz",
     phone: "+49 75 31 7 72 73",
     email: "praxis.sofia.abramian@gmail.com",
-    gps: "50.4501° N, 30.5234°",
+    gps: "47.68549067995246, 9.151141373012225",
     zipCode: "78467",
   });
 

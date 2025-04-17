@@ -27,10 +27,12 @@ import {
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useState, useEffect } from "react";
-import { addImage } from "../../../../api/imageAPI";
+import { addImage, deleteImage } from "../../../../api/imageAPI";
 import { useTranslation } from "react-i18next"; 
-import { EditTopImage, TitlesBox } from "../../Services/ServicePageSinge/style";
+import { EditTopImage, GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox, TitlesBox } from "../../Services/ServicePageSinge/style";
 import { Doctor } from "../../../../store/types/doctorTypes";
+// import { GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox } from "./Gallery/styles";
+import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 
 const EditDoctorPage: React.FC = () => {
   const { t } = useTranslation(); 
@@ -46,7 +48,9 @@ const EditDoctorPage: React.FC = () => {
   const [previewImage, setPreviewImage] = useState<string | null>(null);
   const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const [previousFullName, setPreviousFullName] = useState<string | null>(null);
-
+  const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
+  const [, setGalleryFiles] = useState<File[]>([]);
+  
   useEffect(() => {
     if (!id || !token) return;
 
@@ -54,6 +58,15 @@ const EditDoctorPage: React.FC = () => {
       try {
         const data = await getDoctorById(Number(id), token);
         setDoctorData(data);
+
+        if (data.images) {
+          setGalleryPreviews(
+            data.images.map((img) =>
+              img.path.startsWith("https://") ? img.path : "https://" + img.path
+            )
+          );
+        }
+
         setPreviousFullName(data.fullName);
       } catch (err: any) {
         console.error("Error loading doctor data:", err);
@@ -116,9 +129,6 @@ const EditDoctorPage: React.FC = () => {
       setIsSaving(false);
     }
   };
-  
-  
-   
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -149,6 +159,81 @@ const EditDoctorPage: React.FC = () => {
       });
     }
   };
+
+  const handleAddGalleryImages = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const files = event.target.files;
+    if (files && files.length > 0 && doctorData?.id) {
+      const fileArray = Array.from(files);
+      const urls = fileArray.map((file) => URL.createObjectURL(file));
+  
+      setGalleryFiles((prev) => [...prev, ...fileArray]);
+      setGalleryPreviews((prev) => [...prev, ...urls]);
+  
+      try {
+        const uploaded = await Promise.all(
+          fileArray.map((file) => addImage(file, doctorData.id!, 1, token!))
+        );
+  
+        setDoctorData((prev) =>
+          prev
+            ? {
+                ...prev,
+                images: [...(prev.images || []), ...uploaded],
+              }
+            : prev
+        );
+  
+        setNotification({
+          message: `${uploaded.length} ${t("message.adminPanel.appointments.doctors.imagesAdded")}`,
+          type: "success",
+        });
+      } catch (err) {
+        setNotification({
+          message: t("message.errorUploadingImages") || "Upload failed",
+          type: "error",
+        });
+      }
+    }
+  };
+
+  const handleDeleteGalleryImage = async (index: number) => {
+    if (!doctorData || !doctorData.images || !token) return;
+  
+    const image = doctorData.images[index];
+    const imageId = image?.id;
+    if (!imageId) return;
+  
+    try {
+      await deleteImage(imageId, token);
+  
+      setGalleryPreviews((prev) => {
+        const updated = [...prev];
+        updated.splice(index, 1);
+        return updated;
+      });
+  
+      setDoctorData((prev) => {
+        if (!prev) return prev;
+        const newImages = [...(prev.images || [])];
+        newImages.splice(index, 1);
+        return { ...prev, images: newImages };
+      });
+  
+      setNotification({
+        message: t("message.adminPanel.appointments.doctors.imageDeleted") || "Image deleted",
+        type: "success",
+      });
+    } catch (error) {
+      setNotification({
+        message: t("message.adminPanel.appointments.doctors.imageDeleteError") || "Failed to delete image",
+        type: "error",
+      });
+    }
+  };
+
+
 
   if (!doctorData) {
     return <p>Loading doctor data...</p>;
@@ -184,6 +269,8 @@ const EditDoctorPage: React.FC = () => {
                   onChange={(e) =>
                     setDoctorData({ ...doctorData, fullName: e.target.value })
                   }
+                placeholder={t("message.adminPanel.appointments.doctors.enterFullName")}
+
                 />
               </InputContainerFullName>
     
@@ -221,6 +308,8 @@ const EditDoctorPage: React.FC = () => {
                         titleDe: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleDe")}
+
                   />
                 </Section>
                 <Section>
@@ -234,6 +323,7 @@ const EditDoctorPage: React.FC = () => {
                         titleEn: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleEn")}
                   />
                 </Section>
                 <Section>
@@ -247,6 +337,8 @@ const EditDoctorPage: React.FC = () => {
                         titleRu: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleRu")}
+
                   />
                 </Section>
               </Container>
@@ -275,6 +367,8 @@ const EditDoctorPage: React.FC = () => {
                         specialisationDe: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationDe")}
+
                   />
                 </Section>
                 <Section>
@@ -288,6 +382,8 @@ const EditDoctorPage: React.FC = () => {
                         specialisationEn: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationEn")}
+
                   />
                 </Section>
                 <Section>
@@ -301,6 +397,8 @@ const EditDoctorPage: React.FC = () => {
                         specialisationRu: e.target.value,
                       })
                     }
+                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationRu")}
+
                   />
                 </Section>
   
@@ -317,6 +415,8 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyDe: e.target.value })
                 }
+                placeholder={t("message.adminPanel.appointments.doctors.enterBiographyDe")}
+
               />
             </BiographySection>
     
@@ -327,6 +427,8 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyEn: e.target.value })
                 }
+                placeholder={t("message.adminPanel.appointments.doctors.enterBiographyEn")}
+
               />
             </BiographySection>
     
@@ -337,11 +439,44 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyRu: e.target.value })
                 }
+                placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationRu")}
+
               />
             </BiographySection>
           </BottomContainer>
+
         </MainTextContainer>
+
+        <GalleryContainer>
+                    <TitleBox>
+                      {t("message.adminPanel.appointments.services.gallery") ||
+                        "Gallery"}
+                    </TitleBox>
+        
+                    <EditTopImage>
+                      <UploadInput
+                        type="file"
+                        accept="image/*"
+                        multiple
+                        onChange={handleAddGalleryImages}
+                      />
+                    </EditTopImage>
+        
+                    {galleryPreviews.length > 0 && (
+                      <GalleryGrid>
+                        {galleryPreviews.map((url, index) => (
+                          <GalleryImageWrapper key={index}>
+                            <GalleryImageCard
+                              url={url}
+                              onDelete={() => handleDeleteGalleryImage(index)}
+                            />
+                          </GalleryImageWrapper>
+                        ))}
+                      </GalleryGrid>
+                    )}
+                  </GalleryContainer>
       </ScrollContainer>
+
     </EditDoctorContainer>
   );
 };

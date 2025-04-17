@@ -51,7 +51,7 @@ export const HeaderBox = styled.div`
   padding: 0 20px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
   }
 `;
@@ -65,13 +65,13 @@ export const Container = styled.div`
 
 export const MainBox = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 40% 60%;
   gap: 30px;
+  padding: 10px;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 20px;
-    overflow-y: auto; /* Добавляем скроллинг для мобильных экранов */
   }
 `;
 
@@ -87,29 +87,79 @@ export const TitlesBox = styled.div`
   }
 `;
 
+// export const ImageBox = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 100%;
+//   height: auto;
+//   max-height: 600px;
+
+//   img {
+//     max-width: 100%;
+//     max-height: 100%;
+//     height: auto;
+//     width: auto;
+//     object-fit: contain;
+//     border-radius: 8px;
+//   }
+
+//   @media (max-width: 1440px) {
+//     max-height: 400px;
+//   }
+
+//   @media (max-width: 768px) {
+//     max-height: 300px;
+//   }
+// `;
+
+// export const ImagePreview = styled.img`
+//   width: 100%;
+//   border-radius: 10px;
+//   object-fit: cover;
+//   background-color: #f8f8f8;
+
+//   @media (max-width: 768px) {
+//     border-radius: 5px;
+//   }
+// `;
+
 export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
-  padding: 30px;
+  align-items: center;
   width: 100%;
-  height: 500px;
+  max-height: 500px;
+  padding: 1rem;
+
+  @media (min-width: 1920px) {
+    max-height: 600px;
+  }
+
+  @media (max-width: 1440px) {
+    max-height: 400px;
+  }
+
   @media (max-width: 768px) {
-    padding: 20px;
-    height: 300px;
-    overflow-y: auto;
+    max-height: 280px;
   }
 `;
 
 export const ImagePreview = styled.img`
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  border-radius: 12px;
   background-color: #f8f8f8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
-    border-radius: 5px;
+    border-radius: 8px;
   }
 `;
+
 
 export const InputContainer = styled.div`
   display: flex;
@@ -117,7 +167,7 @@ export const InputContainer = styled.div`
   gap: 20px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
   }
 
@@ -304,7 +354,7 @@ export const UploadInput = styled.input`
 
 export const GalleryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 12px;
 `;
 

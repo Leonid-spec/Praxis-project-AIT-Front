@@ -23,7 +23,7 @@ export const HeaderBox = styled.div`
   padding: 0 20px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    /* flex-direction: column; */
     gap: 10px;
   }
 `;
@@ -51,25 +51,61 @@ export const MainBoxText = styled.div`
   }
 `;
 
+// export const ImageBox = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-content: center;
+//   padding-right: 20px;
+//   gap: 10px;
+//   width: 100%;
+//   max-height: 600px;
+//   position: relative;
+
+// `;
+
+// export const ImagePreview = styled.img`
+//   width: 100%;
+//   border-radius: 10px;
+//   object-fit: cover;
+//   background-color: #f8f8f8;
+// `;
+
 export const ImageBox = styled.div`
   display: flex;
   justify-content: center;
-  align-content: center;
-  padding: 10% 5%;
+  align-items: center;
   width: 100%;
-  max-height: 400px;
-  position: relative; /* Ключевой момент */
+  max-height: 500px;
+  padding: 1rem;
 
+  @media (min-width: 1920px) {
+    max-height: 600px;
+  }
+
+  @media (max-width: 1440px) {
+    max-height: 400px;
+  }
+
+  @media (max-width: 768px) {
+    max-height: 280px;
+  }
 `;
-
-
 
 export const ImagePreview = styled.img`
-  width: 100%;
-  border-radius: 10px;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  width: auto;
+  object-fit: contain;
+  border-radius: 12px;
   background-color: #f8f8f8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    border-radius: 8px;
+  }
 `;
+
 
 export const TitleSection = styled.div`
   display: flex;
@@ -218,7 +254,7 @@ export const UploadInput = styled.input`
 
 export const GalleryGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 12px;
 `;
 

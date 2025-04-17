@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  
   margin: 20px 10px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  max-width: 400px;
-
+  max-width: 500px;
+  /* min-height: auto; */
+  /* min-width: 350px; */
+  /* padding: 30px; */
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.18);
@@ -17,9 +18,11 @@ export const Card = styled.div`
 `;
 
 export const PhotoContainer = styled.div`
-  width: 100%;
-  height: 180px;
   background-color: #f0f0f0;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
 `;
 
 export const Photo = styled.img`
@@ -53,7 +56,6 @@ export const DetailsButton = styled.button`
 
   &:hover {
     background-color: #5c0d2a;
-;
   }
 `;
 
@@ -62,6 +64,7 @@ export const InactiveText = styled.div`
   top: 10px;
   right: 10px;
   background-color: rgba(0, 0, 0, 0.7);
+  /* background-color: rgba(18, 71, 162, 0.7); */
   color: white;
   padding: 5px 10px;
   font-size: 12px;
@@ -71,15 +74,21 @@ export const InactiveText = styled.div`
 `;
 
 export const InactiveOverlay = styled.div`
-  position: relative;
-  top: 10px;
-  right: 10px;
-  background-color: rgba(179, 36, 36, 0.7);
-  background-color: rgba(0, 0, 0, 0.7);
+  all: unset;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 2;
   color: white;
-  padding: 5px 10px;
-  font-size: 12px;
-  border-radius: 5px;
-  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
   z-index: 1;
+  border-radius: 10px;
+  margin: 0 !important;
+  padding: 0;
 `;
