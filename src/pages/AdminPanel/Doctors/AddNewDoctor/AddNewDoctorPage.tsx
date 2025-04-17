@@ -212,40 +212,6 @@ const AddNewDoctorPage: React.FC = () => {
     });
   };
 
-  const handleReplaceImage = (index: number) => {
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/*";
-    fileInput.onchange = () => {
-      const file = fileInput.files?.[0];
-      if (file) {
-        const newUrl = URL.createObjectURL(file);
-        console.log(`📝 [handleReplaceImage] Замінюється зображення ${index}:`, newUrl);
-
-        setSelectedImages((prev) => {
-          const newFiles = [...prev];
-          newFiles[index] = file;
-          return newFiles;
-        });
-
-        setPreviewURLs((prev) => {
-          const newPreviews = [...prev];
-          newPreviews[index] = newUrl;
-          return newPreviews;
-        });
-
-        setDoctorData((prev) => {
-          const newImages = [...(prev.images ?? [])];
-          newImages[index] = {
-            ...newImages[index],
-            path: newUrl,
-          };
-          return { ...prev, images: newImages };
-        });
-      }
-    };
-    fileInput.click();
-  };
 
   return (
     <DoctorPageContainer>
@@ -447,6 +413,7 @@ const AddNewDoctorPage: React.FC = () => {
             </BiographySection>
           </div>
         </Container>
+
         <GalleryContainer>
           <TitleBox>
             {t("message.adminPanel.appointments.services.gallery") || "Gallery"}
@@ -466,13 +433,13 @@ const AddNewDoctorPage: React.FC = () => {
               <GalleryImageWrapper key={index}>
                 <GalleryImageCard
                   url={img.path}
-                  onReplace={() => handleReplaceImage(index)}
                   onDelete={() => handleDeleteImage(index)}
                 />
               </GalleryImageWrapper>
             ))}
           </GalleryGrid>
         </GalleryContainer>
+        
       </ScrollContainer>
     </DoctorPageContainer>
   );

@@ -1,7 +1,8 @@
 import { 
   FaTrashAlt, 
   // FaHandPaper, 
-  FaArrowsAlt } from "react-icons/fa";
+  // FaArrowsAlt 
+} from "react-icons/fa";
 import styled from "styled-components";
 
 type GalleryImageCardProps = {
@@ -13,7 +14,7 @@ const ImageCard = styled.div`
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  width: 160px;
+  width: 100%;
   height: 120px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 `;
@@ -33,7 +34,7 @@ const ButtonGroup = styled.div`
 `;
 
 const IconBtn = styled.button`
-  background: rgba(255, 255, 255, 0.8);
+  /* background: rgba(255, 255, 255, 0.8); */
   border: none;
   border-radius: 6px;
   padding: 4px;
@@ -60,7 +61,7 @@ export const GalleryImageCard = ({ url, onDelete }: GalleryImageCardProps) => {
       <Img src={url} alt="Gallery image" />
       <ButtonGroup>
         {/* <IconBtn><FaHandPaper /></IconBtn> */}
-        <IconBtn><FaArrowsAlt /></IconBtn>
+        {/* <IconBtn><FaArrowsAlt /></IconBtn> */}
 
         <IconBtn onClick={onDelete}><FaTrashAlt /></IconBtn>
       </ButtonGroup>

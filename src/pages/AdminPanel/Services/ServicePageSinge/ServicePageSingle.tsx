@@ -32,7 +32,6 @@ import CustomNotification from "../../../../components/CustomNotification/Custom
 import { useTranslation } from "react-i18next";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 
-
 export const ServicePageSingle: React.FC = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -194,39 +193,6 @@ export const ServicePageSingle: React.FC = () => {
     }
   };
 
-  const handleReplaceImage = (index: number) => {
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/*";
-    fileInput.onchange = () => {
-      const file = fileInput.files?.[0];
-      if (file) {
-        const newUrl = URL.createObjectURL(file);
-        console.log(
-          `📝 [handleReplaceImage] Замінюється зображення ${index}:`,
-          newUrl
-        );
-        setSelectedImages((prev) => {
-          const newFiles = [...prev];
-          newFiles[index] = file;
-          return newFiles;
-        });
-
-        setPreviewURLs((prev) => {
-          const newPreviews = [...prev];
-          newPreviews[index] = newUrl;
-          return newPreviews;
-        });
-        setServiceData((prev) => {
-          const newImages = [...(prev.images ?? [])];
-          newImages[index] = { ...newImages[index], path: newUrl };
-          return { ...prev, images: newImages };
-        });
-      }
-    };
-    fileInput.click();
-  };
-
   const handleDeleteImage = (index: number) => {
     setServiceData((prev) => {
       const newImages = [...(prev.images ?? [])];
@@ -379,7 +345,6 @@ export const ServicePageSingle: React.FC = () => {
               <GalleryImageWrapper key={index}>
                 <GalleryImageCard
                   url={img.path}
-                  onReplace={() => handleReplaceImage(index)}
                   onDelete={() => handleDeleteImage(index)}
                 />
               </GalleryImageWrapper>

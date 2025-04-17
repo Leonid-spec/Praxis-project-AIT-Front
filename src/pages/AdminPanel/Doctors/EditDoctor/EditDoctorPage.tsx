@@ -29,9 +29,9 @@ import CustomNotification from "../../../../components/CustomNotification/Custom
 import { useState, useEffect } from "react";
 import { addImage, deleteImage } from "../../../../api/imageAPI";
 import { useTranslation } from "react-i18next"; 
-import { EditTopImage, TitlesBox } from "../../Services/ServicePageSinge/style";
+import { EditTopImage, GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox, TitlesBox } from "../../Services/ServicePageSinge/style";
 import { Doctor } from "../../../../store/types/doctorTypes";
-import { GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox } from "./Gallery/styles";
+// import { GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox } from "./Gallery/styles";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 
 const EditDoctorPage: React.FC = () => {
