@@ -6,7 +6,7 @@ export const StyledButton = styled.div`
   gap: 15px;
   padding: 8px 20px;
   margin: 20px;
-  min-width: 400px;
+  min-width: 450px;
   border-radius: 30px;
   background-color: #7a2141;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);

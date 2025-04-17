@@ -62,7 +62,9 @@ export const HighlightedSpan = styled.span`
 `;
 
 export const ContactsPageContainer = styled.div`
-  width: 100%;
+  /* min-width: 90%; */
+  min-width: 100%;
+  gap: 20px;
 `;
 
 export const CardsGrid = styled.div`
@@ -75,6 +77,11 @@ export const CardsGrid = styled.div`
     padding: 0 10px;
     gap: 30px;
     margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    gap: 30px;
+    padding: 0;
   }
 `;
 
@@ -130,7 +137,7 @@ export const SprechzeitenWrapper = styled.div`
   flex: 1;
 
   @media (max-width: 768px) {
-    padding: 0 10px;
+    /* padding: 0 10px; */
   }
 `;
 
@@ -140,7 +147,7 @@ export const SprechzeitenBox = styled.div`
   gap: 20px;
   border-radius: 12px;
   flex: 1;
-  margin: 0;
+  margin-bottom: 20px;
 
   @media (max-width: 1024px) {
     /* padding: 10px 20px; */
@@ -315,7 +322,9 @@ export const IconCircle = styled.div`
   }
 `;
 
-export const ButtonContainer = styled.div``;
+export const ButtonContainer = styled.div`
+margin-bottom: 30px
+`;
 
 // date
 export const RunningLineWrapper = styled.div`

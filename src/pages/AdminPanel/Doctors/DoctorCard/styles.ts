@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Card = styled.div`
   margin-top: 20px;
+  margin: 20px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
@@ -18,6 +19,8 @@ export const Card = styled.div`
 `;
 
 export const DoctorCardStyled = styled.div<{ isActive: boolean, id?: number; topImage?: string }>`
+min-width: 350px;
+
 &:hover {
   cursor: pointer;
 }

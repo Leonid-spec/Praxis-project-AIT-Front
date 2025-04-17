@@ -23,7 +23,7 @@ import {
 import { ServiceData } from "../../../../store/types/serviceTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useTranslation } from "react-i18next";
-import { addImage, deleteImage, updateImage } from "../../../../api/imageAPI";
+import { addImage, deleteImage } from "../../../../api/imageAPI";
 import { GalleryContainer, TitleBox } from "../Gallery/styles";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 import { CheckboxLabel, EditDoctorContainer, ScrollContainer } from "./styles";
@@ -340,65 +340,6 @@ const EditServicePage: React.FC<{
     }
   };
 
-  const handleReplaceGalleryImage = async (index: number) => {
-    if (
-      !serviceData ||
-      !token ||
-      !serviceData.images ||
-      !serviceData.images[index]
-    )
-      return;
-
-    const oldImage = serviceData.images[index];
-    const fileInput = document.createElement("input");
-    fileInput.type = "file";
-    fileInput.accept = "image/*";
-    fileInput.click();
-
-    fileInput.onchange = async () => {
-      const file = fileInput.files?.[0];
-      if (!file) return;
-
-      const previewUrl = URL.createObjectURL(file);
-      setGalleryPreviews((prev) => {
-        const updated = [...prev];
-        updated[index] = previewUrl;
-        return updated;
-      });
-
-      try {
-        console.log("Uploading new image:", file);
-        console.log("Old image ID:", oldImage.id);
-
-        const uploaded = await updateImage(file, oldImage.id, token);
-
-        console.log("Image successfully updated:", uploaded);
-
-        setServiceData((prev) => {
-          if (!prev) return prev;
-          const updatedImages = [...prev.images!];
-          updatedImages[index] = uploaded; 
-          return { ...prev, images: updatedImages };
-        });
-
-        setNotification({
-          message:
-            t("message.adminPanel.appointments.services.imageReplaced") ||
-            "Image successfully replaced",
-          type: "success",
-        });
-      } catch (err) {
-        console.error("Failed to replace image:", err);
-        setNotification({
-          message:
-            t("message.adminPanel.appointments.services.imageReplaceError") ||
-            "Failed to replace image",
-          type: "error",
-        });
-      }
-    };
-  };
-
   return (
       <EditDoctorContainer>
         <HeaderBox>
@@ -459,7 +400,7 @@ const EditServicePage: React.FC<{
                     <Input
                       type="text"
                       placeholder={t(
-                        "message.adminPanel.appointments.services.enterTitle",
+                        "message.adminPanel.appointments.services.enterTitleEn",
                         { lang: lang.slice(-2).toUpperCase() }
                       )}
                       value={serviceData?.[lang as keyof ServiceData] || ""}
@@ -495,7 +436,7 @@ const EditServicePage: React.FC<{
                 <TitleBoxText>{lang.slice(-2).toUpperCase()}</TitleBoxText>
                 <textarea
                   placeholder={t(
-                    "message.adminPanel.appointments.services.enterDescription",
+                    "message.adminPanel.appointments.services.enterDescriptionDe",
                     { lang: lang.slice(-2).toUpperCase() }
                   )}
                   rows={5}
@@ -541,7 +482,6 @@ const EditServicePage: React.FC<{
                   <GalleryImageWrapper key={index}>
                     <GalleryImageCard
                       url={url}
-                      onReplace={() => handleReplaceGalleryImage(index)}
                       onDelete={() => handleDeleteGalleryImage(index)}
                     />
                   </GalleryImageWrapper>
@@ -549,6 +489,7 @@ const EditServicePage: React.FC<{
               </GalleryGrid>
             )}
           </GalleryContainer>
+          
         </ScrollContainer>
       </EditDoctorContainer>
   );

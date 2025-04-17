@@ -68,7 +68,7 @@
         "phone": "+49 017 223 334",
         "email": "info@dentalclinic.de",
         "copy": "Copied",
-        "coordinates": "GPS: ",
+        "coordinates": "47.68549067995246, 9.151141373012225",
         "coordinatesCopied": "Coordinates successfully copied!",
         "map": {
           "title": "Find us on the map"
@@ -98,7 +98,6 @@
         "email": "praxis.sofia.abramian@gmail.com"
       },
       "hours": {
-    
         "weekdays": "Mon-Fri:",
         "weekend": "Sat-Sun: closed"
       }
@@ -282,50 +281,50 @@
               "sections": {
                 "create": "Create New Administrator",
                 "changePassword": "Change Password",
-                "viewAll": "All Administrators",            
+                "viewAll": "All Administrators",
                 "delete": "Delete Administrator"
               },
               "address": {
-                  "title": "Edit Address",
-                  "street": "Street",
-                  "city": "City",
-                  "zipCode": "Zip Code",
-                  "gps": "GPS",
-                  "phone": "Phone",
-                  "email": "Email",
-                  "placeholder": {
-                    "street": "Enter street...",
-                    "city": "Enter city...",
-                    "zipCode": "Enter zip code...",
-                    "gps": "Enter GPS coordinates...",
-                    "phone": "Enter phone number...",
-                    "email": "Enter email..."
-                  },
-                  "saveButton": "Save",
-                  "successMessage": "Address successfully saved!",
-                  "errorMessage": "An error occurred while saving. Please try again."
+                "title": "Edit Address",
+                "street": "Street",
+                "city": "City",
+                "zipCode": "Zip Code",
+                "gps": "GPS",
+                "phone": "Phone",
+                "email": "Email",
+                "placeholder": {
+                  "street": "Enter street...",
+                  "city": "Enter city...",
+                  "zipCode": "Enter zip code...",
+                  "gps": "Enter GPS coordinates...",
+                  "phone": "Enter phone number...",
+                  "email": "Enter email..."
                 },
-                "workingMode": {
-                  "title": "Edit Working Hours",
-                  "days": {
-                    "monday": "Monday",
-                    "tuesday": "Tuesday",
-                    "wednesday": "Wednesday",
-                    "thursday": "Thursday",
-                    "friday": "Friday"
-                  },
-                  "placeholder": "Enter working hours...",
-                  "saveButton": "Save",
-                  "successMessage": "Working hours successfully saved!",
-                  "errorMessage": "An error occurred while saving working hours. Please try again."
+                "saveButton": "Save",
+                "successMessage": "Address successfully saved!",
+                "errorMessage": "An error occurred while saving. Please try again."
+              },
+              "workingMode": {
+                "title": "Edit Working Hours",
+                "days": {
+                  "monday": "Monday",
+                  "tuesday": "Tuesday",
+                  "wednesday": "Wednesday",
+                  "thursday": "Thursday",
+                  "friday": "Friday"
                 },
-                "runningLine": {
-                  "title": "Edit Running Line",
-                  "placeholder": "Enter running line text...",
-                  "saveButton": "Save",
-                  "successMessage": "Running line successfully saved!",
-                  "errorMessage": "An error occurred while saving the running line. Please try again."
-                }
+                "placeholder": "Enter working hours...",
+                "saveButton": "Save",
+                "successMessage": "Working hours successfully saved!",
+                "errorMessage": "An error occurred while saving working hours. Please try again."
+              },
+              "runningLine": {
+                "title": "Edit Running Line",
+                "placeholder": "Enter running line text...",
+                "saveButton": "Save",
+                "successMessage": "Running line successfully saved!",
+                "errorMessage": "An error occurred while saving the running line. Please try again."
+              }
             }
           }
         },
@@ -340,15 +339,15 @@
           "makeCardVisible": "Make the card visible to users:",
           "editTopImage": "Edit top image",
           "titles": "Titles:",
-          "enterTitleDe": "Enter title (DE)",
-          "enterTitleEn": "Enter title (EN)",
-          "enterTitleRu": "Enter title (RU)",
-          "enterDescriptionDe": "Enter description (DE)",
-          "enterDescriptionEn": "Enter description (EN)",
-          "enterDescriptionRu": "Enter description (RU)",
+          "enterTitleDe": "Enter title",
+          "enterTitleEn": "Enter title",
+          "enterTitleRu": "Enter title",
+          "enterDescriptionDe": "Enter description",
+          "enterDescriptionEn": "Enter description",
+          "enterDescriptionRu": "Enter description",
           "descriptions": "Descriptions:",
           "enterDescription": "Enter description ({{lang}})",
-          "placeholder": "Enter the name of the service",
+          "placeholder": "Enter the name of the service (en)",
           "placeholderTime": "e.g. 10:00, 16:30, 2025-04-16",
           "uploadImage": "Upload image",
           "makeCardVisibleCheckbox": "Make card visible",
@@ -358,7 +357,12 @@
           "refresh": "Refresh",
           "errorLoading": "Error loading service",
           "searchPlaceholder": "Search by service name",
-          "gallery": "Image gallery where you can browse photos."        },
+          "imageDeleted": "Image has been successfully deleted.",
+          "imageDeleteError": "Error occurred while deleting the image.",
+          "imageEdited": "Image has been successfully edited.",
+          "imageEditeError": "Error occurred while editing the image.",
+          "gallery": "Image gallery where you can browse photos."
+        },
         "doctors": {
           "requiredField": "This field is required",
           "updated": "Doctor information updated",
@@ -370,12 +374,16 @@
           "editTopImage": "Edit top image",
           "titles": "Titles:",
           "title": "Title",
+          "enterFullName": "Enter full name",
           "enterTitleDe": "Enter title (DE)",
           "enterTitleEn": "Enter title (EN)",
           "enterTitleRu": "Enter title (RU)",
-          "enterDescriptionDe": "Enter description (DE)",
-          "enterDescriptionEn": "Enter description (EN)",
-          "enterDescriptionRu": "Enter description (RU)",
+          "enterBiographyDe": "Enter biography (DE)",
+          "enterBiographyEn": "Enter biography (EN)",
+          "enterBiographyRu": "Enter biography (RU)",
+          "enterSpecialisationDe": "Enter specialisation (DE)",
+          "enterSpecialisationEn": "Enter specialisation (EN)",
+          "enterSpecialisationRu": "Enter specialisation (RU)",
           "specialisation": "Specialisation",
           "Biography": "Biography ",
           "edit": "Edit",
@@ -395,7 +403,7 @@
           "errorLoadingDoctorData": "Error loading doctor data:",
           "doctorUpdatedSuccessfully": "Doctor \"{doctorData.fullName}\" updated successfully!",
           "fullName": "Full name",
-          "searchPlaceholder": "Enter doctor's name",
+          "searchPlaceholder": "Enter doctor's name (en)",
           "searchIconAlt": "Search",
           "imageUploadFailed": "Failed to upload",
           "duplicateNameError": "A doctor with this name already exists. Try a different name or leave the current one unchanged."
