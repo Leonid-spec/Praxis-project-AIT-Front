@@ -29,9 +29,9 @@ export const Dropdown = styled.div`
 `;
 
 export const DropdownItem = styled.div`
-
+  font-size: 1.2rem;
   display: grid;
-  min-width: 250px;
+  min-width: 200px;
   grid-template-columns: 30% 70%;
   padding: 10px 20px;
   justify-content: center;
