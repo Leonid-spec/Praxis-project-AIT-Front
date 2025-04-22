@@ -22,26 +22,61 @@ export const FormContainer = styled.div`
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
+  /* align-items: center */
   gap: 16px;
   z-index: 2;
   /* align-items: center; */
   /* text-align: center; */
+
+  @media (max-width: 1024px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 12px;
+    width: 280px;
+    padding: 20px 20px 10px;
+  }
+
+  @media (max-width: 340px) {
+    width: 250px;
+  }
+
+  @media (max-width: 300px) {
+    font-size: 8px;
+    width: 200px;
+  }
 `;
 
 export const TitleAndSub = styled.div`
-display: flex;
-flex-direction: column;
-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   text-align: center;
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 14px;
-`;
 
+  @media (max-width: 300px) {
+    font-size: 8px;
+  }
+`;
 
 export const Title = styled.h2`
   font-size: 24px;
   font-weight: bold;
+
+  @media (max-width: 300px) {
+    font-size: 18px;
+  }
 `;
 
 export const Subtitle = styled.p`
@@ -49,6 +84,10 @@ export const Subtitle = styled.p`
   font-weight: 300;
   color: #a0a4a8;
   text-transform: uppercase;
+
+  @media (max-width: 300px) {
+    font-size: 10px;
+  }
 `;
 
 export const ForgotPasswordText = styled.span`
@@ -59,7 +98,7 @@ export const ForgotPasswordText = styled.span`
 `;
 
 export const ButtonCloseContainer = styled.div`
-position: absolute;
+  position: absolute;
   top: 10px;
   right: 10px;
   display: flex;
