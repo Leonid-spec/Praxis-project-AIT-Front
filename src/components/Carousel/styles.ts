@@ -10,19 +10,35 @@ export const CarouselContainer = styled.div`
   background-color: #f8f8f8; 
   padding: 30px;
 
-  @media (max-width: 1024px) {
-    height: 350px;
-    padding: 20px;
-  }
-
-  @media (max-width: 768px) {
+  @media (max-width: 1240px) {
     height: 300px;
     padding: 20px;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     height: 250px;
+    padding: 20px;
+  }
+
+  @media (max-width: 890px) {
+    height: 200px;
+    padding: 20px;
+  }
+
+
+  @media (max-width: 768px) {
+    height: 180px;
+    padding: 20px;
+  }
+
+  @media (max-width: 480px) {
+    height: 100px;
     padding: 10px;
+  }
+
+  @media (max-width: 300px) {
+    height: 70px;
+    /* padding: 10px; */
   }
 `;
 
@@ -122,12 +138,42 @@ export const NavButton = styled.button`
     width: 40px;
     height: 40px;
     font-size: 1.2rem; 
+
+    &:nth-child(1) {
+    left: -20px; 
+  }
+
+  &:nth-child(5) {
+    right: -20px; 
+  }
   }
 
   @media (max-width: 480px) {
-    width: 30px;
-    height: 30px;
-    font-size: 1rem; 
+    width: 25px;
+    height: 25px;
+    font-size: 0.8rem; 
+
+    &:nth-child(1) {
+    left: -15px; 
+  }
+
+  &:nth-child(5) {
+    right: -15px; 
+  }
+  }
+
+  @media (max-width: 350px) {
+    width: 20px;
+    height: 20px;
+    font-size: 0.6rem; 
+
+    &:nth-child(1) {
+    left: -10px; 
+  }
+
+  &:nth-child(5) {
+    right: -10px; 
+  }
   }
 `;
 
