@@ -67,7 +67,6 @@ export const MobileMenuOverlay = styled.div`
 `;
 
 export const MobileNav = styled.nav`
-  background-color: #3b7f83;
   background-color: #7a2141;
   padding: 30px 20px;
   display: flex;

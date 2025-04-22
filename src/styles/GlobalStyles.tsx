@@ -27,6 +27,10 @@ const globalStyles = css`
     margin: 0;
     padding: 0;
   }
+
+  #root {
+    flex: 1;
+  }
 // Yuliia
   @media (max-width: 868px) {
     body {

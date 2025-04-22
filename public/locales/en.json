@@ -100,7 +100,8 @@
       },
       "hours": {
         "weekdays": "Mon-Fri:",
-        "weekend": "Sat-Sun: closed"
+        "weekend": "Sat-Sun: ",
+        "weekendText": "closed"
       }
     },
     "other": {
