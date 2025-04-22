@@ -78,7 +78,8 @@
     "footer": {
       "titles": {
         "contact": "КОНТАКТЫ",
-        "time": "ЧАСЫ РАБОТЫ"
+        "time": "ЧАСЫ РАБОТЫ",
+        "pages": "СТРАНИЦИ"
       },
       "daysOfWeek": {
         "monday": "Понедельник",

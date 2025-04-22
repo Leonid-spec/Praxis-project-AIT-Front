@@ -14,6 +14,8 @@ import {
   ContactText,
   DaysOfWeek,
   ContactsInfoContainer,
+  StyledNavLink,
+  Nav,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
@@ -68,6 +70,18 @@ const Footer: React.FC = () => {
     }
   }, []);
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 434);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <FooterContainer>
       <Content>
@@ -103,7 +117,7 @@ const Footer: React.FC = () => {
         <Column>
           <TimesContainer>
             <TitleText>{t("message.footer.titles.time")}</TitleText>
-            <DaysOfWeekBox>    
+            <DaysOfWeekBox>
               <DaysOfWeek>
                 <p>{t("message.footer.daysOfWeek.monday")}:</p>
                 <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
@@ -121,6 +135,28 @@ const Footer: React.FC = () => {
               </DaysOfWeek>
             </DaysOfWeekBox>
           </TimesContainer>
+        </Column>
+
+        <Column>
+          {isMobile && (
+            <>
+              <TitleText>{t("message.footer.titles.pages")}</TitleText>
+             <Nav>
+                <StyledNavLink to="/services">
+                  {t("message.header.menu.services")}
+                </StyledNavLink>
+                <StyledNavLink to="/about">
+                  {t("message.header.menu.about_us")}
+                </StyledNavLink>
+                <StyledNavLink to="/team">
+                  {t("message.header.menu.team")}
+                </StyledNavLink>
+                <StyledNavLink to="/contacts">
+                  {t("message.header.menu.contact")}
+                </StyledNavLink>
+             </Nav>
+            </>
+          )}
         </Column>
       </Content>
     </FooterContainer>

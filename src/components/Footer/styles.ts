@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 export const FooterContainer = styled.footer`
@@ -521,4 +522,47 @@ export const DayRowAdd = styled.div`
     font-weight: normal;
     text-align: left;
   }
+`;
+
+
+export const Nav = styled.nav`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 25px;
+
+  @media (max-width: 1350px) {
+    gap: 10px;
+  }
+`;
+
+export const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+  color: #3d3d3d;
+  font-size: 1.2rem;
+
+  &.active {
+    color: #7a2141;
+  }
+  
+  &:hover {
+    color: #9ceef1;
+    color: #7a2141;
+  }
+
+  @media (max-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 10px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: 8px;
+    }
 `;
