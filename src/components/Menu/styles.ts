@@ -10,10 +10,19 @@ export const MenuContainer = styled.div`
   align-items: center;
   text-align: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
+  padding: 10px 30px;
+  max-width: 100%;
   background-color: #ffffff;
   box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 450px) {
+    gap: 20px;
+    padding: 6px 10px;
+  }
+
+  @media (max-width: 360px) {
+    gap: 10px;
+  }
 `;
 
 export const BesideLogoContainer = styled.div`
@@ -36,6 +45,13 @@ export const Logo = styled.div`
   align-items: center;
   margin-left: 10px;
   
+  @media (max-width: 450px) {
+    margin-left: 8px;
+  }
+
+  @media (max-width: 300px) {
+    margin-left: 6px;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -117,15 +133,44 @@ export const NavLinkImg = styled.img`
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
+
+  @media (max-width: 450px) {
+    width: 40px;
+    height: 40px;
+    margin-right: 8px;
+  }
+
+  @media (max-width: 300px) {
+    width: 30px;
+    height: 30px;
+    margin-right: 6px;
+  }
 `;
 
 export const NavLinkText = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #3d3d3d;
   font-size: 1.4rem;
   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
   font-weight: 600;
+  margin-bottom: 4px;
+
+  @media (max-width: 600px) {
+    /* display: none; */
+    font-size: 1.2rem;
+  }
+
+
   @media (max-width: 450px) {
-    display: none;
+    /* display: none; */
+    font-size: 1rem;
+  }
+
+  @media (max-width: 300px) {
+    /* display: none; */
+    font-size: 0.8rem;
   }
 
   @media (min-width: 1920px) {

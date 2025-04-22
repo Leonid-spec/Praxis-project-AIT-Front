@@ -5,6 +5,14 @@ export const BurgerMenuContainer = styled.div`
 display: flex;
 gap: 20px;
 align-items: center;
+
+@media (max-width: 450px) {
+    gap: 10px;
+  }
+
+  @media (max-width: 360px) {
+    gap: 4px;
+  }
 `;
 
 export const BurgerAndAppBtnContainer = styled.div`
@@ -18,7 +26,7 @@ export const BurgerAndAppBtnContainer = styled.div`
 
 export const BurgerButton = styled.div`
   display: none;
-  margin-top: 8px;
+  /* margin-top: 8px; */
 
   @media (max-width: 1440px) {
     display: block;
@@ -28,6 +36,14 @@ export const BurgerButton = styled.div`
     color: #88e3e6;
     color: #7a2141;
     cursor: pointer;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 300px) {
+    /* margin-left: 6px; */
   }
 `;
 

@@ -10,7 +10,14 @@ export const AdminIconWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const AdminIcon = styled.img`
+// export const AdminIcon = styled.img`
+//   width: 40px;
+//   height: 40px;
+//   object-fit: cover;
+//   border-radius: 50%;
+// `;
+
+export const AdminIcon = styled.div`
   width: 40px;
   height: 40px;
   object-fit: cover;
