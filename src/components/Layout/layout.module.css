@@ -22,6 +22,7 @@
   /* padding: 0 25px;  */
   background-color: #f6f9fc;
   width: 100%; /* Гарантируем одинаковую ширину */
+  height: 100%;
 }
 
 .footer {

@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import LoginAdminForm from "../Login/LoginAdminForm";
-import { FaSignOutAlt, FaTools } from "react-icons/fa";
+import { FaSignOutAlt, FaTools, FaSignInAlt } from "react-icons/fa";
+
 import {
   AdminMenuWrapper,
   AdminIconWrapper,
@@ -58,10 +59,14 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
           }
         }}
       >
-        <AdminIcon
+        {/* <AdminIcon
           src="https://th.bing.com/th/id/R.fbf39144bff5c02898fdc8fd583f84b6?rik=qLhp7D3LhK%2fQgA&pid=ImgRaw&r=0"
           alt="Admin"
-        />
+        /> */}
+        <AdminIcon>
+          <FaSignInAlt color="#7a2141" size={24} />
+        </AdminIcon>
+        
       </AdminIconWrapper>
 
       {isLoggedIn && showDropdown && (
