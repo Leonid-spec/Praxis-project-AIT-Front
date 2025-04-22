@@ -100,7 +100,8 @@
       },
       "hours": {
         "weekdays": "Пн-Пт: ",
-        "weekend": "Сб-Вс: выходной"
+        "weekend": "Сб-Вс: ",
+        "weekendText": "выходной"
       }
     },
     "other": {

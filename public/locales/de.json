@@ -101,7 +101,8 @@
       },
       "hours": {
         "weekdays": "Mo-Fr: ",
-        "weekend": "Sa-So: geschlossen"
+        "weekend": "Sa-So: ",
+        "weekendText": "geschlossen"
       }
     },
     "other": {

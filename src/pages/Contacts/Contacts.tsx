@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
-  ButtonContainer,
+  // ButtonContainer,
   CardsGrid,
   ContactIcons,
   ContactsBox,
@@ -18,7 +18,7 @@ import {
   SprechzeitenWrapper,
 } from "./styles";
 import { useTranslation } from "react-i18next";
-import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
+// import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
 
 const Contacts: React.FC = () => {
@@ -71,7 +71,10 @@ const Contacts: React.FC = () => {
         const parsedHours = JSON.parse(savedHours);
         setWorkingHours(parsedHours);
       } catch (error) {
-        console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
+        console.error(
+          "Ошибка при загрузке рабочего времени из localStorage:",
+          error
+        );
       }
     }
   }, []);
@@ -118,18 +121,22 @@ const Contacts: React.FC = () => {
               </ContactsBoxTitle>
 
               <DaysOfWeek>
-                <DaysOfWeekp>{address.street}, {address.zipCode} {address.city}
-                  </DaysOfWeekp>
+                <DaysOfWeekp>
+                  {address.street}, {address.zipCode} {address.city}
+                </DaysOfWeekp>
               </DaysOfWeek>
 
-              <ContactIcons >
-                <IconCircle onClick={handleCopyCoordinates} style={{ cursor: "pointer" }}>
+              <ContactIcons>
+                <IconCircle
+                  onClick={handleCopyCoordinates}
+                  style={{ cursor: "pointer" }}
+                >
                   <FaCopy />
                 </IconCircle>
                 <DaysOfWeekspan>{address.gps}</DaysOfWeekspan>
               </ContactIcons>
 
-              <ContactIcons >
+              <ContactIcons>
                 <IconCircle onClick={handleCall} style={{ cursor: "pointer" }}>
                   <FaPhone
                     style={{
@@ -140,7 +147,7 @@ const Contacts: React.FC = () => {
                 <DaysOfWeekspan>{address.phone}</DaysOfWeekspan>
               </ContactIcons>
 
-              <ContactIcons >
+              <ContactIcons>
                 <IconCircle onClick={handleEmail} style={{ cursor: "pointer" }}>
                   <FaEnvelope />
                 </IconCircle>
@@ -160,6 +167,7 @@ const Contacts: React.FC = () => {
                   <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
                   <p>{t("message.footer.daysOfWeek.thursday")}:</p>
                   <p>{t("message.footer.daysOfWeek.friday")}:</p>
+                  <p>{t("message.footer.hours.weekend")}</p>
                 </DaysOfWeek>
                 <DaysOfWeek>
                   <p>{workingHours.monday}</p>
@@ -167,13 +175,14 @@ const Contacts: React.FC = () => {
                   <p>{workingHours.wednesday}</p>
                   <p>{workingHours.thursday}</p>
                   <p>{workingHours.friday}</p>
+                  <p>{t("message.footer.hours.weekendText")}</p>
                 </DaysOfWeek>
               </DaysOfWeekBox>
-              <ButtonContainer>
+              {/* <ButtonContainer>
                 <MakeAppointmentBtn
                   text={t("message.main.use_oft.button.title")}
                 />
-              </ButtonContainer>
+              </ButtonContainer> */}
             </SprechzeitenBox>
           </SprechzeitenWrapper>
         </CardsGrid>
