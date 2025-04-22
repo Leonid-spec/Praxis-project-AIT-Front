@@ -1,8 +1,9 @@
 import { ReactNode } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../Header/Header"; // Правильный путь к компоненту Header
-import ResponsiveFooter from "../Footer/ResponsiveFooter"; // Правильный путь к компоненту ResponsiveFooter
+// import ResponsiveFooter from "../Footer/ResponsiveFooter"; // Правильный путь к компоненту ResponsiveFooter
 import styles from "./layout.module.css";
+import Footer from "../Footer/Footer";
 
 interface LayoutProps {
   children: ReactNode;
@@ -25,7 +26,9 @@ const Layout = ({ children }: LayoutProps) => {
       <main className={styles.content}>{children}</main>
       
       {/* Условное отображение футера */}
-      {!hideFooter && <ResponsiveFooter />}
+      {/* {!hideFooter && <ResponsiveFooter />} */}
+      {!hideFooter && <Footer />}
+
     </div>
     </div>
   );

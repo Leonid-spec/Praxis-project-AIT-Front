@@ -78,7 +78,8 @@
     "footer": {
       "titles": {
         "contact": "CONTACTS",
-        "time": "OPENING HOURS"
+        "time": "OPENING HOURS",
+        "pages": "PAGES"
       },
       "daysOfWeek": {
         "monday": "Monday",

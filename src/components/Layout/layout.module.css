@@ -9,7 +9,7 @@
   /* margin: 0 auto; Центрирование содержимого */
  
   width: 100%; /* Убедимся, что занимает всю ширину */
-  box-sizing: border-box; /* Учет отступов и границ */
+  box-sizing: border-box; 
 }
 
 .header {
@@ -19,9 +19,9 @@
 
 .content {
   flex: 1;
-  /* padding: 0 25px;  */
   background-color: #f6f9fc;
   width: 100%; /* Гарантируем одинаковую ширину */
+  height: 100%;
 }
 
 .footer {

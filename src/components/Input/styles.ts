@@ -9,6 +9,10 @@ export const Label = styled.label`
   font-size: 14px;
   color: #2e3a59;
   margin-top: 10px;
+
+  @media (max-width: 300px) {
+    font-size: 10px;
+  }
 `;
 
 export const RequiredMarker = styled.span`
@@ -32,9 +36,17 @@ export const InputContainer = styled.div<InputContainerProps>`
   &:focus-within {
     border-color: #7a2141;
   }
+
+  @media (max-width: 300px) {
+    padding: 2px 10px;
+  }
 `;
 
 export const InputIcon = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+
   width: 20px;
   height: 20px;
   color: #a0a4a8;
@@ -52,6 +64,15 @@ export const StyledInput = styled.input`
   &::placeholder {
     color: #a0a4a8;
   }
+
+  @media (max-width: 300px) {
+    font-size: 8px;
+
+    &::placeholder {
+    color: #a0a4a8;
+    font-size: 10px;
+  }
+  }
 `;
 
 export const StyledTextarea = styled.textarea`
@@ -66,6 +87,15 @@ export const StyledTextarea = styled.textarea`
   
   &::placeholder {
     color: #a0a4a8;
+  }
+
+  @media (max-width: 300px) {
+    font-size: 8px;
+
+    &::placeholder {
+    color: #a0a4a8;
+    font-size: 10px;
+  }
   }
 `;
 

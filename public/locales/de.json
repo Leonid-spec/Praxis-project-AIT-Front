@@ -79,7 +79,8 @@
     "footer": {
       "titles": {
         "contact": "KONTAKTE",
-        "time": "SPRECHZEITEN"
+        "time": "SPRECHZEITEN",
+        "pages": "SEITEN"
       },
       "daysOfWeek": {
         "monday": "Montag",

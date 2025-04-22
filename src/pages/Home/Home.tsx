@@ -42,7 +42,6 @@ const Home = () => {
       </LeftContainer>
       <RightContainer>
         <RightContainerPhoto 
-          // src='https://sa1s3optim.patientpop.com/filters:format(webp)/assets/production/practices/302cbddc2538f009366ee1c813a8dd8cf6cbd409/images/2576164.png' 
           src='/images/photo_5461023519723876539_x.jpg' 
         />
       </RightContainer>

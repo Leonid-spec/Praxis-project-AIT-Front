@@ -126,7 +126,7 @@ const Contacts: React.FC = () => {
                 <IconCircle onClick={handleCopyCoordinates} style={{ cursor: "pointer" }}>
                   <FaCopy />
                 </IconCircle>
-                <DaysOfWeekspan>GPS: {address.gps}</DaysOfWeekspan>
+                <DaysOfWeekspan>{address.gps}</DaysOfWeekspan>
               </ContactIcons>
 
               <ContactIcons >
