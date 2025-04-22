@@ -58,7 +58,6 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   gap: 25px;
-  margin-top: 4px;
 
   @media (max-width: 1350px) {
     gap: 10px;

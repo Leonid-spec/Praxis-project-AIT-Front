@@ -2,11 +2,13 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
   display: grid;
-  grid-template-columns: 40% 60%;
+  /* grid-template-columns: 40% 60%; */
+  grid-template-columns: 50% 50%;
   justify-content: space-between;
-  margin: 20px auto;
-  margin-right: 20px;
-
+  /* margin: 20px auto; */
+  margin: 10px auto;
+  margin-right: 10px;
+  /* gap: 10px; */
 `;
 
 export const LeftContainer = styled.div`

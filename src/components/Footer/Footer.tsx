@@ -9,10 +9,11 @@ import {
   IconCircle,
   TimesContainer,
   ColumnLeft,
-  DayRow,
   DaysOfWeekBox,
-  Title2,
-  Title1,
+  TitleText,
+  ContactText,
+  DaysOfWeek,
+  ContactsInfoContainer,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
@@ -36,7 +37,6 @@ const Footer: React.FC = () => {
     email: "praxis.sofia.abramian@gmail.com",
   });
 
-  // Загрузка данных режима работы из localStorage
   useEffect(() => {
     const savedHours = localStorage.getItem("workingHours");
     if (savedHours) {
@@ -49,14 +49,14 @@ const Footer: React.FC = () => {
     }
   }, []);
 
-  // Загрузка данных адреса из localStorage
   useEffect(() => {
     const savedAddress = localStorage.getItem("address");
     if (savedAddress) {
       try {
         const parsedAddress = JSON.parse(savedAddress);
         setAddress({
-          clinicName: parsedAddress.clinicName || "Zahnarztpraxis Sofia Abramian",
+          clinicName:
+            parsedAddress.clinicName || "Zahnarztpraxis Sofia Abramian",
           street: parsedAddress.street || "Breslauer Str. 17",
           city: parsedAddress.city || "78467 Konstanz",
           phone: parsedAddress.phone || "+49 75 31 7 72 73",
@@ -71,65 +71,56 @@ const Footer: React.FC = () => {
   return (
     <FooterContainer>
       <Content>
-
         <ColumnLeft>
-
-          <Title1>{t("message.footer.titles.contact")}</Title1>
-          <Address>
-            <p>{address.clinicName}</p>
-            <p>{address.street}</p>
-            <p>{address.city}</p>
-          </Address>
-          <Info>
-            <ContactIcons style={{ cursor: "pointer" }}>
-              <IconCircle>
-                <FaPhone
-                  style={{
-                    transform: "rotate(90deg)",
-                  }}
-                />
-              </IconCircle>
-              <span>{address.phone}</span>
-            </ContactIcons>
-            <ContactIcons style={{ cursor: "pointer" }}>
-              <IconCircle>
-                <FaEnvelope />
-              </IconCircle>
-              <span>{address.email}</span>
-            </ContactIcons>
-          </Info>
-
+          <TitleText>{t("message.footer.titles.contact")}</TitleText>
+          <ContactsInfoContainer>
+            <Address>
+              <p>{address.clinicName}</p>
+              <p>{address.street}</p>
+              <p>{address.city}</p>
+            </Address>
+            <Info>
+              <ContactIcons style={{ cursor: "pointer" }}>
+                <IconCircle>
+                  <FaPhone
+                    style={{
+                      transform: "rotate(90deg)",
+                    }}
+                  />
+                </IconCircle>
+                <ContactText>{address.phone}</ContactText>
+              </ContactIcons>
+              <ContactIcons style={{ cursor: "pointer" }}>
+                <IconCircle>
+                  <FaEnvelope />
+                </IconCircle>
+                <ContactText>{address.email}</ContactText>
+              </ContactIcons>
+            </Info>
+          </ContactsInfoContainer>
         </ColumnLeft>
-        
-        {/* Колонка с рабочим временем */}
+
         <Column>
-         
           <TimesContainer>
-            <DaysOfWeekBox>
-            <Title2>{t("message.footer.titles.time")}</Title2>
-              <DayRow>
+            <TitleText>{t("message.footer.titles.time")}</TitleText>
+            <DaysOfWeekBox>    
+              <DaysOfWeek>
                 <p>{t("message.footer.daysOfWeek.monday")}:</p>
-                <p>{workingHours.monday}</p>
-              </DayRow>
-              <DayRow>
                 <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
-                <p>{workingHours.tuesday}</p>
-              </DayRow>
-              <DayRow>
                 <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
-                <p>{workingHours.wednesday}</p>
-              </DayRow>
-              <DayRow>
                 <p>{t("message.footer.daysOfWeek.thursday")}:</p>
-                <p>{workingHours.thursday}</p>
-              </DayRow>
-              <DayRow>
                 <p>{t("message.footer.daysOfWeek.friday")}:</p>
+                {/* <p>{t("message.footer.hours.weekend")}</p> */}
+              </DaysOfWeek>
+              <DaysOfWeek>
+                <p>{workingHours.monday}</p>
+                <p>{workingHours.tuesday}</p>
+                <p>{workingHours.wednesday}</p>
+                <p>{workingHours.thursday}</p>
                 <p>{workingHours.friday}</p>
-              </DayRow>
+              </DaysOfWeek>
             </DaysOfWeekBox>
           </TimesContainer>
-
         </Column>
       </Content>
     </FooterContainer>

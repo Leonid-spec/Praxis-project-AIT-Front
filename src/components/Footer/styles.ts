@@ -4,6 +4,7 @@ export const FooterContainer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
+  align-items: flex-start;
   width: 100%;
   background-color: #f0effc;
   padding: 40px 20px;
@@ -18,7 +19,7 @@ export const FooterContainer = styled.footer`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     padding: 20px;
   }
 
@@ -37,15 +38,16 @@ export const Days = styled.div`
 `;
 export const Content = styled.div`
   display: flex;
-
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  flex-wrap: wrap;
   width: 100%;
 
-  @media (max-width: 768px) {
-    flex-direction: column; /* Колонки становятся вертикальными */
-    align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (max-width: 450px) {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 `;
 
@@ -54,14 +56,17 @@ export const ColumnLeft = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
-  flex: 1;
   text-align: left;
-  margin-left: 10%; 
+  margin-left: 10%;
+
+  @media (max-width: 1024px) {
+    margin-left: 5%;
+  }
 
   @media (max-width: 768px) {
-    align-items: center;
     text-align: center;
     margin-bottom: 20px;
+    margin-left: 0;
   }
 
   @media (max-width: 576px) {
@@ -70,7 +75,6 @@ export const ColumnLeft = styled.div`
   }
 `;
 
-
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
@@ -78,9 +82,7 @@ export const Column = styled.div`
   align-items: flex-start;
   flex: 1;
   text-align: left;
-  /* margin: 0 10px; */
   @media (max-width: 768px) {
-    align-items: center;
     text-align: center;
     margin-bottom: 20px;
   }
@@ -90,20 +92,8 @@ export const Column = styled.div`
   }
 `;
 
-
-// export const LogoContainer = styled(Column)`
-//   justify-content: center;
-//   align-items: center;
-//   background-color: #a0eef2;
-//   text-align: center;
-
-//   @media (max-width: 768px) {
-//     margin-bottom: 20px;
-//   }
-// `;
-
 export const ContentBelowTitle = styled.div`
-  margin-top: 20px; /* Отступ сверху */
+  margin-top: 20px;
 `;
 
 export const Logo = styled.img`
@@ -125,27 +115,26 @@ export const Title1 = styled.h3`
   margin-bottom: 20px;
   color: #69e5ec;
   color: #7a2141;
-  /* color: #333; */
 
   @media (max-width: 768px) {
     font-size: 20px;
-    height: auto; /* Убираем фиксированную высоту для мобильных устройств */
+    height: auto;
   }
 
   @media (max-width: 576px) {
     font-size: 18px;
   }
 `;
+
 export const Title2 = styled.h3`
   font-size: 17px;
   margin-bottom: 20px;
   color: #69e5ec;
   color: #7a2141;
-  /* color: #333; */
 
   @media (max-width: 768px) {
     font-size: 20px;
-    height: auto; /* Убираем фиксированную высоту для мобильных устройств */
+    height: auto;
   }
 
   @media (max-width: 576px) {
@@ -153,33 +142,16 @@ export const Title2 = styled.h3`
   }
 `;
 
-
-export const TimesContainer = styled.div`
+export const TitleText = styled.h3`
   display: flex;
-  gap: 40px;
-  width: 100%;
-`;
-
-export const DaysTimesContainer = styled.p`
-  width: 100%;
-`;
-
-export const Address = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 20px;
-  margin-top: 8px;
-`;
-
-export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   font-size: 16px;
+  margin-bottom: 20px;
+  color: #7a2141;
 
   @media (max-width: 768px) {
     font-size: 14px;
+    height: auto;
+    margin-bottom: 10px;
   }
 
   @media (max-width: 576px) {
@@ -187,25 +159,126 @@ export const Info = styled.div`
   }
 `;
 
-export const DaysOfWeekBox = styled.div`
-
+export const TimesContainer = styled.div`
   display: flex;
-  flex-direction: column; 
-  gap: 5px;
+  flex-direction: column;
+
+  width: 100%;
+`;
+
+export const DaysTimesContainer = styled.div`
+  width: 100%;
+`;
+
+export const ContactsInfoContainer = styled.div`
+  /* background-color: blue; */
+  font-size: 20px;
+
+  @media (max-width: 1024px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 8px;
+  }
+`;
+
+export const Address = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 8px;
+
+  @media (max-width: 768px) {
+    gap: 6px;
+    font-size: 14px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 8px;
+  }
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 20px;
+
+  /* @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 576px) {
+    font-size: 12px;
+  } */
+  @media (max-width: 1024px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    gap: 12px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 8px;
+  }
+`;
+
+export const DaysOfWeekBox = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  align-items: flex-start;
+  text-align: left;
+  gap: 15px;
   background-color: #f0effc;
   border-radius: 12px;
-  padding: 5px;
   width: 100%;
-  /* max-width: 1200px;  */
+
+  @media (max-width: 768px) {
+    gap: 5px;
+  }
 `;
 
 export const DayRow = styled.div`
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   align-items: center;
   padding: 5px 0;
-  
-  font-size: 16px; 
+
+  font-size: 16px;
   color: #333;
 
   &:last-child {
@@ -219,19 +292,116 @@ export const DayRow = styled.div`
   }
 
   & > p:last-child {
-    flex: 3;
+    flex: 5;
     text-align: left;
   }
-`;
 
-export const Text = styled.div`
-  padding: 0;
-  margin: 0;
+  @media (max-width: 1024px) {
+    font-size: 16px;
+
+    & > p:first-child {
+      flex: 1;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    & > p:last-child {
+      flex: 4;
+      text-align: left;
+    }
+  }
+
+  /* @media (max-width: 890px) {
+    font-size: 15px;
+
+    & > p:first-child {
+      flex: 1;
+      font-weight: bold;
+      text-align: left;
+    }
+
+    & > p:last-child {
+      flex: 3;
+      text-align: left;
+    }
+  } */
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    & > p:last-child {
+      flex: 3;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12x;
+    & > p:last-child {
+      flex: 2;
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 350px) {
+    font-size: 10px;
+  }
+
+  p {
+    font-size: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 10px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: 8px;
+    }
+  }
 `;
 
 export const ContactIcons = styled.div`
   display: flex;
   align-items: center;
+  /* font-size: 16px; */
+
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 8px;
+  }
+`;
+
+export const ContactText = styled.span`
+  display: inline;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 10px;
+  }
+
+  @media (max-width: 340px) {
+    font-size: 8px;
+  }
 `;
 
 export const IconCircle = styled.div`
@@ -246,6 +416,44 @@ export const IconCircle = styled.div`
   font-size: 14px;
   color: #ffffff;
   margin-right: 10px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 450px) {
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+  }
+`;
+
+export const DaysOfWeek = styled.div`
+  /* color: #333; */
+  font-size: 20px;
+  line-height: 2;
+
+  p {
+    font-size: 20px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 12px;
+    }
+
+    @media (max-width: 380px) {
+      font-size: 10px;
+    }
+
+    @media (max-width: 340px) {
+      font-size: 8px;
+    }
+  }
 `;
 
 export const DaysStyle = styled.div`
@@ -291,7 +499,6 @@ export const ButtonWrapper = styled.div`
     align-self: center;
   }
 `;
-
 
 export const DayRowAdd = styled.div`
   display: flex;
