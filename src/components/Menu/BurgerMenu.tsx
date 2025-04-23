@@ -86,17 +86,19 @@ const BurgerMenu = () => {
                   ))}
                 </LanguagePanel>
 
-                  <MakeAppointmentBtn
-                    text={t("message.main.use_oft.button.title")}
-                    bgColor="#ffffff"
-                    textColor="#7a2141"
-                  />
+                <MakeAppointmentBtn
+                  text={t("message.main.use_oft.button.title")}
+                  bgColor="#ffffff"
+                  textColor="#7a2141"
+                />
+                <AdminMenu
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
               </MobileNav>
             </MobileMenuOverlay>
           </>
         )}
-
-        <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </BurgerMenuContainer>
     </>
   );

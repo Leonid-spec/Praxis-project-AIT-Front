@@ -18,10 +18,15 @@ export const AdminIconWrapper = styled.div`
 // `;
 
 export const AdminIcon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
   width: 40px;
   height: 40px;
   object-fit: cover;
   border-radius: 50%;
+  background-color: white;
 `;
 
 export const Dropdown = styled.div`

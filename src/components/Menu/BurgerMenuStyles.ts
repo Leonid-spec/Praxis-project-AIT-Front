@@ -71,6 +71,7 @@ export const MobileNav = styled.nav`
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
   width: 90%;
   max-width: 300px;
@@ -79,13 +80,11 @@ export const MobileNav = styled.nav`
 export const MobileNavLink = styled(NavLink)`
   text-decoration: none;
   color: #ffffff;
-  font-size: 1.1rem;
   text-align: center;
   border: none;
 
   &:hover {
     color: #111;
-    /* color: #ef1c57; */
   }
 `;
 
@@ -102,6 +101,8 @@ export const LanguageLink = styled.button`
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
+  font-size: 1.1rem;
+
   &:hover {
     color: #4a90e2;
     color: #7a2141;

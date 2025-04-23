@@ -3,6 +3,9 @@ import styled from "styled-components";
 interface ButtonProps {
   bgColor?: string;
   textColor?: string;
+  width?: string;
+  height?: string;
+  padding?: string;
 }
 
 export const StyledButton = styled.button<ButtonProps>`
@@ -46,16 +49,14 @@ export const StyledButton = styled.button<ButtonProps>`
   }
 
   @media (max-width: 768px) {
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    /* font-size: clamp(0.8rem, 2vw, 1.2rem); */
     padding: 10px 20px;
   }
 
   @media (max-width: 480px) {
-    font-size: clamp(0.6rem, 2vw, 1rem);
-    padding: 8px 16px;
+    /* padding: 8px 16px; */
   }
   @media (max-width: 350px) {
-    font-size: 0.5rem;
-    padding: 6px 12px;
+    /* padding: 6px 12px; */
   }
 `;
