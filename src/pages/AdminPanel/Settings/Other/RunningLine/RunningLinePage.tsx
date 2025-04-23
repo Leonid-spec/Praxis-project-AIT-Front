@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Notification from "../../../../components/Notification/Notification";
+import Notification from "../../../../../components/Notification/Notification";
 import "./RunningLinePage.css";
 
 const RunningLinePage: React.FC = () => {

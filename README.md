@@ -32,4 +32,3 @@ npm install react-slick slick-carousel
 
 11) Перемещ. галереи
 npm install @dnd-kit/core @dnd-kit/sortable
-

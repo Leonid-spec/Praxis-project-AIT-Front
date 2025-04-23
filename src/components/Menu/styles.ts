@@ -15,6 +15,11 @@ export const MenuContainer = styled.div`
   background-color: #ffffff;
   box-shadow: 0px 2px 22px rgba(0, 0, 0, 0.05);
 
+  @media (max-width: 768px) {
+    gap: 10px;
+    padding: 10px;
+  }
+
   @media (max-width: 450px) {
     gap: 20px;
     padding: 6px 10px;
@@ -125,6 +130,7 @@ export const AdminPanelBox = styled.div`
   background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 `;
 
 export const NavLinkImg = styled.img`
@@ -154,27 +160,29 @@ export const NavLinkText = styled.span`
   font-size: 1.4rem;
   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
   font-weight: 600;
-  margin-bottom: 4px;
 
-  @media (max-width: 600px) {
-    /* display: none; */
+  @media (max-width: 768px) {
     font-size: 1.2rem;
   }
 
-
-  @media (max-width: 450px) {
-    /* display: none; */
+  @media (max-width: 600px) {
     font-size: 1rem;
   }
 
-  @media (max-width: 300px) {
-    /* display: none; */
-    font-size: 0.8rem;
+  @media (max-width: 530px) {
+    max-width: 150px;
   }
 
-  @media (min-width: 1920px) {
-    font-size: 1.4rem;
+  @media (max-width: 450px) {
+    font-size: 0.8rem;
+    max-width: 100px;
   }
+
+  @media (max-width: 300px) {
+    max-width: 70px;
+    font-size: 0.6rem;
+  }
+  
 `;
 
 export const StyledNavLinkMenu = styled(Link)`
@@ -188,7 +196,7 @@ export const StyledNavLinkMenu = styled(Link)`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #3b7f83;
+    background-color: #7a2141;
     color: white;
   }
 `;

@@ -22,7 +22,11 @@
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
         "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan>  IHNEN",
-        "subtitle2": "IHR SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
+        "subtitle2": "IHR SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>",
+       "clinic_description": "<HighlightedSpan>Unsere Klinik</HighlightedSpan> verbindet <HighlightedSpan>höchste medizinische Standards</HighlightedSpan>, moderne Ausstattung und einen <HighlightedSpan>individuellen Ansatz</HighlightedSpan> für jeden Patienten. Wir setzen auf <HighlightedSpan>innovative Technologien</HighlightedSpan> und arbeiten kontinuierlich an der Verbesserung unseres Services, um <HighlightedSpan>bestmögliche Ergebnisse</HighlightedSpan> zu erzielen. Für Ihren Komfort steht Ihnen unser <HighlightedSpan>eigener Parkplatz</HighlightedSpan> zur Verfügung – Sie müssen sich keine Sorgen um einen Stellplatz machen.",
+        "clinic_description1": "<HighlightedSpan>Unsere Klinik</HighlightedSpan> verbindet <HighlightedSpan>höchste medizinische Standards</HighlightedSpan>, moderne Ausstattung und einen <HighlightedSpan>individuellen Ansatz</HighlightedSpan> für jeden Patienten.",
+        "clinic_description3": "Für Ihren Komfort steht Ihnen unser <HighlightedSpan>eigener Parkplatz</HighlightedSpan> zur Verfügung – Sie müssen sich keine Sorgen um einen Stellplatz machen.",
+        "clinic_description2": "Wir setzen auf <HighlightedSpan>innovative Technologien</HighlightedSpan> und arbeiten kontinuierlich an der Verbesserung unseres Services, um bestmögliche Ergebnisse zu erzielen."
       },
       "about_us_page": {
         "ours": "Unsere ",

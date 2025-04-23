@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import {
@@ -19,19 +19,7 @@ import MakeAppointmentBtn from "../Button/MakeAppointmentBtn/MakeAppointmentBtn"
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, i18n } = useTranslation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);  
 
   const handleLanguageChange = (lang: string) => {
     i18n.changeLanguage(lang);
@@ -46,9 +34,9 @@ const BurgerMenu = () => {
     <>
       <BurgerMenuContainer>
         <BurgerAndAppBtnContainer>
-          {windowWidth >= 800 && (
-            <MakeAppointmentBtn text={t("message.main.use_oft.button.title")} />
-          )}
+            <MakeAppointmentBtn 
+                text={t("message.main.use_oft.button.title")} 
+            />
 
           <BurgerButton
             onClick={() => setIsOpen(!isOpen)}
@@ -86,17 +74,20 @@ const BurgerMenu = () => {
                   ))}
                 </LanguagePanel>
 
-                  <MakeAppointmentBtn
-                    text={t("message.main.use_oft.button.title")}
-                    bgColor="#ffffff"
-                    textColor="#7a2141"
-                  />
+                <MakeAppointmentBtn
+                  text={t("message.main.use_oft.button.title")}
+                  bgColor="#ffffff"
+                  textColor="#7a2141"
+                  fontSize="1rem"
+                />
+                <AdminMenu
+                  isLoggedIn={isLoggedIn}
+                  setIsLoggedIn={setIsLoggedIn}
+                />
               </MobileNav>
             </MobileMenuOverlay>
           </>
         )}
-
-        <AdminMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       </BurgerMenuContainer>
     </>
   );

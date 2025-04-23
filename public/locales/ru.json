@@ -22,7 +22,11 @@
       "home_page": {
         "title": "Добро пожаловать в нашу стоматологическую клинику",
         "subtitle1": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ",
-        "subtitle2": "САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
+        "subtitle2": "САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>",
+        "clinic_description": "<HighlightedSpan>Наша клиника</HighlightedSpan> — это сочетание <HighlightedSpan>высоких медицинских стандартов</HighlightedSpan>, современного оборудования и <HighlightedSpan>индивидуального подхода</HighlightedSpan> к каждому пациенту. Мы внедряем <HighlightedSpan>передовые технологии</HighlightedSpan> и постоянно улучшаем качество обслуживания, чтобы обеспечить <HighlightedSpan>наилучший результат</HighlightedSpan>. Для удобства наших клиентов предусмотрена <HighlightedSpan>собственная парковка</HighlightedSpan> — вам не придётся беспокоиться о месте для автомобиля.",
+        "clinic_description1": "<HighlightedSpan>Наша клиника</HighlightedSpan> сочетает в себе <HighlightedSpan>высочайшие медицинские стандарты</HighlightedSpan>, современное оборудование и <HighlightedSpan>индивидуальный подход</HighlightedSpan> к каждому пациенту.",
+        "clinic_description2": "Мы используем <HighlightedSpan>инновационные технологии</HighlightedSpan> и постоянно улучшаем качество сервиса, чтобы добиваться наилучших результатов.",
+        "clinic_description3": "Для вашего удобства у нас есть <HighlightedSpan>собственная парковка</HighlightedSpan> — вам не нужно беспокоиться о месте для автомобиля."
       },
       "about_us_page": {
         "ours": "Наши",
