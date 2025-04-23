@@ -12,6 +12,7 @@ interface MakeAppointmentBtnProps {
   width?: string;
   height?: string;
   padding?: string;
+  fontSize?: string;
 }
 
 const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({ 
@@ -23,7 +24,8 @@ const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({
   textColor,
   width,
   height,
-  padding
+  padding,
+  fontSize
 }) => {
   const { openModal } = useContext(ModalContext);
 
@@ -46,6 +48,7 @@ const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({
         width={width}
         height={height}
         padding={padding}
+        fontSize={fontSize}
         >
       {text}
     </StyledButton>

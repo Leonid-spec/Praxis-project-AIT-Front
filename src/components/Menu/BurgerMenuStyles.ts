@@ -21,6 +21,18 @@ export const BurgerAndAppBtnContainer = styled.div`
   align-content: center;
   align-items: center;
   gap: 50px;
+
+  @media (max-width: 768px) {
+    gap: 30px;
+  }
+
+  @media (max-width: 430px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 350px) {
+    gap: 10px;
+  }
 `;
 
 
