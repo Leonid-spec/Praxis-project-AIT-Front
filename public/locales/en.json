@@ -22,7 +22,11 @@
       "home_page": {
         "title": "Welcome to our caring and professional dental practice",
         "subtitle1": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR",
-        "subtitle2": "MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+        "subtitle2": "MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>",
+        "clinic_description": "<HighlightedSpan>Our clinic</HighlightedSpan> combines <HighlightedSpan>the highest medical standards</HighlightedSpan>, state-of-the-art equipment, and a <HighlightedSpan>personalized approach</HighlightedSpan> to each patient. We implement <HighlightedSpan>advanced technologies</HighlightedSpan> and continuously improve our services to ensure the <HighlightedSpan>best possible outcomes</HighlightedSpan>. For your convenience, we offer <HighlightedSpan>on-site parking</HighlightedSpan> — no need to worry about finding a spot.",
+        "clinic_description1": "<HighlightedSpan>Our clinic</HighlightedSpan> combines <HighlightedSpan>the highest medical standards</HighlightedSpan>, modern equipment, and an <HighlightedSpan>individual approach</HighlightedSpan> to every patient.",
+        "clinic_description2": "We implement <HighlightedSpan>innovative technologies</HighlightedSpan> and continuously improve our service quality to achieve the best results.",
+        "clinic_description3": "For your convenience, we offer <HighlightedSpan>private parking</HighlightedSpan> — no need to worry about finding a parking spot."
       },
       "about_us_page": {
         "ours": "Our ",

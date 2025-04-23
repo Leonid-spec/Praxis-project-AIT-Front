@@ -130,6 +130,7 @@ export const AdminPanelBox = styled.div`
   background-color: #f4f4f4;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
 `;
 
 export const NavLinkImg = styled.img`
@@ -178,9 +179,10 @@ export const NavLinkText = styled.span`
   }
 
   @media (max-width: 300px) {
-    /* display: none; */
+    max-width: 70px;
     font-size: 0.6rem;
   }
+  
 `;
 
 export const StyledNavLinkMenu = styled(Link)`
@@ -194,7 +196,7 @@ export const StyledNavLinkMenu = styled(Link)`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #3b7f83;
+    background-color: #7a2141;
     color: white;
   }
 `;

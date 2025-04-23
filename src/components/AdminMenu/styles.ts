@@ -1,21 +1,12 @@
 import styled from 'styled-components';
 
 export const AdminMenuWrapper = styled.div`
-  margin-top: 8px;
-  
   position: relative;
 `;
 
 export const AdminIconWrapper = styled.div`
   cursor: pointer;
 `;
-
-// export const AdminIcon = styled.img`
-//   width: 40px;
-//   height: 40px;
-//   object-fit: cover;
-//   border-radius: 50%;
-// `;
 
 export const AdminIcon = styled.div`
   display: flex;

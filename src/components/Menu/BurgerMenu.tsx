@@ -78,6 +78,7 @@ const BurgerMenu = () => {
                   text={t("message.main.use_oft.button.title")}
                   bgColor="#ffffff"
                   textColor="#7a2141"
+                  fontSize="1rem"
                 />
                 <AdminMenu
                   isLoggedIn={isLoggedIn}

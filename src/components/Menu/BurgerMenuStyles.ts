@@ -35,16 +35,13 @@ export const BurgerAndAppBtnContainer = styled.div`
   }
 `;
 
-
 export const BurgerButton = styled.div`
   display: none;
+  margin-top:4px;
 
   @media (max-width: 1440px) {
     display: block;
     font-size: 2rem;
-    color: #3b7f83;
-    color: #9ceef1;
-    color: #88e3e6;
     color: #7a2141;
     cursor: pointer;
   }
@@ -87,6 +84,8 @@ export const MobileNav = styled.nav`
   gap: 20px;
   width: 90%;
   max-width: 300px;
+  font-size: 1.1rem;
+
 `;
 
 export const MobileNavLink = styled(NavLink)`
@@ -113,7 +112,7 @@ export const LanguageLink = styled.button`
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
 
   &:hover {
     color: #4a90e2;
