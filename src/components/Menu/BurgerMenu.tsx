@@ -36,8 +36,6 @@ const BurgerMenu = () => {
         <BurgerAndAppBtnContainer>
             <MakeAppointmentBtn 
                 text={t("message.main.use_oft.button.title")} 
-                fontSize="1rem"
-                // textColor="#215e7a"
             />
 
           <BurgerButton

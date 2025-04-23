@@ -160,17 +160,21 @@ export const NavLinkText = styled.span`
   text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.2);
   font-weight: 600;
 
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+
   @media (max-width: 600px) {
-    /* display: none; */
     font-size: 1rem;
   }
 
+  @media (max-width: 530px) {
+    max-width: 150px;
+  }
 
   @media (max-width: 450px) {
-    /* display: none; */
     font-size: 0.8rem;
     max-width: 100px;
-    /* max-width: 50px; */
   }
 
   @media (max-width: 300px) {

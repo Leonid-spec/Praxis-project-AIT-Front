@@ -26,11 +26,11 @@ export const BurgerAndAppBtnContainer = styled.div`
     gap: 30px;
   }
 
-  @media (max-width: 430px) {
+  @media (max-width: 540px) {
     gap: 20px;
   }
 
-  @media (max-width: 350px) {
+  @media (max-width: 375px) {
     gap: 10px;
   }
 `;

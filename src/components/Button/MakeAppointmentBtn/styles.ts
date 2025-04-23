@@ -3,17 +3,11 @@ import styled from "styled-components";
 interface ButtonProps {
   bgColor?: string;
   textColor?: string;
-  width?: string;
-  height?: string;
-  padding?: string;
-  fontSize?: string;
-
 }
 
 export const StyledButton = styled.button<ButtonProps>`
   padding: 12px 35px;
-  /* font-size: 1.1rem; */
-  font-size: ${({ fontSize }) => fontSize || "1.1rem"};
+  font-size: 1.1rem;
   border: none;
   border-radius: 6px;
   background-color: ${({ bgColor }) => bgColor || "#7a2141"};
@@ -61,7 +55,13 @@ export const StyledButton = styled.button<ButtonProps>`
 
     padding: 8px 16px;
   }
+
   @media (max-width: 360px) {
-    /* padding: 6px 12px; */
+    font-size: clamp(0.6rem, 2vw, 1rem);
+    padding: 6px 12px;
+  }
+
+  @media (max-width: 320px) {
+    font-size: clamp(0.5rem, 2vw, 0.8rem);
   }
 `;
