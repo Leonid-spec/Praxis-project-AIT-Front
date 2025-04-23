@@ -178,7 +178,7 @@ const AddNewDoctorPage: React.FC = () => {
           })),
         ],
       }));
-      console.log("Selected images:", fileArray);
+      // console.log("Selected images:", fileArray);
       // setDoctorData((prev) => ({
       //   ...prev,
       //   images: [

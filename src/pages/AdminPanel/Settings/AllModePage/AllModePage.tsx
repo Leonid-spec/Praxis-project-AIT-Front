@@ -119,6 +119,7 @@ const AddressWorkingModePage: React.FC = () => {
           value={settings.runningText}
           onChange={(e) => setSettings((prev) => ({ ...prev, runningText: e.target.value }))}
           placeholder={t("message.adminPanel.appointments.settings.admin.settingsPage.runningLine.placeholder")}
+          rows={3}
         />
       </FormSection>
 
@@ -148,6 +149,7 @@ const AddressWorkingModePage: React.FC = () => {
           {notification.message}
         </Notification>
       )}
+      
     </Container>
   );
 };

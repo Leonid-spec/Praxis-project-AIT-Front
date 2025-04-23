@@ -75,4 +75,9 @@ export const Notification = styled.div<{ $type: "error" | "success" }>`
 `;
 
 export const TextArea = styled.textarea`
+  padding: 10px;
+  width: 100%;
+  resize: vertical;
+  min-height: 40px;
+  max-height: 500px;
 `;
