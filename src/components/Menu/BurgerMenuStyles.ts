@@ -81,6 +81,8 @@ export const MobileNav = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-content: center;
+  justify-content: center;
   gap: 20px;
   width: 90%;
   max-width: 300px;
@@ -102,10 +104,12 @@ export const MobileNavLink = styled(NavLink)`
 export const LanguagePanel = styled.div`
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-content: center;
+  align-items: center;
 `;
 
-export const LanguageLink = styled.button`
+export const LanguageLink = styled.div`
+
   background: none;
   border: none;
   color: inherit;
@@ -113,7 +117,8 @@ export const LanguageLink = styled.button`
   color: #ffffff;
   cursor: pointer;
   padding: 14px;
-
+  font-size: 14px;
+  
   &:hover {
     color: #111;
   }
@@ -121,6 +126,8 @@ export const LanguageLink = styled.button`
 
 export const Divider = styled.span`
   color: #dcd5d5;
+  font-size: 16px;
+
 `;
 
 
