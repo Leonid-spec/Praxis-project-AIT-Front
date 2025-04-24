@@ -43,7 +43,6 @@ import {
   TitlesBox,
 } from "../../Services/ServicePageSinge/style";
 import { Doctor } from "../../../../store/types/doctorTypes";
-// import { GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox } from "./Gallery/styles";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 import TopImageUploader from "./TopImageUploader";
 
@@ -58,10 +57,13 @@ const EditDoctorPage: React.FC = () => {
   const [doctorData, setDoctorData] = useState<Doctor | null>(null);
   const [isSaving, setIsSaving] = useState(false);
   const token = localStorage.getItem("token");
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [, setPreviewImage] = useState<string | null>(null);
   const [previousFullName, setPreviousFullName] = useState<string | null>(null);
   const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
   const [, setGalleryFiles] = useState<File[]>([]);
+
+  const [, setLocalPreviewURL] = useState<string | null>(null);
+  const [, setSelectedImageFile] = useState<File | null>(null);
 
   const [croppedImageFile, setCroppedImageFile] = useState<File | null>(null);
   const [originalImageSrc, setOriginalImageSrc] = useState<string | null>(null);
@@ -74,6 +76,8 @@ const EditDoctorPage: React.FC = () => {
       try {
         const data = await getDoctorById(Number(id), token);
         setDoctorData(data);
+
+        // console.log("top image before all:", data.topImage)
 
         if (data.images) {
           setGalleryPreviews(
@@ -125,27 +129,34 @@ const EditDoctorPage: React.FC = () => {
       }
     }
 
-    let uploadedImageUrl = doctorData.topImage;
-    if (previewImage) {
-      console.log(
-        "Image preview is available, starting upload... previewImage: ",
-        previewImage
-      );
-      const cloudImageUrl = await uploadImageToCloud();
-      if (cloudImageUrl) {
-        uploadedImageUrl = cloudImageUrl;
-      }
-    }
-
     try {
-      await updateDoctor({ ...doctorData, topImage: uploadedImageUrl }, token!);
+      let uploadedTopImageUrl = doctorData.topImage;
+      if (croppedImageFile) {
+        const uploaded = await addImage(croppedImageFile, 0, 0, token!);
+        uploadedTopImageUrl = `https://${uploaded.path}`;
+        console.log("uploadedTopImageUrl - real url: ", uploadedTopImageUrl);
+      }
+      console.log("uploadedTopImageUrl bef:", uploadedTopImageUrl);
+
+      await updateDoctor(
+        { ...doctorData, topImage: uploadedTopImageUrl },
+        token!
+      );
+
+      // console.log("uploadedTopImageUrl aft:", uploadedTopImageUrl);
+      // console.log(" doctorData.topImage:", doctorData.topImage);
+
       setNotification({
         message: `${t("message.adminPanel.appointments.doctors.updated")} "${
           doctorData.fullName
         }"`,
         type: "success",
       });
-      navigate("/admin-panel/doctors");
+
+      setTimeout(() => {
+        setIsSaving(false);
+        navigate("/admin-panel/doctors");
+      }, 1500);
     } catch (error: any) {
       setNotification({
         message: `${t(
@@ -161,29 +172,13 @@ const EditDoctorPage: React.FC = () => {
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
+      setSelectedImageFile(file);
       const imageUrl = URL.createObjectURL(file);
+      setLocalPreviewURL(imageUrl);
       setOriginalImageSrc(imageUrl);
       setShowCropper(true);
-    }
-  };
 
-  const uploadImageToCloud = async () => {
-    if (!croppedImageFile || !doctorData?.id) return;
-
-    try {
-      const uploadedImageUrl = await addImage(
-        croppedImageFile,
-        doctorData.id,
-        0,
-        token!
-      );
-      return `https://${uploadedImageUrl.path}`;
-    } catch (error) {
-      console.error("Failed to upload image:", error);
-      setNotification({
-        message: `Failed to upload image: ${(error as Error).message}`,
-        type: "error",
-      });
+      console.log("imageUrl:", imageUrl);
     }
   };
 
@@ -385,7 +380,7 @@ const EditDoctorPage: React.FC = () => {
                 accept="image/*"
                 onChange={handleImageUpload}
               />
-              
+
               <EditPhotoSection>
                 {!showCropper && (
                   <PhotoPreview

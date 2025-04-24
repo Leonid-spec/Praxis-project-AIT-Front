@@ -334,7 +334,6 @@ export const MainBoxText = styled.div`
 export const EditTopImageWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 10px;
 

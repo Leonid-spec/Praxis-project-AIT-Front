@@ -31,10 +31,9 @@ import {
   EditPhotoSection,
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
-import { addImage, pushImageFile } from "../../../../api/imageAPI";
+import { addImage } from "../../../../api/imageAPI";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
 import TopImageUploader from "../EditDoctor/TopImageUploader";
-// import { getDoctorById } from './../../../../api/doctorAPI';
 
 const AddNewDoctorPage: React.FC = () => {
   const { t } = useTranslation();
@@ -62,11 +61,11 @@ const AddNewDoctorPage: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
   const token = localStorage.getItem("token");
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
-  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
+  const [, setSelectedImageFile] = useState<File | null>(null);
   const [, setLocalPreviewURL] = useState<string | null>(null);
   const [, setPreviewURLs] = useState<string[]>([]);
 
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
+  const [, setPreviewImage] = useState<string | null>(null);
   const [croppedImageFile, setCroppedImageFile] = useState<File | null>(null);
   const [originalImageSrc, setOriginalImageSrc] = useState<string | null>(null);
   const [showCropper, setShowCropper] = useState(false);
@@ -92,26 +91,8 @@ const AddNewDoctorPage: React.FC = () => {
       }));
       setOriginalImageSrc(imageUrl);
       setShowCropper(true);
-    }
-  };
 
-  const uploadImageToCloud = async () => {
-    if (!croppedImageFile || !doctorData?.id) return;
-
-    try {
-      const uploadedImageUrl = await addImage(
-        croppedImageFile,
-        doctorData.id,
-        0,
-        token!
-      );
-      return `https://${uploadedImageUrl.path}`;
-    } catch (error) {
-      console.error("Failed to upload image:", error);
-      setNotification({
-        message: `Failed to upload image: ${(error as Error).message}`,
-        type: "error",
-      });
+      console.log("imageUrl - blob: ", imageUrl);
     }
   };
 
@@ -123,14 +104,16 @@ const AddNewDoctorPage: React.FC = () => {
       });
       return;
     }
-  
+
     setIsSaving(true);
-  
+
     try {
       let uploadedTopImageUrl = doctorData.topImage;
       if (croppedImageFile) {
         const uploaded = await addImage(croppedImageFile, 0, 0, token);
         uploadedTopImageUrl = `https://${uploaded.path}`;
+      console.log("uploadedTopImageUrl - real url: ", uploadedTopImageUrl);
+
       }
 
       const doctorToSend: Doctor = {
@@ -140,23 +123,28 @@ const AddNewDoctorPage: React.FC = () => {
       };
       const newDoctor = await createDoctor(doctorToSend, token);
       const doctorId = newDoctor.id;
-  
+
       for (const file of selectedImages) {
         await addImage(file, 0, doctorId!, token);
       }
-  
+
       const fullDoctor = await getDoctorById(doctorId!, token);
-  
+
       fullDoctor.images = fullDoctor.images?.map((img) => ({
         ...img,
-        path: img.path.startsWith("https://") ? img.path : `https://${img.path}`,
+        path: img.path.startsWith("https://")
+          ? img.path
+          : `https://${img.path}`,
       }));
-  
+
+      console.log("fullDoctor: ", fullDoctor);
+
+
       setNotification({
         message: `Doctor "${fullDoctor.fullName}" created successfully!`,
         type: "success",
       });
-  
+
       setTimeout(() => {
         setIsSaving(false);
         handleReturn();
@@ -170,8 +158,7 @@ const AddNewDoctorPage: React.FC = () => {
       setIsSaving(false);
     }
   };
-  
-  
+
   const handleImagesUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files && files.length > 0) {
