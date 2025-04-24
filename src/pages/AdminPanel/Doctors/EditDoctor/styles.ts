@@ -148,7 +148,6 @@ export const Input = styled.input`
 export const UploadInput = styled.input`
   font-size: 14px;
   padding: 10px;
-  /* margin-top: 10px; */
   cursor: pointer;
 
   @media (max-width: 768px) {
