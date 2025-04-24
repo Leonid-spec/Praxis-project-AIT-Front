@@ -69,7 +69,6 @@ export const MainBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  /* margin-bottom: 40px; */
 
   @media (max-width: 1024px) {
   display: flex;
@@ -89,43 +88,6 @@ export const TitlesBox = styled.div`
     margin: 15px 0 8px;
   }
 `;
-
-// export const ImageBox = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%;
-//   height: auto;
-//   max-height: 600px;
-
-//   img {
-//     max-width: 100%;
-//     max-height: 100%;
-//     height: auto;
-//     width: auto;
-//     object-fit: contain;
-//     border-radius: 8px;
-//   }
-
-//   @media (max-width: 1440px) {
-//     max-height: 400px;
-//   }
-
-//   @media (max-width: 768px) {
-//     max-height: 300px;
-//   }
-// `;
-
-// export const ImagePreview = styled.img`
-//   width: 100%;
-//   border-radius: 10px;
-//   object-fit: cover;
-//   background-color: #f8f8f8;
-
-//   @media (max-width: 768px) {
-//     border-radius: 5px;
-//   }
-// `;
 
 export const ImageBox = styled.div`
   display: flex;

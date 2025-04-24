@@ -115,83 +115,6 @@ const AddNewDoctorPage: React.FC = () => {
     }
   };
 
-
-  // const handleSave = async () => {
-  //   if (!token) {
-  //     setNotification({
-  //       message: "Authorization token is missing. Please log in again.",
-  //       type: "error",
-  //     });
-  //     return;
-  //   }
-
-  //   setIsSaving(true);
-
-  //   let uploadedImageUrl = doctorData.topImage;
-  //   if (previewImage) {
-  //     console.log(
-  //       "Image preview is available, starting upload... previewImage: ",
-  //       previewImage
-  //     );
-  //     const cloudImageUrl = await uploadImageToCloud();
-  //     if (cloudImageUrl) {
-  //       uploadedImageUrl = cloudImageUrl;
-  //     }
-  //   }
-
-  //   try {
-  //     let uploadedDoctorImageUrl = "";
-  //     if (selectedImageFile) {
-  //       uploadedDoctorImageUrl = await pushImageFile(selectedImageFile, token);
-  //       uploadedDoctorImageUrl = "https://" + uploadedDoctorImageUrl;
-  //     }
-
-  //     const doctorToSend: Doctor = {
-  //       ...doctorData,
-  //       topImage: uploadedDoctorImageUrl,
-  //       images: [],
-  //     };
-
-  //     const newDoctor = await createDoctor(doctorToSend, token);
-
-  //     const doctorId = newDoctor.id;
-
-  //     for (const file of selectedImages) {
-  //       await addImage(file, 0, doctorId!, token);
-  //     }
-
-  //     const fullDoctor = await getDoctorById(doctorId!, token);
-
-  //     setNotification({
-  //       message: `Doctor "${fullDoctor.fullName}" created successfully!`,
-  //       type: "success",
-  //     });
-
-  //     const getDoctorByIdAll = await getDoctorById(doctorId!, token);
-
-  //     const updatedImages = getDoctorByIdAll.images!.map((img: any) => {
-  //       if (!img.path.startsWith("https://")) {
-  //         return { ...img, path: "https://" + img.path };
-  //       }
-  //       return img;
-  //     });
-
-  //     fullDoctor.images = updatedImages;
-
-  //     setTimeout(() => {
-  //       setIsSaving(false);
-  //       handleReturn();
-  //     }, 1500);
-  //   } catch (error) {
-  //     console.error("❌ Error creating doctor:", error);
-  //     setNotification({
-  //       message: "Failed to create doctor.",
-  //       type: "error",
-  //     });
-  //     setIsSaving(false);
-  //   } 
-  // };
-
   const handleSave = async () => {
     if (!token) {
       setNotification({
@@ -204,39 +127,30 @@ const AddNewDoctorPage: React.FC = () => {
     setIsSaving(true);
   
     try {
-      let uploadedImageUrl = doctorData.topImage;
-  
-      // Якщо є обрізане зображення, завантажуємо його
+      let uploadedTopImageUrl = doctorData.topImage;
       if (croppedImageFile) {
-        const cloudImageUrl = await uploadImageToCloud();
-        if (cloudImageUrl) {
-          uploadedImageUrl = cloudImageUrl;
-        }
+        const uploaded = await addImage(croppedImageFile, 0, 0, token);
+        uploadedTopImageUrl = `https://${uploaded.path}`;
       }
-  
+
       const doctorToSend: Doctor = {
         ...doctorData,
-        topImage: uploadedImageUrl,
+        topImage: uploadedTopImageUrl,
         images: [],
       };
-  
-      // Створюємо нового лікаря
       const newDoctor = await createDoctor(doctorToSend, token);
       const doctorId = newDoctor.id;
   
-      // Завантажуємо всі додаткові зображення до галереї
       for (const file of selectedImages) {
         await addImage(file, 0, doctorId!, token);
       }
   
-      // Отримуємо лікаря з оновленими зображеннями
       const fullDoctor = await getDoctorById(doctorId!, token);
-      const updatedImages = fullDoctor.images!.map((img: any) => ({
+  
+      fullDoctor.images = fullDoctor.images?.map((img) => ({
         ...img,
         path: img.path.startsWith("https://") ? img.path : `https://${img.path}`,
       }));
-  
-      fullDoctor.images = updatedImages;
   
       setNotification({
         message: `Doctor "${fullDoctor.fullName}" created successfully!`,
@@ -256,7 +170,7 @@ const AddNewDoctorPage: React.FC = () => {
       setIsSaving(false);
     }
   };
-
+  
   
   const handleImagesUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
