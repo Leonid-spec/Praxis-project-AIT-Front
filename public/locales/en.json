@@ -404,6 +404,7 @@
           "savingButton": "Saving...",
           "addNewDoctor": "+  Add new doctor",
           "refresh": "Refresh",
+          "imageDeleted": "The image was successfully deleted",
           "loadingDoctorData": "Loading doctor data...",
           "doctorPreview": "Doctor preview",
           "errorLoadingDoctorData": "Error loading doctor data:",

@@ -406,6 +406,7 @@
           "savingButton": "Сохранение...",
           "addNewDoctor": "+  Добавить нового врача",
           "refresh": "Обновить",
+          "imageDeleted": "Изображение было успешно удалено",
           "loadingDoctorData": "Загрузка данных о враче...",
           "doctorPreview": "Предпросмотр врача",
           "errorLoadingDoctorData": "Ошибка при загрузке данных о враче:",

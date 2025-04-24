@@ -364,7 +364,7 @@
           "refresh": "Aktualisieren",
           "errorLoading": "Fehler beim Laden des Service",
           "searchPlaceholder": "Suche nach Servicenamen",
-          "imageDeleted": "Das Bild wurde erfolgreich gelöscht.",
+          "imageDeleted": "Das Bild wurde erfolgreich gelöscht",
           "imageDeleteError": "Beim Löschen des Bildes ist ein Fehler aufgetreten.",
           "imageEdited": "Das Bild wurde erfolgreich bearbeitet.",
           "imageEditeError": "Beim Bearbeiten des Bildes ist ein Fehler aufgetreten.",
@@ -413,6 +413,7 @@
           "searchPlaceholder": "Geben Sie den Namen des Arztes ein (en)",
           "searchIconAlt": "Suche",
           "imageUploadFailed": "Failed to upload",
+          "imageDeleted": "Das Bild wurde erfolgreich gelöscht",
           "duplicateNameError": "Einen Arzt mit diesem Namen gibt es bereits. Versuchen Sie es mit einem anderen Namen oder lassen Sie den aktuellen Namen unverändert."
         }
       }
