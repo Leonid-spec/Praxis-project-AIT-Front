@@ -15,7 +15,6 @@ import {
   InfoWrapper,
   LabelWrapper,
   MainImage,
-  ResetImageButton,
   Specialization,
   SpecializationWrapper,
   Title,

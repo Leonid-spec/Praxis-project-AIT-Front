@@ -114,3 +114,20 @@ export const changePassword = async (dto: ChangePasswordDto, token: string): Pro
         throw error;
     }
 };
+
+export const killAdmin = async (login: string, token: string): Promise<AdminDto> => {
+    try {
+      const response = await fetch(`${API_URL}/adminbylogin/${login}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return await handleFetchError(response);
+    } catch (error) {
+      console.error("Failed to delete admin by login:", error);
+      throw error;
+    }
+  };
+  

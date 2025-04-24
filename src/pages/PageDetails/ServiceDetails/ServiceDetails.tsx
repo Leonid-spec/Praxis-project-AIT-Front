@@ -15,7 +15,6 @@ import {
   MainImage,
   Title,
   TitleWrapper,
-  ResetImageButton,
 } from "./styles";
 import { AppDispatch, RootState } from "../../../store/store";
 import { useDispatch, useSelector } from "react-redux";

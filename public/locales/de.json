@@ -231,6 +231,15 @@
 
         "settings": {
           "admin": {
+            "kill": {
+              "kill": "Administrator killen",
+              "fillRequired": "Bitte geben Sie den Login ein.",
+              "noToken": "Authentifizierungstoken nicht gefunden.",
+              "success": "Administrator {{login}} wird eliminiert.",
+              "error": "Fehler beim Eliminieren des Administrators.",
+              "loginPlaceholder": "Login des Administrators",
+              "button": "Administrator eliminieren"
+            },
             "create": {
               "loginLabel": "Benutzername:",
               "passwordLabel": "Passwort:",
@@ -284,7 +293,8 @@
                 "address": "Adresse",
                 "runningLine": "Lauftext",
                 "workingMode": "Arbeitsmodus",
-                "delete": "Administrator löschen"
+                "delete": "Administrator löschen",
+                "kill": "Administrator killen"
               },
               "sections": {
                 "create": "Neuen Administrator erstellen",

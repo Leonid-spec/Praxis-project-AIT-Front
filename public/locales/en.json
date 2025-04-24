@@ -229,6 +229,15 @@
         },
         "settings": {
           "admin": {
+            "kill": {
+              "kill": "Kill Administrator",
+            "fillRequired": "Please enter the login.",
+            "noToken": "Authentication token not found.",
+            "success": "Administrator {{login}} has been eliminated.",
+            "error": "Failed to eliminate administrator.",
+            "loginPlaceholder": "Administrator login",
+            "button": "Eliminate administrator"
+          },
             "create": {
               "loginLabel": "Username:",
               "passwordLabel": "Password:",
@@ -282,7 +291,8 @@
                 "address": "Address",
                 "runningLine": "Running line",
                 "workingMode": "Working mode",
-                "delete": "Delete Administrator"
+                "delete": "Delete Administrator",
+                "kill": "Kill Administrator"
               },
               "sections": {
                 "create": "Create New Administrator",
