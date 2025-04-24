@@ -64,14 +64,17 @@ export const Container = styled.div`
 `;
 
 export const MainBox = styled.div`
+  display: flex;
+  justify-content: space-between;
   display: grid;
-  /* grid-template-columns: 1fr 1fr; */
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1fr 1fr;
   gap: 30px;
-  padding: 10px;
+  /* margin-bottom: 40px; */
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+  @media (max-width: 1024px) {
+  display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 `;
 
@@ -126,38 +129,27 @@ export const TitlesBox = styled.div`
 
 export const ImageBox = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 20px;
   width: 100%;
-  max-height: 500px;
-  padding: 1rem;
-
-  @media (min-width: 1920px) {
-    max-height: 600px;
-  }
-
-  @media (max-width: 1440px) {
-    max-height: 400px;
-  }
+  max-width: 200px;
+  margin-top: 20px;
 
   @media (max-width: 768px) {
-    max-height: 280px;
+    gap: 15px;
   }
 `;
 
 export const ImagePreview = styled.img`
+ width: 100%;
   max-width: 100%;
-  max-height: 100%;
   height: auto;
-  width: auto;
+  /* min-height: 300px; */
+  /* max-height: 350px; */
   object-fit: contain;
-  border-radius: 12px;
-  background-color: #f8f8f8;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    border-radius: 8px;
-  }
+  border-radius: 10px;
+  background-color: #f8f8f8
 `;
 
 
@@ -342,6 +334,14 @@ export const UploadText = styled.label`
   margin-top: 20px;
 `;
 
+export const EditTopImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+`;
+
 export const EditTopImage = styled.div`
   display: flex;
   flex-direction: column;
@@ -366,6 +366,24 @@ export const GalleryImageWrapper = styled.div`
 
 export const PreviewImage = styled.img`
   width: 100%;
-  height: auto;
+  height: 100px;
+  /* height: auto; */
   display: block;
+`;
+
+
+// Foto
+
+export const EditPhotoSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+
+  @media (max-width: 768px) {
+    gap: 15px;
+  }
 `;

@@ -385,6 +385,7 @@ const EditDoctorPage: React.FC = () => {
                 accept="image/*"
                 onChange={handleImageUpload}
               />
+              
               <EditPhotoSection>
                 {!showCropper && (
                   <PhotoPreview
