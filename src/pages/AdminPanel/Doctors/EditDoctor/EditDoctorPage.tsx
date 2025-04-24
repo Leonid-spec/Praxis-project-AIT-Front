@@ -1,5 +1,9 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { getAllDoctors, getDoctorById, updateDoctor } from "../../../../api/doctorAPI";
+import {
+  getAllDoctors,
+  getDoctorById,
+  updateDoctor,
+} from "../../../../api/doctorAPI";
 import {
   EditDoctorContainer,
   HeaderBox,
@@ -24,18 +28,27 @@ import {
   MainTextContainer,
   InputContainerFullName,
   SectionTitles,
+  EditTopImageWrapper,
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { useState, useEffect } from "react";
 import { addImage, deleteImage } from "../../../../api/imageAPI";
-import { useTranslation } from "react-i18next"; 
-import { EditTopImage, GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox, TitlesBox } from "../../Services/ServicePageSinge/style";
+import { useTranslation } from "react-i18next";
+import {
+  EditTopImage,
+  GalleryContainer,
+  GalleryGrid,
+  GalleryImageWrapper,
+  TitleBox,
+  TitlesBox,
+} from "../../Services/ServicePageSinge/style";
 import { Doctor } from "../../../../store/types/doctorTypes";
 // import { GalleryContainer, GalleryGrid, GalleryImageWrapper, TitleBox } from "./Gallery/styles";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
+import TopImageUploader from "./TopImageUploader";
 
 const EditDoctorPage: React.FC = () => {
-  const { t } = useTranslation(); 
+  const { t } = useTranslation();
   const [notification, setNotification] = useState<{
     message: string;
     type: "error" | "success";
@@ -46,11 +59,14 @@ const EditDoctorPage: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
   const token = localStorage.getItem("token");
   const [previewImage, setPreviewImage] = useState<string | null>(null);
-  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
   const [previousFullName, setPreviousFullName] = useState<string | null>(null);
   const [galleryPreviews, setGalleryPreviews] = useState<string[]>([]);
   const [, setGalleryFiles] = useState<File[]>([]);
-  
+
+  const [croppedImageFile, setCroppedImageFile] = useState<File | null>(null);
+  const [originalImageSrc, setOriginalImageSrc] = useState<string | null>(null);
+  const [showCropper, setShowCropper] = useState(false);
+
   useEffect(() => {
     if (!id || !token) return;
 
@@ -83,46 +99,58 @@ const EditDoctorPage: React.FC = () => {
   const handleSave = async () => {
     if (isSaving || !doctorData) return;
     setIsSaving(true);
-  
+
     if (doctorData.fullName !== previousFullName) {
       try {
         const doctors = await getAllDoctors(token!);
         const isNameDuplicate = doctors.some(
-          (doc) => doc.fullName === doctorData.fullName && doc.id !== doctorData.id
+          (doc) =>
+            doc.fullName === doctorData.fullName && doc.id !== doctorData.id
         );
-  
+
         if (isNameDuplicate) {
-          throw new Error(`Doctor with name ${doctorData.fullName} already exists.`);
+          throw new Error(
+            `Doctor with name ${doctorData.fullName} already exists.`
+          );
         }
       } catch (error) {
         setNotification({
-          message: `${t("message.adminPanel.appointments.doctors.errorCheckingName")}: ${(error as Error).message}`,
+          message: `${t(
+            "message.adminPanel.appointments.doctors.errorCheckingName"
+          )}: ${(error as Error).message}`,
           type: "error",
         });
         setIsSaving(false);
         return;
       }
     }
-  
+
     let uploadedImageUrl = doctorData.topImage;
     if (previewImage) {
-      console.log("Image preview is available, starting upload... previewImage: ", previewImage);
+      console.log(
+        "Image preview is available, starting upload... previewImage: ",
+        previewImage
+      );
       const cloudImageUrl = await uploadImageToCloud();
       if (cloudImageUrl) {
         uploadedImageUrl = cloudImageUrl;
       }
     }
-  
+
     try {
       await updateDoctor({ ...doctorData, topImage: uploadedImageUrl }, token!);
       setNotification({
-        message: `${t("message.adminPanel.appointments.doctors.updated")} "${doctorData.fullName}"`,
+        message: `${t("message.adminPanel.appointments.doctors.updated")} "${
+          doctorData.fullName
+        }"`,
         type: "success",
       });
       navigate("/admin-panel/doctors");
     } catch (error: any) {
       setNotification({
-        message: `${t("message.adminPanel.appointments.doctors.errorUpdating")}: ${error.message}`,
+        message: `${t(
+          "message.adminPanel.appointments.doctors.errorUpdating"
+        )}: ${error.message}`,
         type: "error",
       });
     } finally {
@@ -134,22 +162,21 @@ const EditDoctorPage: React.FC = () => {
     const file = event.target.files?.[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setPreviewImage(imageUrl);
-      setSelectedImageFile(file);
+      setOriginalImageSrc(imageUrl);
+      setShowCropper(true);
     }
   };
 
   const uploadImageToCloud = async () => {
-    if (!selectedImageFile) return;
-
-    if (!previewImage || !doctorData?.id) return;
-    const file = await fetch(previewImage)
-      .then((res) => res.blob())
-      .then((blob) => new File([blob], "image.jpg", { type: "image/jpeg" }));
+    if (!croppedImageFile || !doctorData?.id) return;
 
     try {
-      const uploadedImageUrl = await addImage(file, doctorData.id, 0, token!);
-      console.log("Uploaded image URL:", uploadedImageUrl);
+      const uploadedImageUrl = await addImage(
+        croppedImageFile,
+        doctorData.id,
+        0,
+        token!
+      );
       return `https://${uploadedImageUrl.path}`;
     } catch (error) {
       console.error("Failed to upload image:", error);
@@ -167,15 +194,15 @@ const EditDoctorPage: React.FC = () => {
     if (files && files.length > 0 && doctorData?.id) {
       const fileArray = Array.from(files);
       const urls = fileArray.map((file) => URL.createObjectURL(file));
-  
+
       setGalleryFiles((prev) => [...prev, ...fileArray]);
       setGalleryPreviews((prev) => [...prev, ...urls]);
-  
+
       try {
         const uploaded = await Promise.all(
           fileArray.map((file) => addImage(file, doctorData.id!, 1, token!))
         );
-  
+
         setDoctorData((prev) =>
           prev
             ? {
@@ -184,9 +211,11 @@ const EditDoctorPage: React.FC = () => {
               }
             : prev
         );
-  
+
         setNotification({
-          message: `${uploaded.length} ${t("message.adminPanel.appointments.doctors.imagesAdded")}`,
+          message: `${uploaded.length} ${t(
+            "message.adminPanel.appointments.doctors.imagesAdded"
+          )}`,
           type: "success",
         });
       } catch (err) {
@@ -200,40 +229,42 @@ const EditDoctorPage: React.FC = () => {
 
   const handleDeleteGalleryImage = async (index: number) => {
     if (!doctorData || !doctorData.images || !token) return;
-  
+
     const image = doctorData.images[index];
     const imageId = image?.id;
     if (!imageId) return;
-  
+
     try {
       await deleteImage(imageId, token);
-  
+
       setGalleryPreviews((prev) => {
         const updated = [...prev];
         updated.splice(index, 1);
         return updated;
       });
-  
+
       setDoctorData((prev) => {
         if (!prev) return prev;
         const newImages = [...(prev.images || [])];
         newImages.splice(index, 1);
         return { ...prev, images: newImages };
       });
-  
+
       setNotification({
-        message: t("message.adminPanel.appointments.doctors.imageDeleted") || "Image deleted",
+        message:
+          t("message.adminPanel.appointments.doctors.imageDeleted") ||
+          "Image deleted",
         type: "success",
       });
     } catch (error) {
       setNotification({
-        message: t("message.adminPanel.appointments.doctors.imageDeleteError") || "Failed to delete image",
+        message:
+          t("message.adminPanel.appointments.doctors.imageDeleteError") ||
+          "Failed to delete image",
         type: "error",
       });
     }
   };
-
-
 
   if (!doctorData) {
     return <p>Loading doctor data...</p>;
@@ -243,10 +274,13 @@ const EditDoctorPage: React.FC = () => {
     <EditDoctorContainer>
       <HeaderBox>
         <StyledReturnButton onClick={() => navigate("/admin-panel/doctors")}>
-          ← {t("message.adminPanel.appointments.doctors.returnBack")} 
+          ← {t("message.adminPanel.appointments.doctors.returnBack")}
         </StyledReturnButton>
         <StyledSaveButton onClick={handleSave} disabled={isSaving}>
-          {isSaving ? t("message.adminPanel.appointments.doctors.savingButton") : t("message.adminPanel.appointments.doctors.saveButton")} {/* Використано t */}
+          {isSaving
+            ? t("message.adminPanel.appointments.doctors.savingButton")
+            : t("message.adminPanel.appointments.doctors.saveButton")}{" "}
+          {/* Використано t */}
         </StyledSaveButton>
       </HeaderBox>
       {notification && (
@@ -258,33 +292,25 @@ const EditDoctorPage: React.FC = () => {
       <ScrollContainer>
         <MainTextContainer>
           <TopContainer>
-            
             <MainBoxText>
-
               <InputContainerFullName>
-                <SectionTitles>{t("message.adminPanel.appointments.doctors.fullName")}</SectionTitles> 
+                <SectionTitles>
+                  {t("message.adminPanel.appointments.doctors.fullName")}
+                </SectionTitles>
                 <Input
                   type="text"
                   value={doctorData.fullName}
                   onChange={(e) =>
                     setDoctorData({ ...doctorData, fullName: e.target.value })
                   }
-                placeholder={t("message.adminPanel.appointments.doctors.enterFullName")}
-
+                  placeholder={t(
+                    "message.adminPanel.appointments.doctors.enterFullName"
+                  )}
                 />
               </InputContainerFullName>
-    
-              <EditTopImage>
-                <TitlesBox>{t("message.adminPanel.appointments.doctors.editTopImage")}</TitlesBox> 
-                <UploadInput
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                />
-              </EditTopImage>
-    
+
               <CheckboxLabel>
-              {t("message.adminPanel.appointments.doctors.makeCardVisible")} 
+                {t("message.adminPanel.appointments.doctors.makeCardVisible")}
 
                 <input
                   type="checkbox"
@@ -294,9 +320,11 @@ const EditDoctorPage: React.FC = () => {
                   }
                 />
               </CheckboxLabel>
-    
+
               <Container>
-                <SectionTitles>{t("message.adminPanel.appointments.doctors.title")}</SectionTitles>
+                <SectionTitles>
+                  {t("message.adminPanel.appointments.doctors.title")}
+                </SectionTitles>
                 <Section>
                   <TitleBoxText>DE</TitleBoxText>
                   <Input
@@ -308,8 +336,9 @@ const EditDoctorPage: React.FC = () => {
                         titleDe: e.target.value,
                       })
                     }
-                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleDe")}
-
+                    placeholder={t(
+                      "message.adminPanel.appointments.doctors.enterTitleDe"
+                    )}
                   />
                 </Section>
                 <Section>
@@ -323,7 +352,9 @@ const EditDoctorPage: React.FC = () => {
                         titleEn: e.target.value,
                       })
                     }
-                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleEn")}
+                    placeholder={t(
+                      "message.adminPanel.appointments.doctors.enterTitleEn"
+                    )}
                   />
                 </Section>
                 <Section>
@@ -337,77 +368,117 @@ const EditDoctorPage: React.FC = () => {
                         titleRu: e.target.value,
                       })
                     }
-                    placeholder={t("message.adminPanel.appointments.doctors.enterTitleRu")}
-
+                    placeholder={t(
+                      "message.adminPanel.appointments.doctors.enterTitleRu"
+                    )}
                   />
                 </Section>
               </Container>
             </MainBoxText>
-    
-            <EditPhotoSection>
-              <PhotoPreview
-                src={previewImage || doctorData.topImage || "https://via.placeholder.com/600x400"}
-                alt="Doctor preview"
+
+            <EditTopImageWrapper>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.doctors.editTopImage")}
+              </TitlesBox>
+              <UploadInput
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
               />
-            </EditPhotoSection>
+              <EditPhotoSection>
+                {!showCropper && (
+                  <PhotoPreview
+                    src={
+                      doctorData.topImage ||
+                      "https://via.placeholder.com/600x400"
+                    }
+                    alt="Doctor preview"
+                  />
+                )}
+                {showCropper && originalImageSrc && (
+                  <TopImageUploader
+                    imageSrc={originalImageSrc}
+                    onCropComplete={(croppedFile: File) => {
+                      const previewUrl = URL.createObjectURL(croppedFile);
+
+                      setCroppedImageFile(croppedFile);
+                      setPreviewImage(previewUrl);
+                      setDoctorData((prev) => {
+                        if (!prev) return prev;
+                        return {
+                          ...prev,
+                          topImage: previewUrl,
+                        };
+                      });
+
+                      setShowCropper(false);
+                    }}
+                  />
+                )}
+              </EditPhotoSection>
+            </EditTopImageWrapper>
           </TopContainer>
-    
-  
-         <Container>
-         <SectionTitles>{t("message.adminPanel.appointments.doctors.specialisation")}</SectionTitles>
-  
-                <Section>
-                <TitleBoxText>DE</TitleBoxText>
-                  <Input
-                    type="text"
-                    value={doctorData.specialisationDe || ""}
-                    onChange={(e) =>
-                      setDoctorData({
-                        ...doctorData,
-                        specialisationDe: e.target.value,
-                      })
-                    }
-                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationDe")}
 
-                  />
-                </Section>
-                <Section>
-                  <TitleBoxText>EN</TitleBoxText>
-                  <Input
-                    type="text"
-                    value={doctorData.specialisationEn || ""}
-                    onChange={(e) =>
-                      setDoctorData({
-                        ...doctorData,
-                        specialisationEn: e.target.value,
-                      })
-                    }
-                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationEn")}
+          <Container>
+            <SectionTitles>
+              {t("message.adminPanel.appointments.doctors.specialisation")}
+            </SectionTitles>
 
-                  />
-                </Section>
-                <Section>
-                  <TitleBoxText>RU</TitleBoxText>
-                  <Input
-                    type="text"
-                    value={doctorData.specialisationRu || ""}
-                    onChange={(e) =>
-                      setDoctorData({
-                        ...doctorData,
-                        specialisationRu: e.target.value,
-                      })
-                    }
-                    placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationRu")}
+            <Section>
+              <TitleBoxText>DE</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.specialisationDe || ""}
+                onChange={(e) =>
+                  setDoctorData({
+                    ...doctorData,
+                    specialisationDe: e.target.value,
+                  })
+                }
+                placeholder={t(
+                  "message.adminPanel.appointments.doctors.enterSpecialisationDe"
+                )}
+              />
+            </Section>
+            <Section>
+              <TitleBoxText>EN</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.specialisationEn || ""}
+                onChange={(e) =>
+                  setDoctorData({
+                    ...doctorData,
+                    specialisationEn: e.target.value,
+                  })
+                }
+                placeholder={t(
+                  "message.adminPanel.appointments.doctors.enterSpecialisationEn"
+                )}
+              />
+            </Section>
+            <Section>
+              <TitleBoxText>RU</TitleBoxText>
+              <Input
+                type="text"
+                value={doctorData.specialisationRu || ""}
+                onChange={(e) =>
+                  setDoctorData({
+                    ...doctorData,
+                    specialisationRu: e.target.value,
+                  })
+                }
+                placeholder={t(
+                  "message.adminPanel.appointments.doctors.enterSpecialisationRu"
+                )}
+              />
+            </Section>
+          </Container>
 
-                  />
-                </Section>
-  
-         </Container>
-  
           <BottomContainer>
-  
-            <SectionTitles>{t("message.adminPanel.appointments.doctors.biography")}</SectionTitles> 
-    
+            <SectionTitles>
+              {t("message.adminPanel.appointments.doctors.biography")}
+            </SectionTitles>
+
             <BiographySection>
               <TitleBoxText>DE</TitleBoxText>
               <BiographyTextareaDe
@@ -415,11 +486,12 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyDe: e.target.value })
                 }
-                placeholder={t("message.adminPanel.appointments.doctors.enterBiographyDe")}
-
+                placeholder={t(
+                  "message.adminPanel.appointments.doctors.enterBiographyDe"
+                )}
               />
             </BiographySection>
-    
+
             <BiographySection>
               <TitleBoxText>EN</TitleBoxText>
               <BiographyTextareaEn
@@ -427,11 +499,12 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyEn: e.target.value })
                 }
-                placeholder={t("message.adminPanel.appointments.doctors.enterBiographyEn")}
-
+                placeholder={t(
+                  "message.adminPanel.appointments.doctors.enterBiographyEn"
+                )}
               />
             </BiographySection>
-    
+
             <BiographySection>
               <TitleBoxText>RU</TitleBoxText>
               <BiographyTextareaRu
@@ -439,44 +512,42 @@ const EditDoctorPage: React.FC = () => {
                 onChange={(e) =>
                   setDoctorData({ ...doctorData, biographyRu: e.target.value })
                 }
-                placeholder={t("message.adminPanel.appointments.doctors.enterSpecialisationRu")}
-
+                placeholder={t(
+                  "message.adminPanel.appointments.doctors.enterSpecialisationRu"
+                )}
               />
             </BiographySection>
           </BottomContainer>
-
         </MainTextContainer>
 
         <GalleryContainer>
-                    <TitleBox>
-                      {t("message.adminPanel.appointments.services.gallery") ||
-                        "Gallery"}
-                    </TitleBox>
-        
-                    <EditTopImage>
-                      <UploadInput
-                        type="file"
-                        accept="image/*"
-                        multiple
-                        onChange={handleAddGalleryImages}
-                      />
-                    </EditTopImage>
-        
-                    {galleryPreviews.length > 0 && (
-                      <GalleryGrid>
-                        {galleryPreviews.map((url, index) => (
-                          <GalleryImageWrapper key={index}>
-                            <GalleryImageCard
-                              url={url}
-                              onDelete={() => handleDeleteGalleryImage(index)}
-                            />
-                          </GalleryImageWrapper>
-                        ))}
-                      </GalleryGrid>
-                    )}
-                  </GalleryContainer>
-      </ScrollContainer>
+          <TitleBox>
+            {t("message.adminPanel.appointments.services.gallery") || "Gallery"}
+          </TitleBox>
 
+          <EditTopImage>
+            <UploadInput
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleAddGalleryImages}
+            />
+          </EditTopImage>
+
+          {galleryPreviews.length > 0 && (
+            <GalleryGrid>
+              {galleryPreviews.map((url, index) => (
+                <GalleryImageWrapper key={index}>
+                  <GalleryImageCard
+                    url={url}
+                    onDelete={() => handleDeleteGalleryImage(index)}
+                  />
+                </GalleryImageWrapper>
+              ))}
+            </GalleryGrid>
+          )}
+        </GalleryContainer>
+      </ScrollContainer>
     </EditDoctorContainer>
   );
 };

@@ -8,6 +8,7 @@ export const EditDoctorContainer = styled.div`
   width: 100%;
   margin: 0 auto;
   background-color: #fff;
+  /* background-color:blue; */
   border-radius: 10px;
   /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   height: 80vh;
@@ -36,7 +37,7 @@ export const ScrollContainer = styled.div`
 
 export const HeaderBox = styled.div`
   display: flex;
-  justify-content: flex-start;;
+  justify-content: flex-start;
   align-items: center;
   gap: 20px;
   padding: 0 20px;
@@ -53,9 +54,10 @@ export const TopContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 
-  @media (max-width: 768px) {
+  @media (max-width: 980px) {
+  display: flex;
     flex-direction: column;
     gap: 20px;
   }
@@ -95,7 +97,7 @@ export const SectionTitles = styled.h2`
   font-weight: 600;
   margin: 30px 0 0px 0;
   color: #333;
-  color:  #292828;
+  color: #292828;
 
   @media (max-width: 768px) {
     font-size: 14px;
@@ -131,7 +133,7 @@ export const Input = styled.input`
   /* background-color: #f9f9f9; */
   outline: none;
   width: 100%;
-  color:  #292828;
+  color: #292828;
   &:focus {
     border-color: #007bff;
     background-color: #fff;
@@ -146,7 +148,8 @@ export const Input = styled.input`
 export const UploadInput = styled.input`
   font-size: 14px;
   padding: 10px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  cursor: pointer;
 
   @media (max-width: 768px) {
     padding: 8px;
@@ -201,7 +204,7 @@ export const BiographyTextareaDe = styled.textarea`
   resize: none;
   outline: none;
   width: 100%;
-  color:  #292828;
+  color: #292828;
   &:focus {
     border-color: #7a2141;
     outline: none;
@@ -225,6 +228,8 @@ export const EditPhotoSection = styled.div`
   align-items: center;
   gap: 20px;
   width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
 
   @media (max-width: 768px) {
     gap: 15px;
@@ -238,6 +243,7 @@ export const ImageBox = styled.div`
   padding: 30px;
   width: 100%;
   height: 500px;
+  /* height: 100%; */
   background-color: #f8f8f8;
   border-radius: 10px;
 
@@ -309,7 +315,9 @@ export const PhotoPreview = styled.img`
   width: 100%;
   max-width: 100%;
   height: auto;
-  object-fit: cover;
+  max-height: 350px;
+  /* object-fit: cover; */
+  object-fit: contain;
   border-radius: 10px;
 `;
 
@@ -322,4 +330,18 @@ export const MainBoxText = styled.div`
     width: 100%;
     gap: 15px;
   }
+`;
+
+export const EditTopImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  /* @media (min-width: 980px) {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 20px;
+  } */
 `;
