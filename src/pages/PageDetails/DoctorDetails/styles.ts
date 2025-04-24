@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   margin: 40px auto;
   flex-direction: row;
+  padding: 20px;
   
   @media (max-width: 1200px) and (min-width: 768px) {
     gap: 40px; // отступ между изображением и текстом
@@ -19,6 +20,18 @@ export const Container = styled.div`
     & > div:last-child {
       order: 1; // ContentWrapper
     }
+  }
+`;
+
+export const ImageSectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  width: 60%;
+
+  @media (max-width: 1200px){
+    width: 100%;
   }
 `;
 
@@ -39,23 +52,17 @@ export const ImgAndBtnWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  width: 500px;
-  height: 500px;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-width: 400px; 
+  background-color: #f8f8f8;
+  overflow: hidden;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
-  overflow: hidden;
   margin: 10px 0 25px 0;
-  border-radius: 12px;
-  background-color: #f8f8f8;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    width: 88%;
-    height: auto;
-    margin: 10px 0 25px 0;
-  }
 `;
 
 export const MainImage = styled.img`
@@ -64,6 +71,7 @@ export const MainImage = styled.img`
   object-fit: cover;
   border-radius: 12px;
 `;
+
 
 export const InfoWrapper = styled.div`
   flex: 2;
@@ -161,13 +169,6 @@ export const GalleryImage = styled.img`
     transform: scale(1.1);
     cursor: pointer;
   }
-`;
-
-export const ImageSectionWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
 `;
 
 export const GalleryGrid = styled.div`

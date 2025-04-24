@@ -34,8 +34,8 @@ const ServiceDetails: React.FC = () => {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language as Language;
   const dispatch: AppDispatch = useDispatch();
-  const [mainImage, setMainImage] = useState<string | null>(null); 
-  const [, setPrevImage] = useState<string | null>(null); 
+  const [mainImage, setMainImage] = useState<string | null>(null);
+  const [, setPrevImage] = useState<string | null>(null);
 
   const { services, loading, error } = useSelector(
     (state: RootState) => state.service
@@ -47,7 +47,6 @@ const ServiceDetails: React.FC = () => {
       dispatch(fetchActiveServicesStart());
       const fetchDoctors = async () => {
         try {
-
           const data = await getActiveServices();
 
           dispatch(fetchServicesSuccess(data));
@@ -97,7 +96,7 @@ const ServiceDetails: React.FC = () => {
   };
 
   return (
-    <Container >
+    <Container>
       <ImageSectionWrapper>
         <ImageWrapper>
           <MainImage
@@ -129,18 +128,28 @@ const ServiceDetails: React.FC = () => {
                 />
               ))}
 
-              <ResetImageButton onClick={resetImage} title={t("reset")}>
-                ↻ {t("reset")}
-              </ResetImageButton>
+              {service.topImage && (
+                <GalleryImage
+                  src={
+                    service.topImage.startsWith("https://")
+                      ? service.topImage
+                      : `https://${service.topImage}`
+                  }
+                  alt="Reset to main"
+                  title={t("reset")}
+                  onClick={resetImage}
+                  style={{
+                    border: "2px solid #641230", 
+                    cursor: "pointer",
+                  }}
+                />
+              )}
             </>
           ) : (
             <p>{t("noImages")}</p>
           )}
         </GalleryGrid>
 
-        {/* <ResetImageButton onClick={resetImage}>
-          <span>↻</span> {t("reset")}
-        </ResetImageButton> */}
       </ImageSectionWrapper>
 
       <ContentWrapper>
