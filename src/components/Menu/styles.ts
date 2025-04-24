@@ -100,24 +100,22 @@ export const LanguagePanel = styled.div`
   text-align: center;
 `;
 
-export const LanguageLink = styled.button`
+export const LanguageLink = styled.div`
   background: none;
   border: none;
   color: inherit;
   cursor: pointer;
   margin: 0;
   font-size: 14px;
+  padding: 14px;
 
   &:hover {
-    color: #9ceef1;
     color: #7a2141;
-    /* color: #4ba0a5; */
   }
 `;
 
 export const Divider = styled.span`
   color: #3d3d3d;
-  /* font-size: 24px; */
   font-size: 14px;
 
 `;

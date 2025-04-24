@@ -112,11 +112,9 @@ export const LanguageLink = styled.button`
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
-  font-size: 0.9rem;
+  padding: 14px;
 
   &:hover {
-    color: #4a90e2;
-    color: #7a2141;
     color: #111;
   }
 `;
