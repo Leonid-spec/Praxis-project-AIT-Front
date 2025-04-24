@@ -42,6 +42,14 @@ export const BesideLogoContainer = styled.div`
   @media (max-width: 1350px) {
     gap: 30px;
   }
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 340px) {
+    gap: 10px;
+  }
 `;
 
 
@@ -112,6 +120,7 @@ export const LanguageLink = styled.div`
   &:hover {
     color: #7a2141;
   }
+
 `;
 
 export const Divider = styled.span`
@@ -168,17 +177,18 @@ export const NavLinkText = styled.span`
   }
 
   @media (max-width: 530px) {
+    font-size: 0.8rem;
     max-width: 150px;
   }
 
   @media (max-width: 450px) {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     max-width: 100px;
   }
 
   @media (max-width: 300px) {
     max-width: 70px;
-    font-size: 0.6rem;
+    font-size: 0.4rem;
   }
   
 `;
