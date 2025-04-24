@@ -16,7 +16,7 @@
     "main": {
       "use_oft": {
         "button": {
-          "title": "Termin Buchen"
+          "title": "Termin buchen"
         }
       },
       "home_page": {
@@ -354,8 +354,8 @@
           "enterDescriptionRu": "Geben Sie eine Beschreibung ein",
           "descriptions": "Beschreibungen:",
           "enterDescription": "Geben Sie eine Beschreibung ein ({{lang}})",
-          "placeholder": "Geben Sie den Namen des Service ein (en)",
-          "placeholderTime": "z. B. 10:00, 16:30, 2025-04-16",
+          "placeholder": "Der Name des Service (en)",
+          "placeholderTime": "10:00, 16:30, 2025-04-16",
           "uploadImage": "Bild hochladen",
           "makeCardVisibleCheckbox": "Karte sichtbar machen",
           "saveButton": "Speichern",
@@ -410,7 +410,7 @@
           "errorLoadingDoctorData": "Fehler beim Laden der Arztdaten:",
           "doctorUpdatedSuccessfully": "$Arzt \"{doctorData.fullName}\" wurde erfolgreich aktualisiert!",
           "fullName": "Vollständiger Name",
-          "searchPlaceholder": "Geben Sie den Namen des Arztes ein (en)",
+          "searchPlaceholder": "Der Name des Arztes (en)",
           "searchIconAlt": "Suche",
           "imageUploadFailed": "Failed to upload",
           "imageDeleted": "Das Bild wurde erfolgreich gelöscht",
