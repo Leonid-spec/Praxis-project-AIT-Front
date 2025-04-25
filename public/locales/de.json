@@ -323,7 +323,7 @@
                 "cancelButton": "Abbrechen",
                 "confirmSettingsTitle": "Bestätigen Einstellungen",
                 "confirmButton": "Bestätigen & speichern",
-                "successMessage": "Adresse erfolgreich gespeichert!",
+                "successMessage": "Alles erfolgreich gespeichert!",
                 "errorMessage": "Fehler beim Speichern. Bitte versuchen Sie es erneut."
               },
               "workingMode": {

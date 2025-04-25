@@ -16,58 +16,49 @@ import {
   ContactsInfoContainer,
   StyledNavLink,
   Nav,
+  RunningLine,
+  RunningLineContainer,
+  RunningLineWrapper,
 } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
+import { getSettings } from "../../api/settingsAPI";
+import { SettingsStringDto } from "../../store/types/settingsTypes";
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
-
-  const [workingHours, setWorkingHours] = useState({
-    monday: "08:00 - 12:00, 13:00 - 18:00",
-    tuesday: "08:00 - 12:00, 13:00 - 18:00",
-    wednesday: "08:00 - 12:00, 13:00 - 18:00",
-    thursday: "08:00 - 12:00, 13:00 - 18:00",
-    friday: "08:00 - 12:00, 13:00 - 18:00",
-  });
-
-  const [address, setAddress] = useState({
-    clinicName: "Zahnarztpraxis Sofia Abramian",
-    street: "Breslauer Str. 17",
-    city: "Konstanz",
-    phone: "+49 75 31 7 72 73",
-    email: "praxis.sofia.abramian@gmail.com",
-  });
+  const [settings, setSettings] = useState<SettingsStringDto>({});
 
   useEffect(() => {
-    const savedHours = localStorage.getItem("workingHours");
-    if (savedHours) {
-      try {
-        const parsedHours = JSON.parse(savedHours);
-        setWorkingHours(parsedHours);
-      } catch (error) {
-        console.error("Ошибка при загрузке данных из localStorage:", error);
-      }
-    }
-  }, []);
+    const init = async () => {
+      const localSettings = localStorage.getItem("settings");
+      if (localSettings) {
+        try {
+          const parsedSettings: SettingsStringDto = JSON.parse(localSettings);
+          setSettings(parsedSettings);
+        } catch (e) {
+          console.error("Error parsing settings from localStorage:", e);
+        }
+      } else {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token is missing");
+          return;
+        }
 
-  useEffect(() => {
-    const savedAddress = localStorage.getItem("address");
-    if (savedAddress) {
-      try {
-        const parsedAddress = JSON.parse(savedAddress);
-        setAddress({
-          clinicName:
-            parsedAddress.clinicName || "Zahnarztpraxis Sofia Abramian",
-          street: parsedAddress.street || "Breslauer Str. 17",
-          city: parsedAddress.city || "78467 Konstanz",
-          phone: parsedAddress.phone || "+49 75 31 7 72 73",
-          email: parsedAddress.email || "praxis.sofia.abramian@gmail.com",
-        });
-      } catch (error) {
-        console.error("Ошибка при загрузке адреса из localStorage:", error);
+        try {
+          const apiSettings = await getSettings(token);
+          console.log("Settings from API:", apiSettings);
+          setSettings(apiSettings);
+
+          localStorage.setItem("settings", JSON.stringify(apiSettings));
+        } catch (err) {
+          console.error("Failed to fetch settings from API:", err);
+        }
       }
-    }
+    };
+
+    init();
   }, []);
 
   const [isMobile, setIsMobile] = useState(false);
@@ -83,83 +74,91 @@ const Footer: React.FC = () => {
   }, []);
 
   return (
-    <FooterContainer>
-      <Content>
-        <ColumnLeft>
-          <TitleText>{t("message.footer.titles.contact")}</TitleText>
-          <ContactsInfoContainer>
-            <Address>
-              <p>{address.clinicName}</p>
-              <p>{address.street}</p>
-              <p>{address.city}</p>
-            </Address>
-            <Info>
-              <ContactIcons style={{ cursor: "pointer" }}>
-                <IconCircle>
-                  <FaPhone
-                    style={{
-                      transform: "rotate(90deg)",
-                    }}
-                  />
-                </IconCircle>
-                <ContactText>{address.phone}</ContactText>
-              </ContactIcons>
-              <ContactIcons style={{ cursor: "pointer" }}>
-                <IconCircle>
-                  <FaEnvelope />
-                </IconCircle>
-                <ContactText>{address.email}</ContactText>
-              </ContactIcons>
-            </Info>
-          </ContactsInfoContainer>
-        </ColumnLeft>
+    <>
+      <RunningLineWrapper>
+        <RunningLineContainer>
+          <RunningLine>{settings.runningText}</RunningLine>
+        </RunningLineContainer>
+      </RunningLineWrapper>
 
-        <Column>
-          <TimesContainer>
-            <TitleText>{t("message.footer.titles.time")}</TitleText>
-            <DaysOfWeekBox>
-              <DaysOfWeek>
-                <p>{t("message.footer.daysOfWeek.monday")}:</p>
-                <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
-                <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
-                <p>{t("message.footer.daysOfWeek.thursday")}:</p>
-                <p>{t("message.footer.daysOfWeek.friday")}:</p>
-                {/* <p>{t("message.footer.hours.weekend")}</p> */}
-              </DaysOfWeek>
-              <DaysOfWeek>
-                <p>{workingHours.monday}</p>
-                <p>{workingHours.tuesday}</p>
-                <p>{workingHours.wednesday}</p>
-                <p>{workingHours.thursday}</p>
-                <p>{workingHours.friday}</p>
-              </DaysOfWeek>
-            </DaysOfWeekBox>
-          </TimesContainer>
-        </Column>
+      <FooterContainer>
+        <Content>
+          <ColumnLeft>
+            <TitleText>{t("message.footer.titles.contact")}</TitleText>
+            <ContactsInfoContainer>
+              <Address>
+                <div>{settings.clinicName}</div>
+                <div>{settings.street}</div>
+                <div>{settings.city}</div>
+              </Address>
+              <Info>
+                <ContactIcons style={{ cursor: "pointer" }}>
+                  <IconCircle>
+                    <FaPhone
+                      style={{
+                        transform: "rotate(90deg)",
+                      }}
+                    />
+                  </IconCircle>
+                  <ContactText>{settings.phone}</ContactText>
+                </ContactIcons>
+                <ContactIcons style={{ cursor: "pointer" }}>
+                  <IconCircle>
+                    <FaEnvelope />
+                  </IconCircle>
+                  <ContactText>{settings.email}</ContactText>
+                </ContactIcons>
+              </Info>
+            </ContactsInfoContainer>
+          </ColumnLeft>
 
-        <Column>
-          {isMobile && (
-            <>
-              <TitleText>{t("message.footer.titles.pages")}</TitleText>
-             <Nav>
-                <StyledNavLink to="/services">
-                  {t("message.header.menu.services")}
-                </StyledNavLink>
-                <StyledNavLink to="/about">
-                  {t("message.header.menu.about_us")}
-                </StyledNavLink>
-                <StyledNavLink to="/team">
-                  {t("message.header.menu.team")}
-                </StyledNavLink>
-                <StyledNavLink to="/contacts">
-                  {t("message.header.menu.contact")}
-                </StyledNavLink>
-             </Nav>
-            </>
-          )}
-        </Column>
-      </Content>
-    </FooterContainer>
+          <Column>
+            <TimesContainer>
+              <TitleText>{t("message.footer.titles.time")}</TitleText>
+              <DaysOfWeekBox>
+                <DaysOfWeek>
+                  <div>{t("message.footer.daysOfWeek.monday")}:</div>
+                  <div>{t("message.footer.daysOfWeek.tuesday")}:</div>
+                  <div>{t("message.footer.daysOfWeek.wednesday")}:</div>
+                  <div>{t("message.footer.daysOfWeek.thursday")}:</div>
+                  <div>{t("message.footer.daysOfWeek.friday")}:</div>
+                  {/* <p>{t("message.footer.hours.weekend")}</p> */}
+                </DaysOfWeek>
+                <DaysOfWeek>
+                  <div>{settings.monday}</div>
+                  <div>{settings.tuesday}</div>
+                  <div>{settings.wednesday}</div>
+                  <div>{settings.thursday}</div>
+                  <div>{settings.friday}</div>
+                </DaysOfWeek>
+              </DaysOfWeekBox>
+            </TimesContainer>
+          </Column>
+
+          <Column>
+            {isMobile && (
+              <>
+                  <TitleText>{t("message.footer.titles.pages")}</TitleText>
+                  <Nav>
+                    <StyledNavLink to="/services">
+                      {t("message.header.menu.services")}
+                    </StyledNavLink>
+                    <StyledNavLink to="/about">
+                      {t("message.header.menu.about_us")}
+                    </StyledNavLink>
+                    <StyledNavLink to="/team">
+                      {t("message.header.menu.team")}
+                    </StyledNavLink>
+                    <StyledNavLink to="/contacts">
+                      {t("message.header.menu.contact")}
+                    </StyledNavLink>
+                  </Nav>
+              </>
+            )}
+          </Column>
+        </Content>
+      </FooterContainer>
+    </>
   );
 };
 

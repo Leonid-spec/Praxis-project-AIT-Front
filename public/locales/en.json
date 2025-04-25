@@ -321,7 +321,7 @@
                 "cancelButton": "Cancel",
                 "confirmButton": "Confirm & Save",
                 "confirmSettingsTitle": "Confirm Settings",
-                "successMessage": "Address successfully saved!",
+                "successMessage": "All successfully saved!",
                 "errorMessage": "An error occurred while saving. Please try again."
               },
               "workingMode": {

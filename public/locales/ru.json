@@ -322,7 +322,7 @@
                 "cancelButton": "Отменить",
                 "confirmSettingsTitle": "Подтвердите настройки",
                 "confirmButton": "Подтвердить и сохранить",
-                "successMessage": "Адрес успешно сохранён!",
+                "successMessage": "Всё успешно сохранено!",
                 "errorMessage": "Произошла ошибка при сохранении. Попробуйте снова."
               },
               "workingMode": {

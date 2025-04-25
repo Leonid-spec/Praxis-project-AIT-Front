@@ -121,7 +121,7 @@ export const Input = styled.input`
 export const SaveButtonContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin: 20px;
+  /* margin: 20px; */
 `;
 
 export const SaveButton = styled.button`

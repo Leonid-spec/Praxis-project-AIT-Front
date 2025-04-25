@@ -464,7 +464,6 @@ export const DaysStyle = styled.div`
 `;
 
 export const RunningLineWrapper = styled.div`
-  width: 100%;
   background-color: #f0f8ff;
   padding: 10px 0;
   position: relative;
@@ -476,11 +475,13 @@ export const RunningLineContainer = styled.div`
   white-space: nowrap;
   overflow: hidden;
   position: relative;
+  
 `;
 
 export const RunningLine = styled.div`
   display: inline-block;
-  animation: scroll 20s linear infinite;
+  animation: scroll 25s linear infinite;
+  width: 100%;
 
   @keyframes scroll {
     from {
