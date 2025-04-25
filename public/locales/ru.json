@@ -318,6 +318,10 @@
                   "email": "Введите email..."
                 },
                 "saveButton": "Сохранить",
+                "checkButton": "Проверить",
+                "cancelButton": "Отменить",
+                "confirmSettingsTitle": "Подтвердите настройки",
+                "confirmButton": "Подтвердить и сохранить",
                 "successMessage": "Адрес успешно сохранён!",
                 "errorMessage": "Произошла ошибка при сохранении. Попробуйте снова."
               },
