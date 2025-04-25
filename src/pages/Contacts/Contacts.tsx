@@ -160,7 +160,7 @@ const Contacts: React.FC = () => {
             {t("message.main.contacts_page.map.title")}
           </ContactsBoxTitle>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2685.9560405487!2d9.148501975827024!3d47.68527367119717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479af6661cef1c23%3A0x944fb240c49a68bc!2sBreslauer%20Str.%2017%2C%2078467%20Konstanz!5e0!3m2!1suk!2sde!4v1744838592570!5m2!1suk!2sde"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6206.4969366814885!2d9.147400797436982!3d47.68490569054843!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479af6661cef1c23%3A0x944fb240c49a68bc!2sBreslauer%20Str.%2017%2C%2078467%20Konstanz!5e0!3m2!1sen!2sde!4v1745592803234!5m2!1sen!2sde"
             width="100%"
             height="300"
             style={{ border: 0 }}
