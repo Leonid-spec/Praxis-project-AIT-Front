@@ -7,7 +7,7 @@ export const WhatsAppButtonContainer = styled.a`
   background-color: #25D366;
   color: white;
   padding: 10px 15px;
-  border-radius: 50px;
+  border-radius: 50%;
   font-size: 16px;
   font-weight: bold;
   display: flex;
