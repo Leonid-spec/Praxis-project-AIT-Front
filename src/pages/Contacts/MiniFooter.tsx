@@ -1,52 +1,17 @@
 import React, { useEffect, useState } from "react";
-// import styles from "./miniFooter.module.css";
+import styles from "./miniFooter.module.css";
 import { useTranslation } from "react-i18next";
 import { FaPhone, FaEnvelope } from "react-icons/fa";
-import {
-  Footer,
-  CenterSection,
-  ContactElement,
-  ContactText,
-  TitleText,
-  Address,
-  DaysOfWeekBox,
-  DaysOfWeek,
-  SprechzeitenBox,
-} from "./miniFooterStyles";
+import { RunningLineWrapper, RunningLineContainer, RunningLine } from "./styles";
+import { getSettings } from "../../api/settingsAPI";
+import { SettingsStringDto } from "../../store/types/settingsTypes";
 
 const MiniFooter: React.FC = () => {
   const { t } = useTranslation();
-  const [address, setAddress] = useState({
-    clinicName: "Zahnarztpraxis Sofia Abramian",
-    street: "Breslauer Str. 17",
-    city: "Konstanz",
-    phone: "+49 75 31 7 72 73",
-    email: "praxis.sofia.abramian@gmail.com",
-  });
+  const [settings, setSettings] = useState<SettingsStringDto>({});
 
-  const [workingHours] = useState({
-    monday: "08:00 - 12:00, 13:00 - 18:00",
-    tuesday: "08:00 - 12:00, 13:00 - 18:00",
-    wednesday: "08:00 - 12:00, 13:00 - 18:00",
-    thursday: "08:00 - 12:00, 13:00 - 18:00",
-    friday: "08:00 - 12:00, 13:00 - 18:00",
-  });
-
-  useEffect(() => {
-    const savedAddress = localStorage.getItem("address");
-    if (savedAddress) {
-      try {
-        const parsedAddress = JSON.parse(savedAddress);
-        setAddress((prevState) => ({
-          ...prevState,
-          phone: parsedAddress.phone || prevState.phone,
-          email: parsedAddress.email || prevState.email,
-        }));
-      } catch (error) {
-        console.error("Ошибка при загрузке адреса из localStorage:", error);
-      }
-    }
-  }, []);
+  // Загрузка данных из localStorage
+  
   const handleCall = () => {
     window.location.href = "tel:+49 75 31 7 72 73";
   };
@@ -55,50 +20,63 @@ const MiniFooter: React.FC = () => {
     window.location.href = "mailto:praxis.sofia.abramian@gmail.com";
   };
 
-  return (
-    <Footer>
-      <CenterSection>
-        <div>
-          <TitleText>{t("message.footer.titles.contact")}</TitleText>
-          <Address>
-            <p>{address.clinicName}</p>
-            <p>{address.street}</p>
-            <p>{address.city}</p>
-          </Address>
-          <ContactElement onClick={handleCall}>
-            <FaPhone style={{ cursor: "pointer" }} />
-            <ContactText>{address.phone}</ContactText>
-          </ContactElement>
-          <ContactElement onClick={handleEmail}>
-            <FaEnvelope style={{ cursor: "pointer" }} />
-            <ContactText>{address.email}</ContactText>
-          </ContactElement>
-        </div>
+  useEffect(() => {
+    const init = async () => {
+      const localSettings = localStorage.getItem("settings");
+      if (localSettings) {
+        try {
+          const parsedSettings: SettingsStringDto = JSON.parse(localSettings);
+          setSettings(parsedSettings);
+        } catch (e) {
+          console.error("Error parsing settings from localStorage:", e);
+        }
+      } else {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token is missing");
+          return;
+        }
 
-        <div>
-          <SprechzeitenBox>
-            <TitleText>{t("message.footer.titles.time")}</TitleText>
-            <DaysOfWeekBox>
-              <DaysOfWeek>
-                <p>{t("message.footer.daysOfWeek.monday")}:</p>
-                <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
-                <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
-                <p>{t("message.footer.daysOfWeek.thursday")}:</p>
-                <p>{t("message.footer.daysOfWeek.friday")}:</p>
-                {/* <p>{t("message.footer.hours.weekend")}</p> */}
-              </DaysOfWeek>
-              <DaysOfWeek>
-                <p>{workingHours.monday}</p>
-                <p>{workingHours.tuesday}</p>
-                <p>{workingHours.wednesday}</p>
-                <p>{workingHours.thursday}</p>
-                <p>{workingHours.friday}</p>
-              </DaysOfWeek>
-            </DaysOfWeekBox>
-          </SprechzeitenBox>
+        try {
+          const apiSettings = await getSettings(token);
+          console.log("Settings from API:", apiSettings);
+          setSettings(apiSettings);
+
+          localStorage.setItem("settings", JSON.stringify(apiSettings));
+        } catch (err) {
+          console.error("Failed to fetch settings from API:", err);
+        }
+      }
+    };
+
+    init();
+  }, []);
+
+  return (
+    <div>
+       <RunningLineWrapper>
+              <RunningLineContainer>
+                <RunningLine>{settings.runningText}</RunningLine>
+              </RunningLineContainer>
+            </RunningLineWrapper>
+      <footer className={styles.footer}>
+  
+        <div className={styles.centerSection}>
+          <div className={styles.contactElement} onClick={handleCall}>
+            <FaPhone style={{ cursor: "pointer", marginRight: "5px" }} />
+            <span className={styles.contactText}>{settings.phone}</span>
+          </div>
+          <div className={styles.contactElement} onClick={handleEmail}>
+            <FaEnvelope style={{ cursor: "pointer", marginRight: "5px" }} />
+           <span className={styles.contactText}> {settings.email}</span>
+          </div>
+          <div className={styles.contactElement}>
+            {t("message.footer.hours.weekend")}
+            {t("message.footer.hours.weekendText")}
+          </div>
         </div>
-      </CenterSection>
-    </Footer>
+      </footer>
+    </div>
   );
 };
 

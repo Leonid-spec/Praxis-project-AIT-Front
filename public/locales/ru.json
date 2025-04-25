@@ -22,7 +22,11 @@
       "home_page": {
         "title": "Добро пожаловать в нашу стоматологическую клинику",
         "subtitle1": "МЫ <HighlightedSpan>ДАРИМ</HighlightedSpan> ВАМ ВАШУ",
-        "subtitle2": "САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>"
+        "subtitle2": "САМУЮ КРАСИВУЮ <HighlightedSpan>УЛЫБКУ</HighlightedSpan>",
+        "clinic_description": "<HighlightedSpan>Наша клиника</HighlightedSpan> — это сочетание <HighlightedSpan>высоких медицинских стандартов</HighlightedSpan>, современного оборудования и <HighlightedSpan>индивидуального подхода</HighlightedSpan> к каждому пациенту. Мы внедряем <HighlightedSpan>передовые технологии</HighlightedSpan> и постоянно улучшаем качество обслуживания, чтобы обеспечить <HighlightedSpan>наилучший результат</HighlightedSpan>. Для удобства наших клиентов предусмотрена <HighlightedSpan>собственная парковка</HighlightedSpan> — вам не придётся беспокоиться о месте для автомобиля.",
+        "clinic_description1": "<HighlightedSpan>Наша клиника</HighlightedSpan> сочетает в себе <HighlightedSpan>высочайшие медицинские стандарты</HighlightedSpan>, современное оборудование и <HighlightedSpan>индивидуальный подход</HighlightedSpan> к каждому пациенту.",
+        "clinic_description2": "Мы используем <HighlightedSpan>инновационные технологии</HighlightedSpan> и постоянно улучшаем качество сервиса, чтобы добиваться наилучших результатов.",
+        "clinic_description3": "Для вашего удобства у нас есть <HighlightedSpan>собственная парковка</HighlightedSpan> — вам не нужно беспокоиться о месте для автомобиля."
       },
       "about_us_page": {
         "ours": "Наши",
@@ -100,7 +104,8 @@
       },
       "hours": {
         "weekdays": "Пн-Пт: ",
-        "weekend": "Сб-Вс: выходной"
+        "weekend": "Сб-Вс: ",
+        "weekendText": "выходной"
       }
     },
     "other": {
@@ -186,6 +191,7 @@
       }
     },
     "adminPanel": {
+      "apply":"Применить",
       "appointments": {
         "title": "Записи",
         "noAppointments": "Нет записей.",
@@ -225,6 +231,15 @@
         },
         "settings": {
           "admin": {
+            "kill": {
+              "kill": "Убрать администратора",
+              "fillRequired": "Пожалуйста, введите логин.",
+              "noToken": "Токен аутентификации не найден.",
+              "success": "Администратор {{login}} был устранён.",
+              "error": "Не удалось устранить администратора.",
+              "loginPlaceholder": "Логин администратора",
+              "button": "Устранить администратора"
+            },
             "create": {
               "loginLabel": "Логин:",
               "passwordLabel": "Пароль:",
@@ -278,7 +293,8 @@
                 "address": "Адрес",
                 "runningLine": "Бегущая строка",
                 "workingMode": "Режим работы",
-                "delete": "Удалить администратора"
+                "delete": "Удалить администратора",
+                "kill": "Убрать администратора"
               },
               "sections": {
                 "create": "Создание нового администратора",
@@ -303,7 +319,11 @@
                   "email": "Введите email..."
                 },
                 "saveButton": "Сохранить",
-                "successMessage": "Адрес успешно сохранён!",
+                "checkButton": "Проверить",
+                "cancelButton": "Отменить",
+                "confirmSettingsTitle": "Подтвердите настройки",
+                "confirmButton": "Подтвердить и сохранить",
+                "successMessage": "Всё успешно сохранено!",
                 "errorMessage": "Произошла ошибка при сохранении. Попробуйте снова."
               },
               "workingMode": {
@@ -349,8 +369,8 @@
           "enterDescriptionRu": "Введите описание",
           "descriptions": "Описание:",
           "enterDescription": "Введите описание ({{lang}})",
-          "placeholder": "Введите название услуги (en)",
-          "placeholderTime": "например, 10:00, 16:30, 2025-04-16",
+          "placeholder": "Название услуги (en)",
+          "placeholderTime": "10:00, 16:30, 2025-04-16",
           "uploadImage": "Загрузите изображение",
           "makeCardVisibleCheckbox": "Сделать карточку видимой",
           "saveButton": "Сохранить",
@@ -393,7 +413,7 @@
           "inactive": "Неактивен",
           "descriptions": "Описания:",
           "enterDescription": "Введите описание ({{lang}})",
-          "placeholder": "Введите имя врача",
+          "placeholder": "Имя врача",
           "placeholderTime": "например, 10:00, 16:30, 2025-04-16",
           "uploadImage": "Загрузить изображение",
           "makeCardVisibleCheckbox": "Сделать карточку видимой",
@@ -401,12 +421,13 @@
           "savingButton": "Сохранение...",
           "addNewDoctor": "+  Добавить нового врача",
           "refresh": "Обновить",
+          "imageDeleted": "Изображение было успешно удалено",
           "loadingDoctorData": "Загрузка данных о враче...",
           "doctorPreview": "Предпросмотр врача",
           "errorLoadingDoctorData": "Ошибка при загрузке данных о враче:",
           "doctorUpdatedSuccessfully": "$Врач \"{doctorData.fullName}\" успешно обновлен!",
           "fullName": "Полное имя",
-          "searchPlaceholder": "Введите имя врача (en)",
+          "searchPlaceholder": "Имя врача (en)",
           "searchIconAlt": "Поиск",
           "imageUploadFailed": "Failed to upload",
           "duplicateNameError": "Врач с таким именем уже существует. Попробуйте другое имя или оставьте текущее без изменений."

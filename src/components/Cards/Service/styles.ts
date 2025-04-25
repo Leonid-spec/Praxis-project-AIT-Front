@@ -17,17 +17,27 @@ export const Card = styled.div`
 `;
 
 export const PhotoContainer = styled.div`
+  position: relative;
+
   width: 100%;
-  height: 250px;
+  /* height: 250px; */
+  padding-top: 75%;
+  overflow: hidden;
+
   background-color: #bbb9f2;
   background-color: #e0def696; 
 
 `;
 
 export const Photo = styled.img`
+position: absolute;
+  top: 0;
+  left: 0;
    width: 100%;
    height: 100%;
   object-fit: cover;
+  display: block;
+
 `;
 
 export const Info = styled.div`

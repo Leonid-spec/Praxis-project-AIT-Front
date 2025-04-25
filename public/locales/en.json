@@ -22,7 +22,11 @@
       "home_page": {
         "title": "Welcome to our caring and professional dental practice",
         "subtitle1": "WE <HighlightedSpan>GIVE</HighlightedSpan> YOU YOUR",
-        "subtitle2": "MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>"
+        "subtitle2": "MOST BEAUTIFUL <HighlightedSpan>SMILE</HighlightedSpan>",
+        "clinic_description": "<HighlightedSpan>Our clinic</HighlightedSpan> combines <HighlightedSpan>the highest medical standards</HighlightedSpan>, state-of-the-art equipment, and a <HighlightedSpan>personalized approach</HighlightedSpan> to each patient. We implement <HighlightedSpan>advanced technologies</HighlightedSpan> and continuously improve our services to ensure the <HighlightedSpan>best possible outcomes</HighlightedSpan>. For your convenience, we offer <HighlightedSpan>on-site parking</HighlightedSpan> — no need to worry about finding a spot.",
+        "clinic_description1": "<HighlightedSpan>Our clinic</HighlightedSpan> combines <HighlightedSpan>the highest medical standards</HighlightedSpan>, modern equipment, and an <HighlightedSpan>individual approach</HighlightedSpan> to every patient.",
+        "clinic_description2": "We implement <HighlightedSpan>innovative technologies</HighlightedSpan> and continuously improve our service quality to achieve the best results.",
+        "clinic_description3": "For your convenience, we offer <HighlightedSpan>private parking</HighlightedSpan> — no need to worry about finding a parking spot."
       },
       "about_us_page": {
         "ours": "Our ",
@@ -100,7 +104,8 @@
       },
       "hours": {
         "weekdays": "Mon-Fri:",
-        "weekend": "Sat-Sun: closed"
+        "weekend": "Sat-Sun: ",
+        "weekendText": "closed"
       }
     },
     "other": {
@@ -186,6 +191,7 @@
       }
     },
     "adminPanel": {
+      "apply":"Apply",
       "appointments": {
         "title": "Appointments",
         "noAppointments": "No appointments.",
@@ -224,6 +230,15 @@
         },
         "settings": {
           "admin": {
+            "kill": {
+              "kill": "Kill Administrator",
+              "fillRequired": "Please enter the login.",
+              "noToken": "Authentication token not found.",
+              "success": "Administrator {{login}} has been eliminated.",
+              "error": "Failed to eliminate administrator.",
+              "loginPlaceholder": "Administrator login",
+              "button": "Eliminate administrator"
+            },
             "create": {
               "loginLabel": "Username:",
               "passwordLabel": "Password:",
@@ -277,7 +292,8 @@
                 "address": "Address",
                 "runningLine": "Running line",
                 "workingMode": "Working mode",
-                "delete": "Delete Administrator"
+                "delete": "Delete Administrator",
+                "kill": "Kill Administrator"
               },
               "sections": {
                 "create": "Create New Administrator",
@@ -302,7 +318,11 @@
                   "email": "Enter email..."
                 },
                 "saveButton": "Save",
-                "successMessage": "Address successfully saved!",
+                "checkButton": "Check",
+                "cancelButton": "Cancel",
+                "confirmButton": "Confirm & Save",
+                "confirmSettingsTitle": "Confirm Settings",
+                "successMessage": "All successfully saved!",
                 "errorMessage": "An error occurred while saving. Please try again."
               },
               "workingMode": {
@@ -348,8 +368,8 @@
           "enterDescriptionRu": "Enter description",
           "descriptions": "Descriptions:",
           "enterDescription": "Enter description ({{lang}})",
-          "placeholder": "Enter the name of the service (en)",
-          "placeholderTime": "e.g. 10:00, 16:30, 2025-04-16",
+          "placeholder": "Name of the service (en)",
+          "placeholderTime": "10:00, 16:30, 2025-04-16",
           "uploadImage": "Upload image",
           "makeCardVisibleCheckbox": "Make card visible",
           "saveButton": "Save",
@@ -399,6 +419,7 @@
           "savingButton": "Saving...",
           "addNewDoctor": "+  Add new doctor",
           "refresh": "Refresh",
+          "imageDeleted": "The image was successfully deleted",
           "loadingDoctorData": "Loading doctor data...",
           "doctorPreview": "Doctor preview",
           "errorLoadingDoctorData": "Error loading doctor data:",

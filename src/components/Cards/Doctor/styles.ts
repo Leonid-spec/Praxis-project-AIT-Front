@@ -16,18 +16,23 @@ export const Card = styled.div`
 `;
 
 export const PhotoContainer = styled.div`
+  position: relative;
   width: 100%;
-  height: 300px;
-  background-color: #bbb9f2;
-  background-color: #e0def696; 
-
+  padding-top: 133.33%;
+  background-color: #f0f0f0;
+  overflow: hidden;
 `;
 
 export const Photo = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 `;
+
 
 export const Info = styled.div`
   padding: 20px;

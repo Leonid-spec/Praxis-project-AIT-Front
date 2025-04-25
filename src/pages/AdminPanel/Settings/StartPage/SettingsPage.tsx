@@ -12,21 +12,16 @@ import {
   StyledButton,
   HighlightedSpan,
   WelcomeTextBox,
-  // MainFunctionsText,
   MainWelcomeText,
   SectionTitle,
-  // RefreshIconBox,
   ScrollContainer,
   MainFunctionsText,
 } from "./styles";
 
-// import { FaSyncAlt } from "react-icons/fa";
 import { AdminDto } from "../../../../store/types/adminTypes";
 import { getAllAdmins } from "../../../../api/adminAPI";
-import AddressPage from "../AddressPage/AdressPage";
-import RunningLinePage from "../RunningLine/RunningLinePage";
-import WorkingModePage from "../WorkingModePage/WorkingModePage";
-// import { FaSyncAlt } from "react-icons/fa";
+import AllModePage from "../AllModePage/AllModePage";
+import KillAdminForm from "../KillAdminForm/KillAdminForm";
 
 interface SettingsPageProps {
   adminLogin: string;
@@ -41,10 +36,9 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
     | "changePassword"
     | "viewAdmins"
     | "deleteAdmin"
+    | "killAdmin"
     | "welcome"
     | "workingMode"
-    | "address"
-    | "runningLine"
     | null
   >("welcome");
 
@@ -81,7 +75,7 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
   };
 
   useEffect(() => {
-    if (activeSection === "viewAdmins" || activeSection === "deleteAdmin") {
+    if (activeSection === "viewAdmins" || activeSection === "deleteAdmin" || activeSection === "killAdmin") {
       fetchAdmins();
     }
   }, [activeSection]);
@@ -132,28 +126,19 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete"
           )}
         </StyledButton>
+        <StyledButton onClick={() => setActiveSection("killAdmin")}>
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.kill"
+          )}
+        </StyledButton>
         <StyledButton onClick={() => setActiveSection("workingMode")}>
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.workingMode"
           )}
         </StyledButton>
-        <StyledButton onClick={() => setActiveSection("address")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.address"
-          )}
-        </StyledButton>
-        <StyledButton onClick={() => setActiveSection("runningLine")}>
-          {t(
-            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.runningLine"
-          )}
-        </StyledButton>
-        {/* <RefreshIconBox onClick={handleRefreshBtn}>
-          <FaSyncAlt size={24} color="#20b1b7" />
-        </RefreshIconBox> */}
+     
         </ButtonGroup>
-
-        
-      
+     
 
       <ScrollContainer>
         <Section>
@@ -200,21 +185,21 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
               <DeleteAdminForm />
             </>
           )}
+          
+          {activeSection === "killAdmin" && (
+            <>
+              <SectionTitle>
+                {t(
+                  "message.adminPanel.appointments.settings.admin.kill.kill"
+                )}
+              </SectionTitle>
+              <KillAdminForm />
+            </>
+          )}
           {activeSection === "workingMode" && (
             <>
               <SectionTitle></SectionTitle>
-              <WorkingModePage />
-            </>
-          )}
-          {activeSection === "address" && (
-            <>
-              <SectionTitle></SectionTitle>
-              <AddressPage />{" "}
-            </>
-          )}
-          {activeSection === "runningLine" && (
-            <>
-              <RunningLinePage />
+              <AllModePage />
             </>
           )}
         </Section>

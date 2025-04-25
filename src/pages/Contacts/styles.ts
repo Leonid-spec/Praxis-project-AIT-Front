@@ -5,7 +5,6 @@ export const ContactsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
   background-color: #f6f9fc;
   /* margin: 0 auto; */
   margin: 20px 0 0 20px;
@@ -62,9 +61,11 @@ export const HighlightedSpan = styled.span`
 `;
 
 export const ContactsPageContainer = styled.div`
-  /* min-width: 90%; */
-  min-width: 100%;
+  /* max-width: 100%; */
+  width: 100%;
   gap: 20px;
+  margin-bottom: 20px;
+
 `;
 
 export const CardsGrid = styled.div`
@@ -73,15 +74,19 @@ export const CardsGrid = styled.div`
   margin: 40px;
  
   @media (max-width: 1282px) {
-    grid-template-columns: 1fr;
-    padding: 0 10px;
+    /* grid-template-columns: 1fr; */
+    padding: 0 0 010px;
     gap: 30px;
     margin: 0;
   }
 
   @media (max-width: 768px) {
+    grid-template-columns: 1fr;
     gap: 30px;
     padding: 0;
+  }
+
+  @media (max-width: 768px) {
   }
 `;
 
@@ -250,6 +255,7 @@ export const MapContainer = styled.div`
   text-align: center;
   max-width: 90%;
   margin: auto;
+  box-sizing: content-box;
 
   @media (max-width: 1282px) {
     margin: 0;

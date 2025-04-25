@@ -27,6 +27,10 @@ const globalStyles = css`
     margin: 0;
     padding: 0;
   }
+
+  #root {
+    flex: 1;
+  }
 // Yuliia
   @media (max-width: 868px) {
     body {
@@ -68,6 +72,51 @@ const globalStyles = css`
   li {
     margin: 0;
     padding: 0;
+  }
+
+  // Yullia was right
+  button {
+    font-family: "Lato", sans-serif;
+    background-color: #7a2141;
+    color: white;
+    border: none;
+    border-radius: 4px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    @media (min-width: 1980px) {
+      padding: 14px 32px !important;
+    }
+
+    @media (min-width: 1440px) {
+      padding: 14px 28px !important;
+    }
+
+    @media (max-width: 1200px) {
+      padding: 12px 24px !important;
+    }
+
+    @media (max-width: 768px) {
+      padding: 10px 20px !important;
+    }
+
+    @media (max-width: 480px) {
+      font-size: clamp(0.8rem, 2vw, 1.2rem) !important;
+      padding: 8px 16px !important; 
+    }
+
+    @media (max-width: 360px) {
+      font-size: clamp(0.6rem, 2vw, 1rem) !important;
+      padding: 6px 12px !important; 
+    }
+
+    @media (max-width: 320px) {
+      font-size: clamp(0.5rem, 2vw, 0.8rem) !important;
+    }
+
+    @media (max-width: 280px) {
+      font-size: clamp(0.4rem, 2vw, 0.6rem)!important;
+    }
   }
 `;
 

@@ -1,6 +1,6 @@
-import { InputBox, SearchIcon, StyledButton } from "./styles";
 import { useTranslation } from "react-i18next";
 import { FaSearch } from "react-icons/fa";
+import { InputBox, SearchIcon, StyledButton } from "../../AppointmentsPage/MainPage/FindByTime/styles";
 
 interface FindDoctorContainerProps {
   searchTerm: string;
@@ -19,7 +19,7 @@ export const FindDoctorContainer: React.FC<FindDoctorContainerProps> = ({
   return (
     <StyledButton>
       <SearchIcon>
-        <FaSearch style={{ color: "white", fontSize: "24px" }} />
+        <FaSearch style={{ color: "white"}} />
       </SearchIcon>
       <InputBox
         type="text"

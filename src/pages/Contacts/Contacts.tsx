@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import {
-  ButtonContainer,
   CardsGrid,
   ContactIcons,
   ContactsBox,
@@ -18,76 +17,59 @@ import {
   SprechzeitenWrapper,
 } from "./styles";
 import { useTranslation } from "react-i18next";
-import MakeAppointmentBtn from "../../components/Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import { FaPhone, FaEnvelope, FaCopy } from "react-icons/fa";
+import { SettingsStringDto } from "../../store/types/settingsTypes";
+import { getSettings } from "../../api/settingsAPI";
 
 const Contacts: React.FC = () => {
   const { t } = useTranslation();
+  const [settings, setSettings] = useState<SettingsStringDto>({});
   const [showMessage, setShowMessage] = useState(false);
-  const [address, setAddress] = useState({
-    clinicName: "Zahnarztpraxis Sofia Abramian",
-    street: "Breslauer Str. 17",
-    city: "Konstanz",
-    phone: "+49 75 31 7 72 73",
-    email: "praxis.sofia.abramian@gmail.com",
-    gps: "47.68549067995246, 9.151141373012225",
-    zipCode: "78467",
-  });
 
-  const [workingHours, setWorkingHours] = useState({
-    monday: "08:00 - 12:00, 13:00 - 18:00",
-    tuesday: "08:00 - 12:00, 13:00 - 18:00",
-    wednesday: "08:00 - 12:00, 13:00 - 18:00",
-    thursday: "08:00 - 12:00, 13:00 - 18:00",
-    friday: "08:00 - 12:00, 13:00 - 18:00",
-  });
-
-  // Загружаем адрес из локального хранилища
   useEffect(() => {
-    const savedAddress = localStorage.getItem("address");
-    if (savedAddress) {
-      try {
-        const parsedAddress = JSON.parse(savedAddress);
-        setAddress((prev) => ({
-          ...prev,
-          street: parsedAddress.street,
-          city: parsedAddress.city,
-          phone: parsedAddress.phone,
-          email: parsedAddress.email,
-          gps: parsedAddress.gps,
-          zipCode: parsedAddress.zipCode,
-        }));
-      } catch (error) {
-        console.error("Ошибка при загрузке адреса из localStorage:", error);
-      }
-    }
-  }, []);
+    const init = async () => {
+      const localSettings = localStorage.getItem("settings");
+      if (localSettings) {
+        try {
+          const parsedSettings: SettingsStringDto = JSON.parse(localSettings);
+          setSettings(parsedSettings);
+        } catch (e) {
+          console.error("Error parsing settings from localStorage:", e);
+        }
+      } else {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          console.error("Token is missing");
+          return;
+        }
 
-  // Загружаем рабочее время из локального хранилища
-  useEffect(() => {
-    const savedHours = localStorage.getItem("workingHours");
-    if (savedHours) {
-      try {
-        const parsedHours = JSON.parse(savedHours);
-        setWorkingHours(parsedHours);
-      } catch (error) {
-        console.error("Ошибка при загрузке рабочего времени из localStorage:", error);
+        try {
+          const apiSettings = await getSettings(token);
+          console.log("Settings from API:", apiSettings);
+          setSettings(apiSettings);
+
+          localStorage.setItem("settings", JSON.stringify(apiSettings));
+        } catch (err) {
+          console.error("Failed to fetch settings from API:", err);
+        }
       }
-    }
+    };
+
+    init();
   }, []);
 
   const handleCopyCoordinates = () => {
-    navigator.clipboard.writeText(address.gps);
+    if (settings.gps) navigator.clipboard.writeText(settings.gps);
     setShowMessage(true);
     setTimeout(() => setShowMessage(false), 2000);
   };
 
   const handleCall = () => {
-    window.location.href = `tel:${address.phone}`;
+    if (settings.phone) window.location.href = `tel:${settings.phone}`;
   };
 
   const handleEmail = () => {
-    window.location.href = `mailto:${address.email}`;
+    if (settings.email) window.location.href = `mailto:${settings.email}`;
   };
 
   return (
@@ -118,36 +100,34 @@ const Contacts: React.FC = () => {
               </ContactsBoxTitle>
 
               <DaysOfWeek>
-                <DaysOfWeekp>{address.street}, {address.zipCode} {address.city}
-                  </DaysOfWeekp>
+                <DaysOfWeekp>
+                  {settings.street}, {settings.zipCode} {settings.city}
+                </DaysOfWeekp>
               </DaysOfWeek>
 
-              <ContactIcons >
-                <IconCircle onClick={handleCopyCoordinates} style={{ cursor: "pointer" }}>
+              <ContactIcons>
+                <IconCircle onClick={handleCopyCoordinates}>
                   <FaCopy />
                 </IconCircle>
-                <DaysOfWeekspan>{address.gps}</DaysOfWeekspan>
+                <DaysOfWeekspan>{settings.gps}</DaysOfWeekspan>
               </ContactIcons>
 
-              <ContactIcons >
-                <IconCircle onClick={handleCall} style={{ cursor: "pointer" }}>
-                  <FaPhone
-                    style={{
-                      transform: "rotate(90deg)",
-                    }}
-                  />
+              <ContactIcons>
+                <IconCircle onClick={handleCall}>
+                  <FaPhone style={{ transform: "rotate(90deg)" }} />
                 </IconCircle>
-                <DaysOfWeekspan>{address.phone}</DaysOfWeekspan>
+                <DaysOfWeekspan>{settings.phone}</DaysOfWeekspan>
               </ContactIcons>
 
-              <ContactIcons >
-                <IconCircle onClick={handleEmail} style={{ cursor: "pointer" }}>
+              <ContactIcons>
+                <IconCircle onClick={handleEmail}>
                   <FaEnvelope />
                 </IconCircle>
-                <DaysOfWeekspan>{address.email}</DaysOfWeekspan>
+                <DaysOfWeekspan>{settings.email}</DaysOfWeekspan>
               </ContactIcons>
             </ContactsBox>
           </ContactsWrapper>
+
           <SprechzeitenWrapper>
             <SprechzeitenBox>
               <ContactsBoxTitle>
@@ -160,20 +140,17 @@ const Contacts: React.FC = () => {
                   <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
                   <p>{t("message.footer.daysOfWeek.thursday")}:</p>
                   <p>{t("message.footer.daysOfWeek.friday")}:</p>
+                  <p>{t("message.footer.hours.weekend")}</p>
                 </DaysOfWeek>
                 <DaysOfWeek>
-                  <p>{workingHours.monday}</p>
-                  <p>{workingHours.tuesday}</p>
-                  <p>{workingHours.wednesday}</p>
-                  <p>{workingHours.thursday}</p>
-                  <p>{workingHours.friday}</p>
+                  <p>{settings.monday}</p>
+                  <p>{settings.tuesday}</p>
+                  <p>{settings.wednesday}</p>
+                  <p>{settings.thursday}</p>
+                  <p>{settings.friday}</p>
+                  <p>{t("message.footer.hours.weekendText")}</p>
                 </DaysOfWeek>
               </DaysOfWeekBox>
-              <ButtonContainer>
-                <MakeAppointmentBtn
-                  text={t("message.main.use_oft.button.title")}
-                />
-              </ButtonContainer>
             </SprechzeitenBox>
           </SprechzeitenWrapper>
         </CardsGrid>
@@ -183,14 +160,13 @@ const Contacts: React.FC = () => {
             {t("message.main.contacts_page.map.title")}
           </ContactsBoxTitle>
           <iframe
-            // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2662.577930682343!2d11.587207676366516!3d48.1093323792194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479ddf31d5b7085f%3A0xd3a9396049ec4d54!2sAlbrecht-D%C3%BCrer-Stra%C3%9Fe%2010%2C%2081543%20M%C3%BCnchen%2C%20Germany!5e0!3m2!1sen!2sus!4v1688561234567!5m2!1sen!2sus"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2685.9560405487!2d9.148501975827024!3d47.68527367119717!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479af6661cef1c23%3A0x944fb240c49a68bc!2sBreslauer%20Str.%2017%2C%2078467%20Konstanz!5e0!3m2!1suk!2sde!4v1744838592570!5m2!1suk!2sde"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6206.4969366814885!2d9.147400797436982!3d47.68490569054843!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479af6661cef1c23%3A0x944fb240c49a68bc!2sBreslauer%20Str.%2017%2C%2078467%20Konstanz!5e0!3m2!1sen!2sde!4v1745592803234!5m2!1sen!2sde"
             width="100%"
             height="300"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
-          ></iframe>
+          />
         </MapContainer>
       </ContactsPageContainer>
     </ContactsContainer>

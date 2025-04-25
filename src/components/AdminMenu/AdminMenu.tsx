@@ -31,6 +31,13 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
     navigate("/");
   };
 
+  const handleLogIn = () => {
+    // check this setIsLoggedIn
+    // setIsLoggedIn(true);
+    setShowDropdown(false);
+    navigate("/admin-panel/settings");
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -71,7 +78,7 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
       {isLoggedIn && showDropdown && (
         <Dropdown ref={dropdownRef}>
-          <DropdownItem onClick={() => navigate("/admin-panel/settings")}>
+          <DropdownItem onClick={handleLogIn}>
             <FaTools style={{ marginRight: "8px" }} /> Admin panel
           </DropdownItem>
 

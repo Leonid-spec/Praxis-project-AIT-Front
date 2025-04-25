@@ -43,21 +43,25 @@ const Carousel: React.FC = () => {
         <NavButton onClick={prevSlide}>
           <FaArrowLeft style={{ color: "white" }} />
         </NavButton>
+
         <SideImagesContainer>
           <SideImage
             src={photos[(currentIndex - 1 + photos.length) % photos.length]}
             alt="Previous Image"
           />
         </SideImagesContainer>
+
         <MainImageContainer>
           <img src={photos[currentIndex]} alt={`Slide ${currentIndex + 1}`} />
         </MainImageContainer>
+        
         <SideImagesContainer>
           <SideImage
             src={photos[(currentIndex + 1) % photos.length]}
             alt="Next Image"
           />
         </SideImagesContainer>
+
         <NavButton onClick={nextSlide}>
           <FaArrowRight style={{ color: "white" }} />
         </NavButton>

@@ -3,11 +3,15 @@ import styled from "styled-components";
 interface ButtonProps {
   bgColor?: string;
   textColor?: string;
+  width?: string;
+  height?: string;
+  padding?: string;
+  fontSize?: string;
 }
 
 export const StyledButton = styled.button<ButtonProps>`
   padding: 12px 35px;
-  font-size: 1.1rem;
+  font-size: ${({ fontSize }) => fontSize || "1.1rem"};
   border: none;
   border-radius: 6px;
   background-color: ${({ bgColor }) => bgColor || "#7a2141"};
@@ -26,36 +30,43 @@ export const StyledButton = styled.button<ButtonProps>`
     background-color: #d3d3d3;
     border-color: #d3d3d3;
     color: #ffffff;
+    font-size: 1rem;
     cursor: not-allowed;
     box-shadow: none;
   }
 
   @media (min-width: 1980px) {
-    font-size: clamp(1.4rem, 4vw, 1.8rem);
+    /* font-size: clamp(1.4rem, 4vw, 1.8rem); */
     padding: 14px 32px;
   }
 
   @media (min-width: 1440px) {
-    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+    /* font-size: clamp(1.2rem, 3.5vw, 1.6rem); */
     padding: 14px 28px;
   }
 
   @media (max-width: 1200px) {
-    font-size: clamp(1rem, 3vw, 1.4rem);
+    /* font-size: clamp(1rem, 3vw, 1.4rem); */
     padding: 12px 24px;
   }
 
   @media (max-width: 768px) {
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
+    /* font-size: clamp(0.8rem, 2vw, 1.2rem); */
     padding: 10px 20px;
   }
 
   @media (max-width: 480px) {
-    font-size: clamp(0.6rem, 2vw, 1rem);
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     padding: 8px 16px;
   }
-  @media (max-width: 350px) {
-    font-size: 0.5rem;
+
+  @media (max-width: 360px) {
+    ${({ fontSize }) => !fontSize && `font-size: clamp(0.6rem, 2vw, 1rem)`}
     padding: 6px 12px;
+  }
+
+  @media (max-width: 320px) {
+    ${({ fontSize }) => !fontSize && `font-size: clamp(0.5rem, 2vw, 0.8rem)`}
+
   }
 `;

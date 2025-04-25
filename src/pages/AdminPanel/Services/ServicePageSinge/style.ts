@@ -146,7 +146,7 @@ export const TitlesBox = styled.div`
   font-size: 18px;
   font-weight: bold;
   color: #292828;
-  margin: 20px 0 10px;
+  /* margin: 20px 0 10px; */
 `;
 
 export const TitleBoxText = styled.label`

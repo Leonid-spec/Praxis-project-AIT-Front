@@ -16,13 +16,17 @@
     "main": {
       "use_oft": {
         "button": {
-          "title": "Termin Buchen"
+          "title": "Termin buchen"
         }
       },
       "home_page": {
         "title": "Willkommen in unserer professionellen Zahnarztpraxis",
         "subtitle1": "WIR <HighlightedSpan>SCHENKEN</HighlightedSpan>  IHNEN",
-        "subtitle2": "IHR SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>"
+        "subtitle2": "IHR SCHÖNSTES <HighlightedSpan>LÄCHELN</HighlightedSpan>",
+       "clinic_description": "<HighlightedSpan>Unsere Klinik</HighlightedSpan> verbindet <HighlightedSpan>höchste medizinische Standards</HighlightedSpan>, moderne Ausstattung und einen <HighlightedSpan>individuellen Ansatz</HighlightedSpan> für jeden Patienten. Wir setzen auf <HighlightedSpan>innovative Technologien</HighlightedSpan> und arbeiten kontinuierlich an der Verbesserung unseres Services, um <HighlightedSpan>bestmögliche Ergebnisse</HighlightedSpan> zu erzielen. Für Ihren Komfort steht Ihnen unser <HighlightedSpan>eigener Parkplatz</HighlightedSpan> zur Verfügung – Sie müssen sich keine Sorgen um einen Stellplatz machen.",
+        "clinic_description1": "<HighlightedSpan>Unsere Klinik</HighlightedSpan> verbindet <HighlightedSpan>höchste medizinische Standards</HighlightedSpan>, moderne Ausstattung und einen <HighlightedSpan>individuellen Ansatz</HighlightedSpan> für jeden Patienten.",
+        "clinic_description3": "Für Ihren Komfort steht Ihnen unser <HighlightedSpan>eigener Parkplatz</HighlightedSpan> zur Verfügung – Sie müssen sich keine Sorgen um einen Stellplatz machen.",
+        "clinic_description2": "Wir setzen auf <HighlightedSpan>innovative Technologien</HighlightedSpan> und arbeiten kontinuierlich an der Verbesserung unseres Services, um bestmögliche Ergebnisse zu erzielen."
       },
       "about_us_page": {
         "ours": "Unsere ",
@@ -101,7 +105,8 @@
       },
       "hours": {
         "weekdays": "Mo-Fr: ",
-        "weekend": "Sa-So: geschlossen"
+        "weekend": "Sa-So: ",
+        "weekendText": "geschlossen"
       }
     },
     "other": {
@@ -187,6 +192,7 @@
       }
     },
     "adminPanel": {
+      "apply":"Anwenden",
       "appointments": {
         "title": "Termine",
         "noAppointments": "Keine Termine.",
@@ -226,6 +232,15 @@
 
         "settings": {
           "admin": {
+            "kill": {
+              "kill": "Administrator killen",
+              "fillRequired": "Bitte geben Sie den Login ein.",
+              "noToken": "Authentifizierungstoken nicht gefunden.",
+              "success": "Administrator {{login}} wird eliminiert.",
+              "error": "Fehler beim Eliminieren des Administrators.",
+              "loginPlaceholder": "Login des Administrators",
+              "button": "Administrator eliminieren"
+            },
             "create": {
               "loginLabel": "Benutzername:",
               "passwordLabel": "Passwort:",
@@ -279,7 +294,8 @@
                 "address": "Adresse",
                 "runningLine": "Lauftext",
                 "workingMode": "Arbeitsmodus",
-                "delete": "Administrator löschen"
+                "delete": "Administrator löschen",
+                "kill": "Administrator killen"
               },
               "sections": {
                 "create": "Neuen Administrator erstellen",
@@ -304,7 +320,11 @@
                   "email": "Email eingeben..."
                 },
                 "saveButton": "Speichern",
-                "successMessage": "Adresse erfolgreich gespeichert!",
+                "checkButton": "Prüfen",
+                "cancelButton": "Abbrechen",
+                "confirmSettingsTitle": "Bestätigen Einstellungen",
+                "confirmButton": "Bestätigen & speichern",
+                "successMessage": "Alles erfolgreich gespeichert!",
                 "errorMessage": "Fehler beim Speichern. Bitte versuchen Sie es erneut."
               },
               "workingMode": {
@@ -349,8 +369,8 @@
           "enterDescriptionRu": "Geben Sie eine Beschreibung ein",
           "descriptions": "Beschreibungen:",
           "enterDescription": "Geben Sie eine Beschreibung ein ({{lang}})",
-          "placeholder": "Geben Sie den Namen des Service ein (en)",
-          "placeholderTime": "z. B. 10:00, 16:30, 2025-04-16",
+          "placeholder": "Der Name des Service (en)",
+          "placeholderTime": "10:00, 16:30, 2025-04-16",
           "uploadImage": "Bild hochladen",
           "makeCardVisibleCheckbox": "Karte sichtbar machen",
           "saveButton": "Speichern",
@@ -359,7 +379,7 @@
           "refresh": "Aktualisieren",
           "errorLoading": "Fehler beim Laden des Service",
           "searchPlaceholder": "Suche nach Servicenamen",
-          "imageDeleted": "Das Bild wurde erfolgreich gelöscht.",
+          "imageDeleted": "Das Bild wurde erfolgreich gelöscht",
           "imageDeleteError": "Beim Löschen des Bildes ist ein Fehler aufgetreten.",
           "imageEdited": "Das Bild wurde erfolgreich bearbeitet.",
           "imageEditeError": "Beim Bearbeiten des Bildes ist ein Fehler aufgetreten.",
@@ -405,9 +425,10 @@
           "errorLoadingDoctorData": "Fehler beim Laden der Arztdaten:",
           "doctorUpdatedSuccessfully": "$Arzt \"{doctorData.fullName}\" wurde erfolgreich aktualisiert!",
           "fullName": "Vollständiger Name",
-          "searchPlaceholder": "Geben Sie den Namen des Arztes ein (en)",
+          "searchPlaceholder": "Der Name des Arztes (en)",
           "searchIconAlt": "Suche",
           "imageUploadFailed": "Failed to upload",
+          "imageDeleted": "Das Bild wurde erfolgreich gelöscht",
           "duplicateNameError": "Einen Arzt mit diesem Namen gibt es bereits. Versuchen Sie es mit einem anderen Namen oder lassen Sie den aktuellen Namen unverändert."
         }
       }

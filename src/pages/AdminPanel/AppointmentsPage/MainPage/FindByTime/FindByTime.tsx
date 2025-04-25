@@ -22,7 +22,7 @@ export const FindByTime: React.FC<FindByTimeProps> = ({ searchTerm, setSearchTer
   return (
     <StyledButton>
       <SearchIcon>
-        <FaSearch style={{ color: "white", fontSize: "24px" }} />
+        <FaSearch style={{ color: "white" }} />
       </SearchIcon>
       <InputBox 
         type="text" 

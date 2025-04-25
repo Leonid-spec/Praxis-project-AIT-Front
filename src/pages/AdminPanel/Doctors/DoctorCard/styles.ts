@@ -27,17 +27,21 @@ min-width: 350px;
 `;
 
 export const PhotoContainer = styled.div`
-  background-color: #f0f0f0;
   position: relative;
   width: 100%;
-  height: 300px;
+  padding-top: 133.33%; 
+  background-color: #f0f0f0;
   overflow: hidden;
 `;
 
 export const Photo = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 `;
 
 export const Info = styled.div`
