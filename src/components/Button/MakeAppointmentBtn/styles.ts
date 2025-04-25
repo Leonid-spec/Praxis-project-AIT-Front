@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 interface ButtonProps {
-  bgColor?: string;
-  textColor?: string;
+  backgroundColor?: string;
+  color?: string;
   width?: string;
   height?: string;
   padding?: string;
@@ -14,8 +14,8 @@ export const StyledButton = styled.button<ButtonProps>`
   font-size: ${({ fontSize }) => fontSize || "1.1rem"};
   border: none;
   border-radius: 6px;
-  background-color: ${({ bgColor }) => bgColor || "#7a2141"};
-  color: ${({ textColor }) => textColor || "#ffffff"};
+  background-color: ${({ backgroundColor }) => backgroundColor || "#7a2141"};
+  color: ${({ color }) => color || "#ffffff"};
   cursor: pointer;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
   font-weight: bold;
