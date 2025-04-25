@@ -5,6 +5,7 @@ import Header from "../Header/Header"; // Правильный путь к ко�
 import styles from "./layout.module.css";
 import Footer from "../Footer/Footer";
 import MiniFooter from "../../pages/Contacts/MiniFooter";
+import WhatsAppButton from "../WhatsAppButton/WhatsAppButton";
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,6 +14,14 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
 
+  const noWhatsAppPages = [
+    "/admin-panel",
+    "/admin-panel/doctors",
+    "/admin-panel/services",
+    "/panel/appointments",
+    "/admin-panel/edit-doctor",
+  ];
+
   // Страницы без футера вообще
   const noFooterPages = [
     "/admin-panel",
@@ -20,6 +29,11 @@ const Layout = ({ children }: LayoutProps) => {
     "/panel/appointments",
     "/admin-panel/services",
   ];
+
+  const hideWhatsApp = noWhatsAppPages.some((path) =>
+    location.pathname.startsWith(path)
+  );
+
   const hideFooter = noFooterPages.some((path) =>
     location.pathname.startsWith(path)
   );
@@ -42,6 +56,8 @@ const Layout = ({ children }: LayoutProps) => {
         {/* {!hideFooter && <ResponsiveFooter />} */}
         {!hideFooter && !miniFooter && <Footer />}
         {miniFooter && <MiniFooter />}
+        {!hideWhatsApp && <WhatsAppButton />}
+
       </div>
     </div>
   );
