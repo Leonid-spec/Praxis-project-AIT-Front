@@ -40,14 +40,8 @@ const Footer: React.FC = () => {
           console.error("Error parsing settings from localStorage:", e);
         }
       } else {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          console.error("Token is missing");
-          return;
-        }
-
         try {
-          const apiSettings = await getSettings(token);
+          const apiSettings = await getSettings();
           console.log("Settings from API:", apiSettings);
           setSettings(apiSettings);
 
