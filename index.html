@@ -5,11 +5,64 @@
     <meta name="google" content="notranslate" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Praxis-project-AIT-Front </title>
+    <title>Praxis-project-AIT-Front</title>
   </head>
   <body>
     <div id="root"></div>
     <div id="notification-root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var selectedLanguage = localStorage.getItem("i18nextLng") || navigator.language.split('-')[0];
+    
+        var buttonTexts = {
+          "de": "💬 Nachricht auf WhatsApp",
+          "ru": "💬 Написать в WhatsApp",
+          "en": "💬 Message us on WhatsApp"
+        };
+    
+        var widget = document.createElement("div");
+        widget.innerHTML = `
+          <div id="whatsapp-widget" style="
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 16px;
+            z-index: 9999;
+          ">
+            ${buttonTexts[selectedLanguage] || buttonTexts["de"]}
+          </div>
+        `;
+    
+        document.body.appendChild(widget);
+    
+        document.getElementById("whatsapp-widget").addEventListener("click", function () {
+          var isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+          var messages = {
+            "de": "Hallo! Wie kann ich Ihnen helfen?",
+            "ru": "Здравствуйте! Чем могу помочь?",
+            "en": "Hello! How can I help you?"
+          };
+    
+          var whatsappUrl = isMobile
+            ? `https://api.whatsapp.com/send?phone=+49753177273&text=${encodeURIComponent(messages[selectedLanguage] || messages["de"])}`
+            : `https://web.whatsapp.com/send?phone=+49753177273&text=${encodeURIComponent(messages[selectedLanguage] || messages["de"])}`;
+    
+          window.open(whatsappUrl, "_blank");
+        });
+    
+        // 🔥 Добавляем динамическое обновление текста при смене языка
+        setInterval(() => {
+          var updatedLanguage = localStorage.getItem("i18nextLng") || navigator.language.split('-')[0];
+          document.getElementById("whatsapp-widget").innerHTML = buttonTexts[updatedLanguage] || buttonTexts["de"];
+        }, 1000); // Проверяем язык каждую секунду
+      });
+    </script>
   </body>
 </html>
