@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./adminPanel.module.css";
 import Sidebar from "./Sidebar";
 import MainContent from "./MainContent";
-import LoginAdminForm from "../../../components/Login/LoginAdminForm";
 
-interface AdminPanelProps {
-  isLoggedIn?: boolean;
-}
+const AdminPanel: React.FC = () => {
+  const [hasReloaded, setHasReloaded] = useState(false);
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-const AdminPanel: React.FC<AdminPanelProps> = ({ isLoggedIn }) => {
-  if (!isLoggedIn) {
-   //  return <div>Будь ласка, увійдіть у систему</div>; // або редірект на логін
-   return <LoginAdminForm onClose={function (): void {
-     throw new Error("Function not implemented.");
-   } } onLoginSuccess={function (): void {
-     throw new Error("Function not implemented.");
-   } }></LoginAdminForm>
+  useEffect(() => {
+    if (!token) {
+      navigate("/"); 
+    } else if (!hasReloaded) {
+      setHasReloaded(true);
+      const alreadyReloaded = sessionStorage.getItem("alreadyReloaded");
+      if (!alreadyReloaded) {
+        sessionStorage.setItem("alreadyReloaded", "true");
+        window.location.reload(); 
+      }
+    }
+  }, [token, hasReloaded, navigate]);
+
+  if (!token) {
+    return null; 
   }
 
   return (
