@@ -319,7 +319,11 @@
                   "email": "Email eingeben..."
                 },
                 "saveButton": "Speichern",
-                "successMessage": "Adresse erfolgreich gespeichert!",
+                "checkButton": "Prüfen",
+                "cancelButton": "Abbrechen",
+                "confirmSettingsTitle": "Bestätigen Einstellungen",
+                "confirmButton": "Bestätigen & speichern",
+                "successMessage": "Alles erfolgreich gespeichert!",
                 "errorMessage": "Fehler beim Speichern. Bitte versuchen Sie es erneut."
               },
               "workingMode": {

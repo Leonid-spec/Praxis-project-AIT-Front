@@ -318,7 +318,11 @@
                   "email": "Введите email..."
                 },
                 "saveButton": "Сохранить",
-                "successMessage": "Адрес успешно сохранён!",
+                "checkButton": "Проверить",
+                "cancelButton": "Отменить",
+                "confirmSettingsTitle": "Подтвердите настройки",
+                "confirmButton": "Подтвердить и сохранить",
+                "successMessage": "Всё успешно сохранено!",
                 "errorMessage": "Произошла ошибка при сохранении. Попробуйте снова."
               },
               "workingMode": {
