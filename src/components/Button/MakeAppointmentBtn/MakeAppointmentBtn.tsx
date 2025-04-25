@@ -7,8 +7,8 @@ interface MakeAppointmentBtnProps {
   onClick?: () => void;
   disabled?: boolean;
   serviceId?: number | null;
-  bgColor?: string;
-  textColor?: string; 
+  backgroundColor?: string;
+  color?: string; 
   width?: string;
   height?: string;
   padding?: string;
@@ -20,8 +20,8 @@ const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({
   onClick,
   disabled, 
   serviceId,
-  bgColor,
-  textColor,
+  backgroundColor,
+  color,
   width,
   height,
   padding,
@@ -43,8 +43,8 @@ const MakeAppointmentBtn: React.FC<MakeAppointmentBtnProps> = ({
     <StyledButton 
         onClick={handleClick} 
         disabled={disabled} 
-        bgColor={bgColor} 
-        textColor={textColor}
+        backgroundColor={backgroundColor} 
+        color={color}
         width={width}
         height={height}
         padding={padding}

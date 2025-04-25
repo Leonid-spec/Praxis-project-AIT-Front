@@ -88,11 +88,15 @@ const LoginAdminForm = ({
           type: "success",
         });
 
+        
+
         setTimeout(() => {
           onLoginSuccess();
           onClose();
           navigate("/admin-panel");
+          window.location.reload(); 
         }, 1500);
+
       } else {
         setNotification({
           message: "Login failed",

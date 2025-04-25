@@ -111,19 +111,19 @@ const Footer: React.FC = () => {
               <TitleText>{t("message.footer.titles.time")}</TitleText>
               <DaysOfWeekBox>
                 <DaysOfWeek>
-                  <div>{t("message.footer.daysOfWeek.monday")}:</div>
-                  <div>{t("message.footer.daysOfWeek.tuesday")}:</div>
-                  <div>{t("message.footer.daysOfWeek.wednesday")}:</div>
-                  <div>{t("message.footer.daysOfWeek.thursday")}:</div>
-                  <div>{t("message.footer.daysOfWeek.friday")}:</div>
+                  <p>{t("message.footer.daysOfWeek.monday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.tuesday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.thursday")}:</p>
+                  <p>{t("message.footer.daysOfWeek.friday")}:</p>
                   {/* <p>{t("message.footer.hours.weekend")}</p> */}
                 </DaysOfWeek>
                 <DaysOfWeek>
-                  <div>{settings.monday}</div>
-                  <div>{settings.tuesday}</div>
-                  <div>{settings.wednesday}</div>
-                  <div>{settings.thursday}</div>
-                  <div>{settings.friday}</div>
+                  <p>{settings.monday}</p>
+                  <p>{settings.tuesday}</p>
+                  <p>{settings.wednesday}</p>
+                  <p>{settings.thursday}</p>
+                  <p>{settings.friday}</p>
                 </DaysOfWeek>
               </DaysOfWeekBox>
             </TimesContainer>
