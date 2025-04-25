@@ -69,16 +69,10 @@ const AddressWorkingModePage: React.FC = () => {
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
     const loadSettings = async () => {
       try {
-        if (token) {
-          const fetchedSettings = await getSettingsFromCacheOrApi(token);
-          setSettings(fetchedSettings);
-        } else {
-          console.error("Token is missing");
-        }
+        const fetchedSettings = await getSettingsFromCacheOrApi();
+        setSettings(fetchedSettings);
       } catch (error) {
         console.error("Error loading settings:", error);
         setSettings(defaultSettings);
@@ -89,14 +83,13 @@ const AddressWorkingModePage: React.FC = () => {
   }, []);
 
   const getSettingsFromCacheOrApi = async (
-    token: string
   ): Promise<SettingsStringDto> => {
     if (cachedSettings) {
       return cachedSettings;
     }
 
     try {
-      const fetchedSettings = await getSettings(token);
+      const fetchedSettings = await getSettings();
       cachedSettings = fetchedSettings;
       return fetchedSettings;
     } catch (error) {

@@ -12,15 +12,12 @@ const handleFetchError = async (response: Response) => {
   return response.json();
 };
 
-export const getSettings = async (
-  token: string
-): Promise<SettingsStringDto> => {
+export const getSettings = async (): Promise<SettingsStringDto> => {
   try {
     const response = await fetch(`${API_URL}/settings`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
     });
     return await handleFetchError(response);
