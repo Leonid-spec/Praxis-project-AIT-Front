@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import App from './App';
 import { ModalProvider } from './components/Modal/ModalContext';
-import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton'; // ✅ Добавляем кнопку WhatsApp
 
 console.log('Store passed to Provider:', store);
 
@@ -17,7 +16,6 @@ root.render(
   <Provider store={store}>
     <ModalProvider>
       <App />
-      <WhatsAppButton /> {/* ✅ Теперь кнопка будет видна на всех страницах */}
     </ModalProvider>
   </Provider>
 );

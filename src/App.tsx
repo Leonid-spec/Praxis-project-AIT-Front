@@ -13,8 +13,7 @@ import DoctorDetails from "./pages/PageDetails/DoctorDetails/DoctorDetails";
 import ServiceDetails from "./pages/PageDetails/ServiceDetails/ServiceDetails";
 import About from "./pages/About/About";
 import Contacts from "./pages/Contacts/Contacts";
-import EditDoctorPage from "./pages/AdminPanel/Doctors/EditDoctor/EditDoctorPage"; // ✅ Импорт страницы редактирования врача
-
+import EditDoctorPage from "./pages/AdminPanel/Doctors/EditDoctor/EditDoctorPage"; 
 import { useState, useEffect } from "react";
 
 Modal.setAppElement("#root");
