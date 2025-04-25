@@ -191,6 +191,7 @@
       }
     },
     "adminPanel": {
+      "apply":"Apply",
       "appointments": {
         "title": "Appointments",
         "noAppointments": "No appointments.",

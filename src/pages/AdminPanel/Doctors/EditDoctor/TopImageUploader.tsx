@@ -2,6 +2,7 @@ import Cropper, { Area } from "react-easy-crop";
 import { useState, useCallback } from "react";
 import getCroppedImg from "../../../../utils/cropImage";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 
 type TopImageUploaderProps = {
   imageSrc: string;
@@ -23,6 +24,7 @@ const TopImageUploader: React.FC<TopImageUploaderProps> = ({
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(1);
   const [croppedAreaPixels, setCroppedAreaPixels] = useState<Area | null>(null);
+  const { t } = useTranslation();
 
   const onCropCompleteInternal = useCallback((_: Area, croppedPixels: Area) => {
     setCroppedAreaPixels(croppedPixels);
@@ -48,7 +50,7 @@ const TopImageUploader: React.FC<TopImageUploaderProps> = ({
           showGrid={false}
         />
       </CropperWrapper>
-      <button onClick={handleCrop}>Застосувати</button>
+      <button onClick={handleCrop}>{t("message.adminPanel.apply")}</button>
     </>
   );
 };
