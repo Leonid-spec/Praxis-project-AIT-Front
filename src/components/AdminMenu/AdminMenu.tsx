@@ -33,7 +33,7 @@ const AdminMenu: React.FC<AdminMenuProps> = ({ isLoggedIn, setIsLoggedIn }) => {
 
   const handleLogIn = () => {
     // check this setIsLoggedIn
-    setIsLoggedIn(true);
+    // setIsLoggedIn(true);
     setShowDropdown(false);
     navigate("/admin-panel/settings");
   };
