@@ -7,7 +7,7 @@ export const Card = styled.div`
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  max-width: 500px;
+  /* max-width: 500px; */
   /* min-height: auto; */
   /* min-width: 350px; */
   /* padding: 30px; */
@@ -17,19 +17,38 @@ export const Card = styled.div`
   }
 `;
 
+// export const PhotoContainer = styled.div`
+//   background-color: #f0f0f0;
+//   position: relative;
+//   width: 100%;
+//   height: 200px;
+//   overflow: hidden;
+// `;
+
+// export const Photo = styled.img`
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// `;
+
 export const PhotoContainer = styled.div`
-  background-color: #f0f0f0;
   position: relative;
   width: 100%;
-  height: 200px;
+  padding-top: 75%;
+  background-color: #f0f0f0;
   overflow: hidden;
 `;
 
 export const Photo = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 `;
+
 
 export const Info = styled.div`
   padding: 16px;

@@ -42,6 +42,14 @@ export const BesideLogoContainer = styled.div`
   @media (max-width: 1350px) {
     gap: 30px;
   }
+
+  @media (max-width: 768px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 340px) {
+    gap: 10px;
+  }
 `;
 
 
@@ -100,24 +108,23 @@ export const LanguagePanel = styled.div`
   text-align: center;
 `;
 
-export const LanguageLink = styled.button`
+export const LanguageLink = styled.div`
   background: none;
   border: none;
   color: inherit;
   cursor: pointer;
   margin: 0;
   font-size: 14px;
+  padding: 14px;
 
   &:hover {
-    color: #9ceef1;
     color: #7a2141;
-    /* color: #4ba0a5; */
   }
+
 `;
 
 export const Divider = styled.span`
   color: #3d3d3d;
-  /* font-size: 24px; */
   font-size: 14px;
 
 `;
@@ -170,17 +177,18 @@ export const NavLinkText = styled.span`
   }
 
   @media (max-width: 530px) {
+    font-size: 0.8rem;
     max-width: 150px;
   }
 
   @media (max-width: 450px) {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     max-width: 100px;
   }
 
   @media (max-width: 300px) {
     max-width: 70px;
-    font-size: 0.6rem;
+    font-size: 0.4rem;
   }
   
 `;

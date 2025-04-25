@@ -17,6 +17,7 @@ import {
 import BurgerMenu from "./BurgerMenu";
 import React from "react";
 import MakeAppointmentBtn from "../Button/MakeAppointmentBtn/MakeAppointmentBtn";
+import LanguageIcon from "./LanguageIcon";
 
 const Menu = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(() => {
@@ -90,7 +91,10 @@ const Menu = () => {
             </SprachUundAdminbereich>
           </>
         ) : (
-          <BurgerMenu />
+          <>
+            <LanguageIcon />
+            <BurgerMenu />
+          </>
         )}
       </BesideLogoContainer>
     </MenuContainer>

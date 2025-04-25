@@ -21,6 +21,7 @@ import {
 import { AdminDto } from "../../../../store/types/adminTypes";
 import { getAllAdmins } from "../../../../api/adminAPI";
 import AllModePage from "../AllModePage/AllModePage";
+import KillAdminForm from "../KillAdminForm/KillAdminForm";
 
 interface SettingsPageProps {
   adminLogin: string;
@@ -35,6 +36,7 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
     | "changePassword"
     | "viewAdmins"
     | "deleteAdmin"
+    | "killAdmin"
     | "welcome"
     | "workingMode"
     | null
@@ -73,7 +75,7 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
   };
 
   useEffect(() => {
-    if (activeSection === "viewAdmins" || activeSection === "deleteAdmin") {
+    if (activeSection === "viewAdmins" || activeSection === "deleteAdmin" || activeSection === "killAdmin") {
       fetchAdmins();
     }
   }, [activeSection]);
@@ -122,6 +124,11 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
         <StyledButton onClick={() => setActiveSection("deleteAdmin")}>
           {t(
             "message.adminPanel.appointments.settings.admin.settingsPage.buttons.delete"
+          )}
+        </StyledButton>
+        <StyledButton onClick={() => setActiveSection("killAdmin")}>
+          {t(
+            "message.adminPanel.appointments.settings.admin.settingsPage.buttons.kill"
           )}
         </StyledButton>
         <StyledButton onClick={() => setActiveSection("workingMode")}>
@@ -176,6 +183,17 @@ const SettingsPage: React.FC<SettingsPageProps> = () => {
                 )}
               </SectionTitle>
               <DeleteAdminForm />
+            </>
+          )}
+          
+          {activeSection === "killAdmin" && (
+            <>
+              <SectionTitle>
+                {t(
+                  "message.adminPanel.appointments.settings.admin.kill.kill"
+                )}
+              </SectionTitle>
+              <KillAdminForm />
             </>
           )}
           {activeSection === "workingMode" && (

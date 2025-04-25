@@ -15,7 +15,6 @@ import {
   InfoWrapper,
   LabelWrapper,
   MainImage,
-  ResetImageButton,
   Specialization,
   SpecializationWrapper,
   Title,
@@ -50,7 +49,6 @@ const DoctorDetails: React.FC = () => {
       dispatch(fetchActiveDoctorsStart());
       const fetchDoctors = async () => {
         try {
-
           const data = await getActiveDoctors();
 
           dispatch(fetchDoctorsSuccess(data));
@@ -141,9 +139,22 @@ const DoctorDetails: React.FC = () => {
                     }
                   />
                 ))}
-                <ResetImageButton onClick={resetImage} title={t("reset")}>
-                  ↻ {t("reset")}
-                </ResetImageButton>
+                {doctor.topImage && (
+                  <GalleryImage
+                    src={
+                      doctor.topImage.startsWith("https://")
+                        ? doctor.topImage
+                        : `https://${doctor.topImage}`
+                    }
+                    alt="Reset to main"
+                    title={t("reset")}
+                    onClick={resetImage}
+                    style={{
+                      border: "2px solid #641230", 
+                      cursor: "pointer",
+                    }}
+                  />
+                )}
               </>
             ) : (
               <p>{t("noImages")}</p>

@@ -73,7 +73,7 @@ export const createDoctor = async (doctor: Partial<Doctor>, token: string): Prom
       body: JSON.stringify(doctor),
     });
 
-    console.log("Creating doctor:", doctor);
+    // console.log("Creating doctor:", doctor);
     return await handleFetchError(response);
   } catch (error) {
     console.error("Failed to create doctor:", error);

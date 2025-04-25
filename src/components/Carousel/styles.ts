@@ -113,7 +113,7 @@ export const SideImage = styled.img`
   }
 `;
 
-export const NavButton = styled.button`
+export const NavButton = styled.div`
   background-color: #9ceef1;
   background-color: #7a2141;
   border: none;

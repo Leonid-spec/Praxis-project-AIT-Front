@@ -4,7 +4,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-// smth new gap between main containers
+  // smth new gap between main containers
   @media (max-width: 1980px) {
     gap: 10px;
   }
@@ -21,6 +21,48 @@ export const MainFotoContainer = styled.div`
   margin: 10px auto;
   margin-right: 10px;
   margin-bottom: 0;
+
+  @media (min-width: 1980px) {
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    margin: 30px;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    margin: 0;
+  }
+
+  @media (min-width: 1281px) {
+    font-size: clamp(1.7rem, 3.5vw, 2.1rem);
+  }
+
+  @media (max-width: 1280px) {
+    font-size: clamp(1.6rem, 4vw, 2rem);
+  }
+
+  @media (max-width: 1024px) {
+    font-size: clamp(1.4rem, 4vw, 1.6rem);
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+  }
+
+  @media (max-width: 540px) {
+    font-size: clamp(1.2rem, 4vw, 1.6rem);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 380px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.6rem;
+  }
 `;
 
 export const MainTextontainer = styled.div`
@@ -45,7 +87,12 @@ export const MainTextontainer = styled.div`
 `;
 
 export const MainText = styled.div`
-  @media (min-width: 1920px) {
+
+@media (min-width: 2280px) {
+    font-size: clamp(2.4rem, 5vw, 2.8rem);
+  }
+
+  @media (min-width: 1980px) {
     font-size: clamp(2rem, 5vw, 2.6rem);
   }
 
@@ -94,8 +141,16 @@ export const LeftContainer = styled.div`
   text-align: center;
   padding: 10px;
 
+  @media (min-width: 2820px) {
+    font-size: clamp(3.6rem, 5vw, 4rem);
+  }
+
+  @media (min-width: 2220px) {
+    font-size: clamp(3.2rem, 5vw, 3.8rem);
+  }
+
   @media (min-width: 1920px) {
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: clamp(2.8rem, 5vw, 3.2rem);
   }
 
   @media (min-width: 1440px) {
@@ -125,6 +180,7 @@ export const WelcomeTextSubtitle = styled.div`
 
   @media (min-width: 1920px) {
     font-size: clamp(1.6rem, 5vw, 2.8rem);
+    /* background-color: blue; */
   }
 
   @media (min-width: 1440px) {

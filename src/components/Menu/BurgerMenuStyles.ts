@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const BurgerMenuContainer = styled.div`
-display: flex;
-gap: 20px;
-align-items: center;
+  display: flex;
+  gap: 20px;
+  align-items: center;
 
-@media (max-width: 450px) {
+  @media (max-width: 450px) {
     gap: 10px;
   }
 
@@ -20,14 +20,14 @@ export const BurgerAndAppBtnContainer = styled.div`
   justify-content: space-around;
   align-content: center;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
 
   @media (max-width: 768px) {
-    gap: 30px;
+    gap: 20px;
   }
 
   @media (max-width: 540px) {
-    gap: 20px;
+    gap: 10px;
   }
 
   @media (max-width: 375px) {
@@ -37,7 +37,7 @@ export const BurgerAndAppBtnContainer = styled.div`
 
 export const BurgerButton = styled.div`
   display: none;
-  margin-top:4px;
+  margin-top: 8px;
 
   @media (max-width: 1440px) {
     display: block;
@@ -81,11 +81,12 @@ export const MobileNav = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-content: center;
+  justify-content: center;
   gap: 20px;
   width: 90%;
   max-width: 300px;
   font-size: 1.1rem;
-
 `;
 
 export const MobileNavLink = styled(NavLink)`
@@ -102,29 +103,29 @@ export const MobileNavLink = styled(NavLink)`
 export const LanguagePanel = styled.div`
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-content: center;
+  align-items: center;
 `;
 
-export const LanguageLink = styled.button`
+export const LanguageLink = styled.div`
   background: none;
   border: none;
   color: inherit;
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
-  font-size: 0.9rem;
+  padding: 14px;
+  font-size: 14px;
 
   &:hover {
-    color: #4a90e2;
-    color: #7a2141;
     color: #111;
   }
 `;
 
 export const Divider = styled.span`
   color: #dcd5d5;
+  font-size: 16px;
 `;
-
 
 export const AdminMenuBox = styled.div`
   display: flex;
@@ -135,7 +136,7 @@ export const AdminMenuBox = styled.div`
 `;
 
 export const AdminMenuBoxLogo = styled.div`
-display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 3px 0 0 0.5px;

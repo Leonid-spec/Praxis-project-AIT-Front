@@ -20,7 +20,6 @@ import {
   BiographySection,
   TitleSection,
   SpecialisationSection,
-  ImageBox,
   MainBox,
   Container,
   GalleryContainer,
@@ -28,11 +27,13 @@ import {
   GalleryImageWrapper,
   TitleBox,
   CheckboxLabel,
+  EditTopImageWrapper,
+  EditPhotoSection,
 } from "./styles";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
-import { addImage, pushImageFile } from "../../../../api/imageAPI";
+import { addImage } from "../../../../api/imageAPI";
 import { GalleryImageCard } from "../Gallery/GalleryImageCard";
-// import { getDoctorById } from './../../../../api/doctorAPI';
+import TopImageUploader from "../EditDoctor/TopImageUploader";
 
 const AddNewDoctorPage: React.FC = () => {
   const { t } = useTranslation();
@@ -60,9 +61,14 @@ const AddNewDoctorPage: React.FC = () => {
   const [isSaving, setIsSaving] = useState(false);
   const token = localStorage.getItem("token");
   const [selectedImages, setSelectedImages] = useState<File[]>([]);
-  const [selectedImageFile, setSelectedImageFile] = useState<File | null>(null);
+  const [, setSelectedImageFile] = useState<File | null>(null);
   const [, setLocalPreviewURL] = useState<string | null>(null);
   const [, setPreviewURLs] = useState<string[]>([]);
+
+  const [, setPreviewImage] = useState<string | null>(null);
+  const [croppedImageFile, setCroppedImageFile] = useState<File | null>(null);
+  const [originalImageSrc, setOriginalImageSrc] = useState<string | null>(null);
+  const [showCropper, setShowCropper] = useState(false);
 
   const handleReturn = () => {
     navigate("/admin-panel/doctors");
@@ -83,13 +89,13 @@ const AddNewDoctorPage: React.FC = () => {
         ...prev,
         topImage: imageUrl,
       }));
+      setOriginalImageSrc(imageUrl);
+      setShowCropper(true);
+
+      console.log("imageUrl - blob: ", imageUrl);
     }
   };
 
-  // const handleImagePreview = (imageUrl: string) => {
-  //   setLocalPreviewURL(imageUrl);
-  // };
-  
   const handleSave = async () => {
     if (!token) {
       setNotification({
@@ -102,43 +108,42 @@ const AddNewDoctorPage: React.FC = () => {
     setIsSaving(true);
 
     try {
-      let uploadedDoctorImageUrl = "";
-      if (selectedImageFile) {
-        uploadedDoctorImageUrl = await pushImageFile(selectedImageFile, token);
-        uploadedDoctorImageUrl = "https://" + uploadedDoctorImageUrl;
+      let uploadedTopImageUrl = doctorData.topImage;
+      if (croppedImageFile) {
+        const uploaded = await addImage(croppedImageFile, 0, 0, token);
+        uploadedTopImageUrl = `https://${uploaded.path}`;
+      console.log("uploadedTopImageUrl - real url: ", uploadedTopImageUrl);
+
       }
 
       const doctorToSend: Doctor = {
         ...doctorData,
-        topImage: uploadedDoctorImageUrl,
+        topImage: uploadedTopImageUrl,
         images: [],
       };
-
       const newDoctor = await createDoctor(doctorToSend, token);
-
       const doctorId = newDoctor.id;
 
       for (const file of selectedImages) {
-        await addImage(file, 0, doctorId!, token); 
+        await addImage(file, 0, doctorId!, token);
       }
 
       const fullDoctor = await getDoctorById(doctorId!, token);
+
+      fullDoctor.images = fullDoctor.images?.map((img) => ({
+        ...img,
+        path: img.path.startsWith("https://")
+          ? img.path
+          : `https://${img.path}`,
+      }));
+
+      console.log("fullDoctor: ", fullDoctor);
+
 
       setNotification({
         message: `Doctor "${fullDoctor.fullName}" created successfully!`,
         type: "success",
       });
-
-      const getDoctorByIdAll = await getDoctorById(doctorId!, token);
-
-      const updatedImages = getDoctorByIdAll.images!.map((img: any) => {
-        if (!img.path.startsWith("https://")) {
-          return { ...img, path: "https://" + img.path };
-        }
-        return img;
-      });    
-
-      fullDoctor.images = updatedImages;
 
       setTimeout(() => {
         setIsSaving(false);
@@ -160,9 +165,6 @@ const AddNewDoctorPage: React.FC = () => {
       const fileArray = Array.from(files);
       const urls = fileArray.map((file) => URL.createObjectURL(file));
 
-      console.log("✅ [handleImagesUpload] Обрані файли:", fileArray);
-      console.log("✅ [handleImagesUpload] Прев'ю URL-адреси:", urls);
-
       setSelectedImages((prev) => [...prev, ...fileArray]);
       setPreviewURLs((prev) => [...prev, ...urls]);
 
@@ -171,24 +173,13 @@ const AddNewDoctorPage: React.FC = () => {
         images: [
           ...(prev.images ?? []),
           ...urls.map((url) => ({
-            id: 0, 
+            id: 0,
             path: url,
             dentalServiceId: 0,
             doctorId: doctorData.id,
           })),
         ],
       }));
-      // console.log("Selected images:", fileArray);
-      // setDoctorData((prev) => ({
-      //   ...prev,
-      //   images: [
-      //     ...(prev.images ?? []),
-      //     ...urls.map((url) => ({
-      //       id: Date.now() + Math.random(),
-      //       path: url,
-      //     })),
-      //   ],
-      // }));
     }
   };
 
@@ -211,7 +202,6 @@ const AddNewDoctorPage: React.FC = () => {
       return updated;
     });
   };
-
 
   return (
     <DoctorPageContainer>
@@ -251,29 +241,26 @@ const AddNewDoctorPage: React.FC = () => {
                 />
               </InputContainer>
 
-             <MakeCardVisibleBox>
+              <MakeCardVisibleBox>
                 <CheckboxLabel>
-                              {t("message.adminPanel.appointments.doctors.makeCardVisible")} 
-                
-                                <input
-                                  type="checkbox"
-                                  checked={doctorData.isActive}
-                                  onChange={(e) =>
-                                    setDoctorData({ ...doctorData, isActive: e.target.checked })
-                                  }
-                                />
-                              </CheckboxLabel>
-             </MakeCardVisibleBox>
+                  {t("message.adminPanel.appointments.doctors.makeCardVisible")}
 
-              <EditTopImage>
-                <TitlesBox>
-                  {t("message.adminPanel.appointments.doctors.uploadImage")}
-                </TitlesBox>
-                <UploadInput type="file" onChange={handleImageUpload} />
-              </EditTopImage>
+                  <input
+                    type="checkbox"
+                    checked={doctorData.isActive}
+                    onChange={(e) =>
+                      setDoctorData({
+                        ...doctorData,
+                        isActive: e.target.checked,
+                      })
+                    }
+                  />
+                </CheckboxLabel>
+              </MakeCardVisibleBox>
+
               <SpecialisationSection>
                 <TitlesBox>
-                {t("message.adminPanel.appointments.doctors.specialisation")}
+                  {t("message.adminPanel.appointments.doctors.specialisation")}
                 </TitlesBox>
                 <InputContainer>
                   <TitleBoxText>DE</TitleBoxText>
@@ -316,27 +303,65 @@ const AddNewDoctorPage: React.FC = () => {
                 </InputContainer>
               </SpecialisationSection>
             </div>
-            <div>
-              <ImageBox>
-                {doctorData.topImage ? (
+
+            <EditTopImageWrapper>
+              <TitlesBox>
+                {t("message.adminPanel.appointments.doctors.uploadImage")}
+              </TitlesBox>
+              <UploadInput type="file" onChange={handleImageUpload} />
+
+              <EditPhotoSection>
+                {/* <ImageBox>
+                  {doctorData.topImage ? (
+                    <ImagePreview
+                      src={doctorData.topImage}
+                      alt="Doctor preview"
+                    />
+                  ) : (
+                    <ImagePreview
+                      src="https://via.placeholder.com/600x400"
+                      alt="Doctor preview"
+                    />
+                  )}
+                </ImageBox> */}
+
+                {!showCropper && (
                   <ImagePreview
-                    src={doctorData.topImage}
+                    src={
+                      doctorData.topImage ||
+                      "https://via.placeholder.com/600x400"
+                    }
                     alt="Doctor preview"
                   />
-                ) : (
-                  <ImagePreview
-                    src="https://via.placeholder.com/300"
-                    alt="Placeholder"
+                )}
+                {showCropper && originalImageSrc && (
+                  <TopImageUploader
+                    imageSrc={originalImageSrc}
+                    onCropComplete={(croppedFile: File) => {
+                      const previewUrl = URL.createObjectURL(croppedFile);
+
+                      setCroppedImageFile(croppedFile);
+                      setPreviewImage(previewUrl);
+                      setDoctorData((prev) => {
+                        if (!prev) return prev;
+                        return {
+                          ...prev,
+                          topImage: previewUrl,
+                        };
+                      });
+
+                      setShowCropper(false);
+                    }}
                   />
                 )}
-              </ImageBox>
-            </div>
+              </EditPhotoSection>
+            </EditTopImageWrapper>
           </MainBox>
+
           <div>
             <TitleSection>
               <TitlesBox>
                 {t("message.adminPanel.appointments.doctors.title")}
-
               </TitlesBox>
               <InputContainer>
                 <TitleBoxText>DE</TitleBoxText>
@@ -439,7 +464,6 @@ const AddNewDoctorPage: React.FC = () => {
             ))}
           </GalleryGrid>
         </GalleryContainer>
-        
       </ScrollContainer>
     </DoctorPageContainer>
   );

@@ -230,6 +230,15 @@
         },
         "settings": {
           "admin": {
+            "kill": {
+              "kill": "Убрать администратора",
+              "fillRequired": "Пожалуйста, введите логин.",
+              "noToken": "Токен аутентификации не найден.",
+              "success": "Администратор {{login}} был устранён.",
+              "error": "Не удалось устранить администратора.",
+              "loginPlaceholder": "Логин администратора",
+              "button": "Устранить администратора"
+            },
             "create": {
               "loginLabel": "Логин:",
               "passwordLabel": "Пароль:",
@@ -283,7 +292,8 @@
                 "address": "Адрес",
                 "runningLine": "Бегущая строка",
                 "workingMode": "Режим работы",
-                "delete": "Удалить администратора"
+                "delete": "Удалить администратора",
+                "kill": "Убрать администратора"
               },
               "sections": {
                 "create": "Создание нового администратора",
@@ -354,8 +364,8 @@
           "enterDescriptionRu": "Введите описание",
           "descriptions": "Описание:",
           "enterDescription": "Введите описание ({{lang}})",
-          "placeholder": "Введите название услуги (en)",
-          "placeholderTime": "например, 10:00, 16:30, 2025-04-16",
+          "placeholder": "Название услуги (en)",
+          "placeholderTime": "10:00, 16:30, 2025-04-16",
           "uploadImage": "Загрузите изображение",
           "makeCardVisibleCheckbox": "Сделать карточку видимой",
           "saveButton": "Сохранить",
@@ -398,7 +408,7 @@
           "inactive": "Неактивен",
           "descriptions": "Описания:",
           "enterDescription": "Введите описание ({{lang}})",
-          "placeholder": "Введите имя врача",
+          "placeholder": "Имя врача",
           "placeholderTime": "например, 10:00, 16:30, 2025-04-16",
           "uploadImage": "Загрузить изображение",
           "makeCardVisibleCheckbox": "Сделать карточку видимой",
@@ -406,12 +416,13 @@
           "savingButton": "Сохранение...",
           "addNewDoctor": "+  Добавить нового врача",
           "refresh": "Обновить",
+          "imageDeleted": "Изображение было успешно удалено",
           "loadingDoctorData": "Загрузка данных о враче...",
           "doctorPreview": "Предпросмотр врача",
           "errorLoadingDoctorData": "Ошибка при загрузке данных о враче:",
           "doctorUpdatedSuccessfully": "$Врач \"{doctorData.fullName}\" успешно обновлен!",
           "fullName": "Полное имя",
-          "searchPlaceholder": "Введите имя врача (en)",
+          "searchPlaceholder": "Имя врача (en)",
           "searchIconAlt": "Поиск",
           "imageUploadFailed": "Failed to upload",
           "duplicateNameError": "Врач с таким именем уже существует. Попробуйте другое имя или оставьте текущее без изменений."
