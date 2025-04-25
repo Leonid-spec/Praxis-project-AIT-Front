@@ -1,8 +1,9 @@
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import store from './store/store'; 
+import store from './store/store';
 import App from './App';
 import { ModalProvider } from './components/Modal/ModalContext';
+import WhatsAppButton from './components/WhatsAppButton/WhatsAppButton'; // ✅ Добавляем кнопку WhatsApp
 
 console.log('Store passed to Provider:', store);
 
@@ -14,8 +15,9 @@ if (!rootElement) {
 const root = ReactDOM.createRoot(rootElement!);
 root.render(
   <Provider store={store}>
-     <ModalProvider>
+    <ModalProvider>
       <App />
+      <WhatsAppButton /> {/* ✅ Теперь кнопка будет видна на всех страницах */}
     </ModalProvider>
   </Provider>
 );
