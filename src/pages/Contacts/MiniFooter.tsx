@@ -7,7 +7,7 @@ import { getSettings } from "../../api/settingsAPI";
 import { SettingsStringDto } from "../../store/types/settingsTypes";
 
 const MiniFooter: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [settings, setSettings] = useState<SettingsStringDto>({});
 
   // Загрузка данных из localStorage
@@ -46,11 +46,26 @@ const MiniFooter: React.FC = () => {
     init();
   }, []);
 
+  const getRunningText = () => {
+    if (!settings) return "";
+
+    switch (i18n.language) {
+      case "de":
+        return settings.runningTextDe || "";
+      case "en":
+        return settings.runningTextEn || "";
+      case "ru":
+        return settings.runningTextRu || "";
+      default:
+        return ""; 
+    }
+  };
+
   return (
     <div>
        <RunningLineWrapper>
               <RunningLineContainer>
-                <RunningLine>{settings.runningText}</RunningLine>
+              <RunningLine>{getRunningText()}</RunningLine>
               </RunningLineContainer>
             </RunningLineWrapper>
       <footer className={styles.footer}>

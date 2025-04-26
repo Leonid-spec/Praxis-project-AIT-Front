@@ -26,7 +26,7 @@ import { getSettings } from "../../api/settingsAPI";
 import { SettingsStringDto } from "../../store/types/settingsTypes";
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [settings, setSettings] = useState<SettingsStringDto>({});
 
   useEffect(() => {
@@ -67,11 +67,26 @@ const Footer: React.FC = () => {
   //   return () => window.removeEventListener("resize", handleResize);
   // }, []);
 
+  const getRunningText = () => {
+    if (!settings) return "";
+
+    switch (i18n.language) {
+      case "de":
+        return settings.runningTextDe || settings.runningTextEn || "";
+      case "en":
+        return settings.runningTextEn || settings.runningTextDe || "";
+      case "ru":
+        return settings.runningTextRu || settings.runningTextDe || "";
+      default:
+        return settings.runningTextDe || ""; 
+    }
+  };
+
   return (
     <>
       <RunningLineWrapper>
         <RunningLineContainer>
-          <RunningLine>{settings.runningText}</RunningLine>
+           <RunningLine>{getRunningText()}</RunningLine>
         </RunningLineContainer>
       </RunningLineWrapper>
 

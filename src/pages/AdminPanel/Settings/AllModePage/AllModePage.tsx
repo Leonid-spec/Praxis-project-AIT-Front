@@ -39,8 +39,8 @@ const defaultSettingsNow: SettingsStringDto = {
   thursday: "08:30–19:00",
   friday: "08:30–12:00",
   runningTextDe: "Herzlich Willkommen in unserer Klinik!",
-  runningTextEn: "Herzlich Willkommen in unserer Klinik!",
-  runningTextRu: "Herzlich Willkommen in unserer Klinik!",
+  runningTextEn: "Welcome to our clinic!",
+  runningTextRu: "Добро пожаловать в нашу клинику!",
 };
 
 const defaultSettings: SettingsStringDto = {
@@ -63,14 +63,13 @@ const defaultSettings: SettingsStringDto = {
 let cachedSettings: SettingsStringDto | null = null;
 
 const AddressWorkingModePage: React.FC = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [settings, setSettings] = useState<SettingsStringDto | null>(null);
   const [notification, setNotification] = useState<{
     message: string;
     type: "success" | "error";
   } | null>(null);
 
-  
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   useEffect(() => {
@@ -128,7 +127,7 @@ const AddressWorkingModePage: React.FC = () => {
         localStorage.setItem("settings", JSON.stringify(settings));
         console.log("Settings saved in localStorage:", settings);
 
-        const updatedSettings = await updateSettings(settings, token);
+        const updatedSettings = await updateSettings(settings);
 
         cachedSettings = updatedSettings;
         setSettings(updatedSettings);
@@ -241,12 +240,33 @@ const AddressWorkingModePage: React.FC = () => {
           )}
         </Title>
         <FormSection>
+          <Label>De</Label>
           <TextArea
             value={settings.runningTextDe || defaultSettings.runningTextDe}
             onChange={(e) =>
               handleSettingsChange("runningTextDe", e.target.value)
             }
             placeholder={defaultSettingsNow.runningTextDe}
+          />
+        </FormSection>
+        <FormSection>
+          <Label>En</Label>
+          <TextArea
+            value={settings.runningTextEn || defaultSettings.runningTextEn}
+            onChange={(e) =>
+              handleSettingsChange("runningTextEn", e.target.value)
+            }
+            placeholder={defaultSettingsNow.runningTextEn}
+          />
+        </FormSection>
+        <FormSection>
+          <Label>Ru</Label>
+          <TextArea
+            value={settings.runningTextRu || defaultSettings.runningTextRu}
+            onChange={(e) =>
+              handleSettingsChange("runningTextRu", e.target.value)
+            }
+            placeholder={defaultSettingsNow.runningTextRu}
           />
         </FormSection>
       </LineContainer>
