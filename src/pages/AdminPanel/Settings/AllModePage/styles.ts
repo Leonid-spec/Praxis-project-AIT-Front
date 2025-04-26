@@ -156,6 +156,7 @@ export const TextArea = styled.textarea`
   resize: vertical;
   min-height: 40px;
   max-height: 500px;
+  margin-bottom: 20px;
 `;
 
 

@@ -14,8 +14,8 @@ import {
   ContactText,
   DaysOfWeek,
   ContactsInfoContainer,
-  StyledNavLink,
-  Nav,
+  // StyledNavLink,
+  // Nav,
   RunningLine,
   RunningLineContainer,
   RunningLineWrapper,
@@ -26,7 +26,7 @@ import { getSettings } from "../../api/settingsAPI";
 import { SettingsStringDto } from "../../store/types/settingsTypes";
 
 const Footer: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [settings, setSettings] = useState<SettingsStringDto>({});
 
   useEffect(() => {
@@ -55,23 +55,38 @@ const Footer: React.FC = () => {
     init();
   }, []);
 
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 434);
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth < 434);
+  //   };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  //   handleResize();
+  //   window.addEventListener("resize", handleResize);
+  //   return () => window.removeEventListener("resize", handleResize);
+  // }, []);
+
+  const getRunningText = () => {
+    if (!settings) return "";
+
+    switch (i18n.language) {
+      case "de":
+        return settings.runningTextDe || settings.runningTextEn || "";
+      case "en":
+        return settings.runningTextEn || settings.runningTextDe || "";
+      case "ru":
+        return settings.runningTextRu || settings.runningTextDe || "";
+      default:
+        return settings.runningTextDe || ""; 
+    }
+  };
 
   return (
     <>
       <RunningLineWrapper>
         <RunningLineContainer>
-          <RunningLine>{settings.runningText}</RunningLine>
+           <RunningLine>{getRunningText()}</RunningLine>
         </RunningLineContainer>
       </RunningLineWrapper>
 
@@ -128,7 +143,7 @@ const Footer: React.FC = () => {
             </TimesContainer>
           </Column>
 
-          <Column>
+          {/* <Column>
             {isMobile && (
               <>
                   <TitleText>{t("message.footer.titles.pages")}</TitleText>
@@ -148,7 +163,7 @@ const Footer: React.FC = () => {
                   </Nav>
               </>
             )}
-          </Column>
+          </Column> */}
         </Content>
       </FooterContainer>
     </>
