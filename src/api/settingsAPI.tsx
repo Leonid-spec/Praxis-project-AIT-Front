@@ -28,15 +28,13 @@ export const getSettings = async (): Promise<SettingsStringDto> => {
 };
 
 export const updateSettings = async (
-  settings: Partial<SettingsStringDto>,
-  token: string
+  settings: Partial<SettingsStringDto>
 ): Promise<SettingsStringDto> => {
   try {
     const response = await fetch(`${API_URL}/settings`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(settings),
     });
