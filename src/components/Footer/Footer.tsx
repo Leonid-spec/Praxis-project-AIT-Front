@@ -116,7 +116,6 @@ const Footer: React.FC = () => {
                   <p>{t("message.footer.daysOfWeek.wednesday")}:</p>
                   <p>{t("message.footer.daysOfWeek.thursday")}:</p>
                   <p>{t("message.footer.daysOfWeek.friday")}:</p>
-                  {/* <p>{t("message.footer.hours.weekend")}</p> */}
                 </DaysOfWeek>
                 <DaysOfWeek>
                   <p>{settings.monday}</p>
