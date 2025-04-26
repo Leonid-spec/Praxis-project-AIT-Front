@@ -4,8 +4,7 @@ import AdminMenu from "../AdminMenu/AdminMenu";
 import MakeAppointmentBtn from "../Button/MakeAppointmentBtn/MakeAppointmentBtn";
 import BurgerMenu from "./BurgerMenu";
 import LanguageIcon from "./LanguageIcon";
-import { LanguageLink, Divider } from "./BurgerMenuStyles";
-import { MenuContainer, LogoContainer, StyledNavLink, LogoImage, LogoText, RightContainer, Navigation, NavItem, LanguageAndAdmin, LanguageSwitcher } from "./styles";
+import { MenuContainer, LogoContainer, StyledNavLink, LogoImage, LogoText, RightContainer, Navigation, NavItem, LanguageAndAdmin, LanguageSwitcher, Divider, LanguageLink } from "./styles";
 
 const Menu: React.FC = () => {
   const { t, i18n } = useTranslation();

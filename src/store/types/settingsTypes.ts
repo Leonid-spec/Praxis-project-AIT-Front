@@ -13,5 +13,7 @@ export interface SettingsStringDto {
   thursday?: string;
   friday?: string;
 
-  runningText?: string;
+  runningTextDe?: string;
+  runningTextEn?: string;
+  runningTextRu?: string;
 }

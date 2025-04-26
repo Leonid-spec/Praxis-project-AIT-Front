@@ -33,12 +33,14 @@ const defaultSettingsNow: SettingsStringDto = {
   gps: "47.68549067995246, 9.151141373012225",
   phone: "+49 75 31 7 72 73",
   email: "praxis.sofia.abramian@gmail.com",
-  monday: "09:00–18:00",
-  tuesday: "09:00–18:00",
-  wednesday: "09:00–18:00",
-  thursday: "09:00–18:00",
-  friday: "09:00–18:00",
-  runningText: "Herzlich Willkommen in unserer Klinik!",
+  monday: "08:30–15:00",
+  tuesday: "08:30–15:00",
+  wednesday: "08:30–19:00",
+  thursday: "08:30–19:00",
+  friday: "08:30–12:00",
+  runningTextDe: "Herzlich Willkommen in unserer Klinik!",
+  runningTextEn: "Herzlich Willkommen in unserer Klinik!",
+  runningTextRu: "Herzlich Willkommen in unserer Klinik!",
 };
 
 const defaultSettings: SettingsStringDto = {
@@ -53,19 +55,22 @@ const defaultSettings: SettingsStringDto = {
   wednesday: "",
   thursday: "",
   friday: "",
-  runningText: "",
+  runningTextDe: "",
+  runningTextEn: "",
+  runningTextRu: "",
 };
 
 let cachedSettings: SettingsStringDto | null = null;
 
 const AddressWorkingModePage: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [settings, setSettings] = useState<SettingsStringDto | null>(null);
   const [notification, setNotification] = useState<{
     message: string;
     type: "success" | "error";
   } | null>(null);
 
+  
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
   useEffect(() => {
@@ -82,8 +87,7 @@ const AddressWorkingModePage: React.FC = () => {
     loadSettings();
   }, []);
 
-  const getSettingsFromCacheOrApi = async (
-  ): Promise<SettingsStringDto> => {
+  const getSettingsFromCacheOrApi = async (): Promise<SettingsStringDto> => {
     if (cachedSettings) {
       return cachedSettings;
     }
@@ -238,11 +242,11 @@ const AddressWorkingModePage: React.FC = () => {
         </Title>
         <FormSection>
           <TextArea
-            value={settings.runningText || defaultSettings.runningText}
+            value={settings.runningTextDe || defaultSettings.runningTextDe}
             onChange={(e) =>
-              handleSettingsChange("runningText", e.target.value)
+              handleSettingsChange("runningTextDe", e.target.value)
             }
-            placeholder={defaultSettingsNow.runningText}
+            placeholder={defaultSettingsNow.runningTextDe}
           />
         </FormSection>
       </LineContainer>
@@ -262,8 +266,8 @@ const AddressWorkingModePage: React.FC = () => {
           <Modal>
             <ModalTitle>
               {t(
-              "message.adminPanel.appointments.settings.admin.settingsPage.address.confirmSettingsTitle"
-            )}
+                "message.adminPanel.appointments.settings.admin.settingsPage.address.confirmSettingsTitle"
+              )}
             </ModalTitle>
             <List>
               {Object.entries(settings).map(([key, value]) => (
