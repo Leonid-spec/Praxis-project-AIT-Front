@@ -26,6 +26,9 @@ import { AppointmentData } from "../../../../store/types/appointmentTypes";
 import CustomNotification from "../../../../components/CustomNotification/CustomNotification";
 import { FaCopy } from "react-icons/fa";
 import { updateAppointment } from "../../../../api/appointmentAPI"; 
+import { getServiceById } from "../../../../api/serviceAPI";
+import { ServiceData } from "../../../../store/types/serviceTypes";
+import i18n from "../../../../utils/i18n";
 
 const AppointmentDetailsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -33,6 +36,7 @@ const AppointmentDetailsPage: React.FC = () => {
   const navigate = useNavigate();
 
   const [appointment, setAppointment] = useState<AppointmentData | null>(null);
+  const [service, setService] = useState<ServiceData | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [notification, setNotification] = useState<{
     message: string;
@@ -42,11 +46,16 @@ const AppointmentDetailsPage: React.FC = () => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const fetchAppointment = async () => {
+    const fetchAppointmentAndService = async () => {
       try {
         if (token && id) {
           const appointmentData = await getAppointmentById(Number(id), token);
           setAppointment(appointmentData);
+  
+          if (appointmentData.dentalServiceSectionId) {
+            const serviceData = await getServiceById(appointmentData.dentalServiceSectionId, token);
+            setService(serviceData);
+          }
         }
       } catch (err) {
         setError(
@@ -54,10 +63,10 @@ const AppointmentDetailsPage: React.FC = () => {
         );
       }
     };
-
-    fetchAppointment();
+  
+    fetchAppointmentAndService();
   }, [id, t, token]);
-
+  
   const handleCompleteClick = async () => {
     if (appointment) {
       try {
@@ -151,7 +160,18 @@ const AppointmentDetailsPage: React.FC = () => {
                   </Label>
                   <Field
                     type="text"
-                    value={t(`service.${appointment.dentalServiceSectionId}`)}
+                    value={
+                      i18n.language === "de"
+                      ?
+                      service?.titleDe
+                      :  i18n.language === "en"
+                      ? 
+                      service?.titleEn
+                      :  i18n.language === "ru"
+                      ?
+                      service?.titleRu
+                      : ""
+                    }
                     readOnly
                   />
                 </div>
